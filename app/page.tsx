@@ -5,8 +5,9 @@ import Logo3D from "@/components/Logo3d";
 import VideoBackground from "@/components/VideoBackground";
 import Footer from "@/components/Footer";
 import EpisodesSection from "@/components/EpisodesSection";
-import SpectraStepperForm from "@/components/SpectraStepperForm";
-import MembershipMint from "@/components/MembershipMint"; // ← NEW
+import GatedMembershipFlow from "@/components/GatedMembershipFlow"; 
+import SubmissionForm from '@/components/forms/SubmissionForm'; // ← new import
+
 import { useEffect } from "react";
 
 export default function Home() {
@@ -36,9 +37,9 @@ export default function Home() {
           logoAlt="spectra logo"
           items={[
             { label: "home", href: "#home" },
-            { label: "mini app", href: "#miniapp" },
+            { label: "join", href: "#join" },         // ← Single section for the gated flow
             { label: "episodes", href: "#episodes" },
-            { label: "contact", href: "#contact" },
+            { label: "submit", href: "#submit" },     // ← added for new section
           ]}
           activeHref="#home"
           className="custom-nav"
@@ -50,19 +51,15 @@ export default function Home() {
         />
       </div>
 
-      {/* Fullscreen Video Background */}
       <VideoBackground />
-
-      {/* Interactive 3D Logo */}
       <Logo3D />
 
       <main className="w-full overflow-x-hidden relative z-10">
-        {/* EMPTY HOME SECTION */}
         <section id="home" className="h-screen" />
 
-        {/* MINI APP SECTION — Membership Mint */}
+        {/* SINGLE GATED SECTION: Contact → Membership */}
         <section
-          id="miniapp"
+          id="join"
           className="min-h-screen flex items-center justify-center py-32 px-4 relative overflow-hidden"
           style={{
             background: `
@@ -81,36 +78,32 @@ export default function Home() {
                 "repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.01) 10px, rgba(255,255,255,0.01) 20px)",
             }}
           />
-          <MembershipMint />
+          <div className="w-full max-w-screen-2xl mx-auto relative z-10">
+            <GatedMembershipFlow />
+          </div>
         </section>
 
         <EpisodesSection />
 
-        {/* CONTACT SECTION */}
-        <section
-          id="contact"
-          className="min-h-screen flex items-center justify-center py-32 px-4 overflow-x-hidden relative"
-          style={{
-            background: `
-              radial-gradient(circle at 50% 40%, rgba(255,255,255,0.08) 0%, transparent 60%),
-              radial-gradient(circle at 20% 80%, rgba(255,255,255,0.05) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%),
-              #000000
-            `,
-            boxShadow: "inset 0 0 150px rgba(0,0,0,0.9)",
-          }}
+        {/* ────────────────────────────────────────────────
+            NEW SUBMISSION SECTION – added below Episodes
+            Pure monochromatic black/white theme
+        ──────────────────────────────────────────────── */}
+        <section 
+          id="submit" 
+          className="py-32 px-6 bg-gradient-to-b from-black to-gray-950 relative overflow-hidden"
         >
-          <div
-            className="absolute inset-0 opacity-20 pointer-events-none"
-            style={{
-              background:
-                "repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.01) 10px, rgba(255,255,255,0.01) 20px)",
-            }}
+          <div 
+            className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.04),transparent_70%)]" 
           />
-          <div className="w-full max-w-screen-2xl mx-auto relative z-10">
-            <SpectraStepperForm />
+          <div className="max-w-5xl mx-auto relative z-10">
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white">
+              Submit Your Art
+            </h2>
+            <SubmissionForm />
           </div>
         </section>
+
       </main>
 
       <Footer />

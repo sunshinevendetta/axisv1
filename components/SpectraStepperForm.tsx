@@ -2,11 +2,18 @@
 
 import React, { useState, useEffect } from 'react';
 import Stepper, { Step } from './Stepper';
-import { useAccount, useChainId, useSwitchChain, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
+import { 
+  useAccount, 
+  useChainId, 
+  useSwitchChain, 
+  useWriteContract, 
+  useWaitForTransactionReceipt 
+} from 'wagmi';
 import SpectraFormABI from '@/src/abi/SpectraForm.json';
 import ConnectWalletButton from './ConnectWalletButton';
 import { base } from 'wagmi/chains';
 import { SPECTRAFORM_ADDRESS } from '@/src/lib/contract';
+import MembershipMint from './MembershipMint'; // ← import here
 
 const BASE_CHAIN_ID = base.id;
 
@@ -24,6 +31,8 @@ export default function SpectraStepperForm() {
   const [instagram, setInstagram] = useState('');
   const [x, setX] = useState('');
   const [tiktok, setTiktok] = useState('');
+
+  const [formSubmitted, setFormSubmitted] = useState(false); // ← key state
 
   const { 
     writeContract, 
@@ -47,6 +56,13 @@ export default function SpectraStepperForm() {
     }
   }, [isConnected, chainId, switchChain]);
 
+  // When transaction is confirmed → mark form as submitted
+  useEffect(() => {
+    if (txSuccess && hash) {
+      setFormSubmitted(true);
+    }
+  }, [txSuccess, hash]);
+
   const handleSubmit = () => {
     resetWrite();
 
@@ -55,11 +71,11 @@ export default function SpectraStepperForm() {
       return;
     }
 
-    const encName = encryptData(name);
+    const encName  = encryptData(name);
     const encPhone = encryptData(phone);
-    const encIg = encryptData(instagram);
-    const encX = encryptData(x);
-    const encTt = encryptData(tiktok);
+    const encIg    = encryptData(instagram);
+    const encX     = encryptData(x);
+    const encTt    = encryptData(tiktok);
 
     writeContract({
       address: SPECTRAFORM_ADDRESS,
@@ -68,6 +84,25 @@ export default function SpectraStepperForm() {
       args: [encName, encPhone, encIg, encX, encTt],
     });
   };
+
+  // After successful on-chain submission → show Membership mint screen
+  if (formSubmitted) {
+    return (
+      <div className="w-full">
+        <div className="text-center py-16 mb-12">
+          <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+            Thank You!
+          </h1>
+          <p className="text-2xl text-white/80 mb-16">
+            Your data is now securely on-chain.<br/>
+            Now claim your Founder Membership ↓
+          </p>
+        </div>
+
+        <MembershipMint />
+      </div>
+    );
+  }
 
   // NOT CONNECTED → Show connect prompt only
   if (!isConnected) {
@@ -102,7 +137,12 @@ export default function SpectraStepperForm() {
         </div>
       )}
 
-      <Stepper initialStep={1} onFinalStepCompleted={handleSubmit} backButtonText="Previous" nextButtonText="Submit">
+      <Stepper 
+        initialStep={1} 
+        onFinalStepCompleted={handleSubmit}
+        backButtonText="Previous" 
+        nextButtonText="Continue"
+      >
         <Step>
           <div className="text-center py-12">
             <h2 className="text-4xl md:text-6xl font-black mb-8">Welcome to Spectra</h2>
@@ -165,7 +205,7 @@ export default function SpectraStepperForm() {
           <div className="max-w-3xl mx-auto">
             <div className="bg-white/5 backdrop-blur-md rounded-3xl border border-white/20 p-10 mb-12 shadow-2xl">
               <div className="grid md:grid-cols-2 gap-8 text-xl">
-                <div><strong>Name:</strong> <span className="text-white/80">{name || '—'}</span></div>
+                <div><strong>Name or Alias:</strong> <span className="text-white/80">{name || '—'}</span></div>
                 <div><strong>Phone:</strong> <span className="text-white/80">{phone || '—'}</span></div>
                 <div><strong>Instagram:</strong> <span className="text-white/80">{instagram || '—'}</span></div>
                 <div><strong>X:</strong> <span className="text-white/80">{x || '—'}</span></div>

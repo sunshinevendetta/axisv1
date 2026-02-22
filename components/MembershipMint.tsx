@@ -15,56 +15,56 @@ const MEMBERSHIP_CONTRACT = "0xd26e98bbfa933ca10d60b9fe6a6a94ab600d3c08" as `0x$
 
 const MEMBERSHIP_ABI = [
   {
-    "inputs": [],
-    "name": "mint",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function",
+    inputs: [],
+    name: "mint",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "account", "type": "address" },
-      { "internalType": "uint256", "name": "id", "type": "uint256" }
+    inputs: [
+      { internalType: "address", name: "account", type: "address" },
+      { internalType: "uint256", name: "id", type: "uint256" },
     ],
-    "name": "balanceOf",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function",
+    name: "balanceOf",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "name": "hasMinted",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "view",
-    "type": "function",
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "hasMinted",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "totalSupply",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function",
+    inputs: [],
+    name: "totalSupply",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "name": "uri",
-    "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
-    "stateMutability": "view",
-    "type": "function",
+    inputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    name: "uri",
+    outputs: [{ internalType: "string", name: "", type: "string" }],
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "owner",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function",
+    inputs: [],
+    name: "owner",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "withdraw",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function",
+    inputs: [],
+    name: "withdraw",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
 ] as const;
 
@@ -72,6 +72,7 @@ export default function MembershipMint() {
   const { isConnected, address } = useAccount();
   const { connect, connectors } = useConnect();
   const [hasMinted, setHasMinted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false); // ← Key fix
 
   const { data: alreadyMinted } = useReadContract({
     address: MEMBERSHIP_CONTRACT,
@@ -101,35 +102,83 @@ export default function MembershipMint() {
   };
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
     if (alreadyMinted || isSuccess) {
       setHasMinted(true);
     }
   }, [alreadyMinted, isSuccess]);
 
-  const isMintDisabled = writePending || txLoading || hasMinted || (currentSupply !== undefined && Number(currentSupply) >= 7777);
+  const isMintDisabled =
+    writePending ||
+    txLoading ||
+    hasMinted ||
+    (currentSupply !== undefined && Number(currentSupply) >= 7777);
+
+  // Render nothing specific until mounted to avoid mismatch
+  if (!isMounted) {
+    return (
+      <div className="w-full max-w-xl mx-auto px-6 py-32 text-center">
+        {/* Keep the static parts that are always the same */}
+        <h2 className="text-5xl lg:text-5xl font-black mb-20 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500">
+          SPECTRA FOUNDER MEMBERSHIP
+        </h2>
+
+        <div className="max-w-lg mx-auto space-y-6 text-gray-400 text-sm lg:text-lg leading-relaxed mb-20">
+          <p>SPECTRA Founder Membership is a limited access key issued to early participants and contributors during the initial formation of the SPECTRA ecosystem.</p>
+          <p>This membership represents presence at the origin point. It grants permanent recognition as a founding participant and early alignment with the SPECTRA cultural system.</p>
+          <p>Founder Memberships are free, non-replicable, and limited in supply. They exist separately from future public memberships.</p>
+        </div>
+
+        {currentSupply !== undefined && (
+          <p className="text-lg lg:text-sm text-gray-400 mb-8">
+            Minted: {currentSupply.toString()} / 7777
+          </p>
+        )}
+
+        <div className="mx-auto w-full max-w-4xl mb-20">
+          <div className="relative rounded-lg overflow-hidden shadow-lg border-6 border-gray-600 bg-gradient-to-br from-black via-gray-950 to-black p-12">
+            <div className="absolute inset-0 opacity-20 pointer-events-none bg-gradient-to-tr from-white/5 via-transparent to-white/10 rounded-lg" />
+            <div className="aspect-square">
+              <Membership3D />
+            </div>
+            <div className="mt-12 text-center">
+              <p className="text-lg lg:text-4xl font-bold text-white">SPECTRA Founder Membership</p>
+              <p className="text-base lg:text-lg text-gray-500 mt-3">Origin-Level · Limited Edition</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Placeholder with same structure as connect buttons to minimize layout shift */}
+        <div className="flex flex-col items-center gap-10">
+          <div className="px-20 py-8 text-lg font-bold rounded-lg bg-white/10 text-transparent border-2 border-gray-500">
+            Loading...
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-xl mx-auto px-6 py-32 text-center">
-      {/* Title - scales up to huge on larger screens, no xl breakpoint needed */}
       <h2 className="text-5xl lg:text-5xl font-black mb-20 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500">
         SPECTRA FOUNDER MEMBERSHIP
       </h2>
 
-      {/* Description */}
       <div className="max-w-lg mx-auto space-y-6 text-gray-400 text-sm lg:text-lg leading-relaxed mb-20">
         <p>SPECTRA Founder Membership is a limited access key issued to early participants and contributors during the initial formation of the SPECTRA ecosystem.</p>
         <p>This membership represents presence at the origin point. It grants permanent recognition as a founding participant and early alignment with the SPECTRA cultural system.</p>
         <p>Founder Memberships are free, non-replicable, and limited in supply. They exist separately from future public memberships.</p>
       </div>
 
-      {/* Supply counter */}
       {currentSupply !== undefined && (
         <p className="text-lg lg:text-sm text-gray-400 mb-8">
           Minted: {currentSupply.toString()} / 7777
         </p>
       )}
 
-      {/* 3D CARD — ALWAYS VISIBLE */}
       <div className="mx-auto w-full max-w-4xl mb-20">
         <div className="relative rounded-lg overflow-hidden shadow-lg border-6 border-gray-600 bg-gradient-to-br from-black via-gray-950 to-black p-12">
           <div className="absolute inset-0 opacity-20 pointer-events-none bg-gradient-to-tr from-white/5 via-transparent to-white/10 rounded-lg" />
@@ -143,7 +192,7 @@ export default function MembershipMint() {
         </div>
       </div>
 
-      {/* Connect / Mint */}
+      {/* Now safe to render connection-dependent UI */}
       {!isConnected ? (
         <div className="flex flex-col items-center gap-10">
           {connectors.map((connector) => (

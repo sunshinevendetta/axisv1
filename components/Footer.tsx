@@ -16,7 +16,7 @@ export default function Footer() {
         style={{
           display: "inline-block",
           padding: "2px 8px",
-          fontSize: "8px",
+          fontSize: "4px",
           letterSpacing: "0.08em",
           color: "#fff",
           textTransform: "uppercase",
@@ -24,7 +24,7 @@ export default function Footer() {
           background: "transparent"
         }}
       >
-        SPECTЯA® {new Date().getFullYear()}
+        SPECTRA® {new Date().getFullYear()}
       </div>
     </footer>
   );
