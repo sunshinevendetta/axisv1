@@ -21,8 +21,17 @@ export async function POST(req: NextRequest) {
     });
 
     const recaptchaData = await recaptchaRes.json();
+    console.log('reCAPTCHA response:', recaptchaData); // Log for debugging scores/errors
 
-    if (!recaptchaData.success || recaptchaData.score < 0.5) {
+    if (!recaptchaData.success) {
+      return NextResponse.json({ error: 'CAPTCHA verification failed - please try again' }, { status: 400 });
+    }
+
+    if (recaptchaData.action !== 'submit_form') {
+      return NextResponse.json({ error: 'Invalid reCAPTCHA action' }, { status: 400 });
+    }
+
+    if (recaptchaData.score < 0.5) { // Adjust threshold based on your needs; lower to 0.3 for local testing if scores are low
       return NextResponse.json({ error: 'CAPTCHA verification failed - please try again' }, { status: 400 });
     }
 
@@ -49,7 +58,6 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Admin notification
     await transporter.sendMail({
       from: `"SPECTRA ART" <${process.env.CUSTOM_FROM}>`,
       to: process.env.ADMIN_EMAIL,
@@ -68,7 +76,6 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    // Auto-response to user
     await transporter.sendMail({
       from: `"SPECTRA ART" <${process.env.CUSTOM_FROM}>`,
       to: email,

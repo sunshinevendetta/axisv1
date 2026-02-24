@@ -44,9 +44,7 @@ export default function GatedMembershipFlow() {
     const key = `spectra_form_submitted_${address.toLowerCase()}`;
     const submitted = localStorage.getItem(key) === "true";
     setHasSubmittedForm(submitted);
-
     setHasMembership(!!alreadyMinted);
-
     setIsChecking(false);
   }, [address, isConnected, alreadyMinted]);
 
@@ -68,28 +66,24 @@ export default function GatedMembershipFlow() {
   }
 
   return (
-    <div className="w-full relative min-h-screen overflow-hidden bg-black">
-      {/* Background stays full-screen */}
+    // ✅ removed bg-black — it was painting over the video background
+    <div className="w-full relative min-h-screen overflow-hidden">
       <VideoBackground />
 
-      {/* Main content - centered */}
       <div className="relative z-10 min-h-screen flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
-        {/* Tight card container */}
         <div className="
-          w-full 
-          max-w-3xl 
-          mx-auto 
-          bg-black/40 
-          backdrop-blur-xl 
-          border border-white/10 
-          rounded-2xl 
-          shadow-2xl 
+          w-full
+          max-w-3xl
+          mx-auto
+          bg-black/40
+          backdrop-blur-xl
+          border border-white/10
+          rounded-2xl
+          shadow-2xl
           overflow-hidden
         ">
-          {/* Inner padding is small to avoid bloat */}
           <div className="p-6 md:p-8">
             {hasMembership ? (
-              // Already minted → just the modal, no title/desc to save space
               <div className="w-full">
                 <MembershipMint />
               </div>
@@ -98,11 +92,9 @@ export default function GatedMembershipFlow() {
                 <h1 className="text-4xl md:text-5xl font-black mb-6 text-center bg-gradient-to-b from-white via-white/90 to-white/60 bg-clip-text text-transparent tracking-tight">
                   STEP 2: CLAIM FOUNDER MEMBERSHIP
                 </h1>
-
                 <p className="text-lg text-white/80 text-center mb-8">
                   Thank you for registering. You may now claim your permanent Founder Membership.
                 </p>
-
                 <div className="w-full">
                   <MembershipMint />
                 </div>
@@ -112,13 +104,11 @@ export default function GatedMembershipFlow() {
                 <h1 className="text-4xl md:text-5xl font-black mb-6 text-center bg-gradient-to-b from-white via-white/90 to-white/60 bg-clip-text text-transparent tracking-tight">
                   {isConnected ? "STEP 1: COMPLETE YOUR INFO" : "STEP 1: CONNECT WALLET"}
                 </h1>
-
                 <p className="text-lg text-white/80 text-center mb-8">
                   {isConnected
                     ? "Wallet connected. Please fill your info on-chain to join Spectra."
                     : "Connect your wallet (Coinbase Wallet, Base Smart Wallet, MetaMask, Frame, or any other) to begin."}
                 </p>
-
                 <div className="w-full">
                   <SpectraStepperForm onSuccess={handleFormSuccess} />
                 </div>

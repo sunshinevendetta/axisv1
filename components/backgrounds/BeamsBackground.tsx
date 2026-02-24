@@ -1,23 +1,15 @@
 "use client";
-
-import Beams from "../Beams";
-
 export default function BeamsBackground() {
   return (
-    <div
-      className="absolute inset-0 -z-10 pointer-events-none overflow-hidden"
-      style={{ background: "black" }}
-    >
-      <Beams
-        beamWidth={10}
-    beamHeight={10}
-    beamNumber={1}
-    lightColor="#ffffff"
-    speed={5}
-    noiseIntensity={0}
-    scale={1}
-        rotation={0}
-      />
+    <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden" style={{ background: "black" }}>
+      <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover hidden md:block" onEnded={e => (e.target as HTMLVideoElement).play()}>
+        <source src="/video/backgrounds/submitbg.webm" type="video/webm" />
+        <source src="/video/backgrounds/submitbg.mp4" type="video/mp4" />
+      </video>
+      <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover block md:hidden" onEnded={e => (e.target as HTMLVideoElement).play()}>
+        <source src="/video/backgrounds/submitbgv.webm" type="video/webm" />
+        <source src="/video/backgrounds/submitbgv.mp4" type="video/mp4" />
+      </video>
     </div>
   );
 }

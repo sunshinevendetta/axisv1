@@ -1,27 +1,15 @@
 "use client";
-
-import LightRays from '../LightRays'; // ← make sure this path is correct relative to your folder structure
-
 export default function VideoBackground() {
   return (
-    <div 
-      className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden"
-    >
-      <LightRays
-          raysOrigin="bottom-center"
-    raysColor="#ffffff"
-    raysSpeed={7}
-    lightSpread={200}
-    rayLength={7}
-    followMouse={false}
-    mouseInfluence={0.1}
-    noiseAmount={0}
-    distortion={0.1}
-    className="custom-rays w-full h-full"
-    pulsating={true}
-    fadeDistance={1}
-    saturation={1}
-      />
+    <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden" style={{ background: "black" }}>
+      <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover hidden md:block" onEnded={e => (e.target as HTMLVideoElement).play()}>
+        <source src="/video/backgrounds/membershipbg.webm" type="video/webm" />
+        <source src="/video/backgrounds/membershipbg.mp4" type="video/mp4" />
+      </video>
+      <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover block md:hidden" onEnded={e => (e.target as HTMLVideoElement).play()}>
+        <source src="/video/backgrounds/membershipbgv.webm" type="video/webm" />
+        <source src="/video/backgrounds/membershipbgv.mp4" type="video/mp4" />
+      </video>
     </div>
   );
 }

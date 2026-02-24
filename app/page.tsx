@@ -1,24 +1,32 @@
-"use client";import PillNav from "@/components/PillNav";
+"use client";
+
+import PillNav from "@/components/PillNav";
 import Logo3D from "@/components/Logo3d";
 import Footer from "@/components/Footer";
 import EpisodesSection from "@/components/EpisodesSection";
 import GatedMembershipFlow from "@/components/GatedMembershipFlow";
 import SubmissionForm from '@/components/forms/SubmissionForm';
 import LogoArray from "@/components/Logos/LogoArray";
-import AboutSection from "@/components/AboutSection";import { useEffect } from "react";export default function Home() {
+import AboutSection from "@/components/AboutSection";
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+import { useEffect } from "react";
+
+export default function Home() {
   useEffect(() => {
     const handler = (event: MouseEvent) => {
       const target = (event.target as HTMLElement).closest("a");
-      if (!target) return;  const href = target.getAttribute("href");
-  if (!href || !href.startsWith("#")) return;
+      if (!target) return;
+      const href = target.getAttribute("href");
+      if (!href || !href.startsWith("#")) return;
+      event.preventDefault();
+      const el = document.getElementById(href.replace("#", ""));
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    };
+    document.addEventListener("click", handler);
+    return () => document.removeEventListener("click", handler);
+  }, []);
 
-  event.preventDefault();
-  const el = document.getElementById(href.replace("#", ""));
-  if (el) el.scrollIntoView({ behavior: "smooth" });
-};
-
-document.addEventListener("click", handler);
-return () => document.removeEventListener("click", handler);  }, []);  return (
+  return (
     <div className="font-sans min-h-screen w-full bg-black text-white relative overflow-x-hidden">
       <div className="fixed top-0 z-50 w-full flex justify-center pt-6 pointer-events-auto">
         <PillNav
@@ -39,42 +47,41 @@ return () => document.removeEventListener("click", handler);  }, []);  return (
           hoveredPillTextColor="#000"
           pillTextColor="#000"
         />
-      </div>  <main className="w-full overflow-x-hidden relative z-10">
-    <section id="home" className="h-screen relative">
-      <Logo3D />
-    </section>
+      </div>
 
-    <section className="py-12 bg-black flex flex-col items-center justify-center">
-      <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-white">
-        FRIENDS AND FAMILY
-      </h2>
-      <p className="text-lg text-white/60 mb-8 text-center">
-        Protocols, brands & events we've worked with
-      </p>
-      <LogoArray />
-    </section>
+      <main className="w-full overflow-x-hidden relative z-10">
+        <section id="home" className="h-screen relative">
+          <Logo3D />
+        </section>
 
-    <AboutSection />
+        <section className="py-12 bg-black flex flex-col items-center justify-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-white">
+            FRIENDS AND FAMILY
+          </h2>
+          <p className="text-lg text-white/60 mb-8 text-center">
+            Protocols, brands & events we've worked with
+          </p>
+          <LogoArray />
+        </section>
 
-    <section id="join" className="min-h-screen">
-      <GatedMembershipFlow />
-    </section>
+        <AboutSection />
 
-    <section id="episodes" className="min-h-screen">
-      <EpisodesSection />
-    </section>
+        <section id="join" className="min-h-screen">
+          <GatedMembershipFlow />
+        </section>
 
-    <section id="submit" className="py-32 px-6">
+        <section id="episodes" className="min-h-screen">
+          <EpisodesSection />
+        </section>
 
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white">
-          Submit Your Art
-        </h2>
-        <SubmissionForm />
+        <section id="submit">
+          <GoogleReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}>
+            <SubmissionForm />
+          </GoogleReCaptchaProvider>
+        </section>
+      </main>
 
-    </section>
-  </main>
-
-  <Footer />
-</div>  );
+      <Footer />
+    </div>
+  );
 }
-

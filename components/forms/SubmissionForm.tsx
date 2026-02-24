@@ -1,12 +1,13 @@
 "use client";
 
-import ReCAPTCHA from 'react-google-recaptcha';
 import { useState } from 'react';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import BeamsBackground from "@/components/backgrounds/BeamsBackground";
 
 export default function SubmissionForm() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,7 +22,6 @@ export default function SubmissionForm() {
   const [walletStatus, setWalletStatus] = useState<'idle' | 'valid' | 'invalid' | 'resolving'>('idle');
   const [resolvedAddress, setResolvedAddress] = useState<string | null>(null);
   const [walletError, setWalletError] = useState('');
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
   const validateEmail = (email: string) => /\S+@\S+\.\S+/.test(email);
 
@@ -76,11 +76,13 @@ export default function SubmissionForm() {
       setMessage('Please provide a valid wallet address or ENS name.');
       return;
     }
-    if (!recaptchaToken) {
+    if (!executeRecaptcha) {
       setStatus('error');
-      setMessage('Please complete the CAPTCHA.');
+      setMessage('reCAPTCHA not ready, please try again.');
       return;
     }
+
+    const recaptchaToken = await executeRecaptcha('submit_form');
 
     try {
       const res = await fetch('/api/submit', {
@@ -92,18 +94,9 @@ export default function SubmissionForm() {
       if (res.ok) {
         setStatus('success');
         setMessage('Thank you! Your submission has been received. Check your email for confirmation.');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          wallet: '',
-          artworkLink: '',
-          telegram: '',
-          instagram: '',
-        });
+        setFormData({ name: '', email: '', phone: '', wallet: '', artworkLink: '', telegram: '', instagram: '' });
         setResolvedAddress(null);
         setWalletStatus('idle');
-        setRecaptchaToken(null);
       } else {
         const err = await res.json();
         setStatus('error');
@@ -129,12 +122,13 @@ export default function SubmissionForm() {
         `}</style>
 
         <h2 className="text-3xl font-bold text-white text-center mb-6">
-          Show us what you make        </h2>
+          Show us what you make
+        </h2>
 
         <div className="text-white/80 text-center mb-8 text-base leading-relaxed space-y-4">
           <p>Submit your art for consideration in our upcoming live exhibitions and events.</p>
-          <p>If selected, you'll receive a complimentary artist membership, grating you entry to our events for 1 year, and exposure to our global community of art, music, and technology enthusiasts.</p>
-          <p>We're looking for innovative digital art that aligns with our themes of energy, technology, and culture.</p>
+          <p>If selected, you will receive a complimentary artist membership, granting you entry to our events for 1 year, and exposure to our global community of art, music, and technology enthusiasts.</p>
+          <p>We are looking for innovative digital art that aligns with our themes of energy, technology, and culture.</p>
           <p>Our team will review submissions and contact selected artists shortly.</p>
           <p>Your information is kept confidential and used only for review and contact purposes.</p>
         </div>
@@ -198,9 +192,9 @@ export default function SubmissionForm() {
               href="https://base.app/invite/sunshinev/R80CCWVY"
               target="_blank"
               rel="noopener noreferrer"
-              className="block mt-1 text-white/60 text-[8px] leading-tight hover:text-white transition-colors"
+              className="block mt-1 mb-2 text-white/60 text-[8px] leading-tight hover:text-white transition-colors"
             >
-              WE ONLY ACCEPT ONCHAIN ARTWORKS, if your work is not on any blockchain, please upload it to Base App as a post, it's free to use, and paste here the link or the marketplace of your choice, click here to see how.
+              WE ONLY ACCEPT ONCHAIN ARTWORKS — if your work is not on any blockchain, please upload it to Base App as a post, it is free to use. Paste the link here or from the marketplace of your choice. Click here to see how.
             </a>
             <input
               name="artworkLink"
@@ -233,13 +227,16 @@ export default function SubmissionForm() {
             />
           </div>
 
-          <div className="flex justify-center my-4">
-            <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-              onChange={(token: string | null) => setRecaptchaToken(token)}
-              size="normal"
-            />
-          </div>
+          <p className="text-white/30 text-[10px] text-center">
+            Protected by reCAPTCHA —{' '}
+            <a href="https://policies.google.com/privacy" className="underline" target="_blank" rel="noopener noreferrer">
+              Privacy
+            </a>
+            {' '}&amp;{' '}
+            <a href="https://policies.google.com/terms" className="underline" target="_blank" rel="noopener noreferrer">
+              Terms
+            </a>
+          </p>
 
           <button
             type="submit"

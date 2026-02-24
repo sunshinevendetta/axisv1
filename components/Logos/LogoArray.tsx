@@ -24,20 +24,18 @@ export default function LogoArray() {
   const logos = sponsorLogos.map((logo) => ({
     node: (
       <div className="flex items-center justify-center h-[60px] w-auto">
-        <a href={logo.href} target="_blank" rel="noopener noreferrer">
-          <Image
-            src={logo.src}
-            alt={logo.alt}
-            width={140}
-            height={60}
-            className="object-contain brightness-100 hover:brightness-125 transition-all duration-300"
-            priority={false}
-          />
-        </a>
+        <Image
+          src={logo.src}
+          alt={logo.alt}
+          width={140}
+          height={60}
+          className="object-contain brightness-100 hover:brightness-125 transition-all duration-300"
+          priority={false}
+        />
       </div>
     ),
     title: logo.title,
-    href: logo.href,
+    href: logo.href,           // ← LogoLoop will use this for the <a>
   }));
 
   return (
