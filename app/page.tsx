@@ -8,7 +8,6 @@ import GatedMembershipFlow from "@/components/GatedMembershipFlow";
 import SubmissionForm from '@/components/forms/SubmissionForm';
 import LogoArray from "@/components/Logos/LogoArray";
 import AboutSection from "@/components/AboutSection";
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { useEffect } from "react";
 
 export default function Home() {
@@ -75,9 +74,7 @@ export default function Home() {
         </section>
 
         <section id="submit">
-          <GoogleReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}>
-            <SubmissionForm />
-          </GoogleReCaptchaProvider>
+          <SubmissionForm />
         </section>
       </main>
 

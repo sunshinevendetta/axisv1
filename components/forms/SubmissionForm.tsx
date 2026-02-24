@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from 'react';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useState, useRef } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import BeamsBackground from "@/components/backgrounds/BeamsBackground";
 
 export default function SubmissionForm() {
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -56,6 +57,10 @@ export default function SubmissionForm() {
     if (name === 'wallet') validateWallet(value);
   };
 
+  const handleCaptcha = (token: string | null) => {
+    setRecaptchaToken(token);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
@@ -76,13 +81,11 @@ export default function SubmissionForm() {
       setMessage('Please provide a valid wallet address or ENS name.');
       return;
     }
-    if (!executeRecaptcha) {
+    if (!recaptchaToken) {
       setStatus('error');
-      setMessage('reCAPTCHA not ready, please try again.');
+      setMessage('Please complete the CAPTCHA.');
       return;
     }
-
-    const recaptchaToken = await executeRecaptcha('submit_form');
 
     try {
       const res = await fetch('/api/submit', {
@@ -97,6 +100,10 @@ export default function SubmissionForm() {
         setFormData({ name: '', email: '', phone: '', wallet: '', artworkLink: '', telegram: '', instagram: '' });
         setResolvedAddress(null);
         setWalletStatus('idle');
+        setRecaptchaToken(null);
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
       } else {
         const err = await res.json();
         setStatus('error');
@@ -227,16 +234,11 @@ export default function SubmissionForm() {
             />
           </div>
 
-          <p className="text-white/30 text-[10px] text-center">
-            Protected by reCAPTCHA —{' '}
-            <a href="https://policies.google.com/privacy" className="underline" target="_blank" rel="noopener noreferrer">
-              Privacy
-            </a>
-            {' '}&amp;{' '}
-            <a href="https://policies.google.com/terms" className="underline" target="_blank" rel="noopener noreferrer">
-              Terms
-            </a>
-          </p>
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+            onChange={handleCaptcha}
+          />
 
           <button
             type="submit"
