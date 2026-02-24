@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import {
   useAccount,
   useConnect,
+  useDisconnect,
   useWriteContract,
   useWaitForTransactionReceipt,
   useReadContract,
@@ -71,8 +72,10 @@ const MEMBERSHIP_ABI = [
 export default function MembershipMint() {
   const { isConnected, address } = useAccount();
   const { connect, connectors } = useConnect();
+  const { disconnect } = useDisconnect();
+
   const [hasMinted, setHasMinted] = useState(false);
-  const [isMounted, setIsMounted] = useState(false); // ← Key fix
+  const [isMounted, setIsMounted] = useState(false);
 
   const { data: alreadyMinted } = useReadContract({
     address: MEMBERSHIP_CONTRACT,
@@ -108,8 +111,17 @@ export default function MembershipMint() {
   useEffect(() => {
     if (alreadyMinted || isSuccess) {
       setHasMinted(true);
+    } else {
+      setHasMinted(false);
     }
-  }, [alreadyMinted, isSuccess]);
+  }, [alreadyMinted, isSuccess, isConnected]);
+
+  // Reset on disconnect
+  useEffect(() => {
+    if (!isConnected) {
+      setHasMinted(false);
+    }
+  }, [isConnected]);
 
   const isMintDisabled =
     writePending ||
@@ -117,11 +129,9 @@ export default function MembershipMint() {
     hasMinted ||
     (currentSupply !== undefined && Number(currentSupply) >= 7777);
 
-  // Render nothing specific until mounted to avoid mismatch
   if (!isMounted) {
     return (
       <div className="w-full max-w-xl mx-auto px-6 py-32 text-center">
-        {/* Keep the static parts that are always the same */}
         <h2 className="text-5xl lg:text-5xl font-black mb-20 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500">
           SPECTRA FOUNDER MEMBERSHIP
         </h2>
@@ -151,7 +161,6 @@ export default function MembershipMint() {
           </div>
         </div>
 
-        {/* Placeholder with same structure as connect buttons to minimize layout shift */}
         <div className="flex flex-col items-center gap-10">
           <div className="px-20 py-8 text-lg font-bold rounded-lg bg-white/10 text-transparent border-2 border-gray-500">
             Loading...
@@ -192,7 +201,6 @@ export default function MembershipMint() {
         </div>
       </div>
 
-      {/* Now safe to render connection-dependent UI */}
       {!isConnected ? (
         <div className="flex flex-col items-center gap-10">
           {connectors.map((connector) => (
@@ -201,24 +209,39 @@ export default function MembershipMint() {
               onClick={() => connect({ connector, chainId: base.id })}
               className="px-20 py-8 text-lg font-bold rounded-lg bg-white/10 hover:bg-white/20 text-white border-2 border-gray-500 backdrop-blur-md transition-all shadow-xl"
             >
-              {connector.id.includes("coinbase") ? "Coinbase / Base Smart Wallet" : "Other Wallet"}
+              {connector.id.includes("coinbase") || connector.name.includes("Coinbase")
+                ? "Coinbase / Base Smart Wallet"
+                : connector.name || "Connect Wallet"}
             </button>
           ))}
         </div>
       ) : (
-        <div className="space-y-12">
-          <p className="text-sm text-gray-500">Connected: {address?.slice(0, 6)}...{address?.slice(-4)}</p>
+        <div className="space-y-10">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-center">
+            <p className="text-base text-gray-300 font-medium">
+              Connected: <span className="font-mono text-white">{address?.slice(0, 6)}...{address?.slice(-4)}</span>
+            </p>
+
+            <button
+              onClick={() => disconnect()}
+              className="px-6 py-3 text-sm font-medium text-white bg-red-900/40 hover:bg-red-800/60 border border-red-600/50 rounded-xl transition-all backdrop-blur-sm"
+            >
+              Disconnect
+            </button>
+          </div>
 
           {!hasMinted ? (
             <button
               onClick={handleMint}
               disabled={isMintDisabled}
-              className="px-24 py-10 text-sm lg:text-lg font-black text-black bg-white rounded-lg hover:bg-gray-200 shadow-lg shadow-white/50 transition-all duration-300 hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="px-24 py-10 mx-auto block text-sm lg:text-lg font-black text-black bg-white rounded-lg hover:bg-gray-200 shadow-lg shadow-white/50 transition-all duration-300 hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {writePending || txLoading ? "Claiming..." : "Claim Founder Membership"}
             </button>
           ) : (
-            <p className="text-lg lg:text-lg font-black text-white">Origin Confirmed ✅</p>
+            <p className="text-xl font-black text-emerald-400 tracking-wide">
+              Origin Confirmed ✅
+            </p>
           )}
         </div>
       )}

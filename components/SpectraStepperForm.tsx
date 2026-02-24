@@ -7,13 +7,28 @@ import {
   useChainId, 
   useSwitchChain, 
   useWriteContract, 
-  useWaitForTransactionReceipt 
+  useWaitForTransactionReceipt, 
+  useConnect, 
+  useConnectors,
+  useDisconnect,
+  useReadContract
 } from 'wagmi';
 import SpectraFormABI from '@/src/abi/SpectraForm.json';
-import ConnectWalletButton from './ConnectWalletButton';
 import { base } from 'wagmi/chains';
 import { SPECTRAFORM_ADDRESS } from '@/src/lib/contract';
-import MembershipMint from './MembershipMint'; // ← import here
+import MembershipMint from './MembershipMint';
+
+const MEMBERSHIP_ADDRESS = "0xd26e98bbfa933ca10d60b9fe6a6a94ab600d3c08" as `0x${string}`;
+
+const MEMBERSHIP_ABI_FRAGMENT = [
+  {
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "hasMinted",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
 
 const BASE_CHAIN_ID = base.id;
 
@@ -25,6 +40,7 @@ export default function SpectraStepperForm() {
   const { isConnected, address } = useAccount();
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();
+  const { disconnect } = useDisconnect();
 
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -32,7 +48,8 @@ export default function SpectraStepperForm() {
   const [x, setX] = useState('');
   const [tiktok, setTiktok] = useState('');
 
-  const [formSubmitted, setFormSubmitted] = useState(false); // ← key state
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1);
 
   const { 
     writeContract, 
@@ -48,7 +65,19 @@ export default function SpectraStepperForm() {
     error: txError 
   } = useWaitForTransactionReceipt({ hash });
 
+  const { data: alreadyMinted, isLoading: isCheckingMinted } = useReadContract({
+    address: MEMBERSHIP_ADDRESS,
+    abi: MEMBERSHIP_ABI_FRAGMENT,
+    functionName: 'hasMinted',
+    args: address ? [address] : undefined,
+    chainId: BASE_CHAIN_ID,
+    query: { enabled: !!address && isConnected },
+  });
+
   const isOnBase = chainId === BASE_CHAIN_ID;
+
+  const { connect } = useConnect();
+  const connectors = useConnectors();
 
   useEffect(() => {
     if (isConnected && chainId && chainId !== BASE_CHAIN_ID) {
@@ -56,14 +85,31 @@ export default function SpectraStepperForm() {
     }
   }, [isConnected, chainId, switchChain]);
 
-  // When transaction is confirmed → mark form as submitted
   useEffect(() => {
     if (txSuccess && hash) {
       setFormSubmitted(true);
     }
   }, [txSuccess, hash]);
 
+  // Reset form if disconnected
+  useEffect(() => {
+    if (!isConnected) {
+      setFormSubmitted(false);
+      setCurrentStep(1);
+      setName('');
+      setPhone('');
+      setInstagram('');
+      setX('');
+      setTiktok('');
+    }
+  }, [isConnected]);
+
   const handleSubmit = () => {
+    if (!name.trim() || !phone.trim() || !instagram.trim() || !x.trim() || !tiktok.trim()) {
+      alert('All fields are required.');
+      return;
+    }
+
     resetWrite();
 
     if (!isOnBase) {
@@ -85,7 +131,26 @@ export default function SpectraStepperForm() {
     });
   };
 
-  // After successful on-chain submission → show Membership mint screen
+  const isStep2Valid = name.trim() !== '' && phone.trim() !== '';
+  const isStep3Valid = instagram.trim() !== '' && x.trim() !== '' && tiktok.trim() !== '';
+
+  if (isConnected && !isCheckingMinted && alreadyMinted === true) {
+    return (
+      <div className="w-full">
+        <div className="text-center py-16 mb-12">
+          <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+            Already a Founder!
+          </h1>
+          <p className="text-2xl text-white/80 mb-16">
+            Your Origin status is confirmed.<br/>
+            Enjoy your SPECTRA Founder Membership ↓
+          </p>
+        </div>
+        <MembershipMint />
+      </div>
+    );
+  }
+
   if (formSubmitted) {
     return (
       <div className="w-full">
@@ -98,30 +163,35 @@ export default function SpectraStepperForm() {
             Now claim your Founder Membership ↓
           </p>
         </div>
-
         <MembershipMint />
       </div>
     );
   }
 
-  // NOT CONNECTED → Show connect prompt only
   if (!isConnected) {
     return (
       <div className="w-full max-w-4xl mx-auto px-6 py-20 text-center">
-        <h1 className="text-5xl md:text-7xl font-black mb-8 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
-          CONNECT TO CONTACT
+        <h1 className="text-4xl md:text-4xl font-black mb-8 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+          START
         </h1>
-        <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
-          Submit your data and get free <span className="font-bold text-white">$SPECTRA</span> tokens to spend at our events
+        <p className="text-sm md:text-md text-white/80 mb-12 max-w-5xl mx-auto leading-relaxed">
+          Submit your data and get free <span className="font-bold text-white">$SPECTRA</span> tokens to spend at our events, also the membership allows you unlimited access to all our episodes in season 1 during 2026, plus early access and exclusive surprises.
         </p>
-        <div className="flex justify-center">
-          <ConnectWalletButton />
+        <div className="flex flex-col items-center gap-4">
+          {connectors.map((connector) => (
+            <button
+              key={connector.id}
+              onClick={() => connect({ connector, chainId: BASE_CHAIN_ID })}
+              className="w-full max-w-md px-8 py-4 text-xl font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-3xl shadow-lg transition-all"
+            >
+              {connector.name === 'Coinbase Wallet' ? 'Coinbase Wallet / Base Smart Wallet' : connector.name}
+            </button>
+          ))}
         </div>
       </div>
     );
   }
 
-  // CONNECTED → Show full stepper form
   return (
     <div className="w-full">
       {isConnected && !isOnBase && (
@@ -142,6 +212,19 @@ export default function SpectraStepperForm() {
         onFinalStepCompleted={handleSubmit}
         backButtonText="Previous" 
         nextButtonText="Continue"
+        onStepChange={(step) => setCurrentStep(step)}
+        nextDisabled={
+          (currentStep === 2 && !isStep2Valid) ||
+          (currentStep === 3 && !isStep3Valid)
+        }
+        extraFooterButton={
+          <button
+            onClick={() => disconnect()}
+            className="w-full md:w-auto px-4 py-2 text-sm md:text-base font-medium rounded-3xl transition-all duration-300 text-white bg-red-900/30 hover:bg-red-800/40 border border-red-500/40 backdrop-blur-md shadow-md"
+          >
+            Disconnect
+          </button>
+        }
       >
         <Step>
           <div className="text-center py-12">
@@ -150,8 +233,7 @@ export default function SpectraStepperForm() {
               Submit your info securely on Base. All data is encrypted before going on-chain.
             </p>
             <div className="mt-12">
-              <ConnectWalletButton />
-              <p className="mt-6 text-white/60">
+              <p className="text-lg text-white/80 mb-6">
                 Connected: {address ? `${address.slice(0,6)}...${address.slice(-4)}` : '—'}
               </p>
             </div>
@@ -162,13 +244,13 @@ export default function SpectraStepperForm() {
           <h2 className="text-4xl md:text-5xl font-black text-center mb-12">Name & Phone</h2>
           <div className="max-w-2xl mx-auto space-y-8">
             <input 
-              placeholder="Full Name" 
+              placeholder="Full Name *" 
               value={name} 
               onChange={e => setName(e.target.value)} 
               className="w-full px-8 py-6 text-2xl rounded-3xl bg-white/5 border-2 border-white/20 backdrop-blur-md focus:border-white/60 focus:outline-none transition-all"
             />
             <input 
-              placeholder="Phone (+ country code)" 
+              placeholder="Phone (+ country code) *" 
               value={phone} 
               onChange={e => setPhone(e.target.value)} 
               className="w-full px-8 py-6 text-2xl rounded-3xl bg-white/5 border-2 border-white/20 backdrop-blur-md focus:border-white/60 focus:outline-none transition-all"
@@ -180,19 +262,19 @@ export default function SpectraStepperForm() {
           <h2 className="text-4xl md:text-5xl font-black text-center mb-12">Social Handles</h2>
           <div className="max-w-2xl mx-auto space-y-8">
             <input 
-              placeholder="Instagram @handle" 
+              placeholder="Instagram @handle *" 
               value={instagram} 
               onChange={e => setInstagram(e.target.value)} 
               className="w-full px-8 py-6 text-2xl rounded-3xl bg-white/5 border-2 border-white/20 backdrop-blur-md focus:border-white/60 focus:outline-none transition-all"
             />
             <input 
-              placeholder="X @handle" 
+              placeholder="X @handle *" 
               value={x} 
               onChange={e => setX(e.target.value)} 
               className="w-full px-8 py-6 text-2xl rounded-3xl bg-white/5 border-2 border-white/20 backdrop-blur-md focus:border-white/60 focus:outline-none transition-all"
             />
             <input 
-              placeholder="TikTok @handle" 
+              placeholder="TikTok @handle *" 
               value={tiktok} 
               onChange={e => setTiktok(e.target.value)} 
               className="w-full px-8 py-6 text-2xl rounded-3xl bg-white/5 border-2 border-white/20 backdrop-blur-md focus:border-white/60 focus:outline-none transition-all"
@@ -214,7 +296,6 @@ export default function SpectraStepperForm() {
               </div>
             </div>
 
-            {/* Transaction Status */}
             <div className="min-h-48">
               {writePending && (
                 <div className="text-center py-12 bg-white/5 rounded-3xl border border-white/20">

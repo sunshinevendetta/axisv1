@@ -1,58 +1,42 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import Prism from "./Prism";
 
 export default function VideoBackground() {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Force all required attributes
-    video.muted = true;
-    video.playsInline = true;
-    video.loop = true;
-    video.preload = "auto";
-
-    const attemptPlay = () => {
-      video.play().catch((err) => {
-        console.warn("Autoplay blocked:", err);
-      });
-    };
-
-    // Try immediately
-    attemptPlay();
-
-    // Retry on any user interaction (critical for iOS/Android)
-    const handleInteraction = () => {
-      attemptPlay();
-      // Remove listeners after first interaction (no need to keep)
-      document.removeEventListener("click", handleInteraction);
-      document.removeEventListener("touchstart", handleInteraction);
-      document.removeEventListener("keydown", handleInteraction);
-    };
-
-    document.addEventListener("click", handleInteraction);
-    document.addEventListener("touchstart", handleInteraction);
-    document.addEventListener("keydown", handleInteraction); // Keyboard too
-
-    return () => {
-      document.removeEventListener("click", handleInteraction);
-      document.removeEventListener("touchstart", handleInteraction);
-      document.removeEventListener("keydown", handleInteraction);
-    };
+    if (containerRef.current) {
+      console.log("[PrismBG] Container ref attached, size:", containerRef.current.clientWidth, "x", containerRef.current.clientHeight);
+    }
   }, []);
 
   return (
-    <video
-      ref={videoRef}
-      src="/video/spectra-bg.mp4"
-      poster="/poster.jpg"
-      className="fixed inset-0 w-full h-full object-cover -z-30 pointer-events-none"
-      style={{ background: "black" }}
+    <div
+      ref={containerRef}
+      style={{
+        position: "fixed",
+        inset: 0,
+        width: "100%",
+        height: "100vh",
+        zIndex: -30,
+        pointerEvents: "none",
+        background: "black",
+        overflow: "hidden",
+      }}
     >
-      Your browser does not support the video tag.
-    </video>
+      <Prism
+        animationType="rotate"
+        timeScale={0.6}
+        height={4.5}
+        baseWidth={7.6}
+        scale={3}
+        hueShift={0.46}
+        colorFrequency={4}
+        noise={0}
+        glow={0.7}
+      />
+    </div>
   );
 }

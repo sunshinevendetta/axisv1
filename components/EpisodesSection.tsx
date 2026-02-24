@@ -2,13 +2,16 @@
 
 import Shuffle from "./Shuffle";
 import EpisodesCards from "./EpisodesCards";
+import PrismaticBurstBackground from "./backgrounds/PrismaticBurstBackground";
 
 export default function EpisodesSection() {
   return (
     <section
       id="episodes"
-      className="w-full min-h-screen flex flex-col items-center justify-start pt-32 pb-20 overflow-x-hidden"
+      className="w-full min-h-screen flex flex-col items-center justify-start pt-32 pb-20 overflow-x-hidden relative"
     >
+      <PrismaticBurstBackground />
+
       <Shuffle
         text="episodes"
         shuffleDirection="right"

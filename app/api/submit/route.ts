@@ -4,10 +4,10 @@ import nodemailer from 'nodemailer';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, phone, wallet, artworkLink, telegram, recaptchaToken } = body;
+    const { name, email, phone, wallet, artworkLink, telegram, instagram, recaptchaToken } = body;
 
     if (!name || !email || !phone || !wallet || !artworkLink || !recaptchaToken) {
-      return NextResponse.json({ error: 'All fields except Telegram are required' }, { status: 400 });
+      return NextResponse.json({ error: 'All fields except Telegram and Instagram are required' }, { status: 400 });
     }
 
     // Verify reCAPTCHA v3
@@ -63,6 +63,7 @@ export async function POST(req: NextRequest) {
           <p><strong>Wallet:</strong> ${finalWallet}</p>
           <p><strong>Artwork Link:</strong> ${artworkLink}</p>
           <p><strong>Telegram:</strong> ${telegram || '—'}</p>
+          <p><strong>Instagram:</strong> ${instagram || '—'}</p>
         </div>
       `,
     });
@@ -82,8 +83,9 @@ export async function POST(req: NextRequest) {
             <li><strong>Wallet:</strong> ${finalWallet}</li>
             <li><strong>Artwork Link:</strong> ${artworkLink}</li>
             <li><strong>Telegram:</strong> ${telegram || '—'}</li>
+            <li><strong>Instagram:</strong> ${instagram || '—'}</li>
           </ul>
-          <p>We'll be in touch shortly.</p>
+          <p>We'll be in touch shortly if your work aligns with our vision.</p>
         </div>
       `,
     });
