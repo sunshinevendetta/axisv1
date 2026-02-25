@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
-// Correct paths for files in public/fonts/
 const prenoptica = localFont({
   src: "../public/fonts/BINGO.woff2",
   display: "swap",
@@ -38,9 +38,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${prenoptica.className} antialiased`}>
-        {/* All text now uses Prenoptica by default */}
-        {/* No need to add classes anywhere else */}
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <SpeedInsights />
+        </Providers>
       </body>
     </html>
   );
