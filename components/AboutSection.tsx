@@ -1,6 +1,6 @@
 "use client";
 
-import FloatingLinesBackground from "./backgrounds/FloatingLinesBackground";
+import AboutBackground from "./backgrounds/AboutBackground";
 
 export default function AboutSection() {
   return (
@@ -8,7 +8,7 @@ export default function AboutSection() {
       id="about"
       className="min-h-screen flex flex-col items-center justify-center py-32 px-4 relative overflow-hidden bg-transparent"
     >
-      <FloatingLinesBackground />
+      <AboutBackground />
 
       <div
         className="

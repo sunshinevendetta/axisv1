@@ -24,7 +24,7 @@ export default function Footer() {
           background: "transparent"
         }}
       >
-        SPECTRA® {new Date().getFullYear()}
+        SPECTRA® {new Date().getFullYear()} is powered by{"AXIS Labs"}
       </div>
     </footer>
   );

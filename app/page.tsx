@@ -1,30 +1,24 @@
-"use client";
-
+import dynamic from "next/dynamic";
 import PillNav from "@/components/PillNav";
 import Logo3D from "@/components/Logo3d";
 import Footer from "@/components/Footer";
-import EpisodesSection from "@/components/EpisodesSection";
-import GatedMembershipFlow from "@/components/GatedMembershipFlow";
-import SubmissionForm from '@/components/forms/SubmissionForm';
 import LogoArray from "@/components/Logos/LogoArray";
 import AboutSection from "@/components/AboutSection";
-import { useEffect } from "react";
+import { Providers } from "@/components/Providers";
+
+const GatedMembershipFlow = dynamic(() => import("@/components/GatedMembershipFlow"), {
+  loading: () => <div className="min-h-screen" />,
+});
+
+const EpisodesSection = dynamic(() => import("@/components/EpisodesSection"), {
+  loading: () => <div className="min-h-screen" />,
+});
+
+const SubmissionForm = dynamic(() => import("@/components/forms/SubmissionForm"), {
+  loading: () => <div className="min-h-screen" />,
+});
 
 export default function Home() {
-  useEffect(() => {
-    const handler = (event: MouseEvent) => {
-      const target = (event.target as HTMLElement).closest("a");
-      if (!target) return;
-      const href = target.getAttribute("href");
-      if (!href || !href.startsWith("#")) return;
-      event.preventDefault();
-      const el = document.getElementById(href.replace("#", ""));
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    };
-    document.addEventListener("click", handler);
-    return () => document.removeEventListener("click", handler);
-  }, []);
-
   return (
     <div className="font-sans min-h-screen w-full bg-black text-white relative overflow-x-hidden">
       <div className="fixed top-0 z-50 w-full flex justify-center pt-6 pointer-events-auto">
@@ -66,7 +60,9 @@ export default function Home() {
         <AboutSection />
 
         <section id="join" className="min-h-screen">
-          <GatedMembershipFlow />
+          <Providers>
+            <GatedMembershipFlow />
+          </Providers>
         </section>
 
         <section id="episodes" className="min-h-screen">

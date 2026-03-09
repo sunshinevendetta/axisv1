@@ -9,10 +9,6 @@ const nextConfig: NextConfig = {
     // Ignore TypeScript errors during builds (removes all "Unexpected any" errors)
     ignoreBuildErrors: true,
   },
-  images: {
-    // Disable warnings about using <img> instead of next/image
-    unoptimized: true,
-  },
 };
 
 export default nextConfig;
