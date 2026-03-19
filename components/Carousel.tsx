@@ -28,7 +28,7 @@ const ABOUT_ITEMS: CarouselItem[] = [
     id: 1,
     title: 'System Architecture',
     description:
-      'Spectra operates as a modular art-tech system built on spatial design, engineered perception, and adaptive digital environments.',
+      '© SPECTRA operates as a modular art-tech system built on spatial design, engineered perception, and adaptive digital environments.',
     icon: <FiLayers className="carousel-icon" />
   },
   {
@@ -49,7 +49,7 @@ const ABOUT_ITEMS: CarouselItem[] = [
     id: 4,
     title: 'Spatial Identity',
     description:
-      'Spectra defines spaces as living instruments. Light, motion, sound, and simulated materials converge into a singular architectural experience.',
+      '© SPECTRA defines spaces as living instruments. Light, motion, sound, and simulated materials converge into a singular architectural experience.',
     icon: <FiCast className="carousel-icon" />
   },
   {

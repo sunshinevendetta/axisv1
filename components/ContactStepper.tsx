@@ -12,7 +12,7 @@ import {
   useWaitForTransactionReceipt,
 } from "wagmi";
 import { base } from "wagmi/chains";
-import { injected, coinbaseWallet, walletConnect } from "wagmi/connectors";
+import { BASE_BUILDER_DATA_SUFFIX } from "@/src/lib/base-app";
 
 const BACARDI_FORM_ABI = [
   {
@@ -43,7 +43,8 @@ function normalizeHandle(s: string) {
 
 export default function ContactStepper() {
   const contractAddress = process.env.NEXT_PUBLIC_BACARDI_FORM_ADDRESS as `0x${string}` | undefined;
-  const wcProjectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID as string | undefined;
+  const wcProjectId =
+    process.env.NEXT_PUBLIC_REOWN_PROJECT_ID || process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID;
 
   const [currentStep, setCurrentStep] = useState<number>(1);
 
@@ -57,7 +58,7 @@ export default function ContactStepper() {
   const [uiError, setUiError] = useState<string>("");
 
   const { address, chainId, isConnected } = useAccount();
-  const { connect, isPending: isConnecting } = useConnect();
+  const { connect, connectors, isPending: isConnecting } = useConnect();
   const { disconnect } = useDisconnect();
 
   const { writeContract, data: txHash, isPending: isWriting, error: writeError, reset } = useWriteContract();
@@ -143,21 +144,48 @@ export default function ContactStepper() {
       functionName: "submit",
       args: [name.trim(), safePhone, packedEmail || safeIg, safeX, safeTt],
       chainId: base.id,
+      dataSuffix: BASE_BUILDER_DATA_SUFFIX,
     });
   };
 
-  const connectInjected = () => connect({ connector: injected() });
-  const connectCoinbase = () => connect({ connector: coinbaseWallet({ appName: "spectra" }) });
-  const connectWalletConnect = () => {
-    if (!wcProjectId) {
-      setUiError("missing NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID");
+  const injectedConnector = connectors.find((connector) => connector.id === "injected");
+  const coinbaseConnector = connectors.find(
+    (connector) =>
+      connector.id === "coinbaseWalletSDK" ||
+      connector.id === "coinbaseWallet" ||
+      connector.id === "coinbaseSmartWallet",
+  );
+  const walletConnectConnector = connectors.find((connector) => connector.id === "walletConnect");
+
+  const connectInjected = () => {
+    if (!injectedConnector) {
+      setUiError("injected wallet connector is unavailable");
       return;
     }
+
+    setUiError("");
+    connect({ connector: injectedConnector });
+  };
+
+  const connectCoinbase = () => {
+    if (!coinbaseConnector) {
+      setUiError("coinbase wallet connector is unavailable");
+      return;
+    }
+
+    setUiError("");
+    connect({ connector: coinbaseConnector });
+  };
+
+  const connectWalletConnect = () => {
+    if (!walletConnectConnector) {
+      setUiError("missing NEXT_PUBLIC_REOWN_PROJECT_ID or NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID");
+      return;
+    }
+
+    setUiError("");
     connect({
-      connector: walletConnect({
-        projectId: wcProjectId,
-        showQrModal: true,
-      }),
+      connector: walletConnectConnector,
     });
   };
 

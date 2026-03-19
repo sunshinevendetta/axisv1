@@ -1,0 +1,24 @@
+@startuml
+title Founder Submission to Founder Mint
+
+actor Applicant
+actor Approver
+participant "SpectraSubmissionRegistry" as Submission
+participant "SpectraFounderSeason1_1155" as Founder1155
+
+Applicant -> Submission : createSubmission(emailHash, metadataURI)
+Submission --> Applicant : submissionId
+
+Applicant -> Submission : updateSubmissionMetadata(submissionId, metadataURI)
+Approver -> Submission : setSubmissionApproval(submissionId, true)
+
+Applicant -> Founder1155 : mintFounder(submissionId)
+Founder1155 -> Submission : getSubmission(submissionId)
+Submission --> Founder1155 : submission data
+
+Founder1155 -> Founder1155 : validate approved\nvalidate applicant\nvalidate not minted
+Founder1155 -> Applicant : mint tokenId=submissionId
+Founder1155 -> Submission : markMinted(submissionId, tokenId)
+Submission --> Founder1155 : ok
+
+@enduml

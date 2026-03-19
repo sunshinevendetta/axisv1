@@ -4,9 +4,25 @@ import nodemailer from 'nodemailer';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, phone, wallet, artworkLink, telegram, instagram, recaptchaToken } = body;
+    const {
+      name,
+      email,
+      phone,
+      wallet,
+      artworkLink,
+      projectLink,
+      telegram,
+      instagram,
+      recaptchaToken,
+      submissionType,
+    } = body;
+    const link = artworkLink || projectLink;
+    const isDevSubmission = submissionType === 'dev';
+    const submissionLabel = isDevSubmission ? 'Developer Submission' : 'Art Submission';
+    const linkLabel = isDevSubmission ? 'Project / Product Link' : 'Artwork Link';
+    const membershipLabel = isDevSubmission ? 'Builder Access' : 'Artist Membership';
 
-    if (!name || !email || !phone || !wallet || !artworkLink || !recaptchaToken) {
+    if (!name || !email || !phone || !wallet || !link || !recaptchaToken) {
       return NextResponse.json({ error: 'All fields except Telegram and Instagram are required' }, { status: 400 });
     }
 
@@ -58,15 +74,15 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: `"SPECTRA ART" <${process.env.CUSTOM_FROM || 'art@spectrart.xyz'}>`,
       to: process.env.ADMIN_EMAIL || 'spectrartxyz@gmail.com',
-      subject: `New Submission – ${name}`,
+      subject: `New ${submissionLabel} – ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background:#000; color:#fff;">
-          <h2>New Submission Received</h2>
+          <h2>New ${submissionLabel} Received</h2>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Phone:</strong> ${phone}</p>
           <p><strong>Wallet:</strong> ${finalWallet}</p>
-          <p><strong>Artwork Link:</strong> ${artworkLink}</p>
+          <p><strong>${linkLabel}:</strong> ${link}</p>
           <p><strong>Telegram:</strong> ${telegram || '—'}</p>
           <p><strong>Instagram:</strong> ${instagram || '—'}</p>
         </div>
@@ -77,7 +93,7 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: `"SPECTRA ART" <${process.env.CUSTOM_FROM || 'art@spectrart.xyz'}>`,
       to: email,
-      subject: `Thank You for Your Submission, ${name}! – SPECTRA ART`,
+      subject: `Thank You for Your ${isDevSubmission ? 'Project' : 'Submission'}, ${name}! – SPECTRA ART`,
       html: `
         <!DOCTYPE html>
         <html lang="en">
@@ -105,7 +121,7 @@ export async function POST(req: NextRequest) {
               <td style="padding: 0 30px 20px; text-align:center;">
                 <h1 style="margin:0; font-size:28px; color:#ffffff;">Thank You, ${name}!</h1>
                 <p style="margin:12px 0 0; font-size:16px; color:#cccccc;">
-                  Your submission has been successfully received.
+                  Your ${isDevSubmission ? 'project' : 'submission'} has been successfully received.
                 </p>
               </td>
             </tr>
@@ -113,7 +129,10 @@ export async function POST(req: NextRequest) {
             <!-- Main Content -->
             <tr>
               <td style="padding: 0 30px 30px; font-size:16px; line-height:1.6; color:#dddddd;">
-                <p>We are excited to review your work and appreciate you sharing it with the SPECTRA community.</p>
+                <p>${isDevSubmission
+                  ? 'We are excited to review what you are building and appreciate you sharing it with the SPECTRA community.'
+                  : 'We are excited to review your work and appreciate you sharing it with the SPECTRA community.'
+                }</p>
                 
                 <p><strong>Here's what you shared with us:</strong></p>
                 <ul style="margin:0; padding-left:20px; color:#cccccc;">
@@ -121,23 +140,29 @@ export async function POST(req: NextRequest) {
                   <li><strong>Email:</strong> ${email}</li>
                   <li><strong>Phone:</strong> ${phone}</li>
                   <li><strong>Wallet Address / ENS:</strong> ${finalWallet}</li>
-                  <li><strong>Artwork Link:</strong> <a href="${artworkLink}" style="color:#00d1ff; text-decoration:none;">${artworkLink}</a></li>
+                  <li><strong>${linkLabel}:</strong> <a href="${link}" style="color:#00d1ff; text-decoration:none;">${link}</a></li>
                   ${telegram ? `<li><strong>Telegram:</strong> ${telegram}</li>` : ''}
                   ${instagram ? `<li><strong>Instagram:</strong> ${instagram}</li>` : ''}
                 </ul>
 
                 <p style="margin:30px 0 10px;">
                   <strong>Next steps:</strong> Our curation team will review your submission shortly. 
-                  If your artwork aligns with our vision, we will contact you directly via email or the channels you provided.
+                  ${isDevSubmission
+                    ? 'If your product aligns with our vision, we will contact you directly via email or the channels you provided.'
+                    : 'If your artwork aligns with our vision, we will contact you directly via email or the channels you provided.'
+                  }
                 </p>
 
                 <p style="margin:20px 0;">
-                  If selected, you will receive a complimentary <strong>Artist Membership</strong> for the season, which grants:
+                  If selected, you will receive a complimentary <strong>${membershipLabel}</strong> for the season, which grants:
                 </p>
                 <ul style="margin:0 0 20px; padding-left:20px; color:#cccccc;">
                   <li>Access to all SPECTRA events (main shows + partner events)</li>
-                  <li>Potential exhibition of your submitted artwork across our season lineup and collaborating brand events</li>
-                  <li>Exposure to our global network of art, music, and technology enthusiasts</li>
+                  <li>${isDevSubmission
+                    ? 'Potential project activation, demo placement, or product showcase across our season lineup and collaborating brand events'
+                    : 'Potential exhibition of your submitted artwork across our season lineup and collaborating brand events'
+                  }</li>
+                  <li>Exposure to our global network of art, music, technology, and culture enthusiasts</li>
                 </ul>
 
                 <p style="margin:30px 0 0; color:#aaaaaa; font-size:14px;">

@@ -1,16 +1,24 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Providers } from "@/components/Providers";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const prenoptica = localFont({
+const bodyFont = localFont({
   src: "../public/fonts/BINGO.woff2",
+  variable: "--font-body",
+  display: "swap",
+});
+
+const displayFont = localFont({
+  src: "../public/fonts/AGURA.woff2",
+  variable: "--font-display",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "SPECTRART",
-  description: "Unvexpected Art Experiences",
+  description: "Unexpected Art Experiences",
 };
 
 export default function RootLayout({
@@ -19,9 +27,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${prenoptica.className} antialiased`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${bodyFont.variable} ${displayFont.variable} font-sans antialiased`} suppressHydrationWarning>
+        <Providers>{children}</Providers>
         <SpeedInsights />
       </body>
     </html>

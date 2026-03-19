@@ -4,11 +4,11 @@
   word-wrap: break-word;
   will-change: transform;
   line-height: 1;
-  font-size: 4rem;
-  font-family: 'Prenoptica', sans-serif; /* ← YOUR AGURA / PRENOPTICA FONT */
+  font-size: 1.5rem;
+  font-family: var(--font-display), sans-serif;
   text-transform: uppercase;
   visibility: hidden;
-  letter-spacing: 0.05em; /* Optional: adds metallic spacing */
+  letter-spacing: 0.05em;
   font-weight: 400;
 }
 
@@ -32,5 +32,5 @@
   line-height: 1;
   display: inline-block;
   text-align: center;
-  font-family: 'Prenoptica', sans-serif !important; /* Force all chars to use AGURA */
+  font-family: var(--font-display), sans-serif !important;
 }

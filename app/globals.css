@@ -6,8 +6,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-body);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -82,6 +82,20 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: var(--font-body), sans-serif;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display), var(--font-body), sans-serif;
+}
+
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -118,9 +132,149 @@ html {
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
   }
+
+  button:not(:disabled) {
+    transition:
+      color 180ms ease,
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      transform 180ms ease;
+  }
+
+  button:not(:disabled):hover {
+    text-shadow: none !important;
+  }
+
+  button:not(:disabled):focus-visible {
+    outline: 1px solid rgba(255, 255, 255, 0.24) !important;
+    outline-offset: 2px;
+  }
+}
+
+.text-glow-blue {
+  text-shadow: none;
+}
+
+/* ── Magazine animations ───────────────────────────────────────────── */
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes slideshow-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.ticker-track {
+  animation: ticker-scroll 12s linear infinite;
+  will-change: transform;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes live-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* hide scrollbar for section nav */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Mixtape section — futuristic luxury effects ───────────────────── */
+
+/* Subtle horizontal scan lines — very faint, texture only */
+.mixtape-scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.045) 3px,
+    rgba(0, 0, 0, 0.045) 4px
+  );
+  pointer-events: none;
+}
+
+/* PSX corner bracket glow */
+.mixtape-corner {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.055);
+  transition: box-shadow 0.4s ease;
+}
+
+/* Active track — left accent line (gradient glow) */
+.mixtape-active-line {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.22) 30%,
+    rgba(255, 255, 255, 0.22) 70%,
+    transparent 100%
+  );
+  box-shadow: 1px 0 8px rgba(255, 255, 255, 0.12);
+}
+
+/* Active row — inset side glow */
+.mixtape-row-active {
+  box-shadow: inset 3px 0 0 rgba(255, 255, 255, 0.10), inset 0 0 20px rgba(255, 255, 255, 0.01);
+}
+
+/* Scrub thumb glow handled inline; this covers the progress fill glow */
+@keyframes mixtape-border-breathe {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1;   }
+}
+
+/* Top edge shimmer line on the main card */
+.mixtape-card::before {
+  content: "";
+  display: block;
+  position: absolute;
+  inset-x: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.10) 30%,
+    rgba(255, 255, 255, 0.10) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+.mixtape-card {
+  position: relative;
+}
+
+/* Subtle bottom edge line */
+.mixtape-card::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset-x: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 10;
 }
