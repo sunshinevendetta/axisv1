@@ -14,7 +14,7 @@ import {
 import { base } from "wagmi/chains";
 import { BASE_BUILDER_DATA_SUFFIX } from "@/src/lib/base-app";
 
-const BACARDI_FORM_ABI = [
+const SPECTRA_FORM_ABI = [
   {
     name: "submit",
     type: "function",
@@ -42,7 +42,7 @@ function normalizeHandle(s: string) {
 }
 
 export default function ContactStepper() {
-  const contractAddress = process.env.NEXT_PUBLIC_BACARDI_FORM_ADDRESS as `0x${string}` | undefined;
+  const contractAddress = process.env.NEXT_PUBLIC_SPECTRA_FORM_ADDRESS as `0x${string}` | undefined;
   const wcProjectId =
     process.env.NEXT_PUBLIC_REOWN_PROJECT_ID || process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID;
 
@@ -88,8 +88,8 @@ export default function ContactStepper() {
 
   const stepGuardMessage = useMemo(() => {
     if (currentStep === 2) {
-      if (!isConnected) return "connect your wallet to continue";
-      if (chainId !== base.id) return "switch network to Base to continue";
+      if (!isConnected) return "";
+      if (chainId !== base.id) return "";
       return "";
     }
     if (currentStep === 3) {
@@ -111,7 +111,7 @@ export default function ContactStepper() {
     setUiError("");
 
     if (!contractAddress) {
-      setUiError("missing NEXT_PUBLIC_BACARDI_FORM_ADDRESS");
+      setUiError("missing NEXT_PUBLIC_SPECTRA_FORM_ADDRESS");
       return;
     }
     if (!isConnected) {
@@ -140,7 +140,7 @@ export default function ContactStepper() {
 
     writeContract({
       address: contractAddress,
-      abi: BACARDI_FORM_ABI,
+      abi: SPECTRA_FORM_ABI,
       functionName: "submit",
       args: [name.trim(), safePhone, packedEmail || safeIg, safeX, safeTt],
       chainId: base.id,
@@ -208,21 +208,12 @@ export default function ContactStepper() {
         <Step>
           <h2 className="text-xl text-white">contact</h2>
           <p className="text-white/70 text-sm mt-2">
-            wallet + email, saved onchain to BacardiForm.
+            A short contact intake to continue.
           </p>
-
-          {contractAddress ? (
-            <p className="text-white/50 text-xs mt-3 break-all">contract: {contractAddress}</p>
-          ) : (
-            <p className="text-white/50 text-xs mt-3">set NEXT_PUBLIC_BACARDI_FORM_ADDRESS in .env.local</p>
-          )}
         </Step>
 
         <Step>
-          <h2 className="text-xl text-white">connect wallet</h2>
-          <p className="text-white/70 text-sm mt-2">
-            required. network must be Base.
-          </p>
+          <h2 className="text-xl text-white">connect</h2>
 
           {stepGuardMessage ? (
             <div className="mt-4 text-sm text-white border border-white/20 rounded-xl p-3">
@@ -262,26 +253,16 @@ export default function ContactStepper() {
                 >
                   connect walletconnect
                 </button>
-
-                <div className="text-xs text-white/50">
-                  walletconnect env: {wcProjectId ? "ok" : "missing"}
-                </div>
               </>
             ) : (
               <div className="border border-white/20 rounded-xl p-4">
-                <div className="text-white text-sm">connected</div>
-                <div className="text-white/60 text-xs mt-2 break-all">address: {address}</div>
-                <div className="text-white/60 text-xs mt-1">chain id: {chainId}</div>
-                <div className="mt-4 flex gap-3">
+                <div className="mt-1 flex gap-3">
                   <button
                     onClick={() => disconnect()}
                     className="px-4 py-2 border border-white text-white text-sm rounded-xl"
                   >
                     disconnect
                   </button>
-                  <div className="text-xs text-white/50 self-center">
-                    required: Base ({base.id})
-                  </div>
                 </div>
               </div>
             )}
@@ -377,9 +358,6 @@ export default function ContactStepper() {
 
         <Step>
           <h2 className="text-xl text-white">submit</h2>
-          <p className="text-white/70 text-sm mt-2">
-            writes to BacardiForm.submit.
-          </p>
 
           {uiError ? (
             <div className="mt-4 text-sm text-white border border-white/20 rounded-xl p-3">
@@ -389,13 +367,13 @@ export default function ContactStepper() {
 
           {isReceiptError ? (
             <div className="mt-4 text-sm text-white border border-white/20 rounded-xl p-3">
-              receipt error. check explorer.
+              Please try again.
             </div>
           ) : null}
 
           {isConfirmed ? (
             <div className="mt-4 text-sm text-white border border-white/20 rounded-xl p-3">
-              confirmed on Base.
+              Submitted.
             </div>
           ) : null}
 
@@ -408,16 +386,8 @@ export default function ContactStepper() {
               disabled={isWriting || isConfirming || !canProceedStep2 || !canProceedStep3}
               className="w-full px-4 py-3 border border-white text-white text-sm rounded-xl disabled:opacity-40"
             >
-              {isWriting ? "signing" : isConfirming ? "confirming" : isConfirmed ? "submitted" : "submit onchain"}
+              Submit
             </button>
-
-            {txHash ? (
-              <div className="text-xs text-white/60 break-all">tx: {txHash}</div>
-            ) : null}
-
-            <div className="text-xs text-white/50">
-              mapping: email is stored as <span className="text-white">email:you@domain.com</span> in the instagram field.
-            </div>
           </div>
         </Step>
       </Stepper>

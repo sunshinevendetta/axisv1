@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import GlobalTicker from "@/components/GlobalTicker";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -28,8 +29,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${bodyFont.variable} ${displayFont.variable} font-sans antialiased`} suppressHydrationWarning>
+      <body className={`${bodyFont.variable} ${displayFont.variable} pb-8 font-sans antialiased`} suppressHydrationWarning>
         <Providers>{children}</Providers>
+        <GlobalTicker />
         <SpeedInsights />
       </body>
     </html>

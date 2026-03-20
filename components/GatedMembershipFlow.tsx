@@ -58,9 +58,7 @@ export default function GatedMembershipFlow() {
   if (isChecking) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-black">
-        <p className="[font-family:var(--font-display)] text-base tracking-[-0.04em] text-white/72 animate-pulse">
-          Loading your status...
-        </p>
+        <div className="h-12 w-40 animate-pulse rounded-full bg-white/6" />
       </div>
     );
   }
@@ -79,10 +77,10 @@ export default function GatedMembershipFlow() {
             ) : isConnected && hasSubmittedForm ? (
               <>
                 <h1 className="mb-4 text-center [font-family:var(--font-display)] text-base leading-[0.96] tracking-[-0.05em] text-white sm:text-lg md:text-xl">
-                  STEP 2: CLAIM FOUNDER MEMBERSHIP
+                  STEP 2: COLLECT NOW
                 </h1>
                 <p className="mx-auto mb-8 max-w-xl text-center text-xs leading-5 tracking-wide text-white/52 sm:text-sm sm:leading-[1.55]">
-                  Thank you for registering. You may now claim your permanent Founder Membership.
+                  Thank you for registering. You may now continue to collect.
                 </p>
                 <div className="w-full">
                   <MembershipMint />
@@ -95,7 +93,7 @@ export default function GatedMembershipFlow() {
                 </h1>
                 <p className="mx-auto mb-8 max-w-xl text-center text-xs leading-5 tracking-wide text-white/52 sm:text-sm sm:leading-[1.55]">
                   {isConnected
-                    ? "Wallet connected. Please fill your info on-chain to join SPECTRA."
+                    ? "Complete the short intake to continue."
                     : "Connect your wallet (Coinbase Wallet, Base Smart Wallet, MetaMask, Frame, or any other) to begin."}
                 </p>
                 <div className="w-full">

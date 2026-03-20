@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import PillNav from "@/components/PillNav";
 import MagicBento, { BentoCardProps } from "@/components/MagicBento";
 import SubmissionForm from "@/components/forms/SubmissionForm";
+import { publicNavItems } from "@/src/lib/navigation";
 
 const createPlaceholderImage = (label: string) =>
   `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
@@ -111,8 +113,24 @@ description: "Test MVPs with real people, not just crypto natives. Behavior expo
 export default function DevSubmitPage() {
   return (
     <div className="min-h-screen bg-black text-white">
+      <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
+        <PillNav
+          logo="/logo.png"
+          logoAlt="spectra logo"
+          items={publicNavItems}
+          activeHref="/#submit"
+          className="custom-nav"
+          ease="power2.easeOut"
+          baseColor="#000"
+          pillColor="#fff"
+          hoveredPillTextColor="#000"
+          pillTextColor="#000"
+          initialLoadAnimation={false}
+        />
+      </div>
+
       <main className="relative overflow-x-hidden">
-        <section className="relative isolate px-6 pb-20 pt-8 sm:px-8 lg:px-12">
+        <section className="relative isolate px-6 pb-20 pt-28 sm:px-8 sm:pt-32 lg:px-12">
           <div className="pointer-events-none absolute inset-0 opacity-80">
             <div className="absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_60%)]" />
             <div className="absolute left-0 top-32 h-80 w-80 rounded-full bg-white/6 blur-3xl" />
@@ -125,7 +143,7 @@ export default function DevSubmitPage() {
                 href="/"
                 className="inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-xs uppercase tracking-[0.24em] text-white/70 transition hover:border-white/30 hover:text-white"
               >
-                Back to © SPECTRA
+                Back to SPECTRA<span className="copy-mark">©</span>
               </Link>
               <div className="text-right text-[10px] uppercase tracking-[0.32em] text-white/40">
                 /devsubmit
@@ -134,13 +152,13 @@ export default function DevSubmitPage() {
 
             <div className="mb-12 max-w-3xl">
               <p className="mb-4 text-xs uppercase tracking-[0.34em] text-white/58">
-                Build For The © SPECTRA Network
+                Build For The SPECTRA<span className="copy-mark">©</span> Network
               </p>
               <h1 className="max-w-2xl text-5xl uppercase leading-none sm:text-6xl lg:text-7xl">
                 Submit your product for real users, attendees, and collaborators.
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">
-  This lane is for developers and digital builders who want to test products in live event environments, observe real behavior, and get direct feedback from the © SPECTRA ecosystem.
+  This lane is for developers and digital builders who want to test products in live event environments, observe real behavior, and get direct feedback from the SPECTRA<span className="copy-mark">©</span> ecosystem.
 </p>
             </div>
 

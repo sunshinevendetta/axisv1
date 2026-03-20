@@ -118,6 +118,14 @@ export default function Logo3D() {
 
   // Lock scroll during the loading intro, unlock when done
   useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent("spectra-home-intro", {
+        detail: { ready: introComplete },
+      }),
+    );
+  }, [introComplete]);
+
+  useEffect(() => {
     if (introComplete) {
       document.body.style.overflow = "";
     } else {
@@ -210,7 +218,7 @@ export default function Logo3D() {
             userSelect: "none",
           }}
         >
-          {progressLabel}
+          {displayedProgress}<span style={{ fontSize: "0.32em", verticalAlign: "baseline" }}>%</span>
         </div>
 
         <style>{`

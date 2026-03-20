@@ -11,6 +11,7 @@
     "readTime": "8 min",
     "excerpt": "In a basement studio tucked beneath Colonia Roma, Cyberreality builds the kind of music that takes time to understand — and longer to forget.",
     "featured": true,
+    "linkedArtists": ["Cyberreality"],
     "tags": ["music", "interview", "CDMX", "electronic", "production"],
     "content": [
       { "type": "paragraph", "text": "It is difficult to locate Cyberreality within any single genre. His sets move through industrial textures, ambient drift, and oblique dance structures without ever arriving at a conclusion. You get the feeling that he knows exactly where the music is going — he simply refuses to take you there directly." },
@@ -130,6 +131,7 @@
     "readTime": "6 min",
     "excerpt": "SPECTRA Episode III ran four hours over schedule. Nobody complained. This is a report from inside.",
     "featured": false,
+    "linkedArtists": ["Sunshine Vendetta", "Mami Pistola"],
     "tags": ["event", "recap", "CDMX", "Episode III", "music"],
     "content": [
       { "type": "paragraph", "text": "The address came through at 17:48, twelve minutes before the announced start time. By then, most people were already nearby, circling the block in the way you circle something you can't quite identify. The space was a warehouse in Colonia Industrial — 800 square meters of concrete, bad lighting, and a loading dock that had been converted into a secondary stage." },
@@ -176,6 +178,7 @@
     "readTime": "7 min",
     "excerpt": "Mami Pistola records everything. Every taxi, every terminal, every moment of waiting. 'The world is always making music,' she says. 'I just keep the receipts.'",
     "featured": false,
+    "linkedArtists": ["Mami Pistola"],
     "tags": ["interview", "music", "field recording", "electronic", "production"],
     "content": [
       { "type": "paragraph", "text": "The phone is always out, always recording. That is the first thing you notice about Mami Pistola — or rather, the first thing she tells you about herself before you notice anything else. 'I record everything,' she says. 'Taxi rides. Waiting rooms. Arguments I'm not involved in. The sound a refrigerator makes at 3 AM.' She pauses. 'Some of it ends up in the music.'" },

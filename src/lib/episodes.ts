@@ -65,6 +65,17 @@ export function getEpisodeBySlug(slug: string) {
   return episodeCatalog.find((episode) => episode.slug === slug);
 }
 
+export function getUpcomingEpisodes(): EpisodeCatalogEntry[] {
+  const now = Date.now();
+  return episodeCatalog
+    .filter((ep) => new Date(ep.startsAt).getTime() > now)
+    .sort((a, b) => new Date(a.startsAt).getTime() - new Date(b.startsAt).getTime());
+}
+
+export function getNextUpcomingEpisode(): EpisodeCatalogEntry | undefined {
+  return getUpcomingEpisodes()[0];
+}
+
 export function getEpisodeFromCatalog(catalog: EpisodeCatalogEntry[], slug: string) {
   return catalog.find((episode) => episode.slug === slug);
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useCryptoPrices } from "./hooks/useCryptoPrices";
 import type { MagazineArticle } from "./types";
@@ -17,6 +17,9 @@ type Props = {
 
 export default function MarqueeTicker({ articles }: Props) {
   const { prices, loading } = useCryptoPrices();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [shouldLoop, setShouldLoop] = useState(false);
 
   const items = useMemo(() => {
     const out: React.ReactNode[] = [];
@@ -95,6 +98,27 @@ export default function MarqueeTicker({ articles }: Props) {
     return out;
   }, [prices, loading, articles]);
 
+  useEffect(() => {
+    const updateLoopState = () => {
+      const containerWidth = containerRef.current?.clientWidth ?? 0;
+      const contentWidth = contentRef.current?.scrollWidth ?? 0;
+      setShouldLoop(contentWidth > containerWidth);
+    };
+
+    updateLoopState();
+
+    if (!window.ResizeObserver) {
+      window.addEventListener("resize", updateLoopState);
+      return () => window.removeEventListener("resize", updateLoopState);
+    }
+
+    const observer = new ResizeObserver(updateLoopState);
+    if (containerRef.current) observer.observe(containerRef.current);
+    if (contentRef.current) observer.observe(contentRef.current);
+
+    return () => observer.disconnect();
+  }, [items]);
+
   return (
     <div
       className="fixed inset-x-0 bottom-0 z-40 flex h-8 items-center overflow-hidden border-t border-white/[0.07] bg-black/96"
@@ -111,10 +135,10 @@ export default function MarqueeTicker({ articles }: Props) {
       </div>
 
       {/* Scrolling track — duplicated for seamless loop */}
-      <div className="relative min-w-0 flex-1 overflow-hidden">
-        <div className="ticker-track flex items-center whitespace-nowrap">
-          <div className="flex items-center">{items}</div>
-          <div className="flex items-center">{items}</div>
+      <div ref={containerRef} className="relative min-w-0 flex-1 overflow-hidden">
+        <div className={shouldLoop ? "ticker-track--loop flex items-center whitespace-nowrap" : "flex items-center whitespace-nowrap"}>
+          <div ref={contentRef} className="flex items-center">{items}</div>
+          {shouldLoop ? <div className="flex items-center" aria-hidden="true">{items}</div> : null}
         </div>
       </div>
 

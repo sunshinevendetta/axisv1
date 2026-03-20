@@ -40,7 +40,7 @@ export default async function DiagramsPage() {
             System Diagrams
           </div>
           <h1 className="mt-4 bg-gradient-to-b from-white via-[#e7edf5] to-[#95a4b8] bg-clip-text text-3xl font-semibold leading-tight tracking-[-0.04em] text-transparent sm:text-5xl">
-            SPECTRA PlantUML Board
+            SPECTRA<span className="copy-mark">©</span> PlantUML Board
           </h1>
           <p className="mt-4 max-w-3xl text-sm leading-6 text-white/70 sm:text-base">
             Live-rendered contract and app integration diagrams sourced from the local `.puml` files in `docs/diagrams`.

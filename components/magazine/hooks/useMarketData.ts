@@ -40,6 +40,9 @@ export type MarketData = {
 
 const CG = "https://api.coingecko.com/api/v3";
 const GT = "https://api.geckoterminal.com/api/v2";
+const MARKET_CACHE_KEY_PREFIX = "spectra:market-data:v1:";
+const MARKET_REFRESH_MS = 60_000;
+const MARKET_RETRY_MS = 8_000;
 
 /** CoinGecko IDs for the main tab options */
 export const CG_IDS: Record<string, string> = {
@@ -60,26 +63,61 @@ function isDex(identifier: string): boolean {
   return DEX_KEYWORDS.some((k) => id.includes(k));
 }
 
+function getCacheKey(activeTab: string) {
+  return `${MARKET_CACHE_KEY_PREFIX}${activeTab}`;
+}
+
+function isUsableMarketData(data: MarketData | null): data is MarketData {
+  return Boolean(data && data.name && data.symbol && Number.isFinite(data.price) && data.price > 0);
+}
+
+function readCachedMarketData(activeTab: string): MarketData | null {
+  if (typeof window === "undefined") return null;
+
+  try {
+    const raw = window.localStorage.getItem(getCacheKey(activeTab));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as MarketData;
+    return isUsableMarketData(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeCachedMarketData(activeTab: string, data: MarketData) {
+  if (typeof window === "undefined" || !isUsableMarketData(data)) return;
+
+  try {
+    window.localStorage.setItem(getCacheKey(activeTab), JSON.stringify(data));
+  } catch {
+    // Ignore storage failures.
+  }
+}
+
 // ─── Fetchers ─────────────────────────────────────────────────────────────────
 
 async function fetchCoinGeckoMarket(cgId: string): Promise<Partial<MarketData>> {
-  const marketsRes = await fetch(
-    `${CG}/coins/markets?vs_currency=usd&ids=${cgId}&sparkline=true&price_change_percentage=24h`,
-    { cache: "no-store" },
-  );
-  if (!marketsRes.ok) return {};
-  const [coin] = await marketsRes.json();
-  if (!coin) return {};
+  try {
+    const marketsRes = await fetch(
+      `${CG}/coins/markets?vs_currency=usd&ids=${cgId}&sparkline=true&price_change_percentage=24h`,
+      { cache: "no-store" },
+    );
+    if (!marketsRes.ok) return {};
+    const [coin] = await marketsRes.json();
+    if (!coin) return {};
 
-  return {
-    symbol: coin.symbol?.toUpperCase(),
-    name: coin.name,
-    price: coin.current_price,
-    change24h: coin.price_change_percentage_24h ?? null,
-    volume24h: coin.total_volume ?? null,
-    marketCap: coin.market_cap ?? null,
-    sparkline: coin.sparkline_in_7d?.price ?? [],
-  };
+    return {
+      symbol: coin.symbol?.toUpperCase(),
+      name: coin.name,
+      price: coin.current_price,
+      change24h: coin.price_change_percentage_24h ?? null,
+      volume24h: coin.total_volume ?? null,
+      marketCap: coin.market_cap ?? null,
+      sparkline: coin.sparkline_in_7d?.price ?? [],
+    };
+  } catch {
+    return {};
+  }
 }
 
 async function fetchCoinGeckoTickers(cgId: string): Promise<{ dex: ExchangeEntry[]; cex: ExchangeEntry[] }> {
@@ -192,14 +230,19 @@ export function useMarketData(activeTab: string) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-    setData(null);
+    let mounted = true;
+    const cached = readCachedMarketData(activeTab);
 
-    (async () => {
+    setData(cached);
+    setLoading(!cached);
+
+    const load = async () => {
       try {
+        let nextData: MarketData | null = null;
+
         if (activeTab === "base") {
           const base = await fetchBaseTrending();
-          setData({
+          nextData = {
             symbol: base.symbol ?? "BASE",
             name: base.name ?? "Base Trending",
             price: base.price ?? 0,
@@ -212,16 +255,16 @@ export function useMarketData(activeTab: string) {
             cex: [],
             poolAddress: base.poolAddress,
             network: "Base",
-          });
+          };
         } else {
-          const cgId = CG_IDS[activeTab] ?? "bitcoin";
+          const cgId = CG_IDS[activeTab] ?? activeTab;
           const [market, tickers] = await Promise.all([
             fetchCoinGeckoMarket(cgId),
             fetchCoinGeckoTickers(cgId),
           ]);
-          setData({
-            symbol: market.symbol ?? activeTab.toUpperCase(),
-            name: market.name ?? activeTab,
+          nextData = {
+            symbol: market.symbol ?? cgId.replace(/-/g, " ").slice(0, 12).toUpperCase(),
+            name: market.name ?? cgId.replace(/-/g, " "),
             price: market.price ?? 0,
             change24h: market.change24h ?? null,
             volume24h: market.volume24h ?? null,
@@ -230,14 +273,43 @@ export function useMarketData(activeTab: string) {
             pools: [],
             dex: tickers.dex,
             cex: tickers.cex,
-          });
+          };
         }
-      } catch {
-        // Leave data null — page shows error state
-      } finally {
+
+        if (!mounted || !isUsableMarketData(nextData)) {
+          if (!cached && mounted) {
+            setLoading(true);
+          }
+          return;
+        }
+
+        setData(nextData);
+        writeCachedMarketData(activeTab, nextData);
         setLoading(false);
+      } catch {
+        if (!mounted) return;
+        const fallback = readCachedMarketData(activeTab);
+        if (fallback) {
+          setData(fallback);
+          setLoading(false);
+          return;
+        }
+        setLoading(true);
       }
-    })();
+    };
+
+    void load();
+    const refreshId = window.setInterval(load, MARKET_REFRESH_MS);
+    const retryId = window.setInterval(() => {
+      if (!mounted) return;
+      void load();
+    }, MARKET_RETRY_MS);
+
+    return () => {
+      mounted = false;
+      window.clearInterval(refreshId);
+      window.clearInterval(retryId);
+    };
   }, [activeTab]);
 
   return { data, loading };

@@ -145,7 +145,7 @@ export default function MagazineSidebar({
         )}
 
         <p className="mt-4 text-[7px] uppercase tracking-[0.3em] text-white/14">
-          Via CoinGecko · GeckoTerminal · Updates every 60s
+          Via CoinGecko · Updates every 60s
         </p>
       </div>
 
@@ -195,7 +195,7 @@ export default function MagazineSidebar({
           About
         </p>
         <p className="text-xs leading-5 tracking-wide text-white/36">
-          Spectra Journal is the editorial arm of SPECTRA — a platform for digital
+          Spectra Journal is the editorial arm of SPECTRA<span className="copy-mark">©</span> — a platform for digital
           culture, music, and technology at the edge of what's possible.
         </p>
         <div className="mt-5 space-y-2">
@@ -203,7 +203,7 @@ export default function MagazineSidebar({
             href="/#about"
             className="block text-[9px] uppercase tracking-[0.36em] text-white/24 transition-colors hover:text-white/50"
           >
-            About SPECTRA →
+            About SPECTRA<span className="copy-mark">©</span> →
           </a>
           <a
             href="/#episodes"

@@ -8,6 +8,7 @@ type Props = {
   mixtape: Mixtape;
   meta: AudioMeta | null;
   onPlayStateChange: (playing: boolean) => void;
+  onOpenArtist?: (artist: string) => void;
 };
 
 function fmtTime(s: number): string {
@@ -17,7 +18,7 @@ function fmtTime(s: number): string {
   return `${m}:${String(sec).padStart(2, "0")}`;
 }
 
-export default function MixtapePlayer({ mixtape, meta, onPlayStateChange }: Props) {
+export default function MixtapePlayer({ mixtape, meta, onPlayStateChange, onOpenArtist }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -27,19 +28,27 @@ export default function MixtapePlayer({ mixtape, meta, onPlayStateChange }: Prop
   const [loading, setLoading] = useState(false);
   const [showTracklist, setShowTracklist] = useState(false);
 
-  // Reset on mixtape change
+  // Reset and auto-play on mixtape change
+  const prevIdRef = useRef(mixtape.id);
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+    const wasSwitch = prevIdRef.current !== mixtape.id;
+    prevIdRef.current = mixtape.id;
     audio.pause();
     audio.src = mixtape.audioUrl;
     audio.load();
-    setPlaying(false);
     setProgress(0);
     setCurrentTime(0);
     setDuration(0);
-    setLoading(false);
-    onPlayStateChange(false);
+    if (wasSwitch) {
+      setLoading(true);
+      audio.play().catch(() => setLoading(false));
+    } else {
+      setPlaying(false);
+      setLoading(false);
+      onPlayStateChange(false);
+    }
   }, [mixtape.id, mixtape.audioUrl]);
 
   useEffect(() => {
@@ -67,7 +76,8 @@ export default function MixtapePlayer({ mixtape, meta, onPlayStateChange }: Prop
 
   const displayTitle = meta?.title ?? mixtape.title;
   const displayArtist = meta?.artist ?? mixtape.artist;
-  const coverArt = meta?.coverArt;
+  const coverArt = meta?.coverArt ?? mixtape.artworkUrl;
+  const detailCountLabel = mixtape.tracklist.length > 0 ? `${mixtape.tracklist.length} tracks indexed` : "Tracklist expansion ready";
 
   return (
     <div className="flex flex-col">
@@ -125,9 +135,13 @@ export default function MixtapePlayer({ mixtape, meta, onPlayStateChange }: Prop
             <p className="truncate text-xs leading-tight tracking-wide text-white/82">
               {displayTitle}
             </p>
-            <p className="mt-0.5 truncate text-[9px] uppercase tracking-[0.26em] text-white/36">
+            <button
+              type="button"
+              onClick={() => onOpenArtist?.(displayArtist)}
+              className="mt-0.5 truncate text-[9px] uppercase tracking-[0.26em] text-white/36 transition-colors hover:text-white/78"
+            >
               {displayArtist}
-            </p>
+            </button>
           </div>
         </div>
 
@@ -221,15 +235,36 @@ export default function MixtapePlayer({ mixtape, meta, onPlayStateChange }: Prop
       </div>
 
       {/* ── Tracklist (collapsible) ──────────────────────────────────────── */}
-      {mixtape.tracklist.length > 0 && (
-        <div className="border-t border-white/5 px-6 py-4">
+      <div className="border-t border-white/5 px-6 py-4">
+        <div className="grid gap-3 sm:grid-cols-3">
           <button
-            onClick={() => setShowTracklist((v) => !v)}
-            className="text-[9px] uppercase tracking-[0.34em] text-white/26 transition-colors hover:text-white/52"
+            type="button"
+            onClick={() => onOpenArtist?.(displayArtist)}
+            className="border border-white/8 px-4 py-3 text-left transition-colors hover:border-white/18"
           >
-            {showTracklist ? "Tracklist −" : "Tracklist +"}
+            <div className="text-[8px] uppercase tracking-[0.28em] text-white/24">Artist</div>
+            <div className="mt-2 text-sm text-white/72">{displayArtist}</div>
           </button>
-          {showTracklist && (
+          <div className="border border-white/8 px-4 py-3">
+            <div className="text-[8px] uppercase tracking-[0.28em] text-white/24">Transmission</div>
+            <div className="mt-2 text-sm text-white/72">{mixtape.date}</div>
+          </div>
+          <div className="border border-white/8 px-4 py-3">
+            <div className="text-[8px] uppercase tracking-[0.28em] text-white/24">Details</div>
+            <div className="mt-2 text-sm text-white/72">{detailCountLabel}</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="border-t border-white/5 px-6 py-4">
+        <button
+          onClick={() => setShowTracklist((v) => !v)}
+          className="text-[9px] uppercase tracking-[0.34em] text-white/26 transition-colors hover:text-white/52"
+        >
+          {showTracklist ? "Tracklist −" : "Tracklist +"}
+        </button>
+        {showTracklist ? (
+          mixtape.tracklist.length > 0 ? (
             <div className="mt-4 space-y-2">
               {mixtape.tracklist.map((track, i) => (
                 <p key={i} className="text-xs leading-5 tracking-wide text-white/32">
@@ -237,9 +272,13 @@ export default function MixtapePlayer({ mixtape, meta, onPlayStateChange }: Prop
                 </p>
               ))}
             </div>
-          )}
-        </div>
-      )}
+          ) : (
+            <div className="mt-4 border border-white/8 px-4 py-3 text-xs leading-5 tracking-wide text-white/34">
+              Tracklist expansion is ready for this transmission. Artist notes, track credits, and deeper breakdowns can land here without changing the player structure.
+            </div>
+          )
+        ) : null}
+      </div>
 
       {/* ── Tags ─────────────────────────────────────────────────────────── */}
       <div className="border-t border-white/5 px-6 py-4">

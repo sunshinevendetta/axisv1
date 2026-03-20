@@ -173,13 +173,24 @@ h6 {
   to   { transform: scaleX(1); }
 }
 
-.ticker-track {
+.ticker-track--loop {
   animation: ticker-scroll 12s linear infinite;
   will-change: transform;
 }
 
-.ticker-track:hover {
-  animation-play-state: paused;
+.global-ticker {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  height: 32px;
+  align-items: center;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(0, 0, 0, 0.96);
+  backdrop-filter: blur(8px);
 }
 
 @keyframes live-blink {
@@ -277,4 +288,30 @@ h6 {
   );
   pointer-events: none;
   z-index: 10;
+}
+
+/* © glyph — superscript after SPECTRA, styled like ² */
+.copy-mark {
+  font-size: 0.45em;
+  vertical-align: super;
+  letter-spacing: 0;
+  margin-left: 0.05em;
+}
+
+/* ── Home section animations ───────────────────────────────────────── */
+
+/* Magazine auto-cycle progress bar */
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Equalizer bars for active track in home mixtape list */
+@keyframes eq1 {
+  0%, 100% { transform: scaleY(0.4); }
+  50%       { transform: scaleY(1);   }
+}
+@keyframes eq2 {
+  0%, 100% { transform: scaleY(1);   }
+  50%       { transform: scaleY(0.3); }
 }

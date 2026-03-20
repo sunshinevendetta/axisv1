@@ -1,15 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-// Target: SPECTRA 4.0 — 21 March 2026, 18:00 CST (UTC-6)
-const TARGET_DATE = new Date("2026-03-21T18:00:00-06:00");
+export type CountdownEpisode = {
+  title: string;
+  startsAtISO: string;
+  city: string;
+};
+
+type CountdownProps = {
+  episodes: CountdownEpisode[];
+};
 
 type TimeLeft = { days: number; hours: number; minutes: number; seconds: number };
 
-function getTimeLeft(): TimeLeft {
-  const diff = TARGET_DATE.getTime() - Date.now();
-  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+function getTimeLeft(target: number): TimeLeft | null {
+  const diff = target - Date.now();
+  if (diff <= 0) return null;
   return {
     days: Math.floor(diff / (1000 * 60 * 60 * 24)),
     hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
@@ -22,16 +29,54 @@ function pad(n: number) {
   return String(n).padStart(2, "0");
 }
 
-export default function CountdownSection() {
+function formatCountdownDate(iso: string) {
+  const d = new Date(iso);
+  const dd = String(d.getUTCDate()).padStart(2, "0");
+  const mm = String(d.getUTCMonth() + 1).padStart(2, "0");
+  const yyyy = d.getUTCFullYear();
+  return `${dd} · ${mm} · ${yyyy}`;
+}
+
+function findCurrentEpisode(episodes: CountdownEpisode[]): CountdownEpisode | undefined {
+  const now = Date.now();
+  return episodes.find((ep) => {
+    const t = new Date(ep.startsAtISO).getTime();
+    return !isNaN(t) && t > now;
+  });
+}
+
+export default function CountdownSection({ episodes }: CountdownProps) {
   const [mounted, setMounted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [current, setCurrent] = useState<CountdownEpisode | undefined>(() => findCurrentEpisode(episodes));
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
+
+  const tick = useCallback(() => {
+    const ep = findCurrentEpisode(episodes);
+    if (!ep) {
+      setCurrent(undefined);
+      setTimeLeft(null);
+      return;
+    }
+    if (ep !== current) setCurrent(ep);
+    setTimeLeft(getTimeLeft(new Date(ep.startsAtISO).getTime()));
+  }, [episodes, current]);
 
   useEffect(() => {
     setMounted(true);
-    setTimeLeft(getTimeLeft());
-    const id = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
+    tick();
+    const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, []);
+  }, [tick]);
+
+  if (!current || !timeLeft) {
+    return (
+      <section className="flex flex-col items-center justify-center bg-black px-6 py-24 text-center">
+        <p className="text-[9px] uppercase tracking-[0.45em] text-white/32">
+          next episode loading
+        </p>
+      </section>
+    );
+  }
 
   return (
     <section className="flex flex-col items-center justify-center bg-black px-6 py-24 text-center">
@@ -43,11 +88,11 @@ export default function CountdownSection() {
         className="text-[clamp(1.4rem,4vw,2.8rem)] leading-[0.88] tracking-[-0.05em] text-white"
         style={{ fontFamily: "var(--font-display)" }}
       >
-        SPECTRA 4.0
+        {current.title}
       </h2>
 
       <p className="mt-3 text-[9px] uppercase tracking-[0.42em] text-white/42">
-        21 · 03 · 2026 · CDMX
+        {formatCountdownDate(current.startsAtISO)} · {current.city}
       </p>
 
       <div className="mt-12 flex items-end gap-6 sm:gap-12">

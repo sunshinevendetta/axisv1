@@ -14,6 +14,8 @@ export type Mixtape = {
   accentColor: string;
   /** Grove-hosted MP3 URL */
   audioUrl: string;
+  /** Optional Grove-hosted cover artwork URL */
+  artworkUrl?: string;
   /** Index of the Hydra sketch to use (0–3) */
   sketchIndex: number;
 };

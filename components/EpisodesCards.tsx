@@ -287,7 +287,7 @@ export default function EpisodesCards(props: EpisodesCardsProps) {
                   data-luma-action="checkout"
                   data-luma-event-id={ep.lumaEvent}
                 >
-                  Register For Event →
+                  collect now
                 </a>
               ) : (
                 <p className="text-[10px] uppercase tracking-[0.3em] text-white/32">

@@ -3,77 +3,109 @@
 import { useEffect, useState } from "react";
 
 export type CryptoPrice = {
+  id: string;
   symbol: string;
   name: string;
   price: number;
   change24h: number | null;
+  rank: number;
   network?: string;
   /** Link to the markets page for this token */
   href: string;
 };
 
+type CachedPrices = {
+  updatedAt: number;
+  prices: CryptoPrice[];
+};
+
+type CoinGeckoMarket = {
+  id?: string;
+  symbol?: string;
+  name?: string;
+  current_price?: number;
+  price_change_percentage_24h?: number | null;
+  market_cap_rank?: number | null;
+};
+
+const CACHE_KEY = "spectra:crypto-prices:v2";
+const REFRESH_MS = 60_000;
 const CG_URL =
-  "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true";
+  "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false&price_change_percentage=24h";
 
-const GT_BASE_URL =
-  "https://api.geckoterminal.com/api/v2/networks/base/trending_pools?page=1";
-
-async function fetchPrices(): Promise<CryptoPrice[]> {
-  const [cgResult, gtResult] = await Promise.allSettled([
-    fetch(CG_URL, { cache: "no-store" }),
-    fetch(GT_BASE_URL, { cache: "no-store" }),
-  ]);
-
+function dedupeAndNormalize(markets: CoinGeckoMarket[]): CryptoPrice[] {
+  const seenSymbols = new Set<string>();
   const prices: CryptoPrice[] = [];
 
-  // CoinGecko — BTC / ETH / SOL
-  if (cgResult.status === "fulfilled" && cgResult.value.ok) {
-    const d = await cgResult.value.json();
-    const map: [string, string, string, string][] = [
-      ["bitcoin",  "BTC", "Bitcoin",  "/magazine/markets?active=bitcoin"],
-      ["ethereum", "ETH", "Ethereum", "/magazine/markets?active=ethereum"],
-      ["solana",   "SOL", "Solana",   "/magazine/markets?active=solana"],
-    ];
-    for (const [id, symbol, name, href] of map) {
-      if (d[id]) {
-        prices.push({
-          symbol,
-          name,
-          price: d[id].usd,
-          change24h: d[id].usd_24h_change ?? null,
-          href,
-        });
-      }
-    }
-  }
+  for (const market of markets) {
+    const id = market.id?.trim();
+    const symbol = market.symbol?.trim().toUpperCase();
+    const name = market.name?.trim();
+    const price = market.current_price;
+    const rank = market.market_cap_rank;
 
-  // GeckoTerminal — Base chain trending (top 2)
-  if (gtResult.status === "fulfilled" && gtResult.value.ok) {
-    const d = await gtResult.value.json();
-    const pools: unknown[] = d.data?.slice(0, 2) ?? [];
-    for (const pool of pools) {
-      const p = pool as Record<string, unknown>;
-      const attrs = p.attributes as Record<string, unknown> | undefined;
-      if (!attrs) continue;
-      const name = attrs.name as string | undefined;
-      const symbol = name?.split("/")[0]?.trim();
-      const price = parseFloat((attrs.base_token_price_usd as string) ?? "0");
-      const pcp = attrs.price_change_percentage as Record<string, string> | undefined;
-      const change = parseFloat(pcp?.h24 ?? "NaN");
-      if (symbol && price > 0) {
-        prices.push({
-          symbol,
-          name: name ?? symbol,
-          price,
-          change24h: isNaN(change) ? null : change,
-          network: "Base",
-          href: "/magazine/markets?active=base",
-        });
-      }
+    if (!id || !symbol || !name) continue;
+    if (seenSymbols.has(symbol)) continue;
+    if (!Number.isFinite(price) || (price ?? 0) <= 0) continue;
+    if (!Number.isFinite(rank) || (rank ?? 0) <= 0) continue;
+
+    seenSymbols.add(symbol);
+    prices.push({
+      id,
+      symbol,
+      name,
+      price: price as number,
+      change24h:
+        typeof market.price_change_percentage_24h === "number"
+          ? market.price_change_percentage_24h
+          : null,
+      rank: rank as number,
+      href: `/magazine/markets?active=${id}`,
+    });
+
+    if (prices.length === 100) {
+      break;
     }
   }
 
   return prices;
+}
+
+async function fetchPrices(): Promise<CryptoPrice[]> {
+  const response = await fetch(CG_URL, { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error(`CoinGecko request failed with ${response.status}`);
+  }
+
+  const data = (await response.json()) as CoinGeckoMarket[];
+  return dedupeAndNormalize(data);
+}
+
+function readCache(): CryptoPrice[] {
+  if (typeof window === "undefined") return [];
+
+  try {
+    const raw = window.localStorage.getItem(CACHE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as CachedPrices;
+    return Array.isArray(parsed.prices) ? parsed.prices : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeCache(prices: CryptoPrice[]) {
+  if (typeof window === "undefined" || prices.length === 0) return;
+
+  try {
+    const payload: CachedPrices = {
+      updatedAt: Date.now(),
+      prices,
+    };
+    window.localStorage.setItem(CACHE_KEY, JSON.stringify(payload));
+  } catch {
+    // Ignore storage failures; live data still wins.
+  }
 }
 
 export function useCryptoPrices() {
@@ -83,14 +115,30 @@ export function useCryptoPrices() {
   useEffect(() => {
     let mounted = true;
 
+    const cached = readCache();
+    if (cached.length > 0) {
+      setPrices(cached);
+      setLoading(false);
+    }
+
     const load = () =>
       fetchPrices()
-        .then((p) => { if (mounted && p.length > 0) setPrices(p); })
-        .catch(() => {})
+        .then((nextPrices) => {
+          if (!mounted || nextPrices.length === 0) return;
+          setPrices(nextPrices);
+          writeCache(nextPrices);
+        })
+        .catch(() => {
+          if (!mounted) return;
+          const fallbackPrices = readCache();
+          if (fallbackPrices.length > 0) {
+            setPrices(fallbackPrices);
+          }
+        })
         .finally(() => { if (mounted) setLoading(false); });
 
     load();
-    const id = setInterval(load, 60_000);
+    const id = window.setInterval(load, REFRESH_MS);
     return () => { mounted = false; clearInterval(id); };
   }, []);
 

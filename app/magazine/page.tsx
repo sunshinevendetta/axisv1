@@ -2,15 +2,17 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import type { MagazineLang } from "@/components/magazine/types";
 import PillNav from "@/components/PillNav";
 import Footer from "@/components/Footer";
 import ArticleReader from "@/components/magazine/ArticleReader";
-import MarqueeTicker from "@/components/magazine/MarqueeTicker";
+import ArtistWorldPanel from "@/components/magazine/ArtistWorldPanel";
 import MagazineSlideshow from "@/components/magazine/MagazineSlideshow";
 import MagazineNav from "@/components/magazine/MagazineNav";
 import MagazineGrid from "@/components/magazine/MagazineGrid";
 import MagazineSidebar from "@/components/magazine/MagazineSidebar";
 import { useCryptoPrices } from "@/components/magazine/hooks/useCryptoPrices";
+import { findArtistWorldProfile } from "@/src/content/world-expansion";
 import { magazineNavItems } from "@/src/lib/navigation";
 import type { MagazineArticle } from "@/components/magazine/types";
 import rawData from "@/content/magazine.json";
@@ -28,12 +30,15 @@ export default function MagazinePage() {
   const router = useRouter();
   const [openSlug, setOpenSlug] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [lang, setLang] = useState<MagazineLang>("en");
+  const [openArtistName, setOpenArtistName] = useState<string | null>(null);
 
   const { prices, loading: pricesLoading } = useCryptoPrices();
 
   const openArticle = openSlug
     ? articles.find((a) => a.slug === openSlug) ?? null
     : null;
+  const openArtist = openArtistName ? findArtistWorldProfile(openArtistName) : null;
 
   // Keep featured article out of the slideshow (it's already prominent); use all 8 for rich cycling
   const slideshowArticles = useMemo(
@@ -62,10 +67,6 @@ export default function MagazinePage() {
           pillTextColor="#000"
         />
       </div>
-
-      {/* ── Ticker ───────────────────────────────────────────────────── */}
-      <MarqueeTicker articles={articles} />
-
       {/* ── Main ─────────────────────────────────────────────────────── */}
       <main
         className="relative z-10"
@@ -75,7 +76,15 @@ export default function MagazinePage() {
 
           /* ══ Article reader ══════════════════════════════════════════ */
           <div className="pt-8">
-            <ArticleReader article={openArticle} onBack={() => setOpenSlug(null)} />
+            <ArticleReader
+              article={openArticle}
+              allArticles={articles}
+              onBack={() => setOpenSlug(null)}
+              onOpenArticle={setOpenSlug}
+              onOpenArtist={setOpenArtistName}
+              lang={lang}
+              onLangChange={setLang}
+            />
           </div>
 
         ) : (
@@ -95,6 +104,8 @@ export default function MagazinePage() {
               active={activeCategory}
               onChange={setActiveCategory}
               onMixtapes={() => router.push("/magazine/mixtapes")}
+              lang={lang}
+              onLangChange={setLang}
             />
 
             {/* Masthead row */}
@@ -135,6 +146,7 @@ export default function MagazinePage() {
                     <MagazineGrid
                       articles={articles}
                       onOpenArticle={setOpenSlug}
+                      onOpenArtist={setOpenArtistName}
                       contained
                       activeCategory={activeCategory}
                       onCategoryChange={setActiveCategory}
@@ -174,6 +186,10 @@ export default function MagazinePage() {
           </>
         )}
       </main>
+
+      {openArtist ? (
+        <ArtistWorldPanel artist={openArtist} onClose={() => setOpenArtistName(null)} />
+      ) : null}
 
       <Footer />
     </div>

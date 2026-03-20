@@ -3,11 +3,14 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import ArtistWorldPanel from "@/components/magazine/ArtistWorldPanel";
 import PillNav from "@/components/PillNav";
+import { DEFAULT_HYDRA_CONTROLS, HYDRA_CONTROL_GROUPS } from "@/components/magazine/mixtapes/HydraBackground";
 import { magazineNavItems } from "@/src/lib/navigation";
 import type { Mixtape } from "@/components/magazine/mixtapes/types";
 import rawData from "@/content/mixtapes.json";
 import { useAllMetadata } from "@/components/magazine/mixtapes/hooks/useAllMetadata";
+import { findArtistWorldProfile } from "@/src/content/world-expansion";
 
 const MixtapeSelector = dynamic(
   () => import("@/components/magazine/mixtapes/MixtapeSelector"),
@@ -24,6 +27,9 @@ const mixtapes = rawData as Mixtape[];
 export default function MixtapesPage() {
   const [selected, setSelected] = useState(0);
   const [playing, setPlaying] = useState(false);
+  const [openArtistName, setOpenArtistName] = useState<string | null>(null);
+  const [hydraControls, setHydraControls] = useState(DEFAULT_HYDRA_CONTROLS);
+  const [showHydraControls, setShowHydraControls] = useState(false);
 
   // Load ID3 metadata (title, artist, cover art) from all Grove URLs
   const metaMap = useAllMetadata(mixtapes.map((m) => m.audioUrl));
@@ -34,6 +40,7 @@ export default function MixtapesPage() {
   };
 
   const mix = mixtapes[selected];
+  const openArtist = openArtistName ? findArtistWorldProfile(openArtistName) : null;
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-black text-white">
@@ -85,13 +92,68 @@ export default function MixtapesPage() {
             <p className="mb-3 text-[8px] uppercase tracking-[0.5em] text-white/20">
               Spectra Journal
             </p>
-          <h1 className="[font-family:var(--font-display)] text-[clamp(1.33rem,3.325vw,2rem)] sm:text-[clamp(1.6rem,2vw,2.2rem)] leading-[0.9] tracking-[-0.05em] text-white">
-  Transmissions
-</h1>
+            <h1 className="[font-family:var(--font-display)] text-[clamp(1.33rem,3.325vw,2rem)] leading-[0.9] tracking-[-0.05em] text-white sm:text-[clamp(1.6rem,2vw,2.2rem)]">
+              Transmissions
+            </h1>
             <p className="mt-4 max-w-md text-xs leading-6 tracking-wide text-white/32 sm:text-sm sm:leading-5">
               Live recordings and mixtapes from SPECTRA episodes. Generative visuals
               created uniquely for each transmission. Stored on Grove, Base chain.
             </p>
+
+            <div className="mt-6 border border-white/[0.08] bg-white/[0.02] p-4">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <div className="text-[8px] uppercase tracking-[0.38em] text-white/24">Visual Mod</div>
+                  <p className="mt-2 max-w-xl text-xs leading-5 text-white/38">
+                    Keep the transmission clean by default. Open the full Hydra parameter bank only when you want to push the visual live.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowHydraControls((current) => !current)}
+                  className="border border-white/12 px-4 py-3 text-[9px] uppercase tracking-[0.3em] text-white/62 transition-colors hover:text-white"
+                >
+                  {showHydraControls ? "Hide Visual Controls" : "Mod Visual"}
+                </button>
+              </div>
+
+              {showHydraControls ? (
+                <div className="mt-5 space-y-3">
+                  {HYDRA_CONTROL_GROUPS.map((group) => (
+                    <section key={group.title} className="border border-white/[0.08] bg-black/20 p-4">
+                      <div className="mb-4 text-[8px] uppercase tracking-[0.38em] text-white/24">{group.title}</div>
+                      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                        {group.controls.map((control) => (
+                          <label key={control.key} className="border border-white/[0.06] bg-black/20 px-3 py-3">
+                            <div className="flex items-center justify-between gap-3">
+                              <span className="text-[8px] uppercase tracking-[0.28em] text-white/28">{control.label}</span>
+                              <span className="text-[8px] uppercase tracking-[0.18em] text-white/18">
+                                {hydraControls[control.key as keyof typeof hydraControls]}
+                              </span>
+                            </div>
+                            <input
+                              type="range"
+                              min={control.min}
+                              max={control.max}
+                              step={control.step}
+                              value={hydraControls[control.key as keyof typeof hydraControls]}
+                              onChange={(event) => {
+                                const value = Number(event.target.value);
+                                setHydraControls((current) => ({
+                                  ...current,
+                                  [control.key]: value,
+                                }));
+                              }}
+                              className="mt-3 h-px w-full cursor-pointer appearance-none bg-white/12 accent-white/60"
+                            />
+                          </label>
+                        ))}
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
 
@@ -116,6 +178,8 @@ export default function MixtapesPage() {
                 playing={playing}
                 onSelect={handleSelect}
                 metaMap={metaMap}
+                onOpenArtist={setOpenArtistName}
+                hydraControls={hydraControls}
               />
 
               {/* Bottom section — player controls (full width) */}
@@ -124,6 +188,7 @@ export default function MixtapesPage() {
                   mixtape={mix}
                   meta={metaMap[selected] ?? null}
                   onPlayStateChange={setPlaying}
+                  onOpenArtist={setOpenArtistName}
                 />
               </div>
             </div>
@@ -153,12 +218,16 @@ export default function MixtapesPage() {
               ← Back to Magazine
             </Link>
             <p className="text-[7px] uppercase tracking-[0.32em] text-white/12">
-              © {new Date().getFullYear()} Spectra · AXIS Labs
+              Spectra<span className="copy-mark">©</span> {new Date().getFullYear()} · AXIS Labs
             </p>
           </div>
         </div>
 
       </main>
+
+      {openArtist ? (
+        <ArtistWorldPanel artist={openArtist} onClose={() => setOpenArtistName(null)} />
+      ) : null}
     </div>
   );
 }

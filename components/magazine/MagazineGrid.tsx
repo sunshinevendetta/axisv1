@@ -9,6 +9,7 @@ const FILTER_CATEGORIES = ["ALL", "INTERVIEW", "NEWS", "ESSAY", "CULTURE", "TECH
 type Props = {
   articles: MagazineArticle[];
   onOpenArticle: (slug: string) => void;
+  onOpenArtist?: (artist: string) => void;
   /** When true, removes the internal max-width container (use inside a parent layout) */
   contained?: boolean;
   /** Controlled active category — passed from MagazineNav */
@@ -20,6 +21,7 @@ type Props = {
 export default function MagazineGrid({
   articles,
   onOpenArticle,
+  onOpenArtist,
   contained = false,
   activeCategory: externalCategory,
   onCategoryChange,
@@ -80,7 +82,7 @@ export default function MagazineGrid({
       {filtered.length > 0 ? (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
           {filtered.map((article) => (
-            <MagazineCard key={article.id} article={article} onClick={onOpenArticle} />
+            <MagazineCard key={article.id} article={article} onClick={onOpenArticle} onOpenArtist={onOpenArtist} />
           ))}
         </div>
       ) : (

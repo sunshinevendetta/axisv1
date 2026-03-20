@@ -146,7 +146,7 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
           <p className="text-2xl text-white/80">
             Your Origin status is confirmed.
             <br />
-            Enjoy your © SPECTRA Founder Membership ↓
+            Your piece is ready below ↓
           </p>
         </div>
         <MembershipMint />
@@ -162,9 +162,7 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
             Submission Confirmed
           </h1>
           <p className="text-2xl text-white/80">
-            Your profile is now mapped on-chain.
-            <br />
-            Now claim your Founder Membership ↓
+            Collect now ↓
           </p>
         </div>
         <MembershipMint />
@@ -179,8 +177,7 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
           FAST TRACK ACCESS
         </h1>
         <p className="mx-auto mb-12 max-w-xl text-xs leading-5 tracking-wide text-white/52 sm:text-sm sm:leading-[1.55]">
-          Connect your wallet to unlock the fastest path into © SPECTRA Founder Membership.
-          We keep the on-chain profile lightweight so you can move from connect to mint without a long intake.
+          Connect your wallet to unlock the fastest path into SPECTRA<span className="copy-mark">©</span> Founder Membership.
         </p>
         <div className="flex flex-col items-center gap-4">
           {connectors.map((connector) => (
@@ -199,19 +196,6 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
 
   return (
     <div className="w-full">
-      {isConnected && !isOnBase && (
-        <div className="mb-8 rounded-3xl border border-[#cfd8e8]/25 bg-[linear-gradient(145deg,rgba(226,232,240,0.12),rgba(125,154,188,0.08))] py-8 text-center backdrop-blur-xl">
-          <p className="mb-4 text-2xl font-bold text-[#dbe4f2]">Wrong network</p>
-          <p className="mb-6 text-white/80">Please switch to Base to continue</p>
-          <button
-            onClick={() => switchChain?.({ chainId: BASE_CHAIN_ID })}
-            className="rounded-2xl border border-[#d7e0ed]/35 bg-[linear-gradient(135deg,rgba(236,241,247,0.92),rgba(164,179,199,0.78))] px-12 py-5 text-xl font-bold text-black shadow-[0_18px_50px_rgba(148,163,184,0.22)] transition-all hover:scale-[1.01] hover:bg-[linear-gradient(135deg,rgba(244,247,251,0.96),rgba(180,194,212,0.84))]"
-          >
-            Switch to Base
-          </button>
-        </div>
-      )}
-
       <div className="mx-auto max-w-3xl">
         <div
           className="rounded-[32px] bg-black/45 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.4)] backdrop-blur-2xl sm:p-8"
@@ -222,11 +206,10 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
         >
           <div className="mb-8 text-center">
             <h2 className="mb-4 text-3xl font-black text-white uppercase leading-none sm:text-4xl md:text-5xl">
-              FAST ENTRY, THEN MINT
+              FAST ENTRY, THEN COLLECT
             </h2>
             <p className="mx-auto max-w-2xl text-sm leading-6 text-white/72 sm:text-base">
-              The contract maps five profile fields on-chain: name, phone, Instagram, X, and TikTok.
-              Only the essential fields are required here. Optional fields can stay blank and you can mint right after submission.
+              Share the essentials here. Optional fields can stay blank and you can continue as soon as this step is complete.
             </p>
           </div>
 
@@ -237,26 +220,22 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
               boxShadow: "0 0 28px rgba(214,222,232,0.04) inset",
             }}
           >
-            <div>
-              <p className="text-[10px] uppercase tracking-[0.28em] text-white/45">Connected wallet</p>
-              <p className="mt-2 text-sm font-medium text-white sm:text-base">
-                {address ? `${address.slice(0, 6)}...${address.slice(-4)}` : '—'}
-              </p>
+            <div className="flex w-full justify-end">
+              <button
+                onClick={() => disconnect()}
+                className="rounded-2xl px-5 py-3 text-sm font-medium text-[#f2f5f8] backdrop-blur-xl transition-all"
+                style={{
+                  border: "1px solid rgba(214, 222, 232, 0.24)",
+                  background:
+                    "linear-gradient(145deg, rgba(239,244,248,0.08), rgba(148,163,184,0.06))",
+                  boxShadow:
+                    "0 0 0 1px rgba(255,255,255,0.02) inset, 0 0 20px rgba(214,222,232,0.06)",
+                  textShadow: "0 0 8px rgba(232,238,246,0.14)",
+                }}
+              >
+                Disconnect
+              </button>
             </div>
-            <button
-              onClick={() => disconnect()}
-              className="rounded-2xl px-5 py-3 text-sm font-medium text-[#f2f5f8] backdrop-blur-xl transition-all"
-              style={{
-                border: "1px solid rgba(214, 222, 232, 0.24)",
-                background:
-                  "linear-gradient(145deg, rgba(239,244,248,0.08), rgba(148,163,184,0.06))",
-                boxShadow:
-                  "0 0 0 1px rgba(255,255,255,0.02) inset, 0 0 20px rgba(214,222,232,0.06)",
-                textShadow: "0 0 8px rgba(232,238,246,0.14)",
-              }}
-            >
-              Disconnect
-            </button>
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2">

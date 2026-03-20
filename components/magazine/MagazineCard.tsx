@@ -32,9 +32,10 @@ function formatDate(dateStr: string) {
 type Props = {
   article: MagazineArticle;
   onClick: (slug: string) => void;
+  onOpenArtist?: (artist: string) => void;
 };
 
-export default function MagazineCard({ article, onClick }: Props) {
+export default function MagazineCard({ article, onClick, onOpenArtist }: Props) {
   const watermark = CATEGORY_WATERMARK[article.category] ?? article.category[0];
   const gradient = CATEGORY_GRADIENT[article.category] ?? "linear-gradient(145deg, #0d0d0d, #111)";
 
@@ -86,6 +87,24 @@ export default function MagazineCard({ article, onClick }: Props) {
 
         {/* Divider */}
         <div className="mb-4 h-px w-full bg-white/6" />
+
+        {article.linkedArtists?.length ? (
+          <div className="mb-4 flex flex-wrap gap-2">
+            {article.linkedArtists.map((artist) => (
+              <button
+                key={artist}
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onOpenArtist?.(artist);
+                }}
+                className="border border-white/8 px-2 py-1 text-[8px] uppercase tracking-[0.24em] text-white/36 transition-colors hover:text-white/72"
+              >
+                {artist}
+              </button>
+            ))}
+          </div>
+        ) : null}
 
         {/* Meta */}
         <div className="flex flex-wrap items-center gap-x-2.5 text-[9px] uppercase tracking-[0.28em] text-white/22">

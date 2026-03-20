@@ -43,7 +43,16 @@ const adminDashboardNavItem: PillNavItem = {
   ],
 };
 
-export const homeNavItems: PillNavItem[] = [
+const membersAreaNavItem: PillNavItem = {
+  label: "members area",
+  href: "/magazine/markets",
+  children: [
+    { label: "Inside Magazine", href: "/magazine/markets" },
+    { label: "Standalone", href: "/record-prism" },
+  ],
+};
+
+export const publicNavItems: PillNavItem[] = [
   { label: "home", href: "/#home" },
   { label: "about", href: "/#about" },
   { label: "join", href: "/#join" },
@@ -56,6 +65,7 @@ export const homeNavItems: PillNavItem[] = [
       { label: "Mixtapes", href: "/magazine/mixtapes" },
     ],
   },
+  membersAreaNavItem,
   { label: "submit", href: "/#submit" },
   {
     label: "store",
@@ -80,62 +90,15 @@ export const homeNavItems: PillNavItem[] = [
   // adminDashboardNavItem,
 ];
 
-export const magazineNavItems: PillNavItem[] = [
-  { label: "home", href: "/#home" },
-  { label: "episodes", href: "/#episodes" },
-  {
-    label: "magazine",
-    href: "/magazine",
-    children: [
-      { label: "Journal", href: "/magazine" },
-      { label: "Mixtapes", href: "/magazine/mixtapes" },
-    ],
-  },
-  {
-    label: "store",
-    href: "/arapp",
-    children: buildStoreChildren(),
-  },
-  {
-    label: "collect",
-    href: "/arapp/collect",
-    children: buildCollectChildren(),
-  },
-  // Hidden for public upload:
-  // adminDashboardNavItem,
-];
-
-export const docsNavItems: PillNavItem[] = [
-  { label: "Home", href: "/#home" },
-  // Hidden for public upload:
-  // { label: "Documents", href: "/docs" },
-  // { label: "Diagrams", href: "/docs/diagrams" },
-  // adminDashboardNavItem,
-];
+export const homeNavItems = publicNavItems;
+export const magazineNavItems = publicNavItems;
+export const docsNavItems = publicNavItems;
 
 export const ownerNavItems: PillNavItem[] = [
-  { label: "Home", href: "/#home" },
-  // Hidden for public upload:
-  // adminDashboardNavItem,
-  // { label: "Documents", href: "/docs" },
-  // { label: "Diagrams", href: "/docs/diagrams" },
+  { label: "home", href: "/#home" },
+  adminDashboardNavItem,
 ];
 
-export const arappNavItems: PillNavItem[] = [
-  { label: "Home", href: "/#home" },
-  {
-    label: "Store",
-    href: "/arapp",
-    children: buildStoreChildren(),
-  },
-  {
-    label: "Collect",
-    href: "/arapp/collect",
-    children: buildCollectChildren(),
-  },
-  // Hidden for public upload:
-  // { label: "Documents", href: "/docs" },
-  // adminDashboardNavItem,
-];
+export const arappNavItems = publicNavItems;
 
-export const primaryNavItems = homeNavItems;
+export const primaryNavItems = publicNavItems;

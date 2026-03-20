@@ -1,3 +1,40 @@
+export type SpectraEvent = {
+  id: string;
+  title: string;
+  startsAtISO: string;
+  endsAtISO?: string;
+  timezone: string;
+  city: string;
+  venue?: string;
+  slug: string;
+  status: "upcoming" | "live" | "ended";
+};
+
+export function normalizeLumaEvent(luma: any): SpectraEvent {
+  const startsAtISO = luma.start_at || luma.startAt;
+  const endsAtISO = luma.end_at || luma.endAt;
+
+  const now = Date.now();
+  const start = new Date(startsAtISO).getTime();
+  const end = endsAtISO ? new Date(endsAtISO).getTime() : start + 4 * 60 * 60 * 1000;
+
+  let status: "upcoming" | "live" | "ended" = "upcoming";
+  if (now >= start && now <= end) status = "live";
+  if (now > end) status = "ended";
+
+  return {
+    id: String(luma.id),
+    title: luma.name,
+    startsAtISO,
+    endsAtISO,
+    timezone: luma.timezone || "America/Mexico_City",
+    city: luma.geo_city || luma.city || "CDMX",
+    venue: luma.venue?.name || luma.location || "",
+    slug: luma.url_slug || luma.slug || "",
+    status,
+  };
+}
+
 type LumaResolvedEvent = {
   title: string;
   description: string;

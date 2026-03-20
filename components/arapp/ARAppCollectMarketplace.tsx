@@ -193,7 +193,7 @@ export default function ARAppCollectMarketplace() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 pb-3 pt-24 sm:px-6 sm:pt-28">
           <div>
             <div className="text-[9px] uppercase tracking-[0.3em] text-white/36">Episode Next · Free Claim</div>
-            <h1 className="mt-0.5 text-sm font-semibold tracking-[-0.02em] text-white">SPECTRA Collect</h1>
+            <h1 className="mt-0.5 text-sm font-semibold tracking-[-0.02em] text-white">SPECTRA<span className="copy-mark">©</span> Collect</h1>
           </div>
           <div className="hidden gap-6 sm:flex">
             <div className="text-center">

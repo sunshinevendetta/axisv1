@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import type { Mixtape } from "./types";
 import type { AudioMeta } from "./hooks/useAllMetadata";
+import type { HydraControls } from "./HydraBackground";
 
 const HydraBackground = dynamic(() => import("./HydraBackground"), { ssr: false });
 const MixtapeDisc = dynamic(() => import("./MixtapeDisc"), {
@@ -17,6 +18,8 @@ type Props = {
   playing: boolean;
   onSelect: (idx: number) => void;
   metaMap: Record<number, AudioMeta>;
+  onOpenArtist?: (artist: string) => void;
+  hydraControls: HydraControls;
 };
 
 export default function MixtapeSelector({
@@ -25,6 +28,8 @@ export default function MixtapeSelector({
   playing,
   onSelect,
   metaMap,
+  onOpenArtist,
+  hydraControls,
 }: Props) {
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -59,6 +64,7 @@ export default function MixtapeSelector({
 
   const mix = mixtapes[selected];
   const meta = metaMap[selected];
+  const activeArtwork = meta?.coverArt ?? mix.artworkUrl;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr]" style={{ minHeight: 480 }}>
@@ -72,7 +78,7 @@ export default function MixtapeSelector({
         <div className="mixtape-scanlines pointer-events-none absolute inset-0" style={{ zIndex: 5 }} />
 
         {/* Layer 0 — Hydra generative visual */}
-        <HydraBackground sketchIndex={mix.sketchIndex} playing={playing} />
+        <HydraBackground sketchIndex={mix.sketchIndex} playing={playing} controls={hydraControls} />
 
         {/* Layer 1 — radial vignette */}
         <div
@@ -88,7 +94,7 @@ export default function MixtapeSelector({
         <MixtapeDisc
           accentColor={mix.accentColor}
           mixtapeIndex={selected}
-          coverArtUrl={meta?.coverArt}
+          coverArtUrl={activeArtwork}
         />
 
         {/* Layer 3 — PSX corner brackets */}
@@ -107,9 +113,15 @@ export default function MixtapeSelector({
           className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col items-center gap-1 pb-5"
           style={{ zIndex: 7 }}
         >
-          <p className="text-[8px] uppercase tracking-[0.46em] text-white/35">
-            {meta?.artist ?? mix.artist}
-          </p>
+          <div className="text-[8px] uppercase tracking-[0.46em] text-white/35">
+            <button
+              type="button"
+              onClick={() => onOpenArtist?.(meta?.artist ?? mix.artist)}
+              className="pointer-events-auto transition-colors hover:text-white"
+            >
+              {meta?.artist ?? mix.artist}
+            </button>
+          </div>
           <p className="text-[7px] uppercase tracking-[0.32em] text-white/18">{mix.episode}</p>
         </div>
 
@@ -143,6 +155,7 @@ export default function MixtapeSelector({
           {mixtapes.map((m, i) => {
             const isActive = i === selected;
             const mMeta = metaMap[i];
+            const artwork = mMeta?.coverArt ?? m.artworkUrl;
             return (
               <button
                 key={m.id}
@@ -174,9 +187,9 @@ export default function MixtapeSelector({
                 </span>
 
                 {/* Thumbnail — cover art or accent swatch */}
-                {mMeta?.coverArt ? (
+                {artwork ? (
                   <img
-                    src={mMeta.coverArt}
+                    src={artwork}
                     alt=""
                     className="h-8 w-8 flex-none object-cover opacity-70 transition-opacity group-hover:opacity-88"
                     style={{ filter: "grayscale(15%)" }}

@@ -36,7 +36,7 @@ const formContent: Record<
     linkHint: {
       href: "https://base.app/invite/sunshinev/R80CCWVY",
       label:
-        "WE ONLY ACCEPT ONCHAIN ARTWORKS - if your work is not on any blockchain, please upload it to Base App as a post, it is free to use. Paste the link here or from the marketplace of your choice. Click here to see how.",
+        "WE ONLY ACCEPT PUBLISHED ARTWORKS - if your work is not yet live, please upload it to Base App as a post. Paste the link here or from the marketplace of your choice. Click here to see how.",
     },
     submitLabel: "Submit",
     successMessage: "Thank you! Your submission has been received. Check your email for confirmation.",
@@ -59,6 +59,7 @@ const formContent: Record<
 export default function SubmissionForm({ variant = "artist" }: SubmissionFormProps) {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [contactMode, setContactMode] = useState<"phone" | "telegram">("phone");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -81,11 +82,11 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
   const validateEmail = (email: string) => /\S+@\S+\.\S+/.test(email);
 
   const validateWallet = (wallet: string) => {
-    if (!wallet) {
+    if (!wallet.trim()) {
       setWalletStatus("idle");
-      setWalletError("Wallet address or ENS is required");
+      setWalletError("");
       setResolvedAddress(null);
-      return false;
+      return true;
     }
     setWalletStatus("resolving");
     setWalletError("");
@@ -120,9 +121,19 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
     setStatus("loading");
     setMessage("");
 
-    if (!formData.name || !formData.email || !formData.phone || !formData.wallet || !formData.artworkLink) {
+    if (!formData.name || !formData.email || !formData.artworkLink) {
       setStatus("error");
-      setMessage("All fields are required except Telegram and Instagram.");
+      setMessage("Name, email, and " + (variant === "dev" ? "project link" : "artwork link") + " are required.");
+      return;
+    }
+    if (contactMode === "phone" && !formData.phone) {
+      setStatus("error");
+      setMessage("Please provide your phone number.");
+      return;
+    }
+    if (contactMode === "telegram" && !formData.telegram.trim()) {
+      setStatus("error");
+      setMessage("Please provide your Telegram handle.");
       return;
     }
     if (!validateEmail(formData.email)) {
@@ -130,7 +141,7 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
       setMessage("Please enter a valid email address.");
       return;
     }
-    if (walletStatus !== "valid") {
+    if (formData.wallet.trim() && walletStatus !== "valid") {
       setStatus("error");
       setMessage("Please provide a valid wallet address or ENS name.");
       return;
@@ -154,6 +165,7 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
         setFormData({ name: "", email: "", phone: "", wallet: "", artworkLink: "", telegram: "", instagram: "" });
         setResolvedAddress(null);
         setWalletStatus("idle");
+        setWalletError("");
         setRecaptchaToken(null);
         if (recaptchaRef.current) {
           recaptchaRef.current.reset();
@@ -193,8 +205,9 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
+          {/* 1. Name */}
           <div>
-            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Name / Alias</label>
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">{variant === "dev" ? "Name / Team" : "Name / Alias"}</label>
             <input
               name="name"
               value={formData.name}
@@ -204,6 +217,7 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
             />
           </div>
 
+          {/* 2. Email */}
           <div>
             <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Email Address</label>
             <input
@@ -216,35 +230,7 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
             />
           </div>
 
-          <div>
-            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Phone Number</label>
-            <div className="phone-wrap">
-              <PhoneInput
-                international
-                defaultCountry="MX"
-                value={formData.phone}
-                onChange={(value: string | undefined) => setFormData((current) => ({ ...current, phone: value || "" }))}
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Wallet Address or ENS (.eth)</label>
-            <input
-              name="wallet"
-              value={formData.wallet}
-              onChange={handleChange}
-              onBlur={() => validateWallet(formData.wallet)}
-              required
-              className={inputClassName}
-            />
-            {walletStatus === "resolving" ? <p className="mt-1 text-xs text-white/52">Resolving ENS...</p> : null}
-            {walletStatus === "valid" && resolvedAddress ? (
-              <p className="mt-1 text-xs text-white/52">Resolved to: {resolvedAddress}</p>
-            ) : null}
-            {walletError ? <p className="mt-1 text-xs text-white/44">{walletError}</p> : null}
-          </div>
-
+          {/* 3. Link (artwork or project) */}
           <div>
             <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">{content.linkLabel.replace(" *", "")}</label>
             {content.linkHint ? (
@@ -266,19 +252,69 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
             />
           </div>
 
+          {/* 4. Contact — phone or telegram toggle */}
           <div>
-            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Telegram (optional)</label>
-            <input
-              name="telegram"
-              value={formData.telegram}
-              onChange={handleChange}
-              placeholder="@username or https://t.me/username"
-              className={inputClassName}
-            />
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Contact Method</label>
+            <div className="mb-3 flex">
+              <button
+                type="button"
+                onClick={() => setContactMode("phone")}
+                className={`flex-1 border px-4 py-2.5 text-[10px] uppercase tracking-[0.24em] transition-colors duration-150 ${
+                  contactMode === "phone"
+                    ? "border-white/30 bg-white/8 text-white"
+                    : "border-white/8 bg-transparent text-white/32 hover:border-white/16 hover:text-white/52"
+                }`}
+              >
+                Phone
+              </button>
+              <button
+                type="button"
+                onClick={() => setContactMode("telegram")}
+                className={`flex-1 border border-l-0 px-4 py-2.5 text-[10px] uppercase tracking-[0.24em] transition-colors duration-150 ${
+                  contactMode === "telegram"
+                    ? "border-white/30 bg-white/8 text-white"
+                    : "border-white/8 bg-transparent text-white/32 hover:border-white/16 hover:text-white/52"
+                }`}
+              >
+                Telegram
+              </button>
+            </div>
+            {contactMode === "phone" ? (
+              <div className="phone-wrap">
+                <PhoneInput
+                  international
+                  defaultCountry="MX"
+                  value={formData.phone}
+                  onChange={(value: string | undefined) => setFormData((current) => ({ ...current, phone: value || "" }))}
+                />
+              </div>
+            ) : (
+              <input
+                name="telegram"
+                value={formData.telegram}
+                onChange={handleChange}
+                placeholder="@username or https://t.me/username"
+                className={inputClassName}
+              />
+            )}
           </div>
 
+          {/* 5. Optional — wallet */}
           <div>
-            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Instagram (optional)</label>
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Wallet Address or ENS (.eth) <span className="normal-case tracking-normal text-white/28">(optional)</span></label>
+            <input
+              name="wallet"
+              value={formData.wallet}
+              onChange={handleChange}
+              onBlur={() => validateWallet(formData.wallet)}
+              className={inputClassName}
+            />
+            {walletError ? <p className="mt-1 text-xs text-white/44">{walletError}</p> : null}
+          </div>
+
+          {/* 6. Optional — instagram */}
+          <div>
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Instagram <span className="normal-case tracking-normal text-white/28">(optional)</span></label>
             <input
               name="instagram"
               value={formData.instagram}
@@ -295,7 +331,7 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
             disabled={status === "loading"}
             className="w-full bg-white px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-black transition-transform duration-200 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {status === "loading" ? "Sending..." : content.submitLabel}
+            {content.submitLabel}
           </button>
         </form>
 

@@ -40,7 +40,7 @@ export default async function DocsPage() {
             Documentation Hub
           </div>
           <h1 className="mt-4 bg-gradient-to-b from-white via-[#e7edf5] to-[#95a4b8] bg-clip-text text-3xl font-semibold leading-tight tracking-[-0.04em] text-transparent sm:text-5xl">
-            SPECTRA Documents
+            SPECTRA<span className="copy-mark">©</span> Documents
           </h1>
           <p className="mt-4 max-w-3xl text-sm leading-6 text-white/70 sm:text-base">
             Read the local Markdown docs directly in the app, jump between sections from the menu, and move back to

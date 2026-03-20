@@ -218,7 +218,7 @@ function MarketsInner() {
           logo="/logo.png"
           logoAlt="spectra logo"
           items={magazineNavItems}
-          activeHref="/magazine"
+          activeHref="/magazine/markets"
           ease="power2.easeOut"
           baseColor="#000"
           pillColor="#fff"
@@ -293,12 +293,13 @@ function MarketsInner() {
         <div className="px-4 py-8 sm:px-6">
           <div className="mx-auto max-w-6xl">
 
-            {loading ? (
-              <Skeleton />
-            ) : !data ? (
-              <p className="text-[10px] uppercase tracking-[0.3em] text-white/24">
-                Unable to load market data. Try again later.
-              </p>
+            {loading || !data ? (
+              <div className="space-y-4">
+                <p className="text-[10px] uppercase tracking-[0.3em] text-white/24">
+                  Loading market
+                </p>
+                <Skeleton />
+              </div>
             ) : (
               <div className="space-y-6">
 

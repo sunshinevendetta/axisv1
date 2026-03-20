@@ -1,6 +1,8 @@
 "use client";
 import { useRef, useState } from 'react';
+import PillNav from "@/components/PillNav";
 import PrismBackground from '@/components/backgrounds/PrismBackground';
+import { publicNavItems } from "@/src/lib/navigation";
 
 const RECORD_SECONDS = 15;
 
@@ -205,6 +207,22 @@ export default function PurePrismRecord() {
       gap: 48,
       padding: '60px 40px',
     }}>
+      <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
+        <PillNav
+          logo="/logo.png"
+          logoAlt="spectra logo"
+          items={publicNavItems}
+          activeHref="/record-prism"
+          className="custom-nav"
+          ease="power2.easeOut"
+          baseColor="#000"
+          pillColor="#fff"
+          hoveredPillTextColor="#000"
+          pillTextColor="#000"
+          initialLoadAnimation={false}
+        />
+      </div>
+
       <div style={{
         color: 'white',
         fontWeight: 800,
@@ -212,6 +230,7 @@ export default function PurePrismRecord() {
         letterSpacing: '0.2em',
         opacity: 0.5,
         textTransform: 'uppercase',
+        marginTop: 64,
       }}>
         Prismatic Burst — Export
       </div>

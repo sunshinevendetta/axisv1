@@ -104,6 +104,13 @@ export default function MembershipMint() {
   });
   const isSuccess = callsStatus?.status === "CONFIRMED";
   const txLoading = Boolean(callsId) && callsStatus?.status !== "CONFIRMED";
+  const collectPrice = process.env.NEXT_PUBLIC_COLLECT_PRICE_USD?.trim();
+  const numericPrice = collectPrice ? Number(collectPrice) : NaN;
+  const priceLabel = Number.isFinite(numericPrice)
+    ? numericPrice === 0
+      ? "Limited Edition"
+      : `$${numericPrice.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`
+    : "";
 
   const handleCollect = () => {
     sendCalls({
@@ -151,20 +158,14 @@ export default function MembershipMint() {
           Founder Access
         </div>
         <h2 className="mb-8 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-base font-black tracking-[-0.05em] text-transparent sm:text-lg lg:text-xl">
-          © SPECTRA FOUNDER MEMBERSHIP
+          SPECTRA<span className="copy-mark">©</span> FOUNDER MEMBERSHIP
         </h2>
 
         <div className="mx-auto mb-10 max-w-2xl space-y-4 text-sm leading-6 text-gray-300 sm:text-base sm:leading-7 lg:text-lg">
-          <p>© SPECTRA Founder Membership is a limited access key issued to early participants and contributors during the initial formation of the © SPECTRA ecosystem.</p>
-          <p>This membership represents presence at the origin point. It grants permanent recognition as a founding participant and early alignment with the © SPECTRA cultural system.</p>
-          <p>Founder Memberships are free, non-replicable, and limited in supply. They exist separately from future public memberships.</p>
+          <p>SPECTRA<span className="copy-mark">©</span> Founder Membership is a limited access key issued to early participants and contributors during the initial formation of the SPECTRA<span className="copy-mark">©</span> ecosystem.</p>
+          <p>This edition marks presence at the origin point and permanent recognition inside the SPECTRA<span className="copy-mark">©</span> cultural system.</p>
+          <p>LIMITED EDITION</p>
         </div>
-
-        {currentSupply !== undefined && (
-          <p className="mb-8 text-sm uppercase tracking-[0.25em] text-gray-400 sm:text-base">
-            Minted: {currentSupply.toString()} / 7777
-          </p>
-        )}
 
         <div className="mx-auto mb-12 w-full max-w-2xl">
           <div className="relative overflow-hidden rounded-[28px] border border-white/12 bg-gradient-to-br from-black via-gray-950 to-black p-5 shadow-[0_20px_80px_rgba(0,0,0,0.4)] sm:p-8">
@@ -173,16 +174,14 @@ export default function MembershipMint() {
               <Membership3D />
             </div>
             <div className="mt-6 text-center sm:mt-8">
-              <p className="text-base font-semibold text-white sm:text-xl lg:text-3xl">© SPECTRA Founder Membership</p>
+              <p className="text-base font-semibold text-white sm:text-xl lg:text-3xl">SPECTRA<span className="copy-mark">©</span> Founder Membership</p>
               <p className="mt-2 text-xs uppercase tracking-[0.2em] text-gray-500 sm:text-sm">Origin-Level · Limited Edition</p>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col items-center gap-8">
-          <div className="rounded-2xl border border-white/12 bg-white/8 px-10 py-4 text-sm font-bold text-transparent sm:px-16 sm:py-6 sm:text-base">
-            Loading...
-          </div>
+          <div className="h-16 w-full max-w-sm animate-pulse rounded-2xl border border-white/12 bg-white/8" />
         </div>
       </div>
     );
@@ -194,20 +193,14 @@ export default function MembershipMint() {
         Founder Access
       </div>
       <h2 className="mb-8 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-base font-black tracking-[-0.05em] text-transparent sm:text-lg lg:text-xl">
-        © SPECTRA FOUNDER MEMBERSHIP
+        SPECTRA<span className="copy-mark">©</span> FOUNDER MEMBERSHIP
       </h2>
 
       <div className="mx-auto mb-10 max-w-2xl space-y-4 text-sm leading-6 text-gray-300 sm:text-base sm:leading-7 lg:text-lg">
-        <p>© SPECTRA Founder Membership is a limited access key issued to early participants and contributors during the initial formation of the © SPECTRA ecosystem.</p>
-        <p>This membership represents presence at the origin point. It grants permanent recognition as a founding participant and early alignment with the © SPECTRA cultural system.</p>
-        <p>Founder Memberships are free, non-replicable, and limited in supply. They exist separately from future public memberships.</p>
+        <p>SPECTRA<span className="copy-mark">©</span> Founder Membership is a limited access key issued to early participants and contributors during the initial formation of the SPECTRA<span className="copy-mark">©</span> ecosystem.</p>
+        <p>This edition marks presence at the origin point and permanent recognition inside the SPECTRA<span className="copy-mark">©</span> cultural system.</p>
+        <p>Limited Edition</p>
       </div>
-
-      {currentSupply !== undefined && (
-        <p className="mb-8 text-sm uppercase tracking-[0.25em] text-gray-400 sm:text-base">
-          Minted: {currentSupply.toString()} / 7777
-        </p>
-      )}
 
       <div className="mx-auto mb-12 w-full max-w-2xl">
         <div className="relative overflow-hidden rounded-[28px] border border-white/12 bg-gradient-to-br from-black via-gray-950 to-black p-5 shadow-[0_20px_80px_rgba(0,0,0,0.4)] sm:p-8">
@@ -216,7 +209,7 @@ export default function MembershipMint() {
             <Membership3D />
           </div>
           <div className="mt-6 text-center sm:mt-8">
-            <p className="text-base font-semibold text-white sm:text-xl lg:text-3xl">© SPECTRA Founder Membership</p>
+            <p className="text-base font-semibold text-white sm:text-xl lg:text-3xl">SPECTRA<span className="copy-mark">©</span> Founder Membership</p>
             <p className="mt-2 text-xs uppercase tracking-[0.2em] text-gray-500 sm:text-sm">Origin-Level · Limited Edition</p>
           </div>
         </div>
@@ -238,11 +231,7 @@ export default function MembershipMint() {
         </div>
       ) : (
         <div className="space-y-8">
-          <div className="flex flex-col items-center justify-center gap-4 text-center sm:flex-row sm:gap-6">
-            <p className="text-sm font-medium text-gray-300 sm:text-base">
-              Connected: <span className="font-mono text-white">{address?.slice(0, 6)}...{address?.slice(-4)}</span>
-            </p>
-
+          <div className="flex justify-center">
             <button
               onClick={() => disconnect()}
               className="rounded-xl border border-[#cfd8e8]/35 bg-[linear-gradient(135deg,rgba(226,232,240,0.18),rgba(125,154,188,0.14))] px-5 py-2 text-xs font-medium text-white backdrop-blur-xl transition-all hover:border-[#dbe4f2]/50 hover:bg-[linear-gradient(135deg,rgba(235,241,248,0.24),rgba(138,166,198,0.18))] sm:text-sm"
@@ -257,12 +246,10 @@ export default function MembershipMint() {
               disabled={isMintDisabled}
               className="mx-auto block w-full max-w-sm rounded-2xl bg-white px-6 py-4 text-sm font-black text-black shadow-lg shadow-white/20 transition-all duration-300 hover:scale-[1.02] hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
             >
-              {writePending || txLoading ? "Collecting..." : "Collect Founder Membership"}
+              {writePending || txLoading ? "processing" : "collect now"}
             </button>
           ) : (
-            <p className="text-lg font-black tracking-wide text-[#d7e3f3] sm:text-xl">
-              Origin Confirmed ✅
-            </p>
+            <div className="h-12" aria-hidden="true" />
           )}
         </div>
       )}
