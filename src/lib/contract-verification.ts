@@ -40,7 +40,7 @@ function cleanExplorerMessage(value: string | undefined, fallback: string) {
   if (raw.startsWith("<!DOCTYPE") || raw.startsWith("<html")) {
     return fallback;
   }
-  return raw.replace(/\s+/g, " ").slice(0, 240);
+  return raw.replace(/\s+/g, " ").slice(0, 1200);
 }
 
 function parseUrlCandidate(value: string | undefined) {
@@ -124,6 +124,16 @@ function toAbiValues(params: readonly AbiParameter[], values: unknown[]) {
 }
 
 function coerceAbiValue(param: AbiParameter, value: unknown): unknown {
+  if (
+    value &&
+    typeof value === "object" &&
+    "__type" in value &&
+    "value" in value &&
+    (value as { __type?: string }).__type === "bigint"
+  ) {
+    return coerceAbiValue(param, (value as { value: string }).value);
+  }
+
   if (param.type.endsWith("[]")) {
     const innerType = param.type.slice(0, -2);
     if (!Array.isArray(value)) {

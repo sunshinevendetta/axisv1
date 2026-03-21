@@ -16,7 +16,9 @@
     "contracts:mint:owner-access": "hardhat run scripts/mintOwnerAccess1155.ts",
     "contracts:bootstrap:owner-access": "hardhat run scripts/bootstrapOwnerAccess1155.ts",
     "contracts:revoke:owner-access": "hardhat run scripts/revokeOwnerAccess1155.ts",
-    "contracts:roles:owner-access": "hardhat run scripts/manageOwnerAccessRoles.ts"
+    "contracts:roles:owner-access": "hardhat run scripts/manageOwnerAccessRoles.ts",
+    "env:sync": "hardhat run scripts/applyDeployments.ts",
+    "artists:scrape": "tsx tools/artist-scraper/scraper.ts"
   },
   "dependencies": {
     "@base-org/account": "^2.5.2",

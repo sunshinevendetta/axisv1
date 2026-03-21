@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModelViewer from "@/components/arapp/ModelViewer";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import { type ARAppDrop, type ARAppDropStatus } from "@/src/lib/arapp-catalog";
@@ -35,15 +35,35 @@ function connectorLabel(id: string, name: string) {
   return name || "Connect Wallet";
 }
 
-type ViewMode = "image" | "3d";
+type ViewMode = "image" | "model" | "video";
 
 type Props = { drop: ARAppDrop };
+
+function detectMediaKind(url: string) {
+  const normalized = url.split("?")[0].toLowerCase();
+  if (!normalized) return "none";
+  if (normalized.endsWith(".glb") || normalized.endsWith(".gltf")) return "model";
+  if (normalized.endsWith(".mp4") || normalized.endsWith(".webm") || normalized.endsWith(".mov") || normalized.endsWith(".m4v")) return "video";
+  return "other";
+}
 
 export default function ARAppProductPage({ drop }: Props) {
   const [quantity, setQuantity] = useState(1);
   const [viewMode, setViewMode] = useState<ViewMode>("image");
   const [status, setStatus] = useState<string>("");
   const [isPreparing, setIsPreparing] = useState(false);
+  const mediaKind = detectMediaKind(drop.model);
+  const hasSecondaryMedia = Boolean(drop.model);
+
+  useEffect(() => {
+    if (mediaKind === "video") {
+      setViewMode("video");
+    } else if (mediaKind === "model") {
+      setViewMode("model");
+    } else {
+      setViewMode("image");
+    }
+  }, [mediaKind]);
 
   const { address, chain, isConnected } = useAccount();
   const { connect, connectors, isPending } = useConnect();
@@ -117,17 +137,32 @@ export default function ARAppProductPage({ drop }: Props) {
               >
                 Image
               </button>
-              <button
-                type="button"
-                onClick={() => setViewMode("3d")}
-                className={`rounded-full border px-3.5 py-1.5 text-[10px] uppercase tracking-[0.24em] transition-colors ${
-                  viewMode === "3d"
-                    ? "border-white/20 bg-white text-black"
-                    : "border-white/10 bg-white/4 text-white/50 hover:text-white/80"
-                }`}
-              >
-                3D View
-              </button>
+              {mediaKind === "model" ? (
+                <button
+                  type="button"
+                  onClick={() => setViewMode("model")}
+                  className={`rounded-full border px-3.5 py-1.5 text-[10px] uppercase tracking-[0.24em] transition-colors ${
+                    viewMode === "model"
+                      ? "border-white/20 bg-white text-black"
+                      : "border-white/10 bg-white/4 text-white/50 hover:text-white/80"
+                  }`}
+                >
+                  3D View
+                </button>
+              ) : null}
+              {mediaKind === "video" ? (
+                <button
+                  type="button"
+                  onClick={() => setViewMode("video")}
+                  className={`rounded-full border px-3.5 py-1.5 text-[10px] uppercase tracking-[0.24em] transition-colors ${
+                    viewMode === "video"
+                      ? "border-white/20 bg-white text-black"
+                      : "border-white/10 bg-white/4 text-white/50 hover:text-white/80"
+                  }`}
+                >
+                  Video
+                </button>
+              ) : null}
               <div className="ml-auto">
                 <span className={`rounded-full border px-2.5 py-1 text-[10px] uppercase tracking-[0.22em] ${statusTone[drop.status]}`}>
                   {statusLabel[drop.status]}
@@ -137,7 +172,7 @@ export default function ARAppProductPage({ drop }: Props) {
 
             {/* Viewer area */}
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-black/40">
-              {viewMode === "image" ? (
+              {viewMode === "image" || !hasSecondaryMedia ? (
                 <>
                   <Image
                     src={drop.image}
@@ -148,13 +183,25 @@ export default function ARAppProductPage({ drop }: Props) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                 </>
-              ) : (
+              ) : viewMode === "video" && mediaKind === "video" ? (
+                <video
+                  src={drop.model}
+                  poster={drop.image}
+                  controls
+                  playsInline
+                  className="h-full w-full object-cover"
+                />
+              ) : viewMode === "model" && mediaKind === "model" ? (
                 <ModelViewer
                   src={drop.model}
                   poster={drop.image}
                   alt={drop.title}
                   className="h-full w-full"
                 />
+              ) : (
+                <div className="flex h-full items-center justify-center px-6 text-center text-sm text-white/52">
+                  Extra media is available for this artwork, but this file type is not previewable here yet.
+                </div>
               )}
             </div>
 

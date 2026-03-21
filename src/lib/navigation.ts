@@ -2,8 +2,7 @@ import type { PillNavItem } from "@/components/PillNav";
 import { EPISODE_CONFIG, arappCollectTokens } from "@/src/lib/arapp-collect";
 import { STORE_EPISODE_CONFIG, arappDrops } from "@/src/lib/arapp-catalog";
 
-// ─── Dynamic builders ─────────────────────────────────────────────────────────
-
+ 
 function buildStoreChildren(): PillNavItem[] {
   const items: PillNavItem[] = [{ label: "All Products", href: "/arapp" }];
   for (const ep of STORE_EPISODE_CONFIG) {
@@ -20,18 +19,10 @@ function buildCollectChildren(): PillNavItem[] {
   const items: PillNavItem[] = [{ label: "All Episodes", href: "/arapp/collect" }];
   for (const ep of EPISODE_CONFIG) {
     items.push({ label: ep.label, href: `/arapp/collect/${ep.slug}` });
-    const tokens = arappCollectTokens.filter((t) => ep.tokenIds.includes(t.tokenId));
-    for (const token of tokens) {
-      items.push({
-        label: token.metadata.name,
-        href: `/arapp/collect/${ep.slug}/${token.tokenId}`,
-      });
-    }
   }
   return items;
 }
 
-// ─── Nav items ────────────────────────────────────────────────────────────────
 
 const adminDashboardNavItem: PillNavItem = {
   label: "Admin Dashboard",
@@ -39,6 +30,9 @@ const adminDashboardNavItem: PillNavItem = {
   children: [
     { label: "Episodes HQ", href: "/owner/episodes" },
     { label: "Contracts HQ", href: "/owner/contracts" },
+    { label: "Live Episode HQ", href: "/owner/contracts?section=episodes" },
+    { label: "Artwork JSON HQ", href: "/owner/contracts?section=collectibles" },
+    { label: "Artist HQ", href: "/owner/artists" },
     { label: "Session Secret HQ", href: "/tools/session-secret" },
   ],
 };
@@ -62,6 +56,7 @@ export const publicNavItems: PillNavItem[] = [
     href: "/magazine",
     children: [
       { label: "Journal", href: "/magazine" },
+      { label: "Artists", href: "/magazine/artists" },
       { label: "Mixtapes", href: "/magazine/mixtapes" },
     ],
   },
@@ -77,17 +72,17 @@ export const publicNavItems: PillNavItem[] = [
     href: "/arapp/collect",
     children: buildCollectChildren(),
   },
-  // Hidden for public upload:
-  // {
-  //   label: "docs",
-  //   href: "/docs",
-  //   children: [
-  //     { label: "Documents", href: "/docs" },
-  //     { label: "Diagrams", href: "/docs/diagrams" },
-  //     { label: "Episode Schema", href: "/docs/episode-description-schema" },
-  //   ],
-  // },
-  // adminDashboardNavItem,
+  
+   {
+     label: "docs",
+     href: "/docs",
+     children: [
+       { label: "Documents", href: "/docs" },
+       { label: "Diagrams", href: "/docs/diagrams" },
+       { label: "Episode Schema", href: "/docs/episode-description-schema" },
+     ],
+   },
+   // adminDashboardNavItem,
 ];
 
 export const homeNavItems = publicNavItems;

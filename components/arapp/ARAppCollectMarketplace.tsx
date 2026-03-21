@@ -7,72 +7,13 @@ import {
   useAccount,
   useConnect,
   useDisconnect,
-  useWriteContract,
-  useWaitForTransactionReceipt,
-  useReadContract,
 } from "wagmi";
 import { base } from "wagmi/chains";
-import { getARAppCollectDrops, type ARAppCollectDrop, type ARAppCollectStatus } from "@/src/lib/arapp-collect";
-
-const COLLECT_CONTRACT =
-  (process.env.NEXT_PUBLIC_COLLECT_CONTRACT_ADDRESS ||
-    "0x0000000000000000000000000000000000000000") as `0x${string}`;
-
-const COLLECT_ABI = [
-  {
-    inputs: [
-      { internalType: "address", name: "to", type: "address" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" },
-      { internalType: "uint256", name: "amount", type: "uint256" },
-      { internalType: "bytes", name: "data", type: "bytes" },
-    ],
-    name: "mint",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "account", type: "address" },
-      { internalType: "uint256", name: "id", type: "uint256" },
-    ],
-    name: "balanceOf",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-] as const;
-
-const arappDrops = getARAppCollectDrops();
-
-// ─── Types ─────────────────────────────────────────────────────────────────────
-type FilterKey = "all" | "live" | "member-access" | "coming-soon" | "sold-out";
-
-const statusLabel: Record<ARAppCollectStatus, string> = {
-  live: "Live",
-  "member-access": "Members",
-  "coming-soon": "Soon",
-  "sold-out": "Sold Out",
-};
-
-const statusTone: Record<ARAppCollectStatus, string> = {
-  live: "border-emerald-400/30 bg-emerald-400/15 text-emerald-300",
-  "member-access": "border-cyan-400/30 bg-cyan-400/15 text-cyan-300",
-  "coming-soon": "border-amber-400/30 bg-amber-400/15 text-amber-300",
-  "sold-out": "border-white/12 bg-white/6 text-white/42",
-};
-
-const filterOptions: { key: FilterKey; label: string }[] = [
-  { key: "all", label: "All" },
-  { key: "live", label: "Live" },
-  { key: "member-access", label: "Members" },
-  { key: "coming-soon", label: "Soon" },
-  { key: "sold-out", label: "Sold Out" },
-];
-
-function isClaimable(drop: ARAppCollectDrop) {
-  return drop.status === "live" || drop.status === "member-access";
-}
+import {
+  EPISODE_CONFIG,
+  arappCollectCollection,
+  getDropsByEpisode,
+} from "@/src/lib/arapp-collect";
 
 function shortAddress(v: string | undefined) {
   if (!v) return "Not connected";
@@ -86,78 +27,8 @@ function connectorLabel(id: string, name: string) {
   return name || "Connect Wallet";
 }
 
-// ─── Per-drop claim button (needs its own hook calls) ────────────────────────
-function ClaimButton({ drop }: { drop: ARAppCollectDrop }) {
-  const { address, isConnected } = useAccount();
-  const tokenId = BigInt(drop.tokenId);
-  const canClaim = isClaimable(drop);
-
-  const { data: balance } = useReadContract({
-    address: COLLECT_CONTRACT,
-    abi: COLLECT_ABI,
-    functionName: "balanceOf",
-    args: address ? [address, tokenId] : undefined,
-    chainId: base.id,
-    query: { enabled: !!address },
-  });
-
-  const alreadyClaimed = balance !== undefined && balance > 0n;
-
-  const { writeContract, data: hash, isPending: writing } = useWriteContract();
-  const { isLoading: confirming, isSuccess } = useWaitForTransactionReceipt({ hash });
-
-  const claimed = alreadyClaimed || isSuccess;
-
-  function handleClaim() {
-    if (!address || !canClaim || claimed) return;
-    writeContract({
-      address: COLLECT_CONTRACT,
-      abi: COLLECT_ABI,
-      functionName: "mint",
-      args: [address, tokenId, 1n, "0x"],
-      chainId: base.id,
-    });
-  }
-
-  if (!canClaim) {
-    return (
-      <div className={`w-full rounded-xl border border-white/8 bg-white/4 py-2.5 text-center text-[10px] uppercase tracking-[0.26em] text-white/28`}>
-        {drop.status === "sold-out" ? "Sold Out" : "Coming Soon"}
-      </div>
-    );
-  }
-
-  if (!isConnected) {
-    return (
-      <div className="w-full rounded-xl border border-white/10 bg-white/4 py-2.5 text-center text-[10px] uppercase tracking-[0.26em] text-white/42">
-        Connect to Claim
-      </div>
-    );
-  }
-
-  if (claimed) {
-    return (
-      <div className="w-full rounded-xl border border-emerald-400/20 bg-emerald-400/8 py-2.5 text-center text-[10px] uppercase tracking-[0.26em] text-emerald-300">
-        Claimed ✓
-      </div>
-    );
-  }
-
-  return (
-    <button
-      type="button"
-      onClick={handleClaim}
-      disabled={writing || confirming}
-      className="w-full rounded-xl border border-white/16 bg-white py-2.5 text-[10px] uppercase tracking-[0.26em] text-black transition-opacity hover:opacity-90 disabled:opacity-40"
-    >
-      {writing ? "Confirm in wallet…" : confirming ? "Claiming…" : drop.status === "member-access" ? "Claim Access" : "Claim Free"}
-    </button>
-  );
-}
-
 // ─── Main component ────────────────────────────────────────────────────────────
 export default function ARAppCollectMarketplace() {
-  const [filter, setFilter] = useState<FilterKey>("all");
   const [walletOpen, setWalletOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -180,9 +51,17 @@ export default function ARAppCollectMarketplace() {
     [connectors, preferredConnector],
   );
 
-  const visibleDrops = useMemo(
-    () => (filter === "all" ? arappDrops : arappDrops.filter((d) => d.status === filter)),
-    [filter],
+  const episodeCards = useMemo(
+    () =>
+      EPISODE_CONFIG.map((episode) => {
+        const drops = getDropsByEpisode(episode.slug);
+        return {
+          ...episode,
+          artworkCount: drops.length,
+          previewImage: drops[0]?.image ?? "/soon.jpg",
+        };
+      }),
+    [],
   );
 
   return (
@@ -192,21 +71,21 @@ export default function ARAppCollectMarketplace() {
       <div className="border-b border-white/8 bg-[#040406]/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 pb-3 pt-24 sm:px-6 sm:pt-28">
           <div>
-            <div className="text-[9px] uppercase tracking-[0.3em] text-white/36">Episode Next · Free Claim</div>
+            <div className="text-[9px] uppercase tracking-[0.3em] text-white/36">{arappCollectCollection.eyebrow}</div>
             <h1 className="mt-0.5 text-sm font-semibold tracking-[-0.02em] text-white">SPECTRA<span className="copy-mark">©</span> Collect</h1>
           </div>
           <div className="hidden gap-6 sm:flex">
             <div className="text-center">
-              <div className="text-[9px] uppercase tracking-[0.28em] text-white/36">Artworks</div>
-              <div className="mt-0.5 text-sm font-semibold text-white">{arappDrops.length}</div>
+              <div className="text-[9px] uppercase tracking-[0.28em] text-white/36">Episodes</div>
+              <div className="mt-0.5 text-sm font-semibold text-white">{episodeCards.length}</div>
             </div>
             <div className="text-center">
-              <div className="text-[9px] uppercase tracking-[0.28em] text-white/36">Claimable</div>
-              <div className="mt-0.5 text-sm font-semibold text-white">{arappDrops.filter((d) => d.status === "live").length}</div>
+              <div className="text-[9px] uppercase tracking-[0.28em] text-white/36">Configured</div>
+              <div className="mt-0.5 text-sm font-semibold text-white">{episodeCards.filter((episode) => episode.artworkCount > 0).length}</div>
             </div>
             <div className="text-center">
-              <div className="text-[9px] uppercase tracking-[0.28em] text-white/36">Gas</div>
-              <div className="mt-0.5 text-sm font-semibold text-white">Free</div>
+              <div className="text-[9px] uppercase tracking-[0.28em] text-white/36">Season</div>
+              <div className="mt-0.5 text-sm font-semibold text-white">{arappCollectCollection.season}</div>
             </div>
           </div>
           <button
@@ -218,91 +97,71 @@ export default function ARAppCollectMarketplace() {
           </button>
         </div>
 
-        {/* Filter bar */}
-        <div className="mx-auto flex max-w-7xl gap-1.5 overflow-x-auto px-4 pb-3 sm:px-6">
-          {filterOptions.map((o) => (
-            <button
-              key={o.key}
-              type="button"
-              onClick={() => setFilter(o.key)}
-              className={`shrink-0 rounded-full border px-3.5 py-1.5 text-[10px] uppercase tracking-[0.24em] transition-colors ${
-                filter === o.key
-                  ? "border-white/20 bg-white text-black"
-                  : "border-white/10 bg-white/4 text-white/54 hover:border-white/18 hover:text-white/80"
-              }`}
-            >
-              {o.label}
-            </button>
-          ))}
+        <div className="mx-auto max-w-7xl px-4 pb-4 sm:px-6">
+          <p className="max-w-3xl text-sm leading-6 text-white/54">
+            Open an episode first. Each episode page holds the artworks available to collect for that drop.
+          </p>
         </div>
       </div>
 
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
         <div className="flex gap-6 xl:items-start">
 
-          {/* Product grid */}
+          {/* Episode grid */}
           <div className="min-w-0 flex-1">
-            {visibleDrops.length === 0 ? (
+            {episodeCards.length === 0 ? (
               <div className="rounded-2xl border border-dashed border-white/10 py-16 text-center text-xs text-white/40">
-                No artworks match this filter.
+                No episodes found.
               </div>
             ) : (
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {visibleDrops.map((drop) => (
+                {episodeCards.map((episode) => (
                   <article
-                    key={drop.id}
+                    key={episode.slug}
                     className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] transition-colors hover:border-white/18"
                   >
-                    <Link href={`/arapp/collect/${drop.episodeSlug}/${drop.tokenId}`} className="relative block aspect-[4/5] overflow-hidden bg-black/40">
+                    <Link href={`/arapp/collect/${episode.slug}`} className="relative block aspect-[4/5] overflow-hidden bg-black/40">
                       <Image
-                        src={drop.image}
-                        alt={drop.title}
+                        src={episode.previewImage}
+                        alt={episode.label}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                      <div className="absolute left-3 top-3">
-                        <span className={`rounded-full border px-2.5 py-1 text-[9px] uppercase tracking-[0.22em] ${statusTone[drop.status]}`}>
-                          {statusLabel[drop.status]}
+                      <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
+                        <span className="rounded-full border border-white/16 bg-black/40 px-2.5 py-1 text-[9px] uppercase tracking-[0.22em] text-white/70 backdrop-blur-sm">
+                          {episode.label}
+                        </span>
+                        <span className={`rounded-full border px-2.5 py-1 text-[9px] uppercase tracking-[0.22em] ${episode.claimOpen ? "border-emerald-400/30 bg-emerald-400/15 text-emerald-300" : "border-white/12 bg-white/6 text-white/50"}`}>
+                          {episode.claimOpen ? "Claim Open" : "Preparing"}
                         </span>
                       </div>
-                      {drop.remaining > 0 && drop.remaining < 100 && (
-                        <div className="absolute bottom-3 left-3 text-[9px] uppercase tracking-[0.2em] text-white/60">
-                          {drop.remaining} left
-                        </div>
-                      )}
                       <div className="absolute bottom-3 right-3 rounded-full border border-white/16 bg-black/40 px-2.5 py-1 text-[9px] uppercase tracking-[0.2em] text-white/70 backdrop-blur-sm">
-                        Free
+                        {episode.artworkCount} artwork{episode.artworkCount === 1 ? "" : "s"}
                       </div>
                     </Link>
 
                     <div className="p-4">
-                      <div className="text-[9px] uppercase tracking-[0.28em] text-white/38">{drop.artist}</div>
-                      <Link href={`/arapp/collect/${drop.episodeSlug}/${drop.tokenId}`}>
+                      <div className="text-[9px] uppercase tracking-[0.28em] text-white/38">Episode collect room</div>
+                      <Link href={`/arapp/collect/${episode.slug}`}>
                         <h3 className="mt-1 text-[13px] font-medium leading-snug tracking-[-0.01em] text-white hover:text-white/80">
-                          {drop.title}
+                          {episode.label}
                         </h3>
                       </Link>
-                      <div className="mt-1 text-[11px] text-white/46">{drop.edition}</div>
-
-                      <div className="mt-2 flex items-center justify-between gap-2">
-                        <span className="text-sm font-semibold tracking-[-0.02em] text-white">Free</span>
-                        <Link
-                          href={`/arapp/collect/${drop.episodeSlug}/${drop.tokenId}`}
-                          className="text-[10px] uppercase tracking-[0.2em] text-white/44 hover:text-white/70"
-                        >
-                          Details →
-                        </Link>
+                      <div className="mt-1 text-[11px] text-white/46">
+                        {episode.artworkCount > 0 ? `${episode.artworkCount} artwork${episode.artworkCount === 1 ? "" : "s"} configured` : "No artworks synced yet"}
                       </div>
 
-                      <div className="mt-3">
-                        {isMounted ? (
-                          <ClaimButton drop={drop} />
-                        ) : (
-                          <div className="w-full rounded-xl border border-white/8 bg-white/4 py-2.5 text-center text-[10px] uppercase tracking-[0.26em] text-white/28">
-                            Loading…
-                          </div>
-                        )}
+                      <div className="mt-2 flex items-center justify-between gap-2">
+                        <span className="text-sm font-semibold tracking-[-0.02em] text-white">
+                          {episode.claimOpen ? "Live" : "Setup"}
+                        </span>
+                        <Link
+                          href={`/arapp/collect/${episode.slug}`}
+                          className="text-[10px] uppercase tracking-[0.2em] text-white/44 hover:text-white/70"
+                        >
+                          Open Episode →
+                        </Link>
                       </div>
                     </div>
                   </article>
@@ -376,21 +235,21 @@ export default function ARAppCollectMarketplace() {
 
               <div className="rounded-xl border border-white/6 bg-black/20 p-3 space-y-1.5 text-[10px] text-white/40">
                 <div className="flex justify-between">
+                  <span>Mode</span><span className="text-white/60">Episode first</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Episodes</span><span className="text-white/60">{episodeCards.length}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Configured</span><span className="text-white/60">{episodeCards.filter((episode) => episode.artworkCount > 0).length}</span>
+                </div>
+                <div className="flex justify-between">
                   <span>Network</span><span className="text-white/60">Base</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Claim price</span><span className="text-white/60">Free</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Gas</span><span className="text-white/60">Sponsored</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Standard</span><span className="text-white/60">ERC-1155</span>
                 </div>
               </div>
 
               <div className="rounded-xl border border-white/6 bg-black/20 px-3 py-2.5 text-[11px] leading-5 text-white/36">
-                Each artwork in this episode collection is free to claim for today only. Gas fees are sponsored.
+                Enter an episode first, then open the artwork cards inside that episode. NFC chips should point to those episode or token links.
               </div>
             </div>
           </aside>

@@ -6,13 +6,12 @@ import type { MagazineLang } from "@/components/magazine/types";
 import PillNav from "@/components/PillNav";
 import Footer from "@/components/Footer";
 import ArticleReader from "@/components/magazine/ArticleReader";
-import ArtistWorldPanel from "@/components/magazine/ArtistWorldPanel";
 import MagazineSlideshow from "@/components/magazine/MagazineSlideshow";
 import MagazineNav from "@/components/magazine/MagazineNav";
 import MagazineGrid from "@/components/magazine/MagazineGrid";
 import MagazineSidebar from "@/components/magazine/MagazineSidebar";
 import { useCryptoPrices } from "@/components/magazine/hooks/useCryptoPrices";
-import { findArtistWorldProfile } from "@/src/content/world-expansion";
+import { getArtistHref } from "@/src/content/artists";
 import { magazineNavItems } from "@/src/lib/navigation";
 import type { MagazineArticle } from "@/components/magazine/types";
 import rawData from "@/content/magazine.json";
@@ -31,14 +30,13 @@ export default function MagazinePage() {
   const [openSlug, setOpenSlug] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [lang, setLang] = useState<MagazineLang>("en");
-  const [openArtistName, setOpenArtistName] = useState<string | null>(null);
 
   const { prices, loading: pricesLoading } = useCryptoPrices();
 
   const openArticle = openSlug
     ? articles.find((a) => a.slug === openSlug) ?? null
     : null;
-  const openArtist = openArtistName ? findArtistWorldProfile(openArtistName) : null;
+  const openArtist = (artist: string) => router.push(getArtistHref(artist));
 
   // Keep featured article out of the slideshow (it's already prominent); use all 8 for rich cycling
   const slideshowArticles = useMemo(
@@ -81,7 +79,7 @@ export default function MagazinePage() {
               allArticles={articles}
               onBack={() => setOpenSlug(null)}
               onOpenArticle={setOpenSlug}
-              onOpenArtist={setOpenArtistName}
+              onOpenArtist={openArtist}
               lang={lang}
               onLangChange={setLang}
             />
@@ -123,6 +121,13 @@ export default function MagazinePage() {
                 </div>
                 <div className="hidden items-center gap-6 sm:flex">
                   <a
+                    href="/magazine/artists"
+                    className="text-[9px] uppercase tracking-[0.36em] text-white/28 transition-colors hover:text-white/55"
+                  >
+                    Artists ↗
+                  </a>
+                  <span className="h-3 w-px bg-white/12" />
+                  <a
                     href="/magazine/mixtapes"
                     className="text-[9px] uppercase tracking-[0.36em] text-white/28 transition-colors hover:text-white/55"
                   >
@@ -146,7 +151,7 @@ export default function MagazinePage() {
                     <MagazineGrid
                       articles={articles}
                       onOpenArticle={setOpenSlug}
-                      onOpenArtist={setOpenArtistName}
+                      onOpenArtist={openArtist}
                       contained
                       activeCategory={activeCategory}
                       onCategoryChange={setActiveCategory}
@@ -186,10 +191,6 @@ export default function MagazinePage() {
           </>
         )}
       </main>
-
-      {openArtist ? (
-        <ArtistWorldPanel artist={openArtist} onClose={() => setOpenArtistName(null)} />
-      ) : null}
 
       <Footer />
     </div>

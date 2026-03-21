@@ -2,7 +2,6 @@
 
 import dynamic from "next/dynamic";
 import { useState } from "react";
-import Link from "next/link";
 
 import AboutSection from "@/components/AboutSection";
 import EpisodesSection from "@/components/EpisodesSection";
@@ -13,7 +12,6 @@ import PillNav from "@/components/PillNav";
 import CountdownSection from "@/components/CountdownSection";
 import PageGradualBlur from "@/components/PageGradualBlur";
 import SubmitSection from "@/components/SubmitSection";
-import ArtistWorldPanel from "@/components/magazine/ArtistWorldPanel";
 
 import HomeFeaturedArtifactsSection from "@/components/home/HomeFeaturedArtifactsSection";
 import HomeMixtapesSection from "@/components/home/HomeMixtapesSection";
@@ -25,7 +23,7 @@ import HomeCollectSection from "@/components/home/HomeCollectSection";
 
 import { homeNavItems } from "@/src/lib/navigation";
 import { getUpcomingEpisodes } from "@/src/lib/episodes";
-import { artistWorldProfiles, findArtistWorldProfile } from "@/src/content/world-expansion";
+import { artistGenreIndex, artistTypeIndex, featuredArtistProfiles } from "@/src/content/artists";
 import { arappDrops } from "@/src/lib/arapp-catalog";
 
 import type { Mixtape } from "@/components/magazine/mixtapes/types";
@@ -53,9 +51,6 @@ const upcomingEpisodes = getUpcomingEpisodes().map((ep) => ({
 export default function Home() {
   const [activeMixtape, setActiveMixtape] = useState<Mixtape | null>(null);
   const [playerPlaying, setPlayerPlaying] = useState(false);
-  const [openArtistName, setOpenArtistName] = useState<string | null>(null);
-
-  const openArtist = openArtistName ? findArtistWorldProfile(openArtistName) : null;
 
   const handleTrackSelect = (mix: Mixtape) => {
     setActiveMixtape(mix);
@@ -129,8 +124,10 @@ export default function Home() {
 
         {/* ── 5. Artists ─────────────────────────────────────────────────── */}
         <HomeArtistsSection
-          artists={artistWorldProfiles}
-          onOpenArtist={setOpenArtistName}
+          artists={featuredArtistProfiles}
+          musicCount={artistTypeIndex.find((entry) => entry.slug === "music")?.count ?? 0}
+          visualCount={artistTypeIndex.find((entry) => entry.slug === "visual")?.count ?? 0}
+          genreLabels={artistGenreIndex.slice(0, 6).map((entry) => entry.label)}
         />
 
         {/* ── 6. Spaces ──────────────────────────────────────────────────── */}
@@ -173,11 +170,6 @@ export default function Home() {
       </main>
 
       <Footer />
-
-      {/* ── Artist world panel ─────────────────────────────────────────── */}
-      {openArtist && (
-        <ArtistWorldPanel artist={openArtist} onClose={() => setOpenArtistName(null)} />
-      )}
 
       {/* ── Persistent bottom player ───────────────────────────────────── */}
       <HomePersistentPlayer

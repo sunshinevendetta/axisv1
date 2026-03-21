@@ -56,3 +56,6 @@ cache/
 .env copy
 AGENTS.md
 AGENTS.md
+
+# Artist scraper — local tooling, never pushed
+tools/artist-scraper/

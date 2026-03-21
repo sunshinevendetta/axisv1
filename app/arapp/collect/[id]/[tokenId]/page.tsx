@@ -10,7 +10,7 @@ import {
   getARAppCollectTokenByTokenId,
   toARAppCollectDrop,
 } from "@/src/lib/arapp-collect";
-import { fetchTokenData, IS_CONTRACT_DEPLOYED } from "@/src/lib/arapp-collect-chain";
+import { IS_CONTRACT_DEPLOYED } from "@/src/lib/arapp-collect-chain";
 
 type Props = { params: Promise<{ id: string; tokenId: string }> };
 
@@ -40,25 +40,7 @@ export default async function CollectTokenPage({ params }: Props) {
   const localToken = getARAppCollectTokenByTokenId(tokenId);
   if (!localToken) notFound();
 
-  // Merge onchain metadata over local config
-  const { metadata: onchainMetadata, supply: onchainSupply } = await fetchTokenData(tokenId);
-
-  const drop = toARAppCollectDrop({
-    ...localToken,
-    metadata: onchainMetadata
-      ? {
-          ...localToken.metadata,
-          ...onchainMetadata,
-          attributes: onchainMetadata.attributes ?? localToken.metadata.attributes,
-          properties: {
-            ...(localToken.metadata.properties ?? {}),
-            ...(onchainMetadata.properties ?? {}),
-          },
-        }
-      : localToken.metadata,
-    // Onchain supply wins for remaining count
-    remaining: onchainSupply ?? localToken.remaining,
-  });
+  const drop = toARAppCollectDrop(localToken);
 
   return (
     <div className="min-h-screen bg-[#040406] text-white">

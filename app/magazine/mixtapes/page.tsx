@@ -3,14 +3,14 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import ArtistWorldPanel from "@/components/magazine/ArtistWorldPanel";
+import { useRouter } from "next/navigation";
 import PillNav from "@/components/PillNav";
 import { DEFAULT_HYDRA_CONTROLS, HYDRA_CONTROL_GROUPS } from "@/components/magazine/mixtapes/HydraBackground";
 import { magazineNavItems } from "@/src/lib/navigation";
 import type { Mixtape } from "@/components/magazine/mixtapes/types";
 import rawData from "@/content/mixtapes.json";
 import { useAllMetadata } from "@/components/magazine/mixtapes/hooks/useAllMetadata";
-import { findArtistWorldProfile } from "@/src/content/world-expansion";
+import { getArtistHref } from "@/src/content/artists";
 
 const MixtapeSelector = dynamic(
   () => import("@/components/magazine/mixtapes/MixtapeSelector"),
@@ -25,9 +25,9 @@ const MixtapePlayer = dynamic(
 const mixtapes = rawData as Mixtape[];
 
 export default function MixtapesPage() {
+  const router = useRouter();
   const [selected, setSelected] = useState(0);
   const [playing, setPlaying] = useState(false);
-  const [openArtistName, setOpenArtistName] = useState<string | null>(null);
   const [hydraControls, setHydraControls] = useState(DEFAULT_HYDRA_CONTROLS);
   const [showHydraControls, setShowHydraControls] = useState(false);
 
@@ -40,7 +40,7 @@ export default function MixtapesPage() {
   };
 
   const mix = mixtapes[selected];
-  const openArtist = openArtistName ? findArtistWorldProfile(openArtistName) : null;
+  const openArtist = (artist: string) => router.push(getArtistHref(artist));
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-black text-white">
@@ -178,7 +178,7 @@ export default function MixtapesPage() {
                 playing={playing}
                 onSelect={handleSelect}
                 metaMap={metaMap}
-                onOpenArtist={setOpenArtistName}
+                onOpenArtist={openArtist}
                 hydraControls={hydraControls}
               />
 
@@ -188,7 +188,7 @@ export default function MixtapesPage() {
                   mixtape={mix}
                   meta={metaMap[selected] ?? null}
                   onPlayStateChange={setPlaying}
-                  onOpenArtist={setOpenArtistName}
+                  onOpenArtist={openArtist}
                 />
               </div>
             </div>
@@ -225,9 +225,6 @@ export default function MixtapesPage() {
 
       </main>
 
-      {openArtist ? (
-        <ArtistWorldPanel artist={openArtist} onClose={() => setOpenArtistName(null)} />
-      ) : null}
     </div>
   );
 }

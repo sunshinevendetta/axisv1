@@ -5,13 +5,14 @@ import {
   useAccount,
   useChainId,
   useSwitchChain,
-  useWriteContract,
-  useWaitForTransactionReceipt,
+  useSendCalls,
+  useCallsStatus,
   useConnect,
   useConnectors,
   useDisconnect,
   useReadContract,
 } from 'wagmi';
+import { encodeFunctionData } from 'viem';
 import SpectraFormABI from '@/src/abi/SpectraForm.json';
 import { base } from 'wagmi/chains';
 import { SPECTRAFORM_ADDRESS } from '@/src/lib/contract';
@@ -57,19 +58,15 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
   const [showOptionalFields, setShowOptionalFields] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const {
-    writeContract,
-    data: hash,
-    isPending: writePending,
-    error: writeError,
-    reset: resetWrite,
-  } = useWriteContract();
+  const paymasterUrl = process.env.NEXT_PUBLIC_PAYMASTER_URL;
 
-  const {
-    isLoading: txLoading,
-    isSuccess: txSuccess,
-    error: txError,
-  } = useWaitForTransactionReceipt({ hash });
+  const { sendCalls, data: callsId, isPending: writePending, reset: resetWrite } = useSendCalls();
+  const { data: callsStatus } = useCallsStatus({
+    id: callsId as string,
+    query: { enabled: Boolean(callsId), refetchInterval: (q) => (q.state.data?.status === "CONFIRMED" ? false : 1000) },
+  });
+  const txLoading = Boolean(callsId) && callsStatus?.status !== "CONFIRMED";
+  const txSuccess = callsStatus?.status === "CONFIRMED";
 
   const { data: alreadyMinted, isLoading: isCheckingMinted } = useReadContract({
     address: MEMBERSHIP_ADDRESS,
@@ -90,11 +87,11 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
   }, [isConnected, chainId, switchChain]);
 
   useEffect(() => {
-    if (txSuccess && hash) {
+    if (txSuccess && callsId) {
       setFormSubmitted(true);
       onSuccess?.();
     }
-  }, [txSuccess, hash, onSuccess]);
+  }, [txSuccess, callsId, onSuccess]);
 
   useEffect(() => {
     if (!isConnected) {
@@ -121,18 +118,22 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
       return;
     }
 
-    writeContract({
-      address: SPECTRAFORM_ADDRESS,
-      abi: SpectraFormABI,
-      functionName: 'submit',
-      args: [
-        encryptData(name),
-        encryptData(phone),
-        encryptData(instagram),
-        encryptData(x),
-        encryptData(tiktok),
-      ],
-      dataSuffix: BASE_BUILDER_DATA_SUFFIX,
+    sendCalls({
+      calls: [{
+        to: SPECTRAFORM_ADDRESS,
+        data: encodeFunctionData({
+          abi: SpectraFormABI as Parameters<typeof encodeFunctionData>[0]['abi'],
+          functionName: 'submit',
+          args: [
+            encryptData(name),
+            encryptData(phone),
+            encryptData(instagram),
+            encryptData(x),
+            encryptData(tiktok),
+          ],
+        }),
+      }],
+      capabilities: paymasterUrl ? { paymasterService: { url: paymasterUrl } } : undefined,
     });
   };
 
@@ -333,13 +334,11 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
               </div>
             )}
 
-            {(writeError || txError) && (
+            {callsStatus?.status === "FAILED" && (
               <div className="rounded-3xl border border-[#cfd8e8]/25 bg-[linear-gradient(145deg,rgba(226,232,240,0.12),rgba(125,154,188,0.08))] px-6 py-8 text-center backdrop-blur-xl">
                 <p className="mb-3 text-2xl font-bold text-[#dbe4f2]">Transaction failed</p>
                 <p className="mx-auto mb-6 max-w-lg text-sm text-[#c8d4e5]">
-                  {writeError?.message?.includes('rejected') || writeError?.message?.includes('denied')
-                    ? 'You rejected the transaction.'
-                    : 'Something went wrong while recording your profile. Please try again.'}
+                  Something went wrong while recording your profile. Please try again.
                 </p>
                 <button
                   onClick={() => resetWrite()}

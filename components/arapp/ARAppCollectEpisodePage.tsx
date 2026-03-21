@@ -2,19 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { useAccount, useConnect, useDisconnect, useReadContract, useWriteContract, useWaitForTransactionReceipt } from "wagmi";
-import { base } from "wagmi/chains";
-import type { EpisodeConfig, ARAppCollectToken, ARAppCollectMetadata, ARAppCollectStatus } from "@/src/lib/arapp-collect";
+import { useAccount, useCallsStatus, useConnect, useDisconnect, useReadContract, useReadContracts, useSendCalls } from "wagmi";
+import { encodeFunctionData } from "viem";
 
-const CONTRACT_ADDRESS = (
-  process.env.NEXT_PUBLIC_COLLECT_CONTRACT_ADDRESS ??
-  "0x0000000000000000000000000000000000000000"
-) as `0x${string}`;
+const PAYMASTER_URL = process.env.NEXT_PUBLIC_PAYMASTER_URL;
+import { base, baseSepolia } from "wagmi/chains";
+import type { EpisodeConfig, ARAppCollectToken, ARAppCollectMetadata, ARAppCollectStatus } from "@/src/lib/arapp-collect";
 
 const COLLECT_ABI = [
   {
-    inputs: [{ internalType: "address", name: "to", type: "address" }, { internalType: "uint256", name: "tokenId", type: "uint256" }, { internalType: "uint256", name: "amount", type: "uint256" }, { internalType: "bytes", name: "data", type: "bytes" }],
+    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
     name: "mint", outputs: [], stateMutability: "nonpayable", type: "function",
   },
   {
@@ -37,27 +34,52 @@ const statusLabel: Record<ARAppCollectStatus, string> = {
   "sold-out": "Sold Out",
 };
 
+function connectorLabel(id: string, name: string) {
+  if (id === "coinbaseWalletSDK" || id === "coinbaseWallet" || id === "coinbaseSmartWallet") return "Coinbase / Base Smart Wallet";
+  if (id === "walletConnect") return "WalletConnect";
+  if (id === "injected") return "Browser Wallet";
+  return name || "Connect Wallet";
+}
+
 function attr(metadata: ARAppCollectMetadata, key: string): string {
   return metadata.attributes.find((a) => a.trait_type === key)?.value ?? "—";
 }
 
-function ClaimButton({ tokenId, status }: { tokenId: number; status: ARAppCollectStatus }) {
+function ClaimButton({
+  contractAddress,
+  chainId,
+  tokenId,
+  status,
+}: {
+  contractAddress?: string;
+  chainId?: number;
+  tokenId: number;
+  status: ARAppCollectStatus;
+}) {
   const { address, isConnected } = useAccount();
   const canClaim = status === "live" || status === "member-access";
+  const collectContract = (contractAddress || "0x0000000000000000000000000000000000000000") as `0x${string}`;
+  const targetChainId = chainId === baseSepolia.id ? baseSepolia.id : base.id;
 
   const { data: balance } = useReadContract({
-    address: CONTRACT_ADDRESS,
+    address: collectContract,
     abi: COLLECT_ABI,
     functionName: "balanceOf",
     args: address ? [address, BigInt(tokenId)] : undefined,
-    chainId: base.id,
-    query: { enabled: !!address },
+    chainId: targetChainId,
+    query: { enabled: !!address && Boolean(contractAddress) },
   });
 
-  const claimed = balance !== undefined && balance > 0n;
-  const { writeContract, data: hash, isPending: writing } = useWriteContract();
-  const { isLoading: confirming, isSuccess } = useWaitForTransactionReceipt({ hash });
-  const done = claimed || isSuccess;
+  const alreadyClaimed = balance !== undefined && balance > 0n;
+
+  const { sendCalls, data: callsId, isPending: writing } = useSendCalls();
+  const { data: callsStatus } = useCallsStatus({
+    id: callsId as string,
+    query: { enabled: Boolean(callsId), refetchInterval: (q) => (q.state.data?.status === "CONFIRMED" ? false : 1000) },
+  });
+  const isSuccess = callsStatus?.status === "CONFIRMED";
+  const confirming = Boolean(callsId) && callsStatus?.status !== "CONFIRMED";
+  const done = alreadyClaimed || isSuccess;
 
   if (!canClaim) return (
     <div className="w-full rounded-xl border border-white/8 bg-white/4 py-2.5 text-center text-[10px] uppercase tracking-[0.26em] text-white/28">
@@ -80,8 +102,11 @@ function ClaimButton({ tokenId, status }: { tokenId: number; status: ARAppCollec
   return (
     <button
       type="button"
-      onClick={() => address && writeContract({ address: CONTRACT_ADDRESS, abi: COLLECT_ABI, functionName: "mint", args: [address, BigInt(tokenId), 1n, "0x"], chainId: base.id })}
-      disabled={writing || confirming}
+      onClick={() => address && sendCalls({
+        calls: [{ to: collectContract, data: encodeFunctionData({ abi: COLLECT_ABI, functionName: "mint", args: [BigInt(tokenId)] }), gas: 250000n }],
+        capabilities: PAYMASTER_URL ? { paymasterService: { url: PAYMASTER_URL } } : undefined,
+      })}
+      disabled={writing || confirming || !contractAddress}
       className="w-full rounded-xl border border-white/16 bg-white py-2.5 text-[10px] uppercase tracking-[0.26em] text-black transition-opacity hover:opacity-90 disabled:opacity-40"
     >
       {writing ? "Confirm in wallet…" : confirming ? "Claiming…" : status === "member-access" ? "Claim Access" : "Claim Free"}
@@ -89,20 +114,13 @@ function ClaimButton({ tokenId, status }: { tokenId: number; status: ARAppCollec
   );
 }
 
-type TokenRow = {
-  token: ARAppCollectToken;
-  onchainMetadata: ARAppCollectMetadata | null;
-  onchainSupply: number | null;
-};
-
 type Props = {
   episode: EpisodeConfig;
-  tokens: TokenRow[];
+  tokens: ARAppCollectToken[];
   isContractDeployed: boolean;
 };
 
 export default function ARAppCollectEpisodePage({ episode, tokens, isContractDeployed }: Props) {
-  const [mounted, setMounted] = useState(false);
   const { address, chain, isConnected } = useAccount();
   const { connect, connectors, isPending } = useConnect();
   const { disconnect } = useDisconnect();
@@ -110,13 +128,27 @@ export default function ARAppCollectEpisodePage({ episode, tokens, isContractDep
   const preferred = connectors.find(
     (c) => c.id === "coinbaseWalletSDK" || c.id === "coinbaseWallet" || c.id === "coinbaseSmartWallet",
   ) ?? connectors[0];
+  const alternates = connectors.filter((connector) => connector.id !== preferred?.id);
+  const collectContract = (episode.contractAddress || "0x0000000000000000000000000000000000000000") as `0x${string}`;
+  const episodeChainId = episode.chainId === baseSepolia.id ? baseSepolia.id : base.id;
 
-  // Use onchain metadata when available, fall back to local config
-  const resolvedTokens = tokens.map(({ token, onchainMetadata, onchainSupply }) => ({
-    token,
-    metadata: onchainMetadata ?? token.metadata,
-    remaining: onchainSupply ?? token.remaining,
-  }));
+  const { data: tokenBalances } = useReadContracts({
+    contracts: address
+      ? tokens.map((token) => ({
+          address: collectContract,
+          abi: COLLECT_ABI,
+          functionName: "balanceOf" as const,
+          args: [address, BigInt(token.tokenId)] as const,
+          chainId: episodeChainId,
+        }))
+      : [],
+    query: { enabled: Boolean(address) && Boolean(episode.contractAddress) && tokens.length > 0 },
+  });
+
+  const collectedTokens = tokens.filter((token, index) => {
+    const balance = tokenBalances?.[index]?.result;
+    return typeof balance === "bigint" && balance > 0n;
+  });
 
   return (
     <main className="min-h-screen bg-[#040406] text-white">
@@ -130,24 +162,27 @@ export default function ARAppCollectEpisodePage({ episode, tokens, isContractDep
               <span className="text-white/50">{episode.label}</span>
             </nav>
             <h1 className="mt-1 text-sm font-semibold tracking-[-0.02em] text-white">{episode.label} Collection</h1>
+            <p className="mt-2 max-w-xl text-xs leading-5 text-white/46">
+              This room is for already captured artworks in this wallet. NFC taps should open a specific artwork claim page directly.
+            </p>
           </div>
           <div className="hidden gap-5 sm:flex">
             <div className="text-center">
               <div className="text-[9px] uppercase tracking-[0.28em] text-white/36">Artworks</div>
-              <div className="mt-0.5 text-sm font-semibold text-white">{resolvedTokens.length}</div>
+              <div className="mt-0.5 text-sm font-semibold text-white">{collectedTokens.length}</div>
             </div>
-            <div className="text-center">
-              <div className="text-[9px] uppercase tracking-[0.28em] text-white/36">Chain</div>
-              <div className="mt-0.5 text-sm font-semibold text-white">
-                {isContractDeployed ? "Base" : "—"}
+              <div className="text-center">
+                <div className="text-[9px] uppercase tracking-[0.28em] text-white/36">Chain</div>
+                <div className="mt-0.5 text-sm font-semibold text-white">
+                {episodeChainId === baseSepolia.id ? "Base Sepolia" : "Base"}
+                </div>
               </div>
-            </div>
             <div className="text-center">
               <div className="text-[9px] uppercase tracking-[0.28em] text-white/36">Gas</div>
               <div className="mt-0.5 text-sm font-semibold text-white">Free</div>
             </div>
           </div>
-          {!isContractDeployed && (
+          {!episode.contractAddress && (
             <div className="rounded-full border border-amber-400/20 bg-amber-400/8 px-3 py-1 text-[9px] uppercase tracking-[0.22em] text-amber-300">
               Preview — contract pending
             </div>
@@ -160,13 +195,20 @@ export default function ARAppCollectEpisodePage({ episode, tokens, isContractDep
 
           {/* Artwork grid */}
           <div className="min-w-0 flex-1">
-            {resolvedTokens.length === 0 ? (
+            {!isConnected ? (
               <div className="rounded-2xl border border-dashed border-white/10 py-16 text-center text-xs text-white/40">
-                No artworks found for this episode.
+                Connect the wallet that claimed this episode to see captured artworks here.
+              </div>
+            ) : collectedTokens.length === 0 ? (
+              <div className="rounded-2xl border border-dashed border-white/10 py-16 text-center text-xs text-white/40">
+                No captured artworks in this wallet yet. Tap an NFC chip or open a direct artwork claim link to mint one.
               </div>
             ) : (
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {resolvedTokens.map(({ token, metadata, remaining }) => (
+                {collectedTokens.map((token) => {
+                  const metadata = token.metadata;
+                  const remaining = token.remaining;
+                  return (
                   <article
                     key={token.tokenId}
                     className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] transition-colors hover:border-white/18"
@@ -217,11 +259,12 @@ export default function ARAppCollectEpisodePage({ episode, tokens, isContractDep
                       </div>
 
                       <div className="mt-3">
-                        <ClaimButton tokenId={token.tokenId} status={token.status} />
+                        <ClaimButton contractAddress={episode.contractAddress} chainId={episode.chainId} tokenId={token.tokenId} status={token.status} />
                       </div>
                     </div>
                   </article>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
@@ -251,25 +294,38 @@ export default function ARAppCollectEpisodePage({ episode, tokens, isContractDep
                   </button>
                 </div>
               ) : preferred ? (
-                <button
-                  type="button"
-                  onClick={() => connect({ connector: preferred, chainId: base.id })}
-                  disabled={isPending}
-                  className="w-full rounded-xl border border-white/16 bg-white px-3 py-2.5 text-[10px] uppercase tracking-[0.24em] text-black disabled:opacity-40"
-                >
-                  {isPending ? "Connecting…" : "Coinbase / Base Smart Wallet"}
-                </button>
+                <div className="space-y-2">
+                  <button
+                    type="button"
+                    onClick={() => connect({ connector: preferred, chainId: episodeChainId })}
+                    disabled={isPending}
+                    className="w-full rounded-xl border border-white/16 bg-white px-3 py-2.5 text-[10px] uppercase tracking-[0.24em] text-black disabled:opacity-40"
+                  >
+                    {isPending ? "Connecting…" : connectorLabel(preferred.id, preferred.name)}
+                  </button>
+                  {alternates.map((connector) => (
+                    <button
+                      key={connector.id}
+                      type="button"
+                      onClick={() => connect({ connector, chainId: episodeChainId })}
+                      disabled={isPending}
+                      className="w-full rounded-xl border border-white/8 bg-white/4 px-3 py-2 text-[10px] uppercase tracking-[0.22em] text-white/48 disabled:opacity-40"
+                    >
+                      {connectorLabel(connector.id, connector.name)}
+                    </button>
+                  ))}
+                </div>
               ) : null}
 
               <div className="rounded-xl border border-white/6 bg-black/20 p-3 space-y-1.5 text-[10px] text-white/40">
-                <div className="flex justify-between"><span>Network</span><span className="text-white/60">Base</span></div>
+                <div className="flex justify-between"><span>Network</span><span className="text-white/60">{episodeChainId === baseSepolia.id ? "Base Sepolia" : "Base"}</span></div>
                 <div className="flex justify-between"><span>Standard</span><span className="text-white/60">ERC-1155</span></div>
                 <div className="flex justify-between"><span>Gas</span><span className="text-white/60">Sponsored</span></div>
-                <div className="flex justify-between"><span>Data source</span><span className="text-white/60">{isContractDeployed ? "Onchain" : "Preview"}</span></div>
+                <div className="flex justify-between"><span>Wallet view</span><span className="text-white/60">{episode.contractAddress ? "Live holdings" : "Preview"}</span></div>
               </div>
 
               <div className="rounded-xl border border-white/6 bg-black/20 px-3 py-2.5 text-[11px] leading-5 text-white/36">
-                Each artwork in {episode.label} is free to claim. Token metadata is read directly from the ERC-1155 contract.
+                This room only shows artworks already held by the connected wallet. New claims should come from direct artwork links or NFC chips.
               </div>
             </div>
           </aside>

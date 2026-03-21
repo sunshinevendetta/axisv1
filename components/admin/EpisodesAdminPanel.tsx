@@ -554,39 +554,65 @@ export default function EpisodesAdminPanel() {
           </div>
         </div>
 
-        <div className="grid gap-5 xl:grid-cols-[320px_minmax(0,1fr)]">
-          <aside className="rounded-[24px] border border-white/10 bg-white/5 p-3 backdrop-blur-xl xl:max-h-[calc(100vh-220px)] xl:overflow-hidden sm:p-4">
-            <div className="mb-3 px-2 text-xs uppercase tracking-[0.28em] text-white/45">Episode slots</div>
-            <div className="flex gap-3 overflow-x-auto pb-1 xl:grid xl:grid-cols-1 xl:overflow-x-hidden xl:overflow-y-auto xl:pb-0 xl:pr-1">
-              {episodes.map((episode) => {
-                const isActive = episode.slug === selectedSlug;
-                const isCurrent = currentOpenEpisode?.slug === episode.slug;
-                const isNext = nextLockedEpisode?.slug === episode.slug;
-                return (
-                  <button
-                    key={episode.slug}
-                    onClick={() => setSelectedSlug(episode.slug)}
-                    className={`min-w-[220px] rounded-2xl border px-4 py-4 text-left transition xl:min-w-0 ${
-                      isActive
-                        ? "border-white/30 bg-white/12"
-                        : "border-white/8 bg-black/20 hover:border-white/18 hover:bg-white/6"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="text-sm font-medium uppercase tracking-[0.18em]">{episode.shortTitle}</span>
-                      <span className="text-[11px] uppercase tracking-[0.2em] text-white/45">{episode.status}</span>
-                    </div>
-                    <div className="mt-2 text-sm text-white/55">{episode.startsAt.slice(0, 10)}</div>
-                    <div className="mt-3 flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.18em] text-white/42">
-                      {isCurrent && <span className="rounded-full border border-white/10 px-2 py-1">current</span>}
-                      {isNext && <span className="rounded-full border border-white/10 px-2 py-1">next</span>}
-                      <span className="rounded-full border border-white/10 px-2 py-1">
-                        chain {episode.registryEventId ?? "pending"}
-                      </span>
-                    </div>
-                  </button>
-                );
-              })}
+        <div className="grid gap-5 xl:grid-cols-[340px_minmax(0,1fr)]">
+          <aside className="space-y-4 xl:sticky xl:top-28 xl:self-start">
+            <div className="rounded-[24px] border border-white/10 bg-white/5 p-4 backdrop-blur-xl">
+              <div className="px-1 text-xs uppercase tracking-[0.28em] text-white/45">Episode slots</div>
+              <p className="mt-2 px-1 text-sm leading-6 text-white/62">
+                Pick the episode you want to edit. On smaller screens use the selector. On desktop the list below scrolls.
+              </p>
+
+              <label className="mt-4 block space-y-2 xl:hidden">
+                <span className="text-[11px] uppercase tracking-[0.22em] text-white/48">Choose episode</span>
+                <select
+                  value={selectedSlug}
+                  onChange={(event) => setSelectedSlug(event.target.value)}
+                  className="w-full rounded-2xl border border-white/12 bg-black/35 px-4 py-3 text-sm text-white outline-none"
+                >
+                  {episodes.map((episode) => (
+                    <option key={episode.slug} value={episode.slug}>
+                      Episode {episode.id} · {episode.title}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <div className="hidden xl:block">
+                <div className="mt-4 max-h-[calc(100vh-260px)] overflow-y-auto pr-1">
+                  <div className="space-y-3">
+                    {episodes.map((episode) => {
+                      const isActive = episode.slug === selectedSlug;
+                      const isCurrent = currentOpenEpisode?.slug === episode.slug;
+                      const isNext = nextLockedEpisode?.slug === episode.slug;
+                      return (
+                        <button
+                          key={episode.slug}
+                          onClick={() => setSelectedSlug(episode.slug)}
+                          className={`w-full rounded-2xl border px-4 py-4 text-left transition ${
+                            isActive
+                              ? "border-white/30 bg-white/12"
+                              : "border-white/8 bg-black/20 hover:border-white/18 hover:bg-white/6"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between gap-3">
+                            <span className="min-w-0 truncate text-sm font-medium uppercase tracking-[0.18em]">{episode.shortTitle}</span>
+                            <span className="shrink-0 text-[11px] uppercase tracking-[0.2em] text-white/45">{episode.status}</span>
+                          </div>
+                          <div className="mt-2 break-words text-sm text-white/72">{episode.title}</div>
+                          <div className="mt-2 text-sm text-white/55">{episode.startsAt.slice(0, 10)}</div>
+                          <div className="mt-3 flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.18em] text-white/42">
+                            {isCurrent && <span className="rounded-full border border-white/10 px-2 py-1">current</span>}
+                            {isNext && <span className="rounded-full border border-white/10 px-2 py-1">next</span>}
+                            <span className="rounded-full border border-white/10 px-2 py-1">
+                              chain {episode.registryEventId ?? "pending"}
+                            </span>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
             </div>
           </aside>
 

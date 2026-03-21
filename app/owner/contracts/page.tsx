@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import PillNav from "@/components/PillNav";
 import ContractsStrategyPanel from "@/components/admin/ContractsStrategyPanel";
 import { ownerNavItems } from "@/src/lib/navigation";
@@ -24,7 +25,9 @@ export default function OwnerContractsPage() {
 
       <div className="pt-20 sm:pt-24">
         <ContractsStrategyPanel />
-        <OwnerContractsPanel />
+        <Suspense fallback={null}>
+          <OwnerContractsPanel />
+        </Suspense>
       </div>
     </div>
   );

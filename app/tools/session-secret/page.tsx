@@ -1,17 +1,14 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 
 type SecretFormat = "base64" | "hex";
 type CopyKind = "env" | "raw";
 
 function bytesToBase64(bytes: Uint8Array) {
   let binary = "";
-
-  for (const byte of bytes) {
-    binary += String.fromCharCode(byte);
-  }
-
+  for (const byte of bytes) binary += String.fromCharCode(byte);
   return btoa(binary);
 }
 
@@ -22,31 +19,22 @@ function bytesToHex(bytes: Uint8Array) {
 function generateSecret() {
   const bytes = new Uint8Array(32);
   window.crypto.getRandomValues(bytes);
-
-  return {
-    base64: bytesToBase64(bytes),
-    hex: bytesToHex(bytes),
-  };
+  return { base64: bytesToBase64(bytes), hex: bytesToHex(bytes) };
 }
 
 function chunkValue(value: string, size: number) {
   const chunks: string[] = [];
-
-  for (let index = 0; index < value.length; index += size) {
-    chunks.push(value.slice(index, index + size));
-  }
-
+  for (let i = 0; i < value.length; i += size) chunks.push(value.slice(i, i + size));
   return chunks;
 }
 
 export default function SessionSecretPage() {
+  const router = useRouter();
   const [secret, setSecret] = useState<{ base64: string; hex: string } | null>(null);
   const [selectedFormat, setSelectedFormat] = useState<SecretFormat>("base64");
   const [copied, setCopied] = useState<CopyKind | null>(null);
 
-  useEffect(() => {
-    setSecret(generateSecret());
-  }, []);
+  useEffect(() => { setSecret(generateSecret()); }, []);
 
   const rawValue = secret?.[selectedFormat] ?? "";
   const envLine = rawValue ? `EPISODES_ADMIN_SESSION_SECRET=${rawValue}` : "";
@@ -67,176 +55,211 @@ export default function SessionSecretPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(201,220,255,0.14),transparent_34%),linear-gradient(180deg,#02050a_0%,#07111d_55%,#030507_100%)] px-4 py-8 text-white sm:px-6 sm:py-10">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 pt-10 sm:pt-16">
-        <section className="overflow-hidden rounded-[30px] border border-white/12 bg-white/[0.05] shadow-[0_30px_90px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
-          <div className="grid gap-6 p-5 sm:p-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-8">
-            <div className="space-y-5">
-              <div className="inline-flex rounded-full border border-cyan-200/20 bg-cyan-200/10 px-4 py-1 text-[11px] uppercase tracking-[0.26em] text-cyan-100/80">
-                Session Secret HQ
-              </div>
+    <main className="min-h-screen bg-black px-4 py-6 text-white sm:px-6">
+      <div className="mx-auto max-w-4xl space-y-5">
+
+        {/* Top nav bar */}
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => router.back()}
+              className="rounded-xl border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-white/60 transition hover:border-white/22 hover:text-white"
+            >
+              ← Back
+            </button>
+            <span className="text-[11px] uppercase tracking-[0.26em] text-white/36">Session Secret</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => router.push("/owner/contracts")}
+              className="rounded-xl border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-white/60 transition hover:border-white/22 hover:text-white"
+            >
+              Contracts HQ
+            </button>
+            <button
+              onClick={() => router.push("/owner/episodes")}
+              className="rounded-xl border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-white/60 transition hover:border-white/22 hover:text-white"
+            >
+              Episodes HQ
+            </button>
+          </div>
+        </div>
+
+        {/* Main card */}
+        <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl sm:p-6">
+          <div className="text-[11px] uppercase tracking-[0.28em] text-white/46">Step 0 of setup</div>
+          <h1 className="mt-2 text-xl font-semibold tracking-[-0.04em] sm:text-2xl">
+            Generate your HQ session secret
+          </h1>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-white/62">
+            This is a one-time password that locks down who can access Deployment HQ. Generate it here, copy the env line, paste it into your <code className="rounded bg-white/10 px-1 py-0.5 font-mono text-xs">.env</code> file, then restart the app. You only need to do this once.
+          </p>
+
+          <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_1.2fr]">
+            {/* Left col — format picker + meta */}
+            <div className="space-y-4">
               <div>
-                <h1 className="max-w-xl text-3xl font-semibold tracking-[-0.05em] text-white sm:text-5xl">
-                  Generate a clean secret and copy the right HQ value fast.
-                </h1>
-                <p className="mt-4 max-w-lg text-sm leading-6 text-slate-200/72 sm:text-base">
-                  Pick the format you want, then copy either the ready-to-paste env line or the raw secret. Base64 is
-                  selected automatically because it is shorter and easiest to use in Deployment HQ.
-                </p>
+                <div className="text-[11px] uppercase tracking-[0.22em] text-white/42">Format</div>
+                <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedFormat("base64")}
+                    className={`rounded-[20px] border p-3 text-left transition-all ${
+                      selectedFormat === "base64"
+                        ? "border-white/28 bg-white/[0.08]"
+                        : "border-white/10 bg-black/25 hover:border-white/20 hover:bg-white/[0.04]"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="text-sm font-medium text-white">Base64</div>
+                      <span className="rounded-full border border-white/16 px-2 py-0.5 text-[10px] uppercase tracking-[0.16em] text-white/60">
+                        recommended
+                      </span>
+                    </div>
+                    <p className="mt-1 text-xs leading-5 text-white/52">Shorter, cleaner for .env files.</p>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setSelectedFormat("hex")}
+                    className={`rounded-[20px] border p-3 text-left transition-all ${
+                      selectedFormat === "hex"
+                        ? "border-white/28 bg-white/[0.08]"
+                        : "border-white/10 bg-black/25 hover:border-white/20 hover:bg-white/[0.04]"
+                    }`}
+                  >
+                    <div className="text-sm font-medium text-white">Hex</div>
+                    <p className="mt-1 text-xs leading-5 text-white/52">Longer, easier to visually inspect.</p>
+                  </button>
+                </div>
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2">
-                <button
-                  type="button"
-                  onClick={() => setSelectedFormat("base64")}
-                  className={`rounded-[24px] border p-4 text-left transition-all ${
-                    selectedFormat === "base64"
-                      ? "border-cyan-200/50 bg-cyan-200/12 shadow-[0_0_0_1px_rgba(186,230,253,0.15)]"
-                      : "border-white/10 bg-black/20 hover:border-white/22 hover:bg-white/[0.06]"
-                  }`}
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="text-sm font-medium text-white">Use Base64</div>
-                    <span className="rounded-full border border-cyan-200/30 bg-cyan-200/10 px-2 py-1 text-[10px] uppercase tracking-[0.22em] text-cyan-100/80">
-                      Auto
-                    </span>
-                  </div>
-                  <p className="mt-2 text-sm leading-6 text-slate-200/68">Recommended for `.env` because it stays compact.</p>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setSelectedFormat("hex")}
-                  className={`rounded-[24px] border p-4 text-left transition-all ${
-                    selectedFormat === "hex"
-                      ? "border-cyan-200/50 bg-cyan-200/12 shadow-[0_0_0_1px_rgba(186,230,253,0.15)]"
-                      : "border-white/10 bg-black/20 hover:border-white/22 hover:bg-white/[0.06]"
-                  }`}
-                >
-                  <div className="text-sm font-medium text-white">Use Hex</div>
-                  <p className="mt-2 text-sm leading-6 text-slate-200/68">Longer, but easier to visually inspect and compare.</p>
-                </button>
+              <div className="grid grid-cols-3 gap-2">
+                <div className="rounded-[18px] border border-white/10 bg-black/30 p-3">
+                  <div className="text-[10px] uppercase tracking-[0.18em] text-white/40">Format</div>
+                  <div className="mt-1 text-sm font-medium text-white">{selectedFormat === "base64" ? "Base64" : "Hex"}</div>
+                </div>
+                <div className="rounded-[18px] border border-white/10 bg-black/30 p-3">
+                  <div className="text-[10px] uppercase tracking-[0.18em] text-white/40">Size</div>
+                  <div className="mt-1 text-sm font-medium text-white">32 bytes</div>
+                </div>
+                <div className="rounded-[18px] border border-white/10 bg-black/30 p-3">
+                  <div className="text-[10px] uppercase tracking-[0.18em] text-white/40">Target</div>
+                  <div className="mt-1 text-sm font-medium text-white">.env</div>
+                </div>
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-3">
-                <div className="rounded-[22px] border border-white/10 bg-black/20 p-4">
-                  <div className="text-[11px] uppercase tracking-[0.18em] text-white/46">Current Format</div>
-                  <div className="mt-2 text-lg font-medium text-white">{selectedFormat === "base64" ? "Base64" : "Hex"}</div>
-                </div>
-                <div className="rounded-[22px] border border-white/10 bg-black/20 p-4">
-                  <div className="text-[11px] uppercase tracking-[0.18em] text-white/46">Secret Size</div>
-                  <div className="mt-2 text-lg font-medium text-white">32 bytes</div>
-                </div>
-                <div className="rounded-[22px] border border-white/10 bg-black/20 p-4">
-                  <div className="text-[11px] uppercase tracking-[0.18em] text-white/46">Paste Target</div>
-                  <div className="mt-2 text-lg font-medium text-white">HQ `.env`</div>
-                </div>
+              {/* What to do next */}
+              <div className="rounded-[20px] border border-white/10 bg-black/30 p-4 text-sm leading-6 text-white/58 space-y-1.5">
+                <div className="text-[11px] uppercase tracking-[0.18em] text-white/36 mb-2">What to do</div>
+                <div><span className="text-white/80">1.</span> Copy the env line below</div>
+                <div><span className="text-white/80">2.</span> Open your <code className="rounded bg-white/10 px-1 font-mono text-xs">.env</code> file and paste it in</div>
+                <div><span className="text-white/80">3.</span> Restart the dev server</div>
+                <div><span className="text-white/80">4.</span> Come back to <button onClick={() => router.push("/owner/contracts")} className="text-white/80 underline underline-offset-2 hover:text-white">Contracts HQ</button> and sign in</div>
               </div>
             </div>
 
-            <div className="grid gap-4 self-start">
-              <section className="rounded-[28px] border border-white/12 bg-[#06101a]/90 p-4 sm:p-5">
-                <div className="flex flex-col gap-3 border-b border-white/10 pb-4 sm:flex-row sm:items-start sm:justify-between">
+            {/* Right col — the actual secrets */}
+            <div className="space-y-3">
+              {/* Env line */}
+              <div className="rounded-[24px] border border-white/12 bg-black/40 p-4">
+                <div className="flex items-center justify-between gap-3">
                   <div>
-                    <div className="text-[11px] uppercase tracking-[0.22em] text-cyan-100/60">Ready To Paste</div>
-                    <h2 className="mt-2 text-xl font-semibold tracking-[-0.03em] text-white">1. Copy the full env line</h2>
-                    <p className="mt-2 text-sm leading-6 text-slate-200/68">
-                      This is the safest option because it already includes the correct key name.
-                    </p>
+                    <div className="text-[11px] uppercase tracking-[0.20em] text-white/42">Paste this into .env</div>
+                    <div className="mt-1 text-sm font-medium text-white">Full env line — safest option</div>
                   </div>
                   <button
                     type="button"
                     onClick={() => envLine && copyValue(envLine, "env")}
-                    className="rounded-full border border-cyan-200/30 bg-cyan-200/12 px-4 py-2 text-sm font-medium text-cyan-50 transition-all hover:border-cyan-200/50 hover:bg-cyan-200/20"
+                    className={`shrink-0 rounded-xl border px-4 py-2 text-xs font-medium transition-all ${
+                      copied === "env"
+                        ? "border-white/30 bg-white/[0.12] text-white"
+                        : "border-white/14 bg-white/[0.06] text-white/72 hover:border-white/28 hover:text-white"
+                    }`}
                   >
-                    {copied === "env" ? "Copied Env Line" : "Copy Env Line"}
+                    {copied === "env" ? "✓ Copied" : "Copy Env Line"}
                   </button>
                 </div>
-
-                <div className="mt-4 overflow-hidden rounded-[22px] border border-white/10 bg-black/30">
-                  <div className="border-b border-white/10 px-4 py-3 text-[11px] uppercase tracking-[0.18em] text-white/46">
-                    EPISODES_ADMIN_SESSION_SECRET
-                  </div>
-                  <div className="overflow-x-auto px-4 py-4 font-mono text-sm leading-7 text-cyan-50/92">
-                    {envLine || "Generating..."}
-                  </div>
+                <div className="mt-3 overflow-x-auto rounded-xl border border-white/10 bg-black/40 px-4 py-3 font-mono text-xs leading-6 text-white/88 break-all">
+                  {envLine || "Generating..."}
                 </div>
-              </section>
+              </div>
 
-              <section className="rounded-[28px] border border-white/12 bg-white/[0.04] p-4 sm:p-5">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              {/* Raw value */}
+              <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
+                <div className="flex items-center justify-between gap-3">
                   <div>
-                    <div className="text-[11px] uppercase tracking-[0.22em] text-white/46">Raw Value</div>
-                    <h2 className="mt-2 text-xl font-semibold tracking-[-0.03em] text-white">2. Use the secret by itself if needed</h2>
-                    <p className="mt-2 text-sm leading-6 text-slate-200/68">
-                      The value is grouped into shorter chunks so it stays readable instead of turning into one huge block.
-                    </p>
+                    <div className="text-[11px] uppercase tracking-[0.20em] text-white/42">Raw secret only</div>
+                    <div className="mt-1 text-sm font-medium text-white">Use if you need just the value</div>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 shrink-0">
                     <button
                       type="button"
                       onClick={() => rawValue && copyValue(rawValue, "raw")}
-                      className="rounded-full border border-white/12 px-4 py-2 text-sm text-white/78 transition-all hover:border-white/24 hover:text-white"
+                      className={`rounded-xl border px-3 py-1.5 text-xs transition-all ${
+                        copied === "raw"
+                          ? "border-white/30 bg-white/[0.12] text-white"
+                          : "border-white/12 text-white/62 hover:border-white/24 hover:text-white"
+                      }`}
                     >
-                      {copied === "raw" ? "Copied Raw" : "Copy Raw"}
+                      {copied === "raw" ? "✓ Copied" : "Copy Raw"}
                     </button>
                     <button
                       type="button"
                       onClick={regenerate}
-                      className="rounded-full border border-white/12 px-4 py-2 text-sm text-white/78 transition-all hover:border-white/24 hover:text-white"
+                      className="rounded-xl border border-white/12 px-3 py-1.5 text-xs text-white/62 transition-all hover:border-white/24 hover:text-white"
                     >
-                      Generate Again
+                      Regenerate
                     </button>
                   </div>
                 </div>
 
-                <div className="mt-4 rounded-[22px] border border-white/10 bg-black/25 p-4">
-                  <div className="mb-3 flex items-center justify-between gap-3">
-                    <div className="text-[11px] uppercase tracking-[0.18em] text-white/46">{selectedFormat}</div>
-                    <div className="text-xs text-white/48">{rawValue.length || 0} characters</div>
+                <div className="mt-3 rounded-xl border border-white/10 bg-black/25 p-3">
+                  <div className="mb-2 flex items-center justify-between gap-3">
+                    <div className="text-[10px] uppercase tracking-[0.16em] text-white/36">{selectedFormat}</div>
+                    <div className="text-[10px] text-white/36">{rawValue.length || 0} chars</div>
                   </div>
-                  <div className="grid gap-2 font-mono text-sm leading-6 text-slate-100/88 sm:grid-cols-2">
+                  <div className="grid gap-1.5 font-mono text-xs leading-5 text-white/80 sm:grid-cols-2">
                     {displayRows.length > 0 ? (
                       displayRows.map((row) => (
-                        <div key={row} className="rounded-xl border border-white/8 bg-white/[0.03] px-3 py-2">
+                        <div key={row} className="rounded-lg border border-white/8 bg-white/[0.03] px-2.5 py-1.5">
                           {row}
                         </div>
                       ))
                     ) : (
-                      <div className="rounded-xl border border-white/8 bg-white/[0.03] px-3 py-2">Generating...</div>
+                      <div className="rounded-lg border border-white/8 bg-white/[0.03] px-2.5 py-1.5">Generating...</div>
                     )}
                   </div>
                 </div>
-              </section>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
 
-        <section className="grid gap-4 lg:grid-cols-3">
-          <article className="rounded-[26px] border border-white/10 bg-white/[0.04] p-5">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-white/46">Step 1</div>
-            <h3 className="mt-2 text-lg font-semibold text-white">Leave it on Base64</h3>
-            <p className="mt-2 text-sm leading-6 text-slate-200/68">
-              The page starts there automatically because it is shorter and cleaner for environment files.
-            </p>
-          </article>
+        {/* Bottom nav — go to HQ */}
+        <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <div className="text-xs font-medium text-white/70">Done pasting the secret?</div>
+              <p className="mt-0.5 text-xs text-white/42">Restart your dev server, then head to Contracts HQ to continue setup.</p>
+            </div>
+            <div className="flex gap-2 shrink-0">
+              <button
+                onClick={() => router.push("/owner/contracts")}
+                className="rounded-xl border border-white/18 bg-white/[0.07] px-4 py-2 text-xs font-medium text-white transition hover:border-white/30 hover:bg-white/[0.12]"
+              >
+                Go to Contracts HQ →
+              </button>
+              <button
+                onClick={() => router.push("/owner/episodes")}
+                className="rounded-xl border border-white/12 px-4 py-2 text-xs text-white/60 transition hover:border-white/22 hover:text-white"
+              >
+                Episodes HQ
+              </button>
+            </div>
+          </div>
+        </div>
 
-          <article className="rounded-[26px] border border-white/10 bg-white/[0.04] p-5">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-white/46">Step 2</div>
-            <h3 className="mt-2 text-lg font-semibold text-white">Copy the env line</h3>
-            <p className="mt-2 text-sm leading-6 text-slate-200/68">
-              That avoids manual formatting mistakes and keeps the HQ setup process fast.
-            </p>
-          </article>
-
-          <article className="rounded-[26px] border border-white/10 bg-white/[0.04] p-5">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-white/46">Step 3</div>
-            <h3 className="mt-2 text-lg font-semibold text-white">Paste into `.env`</h3>
-            <p className="mt-2 text-sm leading-6 text-slate-200/68">
-              Store it locally, keep it private, and reuse the same value for your existing HQ session setup.
-            </p>
-          </article>
-        </section>
       </div>
     </main>
   );

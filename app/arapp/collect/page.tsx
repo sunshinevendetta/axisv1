@@ -6,7 +6,7 @@ import { arappNavItems } from "@/src/lib/navigation";
 
 export const metadata: Metadata = {
   title: "SPECTRA Collect",
-  description: "Free ERC-1155 claim for every artwork in the episode collection. Gas sponsored.",
+  description: "Episode-based artwork claim rooms for SPECTRA. Open an episode to see the artworks configured for collection.",
 };
 
 export default function CollectPage() {

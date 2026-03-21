@@ -1,0 +1,305 @@
+{
+  "cyberreality": {
+    "slug": "cyberreality",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5ebb9733bb7f9d06daf3f531e29",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "31mXIlUGy5Uf0daMOyI5Bq",
+        "name": "CYBERROR (Remixes)",
+        "releaseDate": "2022-02-26",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273d657b6789182e99e562d0459",
+        "url": "https://open.spotify.com/album/31mXIlUGy5Uf0daMOyI5Bq"
+      },
+      {
+        "id": "1GScJdikbmgZouDuXYKPG0",
+        "name": "r e c u e r d o",
+        "releaseDate": "2022-01-04",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273f14dc17142c30e83a741adb6",
+        "url": "https://open.spotify.com/album/1GScJdikbmgZouDuXYKPG0"
+      },
+      {
+        "id": "7yfCEXr1mH4OadA4iYcnqi",
+        "name": "CYBERROR",
+        "releaseDate": "2021-06-24",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27321dc2edb8ebfd8acff821b23",
+        "url": "https://open.spotify.com/album/7yfCEXr1mH4OadA4iYcnqi"
+      },
+      {
+        "id": "5492hosYyU67kU7OGopOBH",
+        "name": "Internet Dating 1.5",
+        "releaseDate": "2020-12-08",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273a97629a80c9fc952e3309bbb",
+        "url": "https://open.spotify.com/album/5492hosYyU67kU7OGopOBH"
+      },
+      {
+        "id": "25Gwta6EBJ89DOiVzRWJar",
+        "name": "Selected Juke Werkz, Vol. 1",
+        "releaseDate": "2020-01-08",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27336442274a19e5b82ea80214e",
+        "url": "https://open.spotify.com/album/25Gwta6EBJ89DOiVzRWJar"
+      }
+    ],
+    "albums": [
+      {
+        "name": "King Of The Streets EP",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Cyberreality/King+Of+The+Streets+EP"
+      },
+      {
+        "name": "v i r t u a l r e s o r t ™",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Cyberreality/v+i+r+t+u+a+l+r+e+s+o+r+t+%E2%84%A2"
+      }
+    ],
+    "related": []
+  },
+  "gasoiid": {
+    "slug": "gasoiid",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb9ca85f6a3cf23dcff2d9409a",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "65qjABOAzwZCszLeUSs7d2",
+        "name": "s0—n2u²",
+        "releaseDate": "2024-11-08",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273a09fccde316f6cbd2bbe69fd",
+        "url": "https://open.spotify.com/album/65qjABOAzwZCszLeUSs7d2"
+      },
+      {
+        "id": "4fnsqWFJrCbjERuDhFwwpV",
+        "name": "rain",
+        "releaseDate": "2023-10-06",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2738d93f4704e43188475900011",
+        "url": "https://open.spotify.com/album/4fnsqWFJrCbjERuDhFwwpV"
+      },
+      {
+        "id": "0rj2JiJTUz1EJm3GacpQ8y",
+        "name": "mattrd +2me",
+        "releaseDate": "2022-08-31",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273831c4ad28505d74dd124bd6a",
+        "url": "https://open.spotify.com/album/0rj2JiJTUz1EJm3GacpQ8y"
+      },
+      {
+        "id": "4cx35yVOB5graj629pvZuq",
+        "name": "froz3n",
+        "releaseDate": "2022-02-17",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273d0d76773fc23cc1493903a51",
+        "url": "https://open.spotify.com/album/4cx35yVOB5graj629pvZuq"
+      },
+      {
+        "id": "3lrPTaCYnuksYPtByBtZtv",
+        "name": "sedated",
+        "releaseDate": "2021-07-09",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2735317283be53a4251f9b7a1af",
+        "url": "https://open.spotify.com/album/3lrPTaCYnuksYPtByBtZtv"
+      }
+    ],
+    "albums": [
+      {
+        "name": "s0—n2u²",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/9acbacbe085c9eafb6110656c95c0695.png",
+        "url": "https://www.last.fm/music/GaSOIID/s0%E2%80%94n2u%C2%B2"
+      },
+      {
+        "name": "PERREOCORE®",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/a261506fe22b4a52be44ce5fcd04b28a.png",
+        "url": "https://www.last.fm/music/GaSOIID/PERREOCORE%C2%AE"
+      },
+      {
+        "name": "s0—n2u",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/b8d58e69c0460f0f926cfc9f9fda7491.png",
+        "url": "https://www.last.fm/music/GaSOIID/s0%E2%80%94n2u"
+      },
+      {
+        "name": "mattrd +2me",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/GaSOIID/mattrd+%252B2me"
+      },
+      {
+        "name": "froz3n",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/GaSOIID/froz3n"
+      }
+    ],
+    "related": [
+      "gasoiid x DJ UWU x Fallen Shrine",
+      "DJ CHRISTIAN NXC",
+      "Danny Stranger",
+      "NIGHTCHOP",
+      "Texas Baby"
+    ]
+  },
+  "fiesta-soundsystem": {
+    "slug": "fiesta-soundsystem",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5ebe5a1f75fea3d2add4fce4d3a",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "5MsHyL6rN824xkcov1fNIe",
+        "name": "Pits",
+        "releaseDate": "2024-02-29",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273c88643cbf4c45622e84a2767",
+        "url": "https://open.spotify.com/album/5MsHyL6rN824xkcov1fNIe"
+      },
+      {
+        "id": "2AfFjc724f3BeQWbxSfxZq",
+        "name": "Passivity Trap",
+        "releaseDate": "2023-04-21",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273139b42a6a0166779edcc26ff",
+        "url": "https://open.spotify.com/album/2AfFjc724f3BeQWbxSfxZq"
+      },
+      {
+        "id": "3hcWNIji3Gy1R2KTADlRLm",
+        "name": "Sinking",
+        "releaseDate": "2023-02-16",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273919b6fd4cbc592078d239bb2",
+        "url": "https://open.spotify.com/album/3hcWNIji3Gy1R2KTADlRLm"
+      },
+      {
+        "id": "3spxsF3OlAdyc6bQLlJOSO",
+        "name": "delphic scent",
+        "releaseDate": "2022-11-29",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273acaeb371e8c17edb9684853d",
+        "url": "https://open.spotify.com/album/3spxsF3OlAdyc6bQLlJOSO"
+      },
+      {
+        "id": "7jc1E40ohe7RqmIzhQuM12",
+        "name": "Rites of Passage",
+        "releaseDate": "2020-10-02",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27395703e69000a7dd254617c9a",
+        "url": "https://open.spotify.com/album/7jc1E40ohe7RqmIzhQuM12"
+      }
+    ],
+    "albums": [
+      {
+        "name": "CALL 020-BAIT-TUNE",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/22d6c2e78f6e0fc8975cd231ad853a67.png",
+        "url": "https://www.last.fm/music/Fiesta+Soundsystem/CALL+020-BAIT-TUNE"
+      },
+      {
+        "name": "Rites of Passage",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/5544b24d3f6e96cf43f58031e47e09a2.png",
+        "url": "https://www.last.fm/music/Fiesta+Soundsystem/Rites+of+Passage"
+      },
+      {
+        "name": "Not To Be",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/5c4911ac9daf463978fbc7299b01eb11.png",
+        "url": "https://www.last.fm/music/Fiesta+Soundsystem/Not+To+Be"
+      },
+      {
+        "name": "Sinking",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/68b772c6f3860133dedbebab3c4b2a97.png",
+        "url": "https://www.last.fm/music/Fiesta+Soundsystem/Sinking"
+      },
+      {
+        "name": "How's That? EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/c0c730c4262b2aba0cee9f33a152e85b.png",
+        "url": "https://www.last.fm/music/Fiesta+Soundsystem/How%27s+That%3F+EP"
+      }
+    ],
+    "related": [
+      "Mani Festo",
+      "LMajor",
+      "Borai",
+      "Hooverian Blur",
+      "Soundbwoy Killah"
+    ]
+  },
+  "sunshine-vendetta": {
+    "slug": "sunshine-vendetta",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb38df8448471c9264cbefd207",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "4PlPxDbatTePQTBYuO5Sdy",
+        "name": "Explosive",
+        "releaseDate": "2022-07-30",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273f48cb2c913a0fd74c2ab7c82",
+        "url": "https://open.spotify.com/album/4PlPxDbatTePQTBYuO5Sdy"
+      },
+      {
+        "id": "29ctHvdeAzaubF3RmsUIC1",
+        "name": "Hyperdreams",
+        "releaseDate": "2022-05-06",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273c2dcb552f0dad0d6f2a2ea84",
+        "url": "https://open.spotify.com/album/29ctHvdeAzaubF3RmsUIC1"
+      },
+      {
+        "id": "6Erv5bePTwCg5BL5wbYpyO",
+        "name": "Real Life",
+        "releaseDate": "2020-06-03",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273de100ac20e1a1b9398ec19b8",
+        "url": "https://open.spotify.com/album/6Erv5bePTwCg5BL5wbYpyO"
+      },
+      {
+        "id": "6sMbjbHnR5syKDgL46JCVo",
+        "name": "Rave Tool 84",
+        "releaseDate": "2018-06-18",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273be8c27206dd8515b8b0015a1",
+        "url": "https://open.spotify.com/album/6sMbjbHnR5syKDgL46JCVo"
+      },
+      {
+        "id": "1C8oD6EaZODbhS6J9ochLn",
+        "name": "Rave On",
+        "releaseDate": "2018-04-23",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2732caf4389c5c7a6b8b9bec257",
+        "url": "https://open.spotify.com/album/1C8oD6EaZODbhS6J9ochLn"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Rave On",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/0065ec97e4f39fb692dbfd2d2c1e5b8e.png",
+        "url": "https://www.last.fm/music/Sunshine+Vendetta/Rave+On"
+      },
+      {
+        "name": "Real Life",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Sunshine+Vendetta/Real+Life"
+      },
+      {
+        "name": "Rave Tool 84",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Sunshine+Vendetta/Rave+Tool+84"
+      },
+      {
+        "name": "RAVE TOOL 48",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Sunshine+Vendetta/RAVE+TOOL+48"
+      },
+      {
+        "name": "Rave On - Single",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/b2be5992e595db5d582abdd28b9b44ed.png",
+        "url": "https://www.last.fm/music/Sunshine+Vendetta/Rave+On+-+Single"
+      }
+    ],
+    "related": [
+      "Infinite Human",
+      "Superior Cornrows",
+      "homele$$",
+      "DJ SAPHIRRE",
+      "4649nadeshiko"
+    ]
+  }
+}

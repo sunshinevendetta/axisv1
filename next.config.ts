@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "nftstorage.link" },
       { protocol: "https", hostname: "**.nftstorage.link" },
       { protocol: "https", hostname: "gateway.pinata.cloud" },
+      { protocol: "https", hostname: "api.grove.storage" },
     ],
   },
   eslint: {

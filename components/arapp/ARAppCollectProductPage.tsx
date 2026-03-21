@@ -5,28 +5,24 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import {
   useAccount,
+  useCallsStatus,
   useConnect,
   useDisconnect,
+  useReadContract,
+  useSendCalls,
   useWriteContract,
   useWaitForTransactionReceipt,
-  useReadContract,
 } from "wagmi";
-import { base } from "wagmi/chains";
+import { encodeFunctionData } from "viem";
+import { base, baseSepolia } from "wagmi/chains";
 import { type ARAppCollectDrop, type ARAppCollectStatus, type EpisodeConfig } from "@/src/lib/arapp-collect";
 import ModelViewer from "@/components/arapp/ModelViewer";
 
-const COLLECT_CONTRACT =
-  (process.env.NEXT_PUBLIC_COLLECT_CONTRACT_ADDRESS ||
-    "0x0000000000000000000000000000000000000000") as `0x${string}`;
+const PAYMASTER_URL = process.env.NEXT_PUBLIC_PAYMASTER_URL;
 
 const COLLECT_ABI = [
   {
-    inputs: [
-      { internalType: "address", name: "to", type: "address" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" },
-      { internalType: "uint256", name: "amount", type: "uint256" },
-      { internalType: "bytes", name: "data", type: "bytes" },
-    ],
+    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
     name: "mint",
     outputs: [],
     stateMutability: "nonpayable",
@@ -70,20 +66,34 @@ function connectorLabel(id: string, name: string) {
   return name || "Connect Wallet";
 }
 
-type ViewMode = "image" | "3d";
+type ViewMode = "image" | "model" | "video";
 
 type Props = { drop: ARAppCollectDrop; episode: EpisodeConfig; isContractDeployed?: boolean };
 
+function detectMediaKind(url: string) {
+  const normalized = url.split("?")[0].toLowerCase();
+  if (!normalized) return "none";
+  if (normalized.endsWith(".glb") || normalized.endsWith(".gltf")) return "model";
+  if (normalized.endsWith(".mp4") || normalized.endsWith(".webm") || normalized.endsWith(".mov") || normalized.endsWith(".m4v")) return "video";
+  return "other";
+}
+
 export default function ARAppCollectProductPage({ drop, episode, isContractDeployed = false }: Props) {
   const [isMounted, setIsMounted] = useState(false);
+  const mediaKind = drop.mediaKind || detectMediaKind(drop.model);
   const [viewMode, setViewMode] = useState<ViewMode>("image");
+  const [claimFeedback, setClaimFeedback] = useState("");
 
   const { address, chain, isConnected } = useAccount();
   const { connect, connectors, isPending } = useConnect();
   const { disconnect } = useDisconnect();
+  const { writeContractAsync, isPending: writing } = useWriteContract();
 
   const canClaim = drop.status === "live" || drop.status === "member-access";
   const tokenId = BigInt(drop.tokenId);
+  const hasSecondaryMedia = Boolean(drop.model);
+  const collectContract = (episode.contractAddress || "0x0000000000000000000000000000000000000000") as `0x${string}`;
+  const episodeChainId = episode.chainId === baseSepolia.id ? baseSepolia.id : base.id;
 
   const preferred = connectors.find(
     (c) => c.id === "coinbaseWalletSDK" || c.id === "coinbaseWallet" || c.id === "coinbaseSmartWallet",
@@ -92,32 +102,87 @@ export default function ARAppCollectProductPage({ drop, episode, isContractDeplo
   const alternates = connectors.filter((c) => c.id !== preferred?.id);
 
   const { data: balance } = useReadContract({
-    address: COLLECT_CONTRACT,
+    address: collectContract,
     abi: COLLECT_ABI,
     functionName: "balanceOf",
     args: address ? [address, tokenId] : undefined,
-    chainId: base.id,
-    query: { enabled: !!address },
+    chainId: episodeChainId,
+    query: { enabled: !!address && Boolean(episode.contractAddress) },
   });
 
   const alreadyClaimed = balance !== undefined && balance > 0n;
-
-  const { writeContract, data: hash, isPending: writing } = useWriteContract();
-  const { isLoading: confirming, isSuccess } = useWaitForTransactionReceipt({ hash });
+  const { sendCalls, data: callsId, isPending: sendingCalls } = useSendCalls();
+  const { data: callsStatus } = useCallsStatus({
+    id: callsId as string,
+    query: { enabled: Boolean(callsId), refetchInterval: (q) => (q.state.data?.status === "CONFIRMED" ? false : 1000) },
+  });
+  const [claimTxHash, setClaimTxHash] = useState<`0x${string}` | null>(null);
+  const claimReceipt = useWaitForTransactionReceipt({ hash: claimTxHash ?? undefined });
+  const isCallSuccess = callsStatus?.status === "CONFIRMED";
+  const isDirectSuccess = claimReceipt.status === "success";
+  const isSuccess = isCallSuccess || isDirectSuccess;
+  const confirming = (Boolean(callsId) && callsStatus?.status !== "CONFIRMED") || (Boolean(claimTxHash) && claimReceipt.status !== "success");
 
   const claimed = alreadyClaimed || isSuccess;
 
-  useEffect(() => { setIsMounted(true); }, []);
+  useEffect(() => {
+    setIsMounted(true);
+    if (mediaKind === "video") {
+      setViewMode("video");
+    } else if (mediaKind === "model") {
+      setViewMode("model");
+    } else {
+      setViewMode("image");
+    }
+  }, [mediaKind]);
 
-  function handleClaim() {
+  async function handleSponsoredClaim() {
     if (!address || !canClaim || claimed) return;
-    writeContract({
-      address: COLLECT_CONTRACT,
+    if (!episode.contractAddress) return;
+    if (!PAYMASTER_URL) {
+      setClaimFeedback("Sponsored claim is not configured right now.");
+      return;
+    }
+
+    try {
+      setClaimFeedback("");
+      sendCalls({
+        calls: [{
+          to: collectContract,
+          data: encodeFunctionData({
+            abi: COLLECT_ABI,
+            functionName: "mint",
+            args: [tokenId],
+          }),
+          gas: 250000n,
+        }],
+        capabilities: {
+          paymasterService: { url: PAYMASTER_URL },
+        },
+      });
+    } catch (error) {
+      setClaimFeedback(error instanceof Error ? error.message : "Sponsored claim failed.");
+    }
+  }
+
+  async function handleDirectClaim() {
+    if (!address || !canClaim || claimed) return;
+    if (!episode.contractAddress) return;
+
+    try {
+      setClaimFeedback("");
+      const hash = await writeContractAsync({
+      address: collectContract,
       abi: COLLECT_ABI,
+      chainId: episodeChainId as never,
       functionName: "mint",
-      args: [address, tokenId, 1n, "0x"],
-      chainId: base.id,
-    });
+        args: [tokenId],
+        gas: 250000n,
+      });
+      setClaimTxHash(hash);
+    } catch (error) {
+      setClaimFeedback(error instanceof Error ? error.message : "Direct wallet claim failed.");
+    }
   }
 
   return (
@@ -150,17 +215,32 @@ export default function ARAppCollectProductPage({ drop, episode, isContractDeplo
               >
                 Image
               </button>
-              <button
-                type="button"
-                onClick={() => setViewMode("3d")}
-                className={`rounded-full border px-3.5 py-1.5 text-[10px] uppercase tracking-[0.24em] transition-colors ${
-                  viewMode === "3d"
-                    ? "border-white/20 bg-white text-black"
-                    : "border-white/10 bg-white/4 text-white/50 hover:text-white/80"
-                }`}
-              >
-                3D View
-              </button>
+              {mediaKind === "model" ? (
+                <button
+                  type="button"
+                  onClick={() => setViewMode("model")}
+                  className={`rounded-full border px-3.5 py-1.5 text-[10px] uppercase tracking-[0.24em] transition-colors ${
+                    viewMode === "model"
+                      ? "border-white/20 bg-white text-black"
+                      : "border-white/10 bg-white/4 text-white/50 hover:text-white/80"
+                  }`}
+                >
+                  3D View
+                </button>
+              ) : null}
+              {mediaKind === "video" ? (
+                <button
+                  type="button"
+                  onClick={() => setViewMode("video")}
+                  className={`rounded-full border px-3.5 py-1.5 text-[10px] uppercase tracking-[0.24em] transition-colors ${
+                    viewMode === "video"
+                      ? "border-white/20 bg-white text-black"
+                      : "border-white/10 bg-white/4 text-white/50 hover:text-white/80"
+                  }`}
+                >
+                  Video
+                </button>
+              ) : null}
               <div className="ml-auto flex items-center gap-1.5">
                 <span className={`rounded-full border px-2.5 py-1 text-[10px] uppercase tracking-[0.22em] ${statusTone[drop.status]}`}>
                   {statusLabel[drop.status]}
@@ -173,7 +253,7 @@ export default function ARAppCollectProductPage({ drop, episode, isContractDeplo
 
             {/* Viewer area */}
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-black/40">
-              {viewMode === "image" ? (
+              {viewMode === "image" || !hasSecondaryMedia ? (
                 <>
                   <Image
                     src={drop.image}
@@ -184,13 +264,25 @@ export default function ARAppCollectProductPage({ drop, episode, isContractDeplo
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                 </>
-              ) : (
+              ) : viewMode === "video" && mediaKind === "video" ? (
+                <video
+                  src={drop.model}
+                  poster={drop.image}
+                  controls
+                  playsInline
+                  className="h-full w-full object-cover"
+                />
+              ) : viewMode === "model" && mediaKind === "model" ? (
                 <ModelViewer
                   src={drop.model}
                   poster={drop.image}
                   alt={drop.title}
                   className="h-full w-full"
                 />
+              ) : (
+                <div className="flex h-full items-center justify-center px-6 text-center text-sm text-white/52">
+                  Extra media is available for this artwork, but this file type is not previewable here yet.
+                </div>
               )}
             </div>
 
@@ -287,7 +379,7 @@ export default function ARAppCollectProductPage({ drop, episode, isContractDeplo
                 <div className="mt-3 space-y-2">
                   <button
                     type="button"
-                    onClick={() => connect({ connector: preferred, chainId: base.id })}
+                    onClick={() => connect({ connector: preferred, chainId: episodeChainId })}
                     disabled={isPending}
                     className="w-full rounded-xl border border-white/14 bg-white/8 px-3 py-2.5 text-[10px] uppercase tracking-[0.24em] text-white/72 transition-colors hover:bg-white/12 disabled:opacity-40"
                   >
@@ -297,7 +389,7 @@ export default function ARAppCollectProductPage({ drop, episode, isContractDeplo
                     <button
                       key={c.id}
                       type="button"
-                      onClick={() => connect({ connector: c, chainId: base.id })}
+                      onClick={() => connect({ connector: c, chainId: episodeChainId })}
                       disabled={isPending}
                       className="w-full rounded-xl border border-white/8 bg-white/4 px-3 py-2 text-[10px] uppercase tracking-[0.22em] text-white/48 disabled:opacity-40"
                     >
@@ -316,22 +408,45 @@ export default function ARAppCollectProductPage({ drop, episode, isContractDeplo
                     Claimed ✓
                   </div>
                 ) : (
-                  <button
-                    type="button"
-                    onClick={handleClaim}
-                    disabled={writing || confirming || !isConnected}
-                    className="w-full rounded-xl border border-white/20 bg-white py-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-black transition-opacity hover:opacity-90 disabled:opacity-40"
-                  >
-                    {!isConnected
-                      ? "Connect Wallet to Claim"
-                      : writing
-                      ? "Confirm in wallet…"
-                      : confirming
-                      ? "Claiming…"
-                      : drop.status === "member-access"
-                      ? "Claim Access Drop"
-                      : "Claim Free"}
-                  </button>
+                  <div className="space-y-3">
+                    {PAYMASTER_URL ? (
+                      <button
+                        type="button"
+                        onClick={handleSponsoredClaim}
+                        disabled={sendingCalls || confirming || !isConnected || !episode.contractAddress}
+                        className="w-full rounded-xl border border-white/20 bg-white py-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-black transition-opacity hover:opacity-90 disabled:opacity-40"
+                      >
+                        {!isConnected
+                          ? "Connect Wallet to Claim"
+                          : !episode.contractAddress
+                          ? "Episode Contract Missing"
+                          : sendingCalls
+                          ? "Confirm Sponsored Claim…"
+                          : confirming
+                          ? "Claiming…"
+                          : "Sponsored Claim"}
+                      </button>
+                    ) : null}
+                    <button
+                      type="button"
+                      onClick={handleDirectClaim}
+                      disabled={writing || confirming || !isConnected || !episode.contractAddress}
+                      className="w-full rounded-xl border border-white/12 bg-white/6 py-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-white transition-opacity hover:bg-white/10 disabled:opacity-40"
+                    >
+                      {!isConnected
+                        ? "Connect Wallet To Pay Gas"
+                        : !episode.contractAddress
+                        ? "Episode Contract Missing"
+                        : writing
+                        ? "Confirm Wallet Claim…"
+                        : confirming
+                        ? "Claiming…"
+                        : "Claim With Wallet Gas"}
+                    </button>
+                    <div className="text-center text-[10px] uppercase tracking-[0.2em] text-white/40">
+                      {PAYMASTER_URL ? "Top button uses paymaster. Bottom button uses your wallet gas." : "Direct wallet gas claim is active."}
+                    </div>
+                  </div>
                 )}
               </>
             )}
@@ -339,10 +454,18 @@ export default function ARAppCollectProductPage({ drop, episode, isContractDeplo
             {!canClaim && (
               <div className="rounded-xl border border-white/8 bg-white/4 px-4 py-3 text-[11px] text-white/42">
                 {drop.status === "coming-soon"
-                  ? "This artwork opens in the next release wave."
+                  ? isContractDeployed
+                    ? "This artwork is still closed on the site. Open the site claim and token mint in Live Episode HQ."
+                    : "This artwork opens in the next release wave."
                   : "This edition is sold out."}
               </div>
             )}
+
+            {claimFeedback ? (
+              <div className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-[11px] leading-6 text-red-100/88">
+                {claimFeedback}
+              </div>
+            ) : null}
 
             <Link
               href={`/arapp/collect/${episode.slug}`}

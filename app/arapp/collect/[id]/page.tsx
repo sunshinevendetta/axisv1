@@ -5,7 +5,7 @@ import PillNav from "@/components/PillNav";
 import ARAppCollectEpisodePage from "@/components/arapp/ARAppCollectEpisodePage";
 import { arappNavItems } from "@/src/lib/navigation";
 import { EPISODE_CONFIG, getEpisodeBySlug, getTokensByEpisode } from "@/src/lib/arapp-collect";
-import { fetchTokenData, IS_CONTRACT_DEPLOYED } from "@/src/lib/arapp-collect-chain";
+import { IS_CONTRACT_DEPLOYED } from "@/src/lib/arapp-collect-chain";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -28,19 +28,7 @@ export default async function CollectEpisodePage({ params }: Props) {
   const episode = getEpisodeBySlug(id);
   if (!episode) notFound();
 
-  const localTokens = getTokensByEpisode(id);
-
-  // Fetch onchain metadata for each token in this episode (parallel)
-  // Falls back to local config when contract is not yet deployed
-  const chainData = await Promise.all(
-    localTokens.map((t) => fetchTokenData(t.tokenId)),
-  );
-
-  const tokens = localTokens.map((t, i) => ({
-    token: t,
-    onchainMetadata: chainData[i].metadata,
-    onchainSupply: chainData[i].supply,
-  }));
+  const tokens = getTokensByEpisode(id);
 
   return (
     <div className="min-h-screen bg-[#040406] text-white">

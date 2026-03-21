@@ -212,6 +212,12 @@ export default function MagazineSidebar({
             Episodes →
           </a>
           <a
+            href="/magazine/artists"
+            className="block text-[9px] uppercase tracking-[0.36em] text-white/24 transition-colors hover:text-white/50"
+          >
+            Artists →
+          </a>
+          <a
             href="/magazine/mixtapes"
             className="block text-[9px] uppercase tracking-[0.36em] text-white/24 transition-colors hover:text-white/50"
           >

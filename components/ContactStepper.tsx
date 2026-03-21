@@ -1,18 +1,18 @@
 // components/ContactStepper.tsx
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import Stepper, { Step } from "./Stepper";
 
 import {
   useAccount,
   useConnect,
   useDisconnect,
-  useWriteContract,
-  useWaitForTransactionReceipt,
+  useSendCalls,
+  useCallsStatus,
 } from "wagmi";
+import { encodeFunctionData } from "viem";
 import { base } from "wagmi/chains";
-import { BASE_BUILDER_DATA_SUFFIX } from "@/src/lib/base-app";
 
 const SPECTRA_FORM_ABI = [
   {
@@ -43,10 +43,7 @@ function normalizeHandle(s: string) {
 
 export default function ContactStepper() {
   const contractAddress = process.env.NEXT_PUBLIC_SPECTRA_FORM_ADDRESS as `0x${string}` | undefined;
-  const wcProjectId =
-    process.env.NEXT_PUBLIC_REOWN_PROJECT_ID || process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID;
-
-  const [currentStep, setCurrentStep] = useState<number>(1);
+const [currentStep, setCurrentStep] = useState<number>(1);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -61,22 +58,16 @@ export default function ContactStepper() {
   const { connect, connectors, isPending: isConnecting } = useConnect();
   const { disconnect } = useDisconnect();
 
-  const { writeContract, data: txHash, isPending: isWriting, error: writeError, reset } = useWriteContract();
-  const {
-    isLoading: isConfirming,
-    isSuccess: isConfirmed,
-    isError: isReceiptError,
-  } = useWaitForTransactionReceipt({
-    hash: txHash,
-    chainId: base.id,
-  });
+  const paymasterUrl = process.env.NEXT_PUBLIC_PAYMASTER_URL;
 
-  useEffect(() => {
-    if (writeError) {
-      const msg = (writeError as any)?.shortMessage || (writeError as any)?.message || "transaction failed";
-      setUiError(String(msg));
-    }
-  }, [writeError]);
+  const { sendCalls, data: callsId, isPending: isWriting, reset } = useSendCalls();
+  const { data: callsStatus } = useCallsStatus({
+    id: typeof callsId === "string" ? callsId : (callsId as unknown as { id?: string })?.id ?? "",
+    query: { enabled: Boolean(callsId), refetchInterval: (q) => (q.state.data?.status === "success" ? false : 1000) },
+  });
+  const isConfirming = Boolean(callsId) && callsStatus?.status !== "success";
+  const isConfirmed = callsStatus?.status === "success";
+  const isReceiptError = callsStatus?.status === "failure";
 
   const canProceedStep2 = useMemo(() => {
     return isConnected && chainId === base.id;
@@ -138,13 +129,16 @@ export default function ContactStepper() {
     const safeX = normalizeHandle(xHandle);
     const safeTt = normalizeHandle(tiktok);
 
-    writeContract({
-      address: contractAddress,
-      abi: SPECTRA_FORM_ABI,
-      functionName: "submit",
-      args: [name.trim(), safePhone, packedEmail || safeIg, safeX, safeTt],
-      chainId: base.id,
-      dataSuffix: BASE_BUILDER_DATA_SUFFIX,
+    sendCalls({
+      calls: [{
+        to: contractAddress,
+        data: encodeFunctionData({
+          abi: SPECTRA_FORM_ABI,
+          functionName: "submit",
+          args: [name.trim(), safePhone, packedEmail || safeIg, safeX, safeTt],
+        }),
+      }],
+      capabilities: paymasterUrl ? { paymasterService: { url: paymasterUrl } } : undefined,
     });
   };
 
