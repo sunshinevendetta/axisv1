@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import './ChromaGrid.css';
 
@@ -11,6 +11,7 @@ export interface ChromaItem {
   borderColor?: string;
   gradient?: string;
   url?: string;           // now optional, not used for navigation
+  description?: string;
 }
 
 export interface ChromaGridProps {
@@ -42,15 +43,48 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
 }) => {
 
   const rootRef = useRef<HTMLDivElement>(null);
+  const [expandedSet, setExpandedSet] = useState<Set<number>>(new Set());
+
+  const toggleDescription = (e: React.MouseEvent, i: number) => {
+    e.stopPropagation();
+    setExpandedSet(prev => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
+  };
   const fadeRef = useRef<HTMLDivElement>(null);
   const setX = useRef<SetterFn | null>(null);
   const setY = useRef<SetterFn | null>(null);
   const pos = useRef({ x: 0, y: 0 });
+  const [isInteractive, setIsInteractive] = useState(false);
 
   const data = items || [];
 
-  // position logic
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const coarsePointer = window.matchMedia('(pointer: coarse)');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const updateInteractivity = () => {
+      setIsInteractive(!coarsePointer.matches && !reducedMotion.matches);
+    };
+
+    updateInteractivity();
+    coarsePointer.addEventListener('change', updateInteractivity);
+    reducedMotion.addEventListener('change', updateInteractivity);
+
+    return () => {
+      coarsePointer.removeEventListener('change', updateInteractivity);
+      reducedMotion.removeEventListener('change', updateInteractivity);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isInteractive) return;
+
     const el = rootRef.current;
     if (!el) return;
 
@@ -62,7 +96,7 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
 
     setX.current(pos.current.x);
     setY.current(pos.current.y);
-  }, []);
+  }, [isInteractive]);
 
   const moveTo = (x: number, y: number) => {
     gsap.to(pos.current, {
@@ -109,7 +143,7 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
   return (
     <div
       ref={rootRef}
-      className={`chroma-grid ${className}`}
+      className={`chroma-grid ${!isInteractive ? 'chroma-grid-static' : ''} ${className}`}
       style={
         {
           '--r': `${radius}px`,
@@ -117,14 +151,14 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
           '--rows': rows,
         } as React.CSSProperties
       }
-      onPointerMove={handleMove}
-      onPointerLeave={handleLeave}
+      onPointerMove={isInteractive ? handleMove : undefined}
+      onPointerLeave={isInteractive ? handleLeave : undefined}
     >
       {data.map((c, i) => (
         <article
           key={i}
           className="chroma-card"
-          onMouseMove={handleCardMove}
+          onMouseMove={isInteractive ? handleCardMove : undefined}
           onClick={() => handleClick(i)}      // FIXED: no more window.open
           style={
             {
@@ -135,7 +169,7 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
           }
         >
           <div className="chroma-img-wrapper">
-            <img src={c.image} alt={c.title} loading="lazy" />
+            <img src={c.image} alt={c.title} loading="lazy" decoding="async" />
           </div>
 
           <footer className="chroma-info">
@@ -144,6 +178,20 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
             <p className="role">{c.subtitle}</p>
             {c.location && <span className="location">{c.location}</span>}
           </footer>
+
+          {c.description && (
+            <div className="chroma-desc-area">
+              <button
+                className="chroma-desc-toggle"
+                onClick={(e) => toggleDescription(e, i)}
+              >
+                {expandedSet.has(i) ? 'hide info −' : 'show info +'}
+              </button>
+              {expandedSet.has(i) && (
+                <p className="chroma-desc-text">{c.description}</p>
+              )}
+            </div>
+          )}
         </article>
       ))}
 

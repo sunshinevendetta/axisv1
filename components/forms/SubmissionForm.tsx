@@ -1,260 +1,352 @@
 "use client";
 
-import { useState, useRef } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
-import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
-import BeamsBackground from "@/components/backgrounds/BeamsBackground";
+import { useEffect, useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import BeamsBackground from "@/components/backgrounds/SubmissionBackground";
 
-export default function SubmissionForm() {
+type SubmissionVariant = "artist" | "dev";
+
+interface SubmissionFormProps {
+  variant?: SubmissionVariant;
+}
+
+const formContent: Record<
+  SubmissionVariant,
+  {
+    title: string;
+    intro: string[];
+    linkLabel: string;
+    linkHint?: { href: string; label: string };
+    submitLabel: string;
+    successMessage: string;
+  }
+> = {
+  artist: {
+    title: "Show us what you make",
+    intro: [
+      "Submit your art for consideration in our upcoming live exhibitions and events.",
+      "If selected, you will receive a complimentary artist membership, granting you entry to our events for 1 year, and exposure to our global community of art, music, and technology enthusiasts.",
+      "We are looking for innovative digital art that aligns with our themes of energy, technology, and culture.",
+      "Our team will review submissions and contact selected artists shortly.",
+      "Your information is kept confidential and used only for review and contact purposes.",
+    ],
+    linkLabel: "Artwork Link *",
+    linkHint: {
+      href: "https://base.app/invite/sunshinev/R80CCWVY",
+      label:
+        "WE ONLY ACCEPT PUBLISHED ARTWORKS - if your work is not yet live, please upload it to Base App as a post. Paste the link here or from the marketplace of your choice. Click here to see how.",
+    },
+    submitLabel: "Submit",
+    successMessage: "Thank you! Your submission has been received. Check your email for confirmation.",
+  },
+  dev: {
+    title: "Ship your build into \u00A9 AXIS",
+    intro: [
+      "This lane is for developers, founders, makers, and digital studios building apps, tools, products, or internet-native experiences.",
+      "If your project should be discovered by AXIS attendees, collaborators, and our broader ecosystem, send us the core link and context here.",
+      "We are looking for projects that feel culturally sharp, technically interesting, and ready to be activated with real users.",
+      "Our team reviews each submission for possible showcases, partnerships, community drops, and live ecosystem placements.",
+      "Your information is kept confidential and used only for review and contact purposes.",
+    ],
+    linkLabel: "Project / Product Link *",
+    submitLabel: "Send Project",
+    successMessage: "Thank you! Your project has been received. Check your email for confirmation.",
+  },
+};
+
+export default function SubmissionForm({ variant = "artist" }: SubmissionFormProps) {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [contactMode, setContactMode] = useState<"phone" | "telegram">("phone");
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    wallet: '',
-    artworkLink: '',
-    telegram: '',
-    instagram: '',
+    name: "",
+    email: "",
+    phone: "",
+    wallet: "",
+    artworkLink: "",
+    telegram: "",
+    instagram: "",
   });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [message, setMessage] = useState('');
-  const [walletStatus, setWalletStatus] = useState<'idle' | 'valid' | 'invalid' | 'resolving'>('idle');
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+  const [walletStatus, setWalletStatus] = useState<"idle" | "valid" | "invalid" | "resolving">("idle");
   const [resolvedAddress, setResolvedAddress] = useState<string | null>(null);
-  const [walletError, setWalletError] = useState('');
+  const [walletError, setWalletError] = useState("");
+  const content = formContent[variant];
+
+  const inputClassName =
+    "w-full bg-[#0a0a0a] px-4 py-3 text-sm text-white placeholder:text-white/36 focus:outline-none focus:ring-1 focus:ring-white/24";
 
   const validateEmail = (email: string) => /\S+@\S+\.\S+/.test(email);
 
   const validateWallet = (wallet: string) => {
-    if (!wallet) {
-      setWalletStatus('idle');
-      setWalletError('Wallet address or ENS is required');
+    if (!wallet.trim()) {
+      setWalletStatus("idle");
+      setWalletError("");
       setResolvedAddress(null);
-      return false;
+      return true;
     }
-    setWalletStatus('resolving');
-    setWalletError('');
+    setWalletStatus("resolving");
+    setWalletError("");
     if (/^0x[a-fA-F0-9]{40}$/.test(wallet)) {
-      setWalletStatus('valid');
+      setWalletStatus("valid");
       setResolvedAddress(wallet);
       return true;
     }
-    if (wallet.toLowerCase().endsWith('.eth')) {
-      setWalletStatus('valid');
+    if (wallet.toLowerCase().endsWith(".eth")) {
+      setWalletStatus("valid");
       setResolvedAddress(null);
       return true;
     }
-    setWalletStatus('invalid');
-    setWalletError('Must be a valid EVM address (starts with 0x) or ENS name (.eth)');
+    setWalletStatus("invalid");
+    setWalletError("Must be a valid EVM address (starts with 0x) or ENS name (.eth)");
     setResolvedAddress(null);
     return false;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    if (name === 'wallet') validateWallet(value);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
+    if (name === "wallet") validateWallet(value);
   };
 
   const handleCaptcha = (token: string | null) => {
     setRecaptchaToken(token);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('loading');
-    setMessage('');
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setStatus("loading");
+    setMessage("");
 
-    if (!formData.name || !formData.email || !formData.phone || !formData.wallet || !formData.artworkLink) {
-      setStatus('error');
-      setMessage('All fields are required except Telegram and Instagram.');
+    if (!formData.name || !formData.email || !formData.artworkLink) {
+      setStatus("error");
+      setMessage("Name, email, and " + (variant === "dev" ? "project link" : "artwork link") + " are required.");
+      return;
+    }
+    if (contactMode === "phone" && !formData.phone) {
+      setStatus("error");
+      setMessage("Please provide your phone number.");
+      return;
+    }
+    if (contactMode === "telegram" && !formData.telegram.trim()) {
+      setStatus("error");
+      setMessage("Please provide your Telegram handle.");
       return;
     }
     if (!validateEmail(formData.email)) {
-      setStatus('error');
-      setMessage('Please enter a valid email address.');
+      setStatus("error");
+      setMessage("Please enter a valid email address.");
       return;
     }
-    if (walletStatus !== 'valid') {
-      setStatus('error');
-      setMessage('Please provide a valid wallet address or ENS name.');
+    if (formData.wallet.trim() && walletStatus !== "valid") {
+      setStatus("error");
+      setMessage("Please provide a valid wallet address or ENS name.");
       return;
     }
     if (!recaptchaToken) {
-      setStatus('error');
-      setMessage('Please complete the CAPTCHA.');
+      setStatus("error");
+      setMessage("Please complete the CAPTCHA.");
       return;
     }
 
     try {
-      const res = await fetch('/api/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, recaptchaToken }),
+      const response = await fetch("/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, recaptchaToken, submissionType: variant }),
       });
 
-      if (res.ok) {
-        setStatus('success');
-        setMessage('Thank you! Your submission has been received. Check your email for confirmation.');
-        setFormData({ name: '', email: '', phone: '', wallet: '', artworkLink: '', telegram: '', instagram: '' });
+      if (response.ok) {
+        setStatus("success");
+        setMessage(content.successMessage);
+        setFormData({ name: "", email: "", phone: "", wallet: "", artworkLink: "", telegram: "", instagram: "" });
         setResolvedAddress(null);
-        setWalletStatus('idle');
+        setWalletStatus("idle");
+        setWalletError("");
         setRecaptchaToken(null);
         if (recaptchaRef.current) {
           recaptchaRef.current.reset();
         }
       } else {
-        const err = await res.json();
-        setStatus('error');
-        setMessage(err.error || 'Something went wrong. Please try again or contact support.');
+        const errorPayload = await response.json();
+        setStatus("error");
+        setMessage(errorPayload.error || "Something went wrong. Please try again or contact support.");
       }
     } catch {
-      setStatus('error');
-      setMessage('Something went wrong. Please try again or contact support.');
+      setStatus("error");
+      setMessage("Something went wrong. Please try again or contact support.");
     }
   };
 
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = `
+      .phone-wrap .PhoneInput { display: flex; align-items: center; background: #0a0a0a; }
+      .phone-wrap .PhoneInputInput { flex: 1; padding: 0.75rem 1rem; background: #0a0a0a; border: none; color: white; font-size: 0.875rem; outline: none; }
+      .phone-wrap .PhoneInputInput::placeholder { color: rgba(255,255,255,0.36); }
+      .phone-wrap .PhoneInputCountrySelect { background: #0a0a0a; color: white; border: none; padding: 0.5rem 0.75rem; cursor: pointer; }
+      .phone-wrap .PhoneInputCountrySelectArrow { color: rgba(255,255,255,0.7); }
+    `;
+    document.head.appendChild(style);
+    return () => { document.head.removeChild(style); };
+  }, []);
+
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center py-32 px-6">
+    <div className="relative flex min-h-screen w-full items-center justify-center px-6 py-32">
       <BeamsBackground />
 
-      <div className="max-w-md mx-auto p-6 bg-black/90 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl relative z-10">
-        <style>{`
-          .phone-wrap .PhoneInput { display: flex; align-items: center; background: black; border: 1px solid rgba(255,255,255,0.3); border-radius: 0.5rem; }
-          .phone-wrap .PhoneInputInput { flex: 1; padding: 0.75rem 1rem; background: black; border: none; color: white; font-size: 0.875rem; outline: none; }
-          .phone-wrap .PhoneInputInput::placeholder { color: rgba(255,255,255,0.5); }
-          .phone-wrap .PhoneInputCountrySelect { background: black; color: white; border: none; border-right: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 0.75rem; cursor: pointer; }
-          .phone-wrap .PhoneInputCountrySelectArrow { color: rgba(255,255,255,0.7); }
-        `}</style>
+      <div className="relative z-10 mx-auto w-full max-w-xl bg-[rgba(8,8,8,0.92)] p-8 shadow-[0_34px_90px_rgba(0,0,0,0.46)] sm:p-10">
 
-        <h2 className="text-3xl font-bold text-white text-center mb-6">
-          Show us what you make
+        <h2 className="mb-6 text-center [font-family:var(--font-display)] text-base leading-[0.96] tracking-[-0.05em] text-white sm:text-lg">
+          {content.title}
         </h2>
 
-        <div className="text-white/80 text-center mb-8 text-base leading-relaxed space-y-4">
-          <p>Submit your art for consideration in our upcoming live exhibitions and events.</p>
-          <p>If selected, you will receive a complimentary artist membership, granting you entry to our events for 1 year, and exposure to our global community of art, music, and technology enthusiasts.</p>
-          <p>We are looking for innovative digital art that aligns with our themes of energy, technology, and culture.</p>
-          <p>Our team will review submissions and contact selected artists shortly.</p>
-          <p>Your information is kept confidential and used only for review and contact purposes.</p>
+        <div className="mb-10 space-y-2 text-center text-xs leading-5 tracking-wide text-white/52 sm:text-sm sm:leading-[1.55]">
+          {content.intro.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
+          {/* 1. Name */}
           <div>
-            <label className="block text-white font-medium mb-1 text-sm">Name / Alias *</label>
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">{variant === "dev" ? "Name / Team" : "Name / Alias"}</label>
             <input
               name="name"
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-black border border-white/30 rounded-lg text-white placeholder:text-white/50 focus:outline-none focus:border-white transition text-sm"
+              className={inputClassName}
             />
           </div>
 
+          {/* 2. Email */}
           <div>
-            <label className="block text-white font-medium mb-1 text-sm">Email Address *</label>
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Email Address</label>
             <input
               name="email"
               type="email"
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-black border border-white/30 rounded-lg text-white placeholder:text-white/50 focus:outline-none focus:border-white transition text-sm"
+              className={inputClassName}
             />
           </div>
 
+          {/* 3. Link (artwork or project) */}
           <div>
-            <label className="block text-white font-medium mb-1 text-sm">Phone Number *</label>
-            <div className="phone-wrap">
-              <PhoneInput
-                international
-                defaultCountry="MX"
-                value={formData.phone}
-                onChange={(value: string | undefined) => setFormData(prev => ({ ...prev, phone: value || '' }))}
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-white font-medium mb-1 text-sm">Wallet Address or ENS (.eth) *</label>
-            <input
-              name="wallet"
-              value={formData.wallet}
-              onChange={handleChange}
-              onBlur={() => validateWallet(formData.wallet)}
-              required
-              className="w-full px-4 py-3 bg-black border border-white/30 rounded-lg text-white placeholder:text-white/60 focus:outline-none focus:border-white transition text-sm"
-            />
-            {walletStatus === 'resolving' && <p className="text-white/60 text-xs mt-1">Resolving ENS...</p>}
-            {walletStatus === 'valid' && resolvedAddress && (
-              <p className="text-green-300 text-xs mt-1">Resolved to: {resolvedAddress}</p>
-            )}
-            {walletError && <p className="text-red-400 text-xs mt-1">{walletError}</p>}
-          </div>
-
-          <div>
-            <label className="block text-white font-medium mb-1 text-sm">Artwork Link *</label>
-            <a
-              href="https://base.app/invite/sunshinev/R80CCWVY"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block mt-1 mb-2 text-white/60 text-[8px] leading-tight hover:text-white transition-colors"
-            >
-              WE ONLY ACCEPT ONCHAIN ARTWORKS — if your work is not on any blockchain, please upload it to Base App as a post, it is free to use. Paste the link here or from the marketplace of your choice. Click here to see how.
-            </a>
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">{content.linkLabel.replace(" *", "")}</label>
+            {content.linkHint ? (
+              <a
+                href={content.linkHint.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mb-3 block text-[10px] uppercase tracking-[0.16em] text-white/42 transition-colors hover:text-white/72"
+              >
+                {content.linkHint.label}
+              </a>
+            ) : null}
             <input
               name="artworkLink"
               value={formData.artworkLink}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-black border border-white/30 rounded-lg text-white placeholder:text-white/60 focus:outline-none focus:border-white transition text-sm"
+              className={inputClassName}
             />
           </div>
 
+          {/* 4. Contact — phone or telegram toggle */}
           <div>
-            <label className="block text-white font-medium mb-1 text-sm">Telegram (optional)</label>
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Contact Method</label>
+            <div className="mb-3 flex">
+              <button
+                type="button"
+                onClick={() => setContactMode("phone")}
+                className={`flex-1 border px-4 py-2.5 text-[10px] uppercase tracking-[0.24em] transition-colors duration-150 ${
+                  contactMode === "phone"
+                    ? "border-white/30 bg-white/8 text-white"
+                    : "border-white/8 bg-transparent text-white/32 hover:border-white/16 hover:text-white/52"
+                }`}
+              >
+                Phone
+              </button>
+              <button
+                type="button"
+                onClick={() => setContactMode("telegram")}
+                className={`flex-1 border border-l-0 px-4 py-2.5 text-[10px] uppercase tracking-[0.24em] transition-colors duration-150 ${
+                  contactMode === "telegram"
+                    ? "border-white/30 bg-white/8 text-white"
+                    : "border-white/8 bg-transparent text-white/32 hover:border-white/16 hover:text-white/52"
+                }`}
+              >
+                Telegram
+              </button>
+            </div>
+            {contactMode === "phone" ? (
+              <div className="phone-wrap">
+                <PhoneInput
+                  international
+                  defaultCountry="MX"
+                  value={formData.phone}
+                  onChange={(value: string | undefined) => setFormData((current) => ({ ...current, phone: value || "" }))}
+                />
+              </div>
+            ) : (
+              <input
+                name="telegram"
+                value={formData.telegram}
+                onChange={handleChange}
+                placeholder="@username or https://t.me/username"
+                className={inputClassName}
+              />
+            )}
+          </div>
+
+          {/* 5. Optional — wallet */}
+          <div>
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Wallet Address or ENS (.eth) <span className="normal-case tracking-normal text-white/28">(optional)</span></label>
             <input
-              name="telegram"
-              value={formData.telegram}
+              name="wallet"
+              value={formData.wallet}
               onChange={handleChange}
-              placeholder="@username or https://t.me/username"
-              className="w-full px-4 py-3 bg-black border border-white/30 rounded-lg text-white placeholder:text-white/60 focus:outline-none focus:border-white transition text-sm"
+              onBlur={() => validateWallet(formData.wallet)}
+              className={inputClassName}
             />
+            {walletError ? <p className="mt-1 text-xs text-white/44">{walletError}</p> : null}
           </div>
 
+          {/* 6. Optional — instagram */}
           <div>
-            <label className="block text-white font-medium mb-1 text-sm">Instagram (optional)</label>
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Instagram <span className="normal-case tracking-normal text-white/28">(optional)</span></label>
             <input
               name="instagram"
               value={formData.instagram}
               onChange={handleChange}
               placeholder="@username or https://instagram.com/username"
-              className="w-full px-4 py-3 bg-black border border-white/30 rounded-lg text-white placeholder:text-white/60 focus:outline-none focus:border-white transition text-sm"
+              className={inputClassName}
             />
           </div>
 
-          <ReCAPTCHA
-            ref={recaptchaRef}
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-            onChange={handleCaptcha}
-          />
+          <ReCAPTCHA ref={recaptchaRef} sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!} onChange={handleCaptcha} />
 
           <button
             type="submit"
-            disabled={status === 'loading'}
-            className="w-full py-4 px-8 bg-white text-black font-semibold rounded-xl hover:bg-black hover:text-white hover:scale-105 hover:shadow-2xl hover:border-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg border border-black"
+            disabled={status === "loading"}
+            className="w-full bg-white px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-black transition-transform duration-200 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {status === 'loading' ? 'Sending...' : 'Submit'}
+            {content.submitLabel}
           </button>
         </form>
 
-        {status === 'success' && (
-          <p className="mt-6 text-center text-green-300 font-medium text-lg">{message}</p>
-        )}
-        {status === 'error' && (
-          <p className="mt-6 text-center text-red-400 font-medium text-lg">{message}</p>
-        )}
+        {status === "success" ? (
+          <p className="mt-6 text-center text-base text-white/68">{message}</p>
+        ) : null}
+        {status === "error" ? (
+          <p className="mt-6 text-center text-base text-white/52">{message}</p>
+        ) : null}
       </div>
     </div>
   );

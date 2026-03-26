@@ -1,20 +1,20 @@
 // components/ContactStepper.tsx
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import Stepper, { Step } from "./Stepper";
 
 import {
   useAccount,
   useConnect,
   useDisconnect,
-  useWriteContract,
-  useWaitForTransactionReceipt,
+  useSendCalls,
+  useCallsStatus,
 } from "wagmi";
+import { encodeFunctionData } from "viem";
 import { base } from "wagmi/chains";
-import { injected, coinbaseWallet, walletConnect } from "wagmi/connectors";
 
-const BACARDI_FORM_ABI = [
+const SPECTRA_FORM_ABI = [
   {
     name: "submit",
     type: "function",
@@ -42,10 +42,8 @@ function normalizeHandle(s: string) {
 }
 
 export default function ContactStepper() {
-  const contractAddress = process.env.NEXT_PUBLIC_BACARDI_FORM_ADDRESS as `0x${string}` | undefined;
-  const wcProjectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID as string | undefined;
-
-  const [currentStep, setCurrentStep] = useState<number>(1);
+  const contractAddress = process.env.NEXT_PUBLIC_SPECTRA_FORM_ADDRESS as `0x${string}` | undefined;
+const [currentStep, setCurrentStep] = useState<number>(1);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -57,25 +55,19 @@ export default function ContactStepper() {
   const [uiError, setUiError] = useState<string>("");
 
   const { address, chainId, isConnected } = useAccount();
-  const { connect, isPending: isConnecting } = useConnect();
+  const { connect, connectors, isPending: isConnecting } = useConnect();
   const { disconnect } = useDisconnect();
 
-  const { writeContract, data: txHash, isPending: isWriting, error: writeError, reset } = useWriteContract();
-  const {
-    isLoading: isConfirming,
-    isSuccess: isConfirmed,
-    isError: isReceiptError,
-  } = useWaitForTransactionReceipt({
-    hash: txHash,
-    chainId: base.id,
-  });
+  const paymasterUrl = process.env.NEXT_PUBLIC_PAYMASTER_URL;
 
-  useEffect(() => {
-    if (writeError) {
-      const msg = (writeError as any)?.shortMessage || (writeError as any)?.message || "transaction failed";
-      setUiError(String(msg));
-    }
-  }, [writeError]);
+  const { sendCalls, data: callsId, isPending: isWriting, reset } = useSendCalls();
+  const { data: callsStatus } = useCallsStatus({
+    id: typeof callsId === "string" ? callsId : (callsId as unknown as { id?: string })?.id ?? "",
+    query: { enabled: Boolean(callsId), refetchInterval: (q) => (q.state.data?.status === "success" ? false : 1000) },
+  });
+  const isConfirming = Boolean(callsId) && callsStatus?.status !== "success";
+  const isConfirmed = callsStatus?.status === "success";
+  const isReceiptError = callsStatus?.status === "failure";
 
   const canProceedStep2 = useMemo(() => {
     return isConnected && chainId === base.id;
@@ -87,8 +79,8 @@ export default function ContactStepper() {
 
   const stepGuardMessage = useMemo(() => {
     if (currentStep === 2) {
-      if (!isConnected) return "connect your wallet to continue";
-      if (chainId !== base.id) return "switch network to Base to continue";
+      if (!isConnected) return "";
+      if (chainId !== base.id) return "";
       return "";
     }
     if (currentStep === 3) {
@@ -110,7 +102,7 @@ export default function ContactStepper() {
     setUiError("");
 
     if (!contractAddress) {
-      setUiError("missing NEXT_PUBLIC_BACARDI_FORM_ADDRESS");
+      setUiError("missing NEXT_PUBLIC_SPECTRA_FORM_ADDRESS");
       return;
     }
     if (!isConnected) {
@@ -137,27 +129,57 @@ export default function ContactStepper() {
     const safeX = normalizeHandle(xHandle);
     const safeTt = normalizeHandle(tiktok);
 
-    writeContract({
-      address: contractAddress,
-      abi: BACARDI_FORM_ABI,
-      functionName: "submit",
-      args: [name.trim(), safePhone, packedEmail || safeIg, safeX, safeTt],
-      chainId: base.id,
+    sendCalls({
+      calls: [{
+        to: contractAddress,
+        data: encodeFunctionData({
+          abi: SPECTRA_FORM_ABI,
+          functionName: "submit",
+          args: [name.trim(), safePhone, packedEmail || safeIg, safeX, safeTt],
+        }),
+      }],
+      capabilities: paymasterUrl ? { paymasterService: { url: paymasterUrl } } : undefined,
     });
   };
 
-  const connectInjected = () => connect({ connector: injected() });
-  const connectCoinbase = () => connect({ connector: coinbaseWallet({ appName: "spectra" }) });
-  const connectWalletConnect = () => {
-    if (!wcProjectId) {
-      setUiError("missing NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID");
+  const injectedConnector = connectors.find((connector) => connector.id === "injected");
+  const coinbaseConnector = connectors.find(
+    (connector) =>
+      connector.id === "coinbaseWalletSDK" ||
+      connector.id === "coinbaseWallet" ||
+      connector.id === "coinbaseSmartWallet",
+  );
+  const walletConnectConnector = connectors.find((connector) => connector.id === "walletConnect");
+
+  const connectInjected = () => {
+    if (!injectedConnector) {
+      setUiError("injected wallet connector is unavailable");
       return;
     }
+
+    setUiError("");
+    connect({ connector: injectedConnector });
+  };
+
+  const connectCoinbase = () => {
+    if (!coinbaseConnector) {
+      setUiError("coinbase wallet connector is unavailable");
+      return;
+    }
+
+    setUiError("");
+    connect({ connector: coinbaseConnector });
+  };
+
+  const connectWalletConnect = () => {
+    if (!walletConnectConnector) {
+      setUiError("missing NEXT_PUBLIC_REOWN_PROJECT_ID or NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID");
+      return;
+    }
+
+    setUiError("");
     connect({
-      connector: walletConnect({
-        projectId: wcProjectId,
-        showQrModal: true,
-      }),
+      connector: walletConnectConnector,
     });
   };
 
@@ -180,21 +202,12 @@ export default function ContactStepper() {
         <Step>
           <h2 className="text-xl text-white">contact</h2>
           <p className="text-white/70 text-sm mt-2">
-            wallet + email, saved onchain to BacardiForm.
+            A short contact intake to continue.
           </p>
-
-          {contractAddress ? (
-            <p className="text-white/50 text-xs mt-3 break-all">contract: {contractAddress}</p>
-          ) : (
-            <p className="text-white/50 text-xs mt-3">set NEXT_PUBLIC_BACARDI_FORM_ADDRESS in .env.local</p>
-          )}
         </Step>
 
         <Step>
-          <h2 className="text-xl text-white">connect wallet</h2>
-          <p className="text-white/70 text-sm mt-2">
-            required. network must be Base.
-          </p>
+          <h2 className="text-xl text-white">connect</h2>
 
           {stepGuardMessage ? (
             <div className="mt-4 text-sm text-white border border-white/20 rounded-xl p-3">
@@ -234,26 +247,16 @@ export default function ContactStepper() {
                 >
                   connect walletconnect
                 </button>
-
-                <div className="text-xs text-white/50">
-                  walletconnect env: {wcProjectId ? "ok" : "missing"}
-                </div>
               </>
             ) : (
               <div className="border border-white/20 rounded-xl p-4">
-                <div className="text-white text-sm">connected</div>
-                <div className="text-white/60 text-xs mt-2 break-all">address: {address}</div>
-                <div className="text-white/60 text-xs mt-1">chain id: {chainId}</div>
-                <div className="mt-4 flex gap-3">
+                <div className="mt-1 flex gap-3">
                   <button
                     onClick={() => disconnect()}
                     className="px-4 py-2 border border-white text-white text-sm rounded-xl"
                   >
                     disconnect
                   </button>
-                  <div className="text-xs text-white/50 self-center">
-                    required: Base ({base.id})
-                  </div>
                 </div>
               </div>
             )}
@@ -349,9 +352,6 @@ export default function ContactStepper() {
 
         <Step>
           <h2 className="text-xl text-white">submit</h2>
-          <p className="text-white/70 text-sm mt-2">
-            writes to BacardiForm.submit.
-          </p>
 
           {uiError ? (
             <div className="mt-4 text-sm text-white border border-white/20 rounded-xl p-3">
@@ -361,13 +361,13 @@ export default function ContactStepper() {
 
           {isReceiptError ? (
             <div className="mt-4 text-sm text-white border border-white/20 rounded-xl p-3">
-              receipt error. check explorer.
+              Please try again.
             </div>
           ) : null}
 
           {isConfirmed ? (
             <div className="mt-4 text-sm text-white border border-white/20 rounded-xl p-3">
-              confirmed on Base.
+              Submitted.
             </div>
           ) : null}
 
@@ -380,16 +380,8 @@ export default function ContactStepper() {
               disabled={isWriting || isConfirming || !canProceedStep2 || !canProceedStep3}
               className="w-full px-4 py-3 border border-white text-white text-sm rounded-xl disabled:opacity-40"
             >
-              {isWriting ? "signing" : isConfirming ? "confirming" : isConfirmed ? "submitted" : "submit onchain"}
+              Submit
             </button>
-
-            {txHash ? (
-              <div className="text-xs text-white/60 break-all">tx: {txHash}</div>
-            ) : null}
-
-            <div className="text-xs text-white/50">
-              mapping: email is stored as <span className="text-white">email:you@domain.com</span> in the instagram field.
-            </div>
           </div>
         </Step>
       </Stepper>

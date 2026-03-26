@@ -1,6 +1,8 @@
 "use client";
 import { useRef, useState } from 'react';
+import PillNav from "@/components/PillNav";
 import PrismBackground from '@/components/backgrounds/PrismBackground';
+import { publicNavItems } from "@/src/lib/navigation";
 
 const RECORD_SECONDS = 15;
 
@@ -101,9 +103,9 @@ function RecordablePlayer({
           borderRadius: 10,
           overflow: 'hidden',
           border: recording
-            ? '2px solid rgba(255,60,60,0.8)'
+            ? '2px solid rgba(208, 221, 238, 0.82)'
             : '1px solid rgba(255,255,255,0.15)',
-          boxShadow: recording ? '0 0 24px rgba(255,60,60,0.25)' : 'none',
+          boxShadow: recording ? '0 0 24px rgba(148, 163, 184, 0.24)' : 'none',
           transition: 'border 0.2s, box-shadow 0.2s',
         }}
       >
@@ -127,7 +129,7 @@ function RecordablePlayer({
             <span style={{
               width: 7, height: 7,
               borderRadius: '50%',
-              background: 'red',
+              background: 'linear-gradient(135deg, rgba(240,244,248,0.98), rgba(149,170,198,0.92))',
               display: 'inline-block',
               animation: 'blink 1s infinite',
             }} />
@@ -147,7 +149,7 @@ function RecordablePlayer({
         <div style={{
           height: '100%',
           width: `${progress * 100}%`,
-          background: recording ? '#ff4444' : 'transparent',
+          background: recording ? 'linear-gradient(90deg, rgba(255,255,255,0.96), rgba(170,170,170,0.92))' : 'transparent',
           borderRadius: 99,
           transition: 'width 0.1s linear',
         }} />
@@ -167,9 +169,11 @@ function RecordablePlayer({
         disabled={recording}
         style={{
           padding: '9px 24px',
-          background: recording ? 'rgba(255,255,255,0.06)' : 'white',
+          background: recording
+            ? 'rgba(255,255,255,0.06)'
+            : 'linear-gradient(135deg, rgba(244,247,251,0.96), rgba(173,186,204,0.86))',
           color: recording ? 'rgba(255,255,255,0.25)' : 'black',
-          border: 'none',
+          border: recording ? 'none' : '1px solid rgba(219, 228, 242, 0.35)',
           borderRadius: 999,
           fontWeight: 700,
           fontSize: 13,
@@ -203,6 +207,22 @@ export default function PurePrismRecord() {
       gap: 48,
       padding: '60px 40px',
     }}>
+      <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
+        <PillNav
+          logo="/logo.png"
+          logoAlt="AXIS logo"
+          items={publicNavItems}
+          activeHref="/record-prism"
+          className="custom-nav"
+          ease="power2.easeOut"
+          baseColor="#000"
+          pillColor="#fff"
+          hoveredPillTextColor="#000"
+          pillTextColor="#000"
+          initialLoadAnimation={false}
+        />
+      </div>
+
       <div style={{
         color: 'white',
         fontWeight: 800,
@@ -210,6 +230,7 @@ export default function PurePrismRecord() {
         letterSpacing: '0.2em',
         opacity: 0.5,
         textTransform: 'uppercase',
+        marginTop: 64,
       }}>
         Prismatic Burst — Export
       </div>

@@ -4,19 +4,7 @@
 import React from "react";
 import ChromaGrid from "./ChromaGrid";
 import EpisodesCards from "./EpisodesCards";
-
-type EpisodeStatus = "open" | "locked";
-
-export type Episode = {
-  id: number;
-  title: string;
-  subtitle: string;
-  status: EpisodeStatus;
-  year: number;
-  image: string;
-  handle?: string;
-  lumaEvent?: string;
-};
+import { type EpisodeCard as Episode } from "@/src/lib/episodes";
 
 type Props = {
   episodes: Episode[];

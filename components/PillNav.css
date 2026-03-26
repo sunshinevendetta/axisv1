@@ -94,6 +94,7 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  font-family: inherit;
 }
 
 .pill .hover-circle {
@@ -101,11 +102,14 @@
   left: 50%;
   bottom: 0;
   border-radius: 50%;
-  background: var(--base, #000);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(196, 196, 196, 0.9));
   z-index: 1;
   display: block;
   pointer-events: none;
   will-change: transform;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 0 24px rgba(255, 255, 255, 0.12);
 }
 
 .pill .label-stack {
@@ -127,7 +131,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--hover-text, #fff);
+  color: #05070a;
   z-index: 3;
   display: inline-block;
   will-change: transform, opacity;
@@ -200,7 +204,7 @@
   top: 3em;
   left: 1rem;
   right: 1rem;
-  background: var(--base, #f0f0f0);
+  background: #ffffff;
   border-radius: 27px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   z-index: 998;
@@ -228,10 +232,14 @@
   font-weight: 500;
   border-radius: 50px;
   transition: all 0.2s ease;
+  font-family: inherit;
 }
 
 .mobile-menu-popover .mobile-menu-link:hover {
   cursor: pointer;
-  background-color: var(--base);
-  color: var(--hover-text, #fff);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(196, 196, 196, 0.9));
+  color: #05070a;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 0 24px rgba(255, 255, 255, 0.12);
 }

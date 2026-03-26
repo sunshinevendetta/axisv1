@@ -1,0 +1,313 @@
+[
+  {
+    "id": 1,
+    "slug": "episode-1",
+    "title": "AXIS EPISODE I",
+    "shortTitle": "episode 1",
+    "status": "open",
+    "season": 1,
+    "year": 2025,
+    "startsAt": "2025-12-20T19:00:00-06:00",
+    "timezone": "America/Mexico_City",
+    "venueName": "Ciudad de México, Ciudad de México",
+    "city": "Ciudad de México",
+    "summary": "AR-mapped venue with checkpoints, relic nodes, and onchain unlocks via Base App. Glitch Jam, live music, 200+ artists. CDMX.",
+    "description": "The venue becomes an AR-mapped environment guiding guests through checkpoints, relic nodes, and triggers that unlock digital pieces via Base App. Each scan shifts the space and unveils the episode's digital layer. Glitch Jam occupies the main hall with CRT monitors and reactive loops responding to sound, movement, and AR triggers.",
+    "lumaEventId": "evt-4HMKwOyFAW4iKry",
+    "lumaUrl": "https://luma.com/on1eiugg",
+    "registryEventId": 1,
+    "meta": {
+      "es": "El venue se transforma en un entorno mapeado con realidad aumentada. Cada visitante recorre checkpoints, nodos de reliquias y activadores que desbloquean piezas digitales mediante la Base App. Glitch Jam toma el salón principal con distorsión analógica, monitores CRT y loops reactivos que responden al sonido, al movimiento y a los triggers AR.",
+      "en": "The venue becomes an AR-mapped environment guiding guests through checkpoints, relic nodes, and triggers that unlock digital pieces via Base App. Glitch Jam occupies the main hall with analog distortion, CRT monitors, and reactive feedback loops responding to sound, movement, and AR triggers.",
+      "music": ["Cyberreality", "Mami Pistola", "Machin Sound", "Omarov", "Sunshine Vendetta"],
+      "allies": ["Las Flores Web3", "NOUNS AMIGOS", "color.fun", "ZORA", "Base App"],
+      "tags": ["AR", "Base App", "onchain", "digital art", "music", "CRT", "CDMX"]
+    },
+    "assets": {
+      "sourceUri": "/ep1.jpg",
+      "posterUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,anim=false,background=white,quality=75,width=500,height=500/event-covers/kt/201e7bb1-f77e-4ac6-84f7-96120456973f.jpg",
+      "imageUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,anim=false,background=white,quality=75,width=500,height=500/event-covers/kt/201e7bb1-f77e-4ac6-84f7-96120456973f.jpg",
+      "glbUri": "/assets/3d/episode1/ep1.glb",
+      "videoUri": "/assets/3d/episode1/ep1.webm",
+      "ar": {
+        "enabled": true,
+        "placementMode": "floor"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "slug": "episode-2",
+    "title": "AXIS SECRET SOCIETY",
+    "shortTitle": "episode 2",
+    "status": "open",
+    "season": 1,
+    "year": 2025,
+    "startsAt": "2025-12-27T20:00:00-06:00",
+    "timezone": "America/Mexico_City",
+    "venueName": "Ciudad de México, Ciudad de México",
+    "city": "Ciudad de México",
+    "summary": "Intimate, high-density AXIS. AR-mapped venue with onchain unlocks via Base App. Limited capacity, long sessions. Art, music. CDMX.",
+    "description": "The more intimate and intense side of AXIS. Limited capacity, higher density, longer sessions. The venue becomes an AR-mapped environment with paths, checkpoints, and nodes that unlock digital works using Base App. Everything happens through spatial mapping and direct interaction.",
+    "lumaEventId": "evt-GRVDgVCIyMjwukd",
+    "lumaUrl": "https://luma.com/1o4oyh4i",
+    "registryEventId": 2,
+    "meta": {
+      "es": "La versión más íntima e intensa de AXIS. Aforo limitado, mayor densidad, sesiones largas. El venue se convierte en un entorno mapeado con realidad aumentada, activado a través de recorridos, checkpoints y nodos que desbloquean piezas digitales usando la Base App.",
+      "en": "The more intimate and intense side of AXIS. Limited capacity, higher density, longer sessions. The venue becomes an AR-mapped environment with paths, checkpoints, and nodes that unlock digital works using Base App. Everything happens through spatial mapping and direct interaction.",
+      "music": ["Coco Wolff", "Dabeat", "Max Headroom", "Sunshine Vendetta"],
+      "allies": ["Base App", "ZORA"],
+      "tags": ["AR", "Base App", "onchain", "digital art", "music", "intimate", "CDMX"]
+    },
+    "assets": {
+      "sourceUri": "/ep1-5.jpg",
+      "posterUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,anim=false,background=white,quality=75,width=500,height=500/event-covers/tm/0a4029f5-b68f-4fdb-a5ec-17607a003a5e.png",
+      "imageUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,anim=false,background=white,quality=75,width=500,height=500/event-covers/tm/0a4029f5-b68f-4fdb-a5ec-17607a003a5e.png",
+      "glbUri": "/assets/3d/episode2/ep2.glb",
+      "ar": {
+        "enabled": true,
+        "placementMode": "floor"
+      }
+    }
+  },
+  {
+    "id": 3,
+    "slug": "episode-3",
+    "title": "IRL TOUR MEXICO CITY X AXIS",
+    "shortTitle": "episode 3",
+    "status": "open",
+    "season": 1,
+    "year": 2026,
+    "startsAt": "2026-02-28T20:00:00-06:00",
+    "timezone": "America/Mexico_City",
+    "venueName": "Av. Álvaro Obregón 180, Roma Nte., Ciudad de México",
+    "city": "Ciudad de México",
+    "summary": "IRL ENERGY TOUR x AXIS. Fully onchain experience powered by $IRL. Earn tokens, immersive digital installations, live music. CDMX.",
+    "description": "IRL ENERGY TOUR arrives in Mexico for its CDMX edition via AXIS, transforming the space into a fully onchain live experience powered by $IRL. Immersive digital installations, exclusive works by onchain artists, and real-time participation mechanics converge in a single integrated environment. Attendees earn tokens by participating, scanning nodes, and interacting with onchain protocols.",
+    "lumaEventId": "evt-TsVfVtfEqlaLcIe",
+    "lumaUrl": "https://luma.com/qkesy142",
+    "registryEventId": 3,
+    "meta": {
+      "es": "IRL ENERGY TOUR llega a Mexico para su edición CDMX vía AXIS, transformando el espacio en una experiencia en vivo totalmente onchain impulsada por $IRL. Instalaciones digitales inmersivas, obras exclusivas de artistas onchain y mecánicas de participación en tiempo real convergen en un mismo entorno. Los asistentes ganan tokens al participar, escanear nodos y conectar con protocolos onchain.",
+      "en": "IRL ENERGY TOUR arrives in Mexico for its CDMX edition via AXIS, transforming the space into a fully onchain live experience powered by $IRL. Immersive digital installations, exclusive works by onchain artists, and real-time participation mechanics converge in a single integrated environment. Attendees earn tokens by participating, scanning nodes, and interacting with onchain protocols.",
+      "music": ["Ambroz", "Sunshine Vendetta", "Paco Reyes"],
+      "allies": ["$IRL", "irl.energy", "Absinth", "Mezcal Amarás", "Second Solar of Life"],
+      "venue": "@axis.show",
+      "tags": ["$IRL", "onchain", "tokens", "digital art", "music", "immersive", "CDMX"]
+    },
+    "assets": {
+      "sourceUri": "/ep3.png",
+      "posterUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,anim=false,background=white,quality=75,width=500,height=500/event-covers/75/86fed6fe-4ef4-48e8-bc23-71bafdaab48a.jpg",
+      "imageUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,anim=false,background=white,quality=75,width=500,height=500/event-covers/75/86fed6fe-4ef4-48e8-bc23-71bafdaab48a.jpg",
+      "glbUri": "/assets/3d/episode3/ep3.glb",
+      "ar": {
+        "enabled": true,
+        "placementMode": "floor"
+      }
+    }
+  },
+  {
+    "id": 4,
+    "slug": "episode-4",
+    "title": "AXIS 4.0",
+    "shortTitle": "episode 4",
+    "status": "open",
+    "season": 1,
+    "year": 2026,
+    "startsAt": "2026-03-21T18:00:00.000-06:00",
+    "timezone": "America/Mexico_City",
+    "venueName": "Studio Berlin, CDMX",
+    "city": "Ciudad de México",
+    "summary": "PSYOP Anime screens in a physical space for the first time. 200 curated works, live AR, NFC art drops, and music. Studio Berlin, CDMX.",
+    "description": "AXIS returns to Studio Berlin for edition 04. PSYOP Anime arrives as a mini cinema inside the venue. AXIS LABS presents a curated display of 200 artworks across the space. Live AR interactions, physical installations, and NFC touchpoints let visitors tap their phones to unlock digital art collectibles powered by Refraction.",
+    "lumaEventId": "evt-8zhDxcY3FslgVT5",
+    "lumaUrl": "https://luma.com/hiys43uw",
+    "registryEventId": 4,
+    "meta": {
+      "es": "AXIS regresa a Studio Berlin para la edición 04. PSYOP Anime llega como una mini sala de cine dentro del venue. El proyecto convierte noticias actuales y cultura de internet en episodios cortos de anime. Hasta ahora solo se ha publicado en redes. En AXIS se presentará por primera vez en una proyección física. AXIS LABS también presentará una muestra curada de 200 obras dentro del espacio, con varios artistas por revelar próximamente. El venue incluirá interacciones de realidad aumentada en vivo, instalaciones físicas y puntos NFC donde los asistentes podrán tocar con su teléfono para activar coleccionables de arte digital dentro del lugar gracias a @refraction_irl.",
+      "en": "AXIS returns to Studio Berlin for edition 04. PSYOP Anime arrives as a mini cinema inside the venue. The project turns real world news and internet culture into short anime episodes. Until now it has only been released online. At AXIS the episodes will be shown in a physical space. AXIS LABS will also present a curated display of 200 artworks across the venue, with multiple artists to be revealed soon. The space includes live AR interactions, physical installations, and NFC touchpoints that let visitors tap their phones to unlock digital art collectibles inside the venue powered by @refraction_irl.",
+      "music": ["@ambrozmusic", "@coronela____", "@dansmacias", "@reyespaco", "@sunshinevendetta"],
+      "allies": ["@11oncepizza", "@refraction_irl", "tortoise music", "@base_app", "@studioberlin__"],
+      "venue": "@studioberlin__",
+      "tags": ["anime", "AR", "NFC", "art", "music", "CDMX"]
+    },
+    "assets": {
+      "sourceUri": "/soon.jpg",
+      "posterUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,anim=false,background=white,quality=75,width=500,height=500/event-covers/qi/e78413a5-32c0-4342-9c8e-53bf0150e55c.jpg",
+      "imageUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,anim=false,background=white,quality=75,width=500,height=500/event-covers/qi/e78413a5-32c0-4342-9c8e-53bf0150e55c.jpg",
+      "glbUri": "/assets/3d/episode4/ep4.glb",
+      "ar": {
+        "enabled": true,
+        "placementMode": "floor"
+      }
+    }
+  },
+  {
+    "id": 5,
+    "slug": "episode-5",
+    "title": "Episode 5",
+    "shortTitle": "episode 5",
+    "status": "locked",
+    "season": 1,
+    "year": 2026,
+    "startsAt": "2026-03-28T20:00:00-06:00",
+    "timezone": "America/Mexico_City",
+    "venueName": "TBD",
+    "city": "Mexico City",
+    "summary": "Details unlock closer to the event release.",
+    "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+    "assets": {
+      "sourceUri": "/soon.jpg",
+      "posterUri": "/soon.jpg",
+      "imageUri": "/soon.jpg",
+      "glbUri": "/models/logo.glb"
+    }
+  },
+  {
+    "id": 6,
+    "slug": "episode-6",
+    "title": "Episode 6",
+    "shortTitle": "episode 6",
+    "status": "locked",
+    "season": 1,
+    "year": 2026,
+    "startsAt": "2026-04-28T20:00:00-06:00",
+    "timezone": "America/Mexico_City",
+    "venueName": "TBD",
+    "city": "Mexico City",
+    "summary": "Details unlock closer to the event release.",
+    "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+    "assets": {
+      "sourceUri": "/soon.jpg",
+      "posterUri": "/soon.jpg",
+      "imageUri": "/soon.jpg",
+      "glbUri": "/models/logo.glb"
+    }
+  },
+  {
+    "id": 7,
+    "slug": "episode-7",
+    "title": "Episode 7",
+    "shortTitle": "episode 7",
+    "status": "locked",
+    "season": 1,
+    "year": 2026,
+    "startsAt": "2026-05-22T20:00:00-06:00",
+    "timezone": "America/Mexico_City",
+    "venueName": "TBD",
+    "city": "Mexico City",
+    "summary": "Details unlock closer to the event release.",
+    "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+    "assets": {
+      "sourceUri": "/soon.jpg",
+      "posterUri": "/soon.jpg",
+      "imageUri": "/soon.jpg",
+      "glbUri": "/models/logo.glb"
+    }
+  },
+  {
+    "id": 8,
+    "slug": "episode-8",
+    "title": "Episode 8",
+    "shortTitle": "episode 8",
+    "status": "locked",
+    "season": 1,
+    "year": 2026,
+    "startsAt": "2026-07-01T20:00:00-06:00",
+    "timezone": "America/Mexico_City",
+    "venueName": "TBD",
+    "city": "Mexico City",
+    "summary": "Details unlock closer to the event release.",
+    "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+    "assets": {
+      "sourceUri": "/soon.jpg",
+      "posterUri": "/soon.jpg",
+      "imageUri": "/soon.jpg",
+      "glbUri": "/models/logo.glb"
+    }
+  },
+  {
+    "id": 9,
+    "slug": "episode-9",
+    "title": "Episode 9",
+    "shortTitle": "episode 9",
+    "status": "locked",
+    "season": 1,
+    "year": 2026,
+    "startsAt": "2026-08-01T20:00:00-06:00",
+    "timezone": "America/Mexico_City",
+    "venueName": "TBD",
+    "city": "Mexico City",
+    "summary": "Details unlock closer to the event release.",
+    "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+    "assets": {
+      "sourceUri": "/soon.jpg",
+      "posterUri": "/soon.jpg",
+      "imageUri": "/soon.jpg",
+      "glbUri": "/models/logo.glb"
+    }
+  },
+  {
+    "id": 10,
+    "slug": "episode-10",
+    "title": "Episode 10",
+    "shortTitle": "episode 10",
+    "status": "locked",
+    "season": 1,
+    "year": 2026,
+    "startsAt": "2026-09-01T20:00:00-06:00",
+    "timezone": "America/Mexico_City",
+    "venueName": "TBD",
+    "city": "Mexico City",
+    "summary": "Details unlock closer to the event release.",
+    "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+    "assets": {
+      "sourceUri": "/soon.jpg",
+      "posterUri": "/soon.jpg",
+      "imageUri": "/soon.jpg",
+      "glbUri": "/models/logo.glb"
+    }
+  },
+  {
+    "id": 11,
+    "slug": "episode-11",
+    "title": "Episode 11",
+    "shortTitle": "episode 11",
+    "status": "locked",
+    "season": 1,
+    "year": 2026,
+    "startsAt": "2026-10-01T20:00:00-06:00",
+    "timezone": "America/Mexico_City",
+    "venueName": "TBD",
+    "city": "Mexico City",
+    "summary": "Details unlock closer to the event release.",
+    "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+    "assets": {
+      "sourceUri": "/soon.jpg",
+      "posterUri": "/soon.jpg",
+      "imageUri": "/soon.jpg",
+      "glbUri": "/models/logo.glb"
+    }
+  },
+  {
+    "id": 12,
+    "slug": "episode-12",
+    "title": "Episode 12",
+    "shortTitle": "episode 12",
+    "status": "locked",
+    "season": 1,
+    "year": 2026,
+    "startsAt": "2026-11-01T20:00:00-06:00",
+    "timezone": "America/Mexico_City",
+    "venueName": "TBD",
+    "city": "Mexico City",
+    "summary": "Details unlock closer to the event release.",
+    "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+    "assets": {
+      "sourceUri": "/soon.jpg",
+      "posterUri": "/soon.jpg",
+      "imageUri": "/soon.jpg",
+      "glbUri": "/models/logo.glb"
+    }
+  }
+]

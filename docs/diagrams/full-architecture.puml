@@ -1,0 +1,50 @@
+@startuml
+title SPECTRA Full Contract + App Architecture
+
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+
+actor User
+actor Applicant
+actor OwnerAdmin as "Owner / Admin"
+actor Agent as "AI Agent"
+
+package "Next.js App" {
+  [Episodes UI]
+  [Owner Episodes Dashboard]
+  [Admin Session API]
+  [Episodes Metadata API]
+  [Episode Sync Service]
+  [Owner Session Service]
+  database "episodes.json" as EpisodesJson
+}
+
+package "Contracts" {
+  [SpectraSubmissionRegistry]
+  [SpectraFounderSeason1_1155]
+  [SpectraEventAccessRegistry]
+  [SpectraOwnerAccess1155]
+}
+
+Applicant --> [Episodes UI]
+Applicant --> [SpectraSubmissionRegistry] : createSubmission()
+[SpectraFounderSeason1_1155] --> [SpectraSubmissionRegistry] : getSubmission()\nmarkMinted()
+
+OwnerAdmin --> [Owner Episodes Dashboard]
+[Owner Episodes Dashboard] --> [Admin Session API]
+[Admin Session API] --> [Owner Session Service]
+[Owner Session Service] --> [SpectraOwnerAccess1155] : balanceOf()
+
+[Owner Episodes Dashboard] --> EpisodesJson : edit/save
+[Episodes Metadata API] --> EpisodesJson : read
+[Episode Sync Service] --> EpisodesJson : read/write registryEventId
+[Episode Sync Service] --> [SpectraEventAccessRegistry] : createEvent()/updateEvent()
+
+Agent --> [Admin Session API] : optional wallet auth
+[Episodes UI] --> [Episodes Metadata API]
+
+User --> [Episodes UI]
+OwnerAdmin --> [SpectraOwnerAccess1155] : mint/revoke via ops scripts
+OwnerAdmin --> [SpectraEventAccessRegistry] : event management
+
+@enduml

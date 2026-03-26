@@ -1,0 +1,363 @@
+[
+  {
+    "name": "Cyberreality",
+    "aliases": [
+      "CYBEREALITY"
+    ],
+    "artistTypes": [
+      "music"
+    ],
+    "gridIndex": "A-01",
+    "profilePageLabel": "Mini profile",
+    "summary": "Cyberreality works across industrial, ambient, and electronic production, releasing albums including CYBERROR, r e c u e r d o, and Internet Dating 1.5. Their output spans textured noise constructions and spatial sound design, with compilation appearances on Selected Juke Werkz, Vol. 1 situating them within a broader experimental electronic network.",
+    "genres": [
+      "industrial",
+      "ambient",
+      "electronic"
+    ],
+    "tags": [
+      "HYPERBASS"
+    ],
+    "featured": true,
+    "linkedEpisodes": [
+      {
+        "label": "AXIS I"
+      },
+      {
+        "label": "HYPERBASS activation",
+        "href": "/magazine/mixtapes"
+      }
+    ],
+    "linkedArtifacts": [
+      {
+        "label": "CYBEREALITY for HYPERBASS",
+        "href": "/magazine/mixtapes"
+      },
+      {
+        "label": "Composing in the Dark interview",
+        "href": "/magazine"
+      }
+    ],
+    "spaces": [
+      {
+        "name": "Basement studio",
+        "episode": "AXIS I",
+        "note": "Activated listening environment tied to the first live set."
+      }
+    ],
+    "signals": [
+      {
+        "timestamp": "2026-03-15",
+        "text": "Interview published in AXIS Journal.",
+        "link": {
+          "label": "Open Magazine",
+          "href": "/magazine"
+        }
+      },
+      {
+        "timestamp": "2025-12-20",
+        "text": "Mixtape indexed in Grove transmission set.",
+        "link": {
+          "label": "Open Mixtapes",
+          "href": "/magazine/mixtapes"
+        }
+      }
+    ],
+    "similar": [],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5wxQkBn8VmHggkeH94BdYf"
+      }
+    ]
+  },
+  {
+    "name": "GaSOIID",
+    "artistTypes": [
+      "music"
+    ],
+    "gridIndex": "A-02",
+    "profilePageLabel": "Mini profile",
+    "summary": "GaSOIID operates in bass-driven electronic music with hard dance, trap, and nightcore elements, releasing a run of singles including s0—n2u², rain, mattrd +2me, and froz3n. Their orbit includes artists like DJ CHRISTIAN NXC, Danny Stranger, and NIGHTCHOP, pointing toward a fast-moving, internet-rooted production scene.",
+    "genres": [
+      "bass",
+      "electronic"
+    ],
+    "tags": [
+      "radio mix",
+      "hyperbass",
+      "hard dance",
+      "trap",
+      "nightcore",
+      "electronic pop"
+    ],
+    "featured": true,
+    "linkedEpisodes": [
+      {
+        "label": "AXIS II"
+      }
+    ],
+    "linkedArtifacts": [
+      {
+        "label": "HYPERBASS RADIO — Final Mix",
+        "href": "/magazine/mixtapes"
+      }
+    ],
+    "spaces": [
+      {
+        "name": "Radio floor",
+        "episode": "AXIS II",
+        "note": "Activated transmission room tied to the second episode mix system."
+      }
+    ],
+    "signals": [
+      {
+        "timestamp": "2026-01-18",
+        "text": "Final mix entered the transmission index.",
+        "link": {
+          "label": "Open Mixtapes",
+          "href": "/magazine/mixtapes"
+        }
+      }
+    ],
+    "similar": [
+      "gasoiid x DJ UWU x Fallen Shrine",
+      "DJ CHRISTIAN NXC",
+      "Danny Stranger",
+      "NIGHTCHOP",
+      "Texas Baby"
+    ],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/7B633K293rPBI6DyO7IVzy"
+      }
+    ],
+    "aliases": []
+  },
+  {
+    "name": "Fiesta Soundsystem",
+    "artistTypes": [
+      "music"
+    ],
+    "gridIndex": "A-03",
+    "profilePageLabel": "Mini profile",
+    "summary": "Fiesta Soundsystem makes IDM, jungle, and leftfield electronic music with breakcore and bass influences, with albums including Pits, Sinking, and Rites of Passage alongside the single Passivity Trap. Their sound places them alongside artists like Borai, Hooverian Blur, and LMajor within the UK-adjacent leftfield club continuum.",
+    "genres": [
+      "IDM",
+      "Jungle",
+      "Leftfield"
+    ],
+    "tags": [
+      "groove",
+      "sunshine",
+      "warm",
+      "Fiesta",
+      "breakcore",
+      "bass"
+    ],
+    "featured": true,
+    "linkedEpisodes": [
+      {
+        "label": "AXIS III"
+      }
+    ],
+    "linkedArtifacts": [
+      {
+        "label": "Sunshine Mix",
+        "href": "/magazine/mixtapes"
+      }
+    ],
+    "spaces": [
+      {
+        "name": "Sun room",
+        "episode": "AXIS III",
+        "note": "Activated location for daytime-to-night transition energy."
+      }
+    ],
+    "signals": [
+      {
+        "timestamp": "2026-02-08",
+        "text": "Sunshine Mix added to active transmissions.",
+        "link": {
+          "label": "Open Mixtapes",
+          "href": "/magazine/mixtapes"
+        }
+      }
+    ],
+    "mbid": "3a19db61-21b4-48ff-bb51-fec3d935da90",
+    "similar": [
+      "Mani Festo",
+      "LMajor",
+      "Borai",
+      "Hooverian Blur",
+      "Soundbwoy Killah"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/7517243"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/65061342"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/2TlwHEsnBHNYIQsp3nDReB"
+      }
+    ],
+    "aliases": []
+  },
+  {
+    "name": "Sunshine Vendetta",
+    "artistTypes": [
+      "music",
+      "visual"
+    ],
+    "gridIndex": "A-04",
+    "profilePageLabel": "Mini profile",
+    "summary": "Sunshine Vendetta makes ambient and ethereal electronic music rooted in bedroom synthesis, with releases including Rave On, Rave Tool 84, Real Life, Hyperdreams, and Explosive. Their work shares space with producers like Infinite Human and 4649nadeshiko, leaning into delicate, personal sound design over dancefloor function.",
+    "genres": [
+      "ambient"
+    ],
+    "tags": [
+      "synthesis",
+      "bedroom",
+      "ethereal"
+    ],
+    "featured": true,
+    "linkedEpisodes": [
+      {
+        "label": "AXIS III"
+      },
+      {
+        "label": "Episode III recap",
+        "href": "/magazine"
+      }
+    ],
+    "linkedArtifacts": [
+      {
+        "label": "Bedroom Mixtape — Synthesis",
+        "href": "/magazine/mixtapes"
+      }
+    ],
+    "spaces": [
+      {
+        "name": "Warehouse main room",
+        "episode": "AXIS III",
+        "note": "Activated live zone described in the Episode III dispatch."
+      },
+      {
+        "name": "Bedroom synthesis room",
+        "episode": "AXIS III",
+        "note": "Standalone recording environment tied to the mixtape artifact."
+      }
+    ],
+    "signals": [
+      {
+        "timestamp": "2026-02-20",
+        "text": "Episode III dispatch linked Sunshine Vendetta to the warehouse set.",
+        "link": {
+          "label": "Open Magazine",
+          "href": "/magazine"
+        }
+      },
+      {
+        "timestamp": "2026-02-15",
+        "text": "Bedroom Mixtape indexed in active transmission stack.",
+        "link": {
+          "label": "Open Mixtapes",
+          "href": "/magazine/mixtapes"
+        }
+      }
+    ],
+    "mbid": "c69dca6b-b150-43c5-a348-018f909ba173",
+    "similar": [
+      "Infinite Human",
+      "Superior Cornrows",
+      "homele$$",
+      "DJ SAPHIRRE",
+      "4649nadeshiko"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/5864476"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/7CXAL8e4gNgpXIRCm4wXmP"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/SunshineVndetta"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/sunshinevendetta"
+      }
+    ],
+    "aliases": []
+  },
+  {
+    "name": "Mami Pistola",
+    "artistTypes": [
+      "music"
+    ],
+    "gridIndex": "A-05",
+    "profilePageLabel": "Mini profile",
+    "summary": "Mami Pistola works with field recordings and found sound, applying an editorial approach to material gathered from transit environments and everyday spaces. The practice sits at the intersection of documentary sound and composition, selecting and arranging rather than synthesizing.",
+    "genres": [],
+    "tags": [
+      "field recordings",
+      "transit",
+      "editorial selection"
+    ],
+    "featured": true,
+    "linkedEpisodes": [
+      {
+        "label": "AXIS III"
+      },
+      {
+        "label": "Transit Sounds interview",
+        "href": "/magazine"
+      }
+    ],
+    "linkedArtifacts": [
+      {
+        "label": "Sounds Collected in Transit",
+        "href": "/magazine"
+      },
+      {
+        "label": "Episode III dispatch",
+        "href": "/magazine"
+      }
+    ],
+    "spaces": [
+      {
+        "name": "Transit capture layer",
+        "episode": "AXIS III",
+        "note": "Activated sonic material sourced from airports, terminals, and buses."
+      }
+    ],
+    "signals": [
+      {
+        "timestamp": "2026-02-10",
+        "text": "Interview published with field-recording notes.",
+        "link": {
+          "label": "Open Magazine",
+          "href": "/magazine"
+        }
+      },
+      {
+        "timestamp": "2026-02-20",
+        "text": "Episode III dispatch confirmed closing-set presence.",
+        "link": {
+          "label": "Open Magazine",
+          "href": "/magazine"
+        }
+      }
+    ]
+  }
+]

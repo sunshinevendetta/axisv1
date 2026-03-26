@@ -15,7 +15,7 @@ export default function Membership3D() {
 
   return React.createElement("model-viewer", {
     ref: modelViewerRef,
-    src: "https://raw.githubusercontent.com/sunshinevendetta/spectra/main/public/models/membership.glb",
+    src: "https://api.grove.storage/521f407e89e19337940ffb10c7c17ac84b7f7405e3ebb10e361e2818e2dcee8e",
     ar: true,
     "ar-modes": "webxr scene-viewer quick-look",
     "auto-rotate": true,

@@ -1,80 +1,32 @@
-import dynamic from "next/dynamic";
-import PillNav from "@/components/PillNav";
-import Logo3D from "@/components/Logo3d";
-import Footer from "@/components/Footer";
-import LogoArray from "@/components/Logos/LogoArray";
-import AboutSection from "@/components/AboutSection";
-import { Providers } from "@/components/Providers";
+import type { Mixtape } from "@/components/magazine/mixtapes/types";
+import type { MagazineArticle } from "@/components/magazine/types";
+import HomePageClient from "@/components/home/HomePageClient";
+import { artistGenreIndex, artistTypeIndex, featuredArtistProfiles } from "@/src/content/artists";
+import { getUpcomingEpisodes } from "@/src/lib/episodes";
+import { arappDrops } from "@/src/lib/arapp-catalog";
+import rawMixtapes from "@/content/mixtapes.json";
+import rawArticles from "@/content/magazine.json";
 
-const GatedMembershipFlow = dynamic(() => import("@/components/GatedMembershipFlow"), {
-  loading: () => <div className="min-h-screen" />,
-});
-
-const EpisodesSection = dynamic(() => import("@/components/EpisodesSection"), {
-  loading: () => <div className="min-h-screen" />,
-});
-
-const SubmissionForm = dynamic(() => import("@/components/forms/SubmissionForm"), {
-  loading: () => <div className="min-h-screen" />,
-});
+const mixtapes = rawMixtapes as Mixtape[];
+const articles = rawArticles as MagazineArticle[];
 
 export default function Home() {
+  const upcomingEpisodes = getUpcomingEpisodes().map((ep) => ({
+    title: ep.title,
+    startsAtISO: ep.startsAt,
+    city: ep.city,
+  }));
+
   return (
-    <div className="font-sans min-h-screen w-full bg-black text-white relative overflow-x-hidden">
-      <div className="fixed top-0 z-50 w-full flex justify-center pt-6 pointer-events-auto">
-        <PillNav
-          logo="/w.png"
-          logoAlt="spectra logo"
-          items={[
-            { label: "home", href: "#home" },
-            { label: "about", href: "#about" },
-            { label: "join", href: "#join" },
-            { label: "episodes", href: "#episodes" },
-            { label: "submit", href: "#submit" },
-          ]}
-          activeHref="#home"
-          className="custom-nav"
-          ease="power2.easeOut"
-          baseColor="#000"
-          pillColor="#fff"
-          hoveredPillTextColor="#000"
-          pillTextColor="#000"
-        />
-      </div>
-
-      <main className="w-full overflow-x-hidden relative z-10">
-        <section id="home" className="h-screen relative">
-          <Logo3D />
-        </section>
-
-        <section className="py-12 bg-black flex flex-col items-center justify-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-white">
-            FRIENDS AND FAMILY
-          </h2>
-          <p className="text-lg text-white/60 mb-8 text-center">
-            Protocols, brands & events we've worked with
-          </p>
-          <LogoArray />
-        </section>
-
-        <AboutSection />
-
-        <section id="join" className="min-h-screen">
-          <Providers>
-            <GatedMembershipFlow />
-          </Providers>
-        </section>
-
-        <section id="episodes" className="min-h-screen">
-          <EpisodesSection />
-        </section>
-
-        <section id="submit">
-          <SubmissionForm />
-        </section>
-      </main>
-
-      <Footer />
-    </div>
+    <HomePageClient
+      upcomingEpisodes={upcomingEpisodes}
+      mixtapes={mixtapes}
+      articles={articles}
+      featuredArtists={featuredArtistProfiles}
+      musicCount={artistTypeIndex.find((entry) => entry.slug === "music")?.count ?? 0}
+      visualCount={artistTypeIndex.find((entry) => entry.slug === "visual")?.count ?? 0}
+      genreLabels={artistGenreIndex.slice(0, 6).map((entry) => entry.label)}
+      drops={arappDrops}
+    />
   );
 }
