@@ -5,14 +5,19 @@ import {
   useAccount,
   useConnect,
   useDisconnect,
-  useWriteContract,
-  useWaitForTransactionReceipt,
+  useSendCalls,
+  useCallsStatus,
   useReadContract,
 } from "wagmi";
 import { base } from "wagmi/chains";
+import { encodeFunctionData } from "viem";
 import Membership3D from "./Membership3D";
 
-const MEMBERSHIP_CONTRACT = "0xd26e98bbfa933ca10d60b9fe6a6a94ab600d3c08" as `0x${string}`;
+const MEMBERSHIP_CONTRACT = (
+  process.env.NEXT_PUBLIC_COLLECT_CONTRACT_ADDRESS ?? "0xd26e98bbfa933ca10d60b9fe6a6a94ab600d3c08"
+) as `0x${string}`;
+
+const PAYMASTER_URL = process.env.NEXT_PUBLIC_PAYMASTER_URL;
 
 const MEMBERSHIP_ABI = [
   {
@@ -92,15 +97,32 @@ export default function MembershipMint() {
     chainId: base.id,
   });
 
-  const { writeContract, data: hash, isPending: writePending } = useWriteContract();
-  const { isLoading: txLoading, isSuccess } = useWaitForTransactionReceipt({ hash });
+  const { sendCalls, data: callsId, isPending: writePending } = useSendCalls();
+  const { data: callsStatus } = useCallsStatus({
+    id: callsId as string,
+    query: { enabled: Boolean(callsId), refetchInterval: (query) => (query.state.data?.status === "CONFIRMED" ? false : 1000) },
+  });
+  const isSuccess = callsStatus?.status === "CONFIRMED";
+  const txLoading = Boolean(callsId) && callsStatus?.status !== "CONFIRMED";
+  const collectPrice = process.env.NEXT_PUBLIC_COLLECT_PRICE_USD?.trim();
+  const numericPrice = collectPrice ? Number(collectPrice) : NaN;
+  const priceLabel = Number.isFinite(numericPrice)
+    ? numericPrice === 0
+      ? "Limited Edition"
+      : `$${numericPrice.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`
+    : "";
 
-  const handleMint = () => {
-    writeContract({
-      address: MEMBERSHIP_CONTRACT,
-      abi: MEMBERSHIP_ABI,
-      functionName: "mint",
-      chainId: base.id,
+  const handleCollect = () => {
+    sendCalls({
+      calls: [
+        {
+          to: MEMBERSHIP_CONTRACT,
+          data: encodeFunctionData({ abi: MEMBERSHIP_ABI, functionName: "mint" }),
+        },
+      ],
+      capabilities: PAYMASTER_URL
+        ? { paymasterService: { url: PAYMASTER_URL } }
+        : undefined,
     });
   };
 
@@ -131,83 +153,75 @@ export default function MembershipMint() {
 
   if (!isMounted) {
     return (
-      <div className="w-full max-w-xl mx-auto px-6 py-32 text-center">
-        <h2 className="text-5xl lg:text-5xl font-black mb-20 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500">
-          SPECTRA FOUNDER MEMBERSHIP
+      <div className="mx-auto w-full max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+        <div className="mb-5 inline-flex rounded-full border border-white/12 bg-white/6 px-4 py-1 text-[10px] uppercase tracking-[0.35em] text-white/55 backdrop-blur-md sm:text-xs">
+          Founder Access
+        </div>
+        <h2 className="mb-8 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-base font-black tracking-[-0.05em] text-transparent sm:text-lg lg:text-xl">
+          AXIS<span className="copy-mark">©</span> FOUNDER MEMBERSHIP
         </h2>
 
-        <div className="max-w-lg mx-auto space-y-6 text-gray-400 text-sm lg:text-lg leading-relaxed mb-20">
-          <p>SPECTRA Founder Membership is a limited access key issued to early participants and contributors during the initial formation of the SPECTRA ecosystem.</p>
-          <p>This membership represents presence at the origin point. It grants permanent recognition as a founding participant and early alignment with the SPECTRA cultural system.</p>
-          <p>Founder Memberships are free, non-replicable, and limited in supply. They exist separately from future public memberships.</p>
+        <div className="mx-auto mb-10 max-w-2xl space-y-4 text-sm leading-6 text-gray-300 sm:text-base sm:leading-7 lg:text-lg">
+          <p>AXIS<span className="copy-mark">©</span> Founder Membership is a limited access key issued to early participants and contributors during the initial formation of the AXIS<span className="copy-mark">©</span> ecosystem.</p>
+          <p>This edition marks presence at the origin point and permanent recognition inside the AXIS<span className="copy-mark">©</span> cultural system.</p>
+          <p>LIMITED EDITION</p>
         </div>
 
-        {currentSupply !== undefined && (
-          <p className="text-lg lg:text-sm text-gray-400 mb-8">
-            Minted: {currentSupply.toString()} / 7777
-          </p>
-        )}
-
-        <div className="mx-auto w-full max-w-4xl mb-20">
-          <div className="relative rounded-lg overflow-hidden shadow-lg border-6 border-gray-600 bg-gradient-to-br from-black via-gray-950 to-black p-12">
-            <div className="absolute inset-0 opacity-20 pointer-events-none bg-gradient-to-tr from-white/5 via-transparent to-white/10 rounded-lg" />
+        <div className="mx-auto mb-12 w-full max-w-2xl">
+          <div className="relative overflow-hidden rounded-[28px] border border-white/12 bg-gradient-to-br from-black via-gray-950 to-black p-5 shadow-[0_20px_80px_rgba(0,0,0,0.4)] sm:p-8">
+            <div className="absolute inset-0 rounded-[28px] bg-gradient-to-tr from-white/5 via-transparent to-white/10 opacity-20 pointer-events-none" />
             <div className="aspect-square">
               <Membership3D />
             </div>
-            <div className="mt-12 text-center">
-              <p className="text-lg lg:text-4xl font-bold text-white">SPECTRA Founder Membership</p>
-              <p className="text-base lg:text-lg text-gray-500 mt-3">Origin-Level · Limited Edition</p>
+            <div className="mt-6 text-center sm:mt-8">
+              <p className="text-base font-semibold text-white sm:text-xl lg:text-3xl">AXIS<span className="copy-mark">©</span> Founder Membership</p>
+              <p className="mt-2 text-xs uppercase tracking-[0.2em] text-gray-500 sm:text-sm">Origin-Level · Limited Edition</p>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col items-center gap-10">
-          <div className="px-20 py-8 text-lg font-bold rounded-lg bg-white/10 text-transparent border-2 border-gray-500">
-            Loading...
-          </div>
+        <div className="flex flex-col items-center gap-8">
+          <div className="h-16 w-full max-w-sm animate-pulse rounded-2xl border border-white/12 bg-white/8" />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full max-w-xl mx-auto px-6 py-32 text-center">
-      <h2 className="text-5xl lg:text-5xl font-black mb-20 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500">
-        SPECTRA FOUNDER MEMBERSHIP
+    <div className="mx-auto w-full max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+      <div className="mb-5 inline-flex rounded-full border border-white/12 bg-white/6 px-4 py-1 text-[10px] uppercase tracking-[0.35em] text-white/55 backdrop-blur-md sm:text-xs">
+        Founder Access
+      </div>
+      <h2 className="mb-8 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-base font-black tracking-[-0.05em] text-transparent sm:text-lg lg:text-xl">
+        AXIS<span className="copy-mark">©</span> FOUNDER MEMBERSHIP
       </h2>
 
-      <div className="max-w-lg mx-auto space-y-6 text-gray-400 text-sm lg:text-lg leading-relaxed mb-20">
-        <p>SPECTRA Founder Membership is a limited access key issued to early participants and contributors during the initial formation of the SPECTRA ecosystem.</p>
-        <p>This membership represents presence at the origin point. It grants permanent recognition as a founding participant and early alignment with the SPECTRA cultural system.</p>
-        <p>Founder Memberships are free, non-replicable, and limited in supply. They exist separately from future public memberships.</p>
+      <div className="mx-auto mb-10 max-w-2xl space-y-4 text-sm leading-6 text-gray-300 sm:text-base sm:leading-7 lg:text-lg">
+        <p>AXIS<span className="copy-mark">©</span> Founder Membership is a limited access key issued to early participants and contributors during the initial formation of the AXIS<span className="copy-mark">©</span> ecosystem.</p>
+        <p>This edition marks presence at the origin point and permanent recognition inside the AXIS<span className="copy-mark">©</span> cultural system.</p>
+        <p>Limited Edition</p>
       </div>
 
-      {currentSupply !== undefined && (
-        <p className="text-lg lg:text-sm text-gray-400 mb-8">
-          Minted: {currentSupply.toString()} / 7777
-        </p>
-      )}
-
-      <div className="mx-auto w-full max-w-4xl mb-20">
-        <div className="relative rounded-lg overflow-hidden shadow-lg border-6 border-gray-600 bg-gradient-to-br from-black via-gray-950 to-black p-12">
-          <div className="absolute inset-0 opacity-20 pointer-events-none bg-gradient-to-tr from-white/5 via-transparent to-white/10 rounded-lg" />
+      <div className="mx-auto mb-12 w-full max-w-2xl">
+        <div className="relative overflow-hidden rounded-[28px] border border-white/12 bg-gradient-to-br from-black via-gray-950 to-black p-5 shadow-[0_20px_80px_rgba(0,0,0,0.4)] sm:p-8">
+          <div className="absolute inset-0 rounded-[28px] bg-gradient-to-tr from-white/5 via-transparent to-white/10 opacity-20 pointer-events-none" />
           <div className="aspect-square">
             <Membership3D />
           </div>
-          <div className="mt-12 text-center">
-            <p className="text-lg lg:text-4xl font-bold text-white">SPECTRA Founder Membership</p>
-            <p className="text-base lg:text-lg text-gray-500 mt-3">Origin-Level · Limited Edition</p>
+          <div className="mt-6 text-center sm:mt-8">
+            <p className="text-base font-semibold text-white sm:text-xl lg:text-3xl">AXIS<span className="copy-mark">©</span> Founder Membership</p>
+            <p className="mt-2 text-xs uppercase tracking-[0.2em] text-gray-500 sm:text-sm">Origin-Level · Limited Edition</p>
           </div>
         </div>
       </div>
 
       {!isConnected ? (
-        <div className="flex flex-col items-center gap-10">
+        <div className="flex flex-col items-center gap-5">
           {connectors.map((connector) => (
             <button
               key={connector.id}
               onClick={() => connect({ connector, chainId: base.id })}
-              className="px-20 py-8 text-lg font-bold rounded-lg bg-white/10 hover:bg-white/20 text-white border-2 border-gray-500 backdrop-blur-md transition-all shadow-xl"
+              className="w-full max-w-sm rounded-2xl border border-white/14 bg-white/8 px-6 py-4 text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-white/14 sm:text-base"
             >
               {connector.id.includes("coinbase") || connector.name.includes("Coinbase")
                 ? "Coinbase / Base Smart Wallet"
@@ -216,15 +230,11 @@ export default function MembershipMint() {
           ))}
         </div>
       ) : (
-        <div className="space-y-10">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-center">
-            <p className="text-base text-gray-300 font-medium">
-              Connected: <span className="font-mono text-white">{address?.slice(0, 6)}...{address?.slice(-4)}</span>
-            </p>
-
+        <div className="space-y-8">
+          <div className="flex justify-center">
             <button
               onClick={() => disconnect()}
-              className="px-6 py-3 text-sm font-medium text-white bg-red-900/40 hover:bg-red-800/60 border border-red-600/50 rounded-xl transition-all backdrop-blur-sm"
+              className="rounded-xl border border-white/28 bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(140,140,140,0.14))] px-5 py-2 text-xs font-medium text-white backdrop-blur-xl transition-all hover:border-white/45 hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.24),rgba(168,168,168,0.18))] sm:text-sm"
             >
               Disconnect
             </button>
@@ -232,16 +242,14 @@ export default function MembershipMint() {
 
           {!hasMinted ? (
             <button
-              onClick={handleMint}
+              onClick={handleCollect}
               disabled={isMintDisabled}
-              className="px-24 py-10 mx-auto block text-sm lg:text-lg font-black text-black bg-white rounded-lg hover:bg-gray-200 shadow-lg shadow-white/50 transition-all duration-300 hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="mx-auto block w-full max-w-sm rounded-2xl bg-white px-6 py-4 text-sm font-black text-black shadow-lg shadow-white/20 transition-all duration-300 hover:scale-[1.02] hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
             >
-              {writePending || txLoading ? "Claiming..." : "Claim Founder Membership"}
+              {writePending || txLoading ? "processing" : "collect now"}
             </button>
           ) : (
-            <p className="text-xl font-black text-emerald-400 tracking-wide">
-              Origin Confirmed ✅
-            </p>
+            <div className="h-12" aria-hidden="true" />
           )}
         </div>
       )}

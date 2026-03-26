@@ -32,12 +32,21 @@ export default function ConnectWalletButton() {
         </p>
         <button
           onClick={() => disconnect()}
-          className="px-8 py-4 bg-red-600 hover:bg-red-500 text-white rounded-2xl font-bold transition-all"
+          className="rounded-2xl border border-white/20 bg-[linear-gradient(135deg,rgba(255,255,255,0.14),rgba(148,148,148,0.08))] px-8 py-4 font-bold text-white shadow-[0_14px_40px_rgba(255,255,255,0.08)] backdrop-blur-xl transition-all hover:border-white/30 hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(170,170,170,0.12))]"
         >
           Disconnect
         </button>
       </div>
     );
+  }
+
+  function connectorLabel(id: string, name: string) {
+    if (id === "walletConnect") return "WalletConnect";
+    if (id === "injected") return "Browser Wallet";
+    if (id === "coinbaseWalletSDK" || id === "coinbaseWallet" || id === "coinbaseSmartWallet") {
+      return "Coinbase / Base Smart Wallet";
+    }
+    return name || "Connect Wallet";
   }
 
   return (
@@ -50,17 +59,15 @@ export default function ConnectWalletButton() {
           className={`
             px-8 py-5 text-xl font-bold rounded-2xl transition-all
             ${connector.id === 'coinbaseWallet' || connector.id === 'coinbaseSmartWallet'
-              ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-2xl shadow-blue-600/30'
-              : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
+              ? 'border border-white/22 bg-[linear-gradient(135deg,rgba(255,255,255,0.16),rgba(150,150,150,0.1))] text-white shadow-2xl shadow-white/6 hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.2),rgba(180,180,180,0.14))]'
+              : 'border border-white/20 bg-white/10 text-white hover:bg-white/20'
             }
             ${isPending ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
           `}
         >
           {isPending && connector.id === connectors.find(c => c.id === connector.id)?.id
             ? 'Connecting...'
-            : connector.id === 'coinbaseWallet' || connector.id === 'coinbaseSmartWallet'
-              ? 'Coinbase / Base Smart Wallet'
-              : 'Other Wallet (QR Code)'
+            : connectorLabel(connector.id, connector.name)
           }
         </button>
       ))}

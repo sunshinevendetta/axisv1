@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:ws.audioscrobbler.com)",
+      "WebFetch(domain:musicbrainz.org)",
+      "Bash(LASTFM_API_KEY=630108d644fe4dea2ebb6becf5973fa5 npx tsx tools/artist-scraper/scraper.ts)",
+      "Bash(find z:/spectra/episode/spectrart/app -name *.tsx -o -name *.ts)",
+      "Read(//z/iiipoints/spoti/downloads/**)",
+      "Bash(python3 -c \":*)",
+      "Bash(grep -r hasOwnerSession /z/spectra/episode/spectrart/components/admin --include=*.tsx --include=*.ts)",
+      "Bash(xargs ls:*)"
+    ]
+  }
+}

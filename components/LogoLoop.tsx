@@ -39,8 +39,7 @@ export interface LogoLoopProps {
 
 const ANIMATION_CONFIG = {
   SMOOTH_TAU: 0.25,
-  MIN_COPIES: 2,
-  COPY_HEADROOM: 2
+  MIN_COPIES: 2
 } as const;
 
 const toCssLength = (value?: number | string): string | undefined =>
@@ -121,7 +120,8 @@ const useAnimationLoop = (
   seqHeight: number,
   isHovered: boolean,
   hoverSpeed: number | undefined,
-  isVertical: boolean
+  isVertical: boolean,
+  shouldAnimate: boolean
 ) => {
   const rafRef = useRef<number | null>(null);
   const lastTimestampRef = useRef<number | null>(null);
@@ -131,6 +131,13 @@ const useAnimationLoop = (
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
+
+    if (!shouldAnimate) {
+      offsetRef.current = 0;
+      velocityRef.current = 0;
+      track.style.transform = 'translate3d(0, 0, 0)';
+      return;
+    }
 
     const seqSize = isVertical ? seqHeight : seqWidth;
 
@@ -178,7 +185,7 @@ const useAnimationLoop = (
       }
       lastTimestampRef.current = null;
     };
-  }, [targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical]);
+  }, [targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical, shouldAnimate]);
 };
 
 export const LogoLoop = React.memo<LogoLoopProps>(
@@ -205,7 +212,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
 
     const [seqWidth, setSeqWidth] = useState<number>(0);
     const [seqHeight, setSeqHeight] = useState<number>(0);
-    const [copyCount, setCopyCount] = useState<number>(ANIMATION_CONFIG.MIN_COPIES);
+    const [copyCount, setCopyCount] = useState<number>(1);
     const [isHovered, setIsHovered] = useState<boolean>(false);
 
     const effectiveHoverSpeed = useMemo(() => {
@@ -244,13 +251,11 @@ export const LogoLoop = React.memo<LogoLoopProps>(
         if (sequenceHeight > 0) {
           setSeqHeight(Math.ceil(sequenceHeight));
           const viewport = containerRef.current?.clientHeight ?? parentHeight ?? sequenceHeight;
-          const copiesNeeded = Math.ceil(viewport / sequenceHeight) + ANIMATION_CONFIG.COPY_HEADROOM;
-          setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded));
+          setCopyCount(sequenceHeight > viewport ? ANIMATION_CONFIG.MIN_COPIES : 1);
         }
       } else if (sequenceWidth > 0) {
         setSeqWidth(Math.ceil(sequenceWidth));
-        const copiesNeeded = Math.ceil(containerWidth / sequenceWidth) + ANIMATION_CONFIG.COPY_HEADROOM;
-        setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded));
+        setCopyCount(sequenceWidth > containerWidth ? ANIMATION_CONFIG.MIN_COPIES : 1);
       }
     }, [isVertical]);
 
@@ -258,7 +263,9 @@ export const LogoLoop = React.memo<LogoLoopProps>(
 
     useImageLoader(seqRef, updateDimensions, [logos, gap, logoHeight, isVertical]);
 
-    useAnimationLoop(trackRef, targetVelocity, seqWidth, seqHeight, isHovered, effectiveHoverSpeed, isVertical);
+    const shouldAnimate = copyCount > 1;
+
+    useAnimationLoop(trackRef, targetVelocity, seqWidth, seqHeight, isHovered, effectiveHoverSpeed, isVertical, shouldAnimate);
 
     const cssVariables = useMemo(
       () =>

@@ -1,0 +1,47 @@
+{
+  "_note": "Auto-managed by Deployment HQ. Run `npm run env:sync` after any deploy to patch .env.",
+  "updatedAt": "",
+  "chain": {
+    "id": null,
+    "label": "",
+    "explorerUrl": ""
+  },
+  "contracts": {
+    "seasonRegistry": {
+      "address": "",
+      "txHash": "",
+      "deployedAt": "",
+      "chainId": null
+    },
+    "episodeContract": {
+      "address": "",
+      "txHash": "",
+      "deployedAt": "",
+      "chainId": null
+    },
+    "ownerAccess": {
+      "address": "",
+      "txHash": "",
+      "deployedAt": "",
+      "chainId": null
+    },
+    "submissionRegistry": {
+      "address": "",
+      "txHash": "",
+      "deployedAt": "",
+      "chainId": null
+    },
+    "founderMembership": {
+      "address": "",
+      "txHash": "",
+      "deployedAt": "",
+      "chainId": null
+    },
+    "eventRegistry": {
+      "address": "",
+      "txHash": "",
+      "deployedAt": "",
+      "chainId": null
+    }
+  }
+}

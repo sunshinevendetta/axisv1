@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 
     // Admin notification (to you)
     await transporter.sendMail({
-      from: `"Spectr Art" <${process.env.CUSTOM_FROM}>`,
+      from: `"AXIS" <${process.env.CUSTOM_FROM}>`,
       to: process.env.ADMIN_EMAIL,
       subject: `New Submission – ${name}`,
       text: `Name: ${name}
@@ -40,7 +40,7 @@ NFT Link: ${nftLink || '—'}`,
           <p><strong>NFT Link:</strong> ${nftLink ? `<a href="${nftLink}">${nftLink}</a>` : 'Not provided'}</p>
           <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
           <p style="font-size: 12px; color: #666;">
-            Received via Spectr Art landing page
+            Received via AXIS landing page
           </p>
         </div>
       `,
@@ -48,12 +48,12 @@ NFT Link: ${nftLink || '—'}`,
 
     // Auto-response to user
     await transporter.sendMail({
-      from: `"Spectr Art" <${process.env.CUSTOM_FROM}>`,
+      from: `"AXIS" <${process.env.CUSTOM_FROM}>`,
       to: email,
       subject: `Thank You for Your Submission, ${name}!`,
       text: `Hi ${name},
 
-Thank you for sharing your details with Spectr Art.
+Thank you for sharing your details with AXIS.
 We have received:
 - Wallet: ${wallet || '—'}
 - NFT Link: ${nftLink || '—'}
@@ -61,8 +61,8 @@ We have received:
 Our team will review it and get in touch soon.
 
 Best regards,
-Spectr Art Team
-https://spectrart.xyz`,
+AXIS Team
+https://axis.show`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           <h2 style="color: #111;">Thank You, ${name}!</h2>
@@ -74,8 +74,8 @@ https://spectrart.xyz`,
           </ul>
           <p>We'll be in touch shortly.</p>
           <p style="margin-top: 30px; font-size: 14px; color: #444;">
-            — Spectr Art Team<br>
-            <a href="https://spectrart.xyz" style="color: #0066cc;">spectrart.xyz</a>
+            — AXIS Team<br>
+            <a href="https://axis.show" style="color: #0066cc;">axis.show</a>
           </p>
         </div>
       `,

@@ -1,15 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { gsap } from "gsap";
-import "./PillNav.css";
+import Link from "next/link";
 
 export type PillNavItem = {
   label: string;
   href: string;
   ariaLabel?: string;
+  children?: PillNavItem[];
 };
 
 export interface PillNavProps {
@@ -27,248 +26,176 @@ export interface PillNavProps {
   initialLoadAnimation?: boolean;
 }
 
+function dedupeItems(items: PillNavItem[]): PillNavItem[] {
+  return items
+    .filter((item, index) => items.findIndex((candidate) => candidate.href === item.href) === index)
+    .map((item) => ({
+      ...item,
+      children: item.children ? dedupeItems(item.children) : undefined,
+    }));
+}
+
 export default function PillNav({
   logo,
   logoAlt = "Logo",
   items,
   activeHref,
   className = "",
-  ease = "power3.easeOut",
-  baseColor = "#fff",
-  pillColor = "#060010",
-  hoveredPillTextColor = "#060010",
-  pillTextColor,
   onMobileMenuClick,
-  initialLoadAnimation = true
 }: PillNavProps) {
-  const resolvedPillTextColor = pillTextColor ?? baseColor;
-
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const circleRefs = useRef<Array<HTMLSpanElement | null>>([]);
-  const tlRefs = useRef<Array<gsap.core.Timeline | null>>([]);
-  const activeTweenRefs = useRef<Array<gsap.core.Tween | null>>([]);
-  const logoImgRef = useRef<HTMLImageElement | null>(null);
-  const logoTweenRef = useRef<gsap.core.Tween | null>(null);
-  const hamburgerRef = useRef<HTMLButtonElement | null>(null);
-  const mobileMenuRef = useRef<HTMLDivElement | null>(null);
-  const navItemsRef = useRef<HTMLDivElement | null>(null);
-  const logoRef = useRef<HTMLAnchorElement | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuItems = useMemo(() => dedupeItems(items), [items]);
+  const activeGroupHref = useMemo(
+    () =>
+      menuItems.find(
+        (item) =>
+          Boolean(item.children?.length) &&
+          (item.href === activeHref ||
+            Boolean(item.children?.some((child: PillNavItem) => child.href === activeHref))),
+      )?.href ?? null,
+    [activeHref, menuItems],
+  );
+  const [expandedGroupHref, setExpandedGroupHref] = useState<string | null>(activeGroupHref);
 
   useEffect(() => {
-    const layout = () => {
-      circleRefs.current.forEach(circle => {
-        if (!circle?.parentElement) return;
+    setIsMenuOpen(false);
+    setExpandedGroupHref(activeGroupHref);
+  }, [activeGroupHref, activeHref]);
 
-        const pill = circle.parentElement as HTMLElement;
-        const rect = pill.getBoundingClientRect();
-        const { width: w, height: h } = rect;
-
-        const R = ((w * w) / 4 + h * h) / (2 * h);
-        const D = Math.ceil(2 * R) + 2;
-        const delta = Math.ceil(R - Math.sqrt(Math.max(0, R * R - (w * w) / 4))) + 1;
-
-        circle.style.width = `${D}px`;
-        circle.style.height = `${D}px`;
-        circle.style.bottom = `-${delta}px`;
-
-        gsap.set(circle, {
-          xPercent: -50,
-          scale: 0,
-          transformOrigin: `50% ${D - delta}px`
-        });
-
-        const label = pill.querySelector<HTMLElement>(".pill-label");
-        const white = pill.querySelector<HTMLElement>(".pill-label-hover");
-
-        if (label) gsap.set(label, { y: 0 });
-        if (white) gsap.set(white, { y: h + 12, opacity: 0 });
-
-        const index = circleRefs.current.indexOf(circle);
-        if (index === -1) return;
-
-        tlRefs.current[index]?.kill();
-
-        const tl = gsap.timeline({ paused: true });
-
-        tl.to(circle, { scale: 1.2, duration: 2, ease }, 0);
-
-        if (label) {
-          tl.to(label, { y: -(h + 8), duration: 2, ease }, 0);
-        }
-
-        if (white) {
-          gsap.set(white, { y: h + 100, opacity: 0 });
-          tl.to(white, { y: 0, opacity: 1, duration: 2, ease }, 0);
-        }
-
-        tlRefs.current[index] = tl;
-      });
-    };
-
-    layout();
-    window.addEventListener("resize", layout);
-
-    if (document.fonts?.ready) {
-      document.fonts.ready.then(layout).catch(() => {});
-    }
-
-    const menu = mobileMenuRef.current;
-    if (menu) gsap.set(menu, { visibility: "hidden", opacity: 0 });
-
-    if (initialLoadAnimation) {
-      const logo = logoRef.current;
-      const navItems = navItemsRef.current;
-
-      if (logo) {
-        gsap.set(logo, { scale: 0 });
-        gsap.to(logo, { scale: 1, duration: 0.6, ease });
-      }
-
-      if (navItems) {
-        gsap.set(navItems, { width: 0, overflow: "hidden" });
-        gsap.to(navItems, { width: "auto", duration: 0.6, ease });
-      }
-    }
-
-    return () => window.removeEventListener("resize", layout);
-  }, [items, ease, initialLoadAnimation]);
-
-  const handleEnter = (i: number) => {
-    const tl = tlRefs.current[i];
-    if (!tl) return;
-    activeTweenRefs.current[i]?.kill();
-    activeTweenRefs.current[i] = tl.tweenTo(tl.duration(), { duration: 0.3, ease });
+  const toggleMenu = () => {
+    setIsMenuOpen((current) => {
+      const next = !current;
+      if (next) onMobileMenuClick?.();
+      return next;
+    });
   };
-
-  const handleLeave = (i: number) => {
-    const tl = tlRefs.current[i];
-    if (!tl) return;
-    activeTweenRefs.current[i]?.kill();
-    activeTweenRefs.current[i] = tl.tweenTo(0, { duration: 0.2, ease });
-  };
-
-  const handleLogoEnter = () => {
-    const img = logoImgRef.current;
-    if (!img) return;
-    logoTweenRef.current?.kill();
-    gsap.set(img, { rotate: 0 });
-    logoTweenRef.current = gsap.to(img, { rotate: 360, duration: 0.2, ease });
-  };
-
-  const toggleMobileMenu = () => {
-    const newState = !isMobileMenuOpen;
-    setIsMobileMenuOpen(newState);
-
-    const hamburger = hamburgerRef.current;
-    const menu = mobileMenuRef.current;
-
-    if (hamburger) {
-      const lines = hamburger.querySelectorAll(".hamburger-line");
-      if (newState) {
-        gsap.to(lines[0], { rotation: 45, y: 3, duration: 0.3, ease });
-        gsap.to(lines[1], { rotation: -45, y: -3, duration: 0.3, ease });
-      } else {
-        gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3, ease });
-        gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.3, ease });
-      }
-    }
-
-    if (menu) {
-      if (newState) {
-        gsap.set(menu, { visibility: "visible" });
-        gsap.fromTo(
-          menu,
-          { opacity: 0, y: 10 },
-          { opacity: 1, y: 0, duration: 0.3, ease }
-        );
-      } else {
-        gsap.to(menu, {
-          opacity: 0,
-          y: 10,
-          duration: 0.2,
-          ease,
-          onComplete: () => gsap.set(menu, { visibility: "hidden" })
-        });
-      }
-    }
-
-    onMobileMenuClick?.();
-  };
-
-  const cssVars = {
-    ["--base"]: baseColor,
-    ["--pill-bg"]: pillColor,
-    ["--hover-text"]: hoveredPillTextColor,
-    ["--pill-text"]: resolvedPillTextColor
-  } as React.CSSProperties;
 
   return (
-    <div className="pill-nav-container">
-      <nav className={`pill-nav ${className}`} aria-label="Primary" style={cssVars}>
-        <Link
-          href={items?.[0]?.href || "/"}
-          className="pill-logo"
-          aria-label="Home"
-          onMouseEnter={handleLogoEnter}
-          ref={logoRef}
-        >
-          <img src={logo} alt={logoAlt} ref={logoImgRef} />
-        </Link>
-
-        <div className="pill-nav-items desktop-only" ref={navItemsRef}>
-          <ul className="pill-list" role="menubar">
-            {items.map((item, i) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={`pill${activeHref === item.href ? " is-active" : ""}`}
-                  aria-label={item.ariaLabel || item.label}
-                  onMouseEnter={() => handleEnter(i)}
-                  onMouseLeave={() => handleLeave(i)}
-                >
-                  <span
-                    className="hover-circle"
-                    aria-hidden="true"
-                    ref={el => (circleRefs.current[i] = el)}
-                  />
-                  <span className="label-stack">
-                    <span className="pill-label">{item.label}</span>
-                    <span className="pill-label-hover" aria-hidden="true">
-                      {item.label}
-                    </span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
+    <div className={`relative w-full max-w-7xl ${className}`}>
+      <nav aria-label="Primary" className="flex items-center justify-end gap-4 text-white">
         <button
-          className="mobile-menu-button mobile-only"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-          ref={hamburgerRef}
+          type="button"
+          aria-expanded={isMenuOpen}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          onClick={toggleMenu}
+          className={`group inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-3 py-2 shadow-[0_12px_30px_rgba(0,0,0,0.28)] transition-all duration-200 ${
+            isMenuOpen ? "scale-[0.985]" : "hover:scale-[1.015]"
+          }`}
         >
-          <span className="hamburger-line" />
-          <span className="hamburger-line" />
+          <span className="sr-only">{isMenuOpen ? "Close menu" : "Open menu"}</span>
+          <span className="relative flex h-7 w-[6.4rem] items-center justify-center sm:w-[7.1rem]">
+            <Image
+              src={logo}
+              alt={logoAlt}
+              fill
+              sizes="(max-width: 640px) 102px, 114px"
+              className={`object-contain transition-transform duration-300 ${
+                isMenuOpen ? "scale-[0.98]" : "group-hover:scale-[1.03]"
+              }`}
+            />
+          </span>
         </button>
       </nav>
 
-      <div className="mobile-menu-popover mobile-only" ref={mobileMenuRef} style={cssVars}>
-        <ul className="mobile-menu-list">
-          {items.map(item => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className={`mobile-menu-link${activeHref === item.href ? " is-active" : ""}`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+      {/* Dropdown panel */}
+      <div
+        className={`absolute right-0 top-full z-50 mt-3 w-72 origin-top rounded-2xl border border-white/10 bg-black/96 shadow-[0_24px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-200 ${
+          isMenuOpen
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-1 opacity-0"
+        }`}
+      >
+        <div className="p-3">
+          {/* Top-level items */}
+          <div className="flex flex-col gap-0.5">
+            {menuItems.map((item: PillNavItem, index: number) => {
+              const hasChildren = Boolean(item.children?.length);
+              const isActive =
+                item.href === activeHref ||
+                Boolean(item.children?.some((child: PillNavItem) => child.href === activeHref));
+
+              if (hasChildren) {
+                const isExpanded = expandedGroupHref === item.href;
+
+                return (
+                  <div key={item.href}>
+                    {/* Group row */}
+                    <button
+                      type="button"
+                      aria-expanded={isExpanded}
+                      aria-controls={`submenu-${index}`}
+                      onClick={() =>
+                        setExpandedGroupHref((current) => (current === item.href ? null : item.href))
+                      }
+                      className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left transition-colors duration-150 ${
+                        isExpanded || isActive
+                          ? "bg-white/8 text-white"
+                          : "text-white/60 hover:bg-white/5 hover:text-white/90"
+                      }`}
+                    >
+                      <span className="text-[10px] uppercase tracking-[0.26em]">{item.label}</span>
+                      <span
+                        aria-hidden="true"
+                        className={`text-[10px] text-white/30 transition-transform duration-200 ${
+                          isExpanded ? "rotate-180" : ""
+                        }`}
+                      >
+                        ▾
+                      </span>
+                    </button>
+
+                    {/* Submenu */}
+                    <div
+                      id={`submenu-${index}`}
+                      className={`grid transition-all duration-200 ease-out ${
+                        isExpanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="mx-3 mb-1 mt-0.5 max-h-[11rem] overflow-y-auto [&::-webkit-scrollbar]:w-[2px] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/16 [&::-webkit-scrollbar-track]:bg-transparent">
+                          {item.children?.map((child: PillNavItem) => {
+                            const isChildActive = child.href === activeHref;
+                            return (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                aria-label={child.ariaLabel || child.label}
+                                onClick={() => setIsMenuOpen(false)}
+                                className={`block truncate rounded-lg px-2 py-1.5 text-[11px] tracking-[0.08em] transition-colors duration-150 ${
+                                  isChildActive
+                                  ? "bg-white/10 text-white"
+                                  : "text-white/55 hover:bg-white/5 hover:text-white/80"
+                                }`}
+                              >
+                                {child.label}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-label={item.ariaLabel || item.label}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`block rounded-xl px-3 py-2 text-[10px] uppercase tracking-[0.26em] transition-colors duration-150 ${
+                    isActive
+                      ? "bg-white/8 text-white"
+                      : "text-white/60 hover:bg-white/5 hover:text-white/90"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

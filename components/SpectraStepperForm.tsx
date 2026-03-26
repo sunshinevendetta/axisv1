@@ -1,21 +1,22 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Stepper, { Step } from './Stepper';
-import { 
-  useAccount, 
-  useChainId, 
-  useSwitchChain, 
-  useWriteContract, 
-  useWaitForTransactionReceipt, 
-  useConnect, 
+import React, { useEffect, useState } from 'react';
+import {
+  useAccount,
+  useChainId,
+  useSwitchChain,
+  useSendCalls,
+  useCallsStatus,
+  useConnect,
   useConnectors,
   useDisconnect,
-  useReadContract
+  useReadContract,
 } from 'wagmi';
+import { encodeFunctionData } from 'viem';
 import SpectraFormABI from '@/src/abi/SpectraForm.json';
 import { base } from 'wagmi/chains';
 import { SPECTRAFORM_ADDRESS } from '@/src/lib/contract';
+import { BASE_BUILDER_DATA_SUFFIX } from '@/src/lib/base-app';
 import MembershipMint from './MembershipMint';
 
 const MEMBERSHIP_ADDRESS = "0xd26e98bbfa933ca10d60b9fe6a6a94ab600d3c08" as `0x${string}`;
@@ -33,37 +34,39 @@ const MEMBERSHIP_ABI_FRAGMENT = [
 const BASE_CHAIN_ID = base.id;
 
 function encryptData(str: string): string {
-  return btoa(unescape(encodeURIComponent(str.trim())));
+  const normalized = str.trim();
+  return normalized ? btoa(unescape(encodeURIComponent(normalized))) : '';
 }
 
-export default function SpectraStepperForm() {
+interface SpectraStepperFormProps {
+  onSuccess?: () => void;
+}
+
+export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProps) {
   const { isConnected, address } = useAccount();
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();
   const { disconnect } = useDisconnect();
+  const { connect } = useConnect();
+  const connectors = useConnectors();
 
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
   const [instagram, setInstagram] = useState('');
+  const [phone, setPhone] = useState('');
   const [x, setX] = useState('');
   const [tiktok, setTiktok] = useState('');
-
+  const [showOptionalFields, setShowOptionalFields] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [currentStep, setCurrentStep] = useState(1);
 
-  const { 
-    writeContract, 
-    data: hash, 
-    isPending: writePending, 
-    error: writeError, 
-    reset: resetWrite 
-  } = useWriteContract();
+  const paymasterUrl = process.env.NEXT_PUBLIC_PAYMASTER_URL;
 
-  const { 
-    isLoading: txLoading, 
-    isSuccess: txSuccess, 
-    error: txError 
-  } = useWaitForTransactionReceipt({ hash });
+  const { sendCalls, data: callsId, isPending: writePending, reset: resetWrite } = useSendCalls();
+  const { data: callsStatus } = useCallsStatus({
+    id: callsId as string,
+    query: { enabled: Boolean(callsId), refetchInterval: (q) => (q.state.data?.status === "CONFIRMED" ? false : 1000) },
+  });
+  const txLoading = Boolean(callsId) && callsStatus?.status !== "CONFIRMED";
+  const txSuccess = callsStatus?.status === "CONFIRMED";
 
   const { data: alreadyMinted, isLoading: isCheckingMinted } = useReadContract({
     address: MEMBERSHIP_ADDRESS,
@@ -75,9 +78,7 @@ export default function SpectraStepperForm() {
   });
 
   const isOnBase = chainId === BASE_CHAIN_ID;
-
-  const { connect } = useConnect();
-  const connectors = useConnectors();
+  const canSubmit = name.trim() !== '' && instagram.trim() !== '';
 
   useEffect(() => {
     if (isConnected && chainId && chainId !== BASE_CHAIN_ID) {
@@ -86,27 +87,27 @@ export default function SpectraStepperForm() {
   }, [isConnected, chainId, switchChain]);
 
   useEffect(() => {
-    if (txSuccess && hash) {
+    if (txSuccess && callsId) {
       setFormSubmitted(true);
+      onSuccess?.();
     }
-  }, [txSuccess, hash]);
+  }, [txSuccess, callsId, onSuccess]);
 
-  // Reset form if disconnected
   useEffect(() => {
     if (!isConnected) {
       setFormSubmitted(false);
-      setCurrentStep(1);
       setName('');
-      setPhone('');
       setInstagram('');
+      setPhone('');
       setX('');
       setTiktok('');
+      setShowOptionalFields(false);
     }
   }, [isConnected]);
 
   const handleSubmit = () => {
-    if (!name.trim() || !phone.trim() || !instagram.trim() || !x.trim() || !tiktok.trim()) {
-      alert('All fields are required.');
+    if (!canSubmit) {
+      alert('Name and Instagram are required.');
       return;
     }
 
@@ -117,33 +118,36 @@ export default function SpectraStepperForm() {
       return;
     }
 
-    const encName  = encryptData(name);
-    const encPhone = encryptData(phone);
-    const encIg    = encryptData(instagram);
-    const encX     = encryptData(x);
-    const encTt    = encryptData(tiktok);
-
-    writeContract({
-      address: SPECTRAFORM_ADDRESS,
-      abi: SpectraFormABI,
-      functionName: 'submit',
-      args: [encName, encPhone, encIg, encX, encTt],
+    sendCalls({
+      calls: [{
+        to: SPECTRAFORM_ADDRESS,
+        data: encodeFunctionData({
+          abi: SpectraFormABI as Parameters<typeof encodeFunctionData>[0]['abi'],
+          functionName: 'submit',
+          args: [
+            encryptData(name),
+            encryptData(phone),
+            encryptData(instagram),
+            encryptData(x),
+            encryptData(tiktok),
+          ],
+        }),
+      }],
+      capabilities: paymasterUrl ? { paymasterService: { url: paymasterUrl } } : undefined,
     });
   };
-
-  const isStep2Valid = name.trim() !== '' && phone.trim() !== '';
-  const isStep3Valid = instagram.trim() !== '' && x.trim() !== '' && tiktok.trim() !== '';
 
   if (isConnected && !isCheckingMinted && alreadyMinted === true) {
     return (
       <div className="w-full">
-        <div className="text-center py-16 mb-12">
-          <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+        <div className="mb-12 py-16 text-center">
+          <h1 className="mb-6 text-5xl font-black text-white uppercase leading-none md:text-7xl">
             Already a Founder!
           </h1>
-          <p className="text-2xl text-white/80 mb-16">
-            Your Origin status is confirmed.<br/>
-            Enjoy your SPECTRA Founder Membership ↓
+          <p className="text-2xl text-white/80">
+            Your Origin status is confirmed.
+            <br />
+            Your piece is ready below ↓
           </p>
         </div>
         <MembershipMint />
@@ -154,13 +158,12 @@ export default function SpectraStepperForm() {
   if (formSubmitted) {
     return (
       <div className="w-full">
-        <div className="text-center py-16 mb-12">
-          <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
-            Thank You!
+        <div className="mb-12 py-16 text-center">
+          <h1 className="mb-6 text-5xl font-black text-white uppercase leading-none md:text-7xl">
+            Submission Confirmed
           </h1>
-          <p className="text-2xl text-white/80 mb-16">
-            Your data is now securely on-chain.<br/>
-            Now claim your Founder Membership ↓
+          <p className="text-2xl text-white/80">
+            Collect now ↓
           </p>
         </div>
         <MembershipMint />
@@ -170,19 +173,19 @@ export default function SpectraStepperForm() {
 
   if (!isConnected) {
     return (
-      <div className="w-full max-w-4xl mx-auto px-6 py-20 text-center">
-        <h1 className="text-4xl md:text-4xl font-black mb-8 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
-          START
+      <div className="mx-auto w-full max-w-4xl px-6 py-20 text-center">
+        <h1 className="mb-6 text-lg font-black text-white uppercase leading-none md:text-xl">
+          FAST TRACK ACCESS
         </h1>
-        <p className="text-sm md:text-md text-white/80 mb-12 max-w-5xl mx-auto leading-relaxed">
-          Submit your data and get free <span className="font-bold text-white">$SPECTRA</span> tokens to spend at our events, also the membership allows you unlimited access to all our episodes in season 1 during 2026, plus early access and exclusive surprises.
+        <p className="mx-auto mb-12 max-w-xl text-xs leading-5 tracking-wide text-white/52 sm:text-sm sm:leading-[1.55]">
+          Connect your wallet to unlock the fastest path into AXIS<span className="copy-mark">©</span> Founder Membership.
         </p>
         <div className="flex flex-col items-center gap-4">
           {connectors.map((connector) => (
             <button
               key={connector.id}
               onClick={() => connect({ connector, chainId: BASE_CHAIN_ID })}
-              className="w-full max-w-md px-8 py-4 text-xl font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-3xl shadow-lg transition-all"
+              className="w-full max-w-md rounded-3xl bg-white px-8 py-4 text-lg font-black text-black shadow-lg transition-all hover:scale-[1.01] hover:bg-gray-200"
             >
               {connector.name === 'Coinbase Wallet' ? 'Coinbase Wallet / Base Smart Wallet' : connector.name}
             </button>
@@ -194,158 +197,173 @@ export default function SpectraStepperForm() {
 
   return (
     <div className="w-full">
-      {isConnected && !isOnBase && (
-        <div className="text-center py-8 mb-8 bg-red-900/20 rounded-3xl border border-red-500/30">
-          <p className="text-2xl font-bold text-red-300 mb-4">Wrong network</p>
-          <p className="text-white/80 mb-6">Please switch to Base to continue</p>
-          <button 
-            onClick={() => switchChain?.({ chainId: BASE_CHAIN_ID })}
-            className="px-12 py-5 bg-red-600 hover:bg-red-500 text-white text-xl font-bold rounded-2xl shadow-2xl"
-          >
-            Switch to Base
-          </button>
-        </div>
-      )}
-
-      <Stepper 
-        initialStep={1} 
-        onFinalStepCompleted={handleSubmit}
-        backButtonText="Previous" 
-        nextButtonText="Continue"
-        onStepChange={(step) => setCurrentStep(step)}
-        nextDisabled={
-          (currentStep === 2 && !isStep2Valid) ||
-          (currentStep === 3 && !isStep3Valid)
-        }
-        extraFooterButton={
-          <button
-            onClick={() => disconnect()}
-            className="w-full md:w-auto px-4 py-2 text-sm md:text-base font-medium rounded-3xl transition-all duration-300 text-white bg-red-900/30 hover:bg-red-800/40 border border-red-500/40 backdrop-blur-md shadow-md"
-          >
-            Disconnect
-          </button>
-        }
-      >
-        <Step>
-          <div className="text-center py-12">
-            <h2 className="text-4xl md:text-6xl font-black mb-8">Welcome to Spectra</h2>
-            <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-              Submit your info securely on Base. All data is encrypted before going on-chain.
+      <div className="mx-auto max-w-3xl">
+        <div
+          className="rounded-[32px] bg-black/45 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.4)] backdrop-blur-2xl sm:p-8"
+          style={{
+            border: "1px solid rgba(214, 222, 232, 0.16)",
+            boxShadow: "0 24px 80px rgba(0,0,0,0.4), 0 0 36px rgba(214,222,232,0.04)",
+          }}
+        >
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 text-3xl font-black text-white uppercase leading-none sm:text-4xl md:text-5xl">
+              FAST ENTRY, THEN COLLECT
+            </h2>
+            <p className="mx-auto max-w-2xl text-sm leading-6 text-white/72 sm:text-base">
+              Share the essentials here. Optional fields can stay blank and you can continue as soon as this step is complete.
             </p>
-            <div className="mt-12">
-              <p className="text-lg text-white/80 mb-6">
-                Connected: {address ? `${address.slice(0,6)}...${address.slice(-4)}` : '—'}
-              </p>
+          </div>
+
+          <div
+            className="mb-8 flex flex-col gap-4 rounded-3xl bg-white/[0.03] p-4 sm:flex-row sm:items-center sm:justify-between"
+            style={{
+              border: "1px solid rgba(214, 222, 232, 0.14)",
+              boxShadow: "0 0 28px rgba(214,222,232,0.04) inset",
+            }}
+          >
+            <div className="flex w-full justify-end">
+              <button
+                onClick={() => disconnect()}
+                className="rounded-2xl px-5 py-3 text-sm font-medium text-white backdrop-blur-xl transition-all"
+                style={{
+                  border: "1px solid rgba(214, 222, 232, 0.24)",
+                  background:
+                    "linear-gradient(145deg, rgba(255,255,255,0.08), rgba(160,160,160,0.06))",
+                  boxShadow:
+                    "0 0 0 1px rgba(255,255,255,0.02) inset, 0 0 20px rgba(255,255,255,0.05)",
+                  textShadow: "0 0 8px rgba(232,238,246,0.14)",
+                }}
+              >
+                Disconnect
+              </button>
             </div>
           </div>
-        </Step>
 
-        <Step>
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-12">Name & Phone</h2>
-          <div className="max-w-2xl mx-auto space-y-8">
-            <input 
-              placeholder="Full Name *" 
-              value={name} 
-              onChange={e => setName(e.target.value)} 
-              className="w-full px-8 py-6 text-2xl rounded-3xl bg-white/5 border-2 border-white/20 backdrop-blur-md focus:border-white/60 focus:outline-none transition-all"
-            />
-            <input 
-              placeholder="Phone (+ country code) *" 
-              value={phone} 
-              onChange={e => setPhone(e.target.value)} 
-              className="w-full px-8 py-6 text-2xl rounded-3xl bg-white/5 border-2 border-white/20 backdrop-blur-md focus:border-white/60 focus:outline-none transition-all"
-            />
+          <div className="grid gap-5 sm:grid-cols-2">
+            <label className="block">
+              <span className="mb-2 block text-xs uppercase tracking-[0.24em] text-white/55">Name *</span>
+              <input
+                placeholder="Alias or full name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full rounded-2xl bg-white/5 px-5 py-4 text-base text-white backdrop-blur-md transition-all placeholder:text-white/35 focus:outline-none"
+                style={{
+                  border: "1px solid rgba(214, 222, 232, 0.16)",
+                  boxShadow: "0 0 18px rgba(214,222,232,0.035) inset",
+                }}
+              />
+            </label>
+
+            <label className="block">
+              <span className="mb-2 block text-xs uppercase tracking-[0.24em] text-white/55">Instagram *</span>
+              <input
+                placeholder="@handle"
+                value={instagram}
+                onChange={(e) => setInstagram(e.target.value)}
+                className="w-full rounded-2xl bg-white/5 px-5 py-4 text-base text-white backdrop-blur-md transition-all placeholder:text-white/35 focus:outline-none"
+                style={{
+                  border: "1px solid rgba(214, 222, 232, 0.16)",
+                  boxShadow: "0 0 18px rgba(214,222,232,0.035) inset",
+                }}
+              />
+            </label>
           </div>
-        </Step>
 
-        <Step>
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-12">Social Handles</h2>
-          <div className="max-w-2xl mx-auto space-y-8">
-            <input 
-              placeholder="Instagram @handle *" 
-              value={instagram} 
-              onChange={e => setInstagram(e.target.value)} 
-              className="w-full px-8 py-6 text-2xl rounded-3xl bg-white/5 border-2 border-white/20 backdrop-blur-md focus:border-white/60 focus:outline-none transition-all"
-            />
-            <input 
-              placeholder="X @handle *" 
-              value={x} 
-              onChange={e => setX(e.target.value)} 
-              className="w-full px-8 py-6 text-2xl rounded-3xl bg-white/5 border-2 border-white/20 backdrop-blur-md focus:border-white/60 focus:outline-none transition-all"
-            />
-            <input 
-              placeholder="TikTok @handle *" 
-              value={tiktok} 
-              onChange={e => setTiktok(e.target.value)} 
-              className="w-full px-8 py-6 text-2xl rounded-3xl bg-white/5 border-2 border-white/20 backdrop-blur-md focus:border-white/60 focus:outline-none transition-all"
-            />
+          <div className="mt-6">
+            <button
+              onClick={() => setShowOptionalFields((value) => !value)}
+              className="text-xs uppercase tracking-[0.24em] text-white/58 transition-colors hover:text-white"
+            >
+              {showOptionalFields ? 'Hide optional fields' : 'Add optional profile fields'}
+            </button>
           </div>
-        </Step>
 
-        <Step>
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-12">Review & Submit</h2>
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-white/5 backdrop-blur-md rounded-3xl border border-white/20 p-10 mb-12 shadow-2xl">
-              <div className="grid md:grid-cols-2 gap-8 text-xl">
-                <div><strong>Name or Alias:</strong> <span className="text-white/80">{name || '—'}</span></div>
-                <div><strong>Phone:</strong> <span className="text-white/80">{phone || '—'}</span></div>
-                <div><strong>Instagram:</strong> <span className="text-white/80">{instagram || '—'}</span></div>
-                <div><strong>X:</strong> <span className="text-white/80">{x || '—'}</span></div>
-                <div><strong>TikTok:</strong> <span className="text-white/80">{tiktok || '—'}</span></div>
-                <div><strong>Wallet:</strong> <span className="text-white/80">{address ? `${address.slice(0,6)}...${address.slice(-4)}` : '—'}</span></div>
+          {showOptionalFields && (
+            <div className="mt-6 grid gap-5 sm:grid-cols-3">
+              <label className="block">
+                <span className="mb-2 block text-xs uppercase tracking-[0.24em] text-white/55">Phone</span>
+                <input
+                  placeholder="+52 ..."
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="w-full rounded-2xl bg-white/5 px-5 py-4 text-base text-white backdrop-blur-md transition-all placeholder:text-white/35 focus:outline-none"
+                  style={{
+                    border: "1px solid rgba(214, 222, 232, 0.16)",
+                    boxShadow: "0 0 18px rgba(214,222,232,0.035) inset",
+                  }}
+                />
+              </label>
+
+              <label className="block">
+                <span className="mb-2 block text-xs uppercase tracking-[0.24em] text-white/55">X</span>
+                <input
+                  placeholder="@handle"
+                  value={x}
+                  onChange={(e) => setX(e.target.value)}
+                  className="w-full rounded-2xl bg-white/5 px-5 py-4 text-base text-white backdrop-blur-md transition-all placeholder:text-white/35 focus:outline-none"
+                  style={{
+                    border: "1px solid rgba(214, 222, 232, 0.16)",
+                    boxShadow: "0 0 18px rgba(214,222,232,0.035) inset",
+                  }}
+                />
+              </label>
+
+              <label className="block">
+                <span className="mb-2 block text-xs uppercase tracking-[0.24em] text-white/55">TikTok</span>
+                <input
+                  placeholder="@handle"
+                  value={tiktok}
+                  onChange={(e) => setTiktok(e.target.value)}
+                  className="w-full rounded-2xl bg-white/5 px-5 py-4 text-base text-white backdrop-blur-md transition-all placeholder:text-white/35 focus:outline-none"
+                  style={{
+                    border: "1px solid rgba(214, 222, 232, 0.16)",
+                    boxShadow: "0 0 18px rgba(214,222,232,0.035) inset",
+                  }}
+                />
+              </label>
+            </div>
+          )}
+
+          <div className="mt-8 min-h-32">
+            {(writePending || txLoading) && (
+              <div className="rounded-3xl border border-white/12 bg-white/[0.04] px-6 py-8 text-center">
+                <p className="mb-2 text-2xl font-bold text-white">Processing your access</p>
+                <p className="text-sm text-white/68">
+                  Confirm in wallet first, then wait for Base to record the profile mapping.
+                </p>
               </div>
-            </div>
+            )}
 
-            <div className="min-h-48">
-              {writePending && (
-                <div className="text-center py-12 bg-white/5 rounded-3xl border border-white/20">
-                  <p className="text-3xl font-bold text-white mb-4">⏳ Waiting for confirmation...</p>
-                  <p className="text-xl text-white/70">Check your wallet and approve</p>
-                </div>
-              )}
-
-              {txLoading && !txSuccess && (
-                <div className="text-center py-12 bg-white/5 rounded-3xl border border-white/20">
-                  <p className="text-3xl font-bold text-white mb-4">⏳ Broadcasting on Base...</p>
-                  <p className="text-xl text-white/70">Your submission is being recorded</p>
-                </div>
-              )}
-
-              {txSuccess && hash && (
-                <div className="text-center py-16 bg-gradient-to-br from-white/10 to-white/5 rounded-3xl border-4 border-white/40 shadow-3xl">
-                  <p className="text-5xl md:text-6xl font-black text-white mb-8">SUCCESS! 🌈</p>
-                  <p className="text-2xl text-white/90 mb-10">Your data is now on-chain forever</p>
-                  <a 
-                    href={`https://basescan.org/tx/${hash}`} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-block px-16 py-8 bg-white text-black text-2xl font-black rounded-3xl hover:bg-gray-200 shadow-2xl hover:scale-105 transition-all"
-                  >
-                    View on Basescan →
-                  </a>
-                </div>
-              )}
-
-              {(writeError || txError) && (
-                <div className="text-center py-12 bg-red-900/30 rounded-3xl border border-red-500/50">
-                  <p className="text-4xl font-bold text-red-300 mb-6">Transaction Failed</p>
-                  <p className="text-xl text-red-200 max-w-lg mx-auto mb-8">
-                    {writeError?.message?.includes('rejected') || writeError?.message?.includes('denied')
-                      ? 'You rejected the transaction.'
-                      : 'Something went wrong. Please try again.'}
-                  </p>
-                  <button 
-                    onClick={() => resetWrite()}
-                    className="px-12 py-6 bg-red-600 hover:bg-red-500 text-white text-xl font-bold rounded-2xl"
-                  >
-                    Try Again
-                  </button>
-                </div>
-              )}
-            </div>
+            {callsStatus?.status === "FAILED" && (
+              <div className="rounded-3xl border border-white/20 bg-[linear-gradient(145deg,rgba(255,255,255,0.1),rgba(140,140,140,0.08))] px-6 py-8 text-center backdrop-blur-xl">
+                <p className="mb-3 text-2xl font-bold text-white">Transaction failed</p>
+                <p className="mx-auto mb-6 max-w-lg text-sm text-white/72">
+                  Something went wrong while recording your profile. Please try again.
+                </p>
+                <button
+                  onClick={() => resetWrite()}
+                  className="rounded-2xl border border-white/35 bg-[linear-gradient(135deg,rgba(255,255,255,0.92),rgba(176,176,176,0.78))] px-8 py-4 text-base font-bold text-black shadow-[0_18px_50px_rgba(255,255,255,0.16)] transition-all hover:scale-[1.01] hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(205,205,205,0.84))]"
+                >
+                  Try Again
+                </button>
+              </div>
+            )}
           </div>
-        </Step>
-      </Stepper>
+
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs uppercase tracking-[0.22em] text-white/42">
+              Required now: name + Instagram
+            </p>
+            <button
+              onClick={handleSubmit}
+              disabled={!canSubmit || writePending || txLoading}
+              className="w-full py-4 px-8 bg-transparent text-white font-semibold rounded-xl border border-white/20 backdrop-blur-md hover:bg-white/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Submit And Get Membership
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
