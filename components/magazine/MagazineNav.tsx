@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { MAGAZINE_CATEGORIES, CATEGORY_MAP, LANG_FLAGS, type MagazineLang } from "./types";
 
 type Props = {
@@ -59,17 +60,17 @@ export default function MagazineNav({ active, onChange, onMixtapes, lang, onLang
         <div className="hidden flex-none items-center gap-0 border-l border-white/8 lg:flex">
           {/* Language flags */}
           <div className="flex items-center border-r border-white/8 px-3 py-3.5">
-            {(Object.entries(LANG_FLAGS) as [MagazineLang, { flag: string; label: string }][]).map(
-              ([code, { flag, label }]) => (
+            {(Object.entries(LANG_FLAGS) as [MagazineLang, { src: string; label: string; alt: string }][]).map(
+              ([code, { src, label, alt }]) => (
                 <button
                   key={code}
                   onClick={() => onLangChange(code)}
                   title={label}
-                  className={`px-1.5 text-sm leading-none transition-opacity duration-150 ${
+                  className={`magazine-lang-flag flex h-6 w-8 items-center justify-center px-1 transition-opacity duration-150 ${
                     lang === code ? "opacity-100" : "opacity-25 hover:opacity-60"
                   }`}
                 >
-                  {flag}
+                  <Image src={src} alt={alt} width={20} height={14} className="h-[14px] w-5 rounded-[2px] object-cover" />
                 </button>
               )
             )}

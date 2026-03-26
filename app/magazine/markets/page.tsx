@@ -43,18 +43,19 @@ function Sparkline({ prices }: { prices: number[] }) {
     .join(" ");
 
   const trend = prices[prices.length - 1] >= prices[0];
-  const stroke = trend ? "#f2f2f2" : "#8f8f8f";
+  const stroke = trend ? "#22c55e" : "#ef4444";
+  const fillTop = trend ? "#22c55e" : "#ef4444";
 
   return (
     <svg
       viewBox={`0 0 ${W} ${H}`}
       preserveAspectRatio="none"
-      className="w-full"
+      className="market-chart w-full"
       style={{ height: 72 }}
     >
       <defs>
         <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor={stroke} stopOpacity="0.18" />
+          <stop offset="0%" stopColor={fillTop} stopOpacity="0.28" />
           <stop offset="100%" stopColor={stroke} stopOpacity="0.01" />
         </linearGradient>
       </defs>
@@ -100,7 +101,10 @@ function PoolsColumn({ pools }: { pools: PoolEntry[] }) {
                       {fmtPrice(pool.price)}
                     </span>
                     {pool.change24h !== null && (
-                      <span className={`text-[8px] tabular-nums ${up ? "text-white/70" : "text-white/46"}`}>
+                      <span
+                        className="market-signal text-[8px] tabular-nums"
+                        style={{ color: up ? "#22c55e" : "#ef4444" }}
+                      >
                         {up ? "▲" : "▼"}{Math.abs(pool.change24h).toFixed(2)}%
                       </span>
                     )}
@@ -320,7 +324,10 @@ function MarketsInner() {
                           {fmtPrice(data.price)}
                         </span>
                         {data.change24h !== null && (
-                          <span className={`text-sm tabular-nums ${up ? "text-white/78" : "text-white/52"}`}>
+                          <span
+                            className="market-signal text-sm tabular-nums"
+                            style={{ color: up ? "#22c55e" : "#ef4444" }}
+                          >
                             {up ? "▲" : "▼"} {Math.abs(data.change24h).toFixed(2)}%
                             <span className="ml-1 text-[8px] uppercase tracking-[0.28em] opacity-60">24h</span>
                           </span>

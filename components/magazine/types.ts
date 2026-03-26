@@ -73,12 +73,12 @@ export const CATEGORY_MAP: Record<MagazineCategory, string | null> = {
   MIXTAPES:   null,
 };
 
-export const LANG_FLAGS: Record<MagazineLang, { flag: string; label: string }> = {
-  en: { flag: "🇺🇸", label: "EN" },
-  es: { flag: "🇲🇽", label: "ES" },
-  fr: { flag: "🇫🇷", label: "FR" },
-  de: { flag: "🇩🇪", label: "DE" },
-  ja: { flag: "🇯🇵", label: "JA" },
-  ru: { flag: "🇷🇺", label: "RU" },
-  zh: { flag: "🇨🇳", label: "ZH" },
+export const LANG_FLAGS: Record<MagazineLang, { src: string; label: string; alt: string }> = {
+  en: { src: "/flags/us.svg", label: "EN", alt: "United States flag" },
+  es: { src: "/flags/mx.svg", label: "ES", alt: "Mexico flag" },
+  fr: { src: "/flags/fr.svg", label: "FR", alt: "France flag" },
+  de: { src: "/flags/de.svg", label: "DE", alt: "Germany flag" },
+  ja: { src: "/flags/jp.svg", label: "JA", alt: "Japan flag" },
+  ru: { src: "/flags/ru.svg", label: "RU", alt: "Russia flag" },
+  zh: { src: "/flags/cn.svg", label: "ZH", alt: "China flag" },
 };

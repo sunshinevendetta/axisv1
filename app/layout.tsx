@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import GlobalTicker from "@/components/GlobalTicker";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -19,33 +20,33 @@ const displayFont = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://axis.show"),
   title: {
-    default: "axis",
-    template: "%s | axis",
+    default: "AXIS",
+    template: "%s | AXIS",
   },
-  description: "Unexpected art experiences, digital culture, live episodes, and collectible releases from axis.",
-  applicationName: "axis",
+  description: "Unexpected art experiences, digital culture, live episodes, and collectible releases from AXIS.",
+  applicationName: "AXIS",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     url: "https://axis.show",
-    siteName: "axis",
-    title: "axis",
-    description: "Unexpected art experiences, digital culture, live episodes, and collectible releases from axis.",
+    siteName: "AXIS",
+    title: "AXIS",
+    description: "Unexpected art experiences, digital culture, live episodes, and collectible releases from AXIS.",
     images: [
       {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "axis",
+        alt: "AXIS",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "axis",
-    description: "Unexpected art experiences, digital culture, live episodes, and collectible releases from axis.",
+    title: "AXIS",
+    description: "Unexpected art experiences, digital culture, live episodes, and collectible releases from AXIS.",
     images: ["/logo.png"],
   },
   robots: {
@@ -63,6 +64,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${bodyFont.variable} ${displayFont.variable} pb-8 font-sans antialiased`} suppressHydrationWarning>
         <Providers>{children}</Providers>
+        <GlobalTicker />
         <SpeedInsights />
       </body>
     </html>

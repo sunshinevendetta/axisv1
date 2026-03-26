@@ -70,15 +70,44 @@ export default function PillNav({
     });
   };
 
+  const renderNestedChildren = (items: PillNavItem[], level = 0) =>
+    items.map((child: PillNavItem) => {
+      const isChildActive = child.href === activeHref;
+      const hasNestedChildren = Boolean(child.children?.length);
+
+      return (
+        <div key={child.href} className={level > 0 ? "mt-1" : ""}>
+          <Link
+            href={child.href}
+            aria-label={child.ariaLabel || child.label}
+            onClick={() => setIsMenuOpen(false)}
+            className={`block truncate rounded-lg px-2 py-1.5 text-[11px] tracking-[0.08em] transition-colors duration-150 ${
+              isChildActive
+                ? "bg-white/10 text-white"
+                : "text-white/55 hover:bg-white/5 hover:text-white/80"
+            } ${level > 0 ? "ml-4" : ""}`}
+          >
+            {child.label}
+          </Link>
+          {hasNestedChildren ? (
+            <div className="mt-1 space-y-0.5">
+              {renderNestedChildren(child.children ?? [], level + 1)}
+            </div>
+          ) : null}
+        </div>
+      );
+    });
+
   return (
-    <div className={`relative w-full max-w-7xl ${className}`}>
-      <nav aria-label="Primary" className="flex items-center justify-end gap-4 text-white">
+    <div className={`relative w-fit max-w-full ${className}`}>
+      <nav aria-label="Primary" className="flex items-center justify-center gap-4 text-white">
         <button
           type="button"
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           onClick={toggleMenu}
-          className={`group inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-3 py-2 shadow-[0_12px_30px_rgba(0,0,0,0.28)] transition-all duration-200 ${
+          style={{ backgroundColor: "#ffffff" }}
+          className={`group inline-flex items-center justify-center overflow-hidden rounded-full px-3 py-2 shadow-[0_12px_30px_rgba(0,0,0,0.28)] transition-all duration-200 ${
             isMenuOpen ? "scale-[0.985]" : "hover:scale-[1.015]"
           }`}
         >
@@ -99,7 +128,7 @@ export default function PillNav({
 
       {/* Dropdown panel */}
       <div
-        className={`absolute right-0 top-full z-50 mt-3 w-72 origin-top rounded-2xl border border-white/10 bg-black/96 shadow-[0_24px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-200 ${
+        className={`absolute left-1/2 top-full z-50 mt-3 w-72 -translate-x-1/2 origin-top rounded-2xl border border-white/10 bg-black/96 shadow-[0_24px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-200 ${
           isMenuOpen
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-1 opacity-0"
@@ -153,24 +182,7 @@ export default function PillNav({
                     >
                       <div className="overflow-hidden">
                         <div className="mx-3 mb-1 mt-0.5 max-h-[11rem] overflow-y-auto [&::-webkit-scrollbar]:w-[2px] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/16 [&::-webkit-scrollbar-track]:bg-transparent">
-                          {item.children?.map((child: PillNavItem) => {
-                            const isChildActive = child.href === activeHref;
-                            return (
-                              <Link
-                                key={child.href}
-                                href={child.href}
-                                aria-label={child.ariaLabel || child.label}
-                                onClick={() => setIsMenuOpen(false)}
-                                className={`block truncate rounded-lg px-2 py-1.5 text-[11px] tracking-[0.08em] transition-colors duration-150 ${
-                                  isChildActive
-                                  ? "bg-white/10 text-white"
-                                  : "text-white/55 hover:bg-white/5 hover:text-white/80"
-                                }`}
-                              >
-                                {child.label}
-                              </Link>
-                            );
-                          })}
+                          {renderNestedChildren(item.children ?? [])}
                         </div>
                       </div>
                     </div>

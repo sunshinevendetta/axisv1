@@ -41,9 +41,6 @@ export type MarketData = {
 const CG = "https://api.coingecko.com/api/v3";
 const GT = "https://api.geckoterminal.com/api/v2";
 const MARKET_CACHE_KEY_PREFIX = "spectra:market-data:v1:";
-const MARKET_REFRESH_MS = 60_000;
-const MARKET_RETRY_MS = 8_000;
-
 /** CoinGecko IDs for the main tab options */
 export const CG_IDS: Record<string, string> = {
   bitcoin:  "bitcoin",
@@ -299,16 +296,9 @@ export function useMarketData(activeTab: string) {
     };
 
     void load();
-    const refreshId = window.setInterval(load, MARKET_REFRESH_MS);
-    const retryId = window.setInterval(() => {
-      if (!mounted) return;
-      void load();
-    }, MARKET_RETRY_MS);
 
     return () => {
       mounted = false;
-      window.clearInterval(refreshId);
-      window.clearInterval(retryId);
     };
   }, [activeTab]);
 

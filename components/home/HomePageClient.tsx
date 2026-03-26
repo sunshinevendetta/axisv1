@@ -6,14 +6,13 @@ import AboutSection from "@/components/AboutSection";
 import CountdownSection from "@/components/CountdownSection";
 import EpisodesSection from "@/components/EpisodesSection";
 import Footer from "@/components/Footer";
-import Logo3D from "@/components/Logo3dGlass";
+import Logo3D from "@/components/Logo3dAsciiGlass";
 import LogoArray from "@/components/Logos/LogoArray";
 import PageGradualBlur from "@/components/PageGradualBlur";
 import PillNav from "@/components/PillNav";
 import SubmitSection from "@/components/SubmitSection";
 import HomeArtistsSection from "@/components/home/HomeArtistsSection";
 import HomeCollectSection from "@/components/home/HomeCollectSection";
-import HomeFeaturedArtifactsSection from "@/components/home/HomeFeaturedArtifactsSection";
 import HomeMagazineSection from "@/components/home/HomeMagazineSection";
 import HomeMixtapesSection from "@/components/home/HomeMixtapesSection";
 import HomeSpacesSection from "@/components/home/HomeSpacesSection";
@@ -85,10 +84,10 @@ export default function HomePageClient({
       <main className="relative z-10">
         <section id="home" className="relative isolate min-h-screen overflow-hidden">
           <Logo3D />
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.62)_0%,rgba(0,0,0,0.14)_32%,rgba(0,0,0,0.08)_68%,rgba(0,0,0,0.84)_100%)]" />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,rgba(0,0,0,0),#000)]" />
+          <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(0,0,0,0.62)_0%,rgba(0,0,0,0.14)_32%,rgba(0,0,0,0.08)_68%,rgba(0,0,0,0.84)_100%)]" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-64 bg-[linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,0.72)_60%,#000_100%)]" />
 
-          <div className="pointer-events-none relative z-10 mx-auto flex min-h-screen max-w-7xl items-end px-6 pb-12 pt-28 sm:pb-16 sm:pt-32">
+          <div className="pointer-events-none relative z-20 mx-auto flex min-h-screen max-w-7xl items-end px-6 pb-12 pt-28 sm:pb-16 sm:pt-32">
             <div className="max-w-2xl overflow-hidden">
               <div className="text-[10px] uppercase tracking-[0.34em] text-white/42 sm:text-[11px]">
                 Unexpected Experiences in Unusual Places
@@ -108,7 +107,7 @@ export default function HomePageClient({
 
         {upcomingEpisodes.length > 0 ? <CountdownSection episodes={upcomingEpisodes} /> : null}
         <EpisodesSection />
-        <HomeFeaturedArtifactsSection drops={drops} />
+        {/* <HomeFeaturedArtifactsSection drops={drops} /> */}
         <HomeMixtapesSection
           mixtapes={mixtapes}
           onTrackSelect={setActiveMixtape}

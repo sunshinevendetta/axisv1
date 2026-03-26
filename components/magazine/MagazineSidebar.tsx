@@ -130,9 +130,8 @@ export default function MagazineSidebar({
                     </span>
                     {p.change24h !== null && (
                       <span
-                        className={`tabular-nums text-[8px] tracking-wide ${
-                          up ? "text-white/70" : "text-white/48"
-                        }`}
+                        className="tabular-nums text-[8px] tracking-wide"
+                        style={{ color: up ? "#22c55e" : "#ef4444" }}
                       >
                         {up ? "▲" : "▼"} {Math.abs(p.change24h).toFixed(2)}%
                       </span>

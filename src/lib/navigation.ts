@@ -39,10 +39,10 @@ const adminDashboardNavItem: PillNavItem = {
 
 const membersAreaNavItem: PillNavItem = {
   label: "members area",
-  href: "/magazine/markets",
+  href: "/members",
   children: [
-    { label: "Inside Magazine", href: "/magazine/markets" },
-    { label: "Standalone", href: "/record-prism" },
+    { label: "Login", href: "/members" },
+    { label: "Get Membership", href: "/membership" },
   ],
 };
 
@@ -55,7 +55,8 @@ export const publicNavItems: PillNavItem[] = [
     label: "magazine",
     href: "/magazine",
     children: [
-      { label: "Journal", href: "/magazine" },
+      {
+        label: "Editorial", href: "/magazine"},
       { label: "Artists", href: "/magazine/artists" },
       { label: "Mixtapes", href: "/magazine/mixtapes" },
     ],

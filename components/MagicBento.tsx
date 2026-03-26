@@ -34,42 +34,42 @@ export interface BentoProps {
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
-const DEFAULT_GLOW_COLOR = '132, 0, 255';
+const DEFAULT_GLOW_COLOR = '214, 220, 224';
 const MOBILE_BREAKPOINT = 768;
 
 const cardData: BentoCardProps[] = [
  {
-  color: '#060010',
+  color: '#050505',
   title: 'Analytics',
   description: 'Track user behavior',
   label: 'Insights'
  },
  {
-  color: '#060010',
+  color: '#050505',
   title: 'Dashboard',
   description: 'Centralized data view',
   label: 'Overview'
  },
  {
-  color: '#060010',
+  color: '#050505',
   title: 'Collaboration',
   description: 'Work together seamlessly',
   label: 'Teamwork'
  },
  {
-  color: '#060010',
+  color: '#050505',
   title: 'Automation',
   description: 'Streamline workflows',
   label: 'Efficiency'
  },
  {
-  color: '#060010',
+  color: '#050505',
   title: 'Integration',
   description: 'Connect favorite tools',
   label: 'Connectivity'
  },
  {
-  color: '#060010',
+  color: '#050505',
   title: 'Security',
   description: 'Enterprise-grade protection',
   label: 'Protection'
