@@ -63,11 +63,11 @@ function BetterLogoGlass() {
               resolution={1024}
               transmission={1}
               roughness={0}
-              thickness={50}
+              thickness={0}
               ior={1.22}
-              chromaticAberration={0.6}
+              chromaticAberration={6}
               anisotropicBlur={0.08}
-              distortion={8}
+              distortion={1}
               distortionScale={0.25}
               temporalDistortion={0.0}
               clearcoat={1}

@@ -35,10 +35,13 @@ export default function GlobalTicker() {
             className="mx-4 inline-flex items-baseline gap-2 whitespace-nowrap transition-opacity hover:opacity-80"
           >
             <span className="text-[7px] uppercase tracking-[0.3em] text-white/26">#{token.rank}</span>
-            <span className="text-[8px] uppercase tracking-[0.3em] text-white/48">{token.symbol}</span>
+            <span className="text-[8px] uppercase tracking-[0.3em] text-white">{token.symbol}</span>
             <span className="text-[8px] tabular-nums tracking-wide text-white/68">{fmtPrice(token.price)}</span>
             {token.change24h !== null ? (
-              <span className={`text-[7px] tabular-nums ${up ? "text-white/74" : "text-white/48"}`}>
+              <span
+                className="text-[7px] tabular-nums"
+                style={{ color: up ? "#22c55e" : "#ef4444" }}
+              >
                 {up ? "+" : "-"}{Math.abs(token.change24h).toFixed(2)}%
               </span>
             ) : null}

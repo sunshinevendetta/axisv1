@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import type { MagazineArticle, ContentBlock, MagazineLang } from "./types";
 import { LANG_FLAGS } from "./types";
@@ -181,17 +182,17 @@ export default function ArticleReader({
           </span>
           {/* Lang picker — inline in article */}
           <div className="ml-auto flex items-center gap-0.5">
-            {(Object.entries(LANG_FLAGS) as [MagazineLang, { flag: string; label: string }][]).map(
-              ([code, { flag }]) => (
+            {(Object.entries(LANG_FLAGS) as [MagazineLang, { src: string; label: string; alt: string }][]).map(
+              ([code, { src, alt }]) => (
                 <button
                   key={code}
                   onClick={() => onLangChange(code)}
                   title={code.toUpperCase()}
-                  className={`px-1 text-sm leading-none transition-opacity duration-150 ${
+                  className={`magazine-lang-flag flex h-6 w-8 items-center justify-center px-1 transition-opacity duration-150 ${
                     lang === code ? "opacity-100" : "opacity-20 hover:opacity-55"
                   }`}
                 >
-                  {flag}
+                  <Image src={src} alt={alt} width={20} height={14} className="h-[14px] w-5 rounded-[2px] object-cover" />
                 </button>
               )
             )}
