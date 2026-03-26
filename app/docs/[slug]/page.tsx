@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `${document.title} | SPECTRA Docs`,
+    title: `${document.title} | AXIS Docs`,
     description: document.summary,
   };
 }
@@ -54,13 +54,13 @@ export default async function DocumentDetailPage({ params }: PageProps) {
   return (
     <main
       id="top"
-      className="min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_top,rgba(226,232,240,0.12),transparent_35%),linear-gradient(180deg,#050505,#000)] px-4 py-8 text-white sm:px-6 sm:py-12"
+      className="min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_35%),linear-gradient(180deg,#050505,#000)] px-4 py-8 text-white sm:px-6 sm:py-12"
     >
       <div className="mx-auto max-w-7xl pt-20 sm:pt-24">
         <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
           <PillNav
             logo="/logo.png"
-            logoAlt="spectra logo"
+            logoAlt="AXIS logo"
             items={docsNavItems}
             activeHref="/docs"
             className="custom-nav"
@@ -73,11 +73,11 @@ export default async function DocumentDetailPage({ params }: PageProps) {
           />
         </div>
 
-        <div className="mb-6 rounded-[28px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(148,163,184,0.06))] p-5 shadow-[0_28px_90px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:rounded-[32px] sm:p-8">
-          <div className="inline-flex rounded-full border border-[#dbe4f2]/20 bg-white/6 px-4 py-1 text-[11px] font-medium uppercase tracking-[0.2em] text-white/58">
+        <div className="mb-6 rounded-[28px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(150,150,150,0.06))] p-5 shadow-[0_28px_90px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:rounded-[32px] sm:p-8">
+          <div className="inline-flex rounded-full border border-white/20 bg-white/6 px-4 py-1 text-[11px] font-medium uppercase tracking-[0.2em] text-white/58">
             Document Reader
           </div>
-          <h1 className="mt-4 bg-gradient-to-b from-white via-[#e7edf5] to-[#95a4b8] bg-clip-text text-3xl font-semibold leading-tight tracking-[-0.04em] text-transparent sm:text-5xl">
+          <h1 className="mt-4 bg-gradient-to-b from-white via-[#d9d9d9] to-[#8a8a8a] bg-clip-text text-3xl font-semibold leading-tight tracking-[-0.04em] text-transparent sm:text-5xl">
             {document.title}
           </h1>
           <p className="mt-4 max-w-3xl text-sm leading-6 text-white/70 sm:text-base">{document.summary}</p>
@@ -85,7 +85,7 @@ export default async function DocumentDetailPage({ params }: PageProps) {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href="/docs"
-              className="rounded-full border border-[#dbe4f2]/24 bg-[linear-gradient(135deg,rgba(236,241,247,0.18),rgba(138,166,198,0.12))] px-4 py-2 text-sm text-white/88 transition-all hover:border-[#dbe4f2]/40 hover:text-white"
+              className="rounded-full border border-white/24 bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(155,155,155,0.12))] px-4 py-2 text-sm text-white/88 transition-all hover:border-white/40 hover:text-white"
             >
               Back To Documents
             </Link>
@@ -100,7 +100,7 @@ export default async function DocumentDetailPage({ params }: PageProps) {
 
         <div className="grid gap-6 xl:grid-cols-[300px_minmax(0,1fr)]">
           <aside className="hidden xl:sticky xl:top-6 xl:block xl:self-start">
-            <div className="rounded-[30px] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.06),rgba(148,163,184,0.04))] p-5 shadow-[0_22px_70px_rgba(0,0,0,0.36)] backdrop-blur-2xl">
+            <div className="rounded-[30px] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.06),rgba(140,140,140,0.04))] p-5 shadow-[0_22px_70px_rgba(0,0,0,0.36)] backdrop-blur-2xl">
               <div className="text-[11px] uppercase tracking-[0.28em] text-white/46">Document Menu</div>
 
               <div className="mt-5 space-y-3">
@@ -127,8 +127,8 @@ export default async function DocumentDetailPage({ params }: PageProps) {
                       href={`/docs/${entry.slug}`}
                       className={`block rounded-2xl border px-4 py-3 transition-all ${
                         entry.slug === document.slug
-                          ? "border-[#dbe4f2]/24 bg-[linear-gradient(135deg,rgba(236,241,247,0.14),rgba(138,166,198,0.1))]"
-                          : "border-white/8 bg-black/20 hover:border-[#dbe4f2]/24 hover:bg-[linear-gradient(135deg,rgba(236,241,247,0.1),rgba(138,166,198,0.08))]"
+                          ? "border-white/24 bg-[linear-gradient(135deg,rgba(255,255,255,0.14),rgba(140,140,140,0.1))]"
+                          : "border-white/8 bg-black/20 hover:border-white/24 hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.1),rgba(140,140,140,0.08))]"
                       }`}
                     >
                       <div className="text-sm font-medium text-white">{entry.title}</div>
@@ -140,7 +140,7 @@ export default async function DocumentDetailPage({ params }: PageProps) {
             </div>
           </aside>
 
-          <section className="min-w-0 rounded-[28px] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.06),rgba(148,163,184,0.04))] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.42)] backdrop-blur-2xl sm:rounded-[32px] sm:p-6">
+          <section className="min-w-0 rounded-[28px] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.06),rgba(140,140,140,0.04))] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.42)] backdrop-blur-2xl sm:rounded-[32px] sm:p-6">
             <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <div className="inline-flex rounded-full border border-white/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-white/48">
@@ -158,7 +158,7 @@ export default async function DocumentDetailPage({ params }: PageProps) {
                 </Link>
                 <a
                   href="#top"
-                  className="rounded-full border border-[#dbe4f2]/24 bg-[linear-gradient(135deg,rgba(236,241,247,0.18),rgba(138,166,198,0.12))] px-4 py-2 text-white/84 transition-all hover:border-[#dbe4f2]/40 hover:text-white"
+                  className="rounded-full border border-white/24 bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(155,155,155,0.12))] px-4 py-2 text-white/84 transition-all hover:border-white/40 hover:text-white"
                 >
                   Top
                 </a>
@@ -184,7 +184,7 @@ export default async function DocumentDetailPage({ params }: PageProps) {
                   href={`/docs/${entry.slug}`}
                   className={`rounded-2xl border px-4 py-3 text-sm transition-all ${
                     entry.slug === document.slug
-                      ? "border-[#dbe4f2]/28 bg-[linear-gradient(135deg,rgba(236,241,247,0.18),rgba(138,166,198,0.12))] text-white"
+                      ? "border-white/28 bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(155,155,155,0.12))] text-white"
                       : "border-white/12 bg-black/25 text-white/72"
                   }`}
                 >
@@ -237,7 +237,7 @@ export default async function DocumentDetailPage({ params }: PageProps) {
                         href={diagram.imageUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex rounded-full border border-[#dbe4f2]/24 bg-[linear-gradient(135deg,rgba(236,241,247,0.18),rgba(138,166,198,0.12))] px-4 py-2 text-sm text-white/84 transition-all hover:border-[#dbe4f2]/40 hover:text-white"
+                        className="inline-flex rounded-full border border-white/24 bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(155,155,155,0.12))] px-4 py-2 text-sm text-white/84 transition-all hover:border-white/40 hover:text-white"
                       >
                         Open SVG
                       </a>

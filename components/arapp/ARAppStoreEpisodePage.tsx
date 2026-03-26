@@ -7,9 +7,9 @@ import { type ARAppDrop, type ARAppDropStatus } from "@/src/lib/arapp-catalog";
 import type { StoreEpisodeSlug } from "@/src/lib/arapp-catalog";
 
 const statusTone: Record<ARAppDropStatus, string> = {
-  live: "border-emerald-400/30 bg-emerald-400/15 text-emerald-300",
-  "member-access": "border-cyan-400/30 bg-cyan-400/15 text-cyan-300",
-  "coming-soon": "border-amber-400/30 bg-amber-400/15 text-amber-300",
+  live: "border-white/20 bg-white/10 text-white/82",
+  "member-access": "border-white/16 bg-white/8 text-white/74",
+  "coming-soon": "border-white/14 bg-white/7 text-white/66",
   "sold-out": "border-white/12 bg-white/6 text-white/42",
 };
 

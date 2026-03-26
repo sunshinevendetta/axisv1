@@ -43,7 +43,7 @@ function Sparkline({ prices }: { prices: number[] }) {
     .join(" ");
 
   const trend = prices[prices.length - 1] >= prices[0];
-  const stroke = trend ? "#6ee7a0" : "#f87171";
+  const stroke = trend ? "#f2f2f2" : "#8f8f8f";
 
   return (
     <svg
@@ -100,7 +100,7 @@ function PoolsColumn({ pools }: { pools: PoolEntry[] }) {
                       {fmtPrice(pool.price)}
                     </span>
                     {pool.change24h !== null && (
-                      <span className={`text-[8px] tabular-nums ${up ? "text-[#6ee7a0]/65" : "text-[#f87171]/60"}`}>
+                      <span className={`text-[8px] tabular-nums ${up ? "text-white/70" : "text-white/46"}`}>
                         {up ? "▲" : "▼"}{Math.abs(pool.change24h).toFixed(2)}%
                       </span>
                     )}
@@ -216,7 +216,7 @@ function MarketsInner() {
       <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
         <PillNav
           logo="/logo.png"
-          logoAlt="spectra logo"
+          logoAlt="AXIS logo"
           items={magazineNavItems}
           activeHref="/magazine/markets"
           ease="power2.easeOut"
@@ -244,7 +244,7 @@ function MarketsInner() {
             </div>
             <span className="flex items-center gap-1.5">
               <span
-                className="h-1.5 w-1.5 rounded-full bg-red-500"
+                className="h-1.5 w-1.5 rounded-full bg-white/50"
                 style={{ animation: "live-blink 1s step-start infinite" }}
               />
               <span className="text-[7px] uppercase tracking-[0.4em] text-white/22">Live</span>
@@ -256,7 +256,7 @@ function MarketsInner() {
         <div className="border-b border-white/[0.05] px-4 py-6 sm:px-6">
           <div className="mx-auto max-w-6xl">
             <p className="mb-2 text-[8px] uppercase tracking-[0.5em] text-white/20">
-              Spectra Journal
+              AXIS Journal
             </p>
             <h1 className="[font-family:var(--font-display)] text-[clamp(2rem,5vw,3.6rem)] leading-[0.88] tracking-[-0.05em] text-white">
               Markets
@@ -320,7 +320,7 @@ function MarketsInner() {
                           {fmtPrice(data.price)}
                         </span>
                         {data.change24h !== null && (
-                          <span className={`text-sm tabular-nums ${up ? "text-[#6ee7a0]" : "text-[#f87171]"}`}>
+                          <span className={`text-sm tabular-nums ${up ? "text-white/78" : "text-white/52"}`}>
                             {up ? "▲" : "▼"} {Math.abs(data.change24h).toFixed(2)}%
                             <span className="ml-1 text-[8px] uppercase tracking-[0.28em] opacity-60">24h</span>
                           </span>

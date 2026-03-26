@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { arappCollection, getARAppDropById } from "@/src/lib/arapp-catalog";
 
 const COMMERCE_API_URL = "https://api.commerce.coinbase.com";
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://spectrart.xyz";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://axis.show";
 
 type ChargeRequest = {
   walletAddress?: string | null;

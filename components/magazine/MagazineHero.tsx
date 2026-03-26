@@ -50,7 +50,7 @@ export default function MagazineHero({ article, onRead }: Props) {
         {/* Journal masthead */}
         <div className="mb-10 flex items-center gap-4">
           <span className="text-[9px] uppercase tracking-[0.48em] text-white/24">
-            Spectra Journal
+            AXIS Journal
           </span>
           <div className="h-px w-10 bg-white/14" />
           <span className="text-[9px] uppercase tracking-[0.34em] text-white/16">

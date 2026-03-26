@@ -16,7 +16,7 @@ export default function HomeCollectSection() {
             </h2>
 
             <p className="mt-8 text-sm leading-7 text-white/44 sm:text-[15px] sm:leading-8 max-w-xl">
-              At every live SPECTRA episode, NFC tags are activated across the venue. Tap your phone to any tag to enter the collect area — a real-time surface for episode-bound artifacts, limited editions, and access keys.
+              At every live AXIS episode, NFC tags are activated across the venue. Tap your phone to any tag to enter the collect area — a real-time surface for episode-bound artifacts, limited editions, and access keys.
             </p>
             <p className="mt-5 text-sm leading-7 text-white/44 sm:text-[15px] sm:leading-8 max-w-xl">
               Each tag links directly to the item it represents. No app to download. Wallet-native, on-chain delivery.
@@ -25,7 +25,7 @@ export default function HomeCollectSection() {
             {/* How it works — 3 steps */}
             <div className="mt-10 grid gap-px bg-white/6 sm:grid-cols-3 max-w-xl">
               {[
-                { step: "01", label: "Arrive at a SPECTRA episode" },
+                { step: "01", label: "Arrive at a AXIS episode" },
                 { step: "02", label: "Find and tap an NFC tag" },
                 { step: "03", label: "Collect your artifact on-chain" },
               ].map(({ step, label }) => (

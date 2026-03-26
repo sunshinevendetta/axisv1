@@ -72,7 +72,7 @@ export default function ARAppCollectMarketplace() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 pb-3 pt-24 sm:px-6 sm:pt-28">
           <div>
             <div className="text-[9px] uppercase tracking-[0.3em] text-white/36">{arappCollectCollection.eyebrow}</div>
-            <h1 className="mt-0.5 text-sm font-semibold tracking-[-0.02em] text-white">SPECTRA<span className="copy-mark">©</span> Collect</h1>
+            <h1 className="mt-0.5 text-sm font-semibold tracking-[-0.02em] text-white">AXIS<span className="copy-mark">©</span> Collect</h1>
           </div>
           <div className="hidden gap-6 sm:flex">
             <div className="text-center">
@@ -132,7 +132,7 @@ export default function ARAppCollectMarketplace() {
                         <span className="rounded-full border border-white/16 bg-black/40 px-2.5 py-1 text-[9px] uppercase tracking-[0.22em] text-white/70 backdrop-blur-sm">
                           {episode.label}
                         </span>
-                        <span className={`rounded-full border px-2.5 py-1 text-[9px] uppercase tracking-[0.22em] ${episode.claimOpen ? "border-emerald-400/30 bg-emerald-400/15 text-emerald-300" : "border-white/12 bg-white/6 text-white/50"}`}>
+                        <span className={`rounded-full border px-2.5 py-1 text-[9px] uppercase tracking-[0.22em] ${episode.claimOpen ? "border-white/18 bg-white/8 text-white/74" : "border-white/12 bg-white/6 text-white/50"}`}>
                           {episode.claimOpen ? "Claim Open" : "Preparing"}
                         </span>
                       </div>

@@ -26,15 +26,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const episode = getStoreEpisodeBySlug(id);
   if (episode) {
     return {
-      title: `${episode.label} — SPECTRA Store`,
-      description: `All products from ${episode.label} of the SPECTRA episode collection.`,
+      title: `${episode.label} — AXIS Store`,
+      description: `All products from ${episode.label} of the AXIS episode collection.`,
     };
   }
 
   const drop = getARAppDropById(id);
   if (drop) {
     return {
-      title: `${drop.title} — SPECTRA Store`,
+      title: `${drop.title} — AXIS Store`,
       description: drop.subtitle,
     };
   }
@@ -54,7 +54,7 @@ export default async function ProductsPage({ params }: Props) {
         <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
           <PillNav
             logo="/logo.png"
-            logoAlt="spectra logo"
+            logoAlt="AXIS logo"
             items={arappNavItems}
             activeHref="/arapp"
             className="custom-nav"
@@ -81,7 +81,7 @@ export default async function ProductsPage({ params }: Props) {
       <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
         <PillNav
           logo="/logo.png"
-          logoAlt="spectra logo"
+          logoAlt="AXIS logo"
           items={arappNavItems}
           activeHref="/arapp"
           className="custom-nav"

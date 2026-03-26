@@ -147,9 +147,9 @@ export const deploymentGuides: Record<DeploymentContractKey, DeploymentContractG
   // ── Artwork stack ──────────────────────────────────────────────────────────
 
   seasonRegistry: {
-    purpose: "The master index for Season 1. Holds the list of every episode contract address so the app — and anyone on the internet — can find all SPECTRA artworks in one place.",
+    purpose: "The master index for Season 1. Holds the list of every episode contract address so the app — and anyone on the internet — can find all AXIS artworks in one place.",
     whyItExists:
-      "Without this, there is no single source of truth for which episode contracts belong to Season 1. Collectors' wallets, marketplaces, and future tools all use this registry to discover the full SPECTRA collection. It's deployed once per season and never needs to change. Technically: a lightweight AccessControl contract with no tokens, just a mapping of episode entries.",
+      "Without this, there is no single source of truth for which episode contracts belong to Season 1. Collectors' wallets, marketplaces, and future tools all use this registry to discover the full AXIS collection. It's deployed once per season and never needs to change. Technically: a lightweight AccessControl contract with no tokens, just a mapping of episode entries.",
     deployWhen:
       "Deploy this first — before any episode contracts. It takes 30 seconds and costs almost nothing on Base. Once it exists, episode contracts can be registered in any order, in parallel.",
     dependsOn: [],
@@ -179,11 +179,11 @@ export const deploymentGuides: Record<DeploymentContractKey, DeploymentContractG
         key: "seasonName",
         name: "Season display name",
         required: true,
-        placeholder: "SPECTRA Season 1",
+        placeholder: "AXIS Season 1",
         description:
           "The public name people will see for this season.",
         recommended:
-          "Use 'SPECTRA Season 1'. This appears in any UI that reads from the registry contract.",
+          "Use 'AXIS Season 1'. This appears in any UI that reads from the registry contract.",
       },
     ],
     afterDeploy: [
@@ -218,7 +218,7 @@ export const deploymentGuides: Record<DeploymentContractKey, DeploymentContractG
         key: "name",
         name: "Episode/event name",
         required: true,
-        placeholder: "IRL x Spectra",
+        placeholder: "IRL x AXIS",
         description:
           "The name for this episode collection. Usually this matches the event title.",
         recommended:
@@ -228,11 +228,11 @@ export const deploymentGuides: Record<DeploymentContractKey, DeploymentContractG
         key: "symbol",
         name: "Short code",
         required: true,
-        placeholder: "SPECTRA-EP2",
+        placeholder: "AXIS-EP2",
         description:
-          "A short internal code for this contract. Example: SPECTRA-EP2.",
+          "A short internal code for this contract. Example: AXIS-EP2.",
         recommended:
-          "Use SPECTRA-EP1 for episode 1, SPECTRA-EP2 for episode 2, and so on.",
+          "Use AXIS-EP1 for episode 1, AXIS-EP2 for episode 2, and so on.",
       },
       {
         key: "seasonId",
@@ -268,7 +268,7 @@ export const deploymentGuides: Record<DeploymentContractKey, DeploymentContractG
         key: "contractMetadataUri",
         name: "Master metadata link",
         required: true,
-        placeholder: "https://spectrart.xyz/api/episodes/episode-2/metadata",
+        placeholder: "https://axis.show/api/episodes/episode-2/metadata",
         description:
           "One JSON file for the overall episode collection page. You can start with the app link and replace it later.",
         recommended:

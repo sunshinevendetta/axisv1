@@ -8,10 +8,10 @@ const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID;
 
 const walletConnectMetadata = {
-  name: "SPECTRA",
-  description: "SPECTRA founder membership and submission flows on Base.",
-  url: "https://spectrart.xyz",
-  icons: ["https://spectrart.xyz/favicon.png"],
+  name: "AXIS",
+  description: "AXIS founder membership and submission flows on Base.",
+  url: "https://axis.show",
+  icons: ["https://axis.show/favicon.png"],
 };
 
 export function getConfig() {
@@ -24,10 +24,10 @@ export function getConfig() {
         shimDisconnect: true,
       }),
       baseAccount({
-        appName: "SPECTRA",
+        appName: "AXIS",
       }),
       coinbaseWallet({
-        appName: "SPECTRA",
+        appName: "AXIS",
         preference: { options: "smartWalletOnly" },
       }),
       ...(projectId

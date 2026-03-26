@@ -51,8 +51,8 @@ export default function ArtistWorldPanel({ artist, onClose }: Props) {
         </div>
 
         <div className="mt-8 space-y-8">
-          <section className="border border-[#75ffbf]/14 bg-[#75ffbf]/[0.03] p-5">
-            <div className="text-[10px] uppercase tracking-[0.32em] text-[#75ffbf]/72">Artist</div>
+          <section className="border border-white/12 bg-white/[0.03] p-5">
+            <div className="text-[10px] uppercase tracking-[0.32em] text-white/62">Artist</div>
             <div className="mt-4 flex items-baseline gap-3">
               <span className="[font-family:var(--font-display)] text-2xl leading-none tracking-[-0.04em] text-white/90">{artist.gridIndex}</span>
               <span className="text-[10px] uppercase tracking-[0.24em] text-white/34">Index</span>
@@ -76,8 +76,8 @@ export default function ArtistWorldPanel({ artist, onClose }: Props) {
           </section>
 
           {artist.spaces.length > 0 && (
-            <section className="border border-[#9fd4ff]/14 bg-[#9fd4ff]/[0.03] p-5">
-              <div className="text-[10px] uppercase tracking-[0.32em] text-[#9fd4ff]/72">Spaces</div>
+            <section className="border border-white/12 bg-white/[0.03] p-5">
+              <div className="text-[10px] uppercase tracking-[0.32em] text-white/62">Spaces</div>
               <div className="mt-4 space-y-3">
                 {artist.spaces.map((space) => (
                   <div key={`${space.name}-${space.episode}`} className="border border-white/8 px-4 py-3">
@@ -91,8 +91,8 @@ export default function ArtistWorldPanel({ artist, onClose }: Props) {
           )}
 
           {artist.signals.length > 0 && (
-            <section className="border border-[#ffe29f]/14 bg-[#ffe29f]/[0.03] p-5">
-              <div className="text-[10px] uppercase tracking-[0.32em] text-[#ffe29f]/72">Activity</div>
+            <section className="border border-white/12 bg-white/[0.03] p-5">
+              <div className="text-[10px] uppercase tracking-[0.32em] text-white/62">Activity</div>
               <div className="mt-4 space-y-3">
                 {artist.signals.map((signal) => (
                   <div key={`${signal.timestamp}-${signal.text}`} className="border border-white/8 px-4 py-3">

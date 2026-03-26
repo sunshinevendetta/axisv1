@@ -14,7 +14,7 @@ export default function SubmitSection() {
     <div className="bg-black">
       <div className="mx-auto flex max-w-7xl flex-col items-center px-6 pt-20 text-center sm:pt-24">
         <p className="text-[10px] uppercase tracking-[0.34em] text-white/44 sm:text-[11px]">
-          Submit To SPECTRA<span className="copy-mark">©</span>
+          Submit To AXIS<span className="copy-mark">©</span>
         </p>
         <h2 className="mt-4 text-[clamp(1.6rem,3vw,2.6rem)] leading-[0.92] tracking-[-0.05em] text-white">
           Choose your lane

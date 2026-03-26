@@ -49,7 +49,7 @@ export default function MarqueeTicker({ articles }: Props) {
             <span className="text-[8px] uppercase tracking-[0.32em] text-white/36">{p.symbol}</span>
             <span className="text-[8px] tabular-nums tracking-wide text-white/60">${fmt(p.price)}</span>
             {p.change24h !== null && (
-              <span className={`text-[7px] tabular-nums ${up ? "text-[#6ee7a0]/70" : "text-[#f87171]/65"}`}>
+              <span className={`text-[7px] tabular-nums ${up ? "text-white/72" : "text-white/48"}`}>
                 {up ? "▲" : "▼"}{Math.abs(p.change24h).toFixed(2)}%
               </span>
             )}
@@ -142,11 +142,11 @@ export default function MarqueeTicker({ articles }: Props) {
         </div>
       </div>
 
-      {/* Static right — red blink live indicator */}
+      {/* Static right — monochrome live indicator */}
       <div className="flex-none border-l border-white/[0.07] px-4">
         <span className="flex items-center gap-1.5">
           <span
-            className="h-1.5 w-1.5 rounded-full bg-red-500"
+            className="h-1.5 w-1.5 rounded-full bg-white/50"
             style={{ animation: "live-blink 1s step-start infinite" }}
           />
           <span className="text-[7px] uppercase tracking-[0.4em] text-white/22">Live</span>

@@ -1,6 +1,6 @@
 {
   "collection": {
-    "title": "SPECTRA Collect",
+    "title": "AXIS Collect",
     "eyebrow": "Episode Artwork Claims",
     "season": "Season 1",
     "description": "Episode-based ERC-1155 artwork claims powered by the owner control room.",
@@ -10,15 +10,15 @@
     {
       "slug": "episode-1",
       "claimOpen": true,
-      "baseUri": "https://spectrart.xyz/api/arapp/collect/episode-1/metadata",
-      "collectionMetadataUri": "https://spectrart.xyz/api/episodes/episode-1/metadata",
+      "baseUri": "https://axis.show/api/arapp/collect/episode-1/metadata",
+      "collectionMetadataUri": "https://axis.show/api/episodes/episode-1/metadata",
       "tokens": [
         {
           "tokenId": 1,
           "status": "live",
           "remaining": 100,
           "metadata": {
-            "name": "Spectra Episode I",
+            "name": "AXIS Episode I",
             "description": "Episode 1",
             "image": "https://api.grove.storage/31074935e0983dcf79fd74bc25e1c9d06f33cb0b8fcfdbec697f81099d4e7f27",
             "animation_url": "https://api.grove.storage/7795fa4f560b4fdb5611c5e20dbd2effd6c285bb43c5c8c251cd3626c954493c",
@@ -38,7 +38,7 @@
               },
               {
                 "trait_type": "Title",
-                "value": "Spectra Episode I"
+                "value": "AXIS Episode I"
               },
               {
                 "trait_type": "Edition",
@@ -58,7 +58,7 @@
               }
             ],
             "properties": {
-              "title": "Spectra Episode I",
+              "title": "AXIS Episode I",
               "episode": "Episode 1",
               "date": "2025-12-20T19:00:00-06:00",
               "artist": "Sunshine Vendetta",
@@ -79,7 +79,7 @@
           "status": "live",
           "remaining": 100,
           "metadata": {
-            "name": "Spectra Episode I",
+            "name": "AXIS Episode I",
             "description": "",
             "image": "https://api.grove.storage/16eec039e47556af13c04f32bda226742c38274eaa66b786e2d43fbac39214e6",
             "animation_url": "https://api.grove.storage/16eec039e47556af13c04f32bda226742c38274eaa66b786e2d43fbac39214e6",
@@ -99,7 +99,7 @@
               },
               {
                 "trait_type": "Title",
-                "value": "Spectra Episode I"
+                "value": "AXIS Episode I"
               },
               {
                 "trait_type": "Edition",
@@ -119,7 +119,7 @@
               }
             ],
             "properties": {
-              "title": "Spectra Episode I",
+              "title": "AXIS Episode I",
               "episode": "Episode 1",
               "date": "2025-12-20T19:00:00-06:00",
               "artist": "Unknown Artist",
@@ -140,7 +140,7 @@
           "status": "live",
           "remaining": 0,
           "metadata": {
-            "name": "Spectra Episode I",
+            "name": "AXIS Episode I",
             "description": "",
             "image": "https://api.grove.storage/89c5f7b1d113e245433f219e9ddf4a2bfdb2676c18827be0c1ca213fdcb9d02f",
             "animation_url": "",
@@ -160,7 +160,7 @@
               },
               {
                 "trait_type": "Title",
-                "value": "Spectra Episode I"
+                "value": "AXIS Episode I"
               },
               {
                 "trait_type": "Edition",
@@ -180,7 +180,7 @@
               }
             ],
             "properties": {
-              "title": "Spectra Episode I",
+              "title": "AXIS Episode I",
               "episode": "Episode 1",
               "date": "2025-12-20T19:00:00-06:00",
               "artist": "Unknown Artist",
@@ -199,7 +199,7 @@
       ],
       "contractAddress": "0xB931FaDeF519E32C65F6De366E00BDde05fdb969",
       "chainId": 84532,
-      "nfcBaseUrl": "https://spectrart.xyz"
+      "nfcBaseUrl": "https://axis.show"
     }
   ]
 }

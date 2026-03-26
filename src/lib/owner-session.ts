@@ -217,7 +217,7 @@ export async function createOwnerWalletChallenge(address: string) {
 
 export function buildOwnerWalletMessage(address: string, nonce: string) {
   return [
-    "SPECTRA owner access",
+    "AXIS owner access",
     `Address: ${getAddress(address)}`,
     `Nonce: ${nonce}`,
     "Sign this message to unlock the episodes control room.",

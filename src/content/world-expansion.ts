@@ -31,9 +31,9 @@ export const artistWorldProfiles: ArtistWorldProfile[] = [
     name: "Cyberreality",
     gridIndex: "A-01",
     profilePage: "Inline dossier",
-    summary: "Industrial drift, ambient tension, and spatial composition logic inside the SPECTRA orbit.",
+    summary: "Industrial drift, ambient tension, and spatial composition logic inside the AXIS orbit.",
     linkedEpisodes: [
-      { label: "SPECTRA I" },
+      { label: "AXIS I" },
       { label: "HYPERBASS activation", href: "/magazine/mixtapes" },
     ],
     linkedArtifacts: [
@@ -41,10 +41,10 @@ export const artistWorldProfiles: ArtistWorldProfile[] = [
       { label: "Composing in the Dark interview", href: "/magazine" },
     ],
     spaces: [
-      { name: "Basement studio", episode: "SPECTRA I", note: "Activated listening environment tied to the first live set." },
+      { name: "Basement studio", episode: "AXIS I", note: "Activated listening environment tied to the first live set." },
     ],
     signals: [
-      { timestamp: "2026-03-15", text: "Interview published in Spectra Journal.", link: { label: "Open Magazine", href: "/magazine" } },
+      { timestamp: "2026-03-15", text: "Interview published in AXIS Journal.", link: { label: "Open Magazine", href: "/magazine" } },
       { timestamp: "2025-12-20", text: "Mixtape indexed in Grove transmission set.", link: { label: "Open Mixtapes", href: "/magazine/mixtapes" } },
     ],
   },
@@ -55,13 +55,13 @@ export const artistWorldProfiles: ArtistWorldProfile[] = [
     profilePage: "Inline dossier",
     summary: "Bass-first transmission architecture routed through HYPERBASS RADIO and heavy kinetic energy.",
     linkedEpisodes: [
-      { label: "SPECTRA II" },
+      { label: "AXIS II" },
     ],
     linkedArtifacts: [
       { label: "HYPERBASS RADIO — Final Mix", href: "/magazine/mixtapes" },
     ],
     spaces: [
-      { name: "Radio floor", episode: "SPECTRA II", note: "Activated transmission room tied to the second episode mix system." },
+      { name: "Radio floor", episode: "AXIS II", note: "Activated transmission room tied to the second episode mix system." },
     ],
     signals: [
       { timestamp: "2026-01-18", text: "Final mix entered the transmission index.", link: { label: "Open Mixtapes", href: "/magazine/mixtapes" } },
@@ -72,15 +72,15 @@ export const artistWorldProfiles: ArtistWorldProfile[] = [
     name: "Fiesta Soundsystem",
     gridIndex: "A-03",
     profilePage: "Inline dossier",
-    summary: "Warm system pressure, groove persistence, and optimistic drift inside the SPECTRA tape layer.",
+    summary: "Warm system pressure, groove persistence, and optimistic drift inside the AXIS tape layer.",
     linkedEpisodes: [
-      { label: "SPECTRA III" },
+      { label: "AXIS III" },
     ],
     linkedArtifacts: [
       { label: "Sunshine Mix", href: "/magazine/mixtapes" },
     ],
     spaces: [
-      { name: "Sun room", episode: "SPECTRA III", note: "Activated location for daytime-to-night transition energy." },
+      { name: "Sun room", episode: "AXIS III", note: "Activated location for daytime-to-night transition energy." },
     ],
     signals: [
       { timestamp: "2026-02-08", text: "Sunshine Mix added to active transmissions.", link: { label: "Open Mixtapes", href: "/magazine/mixtapes" } },
@@ -93,15 +93,15 @@ export const artistWorldProfiles: ArtistWorldProfile[] = [
     profilePage: "Inline dossier",
     summary: "Diffuse synthesis, bedroom signal chains, and ambient-techno residue across episode and tape contexts.",
     linkedEpisodes: [
-      { label: "SPECTRA III" },
+      { label: "AXIS III" },
       { label: "Episode III recap", href: "/magazine" },
     ],
     linkedArtifacts: [
       { label: "Bedroom Mixtape — Synthesis", href: "/magazine/mixtapes" },
     ],
     spaces: [
-      { name: "Warehouse main room", episode: "SPECTRA III", note: "Activated live zone described in the Episode III dispatch." },
-      { name: "Bedroom synthesis room", episode: "SPECTRA III", note: "Standalone recording environment tied to the mixtape artifact." },
+      { name: "Warehouse main room", episode: "AXIS III", note: "Activated live zone described in the Episode III dispatch." },
+      { name: "Bedroom synthesis room", episode: "AXIS III", note: "Standalone recording environment tied to the mixtape artifact." },
     ],
     signals: [
       { timestamp: "2026-02-20", text: "Episode III dispatch linked Sunshine Vendetta to the warehouse set.", link: { label: "Open Magazine", href: "/magazine" } },
@@ -113,9 +113,9 @@ export const artistWorldProfiles: ArtistWorldProfile[] = [
     name: "Mami Pistola",
     gridIndex: "A-05",
     profilePage: "Inline dossier",
-    summary: "Field recordings, transit compression, and editorial sound selection folded into live SPECTRA environments.",
+    summary: "Field recordings, transit compression, and editorial sound selection folded into live AXIS environments.",
     linkedEpisodes: [
-      { label: "SPECTRA III" },
+      { label: "AXIS III" },
       { label: "Transit Sounds interview", href: "/magazine" },
     ],
     linkedArtifacts: [
@@ -123,7 +123,7 @@ export const artistWorldProfiles: ArtistWorldProfile[] = [
       { label: "Episode III dispatch", href: "/magazine" },
     ],
     spaces: [
-      { name: "Transit capture layer", episode: "SPECTRA III", note: "Activated sonic material sourced from airports, terminals, and buses." },
+      { name: "Transit capture layer", episode: "AXIS III", note: "Activated sonic material sourced from airports, terminals, and buses." },
     ],
     signals: [
       { timestamp: "2026-02-10", text: "Interview published with field-recording notes.", link: { label: "Open Magazine", href: "/magazine" } },

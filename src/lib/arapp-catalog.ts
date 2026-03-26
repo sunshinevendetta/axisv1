@@ -22,11 +22,11 @@ export type ARAppDrop = {
 };
 
 export const arappCollection = {
-  title: "SPECTRA Augmented Reality",
+  title: "AXIS Augmented Reality",
   eyebrow: "Next Episode Commerce Layer",
   season: "Episode Next",
   description:
-    "A marketplace-style drop surface for the next SPECTRA episode: collectible AR unlocks, scene-bound editions, and wallet-native access products designed to feel premium before the first live release even lands.",
+    "A marketplace-style drop surface for the next AXIS episode: collectible AR unlocks, scene-bound editions, and wallet-native access products designed to feel premium before the first live release even lands.",
   launchWindow:
     "Collector preview mode is live now. Commerce handoff can be enabled as soon as Coinbase credentials are configured.",
 };
@@ -36,7 +36,7 @@ export const arappDrops: ARAppDrop[] = [
     id: "ep1-0",
     title: "Portal Pass // Prism Entry",
     subtitle: "The core entry collectible for the AR scene release.",
-    artist: "SPECTRA System",
+    artist: "AXIS System",
     priceUsd: 45,
     edition: "Open for episode window",
     remaining: 188,
@@ -60,7 +60,7 @@ export const arappDrops: ARAppDrop[] = [
     id: "ep1-1",
     title: "Signal Fragment // Edition 01",
     subtitle: "A fixed-edition visual fragment from the episode world build.",
-    artist: "SPECTRA Studio",
+    artist: "AXIS Studio",
     priceUsd: 85,
     edition: "222 editions",
     remaining: 94,
@@ -84,7 +84,7 @@ export const arappDrops: ARAppDrop[] = [
     id: "ep2-0",
     title: "After Room Skin // Wearable Shell",
     subtitle: "A cosmetic layer intended for future in-scene identity expression.",
-    artist: "SPECTRA x Guests",
+    artist: "AXIS x Guests",
     priceUsd: 65,
     edition: "333 editions",
     remaining: 333,
@@ -108,7 +108,7 @@ export const arappDrops: ARAppDrop[] = [
     id: "ep2-1",
     title: "Archive Poster // Black Room Print",
     subtitle: "A collector-facing archive piece tied to the release campaign.",
-    artist: "SPECTRA Archive",
+    artist: "AXIS Archive",
     priceUsd: 120,
     edition: "64 signed copies",
     remaining: 0,

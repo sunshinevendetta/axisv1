@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useCryptoPrices } from "@/components/magazine/hooks/useCryptoPrices";
 
 const TICKER_PIXELS_PER_SECOND = 200;
@@ -14,7 +13,6 @@ function fmtPrice(n: number): string {
 }
 
 export default function GlobalTicker() {
-  const pathname = usePathname();
   const { prices, loading } = useCryptoPrices();
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -23,7 +21,7 @@ export default function GlobalTicker() {
   const offsetRef = useRef(0);
   const [shouldLoop, setShouldLoop] = useState(false);
   const [contentWidth, setContentWidth] = useState(0);
-  const [introReady, setIntroReady] = useState(pathname !== "/");
+  const introReady = true;
   const [isHovered, setIsHovered] = useState(false);
 
   const items = useMemo(
@@ -40,7 +38,7 @@ export default function GlobalTicker() {
             <span className="text-[8px] uppercase tracking-[0.3em] text-white/48">{token.symbol}</span>
             <span className="text-[8px] tabular-nums tracking-wide text-white/68">{fmtPrice(token.price)}</span>
             {token.change24h !== null ? (
-              <span className={`text-[7px] tabular-nums ${up ? "text-[#6ee7a0]/78" : "text-[#f87171]/74"}`}>
+              <span className={`text-[7px] tabular-nums ${up ? "text-white/74" : "text-white/48"}`}>
                 {up ? "+" : "-"}{Math.abs(token.change24h).toFixed(2)}%
               </span>
             ) : null}
@@ -50,25 +48,6 @@ export default function GlobalTicker() {
     [prices],
   );
 
-  useEffect(() => {
-    if (pathname !== "/") {
-      setIntroReady(true);
-      return;
-    }
-
-    setIntroReady(false);
-
-    const handleIntroState = (event: Event) => {
-      const detail = (event as CustomEvent<{ ready?: boolean }>).detail;
-      setIntroReady(Boolean(detail?.ready));
-    };
-
-    window.addEventListener("spectra-home-intro", handleIntroState as EventListener);
-
-    return () => {
-      window.removeEventListener("spectra-home-intro", handleIntroState as EventListener);
-    };
-  }, [pathname]);
 
   useEffect(() => {
     const updateLoopState = () => {

@@ -142,7 +142,7 @@ export default function ArtistProfileClient({
       <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
         <PillNav
           logo="/logo.png"
-          logoAlt="spectra logo"
+          logoAlt="AXIS logo"
           items={navItems}
           activeHref="/magazine/artists"
           ease="power2.easeOut"
@@ -200,7 +200,7 @@ export default function ArtistProfileClient({
 
           <div className="my-10 flex items-center gap-4">
             <div className="h-px flex-1 bg-white/8" />
-            <span className="text-[7px] uppercase tracking-[0.5em] text-white/16">SPECTRA© Artist Profile</span>
+            <span className="text-[7px] uppercase tracking-[0.5em] text-white/16">AXIS© Artist Profile</span>
             <div className="h-px flex-1 bg-white/8" />
           </div>
 

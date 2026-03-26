@@ -4,7 +4,7 @@ import LazyVideoBackground from "./LazyVideoBackground";
 export default function PrismBackground() {
   return (
     <LazyVideoBackground
-      priority
+      delayMs={1800}
       desktopSources={[
         { src: "https://api.grove.storage/dd0a68c41a716c9cf954fa12f03415a457a051212af39133d62e86ee22cdfe08", type: "video/webm" },
         { src: "https://api.grove.storage/00e8205c3ac1af52b8d08d98cc748383cb9f57f53182a955be8994f49e909cdd", type: "video/mp4" },

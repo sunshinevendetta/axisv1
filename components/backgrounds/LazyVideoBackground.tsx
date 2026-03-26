@@ -11,23 +11,34 @@ type LazyVideoBackgroundProps = {
   desktopSources: VideoSource[];
   mobileSources: VideoSource[];
   priority?: boolean;
+  delayMs?: number;
 };
 
 export default function LazyVideoBackground({
   desktopSources,
   mobileSources,
   priority = false,
+  delayMs = 0,
 }: LazyVideoBackgroundProps) {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [shouldLoad, setShouldLoad] = useState(priority);
+  const [loadRequested, setLoadRequested] = useState(priority);
+  const [delayElapsed, setDelayElapsed] = useState(delayMs <= 0);
+  const [allowPlayback, setAllowPlayback] = useState(true);
   const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const connection = navigator as Navigator & {
+      connection?: {
+        saveData?: boolean;
+      };
+    };
 
     const updateViewport = () => {
       setIsDesktop(mediaQuery.matches);
+      setAllowPlayback(!motionQuery.matches && !Boolean(connection.connection?.saveData));
     };
 
     updateViewport();
@@ -39,12 +50,12 @@ export default function LazyVideoBackground({
   }, []);
 
   useEffect(() => {
-    if (priority || shouldLoad || !rootRef.current) return;
+    if (priority || loadRequested || !rootRef.current) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
-          setShouldLoad(true);
+          setLoadRequested(true);
           observer.disconnect();
         }
       },
@@ -53,7 +64,23 @@ export default function LazyVideoBackground({
 
     observer.observe(rootRef.current);
     return () => observer.disconnect();
-  }, [priority, shouldLoad]);
+  }, [priority, loadRequested]);
+
+  useEffect(() => {
+    if (delayMs <= 0) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setDelayElapsed(true);
+    }, delayMs);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [delayMs]);
+
+  const shouldLoad = loadRequested && delayElapsed && allowPlayback;
 
   const activeSources = useMemo(() => {
     if (isDesktop === null) {
@@ -106,7 +133,7 @@ export default function LazyVideoBackground({
           loop
           muted
           playsInline
-          preload={priority ? "auto" : "metadata"}
+          preload={priority ? "metadata" : "none"}
           crossOrigin="anonymous"
           className="absolute inset-0 h-full w-full object-cover"
         >

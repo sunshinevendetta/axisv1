@@ -5,8 +5,8 @@ import ARAppCollectMarketplace from "@/components/arapp/ARAppCollectMarketplace"
 import { arappNavItems } from "@/src/lib/navigation";
 
 export const metadata: Metadata = {
-  title: "SPECTRA Collect",
-  description: "Episode-based artwork claim rooms for SPECTRA. Open an episode to see the artworks configured for collection.",
+  title: "AXIS Collect",
+  description: "Episode-based artwork claim rooms for AXIS. Open an episode to see the artworks configured for collection.",
 };
 
 export default function CollectPage() {
@@ -15,7 +15,7 @@ export default function CollectPage() {
       <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
         <PillNav
           logo="/logo.png"
-          logoAlt="spectra logo"
+          logoAlt="AXIS logo"
           items={arappNavItems}
           activeHref="/arapp/collect"
           className="custom-nav"

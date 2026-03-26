@@ -58,7 +58,7 @@ export default function LogoArray() {
           scaleOnHover
           fadeOut={false}
           fadeOutColor="#ffffff"
-          ariaLabel="© SPECTRA partners and collaborators"
+          ariaLabel="© AXIS partners and collaborators"
         />
       </div>
     </div>

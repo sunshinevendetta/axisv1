@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ep = getEpisodeBySlug(id);
   if (!ep) return { title: "Not Found" };
   return {
-    title: `${ep.label} — SPECTRA Collect`,
-    description: `All artworks from ${ep.label} of the SPECTRA episode collection. Free ERC-1155 claim, gas sponsored.`,
+    title: `${ep.label} — AXIS Collect`,
+    description: `All artworks from ${ep.label} of the AXIS episode collection. Free ERC-1155 claim, gas sponsored.`,
   };
 }
 
@@ -35,7 +35,7 @@ export default async function CollectEpisodePage({ params }: Props) {
       <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
         <PillNav
           logo="/logo.png"
-          logoAlt="spectra logo"
+          logoAlt="AXIS logo"
           items={arappNavItems}
           activeHref="/arapp/collect"
           className="custom-nav"

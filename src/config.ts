@@ -19,10 +19,10 @@ const baseRpcUrl = process.env.NEXT_PUBLIC_BASE_RPC_URL;
 const baseSepoliaRpcUrl = process.env.NEXT_PUBLIC_BASE_SEPOLIA_RPC_URL;
 const resolvedProjectId = projectId;
 const walletConnectMetadata = {
-  name: "SPECTRA",
-  description: "SPECTRA founder membership and submission flows on Base.",
-  url: "https://spectrart.xyz",
-  icons: ["https://spectrart.xyz/favicon.png"],
+  name: "AXIS",
+  description: "AXIS founder membership and submission flows on Base.",
+  url: "https://axis.show",
+  icons: ["https://axis.show/favicon.png"],
 };
 
 const globalForWagmi = globalThis as typeof globalThis & {
@@ -43,7 +43,7 @@ function createWagmiConfig(): WagmiConfig {
         shimDisconnect: true,
       }),
       coinbaseWallet({
-        appName: "SPECTRA Form",
+        appName: "AXIS Form",
         preference: { options: "smartWalletOnly" },
       }),
       walletConnect({

@@ -49,7 +49,7 @@ export default function MixtapesPage() {
       <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
         <PillNav
           logo="/logo.png"
-          logoAlt="spectra logo"
+          logoAlt="AXIS logo"
           items={magazineNavItems}
           activeHref="/magazine/mixtapes"
           ease="power2.easeOut"
@@ -90,13 +90,13 @@ export default function MixtapesPage() {
         <div className="border-b border-white/[0.05] px-4 py-8 sm:px-6 sm:py-10">
           <div className="mx-auto max-w-7xl">
             <p className="mb-3 text-[8px] uppercase tracking-[0.5em] text-white/20">
-              Spectra Journal
+              AXIS Journal
             </p>
             <h1 className="[font-family:var(--font-display)] text-[clamp(1.33rem,3.325vw,2rem)] leading-[0.9] tracking-[-0.05em] text-white sm:text-[clamp(1.6rem,2vw,2.2rem)]">
               Transmissions
             </h1>
             <p className="mt-4 max-w-md text-xs leading-6 tracking-wide text-white/32 sm:text-sm sm:leading-5">
-              Live recordings and mixtapes from SPECTRA episodes. Generative visuals
+              Live recordings and mixtapes from AXIS episodes. Generative visuals
               created uniquely for each transmission. Stored on Grove, Base chain.
             </p>
 
@@ -201,7 +201,7 @@ export default function MixtapesPage() {
                 <span className="text-[7px] uppercase tracking-[0.34em] text-white/14">← Back</span>
               </div>
               <span className="text-[7px] uppercase tracking-[0.32em] text-white/10">
-                Spectra · Transmissions
+                AXIS · Transmissions
               </span>
             </div>
 
@@ -218,7 +218,7 @@ export default function MixtapesPage() {
               ← Back to Magazine
             </Link>
             <p className="text-[7px] uppercase tracking-[0.32em] text-white/12">
-              Spectra<span className="copy-mark">©</span> {new Date().getFullYear()} · AXIS Labs
+              AXIS<span className="copy-mark">©</span> {new Date().getFullYear()} · AXIS Labs
             </p>
           </div>
         </div>

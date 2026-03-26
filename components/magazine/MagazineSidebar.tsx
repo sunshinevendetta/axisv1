@@ -131,7 +131,7 @@ export default function MagazineSidebar({
                     {p.change24h !== null && (
                       <span
                         className={`tabular-nums text-[8px] tracking-wide ${
-                          up ? "text-[#6ee7a0]/65" : "text-[#f87171]/60"
+                          up ? "text-white/70" : "text-white/48"
                         }`}
                       >
                         {up ? "▲" : "▼"} {Math.abs(p.change24h).toFixed(2)}%
@@ -195,7 +195,7 @@ export default function MagazineSidebar({
           About
         </p>
         <p className="text-xs leading-5 tracking-wide text-white/36">
-          Spectra Journal is the editorial arm of SPECTRA<span className="copy-mark">©</span> — a platform for digital
+          AXIS Journal is the editorial arm of AXIS<span className="copy-mark">©</span> — a platform for digital
           culture, music, and technology at the edge of what's possible.
         </p>
         <div className="mt-5 space-y-2">
@@ -203,7 +203,7 @@ export default function MagazineSidebar({
             href="/#about"
             className="block text-[9px] uppercase tracking-[0.36em] text-white/24 transition-colors hover:text-white/50"
           >
-            About SPECTRA<span className="copy-mark">©</span> →
+            About AXIS<span className="copy-mark">©</span> →
           </a>
           <a
             href="/#episodes"

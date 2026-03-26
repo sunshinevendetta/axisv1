@@ -28,7 +28,7 @@ function mkLog(text: string): LogLine {
 function toneClass(t: LogLine["tone"]) {
   if (t === "success") return "text-white/78";
   if (t === "warn")    return "text-white/48";
-  if (t === "error")   return "text-red-400/80";
+  if (t === "error")   return "text-white/68";
   return "text-white/38";
 }
 
@@ -38,7 +38,7 @@ function StatusDot({ status }: { status: ScraperStatus }) {
   const base = "h-2 w-2 rounded-full shrink-0";
   if (status === "running") return <span className={`${base} bg-white/60 animate-pulse`} />;
   if (status === "done")    return <span className={`${base} bg-white/70`} />;
-  if (status === "error")   return <span className={`${base} bg-red-400/70`} />;
+  if (status === "error")   return <span className={`${base} bg-white/45`} />;
   return <span className={`${base} bg-white/20`} />;
 }
 

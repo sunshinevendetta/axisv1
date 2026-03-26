@@ -82,7 +82,7 @@ export default function MagazineArtistsPage() {
       <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
         <PillNav
           logo="/logo.png"
-          logoAlt="spectra logo"
+          logoAlt="AXIS logo"
           items={magazineNavItems}
           activeHref="/magazine/artists"
           ease="power2.easeOut"
@@ -114,12 +114,12 @@ export default function MagazineArtistsPage() {
 
         <div className="border-b border-white/6 px-4 py-10 sm:px-6 sm:py-12">
           <div className="mx-auto max-w-7xl">
-            <p className="text-[8px] uppercase tracking-[0.48em] text-white/22">Spectra Journal</p>
+            <p className="text-[8px] uppercase tracking-[0.48em] text-white/22">AXIS Journal</p>
             <h1 className="mt-4 [font-family:var(--font-display)] text-[clamp(1.7rem,4vw,3rem)] leading-[0.88] tracking-[-0.06em] text-white">
               Artist Index
             </h1>
             <p className="mt-5 max-w-3xl text-sm leading-7 tracking-wide text-white/40 sm:text-[15px]">
-              A magazine-native directory for artists across SPECTRA episodes and the broader archive. Music artists and visual artists live in the same index, with genre groupings generated only from real records already present in the directory.
+              A magazine-native directory for artists across AXIS episodes and the broader archive. Music artists and visual artists live in the same index, with genre groupings generated only from real records already present in the directory.
             </p>
 
             {artistGenreIndex.length > 0 ? (
@@ -148,7 +148,7 @@ export default function MagazineArtistsPage() {
             <ArtistSection
               title="Visual Artists"
               eyebrow="Index 02"
-              description="Digital artists, painters, photographers, moving-image makers, and broader visual practices carried in the SPECTRA index."
+              description="Digital artists, painters, photographers, moving-image makers, and broader visual practices carried in the AXIS index."
               artists={visualArtistProfiles}
             />
           </div>

@@ -116,7 +116,7 @@ function normalizeNonNegativeBigInt(value: string, label: string, fallback = "0"
 }
 function valid(value: string) { return isAddress(value); }
 function glow(active?: boolean, disabled?: boolean) {
-  if (disabled) return "rounded-2xl border border-red-500/35 bg-black/45 px-5 py-3 text-sm uppercase tracking-[0.16em] text-red-200/70 shadow-[0_0_18px_rgba(255,59,48,0.2)]";
+  if (disabled) return "rounded-2xl border border-white/18 bg-black/45 px-5 py-3 text-sm uppercase tracking-[0.16em] text-white/54 shadow-[0_0_18px_rgba(255,255,255,0.08)]";
   return `rounded-2xl border px-5 py-3 text-sm uppercase tracking-[0.16em] transition-colors duration-200 hover:border-[#39ff14]/70 hover:text-white hover:shadow-[0_0_24px_rgba(57,255,20,0.34)] ${active ? "border-white/28 bg-white/[0.1] text-white hover:bg-white/[0.14]" : "border-white/14 bg-black/55 text-white/82 hover:bg-white/[0.06]"}`;
 }
 function tone(_t: Activity["tone"]) { return "border-white/10 bg-white/[0.05] text-white/78"; }
@@ -209,7 +209,7 @@ export default function OwnerContractsPanel() {
 
   // ── Artwork track forms ──
   const [seasonRegistryForm, setSeasonRegistryForm] = useState({
-    admin: "", seasonId: "1", seasonName: "SPECTRA Season 1",
+    admin: "", seasonId: "1", seasonName: "AXIS Season 1",
   });
   const [episodeForm, setEpisodeForm] = useState({
     admin: "", name: "", symbol: "", seasonId: "1", episodeNumber: "1",
@@ -243,7 +243,7 @@ export default function OwnerContractsPanel() {
   const [zoraSyncing, setZoraSyncing] = useState(false);
   const [zoraSyncSummary, setZoraSyncSummary] = useState<string>("");
   const [zoraSyncResults, setZoraSyncResults] = useState<ZoraSyncResult[]>([]);
-  const [appOrigin, setAppOrigin] = useState("https://spectrart.xyz");
+  const [appOrigin, setAppOrigin] = useState("https://axis.show");
   const [paymasterAddress, setPaymasterAddress] = useState("");
   const [managedCatalog, setManagedCatalog] = useState<EpisodeCollectiblesCatalog | null>(null);
   const [managedEpisodeSlug, setManagedEpisodeSlug] = useState("");
@@ -388,7 +388,7 @@ export default function OwnerContractsPanel() {
       ...current,
       admin: current.admin || seasonRegistryForm.admin || serverStatus.defaults.adminAddress || address || "",
       name: episode.title,
-      symbol: `SPECTRA-EP${episode.id}`,
+      symbol: `AXIS-EP${episode.id}`,
       seasonId: current.seasonId || seasonRegistryForm.seasonId || String(episode.season),
       episodeNumber: String(episode.id),
       baseUri: `${appOrigin}/api/arapp/collect/${episode.slug}/metadata`,
@@ -774,7 +774,7 @@ export default function OwnerContractsPanel() {
     setLaunchWizardStep(1);
     setWorkflowStage("launch");
     const d = serverStatus.defaults;
-    setSeasonRegistryForm({ admin: d.adminAddress || "", seasonId: "1", seasonName: "SPECTRA Season 1" });
+    setSeasonRegistryForm({ admin: d.adminAddress || "", seasonId: "1", seasonName: "AXIS Season 1" });
     setEpisodeForm({ admin: d.adminAddress || "", name: "", symbol: "", seasonId: "1", episodeNumber: "1", baseUri: "", contractMetadataUri: "" });
     setOwnerAccessForm({ adminAddress: d.adminAddress || "", initialMinterAddress: d.initialMinterAddress || "", baseUri: d.baseUri || "ipfs://spectra-owner-access/{id}.json", contractMetadataUri: d.contractMetadataUri || "ipfs://spectra-owner-access/contract.json" });
     setSubmissionAdmin(d.adminAddress || "");
@@ -815,7 +815,7 @@ export default function OwnerContractsPanel() {
       const hostname = window.location.hostname.toLowerCase();
       const preferredOrigin =
         envSiteUrl
-        || (hostname === "localhost" || hostname === "127.0.0.1" ? "https://spectrart.xyz" : browserOrigin);
+        || (hostname === "localhost" || hostname === "127.0.0.1" ? "https://axis.show" : browserOrigin);
       setAppOrigin(preferredOrigin.replace(/\/$/, ""));
     }
   }, []);
@@ -854,7 +854,7 @@ export default function OwnerContractsPanel() {
     setEpisodeForm((current) => ({
       ...current,
       name: current.name || selectedEpisodeRecord.title,
-      symbol: current.symbol || `SPECTRA-EP${selectedEpisodeRecord.id}`,
+      symbol: current.symbol || `AXIS-EP${selectedEpisodeRecord.id}`,
       seasonId: current.seasonId || String(selectedEpisodeRecord.season),
       episodeNumber: current.episodeNumber || String(selectedEpisodeRecord.id),
       baseUri: current.baseUri || `${appOrigin}/api/arapp/collect/${selectedEpisodeRecord.slug}/metadata`,
@@ -1064,7 +1064,7 @@ export default function OwnerContractsPanel() {
           <Field label="Admin address" tooltip={srdocs[0]?.description} value={seasonRegistryForm.admin} onChange={(v) => setSeasonRegistryForm((c) => ({ ...c, admin: v }))} placeholder="0x..." />
           <Field label="Season ID" tooltip={srdocs[1]?.description} value={seasonRegistryForm.seasonId} onChange={(v) => setSeasonRegistryForm((c) => ({ ...c, seasonId: v }))} placeholder="1" />
           <div className="sm:col-span-2">
-            <Field label="Season name" tooltip={srdocs[2]?.description} value={seasonRegistryForm.seasonName} onChange={(v) => setSeasonRegistryForm((c) => ({ ...c, seasonName: v }))} placeholder="SPECTRA Season 1" />
+            <Field label="Season name" tooltip={srdocs[2]?.description} value={seasonRegistryForm.seasonName} onChange={(v) => setSeasonRegistryForm((c) => ({ ...c, seasonName: v }))} placeholder="AXIS Season 1" />
           </div>
         </div>
       ),
@@ -1076,7 +1076,7 @@ export default function OwnerContractsPanel() {
       badge: "One per episode",
       ready: episodeReady,
       summary: "The actual AR artwork contract for one episode. Each token ID inside is one collectible AR piece. Collectors scan the AR → tap mint → free, one per wallet. Deploy when the episode goes open and Luma is confirmed.",
-      fieldSummary: "You are setting: who controls this contract, the episode name (e.g. 'IRL x Spectra'), its symbol, which season and episode number, where the artwork metadata lives, and the collection profile URL for OpenSea.",
+      fieldSummary: "You are setting: who controls this contract, the episode name (e.g. 'IRL x AXIS'), its symbol, which season and episode number, where the artwork metadata lives, and the collection profile URL for OpenSea.",
       fields: (
         <>
           <div className="mt-5 rounded-2xl border border-white/12 bg-white/[0.04] p-4 text-sm leading-6 text-white/74">
@@ -1106,13 +1106,13 @@ export default function OwnerContractsPanel() {
           </div>
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
             <Field label="Admin address" tooltip={epdocs[0]?.description} value={episodeForm.admin} onChange={(v) => setEpisodeForm((c) => ({ ...c, admin: v }))} placeholder="0x..." />
-            <Field label="Episode / event name" tooltip={epdocs[1]?.description} value={episodeForm.name} onChange={(v) => setEpisodeForm((c) => ({ ...c, name: v }))} placeholder="IRL x Spectra" />
-            <Field label="Short code" tooltip={epdocs[2]?.description} value={episodeForm.symbol} onChange={(v) => setEpisodeForm((c) => ({ ...c, symbol: v }))} placeholder="SPECTRA-EP2" />
+            <Field label="Episode / event name" tooltip={epdocs[1]?.description} value={episodeForm.name} onChange={(v) => setEpisodeForm((c) => ({ ...c, name: v }))} placeholder="IRL x AXIS" />
+            <Field label="Short code" tooltip={epdocs[2]?.description} value={episodeForm.symbol} onChange={(v) => setEpisodeForm((c) => ({ ...c, symbol: v }))} placeholder="AXIS-EP2" />
             <Field label="Season number" tooltip={epdocs[3]?.description} value={episodeForm.seasonId} onChange={(v) => setEpisodeForm((c) => ({ ...c, seasonId: v }))} placeholder="1" />
             <Field label="Episode slot" tooltip={epdocs[4]?.description} value={episodeForm.episodeNumber} onChange={(v) => setEpisodeForm((c) => ({ ...c, episodeNumber: v }))} placeholder="2" />
             <Field label="Starter metadata link" tooltip={epdocs[5]?.description} value={episodeForm.baseUri} onChange={(v) => setEpisodeForm((c) => ({ ...c, baseUri: v }))} placeholder="https://your-site/api/arapp/collect/episode-2/metadata" />
             <div className="sm:col-span-2">
-              <Field label="Master metadata link" tooltip={epdocs[6]?.description} value={episodeForm.contractMetadataUri} onChange={(v) => setEpisodeForm((c) => ({ ...c, contractMetadataUri: v }))} placeholder="https://spectrart.xyz/api/episodes/episode-2/metadata" />
+              <Field label="Master metadata link" tooltip={epdocs[6]?.description} value={episodeForm.contractMetadataUri} onChange={(v) => setEpisodeForm((c) => ({ ...c, contractMetadataUri: v }))} placeholder="https://axis.show/api/episodes/episode-2/metadata" />
             </div>
           </div>
         </>
@@ -1258,7 +1258,7 @@ export default function OwnerContractsPanel() {
           className="rounded-[32px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
             <div className="min-w-0">
-              <div className="text-[11px] uppercase tracking-[0.28em] text-white/56">Spectra Deployment HQ</div>
+              <div className="text-[11px] uppercase tracking-[0.28em] text-white/56">AXIS Deployment HQ</div>
               <h1 className="mt-2 max-w-3xl text-xl font-semibold leading-tight tracking-[-0.05em] sm:text-2xl">
                 Deploy the artwork contracts, then open Episodes HQ.
               </h1>
@@ -1478,13 +1478,13 @@ export default function OwnerContractsPanel() {
                           label="Episode name"
                           value={episodeForm.name}
                           onChange={(v) => setEpisodeForm((current) => ({ ...current, name: v }))}
-                          placeholder="SPECTRA EPISODE I"
+                          placeholder="AXIS EPISODE I"
                         />
                         <Field
                           label="Short code"
                           value={episodeForm.symbol}
                           onChange={(v) => setEpisodeForm((current) => ({ ...current, symbol: v }))}
-                          placeholder="SPECTRA-EP1"
+                          placeholder="AXIS-EP1"
                         />
                         <Field
                           label="Admin wallet"
@@ -1511,11 +1511,11 @@ export default function OwnerContractsPanel() {
                         </div>
                       </div>
                       {!episodeReady ? (
-                        <div className="rounded-2xl border border-amber-500/25 bg-amber-500/10 p-4 text-sm leading-6 text-amber-100/88">
+                        <div className="rounded-2xl border border-white/14 bg-white/7 p-4 text-sm leading-6 text-white/72">
                           Episode deploy is still waiting for: {episodeMissingFields.join(", ")}.
                         </div>
                       ) : (
-                        <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-4 text-sm leading-6 text-emerald-100/88">
+                        <div className="rounded-2xl border border-white/16 bg-white/8 p-4 text-sm leading-6 text-white/76">
                           Episode deploy is ready. You can press the deploy button now.
                         </div>
                       )}
@@ -2123,7 +2123,7 @@ export default function OwnerContractsPanel() {
                           <div className="text-[10px] uppercase tracking-[0.16em] text-white/42">{episode.slug}</div>
                           <div className="mt-1 break-words text-sm font-medium text-white/84">{episodeCatalog.find((item) => item.slug === episode.slug)?.title || episode.slug}</div>
                         </div>
-                        <div className={`rounded-full border px-2 py-1 text-[10px] uppercase tracking-[0.16em] ${episode.claimOpen ? "border-emerald-400/30 text-emerald-300" : "border-white/10 text-white/52"}`}>
+                        <div className={`rounded-full border px-2 py-1 text-[10px] uppercase tracking-[0.16em] ${episode.claimOpen ? "border-white/18 text-white/74" : "border-white/10 text-white/52"}`}>
                           {episode.claimOpen ? "site live" : "site closed"}
                         </div>
                       </div>
@@ -2200,7 +2200,7 @@ export default function OwnerContractsPanel() {
                     <div className="mt-4 grid gap-4 lg:grid-cols-2 xl:grid-cols-5">
                       <Field label="Token ID" value={registerTokenId} onChange={(v) => autofillRegisterTokenFromSavedToken(v)} placeholder="2" />
                       <Field label="Artwork name" value={registerTokenName} onChange={setRegisterTokenName} placeholder="Artwork 2" />
-                      <Field label="Token metadata URI" value={registerTokenUri} onChange={setRegisterTokenUri} placeholder="https://spectrart.xyz/api/arapp/collect/episode-1/metadata/2.json" />
+                      <Field label="Token metadata URI" value={registerTokenUri} onChange={setRegisterTokenUri} placeholder="https://axis.show/api/arapp/collect/episode-1/metadata/2.json" />
                       <Field label="Max supply" value={registerTokenMaxSupply} onChange={setRegisterTokenMaxSupply} placeholder="0" />
                       <label className="space-y-2">
                         <span className="text-[11px] uppercase tracking-[0.24em] text-white/48">Open mint now?</span>
@@ -2243,8 +2243,8 @@ export default function OwnerContractsPanel() {
                   <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl">
                     <div className="text-[11px] uppercase tracking-[0.24em] text-white/48">Contract metadata</div>
                     <div className="mt-4 grid gap-4">
-                      <Field label="Base URI" value={managedBaseUri} onChange={setManagedBaseUri} placeholder="https://spectrart.xyz/api/arapp/collect/episode-1/metadata" />
-                      <Field label="Collection metadata URI" value={managedContractMetadataUri} onChange={setManagedContractMetadataUri} placeholder="https://spectrart.xyz/api/episodes/episode-1/metadata" />
+                      <Field label="Base URI" value={managedBaseUri} onChange={setManagedBaseUri} placeholder="https://axis.show/api/arapp/collect/episode-1/metadata" />
+                      <Field label="Collection metadata URI" value={managedContractMetadataUri} onChange={setManagedContractMetadataUri} placeholder="https://axis.show/api/episodes/episode-1/metadata" />
                     </div>
                     <div className="mt-4 flex flex-wrap gap-3">
                       <button onClick={() => void runEpisodeContractWrite("Base URI update", "setBaseUri", [managedBaseUri.trim()])} className={glow(Boolean(managedBaseUri.trim()), !managedBaseUri.trim())}>
@@ -2263,7 +2263,7 @@ export default function OwnerContractsPanel() {
                     <div className="text-[11px] uppercase tracking-[0.24em] text-white/48">Per-token controls</div>
                     <div className="mt-4 grid gap-4">
                       <Field label="Token ID" value={managedTokenId} onChange={setManagedTokenId} placeholder="1" />
-                      <Field label="Per-token metadata URI" value={managedTokenUri} onChange={setManagedTokenUri} placeholder="https://spectrart.xyz/api/arapp/collect/episode-1/metadata/1.json" />
+                      <Field label="Per-token metadata URI" value={managedTokenUri} onChange={setManagedTokenUri} placeholder="https://axis.show/api/arapp/collect/episode-1/metadata/1.json" />
                     </div>
                     <div className="mt-4 flex flex-wrap gap-3">
                       <button onClick={() => void runEpisodeContractWrite("Token URI update", "setTokenUri", [normalizePositiveBigInt(managedTokenId, "Token ID"), managedTokenUri.trim()])} className={glow(Boolean(managedTokenUri.trim()), !managedTokenUri.trim())}>

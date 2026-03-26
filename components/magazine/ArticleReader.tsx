@@ -211,7 +211,7 @@ export default function ArticleReader({
         {/* Rule */}
         <div className="mb-10 flex items-center gap-4">
           <div className="h-px flex-1 bg-white/8" />
-          <span className="text-[7px] uppercase tracking-[0.5em] text-white/16">SPECTRA© Journal</span>
+          <span className="text-[7px] uppercase tracking-[0.5em] text-white/16">AXIS© Journal</span>
           <div className="h-px flex-1 bg-white/8" />
         </div>
 

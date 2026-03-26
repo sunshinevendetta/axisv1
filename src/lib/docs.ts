@@ -13,16 +13,16 @@ export type DocumentationEntry = {
 
 export const DOC_ARTICLE_CLASSNAME = [
   "max-w-none min-w-0 text-[15px] leading-7 tracking-normal text-white/80 sm:text-[16px] sm:leading-8",
-  "[&_a]:break-words [&_a]:text-[#d7e3f3] [&_a]:underline [&_a]:underline-offset-4",
+  "[&_a]:break-words [&_a]:text-white [&_a]:underline [&_a]:underline-offset-4",
   "[&_code]:break-words [&_code]:rounded-md [&_code]:bg-white/8 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.95em]",
-  "[&_.doc-ref]:rounded-md [&_.doc-ref]:border [&_.doc-ref]:border-white/10 [&_.doc-ref]:bg-white/6 [&_.doc-ref]:px-1.5 [&_.doc-ref]:py-0.5 [&_.doc-ref]:font-mono [&_.doc-ref]:text-[0.95em] [&_.doc-ref]:text-[#d7e3f3]",
+  "[&_.doc-ref]:rounded-md [&_.doc-ref]:border [&_.doc-ref]:border-white/10 [&_.doc-ref]:bg-white/6 [&_.doc-ref]:px-1.5 [&_.doc-ref]:py-0.5 [&_.doc-ref]:font-mono [&_.doc-ref]:text-[0.95em] [&_.doc-ref]:text-white",
   "[&_em]:text-white/84 [&_em]:italic [&_strong]:font-semibold [&_strong]:text-white",
   "[&_h1]:mt-0 [&_h1]:text-2xl [&_h1]:font-semibold [&_h1]:leading-tight [&_h1]:tracking-[-0.03em] [&_h1]:text-white sm:[&_h1]:text-3xl",
   "[&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:leading-tight [&_h2]:tracking-[-0.02em] [&_h2]:text-white sm:[&_h2]:mt-10 sm:[&_h2]:text-2xl",
-  "[&_h3]:mt-6 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:leading-snug [&_h3]:text-[#ecf1f7] sm:[&_h3]:mt-8 sm:[&_h3]:text-xl",
+  "[&_h3]:mt-6 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:leading-snug [&_h3]:text-white sm:[&_h3]:mt-8 sm:[&_h3]:text-xl",
   "[&_hr]:my-8 [&_hr]:border-white/10",
   "[&_li]:break-words [&_li]:text-white/72 [&_ol]:my-5 [&_ol]:ml-4 [&_ol]:list-decimal [&_ol]:space-y-2 sm:[&_ol]:ml-5",
-  "[&_p]:my-4 [&_p]:break-words [&_pre]:my-5 [&_pre]:overflow-x-hidden [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_pre]:rounded-2xl [&_pre]:border [&_pre]:border-white/10 [&_pre]:bg-black/45 [&_pre]:p-4 [&_pre]:text-sm [&_pre]:text-[#d7e3f3]",
+  "[&_p]:my-4 [&_p]:break-words [&_pre]:my-5 [&_pre]:overflow-x-hidden [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_pre]:rounded-2xl [&_pre]:border [&_pre]:border-white/10 [&_pre]:bg-black/45 [&_pre]:p-4 [&_pre]:text-sm [&_pre]:text-white",
   "[&_pre_code]:whitespace-pre-wrap [&_pre_code]:break-words [&_ul]:my-5 [&_ul]:ml-4 [&_ul]:list-disc [&_ul]:space-y-2 sm:[&_ul]:ml-5",
   "[&_img]:my-6 [&_img]:block [&_img]:h-auto [&_img]:w-full [&_img]:rounded-[20px] [&_img]:border [&_img]:border-white/10 [&_img]:bg-white/4 [&_img]:object-contain",
 ].join(" ");

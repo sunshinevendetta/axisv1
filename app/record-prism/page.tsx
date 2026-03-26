@@ -149,7 +149,7 @@ function RecordablePlayer({
         <div style={{
           height: '100%',
           width: `${progress * 100}%`,
-          background: recording ? 'linear-gradient(90deg, rgba(241,245,249,0.96), rgba(148,163,184,0.92))' : 'transparent',
+          background: recording ? 'linear-gradient(90deg, rgba(255,255,255,0.96), rgba(170,170,170,0.92))' : 'transparent',
           borderRadius: 99,
           transition: 'width 0.1s linear',
         }} />
@@ -210,7 +210,7 @@ export default function PurePrismRecord() {
       <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
         <PillNav
           logo="/logo.png"
-          logoAlt="spectra logo"
+          logoAlt="AXIS logo"
           items={publicNavItems}
           activeHref="/record-prism"
           className="custom-nav"

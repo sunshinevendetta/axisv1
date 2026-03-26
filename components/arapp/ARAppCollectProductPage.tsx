@@ -48,9 +48,9 @@ const statusLabel: Record<ARAppCollectStatus, string> = {
 };
 
 const statusTone: Record<ARAppCollectStatus, string> = {
-  live: "border-emerald-400/30 bg-emerald-400/15 text-emerald-300",
-  "member-access": "border-cyan-400/30 bg-cyan-400/15 text-cyan-300",
-  "coming-soon": "border-amber-400/30 bg-amber-400/15 text-amber-300",
+  live: "border-white/20 bg-white/10 text-white/82",
+  "member-access": "border-white/16 bg-white/8 text-white/74",
+  "coming-soon": "border-white/14 bg-white/7 text-white/66",
   "sold-out": "border-white/12 bg-white/6 text-white/42",
 };
 
@@ -330,7 +330,7 @@ export default function ARAppCollectProductPage({ drop, episode, isContractDeplo
                 <span className="font-semibold text-white">{drop.remaining}</span>{" "}
                 {drop.remaining === 1 ? "edition" : "editions"} available
                 {drop.remaining < 30 && (
-                  <span className="ml-2 text-amber-400/80">— almost gone</span>
+                  <span className="ml-2 text-white/54">— almost gone</span>
                 )}
               </div>
             )}
@@ -404,7 +404,7 @@ export default function ARAppCollectProductPage({ drop, episode, isContractDeplo
             {isMounted && canClaim && (
               <>
                 {claimed ? (
-                  <div className="w-full rounded-xl border border-emerald-400/20 bg-emerald-400/8 py-4 text-center text-[11px] uppercase tracking-[0.28em] text-emerald-300">
+                  <div className="w-full rounded-xl border border-white/16 bg-white/6 py-4 text-center text-[11px] uppercase tracking-[0.28em] text-white/72">
                     Claimed ✓
                   </div>
                 ) : (
@@ -462,7 +462,7 @@ export default function ARAppCollectProductPage({ drop, episode, isContractDeplo
             )}
 
             {claimFeedback ? (
-              <div className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-[11px] leading-6 text-red-100/88">
+              <div className="rounded-xl border border-white/16 bg-white/7 px-4 py-3 text-[11px] leading-6 text-white/74">
                 {claimFeedback}
               </div>
             ) : null}

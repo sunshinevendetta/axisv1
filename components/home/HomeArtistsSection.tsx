@@ -21,7 +21,7 @@ export default function HomeArtistsSection({ artists, musicCount, visualCount, g
               Artists
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-6 tracking-wide text-white/42">
-              Artist index split across music and visual practices, sourced from the magazine archive and the broader SPECTRA orbit.
+              Artist index split across music and visual practices, sourced from the magazine archive and the broader AXIS orbit.
             </p>
           </div>
           <Link

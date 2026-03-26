@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -42,10 +42,10 @@ const formContent: Record<
     successMessage: "Thank you! Your submission has been received. Check your email for confirmation.",
   },
   dev: {
-    title: "Ship your build into \u00A9 SPECTRA",
+    title: "Ship your build into \u00A9 AXIS",
     intro: [
       "This lane is for developers, founders, makers, and digital studios building apps, tools, products, or internet-native experiences.",
-      "If your project should be discovered by SPECTRA attendees, collaborators, and our broader ecosystem, send us the core link and context here.",
+      "If your project should be discovered by AXIS attendees, collaborators, and our broader ecosystem, send us the core link and context here.",
       "We are looking for projects that feel culturally sharp, technically interesting, and ready to be activated with real users.",
       "Our team reviews each submission for possible showcases, partnerships, community drops, and live ecosystem placements.",
       "Your information is kept confidential and used only for review and contact purposes.",
@@ -181,18 +181,24 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
     }
   };
 
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = `
+      .phone-wrap .PhoneInput { display: flex; align-items: center; background: #0a0a0a; }
+      .phone-wrap .PhoneInputInput { flex: 1; padding: 0.75rem 1rem; background: #0a0a0a; border: none; color: white; font-size: 0.875rem; outline: none; }
+      .phone-wrap .PhoneInputInput::placeholder { color: rgba(255,255,255,0.36); }
+      .phone-wrap .PhoneInputCountrySelect { background: #0a0a0a; color: white; border: none; padding: 0.5rem 0.75rem; cursor: pointer; }
+      .phone-wrap .PhoneInputCountrySelectArrow { color: rgba(255,255,255,0.7); }
+    `;
+    document.head.appendChild(style);
+    return () => { document.head.removeChild(style); };
+  }, []);
+
   return (
     <div className="relative flex min-h-screen w-full items-center justify-center px-6 py-32">
       <BeamsBackground />
 
       <div className="relative z-10 mx-auto w-full max-w-xl bg-[rgba(8,8,8,0.92)] p-8 shadow-[0_34px_90px_rgba(0,0,0,0.46)] sm:p-10">
-        <style>{`
-          .phone-wrap .PhoneInput { display: flex; align-items: center; background: #0a0a0a; }
-          .phone-wrap .PhoneInputInput { flex: 1; padding: 0.75rem 1rem; background: #0a0a0a; border: none; color: white; font-size: 0.875rem; outline: none; }
-          .phone-wrap .PhoneInputInput::placeholder { color: rgba(255,255,255,0.36); }
-          .phone-wrap .PhoneInputCountrySelect { background: #0a0a0a; color: white; border: none; padding: 0.5rem 0.75rem; cursor: pointer; }
-          .phone-wrap .PhoneInputCountrySelectArrow { color: rgba(255,255,255,0.7); }
-        `}</style>
 
         <h2 className="mb-6 text-center [font-family:var(--font-display)] text-base leading-[0.96] tracking-[-0.05em] text-white sm:text-lg">
           {content.title}

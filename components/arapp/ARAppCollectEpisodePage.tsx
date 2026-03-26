@@ -21,9 +21,9 @@ const COLLECT_ABI = [
 ] as const;
 
 const statusTone: Record<ARAppCollectStatus, string> = {
-  live: "border-emerald-400/30 bg-emerald-400/15 text-emerald-300",
-  "member-access": "border-cyan-400/30 bg-cyan-400/15 text-cyan-300",
-  "coming-soon": "border-amber-400/30 bg-amber-400/15 text-amber-300",
+  live: "border-white/20 bg-white/10 text-white/82",
+  "member-access": "border-white/16 bg-white/8 text-white/74",
+  "coming-soon": "border-white/14 bg-white/7 text-white/66",
   "sold-out": "border-white/12 bg-white/6 text-white/42",
 };
 
@@ -94,7 +94,7 @@ function ClaimButton({
   );
 
   if (done) return (
-    <div className="w-full rounded-xl border border-emerald-400/20 bg-emerald-400/8 py-2.5 text-center text-[10px] uppercase tracking-[0.26em] text-emerald-300">
+    <div className="w-full rounded-xl border border-white/16 bg-white/6 py-2.5 text-center text-[10px] uppercase tracking-[0.26em] text-white/72">
       Claimed ✓
     </div>
   );
@@ -183,7 +183,7 @@ export default function ARAppCollectEpisodePage({ episode, tokens, isContractDep
             </div>
           </div>
           {!episode.contractAddress && (
-            <div className="rounded-full border border-amber-400/20 bg-amber-400/8 px-3 py-1 text-[9px] uppercase tracking-[0.22em] text-amber-300">
+            <div className="rounded-full border border-white/14 bg-white/7 px-3 py-1 text-[9px] uppercase tracking-[0.22em] text-white/62">
               Preview — contract pending
             </div>
           )}

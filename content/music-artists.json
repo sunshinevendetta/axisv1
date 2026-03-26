@@ -21,7 +21,7 @@
     "featured": true,
     "linkedEpisodes": [
       {
-        "label": "SPECTRA I"
+        "label": "AXIS I"
       },
       {
         "label": "HYPERBASS activation",
@@ -41,14 +41,14 @@
     "spaces": [
       {
         "name": "Basement studio",
-        "episode": "SPECTRA I",
+        "episode": "AXIS I",
         "note": "Activated listening environment tied to the first live set."
       }
     ],
     "signals": [
       {
         "timestamp": "2026-03-15",
-        "text": "Interview published in Spectra Journal.",
+        "text": "Interview published in AXIS Journal.",
         "link": {
           "label": "Open Magazine",
           "href": "/magazine"
@@ -94,7 +94,7 @@
     "featured": true,
     "linkedEpisodes": [
       {
-        "label": "SPECTRA II"
+        "label": "AXIS II"
       }
     ],
     "linkedArtifacts": [
@@ -106,7 +106,7 @@
     "spaces": [
       {
         "name": "Radio floor",
-        "episode": "SPECTRA II",
+        "episode": "AXIS II",
         "note": "Activated transmission room tied to the second episode mix system."
       }
     ],
@@ -159,7 +159,7 @@
     "featured": true,
     "linkedEpisodes": [
       {
-        "label": "SPECTRA III"
+        "label": "AXIS III"
       }
     ],
     "linkedArtifacts": [
@@ -171,7 +171,7 @@
     "spaces": [
       {
         "name": "Sun room",
-        "episode": "SPECTRA III",
+        "episode": "AXIS III",
         "note": "Activated location for daytime-to-night transition energy."
       }
     ],
@@ -229,7 +229,7 @@
     "featured": true,
     "linkedEpisodes": [
       {
-        "label": "SPECTRA III"
+        "label": "AXIS III"
       },
       {
         "label": "Episode III recap",
@@ -245,12 +245,12 @@
     "spaces": [
       {
         "name": "Warehouse main room",
-        "episode": "SPECTRA III",
+        "episode": "AXIS III",
         "note": "Activated live zone described in the Episode III dispatch."
       },
       {
         "name": "Bedroom synthesis room",
-        "episode": "SPECTRA III",
+        "episode": "AXIS III",
         "note": "Standalone recording environment tied to the mixtape artifact."
       }
     ],
@@ -317,7 +317,7 @@
     "featured": true,
     "linkedEpisodes": [
       {
-        "label": "SPECTRA III"
+        "label": "AXIS III"
       },
       {
         "label": "Transit Sounds interview",
@@ -337,7 +337,7 @@
     "spaces": [
       {
         "name": "Transit capture layer",
-        "episode": "SPECTRA III",
+        "episode": "AXIS III",
         "note": "Activated sonic material sourced from airports, terminals, and buses."
       }
     ],

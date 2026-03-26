@@ -10,7 +10,7 @@ export default function OwnerContractsPage() {
       <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
         <PillNav
           logo="/logo.png"
-          logoAlt="spectra logo"
+          logoAlt="AXIS logo"
           items={ownerNavItems}
           activeHref="/owner/contracts"
           className="custom-nav"

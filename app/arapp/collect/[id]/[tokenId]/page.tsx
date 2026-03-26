@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const token = getARAppCollectTokenByTokenId(Number(tokenId));
   if (!token) return { title: "Not Found" };
   return {
-    title: `${token.metadata.name} — SPECTRA Collect`,
+    title: `${token.metadata.name} — AXIS Collect`,
     description: token.metadata.description,
   };
 }
@@ -47,7 +47,7 @@ export default async function CollectTokenPage({ params }: Props) {
       <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
         <PillNav
           logo="/logo.png"
-          logoAlt="spectra logo"
+          logoAlt="AXIS logo"
           items={arappNavItems}
           activeHref="/arapp/collect"
           className="custom-nav"

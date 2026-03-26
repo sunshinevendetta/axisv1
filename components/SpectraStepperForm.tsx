@@ -178,7 +178,7 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
           FAST TRACK ACCESS
         </h1>
         <p className="mx-auto mb-12 max-w-xl text-xs leading-5 tracking-wide text-white/52 sm:text-sm sm:leading-[1.55]">
-          Connect your wallet to unlock the fastest path into SPECTRA<span className="copy-mark">©</span> Founder Membership.
+          Connect your wallet to unlock the fastest path into AXIS<span className="copy-mark">©</span> Founder Membership.
         </p>
         <div className="flex flex-col items-center gap-4">
           {connectors.map((connector) => (
@@ -224,13 +224,13 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
             <div className="flex w-full justify-end">
               <button
                 onClick={() => disconnect()}
-                className="rounded-2xl px-5 py-3 text-sm font-medium text-[#f2f5f8] backdrop-blur-xl transition-all"
+                className="rounded-2xl px-5 py-3 text-sm font-medium text-white backdrop-blur-xl transition-all"
                 style={{
                   border: "1px solid rgba(214, 222, 232, 0.24)",
                   background:
-                    "linear-gradient(145deg, rgba(239,244,248,0.08), rgba(148,163,184,0.06))",
+                    "linear-gradient(145deg, rgba(255,255,255,0.08), rgba(160,160,160,0.06))",
                   boxShadow:
-                    "0 0 0 1px rgba(255,255,255,0.02) inset, 0 0 20px rgba(214,222,232,0.06)",
+                    "0 0 0 1px rgba(255,255,255,0.02) inset, 0 0 20px rgba(255,255,255,0.05)",
                   textShadow: "0 0 8px rgba(232,238,246,0.14)",
                 }}
               >
@@ -335,14 +335,14 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
             )}
 
             {callsStatus?.status === "FAILED" && (
-              <div className="rounded-3xl border border-[#cfd8e8]/25 bg-[linear-gradient(145deg,rgba(226,232,240,0.12),rgba(125,154,188,0.08))] px-6 py-8 text-center backdrop-blur-xl">
-                <p className="mb-3 text-2xl font-bold text-[#dbe4f2]">Transaction failed</p>
-                <p className="mx-auto mb-6 max-w-lg text-sm text-[#c8d4e5]">
+              <div className="rounded-3xl border border-white/20 bg-[linear-gradient(145deg,rgba(255,255,255,0.1),rgba(140,140,140,0.08))] px-6 py-8 text-center backdrop-blur-xl">
+                <p className="mb-3 text-2xl font-bold text-white">Transaction failed</p>
+                <p className="mx-auto mb-6 max-w-lg text-sm text-white/72">
                   Something went wrong while recording your profile. Please try again.
                 </p>
                 <button
                   onClick={() => resetWrite()}
-                  className="rounded-2xl border border-[#d7e0ed]/35 bg-[linear-gradient(135deg,rgba(236,241,247,0.92),rgba(164,179,199,0.78))] px-8 py-4 text-base font-bold text-black shadow-[0_18px_50px_rgba(148,163,184,0.22)] transition-all hover:scale-[1.01] hover:bg-[linear-gradient(135deg,rgba(244,247,251,0.96),rgba(180,194,212,0.84))]"
+                  className="rounded-2xl border border-white/35 bg-[linear-gradient(135deg,rgba(255,255,255,0.92),rgba(176,176,176,0.78))] px-8 py-4 text-base font-bold text-black shadow-[0_18px_50px_rgba(255,255,255,0.16)] transition-all hover:scale-[1.01] hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(205,205,205,0.84))]"
                 >
                   Try Again
                 </button>

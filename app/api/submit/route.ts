@@ -72,8 +72,8 @@ export async function POST(req: NextRequest) {
 
     console.log('Sending admin email...');
     await transporter.sendMail({
-      from: `"SPECTRA ART" <${process.env.CUSTOM_FROM || 'art@spectrart.xyz'}>`,
-      to: process.env.ADMIN_EMAIL || 'spectrartxyz@gmail.com',
+      from: `"AXIS" <${process.env.CUSTOM_FROM || 'art@axis.show'}>`,
+      to: process.env.ADMIN_EMAIL || 'hello@axis.show',
       subject: `New ${submissionLabel} – ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background:#000; color:#fff;">
@@ -91,16 +91,16 @@ export async function POST(req: NextRequest) {
 
     console.log('Sending user confirmation email...');
     await transporter.sendMail({
-      from: `"SPECTRA ART" <${process.env.CUSTOM_FROM || 'art@spectrart.xyz'}>`,
+      from: `"AXIS" <${process.env.CUSTOM_FROM || 'art@axis.show'}>`,
       to: email,
-      subject: `Thank You for Your ${isDevSubmission ? 'Project' : 'Submission'}, ${name}! – SPECTRA ART`,
+      subject: `Thank You for Your ${isDevSubmission ? 'Project' : 'Submission'}, ${name}! – AXIS`,
       html: `
         <!DOCTYPE html>
         <html lang="en">
         <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Thank You for Submitting to SPECTRA ART</title>
+          <title>Thank You for Submitting to AXIS</title>
         </head>
         <body style="margin:0; padding:0; font-family: Arial, Helvetica, sans-serif; background-color:#000; color:#ffffff;">
           <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px; margin:0 auto; background:#000;">
@@ -109,7 +109,7 @@ export async function POST(req: NextRequest) {
               <td align="center" style="padding: 40px 0 20px;">
                 <img 
                   src="https://raw.githubusercontent.com/sunshinevendetta/spectra/refs/heads/main/public/logow.png" 
-                  alt="SPECTRA ART Logo" 
+                  alt="AXIS Logo" 
                   width="180" 
                   style="display:block; max-width:180px; height:auto;"
                 />
@@ -130,8 +130,8 @@ export async function POST(req: NextRequest) {
             <tr>
               <td style="padding: 0 30px 30px; font-size:16px; line-height:1.6; color:#dddddd;">
                 <p>${isDevSubmission
-                  ? 'We are excited to review what you are building and appreciate you sharing it with the SPECTRA community.'
-                  : 'We are excited to review your work and appreciate you sharing it with the SPECTRA community.'
+                  ? 'We are excited to review what you are building and appreciate you sharing it with the AXIS community.'
+                  : 'We are excited to review your work and appreciate you sharing it with the AXIS community.'
                 }</p>
                 
                 <p><strong>Here's what you shared with us:</strong></p>
@@ -157,7 +157,7 @@ export async function POST(req: NextRequest) {
                   If selected, you will receive a complimentary <strong>${membershipLabel}</strong> for the season, which grants:
                 </p>
                 <ul style="margin:0 0 20px; padding-left:20px; color:#cccccc;">
-                  <li>Access to all SPECTRA events (main shows + partner events)</li>
+                  <li>Access to all AXIS events (main shows + partner events)</li>
                   <li>${isDevSubmission
                     ? 'Potential project activation, demo placement, or product showcase across our season lineup and collaborating brand events'
                     : 'Potential exhibition of your submitted artwork across our season lineup and collaborating brand events'
@@ -166,7 +166,7 @@ export async function POST(req: NextRequest) {
                 </ul>
 
                 <p style="margin:30px 0 0; color:#aaaaaa; font-size:14px;">
-                  Thank you again for being part of SPECTRA. We look forward to possibly featuring your vision.
+                  Thank you again for being part of AXIS. We look forward to possibly featuring your vision.
                 </p>
               </td>
             </tr>
@@ -174,21 +174,21 @@ export async function POST(req: NextRequest) {
             <!-- Footer -->
             <tr>
               <td align="center" style="padding: 30px; font-size:13px; color:#777777; border-top:1px solid #222;">
-                <p style="margin:0 0 4px;">SPECTRA ART</p>
+                <p style="margin:0 0 4px;">AXIS</p>
                 <p style="margin:0 0 12px;">
                   Unexpected Art Experiences Worldwide<br>
                   Crafted in Mexico City — thinking local, building GLOBAL
                 </p>
                 <p style="margin:8px 0 0; line-height:1.8;">
-                  <a href="https://spectrart.xyz" style="color:#00d1ff; text-decoration:none;">spectrart.xyz</a>
+                  <a href="https://axis.show" style="color:#00d1ff; text-decoration:none;">axis.show</a>
                   &nbsp;|&nbsp;
-                  <a href="https://x.com/spectrartxyz" style="color:#00d1ff; text-decoration:none;">X</a>
+                  <a href="https://x.com/axis.show" style="color:#00d1ff; text-decoration:none;">X</a>
                   &nbsp;|&nbsp;
-                  <a href="https://instagram.com/spectrartxyz" style="color:#00d1ff; text-decoration:none;">Instagram</a>
+                  <a href="https://instagram.com/axis.show" style="color:#00d1ff; text-decoration:none;">Instagram</a>
                   &nbsp;|&nbsp;
-                  <a href="https://base.app/profile/spectrart" style="color:#00d1ff; text-decoration:none;">Base</a>
+                  <a href="https://base.app/profile/axis.show" style="color:#00d1ff; text-decoration:none;">Base</a>
                   &nbsp;|&nbsp;
-                  <a href="https://hey.xyz/u/spectrart" style="color:#00d1ff; text-decoration:none;">Lens</a>
+                  <a href="https://hey.xyz/u/axis.show" style="color:#00d1ff; text-decoration:none;">Lens</a>
                 </p>
               </td>
             </tr>

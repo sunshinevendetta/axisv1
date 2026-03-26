@@ -110,7 +110,7 @@ export default function FluidGlass({
     >
       <ambientLight intensity={0.7} />
       <directionalLight position={[-3, 3, 6]} intensity={2.2} color="#ffffff" />
-      <pointLight position={[3, -2, 4]} intensity={1.2} color="#d9ecff" />
+      <pointLight position={[3, -2, 4]} intensity={1.2} color="#d9d9d9" />
       <spotLight position={[0, 4, 8]} intensity={1.8} angle={0.45} penumbra={1} color="#ffffff" />
       <Environment preset="city" />
       <GlassModel config={config} />
@@ -180,7 +180,7 @@ function GlassModel({ config }: { config: GlassConfig }) {
             backsideThickness={config.thickness ?? 14}
             samples={6}
             resolution={512}
-            color={config.color ?? "#f4fbff"}
+            color={config.color ?? "#f5f5f5"}
             toneMapped={false}
           />
         </mesh>

@@ -32,7 +32,7 @@ export default function ConnectWalletButton() {
         </p>
         <button
           onClick={() => disconnect()}
-          className="rounded-2xl border border-[#cfd8e8]/35 bg-[linear-gradient(135deg,rgba(226,232,240,0.22),rgba(125,154,188,0.16))] px-8 py-4 font-bold text-white shadow-[0_14px_40px_rgba(148,163,184,0.18)] backdrop-blur-xl transition-all hover:border-[#dbe4f2]/50 hover:bg-[linear-gradient(135deg,rgba(235,241,248,0.28),rgba(138,166,198,0.2))]"
+          className="rounded-2xl border border-white/20 bg-[linear-gradient(135deg,rgba(255,255,255,0.14),rgba(148,148,148,0.08))] px-8 py-4 font-bold text-white shadow-[0_14px_40px_rgba(255,255,255,0.08)] backdrop-blur-xl transition-all hover:border-white/30 hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(170,170,170,0.12))]"
         >
           Disconnect
         </button>
@@ -59,7 +59,7 @@ export default function ConnectWalletButton() {
           className={`
             px-8 py-5 text-xl font-bold rounded-2xl transition-all
             ${connector.id === 'coinbaseWallet' || connector.id === 'coinbaseSmartWallet'
-              ? 'border border-[#cfd8e8]/40 bg-[linear-gradient(135deg,rgba(226,232,240,0.24),rgba(125,154,188,0.2))] text-white shadow-2xl shadow-slate-500/20 hover:bg-[linear-gradient(135deg,rgba(238,243,249,0.3),rgba(141,170,203,0.24))]'
+              ? 'border border-white/22 bg-[linear-gradient(135deg,rgba(255,255,255,0.16),rgba(150,150,150,0.1))] text-white shadow-2xl shadow-white/6 hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.2),rgba(180,180,180,0.14))]'
               : 'border border-white/20 bg-white/10 text-white hover:bg-white/20'
             }
             ${isPending ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}

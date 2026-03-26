@@ -158,12 +158,12 @@ export default function MembershipMint() {
           Founder Access
         </div>
         <h2 className="mb-8 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-base font-black tracking-[-0.05em] text-transparent sm:text-lg lg:text-xl">
-          SPECTRA<span className="copy-mark">©</span> FOUNDER MEMBERSHIP
+          AXIS<span className="copy-mark">©</span> FOUNDER MEMBERSHIP
         </h2>
 
         <div className="mx-auto mb-10 max-w-2xl space-y-4 text-sm leading-6 text-gray-300 sm:text-base sm:leading-7 lg:text-lg">
-          <p>SPECTRA<span className="copy-mark">©</span> Founder Membership is a limited access key issued to early participants and contributors during the initial formation of the SPECTRA<span className="copy-mark">©</span> ecosystem.</p>
-          <p>This edition marks presence at the origin point and permanent recognition inside the SPECTRA<span className="copy-mark">©</span> cultural system.</p>
+          <p>AXIS<span className="copy-mark">©</span> Founder Membership is a limited access key issued to early participants and contributors during the initial formation of the AXIS<span className="copy-mark">©</span> ecosystem.</p>
+          <p>This edition marks presence at the origin point and permanent recognition inside the AXIS<span className="copy-mark">©</span> cultural system.</p>
           <p>LIMITED EDITION</p>
         </div>
 
@@ -174,7 +174,7 @@ export default function MembershipMint() {
               <Membership3D />
             </div>
             <div className="mt-6 text-center sm:mt-8">
-              <p className="text-base font-semibold text-white sm:text-xl lg:text-3xl">SPECTRA<span className="copy-mark">©</span> Founder Membership</p>
+              <p className="text-base font-semibold text-white sm:text-xl lg:text-3xl">AXIS<span className="copy-mark">©</span> Founder Membership</p>
               <p className="mt-2 text-xs uppercase tracking-[0.2em] text-gray-500 sm:text-sm">Origin-Level · Limited Edition</p>
             </div>
           </div>
@@ -193,12 +193,12 @@ export default function MembershipMint() {
         Founder Access
       </div>
       <h2 className="mb-8 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-base font-black tracking-[-0.05em] text-transparent sm:text-lg lg:text-xl">
-        SPECTRA<span className="copy-mark">©</span> FOUNDER MEMBERSHIP
+        AXIS<span className="copy-mark">©</span> FOUNDER MEMBERSHIP
       </h2>
 
       <div className="mx-auto mb-10 max-w-2xl space-y-4 text-sm leading-6 text-gray-300 sm:text-base sm:leading-7 lg:text-lg">
-        <p>SPECTRA<span className="copy-mark">©</span> Founder Membership is a limited access key issued to early participants and contributors during the initial formation of the SPECTRA<span className="copy-mark">©</span> ecosystem.</p>
-        <p>This edition marks presence at the origin point and permanent recognition inside the SPECTRA<span className="copy-mark">©</span> cultural system.</p>
+        <p>AXIS<span className="copy-mark">©</span> Founder Membership is a limited access key issued to early participants and contributors during the initial formation of the AXIS<span className="copy-mark">©</span> ecosystem.</p>
+        <p>This edition marks presence at the origin point and permanent recognition inside the AXIS<span className="copy-mark">©</span> cultural system.</p>
         <p>Limited Edition</p>
       </div>
 
@@ -209,7 +209,7 @@ export default function MembershipMint() {
             <Membership3D />
           </div>
           <div className="mt-6 text-center sm:mt-8">
-            <p className="text-base font-semibold text-white sm:text-xl lg:text-3xl">SPECTRA<span className="copy-mark">©</span> Founder Membership</p>
+            <p className="text-base font-semibold text-white sm:text-xl lg:text-3xl">AXIS<span className="copy-mark">©</span> Founder Membership</p>
             <p className="mt-2 text-xs uppercase tracking-[0.2em] text-gray-500 sm:text-sm">Origin-Level · Limited Edition</p>
           </div>
         </div>
@@ -234,7 +234,7 @@ export default function MembershipMint() {
           <div className="flex justify-center">
             <button
               onClick={() => disconnect()}
-              className="rounded-xl border border-[#cfd8e8]/35 bg-[linear-gradient(135deg,rgba(226,232,240,0.18),rgba(125,154,188,0.14))] px-5 py-2 text-xs font-medium text-white backdrop-blur-xl transition-all hover:border-[#dbe4f2]/50 hover:bg-[linear-gradient(135deg,rgba(235,241,248,0.24),rgba(138,166,198,0.18))] sm:text-sm"
+              className="rounded-xl border border-white/28 bg-[linear-gradient(135deg,rgba(255,255,255,0.18),rgba(140,140,140,0.14))] px-5 py-2 text-xs font-medium text-white backdrop-blur-xl transition-all hover:border-white/45 hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.24),rgba(168,168,168,0.18))] sm:text-sm"
             >
               Disconnect
             </button>

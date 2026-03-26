@@ -45,29 +45,29 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --background: oklch(0.07 0 0);
+  --foreground: oklch(0.97 0 0);
+  --card: oklch(0.1 0 0);
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.1 0 0);
+  --popover-foreground: oklch(0.97 0 0);
+  --primary: oklch(0.96 0 0);
+  --primary-foreground: oklch(0.09 0 0);
+  --secondary: oklch(0.16 0 0);
+  --secondary-foreground: oklch(0.93 0 0);
+  --muted: oklch(0.14 0 0);
+  --muted-foreground: oklch(0.74 0 0);
+  --accent: oklch(0.18 0 0);
+  --accent-foreground: oklch(0.96 0 0);
+  --destructive: oklch(0.42 0 0);
+  --border: oklch(0.28 0 0);
+  --input: oklch(0.22 0 0);
+  --ring: oklch(0.78 0 0);
+  --chart-1: oklch(0.92 0 0);
+  --chart-2: oklch(0.74 0 0);
+  --chart-3: oklch(0.56 0 0);
+  --chart-4: oklch(0.38 0 0);
+  --chart-5: oklch(0.24 0 0);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -80,11 +80,16 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
   font-family: var(--font-body), sans-serif;
   overflow-x: hidden;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 28%),
+    linear-gradient(180deg, #050505 0%, #000 100%);
+  color: rgba(255, 255, 255, 0.96);
 }
 
 h1,
@@ -158,7 +163,90 @@ h6 {
 }
 
 .text-glow-blue {
-  text-shadow: none;
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.14);
+}
+
+a {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+:where(
+  [class*="text-emerald-"],
+  [class*="text-cyan-"],
+  [class*="text-amber-"],
+  [class*="text-red-"],
+  [class*="text-blue-"],
+  [class*="text-pink-"],
+  [class*="text-violet-"],
+  [class*="text-fuchsia-"],
+  [class*="text-rose-"],
+  [class*="text-lime-"],
+  [class*="text-[#6ee7a0"],
+  [class*="text-[#f87171"],
+  [class*="text-[#75ffbf"],
+  [class*="text-[#9fd4ff"],
+  [class*="text-[#ffe29f"],
+  [class*="text-[#d7e3f3"],
+  [class*="text-[#dbe4f2"],
+  [class*="text-[#c8d4e5"],
+  [class*="text-[#e7edf5"],
+  [class*="text-[#95a4b8"]
+) {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+:where(
+  [class*="bg-emerald-"],
+  [class*="bg-cyan-"],
+  [class*="bg-amber-"],
+  [class*="bg-red-"],
+  [class*="bg-blue-"],
+  [class*="bg-pink-"],
+  [class*="bg-violet-"],
+  [class*="bg-fuchsia-"],
+  [class*="bg-rose-"],
+  [class*="bg-lime-"],
+  [class*="bg-[#75ffbf"],
+  [class*="bg-[#9fd4ff"],
+  [class*="bg-[#ffe29f"]
+) {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+:where(
+  [class*="border-emerald-"],
+  [class*="border-cyan-"],
+  [class*="border-amber-"],
+  [class*="border-red-"],
+  [class*="border-blue-"],
+  [class*="border-pink-"],
+  [class*="border-violet-"],
+  [class*="border-fuchsia-"],
+  [class*="border-rose-"],
+  [class*="border-lime-"],
+  [class*="border-[#75ffbf"],
+  [class*="border-[#9fd4ff"],
+  [class*="border-[#ffe29f"],
+  [class*="border-[#dbe4f2"],
+  [class*="border-[#cfd8e8"]
+) {
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+:where(
+  [class*="from-[#"],
+  [class*="via-[#"],
+  [class*="to-[#"],
+  [class*="bg-[linear-gradient"],
+  [class*="bg-gradient-to-b"],
+  [class*="bg-gradient-to-t"]
+) {
+  filter: grayscale(1) saturate(0.1) brightness(1.02);
 }
 
 /* ── Magazine animations ───────────────────────────────────────────── */

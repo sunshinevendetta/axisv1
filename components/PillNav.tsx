@@ -99,7 +99,7 @@ export default function PillNav({
 
       {/* Dropdown panel */}
       <div
-        className={`absolute right-0 top-full z-50 mt-3 w-72 origin-top rounded-2xl border border-white/10 bg-[#080808]/98 shadow-[0_24px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-200 ${
+        className={`absolute right-0 top-full z-50 mt-3 w-72 origin-top rounded-2xl border border-white/10 bg-black/96 shadow-[0_24px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-200 ${
           isMenuOpen
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-1 opacity-0"
@@ -163,8 +163,8 @@ export default function PillNav({
                                 onClick={() => setIsMenuOpen(false)}
                                 className={`block truncate rounded-lg px-2 py-1.5 text-[11px] tracking-[0.08em] transition-colors duration-150 ${
                                   isChildActive
-                                    ? "bg-white/10 text-white"
-                                    : "text-white/50 hover:bg-white/5 hover:text-white/80"
+                                  ? "bg-white/10 text-white"
+                                  : "text-white/55 hover:bg-white/5 hover:text-white/80"
                                 }`}
                               >
                                 {child.label}

@@ -56,8 +56,8 @@ export async function POST(req: NextRequest) {
 
     console.log('Sending admin email...');
     await transporter.sendMail({
-      from: `"SPECTRA ART" <${process.env.CUSTOM_FROM || 'art@spectrart.xyz'}>`,
-      to: process.env.ADMIN_EMAIL || 'spectrartxyz@gmail.com',
+      from: `"AXIS" <${process.env.CUSTOM_FROM || 'art@axis.show'}>`,
+      to: process.env.ADMIN_EMAIL || 'hello@axis.show',
       subject: `New Submission – ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background:#000; color:#fff;">
@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
 
     console.log('Sending user confirmation email...');
     await transporter.sendMail({
-      from: `"SPECTRA ART" <${process.env.CUSTOM_FROM || 'art@spectrart.xyz'}>`,
+      from: `"AXIS" <${process.env.CUSTOM_FROM || 'art@axis.show'}>`,
       to: email,
       subject: `Thank You for Your Submission, ${name}!`,
       html: `

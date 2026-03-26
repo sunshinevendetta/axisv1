@@ -55,7 +55,7 @@ export default function MagazinePage() {
       <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
         <PillNav
           logo="/logo.png"
-          logoAlt="spectra logo"
+          logoAlt="AXIS logo"
           items={magazineNavItems}
           activeHref="/magazine"
           ease="power2.easeOut"
@@ -113,7 +113,7 @@ export default function MagazinePage() {
                   <h1
                     className="[font-family:var(--font-display)] text-base leading-none tracking-[-0.04em] text-white sm:text-lg"
                   >
-                    Spectra Journal
+                    AXIS Journal
                   </h1>
                   <p className="mt-1 text-[8px] uppercase tracking-[0.44em] text-white/24">
                     Digital culture · Music · Technology

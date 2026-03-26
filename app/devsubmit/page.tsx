@@ -22,7 +22,7 @@ const createPlaceholderImage = (label: string) =>
       <rect width="1200" height="900" fill="url(#bg)" />
       <rect width="1200" height="900" fill="url(#glow)" />
       <rect x="68" y="68" width="1064" height="764" rx="32" fill="none" stroke="#ffffff" stroke-opacity="0.18" />
-      <text x="90" y="122" fill="#ffffff" fill-opacity="0.58" font-size="34" font-family="Arial, Helvetica, sans-serif">© SPECTRA PLACEHOLDER</text>
+      <text x="90" y="122" fill="#ffffff" fill-opacity="0.58" font-size="34" font-family="Arial, Helvetica, sans-serif">© AXIS PLACEHOLDER</text>
       <text x="90" y="770" fill="#ffffff" font-size="82" font-family="Arial, Helvetica, sans-serif">${label}</text>
     </svg>
   `)}`;
@@ -30,11 +30,11 @@ const createPlaceholderImage = (label: string) =>
 const bentoCards: BentoCardProps[] = [
   {
     color: "#05010c",
-    label: "Why © SPECTRA",
+    label: "Why © AXIS",
     title: "Unusual places, real reactions",
-    description: "© SPECTRA brings onchain OGs and first-time users into the same live experience.",
+    description: "© AXIS brings onchain OGs and first-time users into the same live experience.",
     imageSrc: createPlaceholderImage("spectra1.jpg"),
-    imageAlt: "© SPECTRA placeholder 1",
+    imageAlt: "© AXIS placeholder 1",
   },
 {
   color: "#05010c",
@@ -42,7 +42,7 @@ const bentoCards: BentoCardProps[] = [
   title: "Yearly seasons, monthly episodes",
   description: "Art, music, apps, and brands share the same activation calendar.",
   imageSrc: createPlaceholderImage("spectra2.webp"),
-  imageAlt: "© SPECTRA placeholder 2",
+  imageAlt: "© AXIS placeholder 2",
 },
   {
     color: "#05010c",
@@ -50,7 +50,7 @@ const bentoCards: BentoCardProps[] = [
 title: "Controlled chaos beats boring demos",
 description: "Test MVPs with real people, not just crypto natives. Behavior exposes friction faster than panels or staged demos.",
     imageSrc: createPlaceholderImage("spectra3.jpg"),
-    imageAlt: "© SPECTRA placeholder 3",
+    imageAlt: "© AXIS placeholder 3",
   },
   {
     color: "#05010c",
@@ -58,7 +58,7 @@ description: "Test MVPs with real people, not just crypto natives. Behavior expo
     title: "People use it instead of just watch",
     description: "With a small contribution, devs can sponsor one or many app-led experiences. We build mechanics around your apps, merch, rewards, food, drinks, entry, and live participation, with part of that going back to attendees as in-app credits, bonuses, or airdrops.",
     imageSrc: createPlaceholderImage("spectra4.webp"),
-    imageAlt: "© SPECTRA placeholder 4",
+    imageAlt: "© AXIS placeholder 4",
   },
   {
     color: "#05010c",
@@ -66,7 +66,7 @@ description: "Test MVPs with real people, not just crypto natives. Behavior expo
     title: "Send the clearest live link",
     description: "App, demo, landing page, waitlist, or offer plus the action you want users to take.",
     imageSrc: createPlaceholderImage("spectra5.jpg"),
-    imageAlt: "© SPECTRA placeholder 5",
+    imageAlt: "© AXIS placeholder 5",
   },
   {
     color: "#05010c",
@@ -74,7 +74,7 @@ description: "Test MVPs with real people, not just crypto natives. Behavior expo
     title: "Feedback you can actually use",
     description: "Get pain points, ideas, photos, videos, and testimonials. Part of the contribution can fund gas or user credits.",
     imageSrc: createPlaceholderImage("spectra6.webp"),
-    imageAlt: "© SPECTRA placeholder 6",
+    imageAlt: "© AXIS placeholder 6",
   },
 {
   color: "#05010c",
@@ -82,7 +82,7 @@ description: "Test MVPs with real people, not just crypto natives. Behavior expo
   title: "Token check-in rewards",
   description: "An app rewards attendees with tokens when they check in at the event.",
   imageSrc: createPlaceholderImage("spectra7.webp"),
-  imageAlt: "© SPECTRA mechanic check-in rewards",
+  imageAlt: "© AXIS mechanic check-in rewards",
 },
 {
   color: "#05010c",
@@ -90,7 +90,7 @@ description: "Test MVPs with real people, not just crypto natives. Behavior expo
   title: "Games unlock real rewards",
   description: "A game activation lets players win drinks, merch, or access perks during the event.",
   imageSrc: createPlaceholderImage("spectra8.webp"),
-  imageAlt: "© SPECTRA mechanic game rewards",
+  imageAlt: "© AXIS mechanic game rewards",
 },
 {
   color: "#05010c",
@@ -98,7 +98,7 @@ description: "Test MVPs with real people, not just crypto natives. Behavior expo
   title: "Waitlists unlock spaces",
   description: "A signup or waitlist interaction unlocks access to installations or special rooms.",
   imageSrc: createPlaceholderImage("spectra9.webp"),
-  imageAlt: "© SPECTRA mechanic waitlist access",
+  imageAlt: "© AXIS mechanic waitlist access",
 },
 {
   color: "#05010c",
@@ -106,7 +106,7 @@ description: "Test MVPs with real people, not just crypto natives. Behavior expo
   title: "Wallet interactions",
   description: "Wallet actions distribute onchain collectibles live during the event.",
   imageSrc: createPlaceholderImage("spectra10.webp"),
-  imageAlt: "© SPECTRA mechanic wallet collectibles",
+  imageAlt: "© AXIS mechanic wallet collectibles",
 },
 ];
 
@@ -116,7 +116,7 @@ export default function DevSubmitPage() {
       <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
         <PillNav
           logo="/logo.png"
-          logoAlt="spectra logo"
+          logoAlt="AXIS logo"
           items={publicNavItems}
           activeHref="/#submit"
           className="custom-nav"
@@ -143,7 +143,7 @@ export default function DevSubmitPage() {
                 href="/"
                 className="inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-xs uppercase tracking-[0.24em] text-white/70 transition hover:border-white/30 hover:text-white"
               >
-                Back to SPECTRA<span className="copy-mark">©</span>
+                Back to AXIS<span className="copy-mark">©</span>
               </Link>
               <div className="text-right text-[10px] uppercase tracking-[0.32em] text-white/40">
                 /devsubmit
@@ -152,13 +152,13 @@ export default function DevSubmitPage() {
 
             <div className="mb-12 max-w-3xl">
               <p className="mb-4 text-xs uppercase tracking-[0.34em] text-white/58">
-                Build For The SPECTRA<span className="copy-mark">©</span> Network
+                Build For The AXIS<span className="copy-mark">©</span> Network
               </p>
               <h1 className="max-w-2xl text-5xl uppercase leading-none sm:text-6xl lg:text-7xl">
                 Submit your product for real users, attendees, and collaborators.
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">
-  This lane is for developers and digital builders who want to test products in live event environments, observe real behavior, and get direct feedback from the SPECTRA<span className="copy-mark">©</span> ecosystem.
+  This lane is for developers and digital builders who want to test products in live event environments, observe real behavior, and get direct feedback from the AXIS<span className="copy-mark">©</span> ecosystem.
 </p>
             </div>
 
