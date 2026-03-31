@@ -16,7 +16,7 @@ export default function AboutSection() {
 
           <div className="mt-6 max-w-2xl space-y-3 text-xs leading-5 tracking-wide text-white/58 sm:text-sm sm:leading-6">
             <p>
-              AXIS creates unconventional art experiences in unexpected spaces not designed to function as galleries.
+              AXIS creates unexpected experiences in unusual places not designed to function as galleries.
             </p>
             <p>
               Each edition can blend digital interventions, music, talks, and workshops, separately or all together,
