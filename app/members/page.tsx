@@ -8,12 +8,10 @@ import { publicNavItems } from "@/src/lib/navigation";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import { useEffect, useState } from "react";
 
-function identityLabel(id: string) {
-  if (id === "walletConnect") return "Scan with phone";
-  if (id === "injected") return "Use device passkey";
+function identityLabel(id: string, name: string) {
   if (id === "coinbaseWalletSDK" || id === "coinbaseWallet" || id === "coinbaseSmartWallet")
-    return "Continue with biometrics";
-  return "Verify identity";
+    return "New user";
+  return name || "Sign in";
 }
 
 function IdentityButton() {
@@ -39,7 +37,7 @@ function IdentityButton() {
         <div className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
           <span className="text-[10px] uppercase tracking-[0.28em] text-white/50">
-            identity verified
+            signed in
           </span>
         </div>
         <p className="font-mono text-[11px] text-white/30">
@@ -74,7 +72,7 @@ function IdentityButton() {
           `}
         >
           <span className="relative z-10">
-            {isPending ? "verifying…" : identityLabel(connector.id)}
+            {isPending ? "signing in…" : identityLabel(connector.id, connector.name)}
           </span>
           {/* shimmer */}
           <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent)] transition-transform duration-700 group-hover:translate-x-full" />
@@ -116,7 +114,7 @@ export default function MembersPage() {
               ENTER
             </h1>
             <p className="mt-1 text-[10px] leading-relaxed text-white/38">
-              Verify your identity to access your membership.
+              Sign in to access your AXIS account.
             </p>
           </div>
 
@@ -145,7 +143,7 @@ export default function MembersPage() {
 
           {/* Fine print */}
           <p className="mt-5 text-center text-[8px] leading-relaxed text-white/16">
-            Your identity is verified on-chain. No personal data stored.
+            No password needed. No personal data stored.
           </p>
         </div>
       </div>

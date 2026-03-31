@@ -89,12 +89,12 @@ export default function GatedMembershipFlow() {
             ) : (
               <>
                 <h1 className="mb-4 text-center [font-family:var(--font-display)] text-base leading-[0.96] tracking-[-0.05em] text-white sm:text-lg md:text-xl">
-                  {isConnected ? "STEP 1: COMPLETE YOUR INFO" : "STEP 1: CONNECT WALLET"}
+                  {isConnected ? "STEP 1: COMPLETE YOUR INFO" : "STEP 1: SIGN IN"}
                 </h1>
                 <p className="mx-auto mb-8 max-w-xl text-center text-xs leading-5 tracking-wide text-white/52 sm:text-sm sm:leading-[1.55]">
                   {isConnected
                     ? "Complete the short intake to continue."
-                    : "Connect your wallet (Coinbase Wallet, Base Smart Wallet, MetaMask, Frame, or any other) to begin."}
+                    : "Sign in to get started."}
                 </p>
                 <div className="w-full">
                   <SpectraStepperForm onSuccess={handleFormSuccess} />

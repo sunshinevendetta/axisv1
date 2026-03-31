@@ -142,7 +142,7 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
       <div className="w-full">
         <div className="mb-12 py-16 text-center">
           <h1 className="mb-6 text-5xl font-black text-white uppercase leading-none md:text-7xl">
-            Already a Founder!
+            Already a Member!
           </h1>
           <p className="text-2xl text-white/80">
             Your Origin status is confirmed.
@@ -175,10 +175,10 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
     return (
       <div className="mx-auto w-full max-w-4xl px-6 py-20 text-center">
         <h1 className="mb-6 text-lg font-black text-white uppercase leading-none md:text-xl">
-          FAST TRACK ACCESS
+          JOIN AXIS
         </h1>
         <p className="mx-auto mb-12 max-w-xl text-xs leading-5 tracking-wide text-white/52 sm:text-sm sm:leading-[1.55]">
-          Connect your wallet to unlock the fastest path into AXIS<span className="copy-mark">©</span> Founder Membership.
+          Sign in to get your AXIS membership and access everything we do.
         </p>
         <div className="flex flex-col items-center gap-4">
           {connectors.map((connector) => (
@@ -187,7 +187,7 @@ export default function SpectraStepperForm({ onSuccess }: SpectraStepperFormProp
               onClick={() => connect({ connector, chainId: BASE_CHAIN_ID })}
               className="w-full max-w-md rounded-3xl bg-white px-8 py-4 text-lg font-black text-black shadow-lg transition-all hover:scale-[1.01] hover:bg-gray-200"
             >
-              {connector.name === 'Coinbase Wallet' ? 'Coinbase Wallet / Base Smart Wallet' : connector.name}
+              {connector.id === 'coinbaseWalletSDK' || connector.id === 'coinbaseWallet' || connector.id === 'coinbaseSmartWallet' ? 'New user' : connector.name || 'Sign in'}
             </button>
           ))}
         </div>
