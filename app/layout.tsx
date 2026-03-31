@@ -63,6 +63,26 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${bodyFont.variable} ${displayFont.variable} pb-8 font-sans antialiased`} suppressHydrationWarning>
+        <div style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 99999,
+          background: "#000",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+          <p style={{
+            color: "#fff",
+            fontFamily: "var(--font-display), sans-serif",
+            fontSize: "clamp(1.2rem, 3vw, 2rem)",
+            letterSpacing: "0.1em",
+            textAlign: "center",
+            margin: 0,
+          }}>
+            SPECTRA is now AXIS
+          </p>
+        </div>
         <Providers>{children}</Providers>
         <GlobalTicker />
         <SpeedInsights />
