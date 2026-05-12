@@ -47,6 +47,15 @@ yarn-error.log*
 # Local editor/config
 .vscode/
 
+# HQ/admin-only surfaces that should stay local
+app/api/admin/
+app/owner/
+app/tools/session-secret/
+components/admin/
+src/lib/article-enricher-hq.ts
+src/lib/deployment-hq.ts
+src/lib/owner-access-contract.ts
+
 # Local/generated junk
 *.log
 .tsc-*.log
