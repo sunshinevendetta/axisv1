@@ -1,0 +1,167 @@
+{
+  "jobId": "job_20260421000548_eipsp5",
+  "taskId": "job_20260421000548_eipsp5__3456ffjphdyehfzqhrk",
+  "target": {
+    "key": "artist:3456ffjphdyehfzqhrk",
+    "type": "artist",
+    "name": "Sophie"
+  },
+  "researchPacket": {
+    "targetName": "Sophie",
+    "sourceMode": "existing_db",
+    "artistContext": {
+      "name": "Sophie",
+      "genres": [
+        "Bubblegum Bass",
+        "Electronic",
+        "Experimental",
+        "Post-Club",
+        "UK Bass"
+      ],
+      "tags": [],
+      "summary": "There are multiple artists that have performed under the name Sophie: 1) Sophie Xeon (September 17, 1986 – January 30, 2021), mononymously known by her stage name Sophie (stylized in all caps), was a Scottish producer and singer-songwriter who worked in Los Angeles and lived in Greece. She came to prominence in 2013 with her single \"Bipp\"/\"Elle\" and released \"Lemonade\"/\"Hard\" the following year. She worked closely with artists from the PC Music label and produced for acts including Charli XCX"
+    },
+    "genreContext": null,
+    "relatedArtists": [
+      "Arca",
+      "GFOTY",
+      "QT",
+      "A. G. Cook",
+      "Charli xcx"
+    ],
+    "provenance": [
+      {
+        "type": "raw_article",
+        "value": "3456ffjphdyehfzqhrk"
+      },
+      {
+        "type": "music_artists",
+        "value": "content/music-artists.json"
+      },
+      {
+        "type": "artist_media_cache",
+        "value": "content/artist-media-cache.json"
+      }
+    ]
+  },
+  "promptConfig": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "modelOutput": {
+    "writer": {
+      "id": 1,
+      "slug": "donatachi-hyperpop-visionary-shaping-genreless-future",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Donatachi: Hyperpop Visionary Shaping a Genreless Future",
+      "subtitle": "Sydney's hyperpop architect crafts bubblegum bass and pink noise soundscapes.",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-21",
+      "readTime": "5 min",
+      "excerpt": "Donatachi stands as a central figure in Sydney's hyperpop scene, crafting vibrant soundscapes that blend bubblegum bass, pink noise, and futuristic club beats.",
+      "featured": false,
+      "image_url": "https://gw.ipfs-lens.dev/ipfs/bafkreiak5g2lmu3j5a3kdltkkzzhl2ekajcza4qpqsxmy5zjmvnwbb7vri",
+      "tags": [
+        "hyperpop",
+        "bubblegum bass",
+        "pink noise",
+        "electronic",
+        "sydney",
+        "club beats",
+        "futuristic"
+      ],
+      "linkedArtists": [
+        "Slayyyter",
+        "Mallrat",
+        "Ayesha Erotica",
+        "SOPHIE",
+        "Charli XCX",
+        "Dorian Electra"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Donatachi emerges as a pivotal figure in Sydney's hyperpop landscape, crafting a sound defined by bubblegum bass, pink noise, and unapologetically futuristic vibes. Their work blends glossy, neon-soaked club beats with a nod to early 2000s pop, resulting in a genre-defying sonic experience."
+        },
+        {
+          "type": "paragraph",
+          "text": "Collaborations with artists such as Slayyyter and Mallrat highlight Donatachi's ability to merge mainstream appeal with underground edge. Tracks like 'FUTR' with Ayesha Erotica and Yvncc showcase chaotic, glitchy vocals set against hyper beats, while 'Crush On U' with Slayyyter delivers a playful yet bold pop manifesto."
+        },
+        {
+          "type": "paragraph",
+          "text": "Donatachi's discography reveals a dynamic range, from the light, dreamy textures of 'Bunny Island' featuring Mallrat to the shimmering, emotional depth of 'Precious Metal'. Their soundscapes balance raw emotion with driving beats, inviting listeners into a vibrant world of intricate production and lyrical density."
+        },
+        {
+          "type": "paragraph",
+          "text": "Surrounded by pop heavyweights and underground innovators, Donatachi continues to shape a genreless utopia, drawing influences from pioneers like SOPHIE and Charli XCX while forging a distinct path in contemporary electronic music."
+        }
+      ],
+      "monetization": []
+    },
+    "editor": {
+      "id": 1,
+      "slug": "donatachi-hyperpop-visionary-shaping-genreless-future",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Donatachi: Hyperpop Visionary Shaping a Genreless Future",
+      "subtitle": "Sydney's hyperpop architect crafts bubblegum bass and pink noise soundscapes.",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-21",
+      "readTime": "5 min",
+      "excerpt": "Donatachi stands as a central figure in Sydney's hyperpop scene, crafting vibrant soundscapes that blend bubblegum bass, pink noise, and futuristic club beats.",
+      "featured": false,
+      "image_url": "https://gw.ipfs-lens.dev/ipfs/bafkreiak5g2lmu3j5a3kdltkkzzhl2ekajcza4qpqsxmy5zjmvnwbb7vri",
+      "tags": [
+        "hyperpop",
+        "bubblegum bass",
+        "pink noise",
+        "electronic",
+        "sydney",
+        "club beats",
+        "futuristic"
+      ],
+      "linkedArtists": [
+        "Slayyyter",
+        "Mallrat",
+        "Ayesha Erotica",
+        "SOPHIE",
+        "Charli XCX",
+        "Dorian Electra"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Donatachi emerges as a pivotal figure in Sydney's hyperpop landscape, crafting a sound defined by bubblegum bass, pink noise, and unapologetically futuristic vibes. Their work blends glossy, neon-soaked club beats with a nod to early 2000s pop, resulting in a genre-defying sonic experience."
+        },
+        {
+          "type": "paragraph",
+          "text": "Collaborations with artists such as Slayyyter and Mallrat highlight Donatachi's ability to merge mainstream appeal with underground edge. Tracks like 'FUTR' with Ayesha Erotica and Yvncc showcase chaotic, glitchy vocals set against hyper beats, while 'Crush On U' with Slayyyter delivers a playful yet bold pop manifesto."
+        },
+        {
+          "type": "paragraph",
+          "text": "Donatachi's discography reveals a dynamic range, from the light, dreamy textures of 'Bunny Island' featuring Mallrat to the shimmering, emotional depth of 'Precious Metal'. Their soundscapes balance raw emotion with driving beats, inviting listeners into a vibrant world of intricate production and lyrical density."
+        },
+        {
+          "type": "paragraph",
+          "text": "Surrounded by pop heavyweights and underground innovators, Donatachi continues to shape a genreless utopia, drawing influences from pioneers like SOPHIE and Charli XCX while forging a distinct path in contemporary electronic music."
+        }
+      ],
+      "monetization": []
+    }
+  },
+  "review": {
+    "status": "needs_review",
+    "notes": ""
+  }
+}

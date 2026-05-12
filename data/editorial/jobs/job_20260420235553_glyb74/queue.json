@@ -1,0 +1,28 @@
+{
+  "jobId": "job_20260420235553_glyb74",
+  "tasks": [
+    {
+      "id": "job_20260420235553_glyb74__2dsj3sxfx57pp7nrhqe",
+      "jobId": "job_20260420235553_glyb74",
+      "targetKey": "artist:2dsj3sxfx57pp7nrhqe",
+      "targetType": "artist",
+      "slug": "osno1-the-early-experimental-sound-of-laura-les",
+      "sourceRef": {
+        "kind": "raw_article",
+        "rawId": "40970118635543001552607643510322803667784642603277374104042455534303891046447",
+        "rawSlug": "2dsj3sxfx57pp7nrhqe",
+        "rawFolder": "0002_2dsj3sxfx57pp7nrhqe"
+      },
+      "status": "rejected",
+      "draftPath": "data\\editorial\\jobs\\job_20260420235553_glyb74\\articles\\job_20260420235553_glyb74__2dsj3sxfx57pp7nrhqe.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260420235553_glyb74\\articles\\job_20260420235553_glyb74__2dsj3sxfx57pp7nrhqe.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260420235553_glyb74\\articles\\job_20260420235553_glyb74__2dsj3sxfx57pp7nrhqe.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-22T04:37:04.014Z"
+    }
+  ]
+}

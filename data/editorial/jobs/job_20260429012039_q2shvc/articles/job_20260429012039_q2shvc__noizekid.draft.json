@@ -1,0 +1,61 @@
+{
+  "jobId": "job_20260429012039_q2shvc",
+  "taskId": "job_20260429012039_q2shvc__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-moombahton-dancehall-producer-mexico",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Moombahton and Dancehall Production from Mexico",
+    "subtitle": "Collaborations with DJ Snake, Bad Bunny, and Major Lazer highlight his work.",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for his work with prominent industry names and his distinctive sample pack release.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "sample pack",
+      "barnation"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer recognized for his collaborations with prominent figures in the music industry, including DJ Snake, Bad Bunny, and Major Lazer."
+      },
+      {
+        "type": "paragraph",
+        "text": "His production style is characterized by a blend of moombahton and dancehall elements, reflecting a distinct approach to electronic music that has garnered attention within the scene."
+      },
+      {
+        "type": "paragraph",
+        "text": "In addition to his collaborative work, Noizekid released the 'Noizekid Sample Pack' in collaboration with Barnation, a collection that includes his signature samples, loops, and drum sounds used across various productions."
+      },
+      {
+        "type": "paragraph",
+        "text": "While his genre classification remains undefined, his work is closely associated with the vibrant electronic music scene in Mexico, drawing comparisons to artists such as ETC!ETC!, Los Dutis, LOOJAN, Bsno, and Freebot."
+      }
+    ],
+    "monetization": []
+  }
+}

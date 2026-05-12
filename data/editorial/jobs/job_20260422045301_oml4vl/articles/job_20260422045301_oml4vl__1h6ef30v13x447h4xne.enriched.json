@@ -1,0 +1,156 @@
+{
+  "jobId": "job_20260422045301_oml4vl",
+  "taskId": "job_20260422045301_oml4vl__1h6ef30v13x447h4xne",
+  "target": {
+    "key": "artist:1h6ef30v13x447h4xne",
+    "type": "artist",
+    "name": "1h6ef30v13x447h4xne"
+  },
+  "researchPacket": {
+    "targetName": "1h6ef30v13x447h4xne",
+    "sourceMode": "existing_db",
+    "artistContext": null,
+    "genreContext": null,
+    "relatedArtists": [],
+    "provenance": [
+      {
+        "type": "raw_article",
+        "value": "1h6ef30v13x447h4xne"
+      },
+      {
+        "type": "music_artists",
+        "value": "content/music-artists.json"
+      },
+      {
+        "type": "artist_media_cache",
+        "value": "content/artist-media-cache.json"
+      }
+    ]
+  },
+  "promptConfig": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "modelOutput": {
+    "writer": {
+      "id": 1,
+      "slug": "machine-girl-digital-punk-nightmare-fuel",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Machine Girl: Digital Punk Nightmare Fuel",
+      "subtitle": "A full-throttle sprint into chaotic, distorted, and glitchy soundscapes",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-22",
+      "readTime": "5 min",
+      "excerpt": "Machine Girl delivers cyberpunk breakcore at its most feral, a lawless mashup of breakcore, punk, jungle, and noise running at hyperspeed with distorted screams and frantic percussion.",
+      "featured": false,
+      "image_url": "https://gw.ipfs-lens.dev/ipfs/QmNa27kuhpB5rz2fokg482Lzygj6FqZ3x1JCSVsrUPg9M1",
+      "tags": [
+        "breakcore",
+        "punk",
+        "jungle",
+        "noise",
+        "cyberpunk",
+        "digital punk",
+        "glitch",
+        "experimental"
+      ],
+      "linkedArtists": [
+        "Death Grips",
+        "Sewerslvt",
+        "ProLaps",
+        "Iglooghost"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Machine Girl’s sound is a lawless mashup of breakcore, punk, jungle, and noise, running at hyperspeed with distorted screams and frantic percussion. It’s the kind of music that makes you wanna punch a hole in reality."
+        },
+        {
+          "type": "paragraph",
+          "text": "Essential tracks include 'NEON WHITE,' with blistering breakbeats and insane vocal chops that feel like free-falling into digital hell; 'FULL METAL DISGUSTING,' which sounds like an AI uprising set to the hardest drums you’ve ever heard; and 'THIS IS YOUR FACE ON DOGS,' a glitchy, aggressive track that is completely off the rails."
+        },
+        {
+          "type": "paragraph",
+          "text": "Machine Girl is in the same universe as artists like Death Grips, Sewerslvt, and ProLaps—basically, if your music taste includes the words 'chaotic,' 'violent,' and 'unhinged,' you’re in the right place."
+        },
+        {
+          "type": "paragraph",
+          "text": "The Machine Girl experience is punk, but for the apocalypse. The BPMs are through the roof, the energy is feral, and the aesthetic is pure cyber-anarchy. Every track feels like a boss battle in a game that’s actively trying to kill you."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you love this, dive into artists like Death Grips, ProLaps, and Iglooghost for more digital insanity."
+        }
+      ],
+      "monetization": []
+    },
+    "editor": {
+      "id": 1,
+      "slug": "machine-girl-digital-punk-nightmare-fuel",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Machine Girl: Digital Punk Nightmare Fuel",
+      "subtitle": "A full-throttle sprint into chaotic, distorted, and glitchy soundscapes",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-22",
+      "readTime": "5 min",
+      "excerpt": "Machine Girl delivers cyberpunk breakcore at its most feral, a lawless mashup of breakcore, punk, jungle, and noise running at hyperspeed with distorted screams and frantic percussion.",
+      "featured": false,
+      "image_url": "https://gw.ipfs-lens.dev/ipfs/QmNa27kuhpB5rz2fokg482Lzygj6FqZ3x1JCSVsrUPg9M1",
+      "tags": [
+        "breakcore",
+        "punk",
+        "jungle",
+        "noise",
+        "cyberpunk",
+        "digital punk",
+        "glitch",
+        "experimental"
+      ],
+      "linkedArtists": [
+        "Death Grips",
+        "Sewerslvt",
+        "ProLaps",
+        "Iglooghost"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Machine Girl’s sound is a lawless mashup of breakcore, punk, jungle, and noise, running at hyperspeed with distorted screams and frantic percussion. It’s the kind of music that makes you wanna punch a hole in reality."
+        },
+        {
+          "type": "paragraph",
+          "text": "Essential tracks include 'NEON WHITE,' with blistering breakbeats and insane vocal chops that feel like free-falling into digital hell; 'FULL METAL DISGUSTING,' which sounds like an AI uprising set to the hardest drums you’ve ever heard; and 'THIS IS YOUR FACE ON DOGS,' a glitchy, aggressive track that is completely off the rails."
+        },
+        {
+          "type": "paragraph",
+          "text": "Machine Girl is in the same universe as artists like Death Grips, Sewerslvt, and ProLaps—basically, if your music taste includes the words 'chaotic,' 'violent,' and 'unhinged,' you’re in the right place."
+        },
+        {
+          "type": "paragraph",
+          "text": "The Machine Girl experience is punk, but for the apocalypse. The BPMs are through the roof, the energy is feral, and the aesthetic is pure cyber-anarchy. Every track feels like a boss battle in a game that’s actively trying to kill you."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you love this, dive into artists like Death Grips, ProLaps, and Iglooghost for more digital insanity."
+        }
+      ],
+      "monetization": []
+    }
+  },
+  "review": {
+    "status": "needs_review",
+    "notes": ""
+  }
+}

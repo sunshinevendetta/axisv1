@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useAccount, useReadContract } from "wagmi";
 import { base } from "wagmi/chains";
 import MembershipMint from "./MembershipMint";
-import SpectraStepperForm from "./SpectraStepperForm";
+import AxisStepperForm from "./AxisStepperForm";
 import VideoBackground from "./backgrounds/MembershipBackground";
 
 const MEMBERSHIP_CONTRACT = "0xd26e98bbfa933ca10d60b9fe6a6a94ab600d3c08" as `0x${string}`;
@@ -41,7 +41,7 @@ export default function GatedMembershipFlow() {
       return;
     }
 
-    const key = `spectra_form_submitted_${address.toLowerCase()}`;
+    const key = `axis_form_submitted_${address.toLowerCase()}`;
     const submitted = localStorage.getItem(key) === "true";
     setHasSubmittedForm(submitted);
     setHasMembership(Boolean(alreadyMinted));
@@ -50,7 +50,7 @@ export default function GatedMembershipFlow() {
 
   const handleFormSuccess = () => {
     if (address) {
-      localStorage.setItem(`spectra_form_submitted_${address.toLowerCase()}`, "true");
+      localStorage.setItem(`axis_form_submitted_${address.toLowerCase()}`, "true");
     }
     setHasSubmittedForm(true);
   };
@@ -97,7 +97,7 @@ export default function GatedMembershipFlow() {
                     : "Sign in to get started."}
                 </p>
                 <div className="w-full">
-                  <SpectraStepperForm onSuccess={handleFormSuccess} />
+                  <AxisStepperForm onSuccess={handleFormSuccess} />
                 </div>
               </>
             )}

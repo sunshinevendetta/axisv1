@@ -1,0 +1,59 @@
+{
+  "jobId": "job_20260421161957_bsiq3d",
+  "taskId": "job_20260421161957_bsiq3d__mkii",
+  "targetKey": "artist:mkii",
+  "article": {
+    "id": 1,
+    "slug": "mkii-breakbeat-electronic-jungle-uk-garage-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "OPERATOR",
+    "title": "MKII: Breakbeat and Electronic Music Producer",
+    "subtitle": "Active across multiple electronic genres with a growing catalog of releases.",
+    "author": "C. Mora",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-21",
+    "readTime": "3 min",
+    "excerpt": "MKII is an electronic music producer known for breakbeat, jungle, and UK garage. The artist has released albums and singles that have gained attention in the electronic music scene.",
+    "featured": false,
+    "image_url": "https://i.scdn.co/image/ab6761610000e5eba3f5c27335aa4ab7ee35f2ca",
+    "tags": [
+      "breakbeat",
+      "electronic",
+      "jungle",
+      "uk garage",
+      "happy hardcore",
+      "producer",
+      "releases"
+    ],
+    "linkedArtists": [
+      "Case 82",
+      "Origin8a & Propa",
+      "FM-3",
+      "Private Caller",
+      "Pete Cannon"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "MKII is an electronic music producer whose work spans breakbeat, jungle, UK garage, and happy hardcore. The artist’s catalog includes albums such as Home and Universal LP, along with singles like This Time, On Your Own EP, and Jupiter."
+      },
+      {
+        "type": "paragraph",
+        "text": "MKII’s sound is often compared to that of Case 82, Origin8a & Propa, FM-3, Private Caller, and Pete Cannon. The artist maintains an active presence on various digital platforms including Bandcamp, Discogs, Spotify, Deezer, Beatport, Instagram, SoundCloud, and Apple Music."
+      },
+      {
+        "type": "paragraph",
+        "text": "Recent releases from MKII include the single This Time, issued on June 18, 2025, and the On Your Own EP, released on February 9, 2024. Earlier singles such as Jupiter, released on December 1, 2023, and albums like Home and Universal LP, issued in late 2022, further demonstrate the artist’s evolving production style."
+      },
+      {
+        "type": "paragraph",
+        "text": "MKII’s work is firmly rooted in the electronic music scene, with a focus on rhythmic complexity and layered production techniques characteristic of breakbeat and jungle genres. The artist’s consistent output and platform engagement contribute to a growing presence in the electronic music community."
+      }
+    ],
+    "monetization": []
+  }
+}

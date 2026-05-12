@@ -1,0 +1,60 @@
+{
+  "jobId": "job_20260429035246_ifws7g",
+  "taskId": "job_20260429035246_ifws7g__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborations with DJ Snake, Bad Bunny, and Major Lazer mark his trajectory.",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for his collaborations with prominent industry figures and his release of a comprehensive sample pack.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "dj snake",
+      "bad bunny",
+      "major lazer",
+      "barnation"
+    ],
+    "linkedArtists": [
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer whose work has earned him recognition within the electronic music scene. His production style is characterized by a fusion of moombahton and dancehall elements, resulting in a distinctive sound that has attracted collaborations with notable figures such as DJ Snake, Bad Bunny, and Major Lazer."
+      },
+      {
+        "type": "paragraph",
+        "text": "In addition to his production work, Noizekid has contributed to the music community by releasing the 'Noizekid Sample Pack' in collaboration with Barnation. This pack includes a comprehensive collection of his samples, loops, and drum sounds, offering producers insight into his creative process and the tools behind his productions."
+      },
+      {
+        "type": "paragraph",
+        "text": "His work is further contextualized by his associations with similar artists in the electronic music landscape. Noizekid’s approach reflects an understanding of both local and international electronic music trends, positioning him as a notable contributor to the evolving sounds of the genre."
+      },
+      {
+        "type": "paragraph",
+        "text": "While his top tracks and recent releases are not indexed in available data, Noizekid’s collaborations and sample pack release underscore his influence and role within the electronic music production community."
+      }
+    ],
+    "monetization": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "jobId": "job_20260422050117_j0phlk",
+  "taskId": "job_20260422050117_j0phlk__seth-troxler",
+  "targetKey": "artist:seth-troxler",
+  "article": {
+    "id": 1,
+    "slug": "seth-troxler-berlin-techno-profile",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Seth Troxler: Detroit Roots and Berlin Techno Ascendancy",
+    "subtitle": "A young producer making significant inroads in the European techno scene.",
+    "author": "A. Stern",
+    "authorRole": "Staff Writer",
+    "date": "2026-04-22",
+    "readTime": "3 min",
+    "excerpt": "Seth Troxler's distinctive techno sound is gaining traction in Berlin's elite electronic music circles.",
+    "featured": false,
+    "image_url": "https://i.scdn.co/image/ab6761610000e5ebae415c295c042f2193594a8e",
+    "tags": [
+      "techno",
+      "minimal techno",
+      "detroit techno",
+      "berlin",
+      "producer"
+    ],
+    "linkedArtists": [
+      "Lee Curtiss",
+      "Gadi Mizrahi",
+      "Maayan Nidam",
+      "Guillaume & The Coutu Dumonts",
+      "Wolf + Lamb"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Seth Troxler, at 22 years old, has quickly established himself as a notable presence in the techno scene. His Detroit roots are evident in his sound, and his recent move to Berlin has further solidified his position within the European techno elite."
+      },
+      {
+        "type": "paragraph",
+        "text": "Troxler's musical influences range from the organic sounds of nature to the futuristic hum of space travel, creating a distinctive sonic palette. His releases on respected labels such as Spectral, Wagon Repair, and M_NUS have been widely played and praised."
+      },
+      {
+        "type": "paragraph",
+        "text": "His recent releases include This Is Then, DJ-Kicks (Seth Troxler) [DJ Mix], Mixmag Presents Seth Troxler: The Illusion Nouveau (DJ Mix), Mixmag Presents Jamie Jones vs. Seth Troxler, and Love Never Sleeps. These works showcase his evolving style and production techniques."
+      },
+      {
+        "type": "paragraph",
+        "text": "Troxler's sound is characterized by its minimal techno elements and a distinctive, sensual edge. His work continues to gain attention in both underground and mainstream electronic music circles."
+      }
+    ],
+    "monetization": []
+  }
+}

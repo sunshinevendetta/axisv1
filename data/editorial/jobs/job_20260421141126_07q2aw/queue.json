@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260421141126_07q2aw",
+  "tasks": [
+    {
+      "id": "job_20260421141126_07q2aw__bbrainz",
+      "jobId": "job_20260421141126_07q2aw",
+      "targetKey": "artist:bbrainz",
+      "targetType": "artist",
+      "slug": "bbrainz-argentine-vaporwave-artist-profile",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "bbrainz",
+        "artistName": "bbrainz"
+      },
+      "status": "published",
+      "draftPath": "data\\editorial\\jobs\\job_20260421141126_07q2aw\\articles\\job_20260421141126_07q2aw__bbrainz.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421141126_07q2aw\\articles\\job_20260421141126_07q2aw__bbrainz.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421141126_07q2aw\\articles\\job_20260421141126_07q2aw__bbrainz.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": "https://api.grove.storage/55f632e874795c5fd0ee5f19f2a0b163fc1a5ba92ad58c10e6e363cc4c0a7692",
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-21T16:56:48.145Z"
+    }
+  ]
+}

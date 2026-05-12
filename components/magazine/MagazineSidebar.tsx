@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { MagazineArticle } from "./types";
 import type { CryptoPrice } from "./hooks/useCryptoPrices";
 
@@ -68,7 +69,7 @@ export default function MagazineSidebar({
         <div className="space-y-5">
           {trending.map((a, i) => (
             <button
-              key={a.id}
+              key={a.slug}
               onClick={() => onOpenArticle(a.slug)}
               className="group flex w-full gap-4 text-left"
             >
@@ -144,7 +145,7 @@ export default function MagazineSidebar({
         )}
 
         <p className="mt-4 text-[7px] uppercase tracking-[0.3em] text-white/14">
-          Via CoinGecko · Updates every 60s
+          Via CoinGecko · Updates every 30m
         </p>
       </div>
 
@@ -194,34 +195,34 @@ export default function MagazineSidebar({
           About
         </p>
         <p className="text-xs leading-5 tracking-wide text-white/36">
-          AXIS Journal is the editorial arm of AXIS<span className="copy-mark">©</span> — a platform for digital
-          culture, music, and technology at the edge of what's possible.
+          AXIS Magazine is the editorial front page of AXIS<span className="copy-mark">©</span>, covering digital
+          culture, music, and technology through features, profiles, and scene reports.
         </p>
         <div className="mt-5 space-y-2">
-          <a
+          <Link
             href="/#about"
             className="block text-[9px] uppercase tracking-[0.36em] text-white/24 transition-colors hover:text-white/50"
           >
             About AXIS<span className="copy-mark">©</span> →
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#episodes"
             className="block text-[9px] uppercase tracking-[0.36em] text-white/24 transition-colors hover:text-white/50"
           >
             Episodes →
-          </a>
-          <a
+          </Link>
+          <Link
             href="/magazine/artists"
             className="block text-[9px] uppercase tracking-[0.36em] text-white/24 transition-colors hover:text-white/50"
           >
             Artists →
-          </a>
-          <a
+          </Link>
+          <Link
             href="/magazine/mixtapes"
             className="block text-[9px] uppercase tracking-[0.36em] text-white/24 transition-colors hover:text-white/50"
           >
             Mixtapes →
-          </a>
+          </Link>
         </div>
       </div>
 

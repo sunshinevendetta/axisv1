@@ -45,8 +45,9 @@ export function ARSessionButton({ onSessionChange }: Props) {
       type="button"
       onClick={handleClick}
       className="absolute bottom-4 right-4 z-10 border border-white/18 bg-black/45 px-4 py-2 text-[10px] uppercase tracking-[0.26em] text-white/82 backdrop-blur-sm transition-colors hover:bg-white/14"
+      aria-label={active ? "Exit AR session" : "Enter AR session"}
     >
-      {active ? "Exit AR" : "View in AR"}
+      {active ? "Exit AR" : "Enter XR"}
     </button>
   );
 }

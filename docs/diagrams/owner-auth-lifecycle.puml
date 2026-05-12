@@ -5,7 +5,7 @@ actor WalletHolder
 participant "EpisodesAdminPanel" as Panel
 participant "Admin Session API" as SessionApi
 participant "Owner Session Service" as SessionSvc
-participant "SpectraOwnerAccess1155" as Owner1155
+participant "AxisOwnerAccess1155" as Owner1155
 
 WalletHolder -> Panel : connect wallet
 Panel -> SessionApi : POST mode=challenge

@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { hasOwnerSession } from "@/src/lib/owner-session";
 import {
   type AssetInput,
   type AssetKind,
@@ -21,9 +20,6 @@ function text(formData: FormData, key: string, fallback = ""): string {
 }
 
 export async function POST(request: NextRequest) {
-  if (!(await hasOwnerSession())) {
-    return NextResponse.json({ ok: false, error: "Unauthorized" }, { status: 401 });
-  }
 
   try {
     const formData = await request.formData();

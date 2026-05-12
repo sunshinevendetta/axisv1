@@ -12,8 +12,6 @@ export interface BentoCardProps {
   label?: string;
   imageSrc?: string;
   imageAlt?: string;
-  textAutoHide?: boolean;
-  disableAnimations?: boolean;
 }
 
 export interface BentoProps {
@@ -36,45 +34,6 @@ const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
 const DEFAULT_GLOW_COLOR = '214, 220, 224';
 const MOBILE_BREAKPOINT = 768;
-
-const cardData: BentoCardProps[] = [
- {
-  color: '#050505',
-  title: 'Analytics',
-  description: 'Track user behavior',
-  label: 'Insights'
- },
- {
-  color: '#050505',
-  title: 'Dashboard',
-  description: 'Centralized data view',
-  label: 'Overview'
- },
- {
-  color: '#050505',
-  title: 'Collaboration',
-  description: 'Work together seamlessly',
-  label: 'Teamwork'
- },
- {
-  color: '#050505',
-  title: 'Automation',
-  description: 'Streamline workflows',
-  label: 'Efficiency'
- },
- {
-  color: '#050505',
-  title: 'Integration',
-  description: 'Connect favorite tools',
-  label: 'Connectivity'
- },
- {
-  color: '#050505',
-  title: 'Security',
-  description: 'Enterprise-grade protection',
-  label: 'Protection'
- }
-];
 
 const createParticleElement = (x: number, y: number, color: string = DEFAULT_GLOW_COLOR): HTMLDivElement => {
  const el = document.createElement('div');
@@ -133,7 +92,7 @@ const ParticleCard: React.FC<{
 }) => {
  const cardRef = useRef<HTMLDivElement>(null);
  const particlesRef = useRef<HTMLDivElement[]>([]);
- const timeoutsRef = useRef<NodeJS.Timeout[]>([]); // ← Fixed: NodeJS.Timeout instead of number
+ const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
  const isHoveredRef = useRef(false);
  const memoizedParticles = useRef<HTMLDivElement[]>([]);
  const particlesInitialized = useRef(false);
@@ -211,7 +170,7 @@ const ParticleCard: React.FC<{
  useEffect(() => {
  if (disableAnimations || !cardRef.current) return;
 
- const element = cardRef .current;
+ const element = cardRef.current;
 
  const handleMouseEnter = () => {
  isHoveredRef.current = true;
@@ -520,7 +479,7 @@ const useMobileDetection = () => {
 };
 
 const MagicBento: React.FC<BentoProps> = ({
-  cards = cardData,
+  cards = [],
   textAutoHide = true,
   enableStars = true,
   enableSpotlight = true,

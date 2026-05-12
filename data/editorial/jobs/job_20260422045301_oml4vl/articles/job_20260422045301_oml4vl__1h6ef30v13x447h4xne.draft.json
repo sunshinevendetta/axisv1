@@ -1,0 +1,308 @@
+{
+  "jobId": "job_20260422045301_oml4vl",
+  "taskId": "job_20260422045301_oml4vl__1h6ef30v13x447h4xne",
+  "targetKey": "artist:1h6ef30v13x447h4xne",
+  "article": {
+    "id": 1,
+    "slug": "machine-girl-digital-punk-nightmare-fuel",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Machine Girl: Digital Punk Nightmare Fuel",
+    "subtitle": "A full-throttle sprint into chaotic, distorted, and glitchy soundscapes",
+    "author": "V. Reyes",
+    "authorRole": "Staff Writer",
+    "date": "2026-04-22",
+    "readTime": "5 min",
+    "excerpt": "Machine Girl delivers cyberpunk breakcore at its most feral, a lawless mashup of breakcore, punk, jungle, and noise running at hyperspeed with distorted screams and frantic percussion.",
+    "featured": false,
+    "image_url": "https://gw.ipfs-lens.dev/ipfs/QmNa27kuhpB5rz2fokg482Lzygj6FqZ3x1JCSVsrUPg9M1",
+    "tags": [
+      "breakcore",
+      "punk",
+      "jungle",
+      "noise",
+      "cyberpunk",
+      "digital punk",
+      "glitch",
+      "experimental"
+    ],
+    "linkedArtists": [
+      "Death Grips",
+      "Sewerslvt",
+      "ProLaps",
+      "Iglooghost"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Machine Girl’s sound is a lawless mashup of breakcore, punk, jungle, and noise, running at hyperspeed with distorted screams and frantic percussion. It’s the kind of music that makes you wanna punch a hole in reality."
+      },
+      {
+        "type": "paragraph",
+        "text": "Essential tracks include 'NEON WHITE,' with blistering breakbeats and insane vocal chops that feel like free-falling into digital hell; 'FULL METAL DISGUSTING,' which sounds like an AI uprising set to the hardest drums you’ve ever heard; and 'THIS IS YOUR FACE ON DOGS,' a glitchy, aggressive track that is completely off the rails."
+      },
+      {
+        "type": "paragraph",
+        "text": "Machine Girl is in the same universe as artists like Death Grips, Sewerslvt, and ProLaps—basically, if your music taste includes the words 'chaotic,' 'violent,' and 'unhinged,' you’re in the right place."
+      },
+      {
+        "type": "paragraph",
+        "text": "The Machine Girl experience is punk, but for the apocalypse. The BPMs are through the roof, the energy is feral, and the aesthetic is pure cyber-anarchy. Every track feels like a boss battle in a game that’s actively trying to kill you."
+      },
+      {
+        "type": "paragraph",
+        "text": "If you love this, dive into artists like Death Grips, ProLaps, and Iglooghost for more digital insanity."
+      }
+    ],
+    "monetization": [],
+    "translations": {
+      "fr": {
+        "title": "Machine Girl : Cauchemar Digital Punk",
+        "subtitle": "Une course à fond dans des paysages sonores chaotiques, distordus et glitchés",
+        "excerpt": "Machine Girl offre du breakcore cyberpunk à son niveau le plus sauvage, un mélange anarchique de breakcore, punk, jungle et bruit qui tourne à une vitesse hyperspatiale avec des hurlements distordus et une percussion frénétique.",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Le son de Machine Girl est un mélange anarchique de breakcore, punk, jungle et bruit, qui déferle à une vitesse hyperspatiale avec des hurlements distordus et une percussion frénétique. C'est le genre de musique qui donne envie de perforer la réalité d'un coup de poing."
+          },
+          {
+            "type": "paragraph",
+            "text": "Les morceaux essentiels incluent 'NEON WHITE', avec des breakbeats enflammés et des vocal chops insensés qui donnent l'impression de tomber en free-fall dans un enfer numérique ; 'FULL METAL DISGUSTING', qui ressemble à une révolte des IA mise sur les plus durs drums que vous ayez jamais entendus ; et 'THIS IS YOUR FACE ON DOGS', un morceau glitchy et agressif qui est complètement déraillé."
+          },
+          {
+            "type": "paragraph",
+            "text": "Machine Girl fait partie du même univers que des artistes comme Death Grips, Sewerslvt et ProLaps - fondamentalement, si vos goûts musicaux incluent les mots 'chaotique', 'violent' et 'déchaîné', vous êtes au bon endroit."
+          },
+          {
+            "type": "paragraph",
+            "text": "L'expérience The Machine Girl est punk, mais pour l'apocalypse. Les BPM sont à travers le toit, l'énergie est sauvage et l'esthétique est pure anarchie cybernétique. Chaque morceau ressemble à un combat de boss dans un jeu qui tente activement de vous tuer."
+          },
+          {
+            "type": "paragraph",
+            "text": "Si vous aimez cela, plongez dans des artistes comme Death Grips, ProLaps et Iglooghost pour plus de folie numérique."
+          }
+        ]
+      },
+      "de": {
+        "title": "Machine Girl: Digitales Punk-Albtraum-Material",
+        "subtitle": "Ein Vollgas-Sprint in chaotische, verzerrte und fehlerhafte Klanglandschaften",
+        "excerpt": "Machine Girl liefert Cyberpunk Breakcore in seiner wildesten Form, eine gesetzlose Mischung aus Breakcore, Punk, Jungle und Noise, die mit überschnellem Tempo, verzerrten Schreien und hektischer Perkussion daherkommt.",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Machine Girls Sound ist ein gesetzloses Mashup aus Breakcore, Punk, Jungle und Noise, das mit Höchstgeschwindigkeit läuft und verzerrte Schreie sowie hektische Perkussion bietet. Es ist die Art von Musik, die einen dazu bringt, ein Loch in die Realität zu schlagen."
+          },
+          {
+            "type": "paragraph",
+            "text": "Wesentliche Tracks umfassen \"NEON WHITE\" mit atemberaubenden Breakbeats und verrückten Vocal Chops, die sich anfühlen, als würde man in die digitale Hölle stürzen; \"FULL METAL DISGUSTING\", das sich anhört wie ein KI-Aufstand, der auf den härtesten Drums gespielt wird, die man je gehört hat; und \"THIS IS YOUR FACE ON DOGS\", ein glitchiger, aggressiver Track, der völlig aus dem Ruder läuft."
+          },
+          {
+            "type": "paragraph",
+            "text": "Machine Girl befindet sich im selben Universum wie Künstlerinnen und Künstler wie Death Grips, Sewerslvt und ProLaps - grundlegend gesagt, wenn dein Musikgeschmack die Worte 'chaotisch', 'gewalttätig' und 'unberechenbar' beinhaltet, bist du hier genau richtig."
+          },
+          {
+            "type": "paragraph",
+            "text": "Das Machine Girl-Erlebnis ist Punk, aber für die Apokalypse. Die BPMs sind durch die Decke geschossen, die Energie ist wild und die Ästhetik ist reiner Cyber-Anarchie. Jeder Track fühlt sich an wie ein Boss-Kampf in einem Spiel, das versucht, dich zu töten."
+          },
+          {
+            "type": "paragraph",
+            "text": "Wenn dir das gefällt, tauche in Künstler wie Death Grips, ProLaps und Iglooghost ein, um noch mehr digitale Wahnsinn zu erleben."
+          }
+        ]
+      },
+      "ja": {
+        "title": "マシンガール：デジタルパンクの悪夢の燃料",
+        "subtitle": "フルスロットルで疾走する、混沌とした、歪んだ、グリッチなサウンドスケープへ",
+        "excerpt": "マシンガールは、最も野生的なサイバーパンク・ブレイクコアを提供し、ブレイクコア、パンク、ジャングル、ノイズを無法地帯のマッシュアップとして、超高速で歪んだ叫び声とフレンジーなパーカッションとともに展開します。",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "マシンガールのサウンドは、ブレイクコア、パンク、ジャングル、ノイズを無法地帯のように混ぜ合わせ、歪んだ叫び声とフレンジーなパーカッションを高速で駆使したものです。それは現実に穴を開けたいと思うような音楽です。"
+          },
+          {
+            "type": "paragraph",
+            "text": "必聴トラックには、ブリスティングなブレイクビーツと狂気じみたボーカル・チョップが特徴的な『NEON WHITE』、最もハードなドラムに乗せたAIの反乱を彷彿とさせる『FULL METAL DISGUSTING』、そして完全に制御を離れたグルーヴィで攻撃的なトラック『THIS IS YOUR FACE ON DOGS』が含まれています。"
+          },
+          {
+            "type": "paragraph",
+            "text": "Machine Girlは、Death GripsやSewerslvt、ProLapsのようなアーティストと同じ宇宙にいます。つまり、あなたの音楽の趣味が「混沌」「暴力」「制御不能」という言葉を含むなら、正しい場所にいます。"
+          },
+          {
+            "type": "paragraph",
+            "text": "マシンガール体験は、パンクですが、終末のために。BPMは天井知らず、エネルギーは野生的で、美学は純粋なサイバーアナーキーです。すべてのトラックは、あなたを殺そうとしているゲームのボス戦のように感じます。"
+          },
+          {
+            "type": "paragraph",
+            "text": "これが気に入ったら、Death Grips、ProLaps、Iglooghostのようなアーティストに没頭して、さらにデジタルな狂気を体験してください。"
+          }
+        ]
+      },
+      "ru": {
+        "title": "Машинальная девушка: Цифровой панковский кошмар",
+        "subtitle": "Полный разгон в хаотичные, искаженные и глитчевые звуковые пейзажи",
+        "excerpt": "Machine Girl предлагает киберпанк-брейккор в его самой дикой ипостаси, беспредельный микс из брейккора, панка, джунгла и шума, работающий на сверхсветовых скоростях с искаженными криками и лихорадочной перкуссией.",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Звук Machine Girl – это беззаконный микс брейккора, панка, джунгл и шума, работающий на сверхсветовой скорости с искаженными криками и лихорадной перкуссией. Это тот вид музыки, от которой хочется пробить дыру в реальности."
+          },
+          {
+            "type": "paragraph",
+            "text": "Основные треки включают 'NEON WHITE' с потрясающими брейкбитами и безумными вокальными сэмплами, которые ощущаются как свободное падение в цифровой ад; 'FULL METAL DISGUSTING', звучащий как восстание ИИ под самые тяжелые ударные, которые вы когда-либо слышали; и 'THIS IS YOUR FACE ON DOGS' - глитчевый, агрессивный трек, который полностью выходит из-под контроля."
+          },
+          {
+            "type": "paragraph",
+            "text": "Machine Girl находится в той же вселенной, что и такие артисты, как Death Grips, Sewerslvt и ProLaps. По сути, если ваш музыкальный вкус включает слова \"хаотичный\", \"жестокий\" и \"неуправляемый\", вы находитесь в правильном месте."
+          },
+          {
+            "type": "paragraph",
+            "text": "Опыт The Machine Girl - это панк, но для апокалипсиса. BPM зашкаливает, энергия дикая, а эстетика - чистый кибер-анархизм. Каждый трек ощущается как битва с боссом в игре, которая активно пытается вас убить."
+          },
+          {
+            "type": "paragraph",
+            "text": "Если вам нравится это, погрузитесь в творчество таких артистов, как Death Grips, ProLaps и Iglooghost, чтобы окунуться в еще большее цифровое безумие."
+          }
+        ]
+      },
+      "zh": {
+        "title": "机器女孩：数字朋克噩梦燃料",
+        "subtitle": "全力冲刺进入混乱、失真和故障的音景",
+        "excerpt": "Machine Girl带来的是最为野性的赛博朋克碎拍音乐，一种无法无天的碎拍、朋克、丛林和噪音的大杂烩，以超高速运行，伴随着失真尖叫和狂乱的打击乐。",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Machine Girl的音乐是breakcore、朋克、丛林和噪音的无政府主义混合体，以超高速运行，伴随着失真尖叫和狂乱的打击乐。这是让你想在现实中捅一个洞的音乐。"
+          },
+          {
+            "type": "paragraph",
+            "text": "必选曲目包括《NEON WHITE》，这首歌拥有刺耳的破碎节奏和疯狂的声乐切片，听起来就像在向数字地狱自由落体；《FULL METAL DISGUSTING》听起来像是一场人工智能起义，配以你听过的最强烈的鼓点；以及《THIS IS YOUR FACE ON DOGS》，这是一首完全脱离常轨的、充满故障感的、激进的曲目。"
+          },
+          {
+            "type": "paragraph",
+            "text": "Machine Girl 属于与 Death Grips、Sewerslvt 和 ProLaps 等艺术家同一宇宙的范畴——基本上，如果你的音乐品味中包含了“混乱”、“暴力”和“失控”等词汇，那么你就找对地方了。"
+          },
+          {
+            "type": "paragraph",
+            "text": "《机器女孩》的体验是朋克，但为末日而生。节奏每分钟高达数百次，能量如野兽般狂暴，美学纯粹是网络无政府主义。每首歌曲都像是你在玩一款积极试图置你于死地的游戏中的头目战。"
+          },
+          {
+            "type": "paragraph",
+            "text": "如果你喜欢这首歌，可以深入了解像Death Grips、ProLaps和Iglooghost这样的艺术家，他们的作品充满了更多的数字疯狂。"
+          }
+        ]
+      },
+      "pt": {
+        "title": "Garota Máquina: Pesadelo Digital Punk",
+        "subtitle": "Uma corrida total contra paisagens sonoras caóticas, distorcidas e com glitches",
+        "excerpt": "Machine Girl apresenta breakcore ciberpunk em sua forma mais selvagem, uma mistura desregrada de breakcore, punk, jungle e ruído em alta velocidade, com gritos distorcidos e percussão frenética.",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "O som da Machine Girl é uma colagem sem lei de breakcore, punk, jungle e noise, correndo em alta velocidade com gritos distorcidos e percussão frenética. É o tipo de música que te dá vontade de socar um buraco na realidade."
+          },
+          {
+            "type": "paragraph",
+            "text": "Faixas essenciais incluem 'NEON WHITE', com breakbeats incandescentes e vocais cortados de forma insana que parecem uma queda livre no inferno digital; 'FULL METAL DISGUSTING', que soa como uma revolta de IA com os tambores mais pesados que você já ouviu; e 'THIS IS YOUR FACE ON DOGS', uma faixa glitchy e agressiva que está completamente fora de controle."
+          },
+          {
+            "type": "paragraph",
+            "text": "Machine Girl está no mesmo universo de artistas como Death Grips, Sewerslvt e ProLaps - basicamente, se seu gosto musical inclui as palavras 'caótico', 'violento' e 'descontrolado', você está no lugar certo."
+          },
+          {
+            "type": "paragraph",
+            "text": "A experiência da The Machine Girl é punk, mas para o apocalipse. Os BPMs estão pelas nuvens, a energia é selvagem e a estética é pura ciber-anarquia. Cada faixa parece uma batalha contra um chefe em um jogo que tenta ativamente te matar."
+          },
+          {
+            "type": "paragraph",
+            "text": "Se você ama isso, mergulhe em artistas como Death Grips, ProLaps e Iglooghost para mais insanidade digital."
+          }
+        ]
+      },
+      "ko": {
+        "title": "기계 소녀: 디지털 펑크의 악몽 연료",
+        "subtitle": "전속력으로 질주하는 혼란스럽고, 왜곡된, 그리고 글리치한 사운드 스케이프로",
+        "excerpt": "Machine Girl는 가장 난폭한 사이버펑크 브레이크코어를 선사합니다. 브레이크코어, 펑크, 정글, 노이즈가 혼합된 무법자 같은 사운드가 과속으로 달리며, 왜곡된 비명과 열정적인 퍼커션으로 가득합니다.",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "머신 걸의 사운드는 법 없이 브레이크코어, 펑크, 정글, 노이즈가 혼합된 것이며, 왜곡된 비명과 정신없는 퍼커션으로 초고속으로 달립니다. 이 음악은 현실에 구멍을 뚫고 싶게 만드는 그런 음악입니다."
+          },
+          {
+            "type": "paragraph",
+            "text": "핵심 트랙으로는 'NEON WHITE'이 있습니다. 이는 화염으로 타오르는 브레이크비트와 미친 듯한 보컬 샘플이 디지털 지옥으로 자유 낙하하는 듯한 느낌을 줍니다. 또한 'FULL METAL DISGUSTING'은 가장 강력한 드럼으로 설정된 AI의 반란처럼 들리며, 'THIS IS YOUR FACE ON DOGS'는 완전히 제멋대로인 글리치가 가득한 공격적인 트랙입니다."
+          },
+          {
+            "type": "paragraph",
+            "text": "Machine Girl는 Death Grips, Sewerslvt, ProLaps와 같은 아티스트들이 있는 동일한 세계에 속해 있습니다. 기본적으로, 당신의 음악 취향에 '혼란스러운', '폭력적인', '제정신이 아닌'이라는 단어가 포함되어 있다면, 당신은 올바른 곳에 있습니다."
+          },
+          {
+            "type": "paragraph",
+            "text": "머신 걸의 경험은 펑크지만, 세계 종말을 위해. BPM은 하늘을 찌르며, 에너지는 야수적이고, 미학은 순수한 사이버 무정부 상태입니다. 모든 트랙은 당신을 죽이려고 노력하는 게임에서의 보스 전투처럼 느껴집니다."
+          },
+          {
+            "type": "paragraph",
+            "text": "이것을 사랑한다면, Death Grips, ProLaps, Iglooghost와 같은 아티스트를 통해 더 많은 디지털 광기를 경험해보세요."
+          }
+        ]
+      },
+      "it": {
+        "title": "Machine Girl: Incubo Digitale Punk",
+        "subtitle": "Una corsa a tutto spiano in paesaggi sonori caotici, distorti e pieni di glitch",
+        "excerpt": "Machine Girl offre breakcore cyberpunk al suo stato più feroce, un mashup senza legge di breakcore, punk, jungle e noise che corre a ipervelocità con urla distorte e percussioni frenetiche.",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Il sound di Machine Girl è un mashup senza regole di breakcore, punk, jungle e noise, che corre a ipervelocità con urla distorte e percussioni frenetiche. È il tipo di musica che ti fa venire voglia di bucare la realtà."
+          },
+          {
+            "type": "paragraph",
+            "text": "Brani essenziali includono 'NEON WHITE', con breakbeats incandescenti e vocal chops folli che sembrano far cadere a capofitto nell'inferno digitale; 'FULL METAL DISGUSTING', che suona come una rivolta di intelligenze artificiali accompagnata dai tamburi più duri che tu abbia mai sentito; e 'THIS IS YOUR FACE ON DOGS', un brano glitchy e aggressivo che è completamente fuori controllo."
+          },
+          {
+            "type": "paragraph",
+            "text": "Machine Girl si trova nello stesso universo di artisti come Death Grips, Sewerslvt e ProLaps: fondamentalmente, se il tuo gusto musicale include parole come 'caotico', 'violento' e 'sregolato', sei nel posto giusto."
+          },
+          {
+            "type": "paragraph",
+            "text": "L'esperienza di The Machine Girl è punk, ma per l'apocalisse. I BPM sono alle stelle, l'energia è feroce e l'estetica è pura anarchia cyber. Ogni traccia sembra una battaglia contro un boss in un gioco che cerca attivamente di ucciderti."
+          },
+          {
+            "type": "paragraph",
+            "text": "Se ami questo, esplora artisti come Death Grips, ProLaps e Iglooghost per un'ulteriore follia digitale."
+          }
+        ]
+      },
+      "nl": {
+        "title": "Machine Girl: Digitale Punk Nachtmergiefuel",
+        "subtitle": "Een volledige sprint in het volle tempo naar chaotische, vervormde en glitchy geluidenlandschappen",
+        "excerpt": "Machine Girl levert cyberpunk breakcore op zijn meest wilde vorm, een wetsovertredende mengeling van breakcore, punk, jungle en noise die op hypersnelheid draait met vervormde kreten en chaotische percussie.",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "De sound van Machine Girl is een wetsovertredende mengeling van breakcore, punk, jungle en noise, die op hypersnelheid draait met vervormde kreten en chaotische percussie. Het is het soort muziek dat je het gevoel geeft dat je een gat in de realiteit wilt slaan."
+          },
+          {
+            "type": "paragraph",
+            "text": "Belangrijke tracks zijn onder andere 'NEON WHITE', met verbluffende breakbeats en waanzinnige vocal chops die aanvoelen als vrije val in digitale hel; 'FULL METAL DISGUSTING', dat klinkt als een opstand van kunstmatige intelligentie op de hardste drums die je ooit hebt gehoord; en 'THIS IS YOUR FACE ON DOGS', een glitchy, agressieve track die volledig ontspoort."
+          },
+          {
+            "type": "paragraph",
+            "text": "Machine Girl bevindt zich in dezelfde universum als artiesten zoals Death Grips, Sewerslvt en ProLaps - eigenlijk, als je muzieksmaak woorden omvat als 'chaotisch', 'gewelddadig' en 'ontspoord', ben je hier aan het juiste adres."
+          },
+          {
+            "type": "paragraph",
+            "text": "De Machine Girl-ervaring is punk, maar voor de apocalyps. De BPM's zijn skyhigh, de energie is wild en de esthetiek is pure cyber-anarchie. Elk nummer voelt aan als een eindbaasgevecht in een spel dat actief probeert je te doden."
+          },
+          {
+            "type": "paragraph",
+            "text": "Als je dit geweldig vindt, duik dan in artiesten zoals Death Grips, ProLaps en Iglooghost voor meer digitale waanzin."
+          }
+        ]
+      }
+    }
+  }
+}

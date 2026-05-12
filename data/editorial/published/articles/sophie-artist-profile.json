@@ -1,0 +1,286 @@
+{
+  "id": 1,
+  "slug": "sophie-artist-profile",
+  "axis": "music",
+  "category": "PROFILE",
+  "contentType": "ARTICLE",
+  "mode": "ENTRY",
+  "frame": "OBSERVE",
+  "persona": "OPERATOR",
+  "title": "Sophie: A Profile of the Scottish Producer",
+  "subtitle": "Known for her contributions to electronic music and work with PC Music artists.",
+  "author": "V. Reyes",
+  "authorRole": "Staff Writer",
+  "date": "2026-04-21",
+  "readTime": "3 min",
+  "excerpt": "Sophie is a Scottish producer and singer-songwriter known for her work in electronic music. She came to prominence in 2013 with her single 'Bipp'/'Elle' and released 'Lemonade'/'Hard' the following year.",
+  "featured": false,
+  "image_url": "https://api.grove.storage/f5be6d11600ac0375daecb0f8c614d9d52351b07eb41d607f54a91fd6322f652",
+  "tags": [
+    "electronic",
+    "experimental",
+    "bubblegum bass",
+    "post-club",
+    "uk bass",
+    "producer",
+    "singer-songwriter"
+  ],
+  "linkedArtists": [
+    "Arca",
+    "GFOTY",
+    "QT",
+    "A. G. Cook",
+    "Charli XCX"
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Sophie is a Scottish producer and singer-songwriter known for her work in electronic music. She came to prominence in 2013 with her single 'Bipp'/'Elle' and released 'Lemonade'/'Hard' the following year."
+    },
+    {
+      "type": "paragraph",
+      "text": "Her work is characterized by its experimental nature and falls under genres such as Bubblegum Bass, Electronic, Experimental, Post-Club, and UK Bass. Sophie worked closely with artists from the PC Music label and produced for acts including Charli XCX."
+    },
+    {
+      "type": "paragraph",
+      "text": "Sophie has released several notable works including the albums PRODUCT, SOPHIE, OIL OF EVERY PEARL'S UN-INSIDES NON-STOP REMIX ALBUM, and OIL OF EVERY PEARL'S UN-INSIDES. Her recent single Sunscreen was released in August 2025."
+    },
+    {
+      "type": "paragraph",
+      "text": "Her production style and contributions to the electronic music scene have influenced a number of artists in the genre. Sophie's work continues to be recognized for its innovative approach to sound and production techniques."
+    }
+  ],
+  "monetization": [],
+  "translations": {
+    "es": {
+      "title": "Sophie: Un perfil de la productora escocesa",
+      "subtitle": "Conocida por sus contribuciones a la música electrónica y su trabajo con artistas de PC Music.",
+      "excerpt": "Sophie es una productora y cantautora escocesa conocida por su trabajo en la música electrónica. Llegó a la fama en 2013 con su sencillo 'Bipp'/'Elle' y lanzó 'Lemonade'/'Hard' al año siguiente.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Sophie es una productora y cantautora escocesa conocida por su trabajo en la música electrónica. Saltó a la fama en 2013 con su sencillo 'Bipp'/'Elle' y lanzó 'Lemonade'/'Hard' al año siguiente."
+        },
+        {
+          "type": "paragraph",
+          "text": "Su trabajo se caracteriza por su naturaleza experimental y abarca géneros como Bubblegum Bass, Electrónica, Experimental, Post-Club y UK Bass. Sophie trabajó en estrecha colaboración con artistas del sello PC Music y produjo para artistas como Charli XCX."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sophie ha lanzado varias obras notables, incluidos los álbumes PRODUCT, SOPHIE, OIL OF EVERY PEARL'S UN-INSIDES NON-STOP REMIX ALBUM y OIL OF EVERY PEARL'S UN-INSIDES. Su último sencillo, Sunscreen, se lanzó en agosto de 2025."
+        },
+        {
+          "type": "paragraph",
+          "text": "Su estilo de producción y sus contribuciones a la escena de la música electrónica han influido en un número de artistas del género. El trabajo de Sophie continúa siendo reconocido por su enfoque innovador en el sonido y las técnicas de producción."
+        }
+      ]
+    },
+    "fr": {
+      "title": "Sophie : Portrait de la productrice écossaise",
+      "subtitle": "Reconnue pour ses contributions à la musique électronique et son travail avec les artistes de PC Music.",
+      "excerpt": "Sophie est une productrice et auteure-compositrice-interprète écossaise connue pour son travail dans la musique électronique. Elle est devenue célèbre en 2013 avec son single 'Bipp'/'Elle' et a sorti 'Lemonade'/'Hard' l'année suivante.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Sophie est une productrice et auteure-compositrice-interprète écossaise connue pour son travail dans la musique électronique. Elle est devenue célèbre en 2013 avec son single 'Bipp'/'Elle' et a sorti 'Lemonade'/'Hard' l'année suivante."
+        },
+        {
+          "type": "paragraph",
+          "text": "Son travail se caractérise par son caractère expérimental et relève de genres tels que Bubblegum Bass, Électronique, Expérimental, Post-Club et UK Bass. Sophie a collaboré étroitement avec des artistes du label PC Music et a produit pour des artistes comme Charli XCX."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sophie a sorti plusieurs œuvres remarquables, dont les albums PRODUCT, SOPHIE, OIL OF EVERY PEARL'S UN-INSIDES NON-STOP REMIX ALBUM et OIL OF EVERY PEARL'S UN-INSIDES. Son dernier single, Sunscreen, est sorti en août 2025."
+        },
+        {
+          "type": "paragraph",
+          "text": "Son style de production et ses contributions à la scène de la musique électronique ont influencé de nombreux artistes du genre. Le travail de Sophie continue d'être reconnu pour son approche innovante du son et des techniques de production."
+        }
+      ]
+    },
+    "de": {
+      "title": "Sophie: Ein Profil der schottischen Produzentin",
+      "subtitle": "Bekannt für ihre Beiträge zur elektronischen Musik und Zusammenarbeit mit PC Music-Künstlern.",
+      "excerpt": "Sophie ist eine schottische Produzentin und Singer-Songwriterin, die für ihre Arbeit im Bereich der elektronischen Musik bekannt ist. Sie erlangte 2013 mit ihrer Single 'Bipp'/'Elle' Bekanntheit und veröffentlichte im Folgejahr 'Lemonade'/'Hard'.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Sophie ist eine schottische Produzentin und Singer-Songwriterin, die für ihre Arbeit im Bereich der elektronischen Musik bekannt ist. Sie erlangte 2013 mit ihrer Single \"Bipp\"/\"Elle\" Bekanntheit und veröffentlichte im Folgejahr \"Lemonade\"/\"Hard\"."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ihre Arbeit zeichnet sich durch ihren experimentellen Charakter aus und fällt in Genres wie Bubblegum Bass, Electronic, Experimental, Post-Club und UK Bass. Sophie arbeitete eng mit Künstlern des PC Music-Labels zusammen und produzierte für Acts wie Charli XCX."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sophie hat mehrere bemerkenswerte Werke veröffentlicht, darunter die Alben PRODUCT, SOPHIE, OIL OF EVERY PEARL'S UN-INSIDES NON-STOP REMIX ALBUM und OIL OF EVERY PEARL'S UN-INSIDES. Ihre jüngste Single Sunscreen wurde im August 2025 veröffentlicht."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ihr Produktionstil und ihre Beiträge zur elektronischen Musikszene haben eine Reihe von Künstlern im Genre beeinflusst. Sophies Arbeit wird weiterhin für ihren innovativen Ansatz in Sachen Klang und Produktionsmethoden gewürdigt."
+        }
+      ]
+    },
+    "ja": {
+      "title": "ソフィー：スコットランドのプロデューサーを描く",
+      "subtitle": "彼女はエレクトロニック・ミュージックへの貢献とPC Musicアーティストとの仕事で知られています。",
+      "excerpt": "ソフィーは、電子音楽における彼女の仕事で知られるスコットランドのプロデューサー兼シンガーソングライターです。彼女は2013年にシングル「Bipp」/「Elle」で注目を集め、翌年「Lemonade」/「Hard」をリリースしました。",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "ソフィーは、電子音楽における彼女の仕事で知られるスコットランドのプロデューサー兼シンガーソングライターです。彼女は2013年にシングル「Bipp」/「Elle」で注目を集め、翌年「Lemonade」/「Hard」をリリースしました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "彼女の作品は実験的な性質が特徴であり、バブルガム・ベース、エレクトロニック、実験音楽、ポスト・クラブ、UKベースなどのジャンルに分類されます。ソフィーはPC Musicレーベルのアーティストと密接に協力し、Charli XCXを含むアーティストのプロデュースを行いました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ソフィーは、アルバム『PRODUCT』『SOPHIE』『OIL OF EVERY PEARL'S UN-INSIDES NON-STOP REMIX ALBUM』『OIL OF EVERY PEARL'S UN-INSIDES』など、数々の注目すべき作品をリリースしています。最近のシングル『Sunscreen』は2025年8月にリリースされました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "彼女の制作スタイルとエレクトロニック・ミュージック・シーンへの貢献は、同ジャンルの多くのアーティストに影響を与えています。ソフィーの作品は、革新的な音と制作技術へのアプローチが認められ続けています。"
+        }
+      ]
+    },
+    "ru": {
+      "title": "Софи: Портрет шотландского продюсера",
+      "subtitle": "Известна своими вкладами в электронную музыку и сотрудничеством с артистами PC Music.",
+      "excerpt": "Софи - шотландский продюсер и автор-исполнитель песен, известная своей работой в области электронной музыки. Она получила признание в 2013 году с синглом \"Bipp\" / \"Elle\" и выпустила \"Lemonade\" / \"Hard\" на следующий год.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Софи - шотландский продюсер и автор-исполнитель песен, известный своей работой в области электронной музыки. Она получила известность в 2013 году с синглом \"Bipp\" / \"Elle\" и выпустила \"Lemonade\" / \"Hard\" на следующий год."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ее творчество отличается экспериментальным характером и относится к жанрам, таким как Bubblegum Bass, Электроника, Экспериментальная музыка, Пост-Клаб и UK Bass. Софи тесно сотрудничала с артистами лейбла PC Music и продюсировала выступления для таких исполнителей, как Charli XCX."
+        },
+        {
+          "type": "paragraph",
+          "text": "Софи выпустила несколько заметных работ, включая альбомы PRODUCT, SOPHIE, OIL OF EVERY PEARL'S UN-INSIDES NON-STOP REMIX ALBUM и OIL OF EVERY PEARL'S UN-INSIDES. Ее последний сингл Sunscreen был выпущен в августе 2025 года."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ее стиль производства и вклад в электронную музыкальную сцену повлияли на множество артистов в жанре. Работа Софи продолжает признаваться за ее инновационный подход к звуку и методам производства."
+        }
+      ]
+    },
+    "zh": {
+      "title": "苏菲：一位苏格兰制作人的画像",
+      "subtitle": "以其对电子音乐的贡献和与PC Music艺术家的合作而闻名。",
+      "excerpt": "苏菲是一位苏格兰制作人和创作歌手，以其在电子音乐领域的工作而闻名。她在2013年凭借单曲《Bipp》/《Elle》一举成名，随后于次年发布了《Lemonade》/《Hard》。",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "苏菲是一位苏格兰制作人和创作歌手，以在电子音乐领域的工作而闻名。她在2013年凭借单曲《Bipp》/《Elle》一举成名，随后于次年发布了《Lemonade》/《Hard》。"
+        },
+        {
+          "type": "paragraph",
+          "text": "她的作品以实验性质为特征，属于Bubblegum Bass、电子、实验、后俱乐部和英国低音等流派。她与PC Music厂牌的艺术家紧密合作，为包括Charli XCX在内的艺人制作音乐。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sophie 已经发布了几部值得注意的作品，包括专辑 PRODUCT、SOPHIE、OIL OF EVERY PEARL'S UN-INSIDES NON-STOP REMIX ALBUM 和 OIL OF EVERY PEARL'S UN-INSIDES。她的最新单曲 Sunscreen 于2025年8月发布。"
+        },
+        {
+          "type": "paragraph",
+          "text": "她在电子音乐领域的制作风格和贡献影响了许多该领域的艺术家。索菲的作品因其在声音和制作技巧方面的创新方法而持续受到认可。"
+        }
+      ]
+    },
+    "it": {
+      "title": "Sophie: Un Profilo della Produttrice Scozzese",
+      "subtitle": "Conosciuta per i suoi contributi alla musica elettronica e per la collaborazione con gli artisti di PC Music.",
+      "excerpt": "Sophie è una produttrice e cantautrice scozzese nota per il suo lavoro nella musica elettronica. È salita alla ribalta nel 2013 con il suo singolo 'Bipp'/'Elle' e ha pubblicato 'Lemonade'/'Hard' l'anno successivo.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Sophie è una produttrice e cantautrice scozzese nota per il suo lavoro nella musica elettronica. È salita alla ribalta nel 2013 con il suo singolo 'Bipp'/'Elle' e ha pubblicato 'Lemonade'/'Hard' l'anno successivo."
+        },
+        {
+          "type": "paragraph",
+          "text": "Il suo lavoro è caratterizzato dalla sua natura sperimentale e rientra in generi come Bubblegum Bass, Electronic, Experimental, Post-Club e UK Bass. Sophie ha collaborato strettamente con artisti dell'etichetta PC Music e ha prodotto per artisti come Charli XCX."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sophie ha pubblicato diverse opere degne di nota, tra cui gli album PRODUCT, SOPHIE, OIL OF EVERY PEARL'S UN-INSIDES NON-STOP REMIX ALBUM e OIL OF EVERY PEARL'S UN-INSIDES. Il suo recente singolo Sunscreen è stato rilasciato nel mese di agosto 2025."
+        },
+        {
+          "type": "paragraph",
+          "text": "Lo stile di produzione e i contributi di Sophie alla scena della musica elettronica hanno influenzato numerosi artisti del genere. Il lavoro di Sophie continua ad essere riconosciuto per il suo approccio innovativo al suono e alle tecniche di produzione."
+        }
+      ]
+    },
+    "nl": {
+      "title": "Sophie: Een Profiel van de Schotse Producent",
+      "subtitle": "Bekend om haar bijdragen aan elektronische muziek en samenwerking met artiesten van PC Music.",
+      "excerpt": "Sophie is een Schotse producent en singer-songwriter die bekend staat om haar werk in de elektronische muziek. Ze brak door in 2013 met haar single 'Bipp'/'Elle' en bracht het jaar daarop 'Lemonade'/'Hard' uit.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Sophie is een Schotse producent en singer-songwriter die bekend staat om haar werk in de elektronische muziek. Ze brak door in 2013 met haar single 'Bipp'/'Elle' en bracht het jaar daarop 'Lemonade'/'Hard' uit."
+        },
+        {
+          "type": "paragraph",
+          "text": "Haar werk wordt gekenmerkt door zijn experimentele aard en valt onder genres zoals Bubblegum Bass, Elektronisch, Experimenteel, Post-Club en UK Bass. Sophie werkte nauw samen met artiesten van het PC Music-label en produceerde voor acts zoals Charli XCX."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sophie heeft verschillende opmerkelijke werken uitgebracht, waaronder de albums PRODUCT, SOPHIE, OIL OF EVERY PEARL'S UN-INSIDES NON-STOP REMIX ALBUM en OIL OF EVERY PEARL'S UN-INSIDES. Haar recente single Sunscreen werd in augustus 2025 uitgebracht."
+        },
+        {
+          "type": "paragraph",
+          "text": "Haar productiestijl en bijdragen aan de elektronische muziekscene hebben een aantal artiesten in het genre beïnvloed. Sophies werk blijft erkend worden om zijn innovatieve benadering van geluid en productietechnieken."
+        }
+      ]
+    },
+    "pt": {
+      "title": "Sophie: Um Perfil da Produtora Escocesa",
+      "subtitle": "Conhecida por suas contribuições para a música eletrônica e trabalho com artistas da PC Music.",
+      "excerpt": "Sophie é uma produtora e cantora-compositora escocesa conhecida por seu trabalho na música eletrônica. Ela ganhou destaque em 2013 com seu single 'Bipp'/'Elle' e lançou 'Lemonade'/'Hard' no ano seguinte.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Sophie é uma produtora e cantora-compositora escocesa conhecida por seu trabalho na música eletrônica. Ela ganhou destaque em 2013 com seu single 'Bipp'/'Elle' e lançou 'Lemonade'/'Hard' no ano seguinte."
+        },
+        {
+          "type": "paragraph",
+          "text": "Seu trabalho é caracterizado pela natureza experimental e se enquadra em gêneros como Bubblegum Bass, Eletrônico, Experimental, Pós-Clube e UK Bass. Sophie trabalhou em estreita colaboração com artistas da gravadora PC Music e produziu para artistas como Charli XCX."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sophie lançou várias obras notáveis, incluindo os álbuns PRODUCT, SOPHIE, OIL OF EVERY PEARL'S UN-INSIDES NON-STOP REMIX ALBUM e OIL OF EVERY PEARL'S UN-INSIDES. Seu single recente, Sunscreen, foi lançado em agosto de 2025."
+        },
+        {
+          "type": "paragraph",
+          "text": "Seu estilo de produção e contribuições para a cena da música eletrônica influenciaram diversos artistas do gênero. O trabalho de Sophie continua sendo reconhecido por sua abordagem inovadora em termos de som e técnicas de produção."
+        }
+      ]
+    },
+    "ko": {
+      "title": "소피: 스코틀랜드 프로듀서의 프로필",
+      "subtitle": "전자 음악에 기여하고 PC Music 아티스트와 협업한 것으로 알려져 있습니다.",
+      "excerpt": "소피는 전자 음악 분야에서 활동하는 스코틀랜드 출신의 프로듀서 겸 싱어송라이터로 알려져 있습니다. 그녀는 2013년에 'Bipp'/'Elle'이라는 싱글로 이름을 알렸고, 이듬해 'Lemonade'/'Hard'를 발매했습니다.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "소피는 전자 음악 분야에서 활동하는 스코틀랜드 출신의 프로듀서 겸 싱어송라이터로 알려져 있다. 그녀는 2013년에 'Bipp'/'Elle'이라는 싱글로 이름을 알렸고, 이듬해 'Lemonade'/'Hard'를 발표했다."
+        },
+        {
+          "type": "paragraph",
+          "text": "그녀의 작품은 실험적인 성격이 강하며, Bubblegum Bass, Electronic, Experimental, Post-Club, UK Bass와 같은 장르에 속합니다. 소피는 PC Music 레이블의 아티스트들과 밀접하게 협업했으며, Charli XCX를 포함한 여러 아티스트들의 프로듀서로 활동했습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "소피는 PRODUCT, SOPHIE, OIL OF EVERY PEARL'S UN-INSIDES NON-STOP REMIX ALBUM, 그리고 OIL OF EVERY PEARL'S UN-INSIDES와 같은 몇몇 주목할 만한 작품들을 발표했습니다. 그녀의 최근 싱글인 Sunscreen는 2025년 8월에 발매되었습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "소피의 프로덕션 스타일과 전자 음악 장르에 대한 기여는 장르 내 많은 아티스트들에게 영향을 미쳤습니다. 그녀의 작품은 독창적인 사운드와 프로덕션 기법에 대한 접근 방식으로 계속해서 인정받고 있습니다."
+        }
+      ]
+    }
+  }
+}

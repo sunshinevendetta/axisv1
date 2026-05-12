@@ -1,0 +1,163 @@
+{
+  "jobId": "job_20260421003104_po4lqv",
+  "taskId": "job_20260421003104_po4lqv__dog-blood",
+  "target": {
+    "key": "artist:dog-blood",
+    "type": "artist",
+    "name": "Dog Blood"
+  },
+  "researchPacket": {
+    "targetName": "Dog Blood",
+    "sourceMode": "existing_db",
+    "artistContext": {
+      "name": "Dog Blood",
+      "genres": [
+        "Dubstep",
+        "Electronic",
+        "Techno",
+        "Electro",
+        "Electro House"
+      ],
+      "tags": [],
+      "summary": "Dog Blood is a collaboration between Boys Noize and Skrillex. Boys Noize, along with BNR, and Skrillex, along with his label OWSLA, have a new collab going down between two of the biggest dudes in electronic music. Germany’s Boys Noize and Los Angeles’ Skrillex have teamed up to bring you quite a different sound. On one hand, you have the master of techno and electro, Boys Noize, and then dubstep poster child Skrillex. If you listen closely enough, you’ll hear their very distinctive sounds slowly forming together."
+    },
+    "genreContext": null,
+    "relatedArtists": [
+      "Skrillex",
+      "Zomboy",
+      "Wiwek",
+      "Getter",
+      "Kill the Noise"
+    ],
+    "provenance": [
+      {
+        "type": "raw_article",
+        "value": "dog-blood"
+      },
+      {
+        "type": "music_artists",
+        "value": "content/music-artists.json"
+      },
+      {
+        "type": "artist_media_cache",
+        "value": "content/artist-media-cache.json"
+      }
+    ]
+  },
+  "promptConfig": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "modelOutput": {
+    "writer": {
+      "id": 1,
+      "slug": "dog-blood-collaboration-profile",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "OPERATOR",
+      "title": "Dog Blood: A Collaborative Force in Electronic Music",
+      "subtitle": "Boys Noize and Skrillex merge their distinctive production styles",
+      "author": "L. Nakamura",
+      "authorRole": "Contributor",
+      "date": "2026-04-21",
+      "readTime": "3 min",
+      "excerpt": "Dog Blood represents a distinctive fusion of Boys Noize's techno and electro expertise with Skrillex's dubstep innovations.",
+      "featured": false,
+      "image_url": "https://i.scdn.co/image/ab6761610000e5eb23c3bd069a1bee32bbc2225c",
+      "tags": [
+        "electronic",
+        "dubstep",
+        "techno",
+        "collaboration",
+        "production"
+      ],
+      "linkedArtists": [
+        "Boys Noize",
+        "Skrillex",
+        "Zomboy",
+        "Wiwek",
+        "Getter",
+        "Kill the Noise"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Dog Blood is a collaborative project between Boys Noize and Skrillex, two prominent figures in electronic music. Boys Noize, known for his mastery of techno and electro, and Skrillex, recognized for his contributions to dubstep, have combined their production techniques to create a unique sound."
+        },
+        {
+          "type": "paragraph",
+          "text": "The collaboration brings together Boys Noize's label BNR and Skrillex's label OWSLA, resulting in a fusion of their individual styles. Their work showcases a blend of electronic genres, including dubstep, techno, electro, and electro house."
+        },
+        {
+          "type": "paragraph",
+          "text": "Recent releases from Dog Blood include singles such as Turn Off The Lights, Middle Finger Pt. 2 Remix EP, Middle Finger Pt. 2, and Next Order/Middle Finger. These tracks highlight the duo's ability to merge their distinctive production approaches into a cohesive sound."
+        },
+        {
+          "type": "paragraph",
+          "text": "The project is noted for its innovative production techniques and the seamless integration of contrasting electronic music styles. Dog Blood's releases demonstrate a careful balance between the raw energy of dubstep and the intricate textures of techno and electro."
+        }
+      ],
+      "monetization": []
+    },
+    "editor": {
+      "id": 1,
+      "slug": "dog-blood-collaboration-profile",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "OPERATOR",
+      "title": "Dog Blood: A Collaborative Force in Electronic Music",
+      "subtitle": "Boys Noize and Skrillex merge their distinctive production styles",
+      "author": "L. Nakamura",
+      "authorRole": "Contributor",
+      "date": "2026-04-21",
+      "readTime": "3 min",
+      "excerpt": "Dog Blood represents a distinctive fusion of Boys Noize's techno and electro expertise with Skrillex's dubstep innovations.",
+      "featured": false,
+      "image_url": "https://i.scdn.co/image/ab6761610000e5eb23c3bd069a1bee32bbc2225c",
+      "tags": [
+        "electronic",
+        "dubstep",
+        "techno",
+        "collaboration",
+        "production"
+      ],
+      "linkedArtists": [
+        "Boys Noize",
+        "Skrillex",
+        "Zomboy",
+        "Wiwek",
+        "Getter",
+        "Kill the Noise"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Dog Blood is a collaborative project between Boys Noize and Skrillex, two prominent figures in electronic music. Boys Noize, known for his mastery of techno and electro, and Skrillex, recognized for his contributions to dubstep, have combined their production techniques to create a unique sound."
+        },
+        {
+          "type": "paragraph",
+          "text": "The collaboration brings together Boys Noize's label BNR and Skrillex's label OWSLA, resulting in a fusion of their individual styles. Their work showcases a blend of electronic genres, including dubstep, techno, electro, and electro house."
+        },
+        {
+          "type": "paragraph",
+          "text": "Recent releases from Dog Blood include singles such as Turn Off The Lights, Middle Finger Pt. 2 Remix EP, Middle Finger Pt. 2, and Next Order/Middle Finger. These tracks highlight the duo's ability to merge their distinctive production approaches into a cohesive sound."
+        },
+        {
+          "type": "paragraph",
+          "text": "The project is noted for its innovative production techniques and the seamless integration of contrasting electronic music styles. Dog Blood's releases demonstrate a careful balance between the raw energy of dubstep and the intricate textures of techno and electro."
+        }
+      ],
+      "monetization": []
+    }
+  },
+  "review": {
+    "status": "needs_review",
+    "notes": ""
+  }
+}

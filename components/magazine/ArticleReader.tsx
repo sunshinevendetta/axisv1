@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import type { MagazineArticle, ContentBlock, MagazineLang } from "./types";
 import { LANG_FLAGS } from "./types";
 
@@ -15,6 +14,10 @@ function formatDate(dateStr: string, lang: MagazineLang) {
     ja: "ja-JP",
     ru: "ru-RU",
     zh: "zh-CN",
+    pt: "pt-BR",
+    ko: "ko-KR",
+    it: "it-IT",
+    nl: "nl-NL",
   };
   return d.toLocaleDateString(localeMap[lang], {
     month: "long",
@@ -83,6 +86,10 @@ const COMMENTS_LABEL: Record<MagazineLang, string> = {
   ja: "コメント",
   ru: "Комментарии",
   zh: "评论",
+  pt: "Comentários",
+  ko: "댓글",
+  it: "Commenti",
+  nl: "Reacties",
 };
 const COMMENTS_EMPTY: Record<MagazineLang, string> = {
   en: "No comments yet. Be the first.",
@@ -92,6 +99,10 @@ const COMMENTS_EMPTY: Record<MagazineLang, string> = {
   ja: "まだコメントはありません。最初のコメントを。",
   ru: "Комментариев пока нет. Будьте первым.",
   zh: "暂无评论。成为第一个评论者。",
+  pt: "Sem comentários ainda. Seja o primeiro.",
+  ko: "아직 댓글이 없습니다. 첫 번째가 되세요.",
+  it: "Nessun commento ancora. Sii il primo.",
+  nl: "Nog geen reacties. Wees de eerste.",
 };
 
 function CommentsSection({ lang }: CommentPlaceholderProps) {
@@ -132,6 +143,8 @@ export default function ArticleReader({
   const title = t?.title ?? article.title;
   const subtitle = t?.subtitle ?? article.subtitle;
   const content = t?.content ?? article.content;
+  const isRussian = lang === "ru";
+  const isKorean = lang === "ko";
 
   // Related stories — explicit list first, fallback to same category
   const related = (() => {
@@ -169,8 +182,19 @@ export default function ArticleReader({
           <span>←</span> magazine
         </button>
 
+        {/* Hero image */}
+        {article.image_url && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={article.image_url}
+            alt={article.title}
+            className="mb-12 w-full rounded-[4px] object-cover"
+            style={{ maxHeight: "480px" }}
+          />
+        )}
+
         {/* Category + meta row */}
-        <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-1.5">
+        <div className={`flex flex-wrap items-center gap-x-4 gap-y-1.5 ${isRussian ? "mb-6" : "mb-8"}`}>
           <span className="border border-white/12 px-2.5 py-1 text-[8px] uppercase tracking-[0.44em] text-white/50">
             {article.category}
           </span>
@@ -200,19 +224,19 @@ export default function ArticleReader({
         </div>
 
         {/* Title */}
-        <h1 className="mb-6 [font-family:var(--font-display)] text-[clamp(1.7rem,4.5vw,3.2rem)] leading-[0.87] tracking-[-0.05em] text-white">
+        <h1 className={`text-white ${isRussian ? "[font-family:var(--font-bebas)] mb-9 text-[clamp(2rem,5vw,4rem)] leading-[0.95] tracking-[0.01em]" : isKorean ? "[font-family:var(--font-noto-kr)] mb-9 text-[clamp(1.5rem,3.8vw,3rem)] leading-[1.1] tracking-[-0.02em] font-bold" : "[font-family:var(--font-display)] mb-6 text-[clamp(1.7rem,4.5vw,3.2rem)] leading-[0.87] tracking-[-0.05em]"}`}>
           {title}
         </h1>
 
         {/* Subtitle */}
-        <p className="mb-10 text-base leading-7 tracking-wide text-white/44 sm:text-[17px] sm:leading-8">
+        <p className={`${isRussian || isKorean ? "mb-12 max-w-[60ch] text-[0.95rem] leading-8 sm:text-base sm:leading-8" : "mb-10 text-base leading-7 sm:text-[17px] sm:leading-8"} tracking-wide text-white/44`}>
           {subtitle}
         </p>
 
         {/* Rule */}
         <div className="mb-10 flex items-center gap-4">
           <div className="h-px flex-1 bg-white/8" />
-          <span className="text-[7px] uppercase tracking-[0.5em] text-white/16">AXIS© Journal</span>
+          <span className="text-[7px] uppercase tracking-[0.5em] text-white/16">AXIS© Hypermedia</span>
           <div className="h-px flex-1 bg-white/8" />
         </div>
 

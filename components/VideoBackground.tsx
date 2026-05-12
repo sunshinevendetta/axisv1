@@ -1,20 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Prism from "./Prism";
 
 export default function VideoBackground() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      console.log("[PrismBG] Container ref attached, size:", containerRef.current.clientWidth, "x", containerRef.current.clientHeight);
-    }
-  }, []);
-
   return (
     <div
-      ref={containerRef}
       style={{
         position: "fixed",
         inset: 0,

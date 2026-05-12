@@ -1,0 +1,28 @@
+{
+  "jobId": "job_20260421010159_sse8go",
+  "tasks": [
+    {
+      "id": "job_20260421010159_sse8go__qt7b8m9z473r9a5e4v",
+      "jobId": "job_20260421010159_sse8go",
+      "targetKey": "artist:qt7b8m9z473r9a5e4v",
+      "targetType": "artist",
+      "slug": "dylan-brady-hyperpop-chaos-and-glitchy-innovation",
+      "sourceRef": {
+        "kind": "raw_article",
+        "rawId": "106263668280442503358509756106515901811991766528561366036055950998117059442749",
+        "rawSlug": "qt7b8m9z473r9a5e4v",
+        "rawFolder": "0033_qt7b8m9z473r9a5e4v"
+      },
+      "status": "published",
+      "draftPath": "data\\editorial\\jobs\\job_20260421010159_sse8go\\articles\\job_20260421010159_sse8go__qt7b8m9z473r9a5e4v.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421010159_sse8go\\articles\\job_20260421010159_sse8go__qt7b8m9z473r9a5e4v.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421010159_sse8go\\articles\\job_20260421010159_sse8go__qt7b8m9z473r9a5e4v.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": "https://api.grove.storage/8e619b8be92aa8ed8c63c1df5399856e9fda7be07fbe2d321261fead3d809025",
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-21T16:56:10.063Z"
+    }
+  ]
+}

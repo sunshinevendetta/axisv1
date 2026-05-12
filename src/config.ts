@@ -26,7 +26,7 @@ const walletConnectMetadata = {
 };
 
 const globalForWagmi = globalThis as typeof globalThis & {
-  __spectraWagmiConfig?: WagmiConfig;
+  __axisWagmiConfig?: WagmiConfig;
 };
 
 function createWagmiConfig(): WagmiConfig {
@@ -58,11 +58,11 @@ function createWagmiConfig(): WagmiConfig {
 }
 
 export function getConfig(): WagmiConfig {
-  if (!globalForWagmi.__spectraWagmiConfig) {
-    globalForWagmi.__spectraWagmiConfig = createWagmiConfig();
+  if (!globalForWagmi.__axisWagmiConfig) {
+    globalForWagmi.__axisWagmiConfig = createWagmiConfig();
   }
 
-  return globalForWagmi.__spectraWagmiConfig;
+  return globalForWagmi.__axisWagmiConfig;
 }
 
 declare module "wagmi" {

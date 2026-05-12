@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
-import { TextureLoader, Mesh, MeshBasicMaterial, MeshStandardMaterial, SRGBColorSpace, Texture } from "three";
+import { TextureLoader, Mesh, MeshBasicMaterial, MeshStandardMaterial, SRGBColorSpace, Texture, RepeatWrapping } from "three";
 import { useGLTF } from "@react-three/drei";
 import { createVideoTexture } from "@/src/lib/ar/videoTexture";
 import type { EpisodeAsset } from "@/src/types/episode";
@@ -15,8 +15,28 @@ type Props = {
   onVideoError?: () => void;
 };
 
-function canReceiveTexture(material: unknown): material is MeshBasicMaterial | MeshStandardMaterial {
+function canReceiveTexture(material: THREE.Material): material is MeshBasicMaterial | MeshStandardMaterial {
   return material instanceof MeshBasicMaterial || material instanceof MeshStandardMaterial;
+}
+
+function applyTextureTransform(texture: Texture, options?: EpisodeAsset["videoTexture"]) {
+  if (!options) return;
+
+  texture.center.set(0.5, 0.5);
+
+  if (options.flipX) {
+    texture.wrapS = RepeatWrapping;
+    texture.repeat.x = -1;
+    texture.offset.x = 1;
+  }
+
+  if (options.flipY) {
+    texture.wrapT = RepeatWrapping;
+    texture.repeat.y = -1;
+    texture.offset.y = 1;
+  }
+
+  texture.needsUpdate = true;
 }
 
 function applyTextureToScene(scene: THREE.Object3D, texture: Texture, meshTarget?: string) {
@@ -28,7 +48,7 @@ function applyTextureToScene(scene: THREE.Object3D, texture: Texture, meshTarget
     const isTarget = meshTarget ? child.name === meshTarget : !applied;
     if (!isTarget) return;
 
-    const materials = Array.isArray(child.material) ? child.material : [child.material];
+    const materials: THREE.Material[] = Array.isArray(child.material) ? child.material : [child.material];
     const nextMaterials = materials.map((material) => {
       if (!canReceiveTexture(material)) return material;
       if (material.userData.__episodeClone === true) {
@@ -72,6 +92,7 @@ export function VideoTextureMesh({ asset, playing, visible, onVideoReadyChange, 
 
     if (fallbackTexture) {
       fallbackTexture.colorSpace = SRGBColorSpace;
+      applyTextureTransform(fallbackTexture, asset.videoTexture);
       applyTextureToScene(clonedScene, fallbackTexture, asset.meshTarget);
       textureRef.current = fallbackTexture;
     }
@@ -85,6 +106,7 @@ export function VideoTextureMesh({ asset, playing, visible, onVideoReadyChange, 
     }
 
     const { texture, video } = createVideoTexture(asset.videoUrl);
+    applyTextureTransform(texture, asset.videoTexture);
     videoRef.current = video;
 
     const handleCanPlay = () => {

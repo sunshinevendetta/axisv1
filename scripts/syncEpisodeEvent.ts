@@ -5,12 +5,12 @@ import { readEpisodeCatalog } from "../src/lib/episodes-store";
 const { ethers } = await network.connect();
 
 async function main() {
-  const registryAddress = process.env.SPECTRA_EVENT_ACCESS_REGISTRY_ADDRESS;
+  const registryAddress = process.env.AXIS_EVENT_ACCESS_REGISTRY_ADDRESS;
   const slug = process.env.EPISODE_SLUG;
-  const existingEventId = process.env.SPECTRA_EVENT_ID;
+  const existingEventId = process.env.AXIS_EVENT_ID;
 
   if (!registryAddress) {
-    throw new Error("SPECTRA_EVENT_ACCESS_REGISTRY_ADDRESS is required.");
+    throw new Error("AXIS_EVENT_ACCESS_REGISTRY_ADDRESS is required.");
   }
 
   if (!slug) {
@@ -26,7 +26,7 @@ async function main() {
 
   const payload = buildEpisodeRegistryPayload(episode);
   const [signer] = await ethers.getSigners();
-  const registry = await ethers.getContractAt("SpectraEventAccessRegistry", registryAddress, signer);
+  const registry = await ethers.getContractAt("AxisEventAccessRegistry", registryAddress, signer);
 
   if (existingEventId) {
     const tx = await registry.updateEvent(existingEventId, payload.name, payload.metadataURI, payload.active);

@@ -8,16 +8,16 @@
  *   npm run env:sync
  *
  * What it writes (artwork stack — primary):
- *   SPECTRA_SEASON_REGISTRY_ADDRESS
- *   SPECTRA_EPISODE_CONTRACT_ADDRESS
+ *   AXIS_SEASON_REGISTRY_ADDRESS
+ *   AXIS_EPISODE_CONTRACT_ADDRESS
  *
  * What it writes (legacy stack — optional):
  *   OWNER_ACCESS_CONTRACT_ADDRESS
  *   EPISODES_OWNER_ERC1155_ADDRESS   (same as owner access, used for HQ gate)
  *   EPISODES_OWNER_ERC1155_TOKEN_ID  (set to 1,2 once owner access is deployed)
- *   SPECTRA_SUBMISSION_REGISTRY_ADDRESS
- *   SPECTRA_FOUNDER_MEMBERSHIP_ADDRESS
- *   SPECTRA_EVENT_ACCESS_REGISTRY_ADDRESS
+ *   AXIS_SUBMISSION_REGISTRY_ADDRESS
+ *   AXIS_FOUNDER_MEMBERSHIP_ADDRESS
+ *   AXIS_EVENT_ACCESS_REGISTRY_ADDRESS
  *
  * What it never touches:
  *   Secrets, API keys, RPC URLs, SMTP config, or any key not in the list above.
@@ -54,10 +54,10 @@ const updates: Record<string, string> = {};
 
 // Artwork stack (primary)
 if (contracts.seasonRegistry?.address) {
-  updates["SPECTRA_SEASON_REGISTRY_ADDRESS"] = contracts.seasonRegistry.address;
+  updates["AXIS_SEASON_REGISTRY_ADDRESS"] = contracts.seasonRegistry.address;
 }
 if (contracts.episodeContract?.address) {
-  updates["SPECTRA_EPISODE_CONTRACT_ADDRESS"] = contracts.episodeContract.address;
+  updates["AXIS_EPISODE_CONTRACT_ADDRESS"] = contracts.episodeContract.address;
 }
 
 // Legacy stack (optional)
@@ -67,13 +67,13 @@ if (contracts.ownerAccess?.address) {
   updates["EPISODES_OWNER_ERC1155_TOKEN_ID"] = "1,2";
 }
 if (contracts.submissionRegistry?.address) {
-  updates["SPECTRA_SUBMISSION_REGISTRY_ADDRESS"] = contracts.submissionRegistry.address;
+  updates["AXIS_SUBMISSION_REGISTRY_ADDRESS"] = contracts.submissionRegistry.address;
 }
 if (contracts.founderMembership?.address) {
-  updates["SPECTRA_FOUNDER_MEMBERSHIP_ADDRESS"] = contracts.founderMembership.address;
+  updates["AXIS_FOUNDER_MEMBERSHIP_ADDRESS"] = contracts.founderMembership.address;
 }
 if (contracts.eventRegistry?.address) {
-  updates["SPECTRA_EVENT_ACCESS_REGISTRY_ADDRESS"] = contracts.eventRegistry.address;
+  updates["AXIS_EVENT_ACCESS_REGISTRY_ADDRESS"] = contracts.eventRegistry.address;
 }
 
 if (Object.keys(updates).length === 0) {

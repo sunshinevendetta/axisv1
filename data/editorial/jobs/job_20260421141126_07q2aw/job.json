@@ -1,0 +1,25 @@
+{
+  "id": "job_20260421141126_07q2aw",
+  "mode": "single",
+  "source": "existing_db",
+  "targetType": "artist",
+  "filters": {
+    "artistSlugs": [],
+    "genre": null,
+    "scene": null,
+    "city": null,
+    "missingOnly": false
+  },
+  "count": 1,
+  "concurrency": 1,
+  "status": "completed",
+  "createdAt": "2026-04-21T14:11:26.917Z",
+  "updatedAt": "2026-04-21T14:12:02.538Z",
+  "completedAt": "2026-04-21T14:12:02.538Z",
+  "createdBy": "owner",
+  "promptProfile": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "notes": "Artist catalog generation for bbrainz"
+}

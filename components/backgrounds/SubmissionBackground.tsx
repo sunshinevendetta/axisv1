@@ -1,7 +1,7 @@
 "use client";
 import LazyVideoBackground from "./LazyVideoBackground";
 
-export default function BeamsBackground() {
+export default function SubmissionBackground() {
   return (
     <LazyVideoBackground
       desktopSources={[

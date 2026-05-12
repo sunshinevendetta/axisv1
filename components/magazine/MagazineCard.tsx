@@ -49,6 +49,14 @@ export default function MagazineCard({ article, onClick, onOpenArtist }: Props) 
         className="relative overflow-hidden border-b border-white/8"
         style={{ aspectRatio: "4 / 3", background: gradient }}
       >
+        {article.image_url && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={article.image_url}
+            alt={article.title}
+            className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-75"
+          />
+        )}
         {/* Subtle grid texture */}
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.04]"
@@ -59,9 +67,11 @@ export default function MagazineCard({ article, onClick, onOpenArtist }: Props) 
           }}
         />
         {/* Category watermark */}
-        <span className="pointer-events-none absolute right-4 bottom-3 select-none [font-family:var(--font-display)] text-[6rem] leading-none text-white/[0.04] transition-opacity duration-300 group-hover:text-white/[0.07]">
-          {watermark}
-        </span>
+        {!article.image_url && (
+          <span className="pointer-events-none absolute right-4 bottom-3 select-none [font-family:var(--font-display)] text-[6rem] leading-none text-white/[0.04] transition-opacity duration-300 group-hover:text-white/[0.07]">
+            {watermark}
+          </span>
+        )}
         {/* Issue number indicator */}
         <div className="absolute top-4 left-4 text-[8px] uppercase tracking-[0.4em] text-white/18">
           {article.category}
@@ -118,3 +128,4 @@ export default function MagazineCard({ article, onClick, onOpenArtist }: Props) 
     </article>
   );
 }
+

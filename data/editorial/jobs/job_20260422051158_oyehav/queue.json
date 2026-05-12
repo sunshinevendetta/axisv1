@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260422051158_oyehav",
+  "tasks": [
+    {
+      "id": "job_20260422051158_oyehav__seth-troxler",
+      "jobId": "job_20260422051158_oyehav",
+      "targetKey": "artist:seth-troxler",
+      "targetType": "artist",
+      "slug": "seth-troxler-profile",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "seth-troxler",
+        "artistName": "Seth Troxler"
+      },
+      "status": "needs_review",
+      "draftPath": "data\\editorial\\jobs\\job_20260422051158_oyehav\\articles\\job_20260422051158_oyehav__seth-troxler.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260422051158_oyehav\\articles\\job_20260422051158_oyehav__seth-troxler.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260422051158_oyehav\\articles\\job_20260422051158_oyehav__seth-troxler.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-22T05:12:28.133Z"
+    }
+  ]
+}

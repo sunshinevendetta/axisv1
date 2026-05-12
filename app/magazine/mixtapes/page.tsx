@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import PillNav from "@/components/PillNav";
 import { DEFAULT_HYDRA_CONTROLS, HYDRA_CONTROL_GROUPS } from "@/components/magazine/mixtapes/HydraBackground";
 import { magazineNavItems } from "@/src/lib/navigation";
-import type { Mixtape } from "@/components/magazine/mixtapes/types";
+import type { Mixtape } from "@/src/types/mixtape";
 import rawData from "@/content/mixtapes.json";
 import { useAllMetadata } from "@/components/magazine/mixtapes/hooks/useAllMetadata";
 import { getArtistHref } from "@/src/content/artists";
@@ -90,7 +90,7 @@ export default function MixtapesPage() {
         <div className="border-b border-white/[0.05] px-4 py-8 sm:px-6 sm:py-10">
           <div className="mx-auto max-w-7xl">
             <p className="mb-3 text-[8px] uppercase tracking-[0.5em] text-white/20">
-              AXIS Journal
+              AXIS Hypermedia
             </p>
             <h1 className="[font-family:var(--font-display)] text-[clamp(1.33rem,3.325vw,2rem)] leading-[0.9] tracking-[-0.05em] text-white sm:text-[clamp(1.6rem,2vw,2.2rem)]">
               Transmissions
@@ -105,7 +105,10 @@ export default function MixtapesPage() {
                 <div>
                   <div className="text-[8px] uppercase tracking-[0.38em] text-white/24">Visual Mod</div>
                   <p className="mt-2 max-w-xl text-xs leading-5 text-white/38">
-                    Keep the transmission clean by default. Open the full Hydra parameter bank only when you want to push the visual live.
+                    Keep the transmission clean by default. Hydra now reacts to the current track audio directly, so mic permission is not part of the flow.
+                  </p>
+                  <p className="mt-2 text-[8px] uppercase tracking-[0.34em] text-white/18">
+                    Source: track audio · Mic off · FFT driven
                   </p>
                 </div>
                 <button

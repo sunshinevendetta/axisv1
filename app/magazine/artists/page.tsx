@@ -114,7 +114,7 @@ export default function MagazineArtistsPage() {
 
         <div className="border-b border-white/6 px-4 py-10 sm:px-6 sm:py-12">
           <div className="mx-auto max-w-7xl">
-            <p className="text-[8px] uppercase tracking-[0.48em] text-white/22">AXIS Journal</p>
+            <p className="text-[8px] uppercase tracking-[0.48em] text-white/22">AXIS Hypermedia</p>
             <h1 className="mt-4 [font-family:var(--font-display)] text-[clamp(1.7rem,4vw,3rem)] leading-[0.88] tracking-[-0.06em] text-white">
               Artist Index
             </h1>
@@ -142,7 +142,7 @@ export default function MagazineArtistsPage() {
             <ArtistSection
               title="Music Artists"
               eyebrow="Index 01"
-              description="DJs, producers, sound artists, and live acts tied to episodes, transmissions, interviews, and the wider journal archive."
+              description="DJs, producers, sound artists, and live acts tied to episodes, transmissions, interviews, and the wider hypermedia archive."
               artists={musicArtistProfiles}
             />
             <ArtistSection

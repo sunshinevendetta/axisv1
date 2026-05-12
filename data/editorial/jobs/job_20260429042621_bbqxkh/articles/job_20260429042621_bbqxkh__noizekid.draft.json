@@ -1,0 +1,65 @@
+{
+  "jobId": "job_20260429042621_bbqxkh",
+  "taskId": "job_20260429042621_bbqxkh__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: A Profile of the Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborations with DJ Snake, Bad Bunny, and Major Lazer define his trajectory.",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid stands as a prominent figure in the Mexican electronic music scene, known for his work in moombahton and dancehall.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "collaboration",
+      "sample pack"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer who has made significant inroads in the international music scene. His work is characterized by a fusion of electronic beats with dancehall rhythms, a style that has garnered attention from major industry figures."
+      },
+      {
+        "type": "paragraph",
+        "text": "Known for his collaborations with prominent artists such as DJ Snake, Bad Bunny, and Major Lazer, Noizekid has established a reputation for innovative production. His contributions have helped shape the sound of contemporary Latin electronic music, particularly within the moombahton genre."
+      },
+      {
+        "type": "paragraph",
+        "text": "In addition to his collaborative efforts, Noizekid has released a sample pack in partnership with Barnation. This collection, titled the 'Noizekid Sample Pack,' includes a comprehensive array of samples, loops, and drum kits that he has utilized in his productions, offering insight into his creative process."
+      },
+      {
+        "type": "paragraph",
+        "text": "His work is further contextualized by his associations with similar artists such as ETC!ETC!, Los Dutis, LOOJAN, Bsno, and Freebot, all of whom contribute to the evolving landscape of Latin electronic music."
+      },
+      {
+        "type": "paragraph",
+        "text": "While specific tracks and releases remain unindexed, Noizekid's influence is evident in the broader electronic music community, particularly within scenes that value rhythmic innovation and cross-genre experimentation."
+      }
+    ],
+    "monetization": []
+  }
+}

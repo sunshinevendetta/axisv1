@@ -7,8 +7,8 @@ import {
   ownerAccessBytecode,
 } from "@/src/lib/owner-access-contract";
 
-const DEFAULT_BASE_URI = "ipfs://spectra-owner-access/{id}.json";
-const DEFAULT_CONTRACT_METADATA_URI = "ipfs://spectra-owner-access/contract.json";
+const DEFAULT_BASE_URI = "ipfs://axis-owner-access/{id}.json";
+const DEFAULT_CONTRACT_METADATA_URI = "ipfs://axis-owner-access/contract.json";
 
 type ServerActionBase = {
   contractAddress?: string;
@@ -271,3 +271,4 @@ export async function runOwnerAccessServerAction(input: OwnerAccessServerAction)
     summary: `${input.roleAction}ed ${contractRole} ${input.roleAction === "grant" ? "to" : "from"} ${account}.`,
   };
 }
+

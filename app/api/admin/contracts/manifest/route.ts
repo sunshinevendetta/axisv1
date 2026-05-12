@@ -1,14 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
-import { hasOwnerSession } from "@/src/lib/owner-session";
 
 const manifestPath = path.join(process.cwd(), "deployments.json");
 
 export async function GET() {
-  if (!(await hasOwnerSession())) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
   try {
     const raw = fs.existsSync(manifestPath) ? fs.readFileSync(manifestPath, "utf8") : "{}";
     return NextResponse.json(JSON.parse(raw));
@@ -18,9 +14,6 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  if (!(await hasOwnerSession())) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
   try {
     type ContractEntry = { address: string; txHash: string; deployedAt: string; chainId: number | null };
     const body = await request.json() as {

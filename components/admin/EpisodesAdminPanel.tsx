@@ -86,6 +86,11 @@ export default function EpisodesAdminPanel() {
   const { connect, connectors, isPending: isConnecting } = useConnect();
   const { disconnect } = useDisconnect();
   const { signMessageAsync } = useSignMessage();
+  const [ownerToken, setOwnerToken] = useState<string | null>(null);
+
+  function authHeaders(): HeadersInit {
+    return ownerToken ? { Authorization: `Bearer ${ownerToken}` } : {};
+  }
 
   const selectedEpisode = useMemo(
     () => episodes.find((episode) => episode.slug === selectedSlug) ?? null,
@@ -94,20 +99,7 @@ export default function EpisodesAdminPanel() {
   const currentOpenEpisode = useMemo(() => getCurrentOpenEpisode(episodes), [episodes]);
   const nextLockedEpisode = useMemo(() => getNextLockedEpisode(episodes), [episodes]);
 
-  useEffect(() => {
-    void fetch("/api/admin/session", { cache: "no-store" })
-      .then(async (response) => {
-        if (!response.ok) {
-          throw new Error("Failed to load session.");
-        }
-
-        const data = (await response.json()) as SessionState;
-        setSession(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  // No server-side session to check — auth is stateless via signed token
 
   useEffect(() => {
     if (!session.authenticated) {
@@ -150,7 +142,7 @@ export default function EpisodesAdminPanel() {
   }
 
   async function refreshEpisodes() {
-    const response = await fetch("/api/admin/episodes", { cache: "no-store" });
+    const response = await fetch("/api/admin/episodes", { cache: "no-store", headers: authHeaders() });
     if (!response.ok) {
       const message = await readApiError(response, "Failed to refresh episodes.");
 
@@ -184,64 +176,30 @@ export default function EpisodesAdminPanel() {
   }
 
   async function handleWalletLogin() {
-    if (!address) {
-      setFeedback("Connect a wallet first.");
-      return;
-    }
-
+    if (!address) { setFeedback("Connect a wallet first."); return; }
     setFeedback("");
-
-    const challengeResponse = await fetch("/api/admin/session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        mode: "challenge",
-        address,
-      }),
-    });
-
-    const challengeData = (await challengeResponse.json()) as { error?: string; message?: string };
-
-    if (!challengeResponse.ok || !challengeData.message) {
-      setFeedback(challengeData.error ?? "Failed to create wallet challenge.");
-      return;
+    try {
+      const timestamp = Date.now();
+      const message = `AXIS owner access\nAddress: ${address}\nTimestamp: ${timestamp}`;
+      const signature = await signMessageAsync({ message });
+      const res = await fetch("/api/admin/session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ address, signature, timestamp }),
+      });
+      const data = (await res.json()) as { token?: string; error?: string };
+      if (!res.ok || !data.token) { setFeedback(data.error ?? "Sign-in failed."); return; }
+      setOwnerToken(data.token);
+      setSession({ authenticated: true, configured: true, walletConfigured: true, bootstrapOnly: false, subject: `wallet:${address}` });
+      setFeedback("Wallet verified. Owner session started.");
+    } catch (e) {
+      setFeedback(e instanceof Error ? e.message : "Sign failed.");
     }
-
-    const signature = await signMessageAsync({ message: challengeData.message });
-
-    const verifyResponse = await fetch("/api/admin/session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        mode: "wallet",
-        address,
-        signature,
-      }),
-    });
-
-    const verifyData = (await verifyResponse.json()) as { error?: string };
-
-    if (!verifyResponse.ok) {
-      setFeedback(verifyData.error ?? "Wallet sign-in failed.");
-      return;
-    }
-
-    setFeedback("Wallet verified. Owner session started.");
-    setSession((current) => ({
-      ...current,
-      authenticated: true,
-      configured: true,
-      subject: `wallet:${address}`,
-    }));
   }
 
   async function handleLogout() {
-    await fetch("/api/admin/session", { method: "DELETE" });
     disconnect();
+    setOwnerToken(null);
     setSession((current) => ({ ...current, authenticated: false, subject: null }));
     setEpisodes([]);
     setDraft(null);
@@ -260,9 +218,7 @@ export default function EpisodesAdminPanel() {
 
         const response = await fetch(`/api/admin/episodes/${draft.slug}`, {
           method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json", ...authHeaders() },
           body: JSON.stringify(draft),
         });
 
@@ -296,9 +252,7 @@ export default function EpisodesAdminPanel() {
 
         const response = await fetch("/api/admin/luma", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json", ...authHeaders() },
           body: JSON.stringify({ reference }),
         });
 
@@ -365,6 +319,7 @@ export default function EpisodesAdminPanel() {
 
         const response = await fetch(`/api/admin/episodes/${draft.slug}/sync`, {
           method: "POST",
+          headers: authHeaders(),
         });
 
         const data = (await response.json()) as {
@@ -599,7 +554,9 @@ export default function EpisodesAdminPanel() {
                             <span className="shrink-0 text-[11px] uppercase tracking-[0.2em] text-white/45">{episode.status}</span>
                           </div>
                           <div className="mt-2 break-words text-sm text-white/72">{episode.title}</div>
-                          <div className="mt-2 text-sm text-white/55">{episode.startsAt.slice(0, 10)}</div>
+                          <div className="mt-2 text-sm text-white/55">
+                            {episode.status === "locked" ? String(episode.year) : episode.startsAt.slice(0, 10)}
+                          </div>
                           <div className="mt-3 flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.18em] text-white/42">
                             {isCurrent && <span className="rounded-full border border-white/10 px-2 py-1">current</span>}
                             {isNext && <span className="rounded-full border border-white/10 px-2 py-1">next</span>}

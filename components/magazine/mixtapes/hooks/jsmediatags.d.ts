@@ -1,22 +1,47 @@
 declare module "jsmediatags" {
-  interface TagType {
-    tags: {
-      title?: string;
-      artist?: string;
-      album?: string;
-      picture?: {
-        format: string;
-        data: number[];
-      };
-      [key: string]: unknown;
-    };
+  export type JSMediaTagPicture = {
+    format: string;
+    data: ArrayLike<number>;
+  };
+
+  export type JSMediaTagFrame = {
+    id: string;
+    size: number;
+    description: string;
+    data: string;
+  };
+
+  export type JSMediaTagValue = string | JSMediaTagFrame | JSMediaTagPicture;
+
+  export type JSMediaTags = {
+    title?: string;
+    artist?: string;
+    album?: string;
+    picture?: JSMediaTagPicture;
+    [key: string]: JSMediaTagValue | undefined;
+  };
+
+  export type JSMediaTagsError = {
+    type: "xhr" | "fileReader" | "tagFormat";
+    info?: string;
+    xhr?: XMLHttpRequest;
+  };
+
+  export type JSMediaTagResult = {
+    tags: JSMediaTags;
+  };
+
+  export type JSMediaTagsLocation = string | Blob | File | ArrayBuffer;
+
+  export type JSMediaTagsCallbacks = {
+    onSuccess: (tag: JSMediaTagResult) => void;
+    onError?: (error: JSMediaTagsError) => void;
+  };
+
+  export interface JSMediaTagsApi {
+    read(location: JSMediaTagsLocation, callbacks: JSMediaTagsCallbacks): void;
   }
-  function read(
-    url: string,
-    callbacks: {
-      onSuccess: (tag: TagType) => void;
-      onError: (error: unknown) => void;
-    },
-  ): void;
-  export default { read };
+
+  const jsmediatags: JSMediaTagsApi;
+  export default jsmediatags;
 }

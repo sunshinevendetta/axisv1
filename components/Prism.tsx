@@ -41,11 +41,7 @@ const Prism: React.FC<PrismProps> = ({
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) {
-      console.error("[Prism] No container ref — not mounting");
-      return;
-    }
-   
+    if (!container) return;
 
     const H = Math.max(0.001, height);
     const BW = Math.max(0.001, baseWidth);
@@ -88,14 +84,14 @@ const Prism: React.FC<PrismProps> = ({
     container.appendChild(gl.canvas);
   
 
-    const vertex = /* glsl */ `
+    const vertex = `
       attribute vec2 position;
       void main() {
         gl_Position = vec4(position, 0.0, 1.0);
       }
     `;
 
-    const fragment = /* glsl */ `
+    const fragment = `
       precision highp float;
 
       uniform vec2  iResolution;

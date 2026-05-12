@@ -1,0 +1,166 @@
+{
+  "jobId": "job_20260421002906_02vy3e",
+  "taskId": "job_20260421002906_02vy3e__skrillex",
+  "target": {
+    "key": "artist:skrillex",
+    "type": "artist",
+    "name": "Skrillex"
+  },
+  "researchPacket": {
+    "targetName": "Skrillex",
+    "sourceMode": "existing_db",
+    "artistContext": {
+      "name": "Skrillex",
+      "genres": [
+        "Dubstep",
+        "Electronic",
+        "Breakcore",
+        "Electro"
+      ],
+      "tags": [
+        "electronica"
+      ],
+      "summary": "Skrillex is the pseudonym used by Los Angeles, California, USA musician Sonny Moore to differentiate his electronic solo work from his work with From First to Last and his other solo projects. As Skrillex, Moore is an electronic DJ and producer boasting a musical style that incorporates electro house, fidget house, and brostep. Moore began producing and performing under the alias Skrillex at clubs in the Los Angeles area in 2008. Throughout 2010, Skrillex became a bigger and bigger part of Moore’s life."
+    },
+    "genreContext": null,
+    "relatedArtists": [
+      "Dog Blood",
+      "Zomboy",
+      "Jack Ü",
+      "Virtual Riot",
+      "Knife Party"
+    ],
+    "provenance": [
+      {
+        "type": "raw_article",
+        "value": "skrillex"
+      },
+      {
+        "type": "music_artists",
+        "value": "content/music-artists.json"
+      },
+      {
+        "type": "artist_media_cache",
+        "value": "content/artist-media-cache.json"
+      }
+    ]
+  },
+  "promptConfig": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "modelOutput": {
+    "writer": {
+      "id": 1,
+      "slug": "skrillex-electronic-music-profile",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Skrillex: Electronic Music Profile",
+      "subtitle": "Los Angeles-based producer and DJ known for dubstep and electro house innovations.",
+      "author": "C. Mora",
+      "authorRole": "Contributing Editor",
+      "date": "2026-04-21",
+      "readTime": "4 min",
+      "excerpt": "Skrillex, the electronic music alias of Los Angeles musician Sonny Moore, has become a defining force in contemporary electronic music through his distinctive production style and genre-blending releases.",
+      "featured": false,
+      "image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+      "tags": [
+        "dubstep",
+        "electronic",
+        "breakcore",
+        "electro",
+        "electronica",
+        "dj",
+        "producer"
+      ],
+      "linkedArtists": [
+        "Dog Blood",
+        "Zomboy",
+        "Jack Ü",
+        "Virtual Riot",
+        "Knife Party"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Skrillex is the professional alias used by Los Angeles, California musician Sonny Moore to distinguish his electronic solo work from his previous projects. As Skrillex, Moore operates as an electronic DJ and producer whose musical style incorporates electro house, fidget house, and brostep elements."
+        },
+        {
+          "type": "paragraph",
+          "text": "Moore began producing and performing under the Skrillex alias at clubs in the Los Angeles area in 2008. Throughout 2010, the Skrillex project became an increasingly significant part of his artistic output."
+        },
+        {
+          "type": "paragraph",
+          "text": "His recent releases include F*CK U SKRILLEX YOU THINK UR ANDY WARHOL BUT UR NOT!! <3, Don’t Get Too Close, Quest For Fire, Skrillex and Diplo present Jack Ü, and Recess. These works showcase his evolving production techniques and genre experimentation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Skrillex’s work is often associated with genres such as dubstep, electronic, breakcore, and electro, with additional tagging as electronica. His sound has influenced a range of electronic music scenes and continues to shape contemporary production aesthetics."
+        }
+      ],
+      "monetization": []
+    },
+    "editor": {
+      "id": 1,
+      "slug": "skrillex-electronic-music-profile",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Skrillex: Electronic Music Profile",
+      "subtitle": "Los Angeles-based producer and DJ known for dubstep and electro house innovations.",
+      "author": "C. Mora",
+      "authorRole": "Contributing Editor",
+      "date": "2026-04-21",
+      "readTime": "4 min",
+      "excerpt": "Skrillex, the electronic music alias of Los Angeles musician Sonny Moore, has become a defining force in contemporary electronic music through his distinctive production style and genre-blending releases.",
+      "featured": false,
+      "image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+      "tags": [
+        "dubstep",
+        "electronic",
+        "breakcore",
+        "electro",
+        "electronica",
+        "dj",
+        "producer"
+      ],
+      "linkedArtists": [
+        "Dog Blood",
+        "Zomboy",
+        "Jack Ü",
+        "Virtual Riot",
+        "Knife Party"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Skrillex is the professional alias used by Los Angeles, California musician Sonny Moore to distinguish his electronic solo work from his previous projects. As Skrillex, Moore operates as an electronic DJ and producer whose musical style incorporates electro house, fidget house, and brostep elements."
+        },
+        {
+          "type": "paragraph",
+          "text": "Moore began producing and performing under the Skrillex alias at clubs in the Los Angeles area in 2008. Throughout 2010, the Skrillex project became an increasingly significant part of his artistic output."
+        },
+        {
+          "type": "paragraph",
+          "text": "His recent releases include F*CK U SKRILLEX YOU THINK UR ANDY WARHOL BUT UR NOT!! <3, Don’t Get Too Close, Quest For Fire, Skrillex and Diplo present Jack Ü, and Recess. These works showcase his evolving production techniques and genre experimentation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Skrillex’s work is often associated with genres such as dubstep, electronic, breakcore, and electro, with additional tagging as electronica. His sound has influenced a range of electronic music scenes and continues to shape contemporary production aesthetics."
+        }
+      ],
+      "monetization": []
+    }
+  },
+  "review": {
+    "status": "needs_review",
+    "notes": ""
+  }
+}

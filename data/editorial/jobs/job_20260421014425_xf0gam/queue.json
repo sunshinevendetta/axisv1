@@ -1,0 +1,28 @@
+{
+  "jobId": "job_20260421014425_xf0gam",
+  "tasks": [
+    {
+      "id": "job_20260421014425_xf0gam__gsfpqp956kbh7nhr8b",
+      "jobId": "job_20260421014425_xf0gam",
+      "targetKey": "artist:gsfpqp956kbh7nhr8b",
+      "targetType": "artist",
+      "slug": "prolaps-hyperpop-chaos-architects",
+      "sourceRef": {
+        "kind": "raw_article",
+        "rawId": "7401805325758099143408884925093148612845890565685042053684322171571048644979",
+        "rawSlug": "gsfpqp956kbh7nhr8b",
+        "rawFolder": "0005_gsfpqp956kbh7nhr8b"
+      },
+      "status": "published",
+      "draftPath": "data\\editorial\\jobs\\job_20260421014425_xf0gam\\articles\\job_20260421014425_xf0gam__gsfpqp956kbh7nhr8b.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421014425_xf0gam\\articles\\job_20260421014425_xf0gam__gsfpqp956kbh7nhr8b.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421014425_xf0gam\\articles\\job_20260421014425_xf0gam__gsfpqp956kbh7nhr8b.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": "https://api.grove.storage/8c5efd62c73e687316352c4d2e1e99bacab73b44858943135e7cca6d5aa6e72b",
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-21T16:58:31.822Z"
+    }
+  ]
+}

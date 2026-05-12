@@ -28,8 +28,8 @@ type CoinGeckoMarket = {
   market_cap_rank?: number | null;
 };
 
-const CACHE_KEY = "spectra:crypto-prices:v2";
-const REFRESH_MS = 60_000;
+const CACHE_KEY = "axis:crypto-prices:v3";
+const REFRESH_MS = 30 * 60_000;
 const CG_URL =
   "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false&price_change_percentage=24h";
 
@@ -72,7 +72,7 @@ function dedupeAndNormalize(markets: CoinGeckoMarket[]): CryptoPrice[] {
 }
 
 async function fetchPrices(): Promise<CryptoPrice[]> {
-  const response = await fetch(CG_URL, { cache: "no-store" });
+  const response = await fetch(CG_URL);
   if (!response.ok) {
     throw new Error(`CoinGecko request failed with ${response.status}`);
   }
@@ -81,16 +81,20 @@ async function fetchPrices(): Promise<CryptoPrice[]> {
   return dedupeAndNormalize(data);
 }
 
-function readCache(): CryptoPrice[] {
-  if (typeof window === "undefined") return [];
+function readCache(): CachedPrices | null {
+  if (typeof window === "undefined") return null;
 
   try {
     const raw = window.localStorage.getItem(CACHE_KEY);
-    if (!raw) return [];
+    if (!raw) return null;
     const parsed = JSON.parse(raw) as CachedPrices;
-    return Array.isArray(parsed.prices) ? parsed.prices : [];
+    if (!Array.isArray(parsed.prices)) {
+      return null;
+    }
+
+    return parsed;
   } catch {
-    return [];
+    return null;
   }
 }
 
@@ -116,8 +120,8 @@ export function useCryptoPrices() {
     let mounted = true;
 
     const cached = readCache();
-    if (cached.length > 0) {
-      setPrices(cached);
+    if (cached && cached.prices.length > 0) {
+      setPrices(cached.prices);
       setLoading(false);
     }
 
@@ -130,16 +134,19 @@ export function useCryptoPrices() {
         })
         .catch(() => {
           if (!mounted) return;
-          const fallbackPrices = readCache();
+          const fallbackPrices = readCache()?.prices ?? [];
           if (fallbackPrices.length > 0) {
             setPrices(fallbackPrices);
           }
         })
         .finally(() => { if (mounted) setLoading(false); });
 
-    load();
-    const id = window.setInterval(load, REFRESH_MS);
-    return () => { mounted = false; clearInterval(id); };
+    const isCacheFresh = cached ? Date.now() - cached.updatedAt < REFRESH_MS : false;
+    if (!isCacheFresh) {
+      load();
+    }
+
+    return () => { mounted = false; };
   }, []);
 
   return { prices, loading };

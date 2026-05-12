@@ -1,0 +1,61 @@
+{
+  "jobId": "job_20260421032727_s1qf9q",
+  "taskId": "job_20260421032727_s1qf9q__3149qcp3y4rj17srnwt",
+  "targetKey": "artist:3149qcp3y4rj17srnwt",
+  "article": {
+    "id": 1,
+    "slug": "estelle-allen-hyper-rock-innovator",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Estelle Allen: Hyper-Rock Innovator",
+    "subtitle": "A fusion of glitchy hyperpop and raw indie rock energy",
+    "author": "V. Reyes",
+    "authorRole": "Staff Writer",
+    "date": "2026-04-21",
+    "readTime": "5 min",
+    "excerpt": "Estelle Allen merges hyper-rock and hyperpop with glitchy digital production and raw indie rock elements, creating a distinctive sound that resonates with experimental music enthusiasts.",
+    "featured": false,
+    "image_url": "https://gw.ipfs-lens.dev/ipfs/bafkreidujcf74mopngw4jaracxlngtvsi63aysbrcaxfxl53cmnrkhsdtu",
+    "tags": [
+      "hyper-rock",
+      "hyperpop",
+      "digicore",
+      "indie rock",
+      "experimental",
+      "glitch",
+      "electronic"
+    ],
+    "linkedArtists": [
+      "Alice Gas",
+      "Food House",
+      "Fraxiom"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Estelle Allen is an artist who is redefining boundaries with her innovative blend of hyper-rock and hyperpop. Her sound is characterized by glitchy, digital production paired with raw indie rock elements, resulting in a distinctive fusion that captures both futuristic energy and emotional depth."
+      },
+      {
+        "type": "paragraph",
+        "text": "Key tracks such as 'dui', 'girlfriend', and 'August Forever' exemplify her approach. 'dui' combines swirling, chaotic energy with controlled precision, while 'girlfriend' delivers a bittersweet anthem with haunting undertones. 'August Forever' offers a dreamy yet gritty soundscape, evoking neon-lit memories and hypnotic grooves."
+      },
+      {
+        "type": "paragraph",
+        "text": "Her music resonates within a scene of experimental artists who are pushing genre boundaries. Estelle’s work feels like the soundtrack to an anime-meets-indie-rock utopia, with tracks like 'gum' and 'sober' blending electronic punch and heartfelt vulnerability. 'Strange Creature' and 'cellphone' further demonstrate her ability to craft reflective, intimate pieces set to music."
+      },
+      {
+        "type": "paragraph",
+        "text": "Artists such as Alice Gas, Food House, and Fraxiom share a similar experimental spirit, contributing to a vibrant hyperpop and indie scene. Alice Gas, known for her hyperpop and happy hardcore productions, frequently incorporates emo and rap influences, while Food House and Fraxiom add their own glitchy, absurd, and experimental flavors to the mix."
+      },
+      {
+        "type": "paragraph",
+        "text": "Estelle Allen’s work is more than just music—it is an immersive experience that combines a kaleidoscope of emotions with digital grit, inviting listeners into a unique sonic universe."
+      }
+    ],
+    "monetization": []
+  }
+}

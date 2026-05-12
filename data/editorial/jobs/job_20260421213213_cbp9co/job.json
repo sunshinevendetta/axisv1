@@ -1,0 +1,25 @@
+{
+  "id": "job_20260421213213_cbp9co",
+  "mode": "single",
+  "source": "existing_db",
+  "targetType": "artist",
+  "filters": {
+    "artistSlugs": [],
+    "genre": null,
+    "scene": null,
+    "city": null,
+    "missingOnly": false
+  },
+  "count": 1,
+  "concurrency": 1,
+  "status": "completed",
+  "createdAt": "2026-04-21T21:32:13.092Z",
+  "updatedAt": "2026-04-21T21:32:46.426Z",
+  "completedAt": "2026-04-21T21:32:46.426Z",
+  "createdBy": "owner",
+  "promptProfile": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "notes": "Artist catalog generation for Fiesta Soundsystem"
+}

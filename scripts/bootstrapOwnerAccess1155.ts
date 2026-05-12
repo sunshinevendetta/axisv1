@@ -31,17 +31,17 @@ async function main() {
   const initialMinterAddress = process.env.OWNER_ACCESS_INITIAL_MINTER_ADDRESS ?? signer.address;
   const recipient = process.env.OWNER_ACCESS_RECIPIENT ?? adminAddress;
   const role = normalizeRole(process.env.OWNER_ACCESS_ROLE ?? "owner");
-  const baseUri = process.env.OWNER_ACCESS_BASE_URI ?? "ipfs://spectra-owner-access/{id}.json";
+  const baseUri = process.env.OWNER_ACCESS_BASE_URI ?? "ipfs://axis-owner-access/{id}.json";
   const contractMetadataUri =
-    process.env.OWNER_ACCESS_CONTRACT_METADATA_URI ?? "ipfs://spectra-owner-access/contract.json";
+    process.env.OWNER_ACCESS_CONTRACT_METADATA_URI ?? "ipfs://axis-owner-access/contract.json";
 
-  const artifact = await artifacts.readArtifact("SpectraOwnerAccess1155");
+  const artifact = await artifacts.readArtifact("AxisOwnerAccess1155");
   const factory = new ContractFactory(artifact.abi, artifact.bytecode, signer);
   const contract = await factory.deploy(adminAddress, initialMinterAddress, baseUri, contractMetadataUri);
   await contract.waitForDeployment();
 
   const address = await contract.getAddress();
-  console.log(`SpectraOwnerAccess1155 deployed to ${address}`);
+  console.log(`AxisOwnerAccess1155 deployed to ${address}`);
 
   const connected = new Contract(address, OWNER_ACCESS_ABI, signer);
 

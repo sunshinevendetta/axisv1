@@ -1,0 +1,25 @@
+{
+  "id": "job_20260422045850_e5wabk",
+  "mode": "single",
+  "source": "existing_db",
+  "targetType": "artist",
+  "filters": {
+    "artistSlugs": [],
+    "genre": null,
+    "scene": null,
+    "city": null,
+    "missingOnly": false
+  },
+  "count": 1,
+  "concurrency": 1,
+  "status": "completed",
+  "createdAt": "2026-04-22T04:58:50.057Z",
+  "updatedAt": "2026-04-22T04:59:18.906Z",
+  "completedAt": "2026-04-22T04:59:18.906Z",
+  "createdBy": "owner",
+  "promptProfile": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "notes": "Artist catalog generation for Seth Troxler"
+}

@@ -1,81 +1,51 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-  clearOwnerSession,
-  createOwnerWalletChallenge,
-  getOwnerSessionSubject,
-  hasOwnerSession,
-  isOwnerBootstrapOnly,
-  isOwnerAuthConfigured,
-  isOwnerWalletConfigured,
-  issueBootstrapWalletSession,
-  issueOwnerWalletSession,
-  verifyOwnerWalletSignature,
-} from "@/src/lib/owner-session";
+import { getAddress, isAddress, verifyMessage } from "ethers";
+import { buildOwnerAuthMessage, verifyOwnerToken } from "@/src/lib/owner-session";
 
-export async function GET() {
-  return NextResponse.json({
-    authenticated: await hasOwnerSession(),
-    configured: isOwnerAuthConfigured(),
-    walletConfigured: isOwnerWalletConfigured(),
-    bootstrapOnly: isOwnerBootstrapOnly(),
-    subject: await getOwnerSessionSubject(),
-  });
+const OWNER_ADDRESS = "0xAe6b19b637FDCB9c5C05238E5279754C39DE76A9";
+
+export async function GET(request: NextRequest) {
+  const auth = request.headers.get("authorization") ?? "";
+  if (auth.startsWith("Bearer ")) {
+    const authenticated = verifyOwnerToken(auth.slice(7));
+    return NextResponse.json({ authenticated, configured: true, walletConfigured: true, bootstrapOnly: false });
+  }
+  return NextResponse.json({ authenticated: false, configured: true, walletConfigured: true, bootstrapOnly: false });
 }
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
-  const mode = String(body.mode ?? "wallet");
+  const body = (await request.json().catch(() => ({}))) as Record<string, unknown>;
 
-  if (!isOwnerAuthConfigured()) {
-    return NextResponse.json(
-      {
-        error: "Owner wallet auth is not configured. Set the ERC-1155 owner environment variables first.",
-      },
-      { status: 500 },
-    );
+  const address = typeof body.address === "string" ? body.address.trim() : "";
+  const signature = typeof body.signature === "string" ? body.signature.trim() : "";
+  const timestamp = typeof body.timestamp === "number" ? body.timestamp : Date.now();
+
+  if (!isAddress(address)) {
+    return NextResponse.json({ error: "Invalid wallet address." }, { status: 400 });
   }
 
-  if (mode === "challenge") {
-    try {
-      const message = await createOwnerWalletChallenge(String(body.address ?? ""));
-      return NextResponse.json({ message });
-    } catch (error) {
-      return NextResponse.json(
-        { error: error instanceof Error ? error.message : "Failed to create wallet challenge." },
-        { status: 400 },
-      );
+  if (getAddress(address) !== getAddress(OWNER_ADDRESS)) {
+    return NextResponse.json({ error: "This wallet does not have owner access." }, { status: 401 });
+  }
+
+  if (!signature) {
+    const message = buildOwnerAuthMessage(address, timestamp);
+    return NextResponse.json({ message, timestamp });
+  }
+
+  try {
+    const message = buildOwnerAuthMessage(address, timestamp);
+    const recovered = getAddress(verifyMessage(message, signature));
+    if (recovered !== getAddress(OWNER_ADDRESS)) {
+      return NextResponse.json({ error: "Invalid signature." }, { status: 401 });
     }
+    const token = `${getAddress(address)}:${signature}:${timestamp}`;
+    return NextResponse.json({ success: true, token });
+  } catch {
+    return NextResponse.json({ error: "Signature verification failed." }, { status: 401 });
   }
-
-  if (mode === "wallet") {
-    try {
-      const address = String(body.address ?? "");
-      const signature = String(body.signature ?? "");
-      const isValidSignature = await verifyOwnerWalletSignature(address, signature);
-
-      if (!isValidSignature) {
-        return NextResponse.json({ error: "Invalid wallet signature." }, { status: 401 });
-      }
-
-      if (isOwnerWalletConfigured()) {
-        await issueOwnerWalletSession(address);
-      } else {
-        await issueBootstrapWalletSession(address);
-      }
-
-      return NextResponse.json({ success: true });
-    } catch (error) {
-      return NextResponse.json(
-        { error: error instanceof Error ? error.message : "Wallet sign-in failed." },
-        { status: 401 },
-      );
-    }
-  }
-
-  return NextResponse.json({ error: "Unsupported owner auth mode." }, { status: 400 });
 }
 
 export async function DELETE() {
-  await clearOwnerSession();
   return NextResponse.json({ success: true });
 }

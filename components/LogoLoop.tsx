@@ -37,6 +37,9 @@ export interface LogoLoopProps {
   style?: React.CSSProperties;
 }
 
+type NodeLogoItem = Extract<LogoItem, { node: React.ReactNode }>;
+type ImageLogoItem = Extract<LogoItem, { src: string }>;
+
 const ANIMATION_CONFIG = {
   SMOOTH_TAU: 0.25,
   MIN_COPIES: 2
@@ -308,31 +311,34 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           );
         }
         const isNodeItem = 'node' in item;
+        const nodeItem = isNodeItem ? item as NodeLogoItem : null;
+        const imageItem = isNodeItem ? null : item as ImageLogoItem;
         const content = isNodeItem ? (
-          <span className="logoloop__node" aria-hidden={!!item.href && !item.ariaLabel}>
-            {(item as any).node}
+          <span className="logoloop__node" aria-hidden={!!nodeItem?.href && !nodeItem?.ariaLabel}>
+            {nodeItem?.node}
           </span>
         ) : (
           <img
-            src={(item as any).src}
-            srcSet={(item as any).srcSet}
-            sizes={(item as any).sizes}
-            width={(item as any).width}
-            height={(item as any).height}
-            alt={(item as any).alt ?? ''}
-            title={(item as any).title}
+            src={imageItem?.src}
+            srcSet={imageItem?.srcSet}
+            sizes={imageItem?.sizes}
+            width={imageItem?.width}
+            height={imageItem?.height}
+            alt={imageItem?.alt ?? ''}
+            title={imageItem?.title}
             loading="lazy"
             decoding="async"
             draggable={false}
           />
         );
         const itemAriaLabel = isNodeItem
-          ? ((item as any).ariaLabel ?? (item as any).title)
-          : ((item as any).alt ?? (item as any).title);
-        const itemContent = (item as any).href ? (
+          ? (nodeItem?.ariaLabel ?? nodeItem?.title)
+          : (imageItem?.alt ?? imageItem?.title);
+        const itemHref = item.href;
+        const itemContent = itemHref ? (
           <a
             className="logoloop__link"
-            href={(item as any).href}
+            href={itemHref}
             aria-label={itemAriaLabel || 'logo link'}
             target="_blank"
             rel="noreferrer noopener"

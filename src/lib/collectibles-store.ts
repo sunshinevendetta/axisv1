@@ -1,12 +1,11 @@
-import { promises as fs } from "node:fs";
-import path from "node:path";
 import {
   collectiblesCatalog as fallbackCatalog,
   type EpisodeCollectibleRecord,
   type EpisodeCollectiblesCatalog,
 } from "@/src/content/collectibles";
+import { readJsonFile, writeJsonFile, isRecord } from "@/src/lib/json-store";
 
-const COLLECTIBLES_FILE_PATH = path.join(process.cwd(), "content", "episode-collectibles.json");
+const COLLECTIBLES_FILE_PATH = `${process.cwd()}/content/episode-collectibles.json`;
 
 function normalizeRecord(record: EpisodeCollectibleRecord): EpisodeCollectibleRecord {
   return {
@@ -32,28 +31,26 @@ function normalizeCatalog(catalog: EpisodeCollectiblesCatalog): EpisodeCollectib
     collection: { ...catalog.collection },
     episodes: [...catalog.episodes]
       .map(normalizeRecord)
-      .sort((left, right) => left.number - right.number),
+      .sort((left, right) => left.slug.localeCompare(right.slug, undefined, { numeric: true })),
   };
 }
 
+function isCollectiblesCatalog(value: unknown): value is EpisodeCollectiblesCatalog {
+  return isRecord(value) && Array.isArray(value.episodes);
+}
+
 export async function readCollectiblesCatalog(): Promise<EpisodeCollectiblesCatalog> {
-  try {
-    const fileContents = await fs.readFile(COLLECTIBLES_FILE_PATH, "utf8");
-    const parsed = JSON.parse(fileContents) as EpisodeCollectiblesCatalog;
+  const catalog = await readJsonFile(COLLECTIBLES_FILE_PATH, {
+    fallback: normalizeCatalog(fallbackCatalog),
+    validate: isCollectiblesCatalog,
+    onError: (error) => {
+      console.error("Falling back to bundled collectibles catalog:", error);
+    },
+  });
 
-    if (!parsed || !Array.isArray(parsed.episodes)) {
-      throw new Error("Collectibles catalog must contain an episodes array.");
-    }
-
-    return normalizeCatalog(parsed);
-  } catch (error) {
-    console.error("Falling back to bundled collectibles catalog:", error);
-    return normalizeCatalog(fallbackCatalog);
-  }
+  return normalizeCatalog(catalog);
 }
 
 export async function writeCollectiblesCatalog(catalog: EpisodeCollectiblesCatalog) {
-  const normalizedCatalog = normalizeCatalog(catalog);
-  await fs.mkdir(path.dirname(COLLECTIBLES_FILE_PATH), { recursive: true });
-  await fs.writeFile(COLLECTIBLES_FILE_PATH, `${JSON.stringify(normalizedCatalog, null, 2)}\n`, "utf8");
+  await writeJsonFile(COLLECTIBLES_FILE_PATH, normalizeCatalog(catalog));
 }

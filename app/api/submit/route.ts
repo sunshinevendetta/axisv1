@@ -107,10 +107,10 @@ export async function POST(req: NextRequest) {
             <!-- Header / Logo -->
             <tr>
               <td align="center" style="padding: 40px 0 20px;">
-                <img 
-                  src="https://raw.githubusercontent.com/sunshinevendetta/spectra/refs/heads/main/public/logow.png" 
-                  alt="AXIS Logo" 
-                  width="180" 
+                <img
+                  src="https://axis.show/logow.png"
+                  alt="AXIS Logo"
+                  width="180"
                   style="display:block; max-width:180px; height:auto;"
                 />
               </td>
@@ -133,7 +133,7 @@ export async function POST(req: NextRequest) {
                   ? 'We are excited to review what you are building and appreciate you sharing it with the AXIS community.'
                   : 'We are excited to review your work and appreciate you sharing it with the AXIS community.'
                 }</p>
-                
+
                 <p><strong>Here's what you shared with us:</strong></p>
                 <ul style="margin:0; padding-left:20px; color:#cccccc;">
                   <li><strong>Name / Alias:</strong> ${name}</li>
@@ -146,7 +146,7 @@ export async function POST(req: NextRequest) {
                 </ul>
 
                 <p style="margin:30px 0 10px;">
-                  <strong>Next steps:</strong> Our curation team will review your submission shortly. 
+                  <strong>Next steps:</strong> Our curation team will review your submission shortly.
                   ${isDevSubmission
                     ? 'If your product aligns with our vision, we will contact you directly via email or the channels you provided.'
                     : 'If your artwork aligns with our vision, we will contact you directly via email or the channels you provided.'
@@ -200,13 +200,14 @@ export async function POST(req: NextRequest) {
 
     console.log('Both emails sent successfully');
     return NextResponse.json({ success: true });
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const error = err instanceof Error ? err : new Error(String(err));
     console.error('Detailed send error:', {
-      message: err.message,
-      stack: err.stack,
-      code: err.code,
-      errno: err.errno,
-      syscall: err.syscall,
+      message: error.message,
+      stack: error.stack,
+      code: typeof err === "object" && err && "code" in err ? (err as { code?: unknown }).code : undefined,
+      errno: typeof err === "object" && err && "errno" in err ? (err as { errno?: unknown }).errno : undefined,
+      syscall: typeof err === "object" && err && "syscall" in err ? (err as { syscall?: unknown }).syscall : undefined,
     });
     return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
   }

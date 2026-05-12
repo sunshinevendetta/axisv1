@@ -1,0 +1,68 @@
+{
+  "jobId": "job_20260422045142_l9jste",
+  "taskId": "job_20260422045142_l9jste__1pjmkad2qeeee5j5c4a",
+  "targetKey": "artist:1pjmkad2qeeee5j5c4a",
+  "article": {
+    "id": 1,
+    "slug": "princess-ketamine-bubblegum-bass-ethereal-electronic",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Princess Ketamine: Bubblegum Bass and Ethereal Electronic",
+    "subtitle": "A sonic journey through glitchy dreamscapes and hyperpop innovation",
+    "author": "V. Reyes",
+    "authorRole": "Staff Writer",
+    "date": "2026-04-22",
+    "readTime": "6 min",
+    "excerpt": "Princess Ketamine crafts a distinctive sound that merges bubblegum bass with ethereal electronic elements, creating a futuristic pop experience defined by unpredictable production and vivid sonic textures.",
+    "featured": false,
+    "image_url": "https://gw.ipfs-lens.dev/ipfs/bafkreiboe37ec4rm26tkn4suoqzbtgmv22gfx4cif7pvpotpgu6bbwbboq",
+    "tags": [
+      "bubblegum bass",
+      "hyperpop",
+      "ethereal electronic",
+      "glitch",
+      "dreamy",
+      "futuristic pop",
+      "cyberpunk",
+      "vaporwave"
+    ],
+    "linkedArtists": [
+      "That Kid",
+      "Fraxiom",
+      "Alice Gas",
+      "Alice Longyu Gao",
+      "100 gecs"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Princess Ketamine emerges as a distinctive voice in contemporary electronic music, blending bubblegum bass with ethereal textures to create a sound that is both futuristic and deeply personal."
+      },
+      {
+        "type": "paragraph",
+        "text": "Her music is characterized by glitchy, dreamy soundscapes that evoke a sense of chaotic elegance. Tracks such as 'Weeds' showcase a poetic exploration of emotion, wrapped in dreamy instrumentals that feel like floating in an over-saturated, glitchy world. The raw, introspective lyrics touch on cycles of self-destruction and growth, resulting in a hypnotic listening experience."
+      },
+      {
+        "type": "paragraph",
+        "text": "In contrast, 'Hikari' transports listeners to a cyberpunk cityscape at night, with neon lights reflecting off raindrops. The track incorporates dreamy, almost vaporwave aesthetics, layered with soft Japanese vocals and shimmering synths, creating an immersive auditory journey."
+      },
+      {
+        "type": "paragraph",
+        "text": "Princess Ketamine's remix of 'Down For Whatever' demonstrates her ability to transform a track into a hyperpop track, complete with intense beat switches, rebellious lyrics, and an attitude that invites listeners to embrace a digital revolution."
+      },
+      {
+        "type": "paragraph",
+        "text": "Her overall aesthetic is reminiscent of stepping into a glittering underground nightclub in the year 2087, where hyperpop's maximalist tendencies are fused with hauntingly personal elements. This approach results in tracks that are not merely catchy but also serve as emotional deep dives wrapped in auto-tuned beauty."
+      },
+      {
+        "type": "paragraph",
+        "text": "Listeners drawn to Princess Ketamine's sound may also appreciate artists such as That Kid, Fraxiom, and Alice Gas, who similarly blend elements of hyperpop, nightcore, electronic madness, and internet-era rebellion into their music."
+      }
+    ],
+    "monetization": []
+  }
+}

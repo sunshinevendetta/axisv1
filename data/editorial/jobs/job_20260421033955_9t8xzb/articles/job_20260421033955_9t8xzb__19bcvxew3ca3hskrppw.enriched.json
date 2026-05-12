@@ -1,0 +1,162 @@
+{
+  "jobId": "job_20260421033955_9t8xzb",
+  "taskId": "job_20260421033955_9t8xzb__19bcvxew3ca3hskrppw",
+  "target": {
+    "key": "artist:19bcvxew3ca3hskrppw",
+    "type": "artist",
+    "name": "Tags That Define the Energy"
+  },
+  "researchPacket": {
+    "targetName": "Tags That Define the Energy",
+    "sourceMode": "existing_db",
+    "artistContext": null,
+    "genreContext": null,
+    "relatedArtists": [],
+    "provenance": [
+      {
+        "type": "raw_article",
+        "value": "19bcvxew3ca3hskrppw"
+      },
+      {
+        "type": "music_artists",
+        "value": "content/music-artists.json"
+      },
+      {
+        "type": "artist_media_cache",
+        "value": "content/artist-media-cache.json"
+      }
+    ]
+  },
+  "promptConfig": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "modelOutput": {
+    "writer": {
+      "id": 1,
+      "slug": "yameii-online-digital-dreamscape-queen",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Yameii Online: The Digital Dreamscape Queen",
+      "subtitle": "A Vocaloid Rapper Crafting a Neon-Lit Cyberspace Utopia",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-21",
+      "readTime": "5 min",
+      "excerpt": "Yameii Online emerges as a distinctive figure in the glitchcore hyperpop scene, blending rapid-fire bars with dreamy synths and futuristic production.",
+      "featured": false,
+      "image_url": "https://gw.ipfs-lens.dev/ipfs/bafkreibwxrnckjk7klqs27v4yajzwo5gp7lbshuflezkxy2xy3prn7az54",
+      "tags": [
+        "vocaloid",
+        "glitchcore",
+        "hyperpop",
+        "oseanworld",
+        "deko",
+        "experimental",
+        "digital",
+        "cyberspace"
+      ],
+      "linkedArtists": [
+        "Deko",
+        "OseanWorld",
+        "ericdoa"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Yameii Online is a Vocaloid rapper whose sound is deeply rooted in the glitchcore hyperpop world. Emerging from OseanWorld, her music is characterized by a fusion of dreamy synths, rapid-fire bars, and futuristic production values, often helmed by producer Deko."
+        },
+        {
+          "type": "paragraph",
+          "text": "Her tracks evoke a sense of digital euphoria, blending elements of hip-hop and experimental sound design. This results in a sonic experience that feels like logging into an alternate, euphoric version of the internet."
+        },
+        {
+          "type": "paragraph",
+          "text": "Essential tracks include Baby My Phone, a sugar-coated hyperpop anthem with bouncing beats and auto-tuned vocals; Yameii Vs. The World, a chaotic burst of glitchy adrenaline; synesthesia!, a track that paints colors with shimmering synths; where’d u go?, a hyperpop heartbreak song; and Floozie, a futuristic club banger."
+        },
+        {
+          "type": "paragraph",
+          "text": "Yameii Online is considered a digital pop sister to artists like Dorian Electra, Fraxiom, and Alice Gas. Her work is part of a larger concept that merges music, gaming, and digital art, creating a fully realized virtual persona."
+        },
+        {
+          "type": "paragraph",
+          "text": "Deko is the mastermind behind Yameii’s sound, crafting futuristic beats that feel straight out of a sci-fi anime. OseanWorld provides the visual genius that gives Yameii her hyper-detailed aesthetic, making her an actual character in an evolving storyline."
+        },
+        {
+          "type": "paragraph",
+          "text": "Yameii Online’s universe is a fully realized virtual persona brought to life through sound, visuals, and lore. Every song feels like a different level in a neon-colored RPG, where emotions are coded into the beat and every drop is a power-up."
+        }
+      ],
+      "monetization": []
+    },
+    "editor": {
+      "id": 1,
+      "slug": "yameii-online-digital-dreamscape-queen",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Yameii Online: The Digital Dreamscape Queen",
+      "subtitle": "A Vocaloid Rapper Crafting a Neon-Lit Cyberspace Utopia",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-21",
+      "readTime": "5 min",
+      "excerpt": "Yameii Online emerges as a distinctive figure in the glitchcore hyperpop scene, blending rapid-fire bars with dreamy synths and futuristic production.",
+      "featured": false,
+      "image_url": "https://gw.ipfs-lens.dev/ipfs/bafkreibwxrnckjk7klqs27v4yajzwo5gp7lbshuflezkxy2xy3prn7az54",
+      "tags": [
+        "vocaloid",
+        "glitchcore",
+        "hyperpop",
+        "oseanworld",
+        "deko",
+        "experimental",
+        "digital",
+        "cyberspace"
+      ],
+      "linkedArtists": [
+        "Deko",
+        "OseanWorld",
+        "ericdoa"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Yameii Online is a Vocaloid rapper whose sound is deeply rooted in the glitchcore hyperpop world. Emerging from OseanWorld, her music is characterized by a fusion of dreamy synths, rapid-fire bars, and futuristic production values, often helmed by producer Deko."
+        },
+        {
+          "type": "paragraph",
+          "text": "Her tracks evoke a sense of digital euphoria, blending elements of hip-hop and experimental sound design. This results in a sonic experience that feels like logging into an alternate, euphoric version of the internet."
+        },
+        {
+          "type": "paragraph",
+          "text": "Essential tracks include Baby My Phone, a sugar-coated hyperpop anthem with bouncing beats and auto-tuned vocals; Yameii Vs. The World, a chaotic burst of glitchy adrenaline; synesthesia!, a track that paints colors with shimmering synths; where’d u go?, a hyperpop heartbreak song; and Floozie, a futuristic club banger."
+        },
+        {
+          "type": "paragraph",
+          "text": "Yameii Online is considered a digital pop sister to artists like Dorian Electra, Fraxiom, and Alice Gas. Her work is part of a larger concept that merges music, gaming, and digital art, creating a fully realized virtual persona."
+        },
+        {
+          "type": "paragraph",
+          "text": "Deko is the mastermind behind Yameii’s sound, crafting futuristic beats that feel straight out of a sci-fi anime. OseanWorld provides the visual genius that gives Yameii her hyper-detailed aesthetic, making her an actual character in an evolving storyline."
+        },
+        {
+          "type": "paragraph",
+          "text": "Yameii Online’s universe is a fully realized virtual persona brought to life through sound, visuals, and lore. Every song feels like a different level in a neon-colored RPG, where emotions are coded into the beat and every drop is a power-up."
+        }
+      ],
+      "monetization": []
+    }
+  },
+  "review": {
+    "status": "needs_review",
+    "notes": ""
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "jobId": "job_20260429021847_k1hfub",
+  "taskId": "job_20260429021847_k1hfub__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: A Profile of the Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborations with DJ Snake, Bad Bunny, and Major Lazer mark his trajectory.",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid stands as a notable figure in the moombahton and dancehall landscape, with a portfolio that includes collaborations with prominent industry names.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "collaboration",
+      "sample pack"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid emerges as a significant contributor to the moombahton and dancehall scene, with a career marked by high-profile collaborations and innovative production techniques."
+      },
+      {
+        "type": "paragraph",
+        "text": "His work has intersected with major industry figures such as DJ Snake, Bad Bunny, and Major Lazer, underscoring his influence within the genre."
+      },
+      {
+        "type": "paragraph",
+        "text": "In addition to his production credits, Noizekid has expanded his creative output through the release of the 'Noizekid Sample Pack' in partnership with Barnation, a collection that includes his signature samples, loops, and drum patterns."
+      },
+      {
+        "type": "paragraph",
+        "text": "This sample pack not only provides insight into his production methods but also serves as a resource for fellow producers seeking to incorporate his distinctive sound into their work."
+      },
+      {
+        "type": "paragraph",
+        "text": "While his discography and track listings remain unindexed in available databases, his contributions to the moombahton and dancehall genres continue to resonate within the music community."
+      }
+    ],
+    "monetization": []
+  }
+}

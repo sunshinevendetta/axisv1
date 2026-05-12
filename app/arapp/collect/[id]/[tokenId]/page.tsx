@@ -5,33 +5,40 @@ import PillNav from "@/components/PillNav";
 import ARAppCollectProductPage from "@/components/arapp/ARAppCollectProductPage";
 import { arappNavItems } from "@/src/lib/navigation";
 import {
-  EPISODE_CONFIG,
   getEpisodeBySlug,
   getARAppCollectTokenByTokenId,
   toARAppCollectDrop,
 } from "@/src/lib/arapp-collect";
 import { IS_CONTRACT_DEPLOYED } from "@/src/lib/arapp-collect-chain";
+import { getAxisNodeByRoute, getAxisNodesByType } from "@/src/lib/graph";
 
 type Props = { params: Promise<{ id: string; tokenId: string }> };
 
 export async function generateStaticParams() {
-  return EPISODE_CONFIG.flatMap((ep) =>
-    ep.tokenIds.map((tokenId) => ({ id: ep.slug, tokenId: tokenId.toString() })),
-  );
+  return getAxisNodesByType("drop")
+    .map((node) => node.surfaces?.canonical)
+    .filter((route): route is string => Boolean(route))
+    .map((route) => {
+      const [, , , id, tokenId] = route.split("/");
+      return { id, tokenId };
+    });
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { tokenId } = await params;
-  const token = getARAppCollectTokenByTokenId(Number(tokenId));
-  if (!token) return { title: "Not Found" };
+  const { id, tokenId } = await params;
+  const node = getAxisNodeByRoute(`/arapp/collect/${id}/${tokenId}`);
+  if (!node || node.type !== "drop") return { title: "Not Found" };
   return {
-    title: `${token.metadata.name} — AXIS Collect`,
-    description: token.metadata.description,
+    title: `${node.title} — AXIS Collect`,
+    description: node.summary,
   };
 }
 
 export default async function CollectTokenPage({ params }: Props) {
   const { id, tokenId: tokenIdStr } = await params;
+  const node = getAxisNodeByRoute(`/arapp/collect/${id}/${tokenIdStr}`);
+  if (!node || node.type !== "drop") notFound();
+
   const episode = getEpisodeBySlug(id);
   const tokenId = Number(tokenIdStr);
 

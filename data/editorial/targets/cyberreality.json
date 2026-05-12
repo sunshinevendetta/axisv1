@@ -1,0 +1,21 @@
+{
+  "key": "artist:cyberreality",
+  "type": "artist",
+  "name": "Cyberreality",
+  "slug": "cyberreality",
+  "sourceMode": "new_target",
+  "status": "draft",
+  "genres": [],
+  "tags": [],
+  "relatedArtists": [],
+  "city": null,
+  "summary": "",
+  "provenance": [
+    {
+      "type": "manual",
+      "value": "owner_hq"
+    }
+  ],
+  "createdAt": "2026-04-21T00:39:30.602Z",
+  "updatedAt": "2026-04-21T00:39:30.602Z"
+}

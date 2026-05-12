@@ -1,0 +1,160 @@
+{
+  "jobId": "job_20260422044809_k5ngf1",
+  "taskId": "job_20260422044809_k5ngf1__2dsj3sxfx57pp7nrhqe",
+  "target": {
+    "key": "artist:2dsj3sxfx57pp7nrhqe",
+    "type": "artist",
+    "name": "2dsj3sxfx57pp7nrhqe"
+  },
+  "researchPacket": {
+    "targetName": "2dsj3sxfx57pp7nrhqe",
+    "sourceMode": "existing_db",
+    "artistContext": null,
+    "genreContext": null,
+    "relatedArtists": [],
+    "provenance": [
+      {
+        "type": "raw_article",
+        "value": "2dsj3sxfx57pp7nrhqe"
+      },
+      {
+        "type": "music_artists",
+        "value": "content/music-artists.json"
+      },
+      {
+        "type": "artist_media_cache",
+        "value": "content/artist-media-cache.json"
+      }
+    ]
+  },
+  "promptConfig": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "modelOutput": {
+    "writer": {
+      "id": 1,
+      "slug": "osno1-the-glitchcore-phantom-before-100-gecs",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "OSNO1: The Glitchcore Phantom Before 100 Gecs",
+      "subtitle": "The solo project of Laura Les laid the experimental blueprint for hyperpop.",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-22",
+      "readTime": "5 min",
+      "excerpt": "OSNO1, the solo project of Laura Les, represents an early, experimental phase of hyperpop characterized by glitchcore and digicore influences.",
+      "featured": false,
+      "image_url": "https://gw.ipfs-lens.dev/ipfs/bafkreih7pqaccvb3offihsayjrl42lwlgyovu3vshwwx6kr32hnl4o7mse",
+      "tags": [
+        "hyperpop",
+        "glitchcore",
+        "digicore",
+        "experimental",
+        "electronic",
+        "100 gecs",
+        "laura les"
+      ],
+      "linkedArtists": [
+        "100 gecs",
+        "Fraxiom",
+        "Jane Remover",
+        "Gupi",
+        "Dorian Electra",
+        "Food House",
+        "Machine Girl"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "OSNO1, the solo project of Laura Les, marks an early chapter in the evolution of hyperpop. Characterized by raw, experimental energy, OSNO1’s sound is steeped in glitchcore and digicore influences, serving as a precursor to the genre's later developments."
+        },
+        {
+          "type": "paragraph",
+          "text": "The project is defined by its use of screeching synths, distorted vocals, and lyrics that evoke an internet fever dream. OSNO1’s tracks often blend elements reminiscent of a Tumblr-era emo aesthetic with the digital chaos of a broken Game Boy and Vocaloid influences."
+        },
+        {
+          "type": "paragraph",
+          "text": "Essential tracks from the OSNO1 era include 'A Conversation I Overheard,' a surreal electronic lullaby with paranoid and obsessive themes, and 'I'm Sorry,' a chaotic composition featuring layers of autotuned vocals and distorted beats."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before forming 100 gecs with Dylan Brady, Laura Les was crafting her own universe of experimental electronic music. The OSNO1 era laid the foundation for what hyperpop would become, influencing a generation of artists."
+        },
+        {
+          "type": "paragraph",
+          "text": "Artists such as Fraxiom, Jane Remover, and Gupi are part of the same experimental lineage. OSNO1’s DIY digital punk energy is evident in its pitched-up vocals and frenetic beats, capturing the essence of hyperpop before it was formally named."
+        }
+      ],
+      "monetization": []
+    },
+    "editor": {
+      "id": 1,
+      "slug": "osno1-the-glitchcore-phantom-before-100-gecs",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "OSNO1: The Glitchcore Phantom Before 100 Gecs",
+      "subtitle": "The solo project of Laura Les laid the experimental blueprint for hyperpop.",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-22",
+      "readTime": "5 min",
+      "excerpt": "OSNO1, the solo project of Laura Les, represents an early, experimental phase of hyperpop characterized by glitchcore and digicore influences.",
+      "featured": false,
+      "image_url": "https://gw.ipfs-lens.dev/ipfs/bafkreih7pqaccvb3offihsayjrl42lwlgyovu3vshwwx6kr32hnl4o7mse",
+      "tags": [
+        "hyperpop",
+        "glitchcore",
+        "digicore",
+        "experimental",
+        "electronic",
+        "100 gecs",
+        "laura les"
+      ],
+      "linkedArtists": [
+        "100 gecs",
+        "Fraxiom",
+        "Jane Remover",
+        "Gupi",
+        "Dorian Electra",
+        "Food House",
+        "Machine Girl"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "OSNO1, the solo project of Laura Les, marks an early chapter in the evolution of hyperpop. Characterized by raw, experimental energy, OSNO1’s sound is steeped in glitchcore and digicore influences, serving as a precursor to the genre's later developments."
+        },
+        {
+          "type": "paragraph",
+          "text": "The project is defined by its use of screeching synths, distorted vocals, and lyrics that evoke an internet fever dream. OSNO1’s tracks often blend elements reminiscent of a Tumblr-era emo aesthetic with the digital chaos of a broken Game Boy and Vocaloid influences."
+        },
+        {
+          "type": "paragraph",
+          "text": "Essential tracks from the OSNO1 era include 'A Conversation I Overheard,' a surreal electronic lullaby with paranoid and obsessive themes, and 'I'm Sorry,' a chaotic composition featuring layers of autotuned vocals and distorted beats."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before forming 100 gecs with Dylan Brady, Laura Les was crafting her own universe of experimental electronic music. The OSNO1 era laid the foundation for what hyperpop would become, influencing a generation of artists."
+        },
+        {
+          "type": "paragraph",
+          "text": "Artists such as Fraxiom, Jane Remover, and Gupi are part of the same experimental lineage. OSNO1’s DIY digital punk energy is evident in its pitched-up vocals and frenetic beats, capturing the essence of hyperpop before it was formally named."
+        }
+      ],
+      "monetization": []
+    }
+  },
+  "review": {
+    "status": "needs_review",
+    "notes": ""
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260422043312_0ut0bt",
+  "tasks": [
+    {
+      "id": "job_20260422043312_0ut0bt__incorporeal-visions-deluxe",
+      "jobId": "job_20260422043312_0ut0bt",
+      "targetKey": "artist:incorporeal-visions-deluxe",
+      "targetType": "artist",
+      "slug": "incorporeal-visions-deluxe-profile",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "incorporeal-visions-deluxe",
+        "artistName": "Incorporeal Visions Deluxe"
+      },
+      "status": "published",
+      "draftPath": "data\\editorial\\jobs\\job_20260422043312_0ut0bt\\articles\\job_20260422043312_0ut0bt__incorporeal-visions-deluxe.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260422043312_0ut0bt\\articles\\job_20260422043312_0ut0bt__incorporeal-visions-deluxe.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260422043312_0ut0bt\\articles\\job_20260422043312_0ut0bt__incorporeal-visions-deluxe.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": "https://api.grove.storage/6dfa82f1942d4e9863dc200946b8186f71663e5911a0dc8bcefc2b2f88dbc85f",
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-22T04:35:36.487Z"
+    }
+  ]
+}

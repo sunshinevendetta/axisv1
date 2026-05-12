@@ -1,0 +1,174 @@
+{
+  "jobId": "job_20260428054046_10db0c",
+  "taskId": "job_20260428054046_10db0c__jeff-mills",
+  "target": {
+    "key": "artist:jeff-mills",
+    "type": "artist",
+    "name": "Jeff Mills"
+  },
+  "researchPacket": {
+    "targetName": "Jeff Mills",
+    "sourceMode": "existing_db",
+    "artistContext": {
+      "name": "Jeff Mills",
+      "genres": [
+        "Techno",
+        "Minimal",
+        "Electronic"
+      ],
+      "tags": [
+        "detroit techno",
+        "detroit"
+      ],
+      "summary": "In the course of the eighties Jeff Mills was an influential radio DJ on WJLB under the pseudonym The Wizard. Mills' sets were a highlight of the nightly show from \"The Electrifying Mojo,\" Charles Johnson. Complimenting Mojo's eclectic playlists, Mills would spin obscure detroit techno, hiphop, electro, freestyle, miami bass, chicago house and classic new wave tracks. In going on to create his own music Mills is credited with laying the foundations for legendary detroit techno collective"
+    },
+    "genreContext": null,
+    "relatedArtists": [
+      "Millsart",
+      "Joey Beltram",
+      "Circuit Breaker",
+      "Robert Hood",
+      "Richie Hawtin"
+    ],
+    "provenance": [
+      {
+        "type": "raw_article",
+        "value": "jeff-mills"
+      },
+      {
+        "type": "music_artists",
+        "value": "content/music-artists.json"
+      },
+      {
+        "type": "artist_media_cache",
+        "value": "content/artist-media-cache.json"
+      }
+    ]
+  },
+  "promptConfig": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "modelOutput": {
+    "writer": {
+      "id": 1,
+      "slug": "jeff-mills-detroit-techno-pioneer",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "EXPERT",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Jeff Mills: Detroit Techno Pioneer and Radio Innovator",
+      "subtitle": "From WJLB's The Wizard to foundational techno architect",
+      "author": "C. Mora",
+      "authorRole": "Contributing Editor",
+      "date": "2026-04-28",
+      "readTime": "4 min",
+      "excerpt": "Jeff Mills emerged in the 1980s as an influential radio DJ on WJLB under the pseudonym The Wizard, spinning eclectic sets that would later inform his contributions to Detroit techno.",
+      "featured": false,
+      "image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+      "tags": [
+        "techno",
+        "detroit techno",
+        "electronic music",
+        "detroit",
+        "djs",
+        "radio",
+        "minimal"
+      ],
+      "linkedArtists": [
+        "Millsart",
+        "Joey Beltram",
+        "Circuit Breaker",
+        "Robert Hood",
+        "Richie Hawtin"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Jeff Mills is a pivotal figure in the development of Detroit techno, whose career began in the 1980s as an influential radio DJ on WJLB under the pseudonym The Wizard."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mills' sets were a highlight of the nightly show from Charles Johnson, known as The Electrifying Mojo. Complementing Mojo's eclectic playlists, Mills would spin obscure Detroit techno, hip-hop, electro, freestyle, Miami bass, Chicago house, and classic new wave tracks."
+        },
+        {
+          "type": "paragraph",
+          "text": "His early radio work provided a foundation for his later contributions to electronic music production. Mills is credited with laying the groundwork for the legendary Detroit techno collective."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mills' work spans genres including techno, minimal, and electronic music, with a strong association to the Detroit techno scene."
+        },
+        {
+          "type": "paragraph",
+          "text": "Artists similar to Mills include Millsart, Joey Beltram, Circuit Breaker, Robert Hood, and Richie Hawtin."
+        }
+      ],
+      "monetization": []
+    },
+    "editor": {
+      "id": 1,
+      "slug": "jeff-mills-detroit-techno-pioneer",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "EXPERT",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Jeff Mills: Detroit Techno Pioneer and Radio Innovator",
+      "subtitle": "From WJLB's The Wizard to foundational techno architect",
+      "author": "C. Mora",
+      "authorRole": "Contributing Editor",
+      "date": "2026-04-28",
+      "readTime": "4 min",
+      "excerpt": "Jeff Mills emerged in the 1980s as an influential radio DJ on WJLB under the pseudonym The Wizard, spinning eclectic sets that would later inform his contributions to Detroit techno.",
+      "featured": false,
+      "image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+      "tags": [
+        "techno",
+        "detroit techno",
+        "electronic music",
+        "detroit",
+        "djs",
+        "radio",
+        "minimal"
+      ],
+      "linkedArtists": [
+        "Millsart",
+        "Joey Beltram",
+        "Circuit Breaker",
+        "Robert Hood",
+        "Richie Hawtin"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Jeff Mills is a pivotal figure in the development of Detroit techno, whose career began in the 1980s as an influential radio DJ on WJLB under the pseudonym The Wizard."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mills' sets were a highlight of the nightly show from Charles Johnson, known as The Electrifying Mojo. Complementing Mojo's eclectic playlists, Mills would spin obscure Detroit techno, hip-hop, electro, freestyle, Miami bass, Chicago house, and classic new wave tracks."
+        },
+        {
+          "type": "paragraph",
+          "text": "His early radio work provided a foundation for his later contributions to electronic music production. Mills is credited with laying the groundwork for the legendary Detroit techno collective."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mills' work spans genres including techno, minimal, and electronic music, with a strong association to the Detroit techno scene."
+        },
+        {
+          "type": "paragraph",
+          "text": "Artists similar to Mills include Millsart, Joey Beltram, Circuit Breaker, Robert Hood, and Richie Hawtin."
+        }
+      ],
+      "monetization": []
+    }
+  },
+  "review": {
+    "status": "needs_review",
+    "notes": ""
+  }
+}

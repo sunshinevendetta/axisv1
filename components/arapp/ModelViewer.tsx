@@ -3,31 +3,9 @@
 import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 
-// Extend JSX to accept the <model-viewer> custom element
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "model-viewer": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement> & {
-          src?: string;
-          alt?: string;
-          poster?: string;
-          "camera-controls"?: boolean | string;
-          "auto-rotate"?: boolean | string;
-          ar?: boolean | string;
-          "ar-modes"?: string;
-          "shadow-intensity"?: string;
-          "environment-image"?: string;
-          exposure?: string;
-          "loading"?: string;
-          style?: React.CSSProperties;
-          class?: string;
-        },
-        HTMLElement
-      >;
-    }
-  }
-}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const ModelViewerElement = "model-viewer" as any;
+
 
 type Props = {
   src: string;
@@ -67,8 +45,8 @@ export default function ModelViewer({ src, poster, alt = "3D collectible", class
         onLoad={() => setReady(true)}
         strategy="lazyOnload"
       />
-      <model-viewer
-        ref={ref as React.RefObject<HTMLElement>}
+      <ModelViewerElement
+        ref={ref}
         src={src}
         poster={poster}
         alt={alt}

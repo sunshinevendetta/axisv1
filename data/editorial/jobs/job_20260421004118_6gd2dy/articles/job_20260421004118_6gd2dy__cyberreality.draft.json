@@ -1,0 +1,57 @@
+{
+  "jobId": "job_20260421004118_6gd2dy",
+  "taskId": "job_20260421004118_6gd2dy__cyberreality",
+  "targetKey": "artist:cyberreality",
+  "article": {
+    "id": 1,
+    "slug": "cyberreality-industrial-ambient-electronic-profile",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "EXPERT",
+    "frame": "OBSERVE",
+    "persona": "ANALYST",
+    "title": "Cyberreality: Industrial Ambient Electronic Production",
+    "subtitle": "A profile of an artist working across industrial, ambient, and electronic sound design.",
+    "author": "L. Nakamura",
+    "authorRole": "Contributor",
+    "date": "2026-04-21",
+    "readTime": "3 min",
+    "excerpt": "Cyberreality operates at the intersection of industrial, ambient, and electronic production, crafting textured noise constructions and spatial sound design.",
+    "featured": false,
+    "image_url": "https://i.scdn.co/image/ab6761610000e5ebb9733bb7f9d06daf3f531e29",
+    "tags": [
+      "industrial",
+      "ambient",
+      "electronic",
+      "hyperbass",
+      "noise",
+      "sound design",
+      "experimental"
+    ],
+    "linkedArtists": [],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Cyberreality is an artist whose work spans industrial, ambient, and electronic production. Their output is characterized by textured noise constructions and spatial sound design, establishing a distinct presence within experimental electronic circles."
+      },
+      {
+        "type": "paragraph",
+        "text": "The artist has released several albums including CYBERROR, r e c u e r d o, and Internet Dating 1.5. These works demonstrate a consistent exploration of complex soundscapes and layered electronic textures."
+      },
+      {
+        "type": "paragraph",
+        "text": "In addition to solo albums, Cyberreality has contributed to compilations such as Selected Juke Werkz, Vol. 1. This appearance situates the artist within a broader network of experimental electronic music producers."
+      },
+      {
+        "type": "paragraph",
+        "text": "Recent releases include CYBERROR (Remixes) and r e c u e r d o, both issued in early 2022. These recordings further develop the artist's signature blend of industrial grit and ambient depth."
+      },
+      {
+        "type": "paragraph",
+        "text": "Cyberreality's approach to production emphasizes detailed sound design and spatial arrangement, resulting in immersive listening experiences that challenge conventional genre boundaries."
+      }
+    ],
+    "monetization": []
+  }
+}

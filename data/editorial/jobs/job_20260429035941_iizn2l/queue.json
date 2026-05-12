@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260429035941_iizn2l",
+  "tasks": [
+    {
+      "id": "job_20260429035941_iizn2l__noizekid",
+      "jobId": "job_20260429035941_iizn2l",
+      "targetKey": "artist:noizekid",
+      "targetType": "artist",
+      "slug": "noizekid-moombahton-dancehall-producer-mexico",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "noizekid",
+        "artistName": "Noizekid"
+      },
+      "status": "needs_review",
+      "draftPath": "data\\editorial\\jobs\\job_20260429035941_iizn2l\\articles\\job_20260429035941_iizn2l__noizekid.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260429035941_iizn2l\\articles\\job_20260429035941_iizn2l__noizekid.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260429035941_iizn2l\\articles\\job_20260429035941_iizn2l__noizekid.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-29T03:59:49.683Z"
+    }
+  ]
+}

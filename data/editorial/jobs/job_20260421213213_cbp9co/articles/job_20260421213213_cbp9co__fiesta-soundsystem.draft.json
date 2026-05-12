@@ -1,0 +1,62 @@
+{
+  "jobId": "job_20260421213213_cbp9co",
+  "taskId": "job_20260421213213_cbp9co__fiesta-soundsystem",
+  "targetKey": "artist:fiesta-soundsystem",
+  "article": {
+    "id": 1,
+    "slug": "fiesta-soundsystem-uk-adjacent-leftfield-continuum",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "EXPERT",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Fiesta Soundsystem: Leftfield Electronics in the UK Continuum",
+    "subtitle": "A profile of an artist operating within IDM, jungle, and breakcore-influenced electronic music.",
+    "author": "L. Nakamura",
+    "authorRole": "Contributor",
+    "date": "2026-04-21",
+    "readTime": "4 min",
+    "excerpt": "Fiesta Soundsystem operates within the IDM, jungle, and leftfield electronic music continuum, producing work characterized by groove, sunshine, and warmth alongside breakcore and bass influences.",
+    "featured": false,
+    "image_url": "https://i.scdn.co/image/ab6761610000e5ebe5a1f75fea3d2add4fce4d3a",
+    "tags": [
+      "idm",
+      "jungle",
+      "leftfield",
+      "breakcore",
+      "bass",
+      "uk electronic"
+    ],
+    "linkedArtists": [
+      "Borai",
+      "Hooverian Blur",
+      "LMajor",
+      "Mani Festo",
+      "Soundbwoy Killah"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Fiesta Soundsystem is an electronic music project that operates within the IDM, jungle, and leftfield electronic music continuum. Their sound is characterized by a distinctive blend of groove, sunshine, and warmth, interwoven with breakcore and bass influences."
+      },
+      {
+        "type": "paragraph",
+        "text": "The artist’s discography includes albums such as Pits, Sinking, and Rites of Passage, as well as singles like Passivity Trap and delphic scent. These releases demonstrate a commitment to experimental electronic production and a keen sense of rhythmic complexity."
+      },
+      {
+        "type": "paragraph",
+        "text": "Fiesta Soundsystem’s work places them alongside artists like Borai, Hooverian Blur, and LMajor within the UK-adjacent leftfield club continuum. This context situates their music within a broader scene known for its innovative approaches to electronic sound design and club-oriented rhythms."
+      },
+      {
+        "type": "paragraph",
+        "text": "Their production choices emphasize intricate breakbeats, layered textures, and a dynamic interplay between ambient soundscapes and driving basslines. This approach has earned them recognition among peers and audiences attuned to the nuances of leftfield electronic music."
+      },
+      {
+        "type": "paragraph",
+        "text": "Recent releases, including the 2024 album Pits and the 2023 single Passivity Trap, continue to refine Fiesta Soundsystem’s signature style. Their work remains a compelling example of the evolving landscape of IDM and jungle-influenced electronic music."
+      }
+    ],
+    "monetization": []
+  }
+}

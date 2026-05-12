@@ -1,0 +1,28 @@
+{
+  "jobId": "job_20260421000548_eipsp5",
+  "tasks": [
+    {
+      "id": "job_20260421000548_eipsp5__3456ffjphdyehfzqhrk",
+      "jobId": "job_20260421000548_eipsp5",
+      "targetKey": "artist:3456ffjphdyehfzqhrk",
+      "targetType": "artist",
+      "slug": "donatachi-hyperpop-visionary-shaping-genreless-future",
+      "sourceRef": {
+        "kind": "raw_article",
+        "rawId": "106343295633983050434897486551189887080833392724941653978375604725097229671567",
+        "rawSlug": "3456ffjphdyehfzqhrk",
+        "rawFolder": "0016_3456ffjphdyehfzqhrk"
+      },
+      "status": "published",
+      "draftPath": "data\\editorial\\jobs\\job_20260421000548_eipsp5\\articles\\job_20260421000548_eipsp5__3456ffjphdyehfzqhrk.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421000548_eipsp5\\articles\\job_20260421000548_eipsp5__3456ffjphdyehfzqhrk.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421000548_eipsp5\\articles\\job_20260421000548_eipsp5__3456ffjphdyehfzqhrk.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": "https://api.grove.storage/246bbed22065d0a1381c32703c48de7ce533f7f5f6674115d0b16e97b95b82e9",
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 2,
+      "updatedAt": "2026-04-22T04:36:41.673Z"
+    }
+  ]
+}

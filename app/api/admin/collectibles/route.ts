@@ -1,21 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
-import { hasOwnerSession } from "@/src/lib/owner-session";
 import { readCollectiblesCatalog, writeCollectiblesCatalog } from "@/src/lib/collectibles-store";
 import type { EpisodeCollectibleRecord } from "@/src/content/collectibles";
 
 export async function GET() {
-  if (!(await hasOwnerSession())) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
 
   const catalog = await readCollectiblesCatalog();
   return NextResponse.json(catalog);
 }
 
 export async function PUT(request: NextRequest) {
-  if (!(await hasOwnerSession())) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
 
   const payload = (await request.json()) as {
     episode?: EpisodeCollectibleRecord;

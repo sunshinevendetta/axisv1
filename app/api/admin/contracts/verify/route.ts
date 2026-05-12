@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyDeployedContract } from "@/src/lib/contract-verification";
-import { hasOwnerSession } from "@/src/lib/owner-session";
 import { type DeploymentChainId, type DeploymentContractKey } from "@/src/lib/deployment-hq";
 
 type VerifyRequestBody = {
@@ -11,9 +10,6 @@ type VerifyRequestBody = {
 };
 
 export async function POST(request: NextRequest) {
-  if (!(await hasOwnerSession())) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
 
   try {
     const body = (await request.json()) as VerifyRequestBody;

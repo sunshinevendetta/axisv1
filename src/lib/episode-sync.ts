@@ -13,11 +13,11 @@ const registryInterface = new Interface(EVENT_ACCESS_REGISTRY_ABI);
 export async function syncEpisodeToRegistry(slug: string) {
   const rpcUrl = process.env.EPISODES_SYNC_RPC_URL;
   const privateKey = process.env.EPISODES_SYNC_PRIVATE_KEY;
-  const registryAddress = process.env.SPECTRA_EVENT_ACCESS_REGISTRY_ADDRESS;
+  const registryAddress = process.env.AXIS_EVENT_ACCESS_REGISTRY_ADDRESS;
 
   if (!rpcUrl || !privateKey || !registryAddress) {
     throw new Error(
-      "Missing sync configuration. Set EPISODES_SYNC_RPC_URL, EPISODES_SYNC_PRIVATE_KEY, and SPECTRA_EVENT_ACCESS_REGISTRY_ADDRESS.",
+      "Missing sync configuration. Set EPISODES_SYNC_RPC_URL, EPISODES_SYNC_PRIVATE_KEY, and AXIS_EVENT_ACCESS_REGISTRY_ADDRESS.",
     );
   }
 
@@ -81,3 +81,4 @@ export async function syncEpisodeToRegistry(slug: string) {
     registryEventId,
   };
 }
+

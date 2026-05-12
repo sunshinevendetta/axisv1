@@ -1,0 +1,67 @@
+{
+  "jobId": "job_20260429005352_9jhyw5",
+  "taskId": "job_20260429005352_9jhyw5__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborator with DJ Snake, Bad Bunny, and Major Lazer",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for his collaborations with prominent industry figures. His work is characterized by a distinct fusion of electronic and dancehall elements.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "dj snake",
+      "bad bunny",
+      "major lazer",
+      "barnation"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer recognized for his work with notable figures in the music industry, including DJ Snake, Bad Bunny, and Major Lazer."
+      },
+      {
+        "type": "paragraph",
+        "text": "His production style is defined by a fusion of electronic and dancehall influences, resulting in a distinctive sound that has garnered attention within the Latin electronic music scene."
+      },
+      {
+        "type": "paragraph",
+        "text": "Noizekid has expanded his creative output by releasing the 'Noizekid Sample Pack' in collaboration with Barnation. This collection includes a comprehensive array of samples, loops, and drums used in his various productions."
+      },
+      {
+        "type": "paragraph",
+        "text": "The sample pack serves as both a resource for fellow producers and a testament to Noizekid's production techniques, offering insight into the sonic elements that define his work."
+      },
+      {
+        "type": "paragraph",
+        "text": "His approach to production is characterized by meticulous attention to detail and a commitment to quality, evident in both his original tracks and collaborative efforts."
+      }
+    ],
+    "monetization": []
+  }
+}

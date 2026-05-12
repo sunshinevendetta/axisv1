@@ -1,0 +1,60 @@
+{
+  "jobId": "job_20260429031043_7kxi6e",
+  "taskId": "job_20260429031043_7kxi6e__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Mexican Moombahton and Dancehall Producer",
+    "subtitle": "A key figure in Latin electronic music with collaborations spanning DJ Snake to Bad Bunny.",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for his work with prominent industry names and the release of a comprehensive sample pack.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "latin electronic"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer known for working with the likes of DJ Snake, Bad Bunny, Major Lazer and several other names in the music industry."
+      },
+      {
+        "type": "paragraph",
+        "text": "He released the 'Noizekid Sample Pack' in collaboration with Barnation, which includes all of his samples, loops and drums used in various of his works."
+      },
+      {
+        "type": "paragraph",
+        "text": "His work is characterized by a fusion of electronic and dancehall elements, reflecting a distinct approach to production within the Latin electronic scene."
+      },
+      {
+        "type": "paragraph",
+        "text": "Noizekid’s collaborations span a range of prominent artists, contributing to a dynamic and evolving sound in contemporary electronic music."
+      }
+    ],
+    "monetization": []
+  }
+}

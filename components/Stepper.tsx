@@ -33,15 +33,12 @@ export default function Stepper({
   onStepChange = () => {},
   onFinalStepCompleted = () => {},
   stepCircleContainerClassName = '',
-  stepContainerClassName = '',
   contentClassName = '',
   footerClassName = '',
   backButtonProps = {},
   nextButtonProps = {},
   backButtonText = 'Previous',
   nextButtonText = 'Continue',
-  disableStepIndicators = false,
-  renderStepIndicator,
   nextDisabled = false,
   extraFooterButton,
   ...rest
@@ -174,7 +171,7 @@ interface StepContentWrapperProps {
   children: ReactNode;
 }
 
-function StepContentWrapper({ isCompleted, currentStep, direction, children }: StepContentWrapperProps) {
+function StepContentWrapper({ isCompleted: _, currentStep, direction, children }: StepContentWrapperProps) { void _;
   const [parentHeight, setParentHeight] = useState<number>(0);
 
   return (

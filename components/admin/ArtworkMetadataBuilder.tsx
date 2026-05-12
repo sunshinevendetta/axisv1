@@ -1177,7 +1177,7 @@ export default function ArtworkMetadataBuilder({ defaults }: Props) {
               </button>
             ) : null}
             {activeStep === 4 ? (
-              <button type="button" onClick={saveToCatalog} disabled={isPending} className="rounded-2xl border border-white/16 bg-white px-4 py-3 text-[11px] uppercase tracking-[0.16em] text-black disabled:opacity-40">
+              <button type="button" onClick={() => saveToCatalog()} disabled={isPending} className="rounded-2xl border border-white/16 bg-white px-4 py-3 text-[11px] uppercase tracking-[0.16em] text-black disabled:opacity-40">
                 {isPending ? "Saving" : "Sync To Site"}
               </button>
             ) : null}

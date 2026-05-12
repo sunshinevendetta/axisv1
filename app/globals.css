@@ -186,16 +186,16 @@ a {
   [class*="text-fuchsia-"],
   [class*="text-rose-"],
   [class*="text-lime-"],
-  [class*="text-[#6ee7a0"],
-  [class*="text-[#f87171"],
-  [class*="text-[#75ffbf"],
-  [class*="text-[#9fd4ff"],
-  [class*="text-[#ffe29f"],
-  [class*="text-[#d7e3f3"],
-  [class*="text-[#dbe4f2"],
-  [class*="text-[#c8d4e5"],
-  [class*="text-[#e7edf5"],
-  [class*="text-[#95a4b8"]
+  [class*="text-[#6ee7a0]"],
+  [class*="text-[#f87171]"],
+  [class*="text-[#75ffbf]"],
+  [class*="text-[#9fd4ff]"],
+  [class*="text-[#ffe29f]"],
+  [class*="text-[#d7e3f3]"],
+  [class*="text-[#dbe4f2]"],
+  [class*="text-[#c8d4e5]"],
+  [class*="text-[#e7edf5]"],
+  [class*="text-[#95a4b8]"]
 ) {
   color: rgba(255, 255, 255, 0.78) !important;
 }
@@ -211,9 +211,9 @@ a {
   [class*="bg-fuchsia-"],
   [class*="bg-rose-"],
   [class*="bg-lime-"],
-  [class*="bg-[#75ffbf"],
-  [class*="bg-[#9fd4ff"],
-  [class*="bg-[#ffe29f"]
+  [class*="bg-[#75ffbf]"],
+  [class*="bg-[#9fd4ff]"],
+  [class*="bg-[#ffe29f]"]
 ) {
   background-color: rgba(255, 255, 255, 0.06) !important;
 }
@@ -229,11 +229,11 @@ a {
   [class*="border-fuchsia-"],
   [class*="border-rose-"],
   [class*="border-lime-"],
-  [class*="border-[#75ffbf"],
-  [class*="border-[#9fd4ff"],
-  [class*="border-[#ffe29f"],
-  [class*="border-[#dbe4f2"],
-  [class*="border-[#cfd8e8"]
+  [class*="border-[#75ffbf]"],
+  [class*="border-[#9fd4ff]"],
+  [class*="border-[#ffe29f]"],
+  [class*="border-[#dbe4f2]"],
+  [class*="border-[#cfd8e8]"]
 ) {
   border-color: rgba(255, 255, 255, 0.18) !important;
 }
@@ -264,8 +264,6 @@ a {
 .market-chart * {
   filter: none !important;
 }
-
-/* ── Magazine animations ───────────────────────────────────────────── */
 
 @keyframes ticker-scroll {
   from { transform: translateX(0); }
@@ -302,7 +300,6 @@ a {
   50%, 100% { opacity: 0; }
 }
 
-/* hide scrollbar for section nav */
 .scrollbar-none {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -311,9 +308,6 @@ a {
   display: none;
 }
 
-/* ── Mixtape section — futuristic luxury effects ───────────────────── */
-
-/* Subtle horizontal scan lines — very faint, texture only */
 .mixtape-scanlines {
   background-image: repeating-linear-gradient(
     0deg,
@@ -325,13 +319,11 @@ a {
   pointer-events: none;
 }
 
-/* PSX corner bracket glow */
 .mixtape-corner {
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.055);
   transition: box-shadow 0.4s ease;
 }
 
-/* Active track — left accent line (gradient glow) */
 .mixtape-active-line {
   background: linear-gradient(
     to bottom,
@@ -343,18 +335,15 @@ a {
   box-shadow: 1px 0 8px rgba(255, 255, 255, 0.12);
 }
 
-/* Active row — inset side glow */
 .mixtape-row-active {
   box-shadow: inset 3px 0 0 rgba(255, 255, 255, 0.10), inset 0 0 20px rgba(255, 255, 255, 0.01);
 }
 
-/* Scrub thumb glow handled inline; this covers the progress fill glow */
 @keyframes mixtape-border-breathe {
   0%, 100% { opacity: 0.6; }
   50%       { opacity: 1;   }
 }
 
-/* Top edge shimmer line on the main card */
 .mixtape-card::before {
   content: "";
   display: block;
@@ -376,7 +365,6 @@ a {
   position: relative;
 }
 
-/* Subtle bottom edge line */
 .mixtape-card::after {
   content: "";
   display: block;
@@ -394,7 +382,6 @@ a {
   z-index: 10;
 }
 
-/* © glyph — superscript after SPECTRA, styled like ² */
 .copy-mark {
   font-size: 0.45em;
   vertical-align: super;
@@ -402,15 +389,11 @@ a {
   margin-left: 0.05em;
 }
 
-/* ── Home section animations ───────────────────────────────────────── */
-
-/* Magazine auto-cycle progress bar */
 @keyframes progress {
   from { transform: scaleX(0); }
   to   { transform: scaleX(1); }
 }
 
-/* Equalizer bars for active track in home mixtape list */
 @keyframes eq1 {
   0%, 100% { transform: scaleY(0.4); }
   50%       { transform: scaleY(1);   }

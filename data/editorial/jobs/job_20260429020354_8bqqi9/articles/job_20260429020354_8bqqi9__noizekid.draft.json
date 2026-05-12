@@ -1,0 +1,60 @@
+{
+  "jobId": "job_20260429020354_8bqqi9",
+  "taskId": "job_20260429020354_8bqqi9__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborator with DJ Snake, Bad Bunny, and Major Lazer",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for his collaborations with prominent industry figures and his distinctive sample pack release.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "sample pack"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer recognized for his work with notable figures in the music industry, including DJ Snake, Bad Bunny, and Major Lazer."
+      },
+      {
+        "type": "paragraph",
+        "text": "He has released the 'Noizekid Sample Pack' in collaboration with Barnation, which features a comprehensive collection of his samples, loops, and drums used across various productions."
+      },
+      {
+        "type": "paragraph",
+        "text": "His approach is characterized by a focus on rhythmic precision and a distinctive blend of electronic and dancehall elements, reflecting his background in the Mexican electronic music scene."
+      },
+      {
+        "type": "paragraph",
+        "text": "Noizekid's production style is marked by careful attention to percussive detail and an innovative use of samples, which has earned him recognition among peers and industry professionals alike."
+      }
+    ],
+    "monetization": []
+  }
+}

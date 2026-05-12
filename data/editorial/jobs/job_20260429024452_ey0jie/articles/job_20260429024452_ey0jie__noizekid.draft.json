@@ -1,0 +1,65 @@
+{
+  "jobId": "job_20260429024452_ey0jie",
+  "taskId": "job_20260429024452_ey0jie__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: A Profile of the Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborations with DJ Snake, Bad Bunny, and Major Lazer underscore his growing influence.",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid emerges as a notable figure in the moombahton and dancehall scene, with significant industry collaborations and a distinctive sample pack release.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "collaboration",
+      "sample pack"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer who has steadily built a reputation through high-profile collaborations and a distinctive production style."
+      },
+      {
+        "type": "paragraph",
+        "text": "His work has seen him partner with prominent figures such as DJ Snake, Bad Bunny, and Major Lazer, reflecting a deep integration within the contemporary electronic music landscape."
+      },
+      {
+        "type": "paragraph",
+        "text": "In addition to his production credits, Noizekid released the 'Noizekid Sample Pack' in collaboration with Barnation, a collection that includes his signature samples, loops, and drum sounds used across his body of work."
+      },
+      {
+        "type": "paragraph",
+        "text": "This release not only provides insight into his creative process but also serves as a resource for fellow producers looking to incorporate his distinctive sonic elements."
+      },
+      {
+        "type": "paragraph",
+        "text": "While his top tracks and recent releases remain unindexed in available databases, his influence is evident through his collaborations and the impact of his sample pack on the broader production community."
+      }
+    ],
+    "monetization": []
+  }
+}
