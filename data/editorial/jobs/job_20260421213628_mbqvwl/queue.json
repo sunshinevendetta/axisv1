@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260421213628_mbqvwl",
+  "tasks": [
+    {
+      "id": "job_20260421213628_mbqvwl__sophie",
+      "jobId": "job_20260421213628_mbqvwl",
+      "targetKey": "artist:sophie",
+      "targetType": "artist",
+      "slug": "sophie-artist-profile",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "sophie",
+        "artistName": "Sophie"
+      },
+      "status": "published",
+      "draftPath": "data\\editorial\\jobs\\job_20260421213628_mbqvwl\\articles\\job_20260421213628_mbqvwl__sophie.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421213628_mbqvwl\\articles\\job_20260421213628_mbqvwl__sophie.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421213628_mbqvwl\\articles\\job_20260421213628_mbqvwl__sophie.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": "https://api.grove.storage/6ce1d48869d580fe9e6dcc0e90865b9643c201e72ac1ac88e9e5f8da019e3c4f",
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-21T21:37:24.800Z"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "job_20260421000548_eipsp5",
+  "mode": "single",
+  "source": "existing_db",
+  "targetType": "artist",
+  "filters": {
+    "artistSlugs": [],
+    "genre": null,
+    "scene": null,
+    "city": null,
+    "missingOnly": false
+  },
+  "count": 1,
+  "concurrency": 1,
+  "status": "completed",
+  "createdAt": "2026-04-21T00:05:48.718Z",
+  "updatedAt": "2026-04-21T16:55:53.186Z",
+  "completedAt": "2026-04-21T16:55:53.186Z",
+  "createdBy": "owner",
+  "promptProfile": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "notes": ""
+}

@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260422045731_ps2ccz",
+  "tasks": [
+    {
+      "id": "job_20260422045731_ps2ccz__seth-troxler",
+      "jobId": "job_20260422045731_ps2ccz",
+      "targetKey": "artist:seth-troxler",
+      "targetType": "artist",
+      "slug": "seth-troxler-profile-detroit-techno-berlin-elite",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "seth-troxler",
+        "artistName": "Seth Troxler"
+      },
+      "status": "rejected",
+      "draftPath": "data\\editorial\\jobs\\job_20260422045731_ps2ccz\\articles\\job_20260422045731_ps2ccz__seth-troxler.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260422045731_ps2ccz\\articles\\job_20260422045731_ps2ccz__seth-troxler.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260422045731_ps2ccz\\articles\\job_20260422045731_ps2ccz__seth-troxler.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-22T04:58:15.636Z"
+    }
+  ]
+}

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import BeamsBackground from "@/components/backgrounds/SubmissionBackground";
+import SubmissionBackground from "@/components/backgrounds/SubmissionBackground";
 
 type SubmissionVariant = "artist" | "dev";
 
@@ -72,7 +72,7 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
   const [walletStatus, setWalletStatus] = useState<"idle" | "valid" | "invalid" | "resolving">("idle");
-  const [resolvedAddress, setResolvedAddress] = useState<string | null>(null);
+  const [_resolvedAddress, setResolvedAddress] = useState<string | null>(null);
   const [walletError, setWalletError] = useState("");
   const content = formContent[variant];
 
@@ -196,7 +196,7 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
 
   return (
     <div className="relative flex min-h-screen w-full items-center justify-center px-6 py-32">
-      <BeamsBackground />
+      <SubmissionBackground />
 
       <div className="relative z-10 mx-auto w-full max-w-xl bg-[rgba(8,8,8,0.92)] p-8 shadow-[0_34px_90px_rgba(0,0,0,0.46)] sm:p-10">
 

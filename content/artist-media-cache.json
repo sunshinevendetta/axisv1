@@ -63,48 +63,7 @@
     "slug": "gasoiid",
     "profileImage": "https://i.scdn.co/image/ab6761610000e5eb9ca85f6a3cf23dcff2d9409a",
     "tracks": [],
-    "releases": [
-      {
-        "id": "65qjABOAzwZCszLeUSs7d2",
-        "name": "s0—n2u²",
-        "releaseDate": "2024-11-08",
-        "releaseType": "single",
-        "coverImage": "https://i.scdn.co/image/ab67616d0000b273a09fccde316f6cbd2bbe69fd",
-        "url": "https://open.spotify.com/album/65qjABOAzwZCszLeUSs7d2"
-      },
-      {
-        "id": "4fnsqWFJrCbjERuDhFwwpV",
-        "name": "rain",
-        "releaseDate": "2023-10-06",
-        "releaseType": "single",
-        "coverImage": "https://i.scdn.co/image/ab67616d0000b2738d93f4704e43188475900011",
-        "url": "https://open.spotify.com/album/4fnsqWFJrCbjERuDhFwwpV"
-      },
-      {
-        "id": "0rj2JiJTUz1EJm3GacpQ8y",
-        "name": "mattrd +2me",
-        "releaseDate": "2022-08-31",
-        "releaseType": "single",
-        "coverImage": "https://i.scdn.co/image/ab67616d0000b273831c4ad28505d74dd124bd6a",
-        "url": "https://open.spotify.com/album/0rj2JiJTUz1EJm3GacpQ8y"
-      },
-      {
-        "id": "4cx35yVOB5graj629pvZuq",
-        "name": "froz3n",
-        "releaseDate": "2022-02-17",
-        "releaseType": "single",
-        "coverImage": "https://i.scdn.co/image/ab67616d0000b273d0d76773fc23cc1493903a51",
-        "url": "https://open.spotify.com/album/4cx35yVOB5graj629pvZuq"
-      },
-      {
-        "id": "3lrPTaCYnuksYPtByBtZtv",
-        "name": "sedated",
-        "releaseDate": "2021-07-09",
-        "releaseType": "single",
-        "coverImage": "https://i.scdn.co/image/ab67616d0000b2735317283be53a4251f9b7a1af",
-        "url": "https://open.spotify.com/album/3lrPTaCYnuksYPtByBtZtv"
-      }
-    ],
+    "releases": [],
     "albums": [
       {
         "name": "s0—n2u²",
@@ -300,6 +259,3734 @@
       "homele$$",
       "DJ SAPHIRRE",
       "4649nadeshiko"
+    ]
+  },
+  "skrillex": {
+    "slug": "skrillex",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5ebd94d5ea8008678a7b61f01b5",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "784znju28Nz5zSuRuthPcO",
+        "name": "F*CK U SKRILLEX YOU THINK UR ANDY WARHOL BUT UR NOT!! <3",
+        "releaseDate": "2025-04-01",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273fff7ab3564d3b30884bb0298",
+        "url": "https://open.spotify.com/album/784znju28Nz5zSuRuthPcO"
+      },
+      {
+        "id": "5TG8nNzWlr4lsL6XBURDs0",
+        "name": "Don’t Get Too Close",
+        "releaseDate": "2023-02-18",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27394547288722dc25aac3b9ddc",
+        "url": "https://open.spotify.com/album/5TG8nNzWlr4lsL6XBURDs0"
+      },
+      {
+        "id": "7tWP3OG5dWphctKg4NMACt",
+        "name": "Quest For Fire",
+        "releaseDate": "2023-02-17",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2732a7e34a68952017d900c6bb8",
+        "url": "https://open.spotify.com/album/7tWP3OG5dWphctKg4NMACt"
+      },
+      {
+        "id": "6bfkwBrGYKJFk6Z4QVyjxd",
+        "name": "Skrillex and Diplo present Jack Ü",
+        "releaseDate": "2015-02-24",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27357fc4730e06c9ab20c1e073b",
+        "url": "https://open.spotify.com/album/6bfkwBrGYKJFk6Z4QVyjxd"
+      },
+      {
+        "id": "7rf1qZJ6hGSlPN7K9ShsVV",
+        "name": "Recess",
+        "releaseDate": "2014-03-14",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273f034b00d0a05cd6504b49beb",
+        "url": "https://open.spotify.com/album/7rf1qZJ6hGSlPN7K9ShsVV"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Bangarang EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/89590846604142baa2aa4b71bb3aac58.png",
+        "url": "https://www.last.fm/music/Skrillex/Bangarang+EP"
+      },
+      {
+        "name": "More Monsters and Sprites EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/51c91772cd944c129463afa2b5763eea.png",
+        "url": "https://www.last.fm/music/Skrillex/More+Monsters+and+Sprites+EP"
+      },
+      {
+        "name": "Scary Monsters And Nice Sprites EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/064e010e25b73966fd32f620660e8aca.png",
+        "url": "https://www.last.fm/music/Skrillex/Scary+Monsters+And+Nice+Sprites+EP"
+      },
+      {
+        "name": "Quest for Fire",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/11a4e454beb4f0ece14b791d0c533071.png",
+        "url": "https://www.last.fm/music/Skrillex/Quest+for+Fire"
+      },
+      {
+        "name": "Scary Monsters and Nice Sprites",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/67090b491b4b419db1d14f974d836d8c.png",
+        "url": "https://www.last.fm/music/Skrillex/Scary+Monsters+and+Nice+Sprites"
+      }
+    ],
+    "related": [
+      "Dog Blood",
+      "Zomboy",
+      "Jack Ü",
+      "Virtual Riot",
+      "Knife Party"
+    ]
+  },
+  "dog-blood": {
+    "slug": "dog-blood",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb23c3bd069a1bee32bbc2225c",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "1Pg5Ot24fhSbQbxqV5OTZS",
+        "name": "Turn Off The Lights",
+        "releaseDate": "2019-05-31",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27368093fe28427568b12f03eb1",
+        "url": "https://open.spotify.com/album/1Pg5Ot24fhSbQbxqV5OTZS"
+      },
+      {
+        "id": "15XaGfU1GlPLYyF9cEw4wN",
+        "name": "Middle Finger Pt. 2 Remix EP",
+        "releaseDate": "2014-03-04",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2730a2b6f219ea610a7ceed15c6",
+        "url": "https://open.spotify.com/album/15XaGfU1GlPLYyF9cEw4wN"
+      },
+      {
+        "id": "1JCt2kwQOQVBJ4coDu2YyS",
+        "name": "Middle Finger Pt. 2",
+        "releaseDate": "2013-09-17",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273555018893b60ac56a131cd59",
+        "url": "https://open.spotify.com/album/1JCt2kwQOQVBJ4coDu2YyS"
+      },
+      {
+        "id": "1sGs88Uas5CNS9wVhm5jE8",
+        "name": "Next Order/Middle Finger",
+        "releaseDate": "2012-08-14",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27384bcddd0e16f0342b75c88ec",
+        "url": "https://open.spotify.com/album/1sGs88Uas5CNS9wVhm5jE8"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Turn Off The Lights",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/11f57af2d89249a3ed5fac390d465149.png",
+        "url": "https://www.last.fm/music/Dog+Blood/Turn+Off+The+Lights"
+      },
+      {
+        "name": "Next Order / Middle Finger",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/766e4ead6fde43249aa65df68b94114c.png",
+        "url": "https://www.last.fm/music/Dog+Blood/Next+Order+%2F+Middle+Finger"
+      },
+      {
+        "name": "Middle Finger Pt. 2",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/a0d767d2b0a24c2d82e848c83c3f3968.png",
+        "url": "https://www.last.fm/music/Dog+Blood/Middle+Finger+Pt.+2"
+      },
+      {
+        "name": "Next Order/Middle Finger",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/5e39058267787409b98037bca2126219.png",
+        "url": "https://www.last.fm/music/Dog+Blood/Next+Order%2FMiddle+Finger"
+      },
+      {
+        "name": "Middle Finger, Pt. 2",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/566b761562de451c97f110aaa5b0dcf2.png",
+        "url": "https://www.last.fm/music/Dog+Blood/Middle+Finger,+Pt.+2"
+      }
+    ],
+    "related": [
+      "Skrillex",
+      "Zomboy",
+      "Wiwek",
+      "Getter",
+      "Kill the Noise"
+    ]
+  },
+  "cybereality": {
+    "slug": "cybereality",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5ebb9733bb7f9d06daf3f531e29",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "31mXIlUGy5Uf0daMOyI5Bq",
+        "name": "CYBERROR (Remixes)",
+        "releaseDate": "2022-02-26",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273d657b6789182e99e562d0459",
+        "url": "https://open.spotify.com/album/31mXIlUGy5Uf0daMOyI5Bq"
+      },
+      {
+        "id": "1GScJdikbmgZouDuXYKPG0",
+        "name": "r e c u e r d o",
+        "releaseDate": "2022-01-04",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273f14dc17142c30e83a741adb6",
+        "url": "https://open.spotify.com/album/1GScJdikbmgZouDuXYKPG0"
+      },
+      {
+        "id": "7yfCEXr1mH4OadA4iYcnqi",
+        "name": "CYBERROR",
+        "releaseDate": "2021-06-24",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27321dc2edb8ebfd8acff821b23",
+        "url": "https://open.spotify.com/album/7yfCEXr1mH4OadA4iYcnqi"
+      },
+      {
+        "id": "5492hosYyU67kU7OGopOBH",
+        "name": "Internet Dating 1.5",
+        "releaseDate": "2020-12-08",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273a97629a80c9fc952e3309bbb",
+        "url": "https://open.spotify.com/album/5492hosYyU67kU7OGopOBH"
+      },
+      {
+        "id": "25Gwta6EBJ89DOiVzRWJar",
+        "name": "Selected Juke Werkz, Vol. 1",
+        "releaseDate": "2020-01-08",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27336442274a19e5b82ea80214e",
+        "url": "https://open.spotify.com/album/25Gwta6EBJ89DOiVzRWJar"
+      }
+    ],
+    "albums": [
+      {
+        "name": "v i r t u a l r e s o r t ™",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/78434b7916fd4abbb18c8dee4d25f929.png",
+        "url": "https://www.last.fm/music/CYBEREALITY%E3%83%A9%E3%82%A4%E3%83%95/v+i+r+t+u+a+l+r+e+s+o+r+t+%E2%84%A2"
+      },
+      {
+        "name": "midnight walk",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/bf3370c9d1b54c8fa4141fa6832e0c68.png",
+        "url": "https://www.last.fm/music/CYBEREALITY%E3%83%A9%E3%82%A4%E3%83%95/midnight+walk"
+      },
+      {
+        "name": "r e c u e r d o",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/9298f2255f789f8d76b7ed314ed16a05.png",
+        "url": "https://www.last.fm/music/CYBEREALITY%E3%83%A9%E3%82%A4%E3%83%95/r+e+c+u+e+r+d+o"
+      },
+      {
+        "name": "NEONITES",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/fe72edde6cc842bbc2f55af8f2572b00.png",
+        "url": "https://www.last.fm/music/CYBEREALITY%E3%83%A9%E3%82%A4%E3%83%95/NEONITES"
+      },
+      {
+        "name": "v i s i o n e s",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/5bb5c02d84994c83cc63148788539047.png",
+        "url": "https://www.last.fm/music/CYBEREALITY%E3%83%A9%E3%82%A4%E3%83%95/v+i+s+i+o+n+e+s"
+      }
+    ],
+    "related": [
+      "豊平区民TOYOHIRAKUMIN",
+      "Incorporeal Visions Deluxe",
+      "bbrainz",
+      "trushinitas",
+      "LensCorp™ International"
+    ]
+  },
+  "toyohirakumin": {
+    "slug": "toyohirakumin",
+    "profileImage": "https://i.scdn.co/image/ab67616d0000b273fd8a41748e9d3d1f55aa72d4",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "6sOYEVQUGB0A8Rut6fuec4",
+        "name": "DRIVE",
+        "releaseDate": "2019-12-20",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273314a81b6e083f4c9122809d1",
+        "url": "https://open.spotify.com/album/6sOYEVQUGB0A8Rut6fuec4"
+      },
+      {
+        "id": "1U8caIBSqIGvExuwO1wq7L",
+        "name": "オーロラ・タウン",
+        "releaseDate": "2017-06-30",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273faec28532cd57089af75775e",
+        "url": "https://open.spotify.com/album/1U8caIBSqIGvExuwO1wq7L"
+      },
+      {
+        "id": "4YKIxyKVviT0atoRRVDFuI",
+        "name": "Into the Wild",
+        "releaseDate": "2014-10-21",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2738d0af60008bcf708fdf5bbf1",
+        "url": "https://open.spotify.com/album/4YKIxyKVviT0atoRRVDFuI"
+      },
+      {
+        "id": "4K907zaSPS9tAiXFCghLvx",
+        "name": "Music in the Air",
+        "releaseDate": "2014-06-10",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273fd8a41748e9d3d1f55aa72d4",
+        "url": "https://open.spotify.com/album/4K907zaSPS9tAiXFCghLvx"
+      }
+    ],
+    "albums": [
+      {
+        "name": "MUSIC IN THE AIR",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2bfc51b9d7134e59ce3c67025c244e2a.png",
+        "url": "https://www.last.fm/music/%E8%B1%8A%E5%B9%B3%E5%8C%BA%E6%B0%91TOYOHIRAKUMIN/MUSIC+IN+THE+AIR"
+      },
+      {
+        "name": "Into The Wild",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/0c082b4e462a4417c4f8fb7b3cb4b1a8.png",
+        "url": "https://www.last.fm/music/%E8%B1%8A%E5%B9%B3%E5%8C%BA%E6%B0%91TOYOHIRAKUMIN/Into+The+Wild"
+      },
+      {
+        "name": "オーロラ・タウン",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/0f402d034b42bf767727084d69c346f3.png",
+        "url": "https://www.last.fm/music/%E8%B1%8A%E5%B9%B3%E5%8C%BA%E6%B0%91TOYOHIRAKUMIN/%E3%82%AA%E3%83%BC%E3%83%AD%E3%83%A9%E3%83%BB%E3%82%BF%E3%82%A6%E3%83%B3"
+      },
+      {
+        "name": "DRIVE",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/a99d71e91f830fd3a926e134410fcd8b.png",
+        "url": "https://www.last.fm/music/%E8%B1%8A%E5%B9%B3%E5%8C%BA%E6%B0%91TOYOHIRAKUMIN/DRIVE"
+      },
+      {
+        "name": "国道３６号線",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/b529df25554c425e8d2bdaf9387bd237.png",
+        "url": "https://www.last.fm/music/%E8%B1%8A%E5%B9%B3%E5%8C%BA%E6%B0%91TOYOHIRAKUMIN/%E5%9B%BD%E9%81%93%EF%BC%93%EF%BC%96%E5%8F%B7%E7%B7%9A"
+      }
+    ],
+    "related": [
+      "trushinitas",
+      "CYBEREALITYライフ",
+      "Ｏｃｅａｎ Ｓｈｏｒｅｓ",
+      "bbrainz",
+      "Incorporeal Visions Deluxe"
+    ]
+  },
+  "incorporeal-visions-deluxe": {
+    "slug": "incorporeal-visions-deluxe",
+    "profileImage": "https://i.scdn.co/image/ab67616d0000b27365e7d8f816c020a727832533",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "1GOXQaIAUyGECJFqsNACZH",
+        "name": "Cyber Boy",
+        "releaseDate": "2024-10-07",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273b235cfc62029d9f745413148",
+        "url": "https://open.spotify.com/album/1GOXQaIAUyGECJFqsNACZH"
+      },
+      {
+        "id": "6B8OPdnxgB6NfsHiHTtjtd",
+        "name": "Network Entities",
+        "releaseDate": "2014-05-05",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27365e7d8f816c020a727832533",
+        "url": "https://open.spotify.com/album/6B8OPdnxgB6NfsHiHTtjtd"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Network Entities",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/e40af163973c4bf0cbfe80cb2ce4f314.png",
+        "url": "https://www.last.fm/music/Incorporeal+Visions+Deluxe/Network+Entities"
+      },
+      {
+        "name": "The Incorporeal Entity Alliance - Welcome to Side A",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/f3335bb6d35d40b4c0292cc4da392556.png",
+        "url": "https://www.last.fm/music/Incorporeal+Visions+Deluxe/The+Incorporeal+Entity+Alliance+-+Welcome+to+Side+A"
+      },
+      {
+        "name": "The Eternal Dream System",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/37792c8110c6b59dda53e6a383df743b.png",
+        "url": "https://www.last.fm/music/Incorporeal+Visions+Deluxe/The+Eternal+Dream+System"
+      },
+      {
+        "name": "DREAM_31",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/a1ef8aa396dd856b2c06502cb32dd2ba.png",
+        "url": "https://www.last.fm/music/Incorporeal+Visions+Deluxe/DREAM_31"
+      },
+      {
+        "name": "The Incorporeal Entity Alliance",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/14e6f127310b5c145be09cd85065e738.png",
+        "url": "https://www.last.fm/music/Incorporeal+Visions+Deluxe/The+Incorporeal+Entity+Alliance"
+      }
+    ],
+    "related": [
+      "豊平区民TOYOHIRAKUMIN",
+      "LensCorp™ International",
+      "CYBEREALITYライフ",
+      "CVLTVRΣ",
+      "architecture in tokyo"
+    ]
+  },
+  "bbrainz": {
+    "slug": "bbrainz",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb4ef6006623ed06de12b07ae9",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "00xbLL56fmy3kNK2LKOGTU",
+        "name": "Crystal",
+        "releaseDate": "2019-11-26",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2736ecdb47a44555b0cbcae999e",
+        "url": "https://open.spotify.com/album/00xbLL56fmy3kNK2LKOGTU"
+      },
+      {
+        "id": "4XLNaZQudOjYpfkClunJty",
+        "name": "echo",
+        "releaseDate": "2014-07-13",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273146180217baa25fec54052e3",
+        "url": "https://open.spotify.com/album/4XLNaZQudOjYpfkClunJty"
+      },
+      {
+        "id": "56nzpaKjk5y4Bl4D7JWvQo",
+        "name": "Internet Lust",
+        "releaseDate": "2014-01-29",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273ce3cbea34a5a75df9e30b89c",
+        "url": "https://open.spotify.com/album/56nzpaKjk5y4Bl4D7JWvQo"
+      },
+      {
+        "id": "5NXzg5VhR1UaVsVgZRryCI",
+        "name": "pizza contigo",
+        "releaseDate": "2013-12-20",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273df88365f9dfcad1bd41869ee",
+        "url": "https://open.spotify.com/album/5NXzg5VhR1UaVsVgZRryCI"
+      }
+    ],
+    "albums": [
+      {
+        "name": "internet lust",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/5b6b59585df34126c13796eab86aadc6.png",
+        "url": "https://www.last.fm/music/bbrainz/internet+lust"
+      },
+      {
+        "name": "Crystal",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/feb5e6360ada4fd4cfc61b7bda9b5b6f.png",
+        "url": "https://www.last.fm/music/bbrainz/Crystal"
+      },
+      {
+        "name": "pizza contigo",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/36d86c7665bb4230c24acaee5d77e12e.png",
+        "url": "https://www.last.fm/music/bbrainz/pizza+contigo"
+      },
+      {
+        "name": "jungle2000",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/e7a2a847db843169a704c20f5ab88c5a.png",
+        "url": "https://www.last.fm/music/bbrainz/jungle2000"
+      },
+      {
+        "name": "Echo",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/c37adddb668f4667c63a47806d6e0dc0.png",
+        "url": "https://www.last.fm/music/bbrainz/Echo"
+      }
+    ],
+    "related": [
+      "architecture in tokyo",
+      "trushinitas",
+      "ぬいぐるみクレヨン Lush Crayon",
+      "豊平区民TOYOHIRAKUMIN",
+      "Vaporia"
+    ]
+  },
+  "trushinitas": {
+    "slug": "trushinitas",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5ebbb1e4e95832b8ccd77af97f6",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "3uvW800ZYqLgUGRLi31wMl",
+        "name": "Trushinitas: Full Band (Live)",
+        "releaseDate": "2025-11-29",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273a5eb5d30f253cf28645ffe30",
+        "url": "https://open.spotify.com/album/3uvW800ZYqLgUGRLi31wMl"
+      },
+      {
+        "id": "1BgCjVXg2gFEYxMSocCbZV",
+        "name": "Mieles y Flores",
+        "releaseDate": "2025-09-21",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2731b22a2e2e072db369ea1dd12",
+        "url": "https://open.spotify.com/album/1BgCjVXg2gFEYxMSocCbZV"
+      },
+      {
+        "id": "18VNsFMYdnk3r6jWXgkaF7",
+        "name": "404",
+        "releaseDate": "2023-10-31",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27356c5c5ae3326d4381fbe9ae3",
+        "url": "https://open.spotify.com/album/18VNsFMYdnk3r6jWXgkaF7"
+      },
+      {
+        "id": "6NzptI3rtodybXwrXhiPIt",
+        "name": "Ocean Breeze",
+        "releaseDate": "2020-02-26",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273caeb49fb94e95834dee92b40",
+        "url": "https://open.spotify.com/album/6NzptI3rtodybXwrXhiPIt"
+      },
+      {
+        "id": "54wY3BrWkgCyoDccyhxX2B",
+        "name": "Vhs Tape",
+        "releaseDate": "2018-02-20",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273f1c8fdb427ecea2deefe9d2c",
+        "url": "https://open.spotify.com/album/54wY3BrWkgCyoDccyhxX2B"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Memories",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/d8fedddd695e7362cd48e27396e81c69.png",
+        "url": "https://www.last.fm/music/trushinitas/Memories"
+      },
+      {
+        "name": "Ocean Breeze",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/dec1021d6d00d748ae6d79ccbee6120e.png",
+        "url": "https://www.last.fm/music/trushinitas/Ocean+Breeze"
+      },
+      {
+        "name": "2018",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/eceb38cb8de586305af004780d370890.png",
+        "url": "https://www.last.fm/music/trushinitas/2018"
+      },
+      {
+        "name": "VHS TAPE",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/bd14d72ad2c89c5f736b5eb8b7dd1a49.png",
+        "url": "https://www.last.fm/music/trushinitas/VHS+TAPE"
+      },
+      {
+        "name": "Totally Rad",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/58826fd2f2333ef02edfd0244bc0b059.png",
+        "url": "https://www.last.fm/music/trushinitas/Totally+Rad"
+      }
+    ],
+    "related": [
+      "豊平区民TOYOHIRAKUMIN",
+      "architecture in tokyo",
+      "ぬいぐるみクレヨン Lush Crayon",
+      "Vaporia",
+      "bbrainz"
+    ]
+  },
+  "lenscorp-international": {
+    "slug": "lenscorp-international",
+    "profileImage": "https://i.scdn.co/image/ab67616d0000b273b00695f6630f8e7955c9ef2c",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "3uf2QyucWw4m50xMahNoTV",
+        "name": "Online™",
+        "releaseDate": "2014-08-05",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273b00695f6630f8e7955c9ef2c",
+        "url": "https://open.spotify.com/album/3uf2QyucWw4m50xMahNoTV"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Online™",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/8c96e6d1187a4bc1cb6bc75c446e8fad.png",
+        "url": "https://www.last.fm/music/LensCorp%E2%84%A2+International/Online%E2%84%A2"
+      },
+      {
+        "name": "Connecting",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/LensCorp%E2%84%A2+International/Connecting"
+      },
+      {
+        "name": "Xerox Park",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/LensCorp%E2%84%A2+International/Xerox+Park"
+      },
+      {
+        "name": "Timeshare Villa",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/LensCorp%E2%84%A2+International/Timeshare+Villa"
+      },
+      {
+        "name": "Casino",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/LensCorp%E2%84%A2+International/Casino"
+      }
+    ],
+    "related": [
+      "m a l i b l u e : (",
+      "Incorporeal Visions Deluxe",
+      "CYBEREALITYライフ",
+      "豊平区民TOYOHIRAKUMIN",
+      "Ｏｃｅａｎ Ｓｈｏｒｅｓ"
+    ]
+  },
+  "soundbwoy-killah": {
+    "slug": "soundbwoy-killah",
+    "profileImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "Halcyon Daze",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/ad7289bbbc1d1ad6dac8a044671e2e5d.png",
+        "url": "https://www.last.fm/music/Soundbwoy+Killah/Halcyon+Daze"
+      },
+      {
+        "name": "Burning / Moving On",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/cc097ebbbe91fbf165a090855391e3fa.png",
+        "url": "https://www.last.fm/music/Soundbwoy+Killah/Burning+%2F+Moving+On"
+      },
+      {
+        "name": "Come My Selector",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/0e3cd583b47f645a85284e1ae7c3d080.png",
+        "url": "https://www.last.fm/music/Soundbwoy+Killah/Come+My+Selector"
+      },
+      {
+        "name": "Something Special",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/4e8f2ec3c3b2f553e788c23d9dd1c71d.png",
+        "url": "https://www.last.fm/music/Soundbwoy+Killah/Something+Special"
+      },
+      {
+        "name": "Pang",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Soundbwoy+Killah/Pang"
+      }
+    ],
+    "related": [
+      "Borai",
+      "Mani Festo",
+      "Private Caller",
+      "Local group",
+      "AceMoMa"
+    ]
+  },
+  "mani-festo": {
+    "slug": "mani-festo",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5ebeda9a7edb8a6f46a115d9ed3",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "SNKRX07",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/f757a610aad68a065fa674a6f02edb41.png",
+        "url": "https://www.last.fm/music/Mani+Festo/SNKRX07"
+      },
+      {
+        "name": "Higher",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/60328e701154c8e1fcf4bce6d7851717.png",
+        "url": "https://www.last.fm/music/Mani+Festo/Higher"
+      },
+      {
+        "name": "Club Glow, Vol. 2",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/49a4216cc0de62501acc6101a1f4214a.png",
+        "url": "https://www.last.fm/music/Mani+Festo/Club+Glow,+Vol.+2"
+      },
+      {
+        "name": "Disengage EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/3bbdbc5a48327970edfb1899e745baf4.png",
+        "url": "https://www.last.fm/music/Mani+Festo/Disengage+EP"
+      },
+      {
+        "name": "Continuum",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Mani+Festo/Continuum"
+      }
+    ],
+    "related": [
+      "Borai",
+      "K-65",
+      "Private Caller",
+      "Soundbwoy Killah",
+      "Hooverian Blur"
+    ]
+  },
+  "lmajor": {
+    "slug": "lmajor",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb1d79ddfac1200e12effdfbad",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "5Olgt9fpkKdX1WYJo9InYV",
+        "name": "The Path / Melt",
+        "releaseDate": "2026-03-27",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273edecc17848f311c383e12874",
+        "url": "https://open.spotify.com/album/5Olgt9fpkKdX1WYJo9InYV"
+      },
+      {
+        "id": "6qs4U5KOcw7k4tnrgO8SmW",
+        "name": "The Path",
+        "releaseDate": "2026-02-27",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27366bfd59ba47adb585adb5299",
+        "url": "https://open.spotify.com/album/6qs4U5KOcw7k4tnrgO8SmW"
+      },
+      {
+        "id": "1B6VgMJfGivtgfVtiWkA74",
+        "name": "X Mod / Soundman Ting",
+        "releaseDate": "2025-09-10",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273ba5e381b2f4fac2333255e01",
+        "url": "https://open.spotify.com/album/1B6VgMJfGivtgfVtiWkA74"
+      },
+      {
+        "id": "16efOvT4O07mwQstZKorp4",
+        "name": "Pressure",
+        "releaseDate": "2025-09-10",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2739b2dc9c6619c768a5a796a64",
+        "url": "https://open.spotify.com/album/16efOvT4O07mwQstZKorp4"
+      },
+      {
+        "id": "7conhD41uizAfWgR9S4Y9M",
+        "name": "Club Glow, Vol. 2",
+        "releaseDate": "2021-04-30",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27364425f44a76379f85b88d201",
+        "url": "https://open.spotify.com/album/7conhD41uizAfWgR9S4Y9M"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Dig the New Breed, Pt. 1",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/b73cc96f058f241d4784c38db63c8748.png",
+        "url": "https://www.last.fm/music/LMajor/Dig+the+New+Breed,+Pt.+1"
+      },
+      {
+        "name": "Can't Do it",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/7dd6495c21d3e95c8310b1aac2420422.png",
+        "url": "https://www.last.fm/music/LMajor/Can%27t+Do+it"
+      },
+      {
+        "name": "Dig the New Breed, Pt. 2",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/c54e05530cc2c36bad2341e4465488c3.png",
+        "url": "https://www.last.fm/music/LMajor/Dig+the+New+Breed,+Pt.+2"
+      },
+      {
+        "name": "Hallucin8",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/LMajor/Hallucin8"
+      },
+      {
+        "name": "Diamond Life 10",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/cda6d211a3290c6e1a28958ee85bbb5f.png",
+        "url": "https://www.last.fm/music/LMajor/Diamond+Life+10"
+      }
+    ],
+    "related": [
+      "Local group",
+      "K-65",
+      "Benton",
+      "Disaffected",
+      "Yazzus"
+    ]
+  },
+  "borai": {
+    "slug": "borai",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb4bced1bf5eb469addf56a998",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "1Ra9VUCIiCPCXjmK2VGKqI",
+        "name": "Go With The Flow",
+        "releaseDate": "2026-04-03",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27324732d648836a145466e5ae5",
+        "url": "https://open.spotify.com/album/1Ra9VUCIiCPCXjmK2VGKqI"
+      },
+      {
+        "id": "1xtoR8IShO2ssAACI5gCO5",
+        "name": "I Need Relief",
+        "releaseDate": "2025-12-19",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2732a2a9cc4c4931736b7b95780",
+        "url": "https://open.spotify.com/album/1xtoR8IShO2ssAACI5gCO5"
+      },
+      {
+        "id": "5n87CYNqW5YAH61Qr2B6pr",
+        "name": "Why The Tiger And Monkey Are Sworn Enemies",
+        "releaseDate": "2025-08-29",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27329b5346ac728af237cd60b7c",
+        "url": "https://open.spotify.com/album/5n87CYNqW5YAH61Qr2B6pr"
+      },
+      {
+        "id": "0BrGrBIlL2ExQ7LsVtM07G",
+        "name": "Penumbra",
+        "releaseDate": "2022-04-29",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2733ef1adda491ab1278c09bab8",
+        "url": "https://open.spotify.com/album/0BrGrBIlL2ExQ7LsVtM07G"
+      },
+      {
+        "id": "4mMkCpl1IDUlgRJBqOeXoT",
+        "name": "Club Glow, Vol. 1",
+        "releaseDate": "2021-04-30",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273f999f91e567e0656afb483c7",
+        "url": "https://open.spotify.com/album/4mMkCpl1IDUlgRJBqOeXoT"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Club Glow, Vol. 1",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/eab1f2eb22d80a2226715b125a1dd56f.png",
+        "url": "https://www.last.fm/music/Borai/Club+Glow,+Vol.+1"
+      },
+      {
+        "name": "Clouds Across The Stars",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/4a4d85898b332bbc66116d9a86ada626.png",
+        "url": "https://www.last.fm/music/Borai/Clouds+Across+The+Stars"
+      },
+      {
+        "name": "No Good",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Borai/No+Good"
+      },
+      {
+        "name": "Need U",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/a5c2bb9d9a3229b60fb1d38f751bccc9.png",
+        "url": "https://www.last.fm/music/Borai/Need+U"
+      },
+      {
+        "name": "Greatest Freak",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/ac02741ecd979b58c9b20cc082b8b58f.png",
+        "url": "https://www.last.fm/music/Borai/Greatest+Freak"
+      }
+    ],
+    "related": [
+      "Mani Festo",
+      "Soundbwoy Killah",
+      "Private Caller",
+      "Local group",
+      "Origin8a & Propa"
+    ]
+  },
+  "hooverian-blur": {
+    "slug": "hooverian-blur",
+    "profileImage": "https://i.scdn.co/image/ab67616d0000b273d6894508a5b7d48f6aceea86",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "63dQtVdoxMCmWIXcesdeIm",
+        "name": "Feed The Bones",
+        "releaseDate": "2025-04-23",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273ca5bebc1e421d27128ca2b83",
+        "url": "https://open.spotify.com/album/63dQtVdoxMCmWIXcesdeIm"
+      },
+      {
+        "id": "5o5QS66WBJC4akbomkl2tC",
+        "name": "Cut & Dried EP",
+        "releaseDate": "2025-03-28",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2737ef75d839cb6add64646d9b5",
+        "url": "https://open.spotify.com/album/5o5QS66WBJC4akbomkl2tC"
+      },
+      {
+        "id": "2cWZm7GDXshHRtwltI5QIH",
+        "name": "Hypnotizer",
+        "releaseDate": "2025-02-07",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273d80a12d6058c9cdf0572afdf",
+        "url": "https://open.spotify.com/album/2cWZm7GDXshHRtwltI5QIH"
+      },
+      {
+        "id": "0kyLtihRksllfGJWpR1MpY",
+        "name": "Project One",
+        "releaseDate": "2025-01-24",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273bfb3da62795e585a80496b40",
+        "url": "https://open.spotify.com/album/0kyLtihRksllfGJWpR1MpY"
+      },
+      {
+        "id": "54CiU1Us7BLcJ4O5mXAFbP",
+        "name": "Hypnotizer",
+        "releaseDate": "2025-01-17",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273dd182cd1bbaefc1225ca4a6c",
+        "url": "https://open.spotify.com/album/54CiU1Us7BLcJ4O5mXAFbP"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Old Gold",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/41661330cdc41b527a9ab7a1cf7144b7.png",
+        "url": "https://www.last.fm/music/Hooverian+Blur/Old+Gold"
+      },
+      {
+        "name": "Phantom Space",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/7f90bf567cad8f3aef022bdef403289a.png",
+        "url": "https://www.last.fm/music/Hooverian+Blur/Phantom+Space"
+      },
+      {
+        "name": "Hypnotizer",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/b437048c90a3c4429f64e7ea8ef2cd3a.png",
+        "url": "https://www.last.fm/music/Hooverian+Blur/Hypnotizer"
+      },
+      {
+        "name": "Panic Trax EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/30f81af2cf2d3ef944ee1506887d256e.png",
+        "url": "https://www.last.fm/music/Hooverian+Blur/Panic+Trax+EP"
+      },
+      {
+        "name": "SNKRX09",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/aeada860866266a4625e3b327f01dc01.png",
+        "url": "https://www.last.fm/music/Hooverian+Blur/SNKRX09"
+      }
+    ],
+    "related": [
+      "Mani Festo",
+      "Private Caller",
+      "Local group",
+      "French II",
+      "An Avrin"
+    ]
+  },
+  "danny-stranger": {
+    "slug": "danny-stranger",
+    "profileImage": "https://i.scdn.co/image/ab67616d0000b2739f7ba6fdb3fbcb9865e2dd35",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "0cAsjxY9G7efZCWkJ3Bg2j",
+        "name": "Espresso",
+        "releaseDate": "2025-07-04",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2739f7ba6fdb3fbcb9865e2dd35",
+        "url": "https://open.spotify.com/album/0cAsjxY9G7efZCWkJ3Bg2j"
+      }
+    ],
+    "albums": [],
+    "related": [
+      "virginmistry",
+      "Texas Baby",
+      "NIGHTCHOP",
+      "GaSOIID",
+      "Dinomight"
+    ]
+  },
+  "texas-baby": {
+    "slug": "texas-baby",
+    "profileImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "nightcore4totalsluts va5 xo",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/3bbcfe83cdad273930d63cb1badefef0.png",
+        "url": "https://www.last.fm/music/Texas+Baby/nightcore4totalsluts+va5+xo"
+      },
+      {
+        "name": "nightcore4totalsluts VA4 <3 xo",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Texas+Baby/nightcore4totalsluts+VA4+%3C3+xo"
+      },
+      {
+        "name": "Textasy",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/0466fb27877d3079999680b6711ecacf.png",
+        "url": "https://www.last.fm/music/Texas+Baby/Textasy"
+      },
+      {
+        "name": "magiclock",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Texas+Baby/magiclock"
+      },
+      {
+        "name": "Texas Baby - Textasy",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/bd9d769ef576631d365c70b15346e308.png",
+        "url": "https://www.last.fm/music/Texas+Baby/Texas+Baby+-+Textasy"
+      }
+    ],
+    "related": [
+      "Danny Stranger",
+      "nightcore4totalsluts",
+      "GaSOIID",
+      "virginmistry",
+      "NIGHTCHOP"
+    ]
+  },
+  "nightchop": {
+    "slug": "nightchop",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5ebbf73929f8c684fed7af7e767",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "7nVgZSw16tqEEaEVFNSBhP",
+        "name": "Keep It Tucked (ThxSoMch) - Sped Up Version",
+        "releaseDate": "2026-01-22",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273f1a165afb24c5b8ee9111274",
+        "url": "https://open.spotify.com/album/7nVgZSw16tqEEaEVFNSBhP"
+      },
+      {
+        "id": "3q5PIpTOQMYUaoabt0UCKz",
+        "name": "Mr. Skii (Sped Up)",
+        "releaseDate": "2024-08-22",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2738d5ff4a587549068df357ab5",
+        "url": "https://open.spotify.com/album/3q5PIpTOQMYUaoabt0UCKz"
+      },
+      {
+        "id": "2k3pWencv6dpSC6H2jB4wf",
+        "name": "Alone In A Crowd (Sped Up Version)",
+        "releaseDate": "2023-09-28",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273dbd85d52b79405b3c135820f",
+        "url": "https://open.spotify.com/album/2k3pWencv6dpSC6H2jB4wf"
+      },
+      {
+        "id": "79n6HJ6A87DjzNmpX5Nq1G",
+        "name": "LACUNA in The House Of Mirrors (Sped Up)",
+        "releaseDate": "2023-08-17",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273bdd1a75139bb56551e6de882",
+        "url": "https://open.spotify.com/album/79n6HJ6A87DjzNmpX5Nq1G"
+      },
+      {
+        "id": "4omD3UxmlbpOpNLuj5SvIE",
+        "name": "My Vision (Fast)",
+        "releaseDate": "2023-04-03",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273671b444f70e85d83bf126913",
+        "url": "https://open.spotify.com/album/4omD3UxmlbpOpNLuj5SvIE"
+      }
+    ],
+    "albums": [
+      {
+        "name": "nightcore4totalsluts va5 xo",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/NIGHTCHOP/nightcore4totalsluts+va5+xo"
+      },
+      {
+        "name": "NIGHTCHOP EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/73ca0d8fafd7f663cc2c6efcad291975.png",
+        "url": "https://www.last.fm/music/NIGHTCHOP/NIGHTCHOP+EP"
+      },
+      {
+        "name": "NIGHTCHOP 2",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/7667237f8926a0bf5d42e6b28ab034f0.png",
+        "url": "https://www.last.fm/music/NIGHTCHOP/NIGHTCHOP+2"
+      },
+      {
+        "name": "Materia Widget",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/5ad6d375eb1cfa9abc4b41dd14da6e00.png",
+        "url": "https://www.last.fm/music/NIGHTCHOP/Materia+Widget"
+      },
+      {
+        "name": "nightcore4totalsluts VA4 <3 xo",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/4616ed5a1694fbcf8e7e45d9bf78ce26.png",
+        "url": "https://www.last.fm/music/NIGHTCHOP/nightcore4totalsluts+VA4+%3C3+xo"
+      }
+    ],
+    "related": [
+      "Decoded Flows",
+      "Danny Stranger",
+      "GaSOIID",
+      "exjaynine",
+      "Texas Baby"
+    ]
+  },
+  "dj-christian-nxc": {
+    "slug": "dj-christian-nxc",
+    "profileImage": "https://i.scdn.co/image/ab67616d0000b27394c8a8120f18fde0decfca5e",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "276QqN0JC3EmGN31Ln2Mxo",
+        "name": "PERREOCORE®",
+        "releaseDate": "2021-06-03",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27394c8a8120f18fde0decfca5e",
+        "url": "https://open.spotify.com/album/276QqN0JC3EmGN31Ln2Mxo"
+      }
+    ],
+    "albums": [
+      {
+        "name": "PERREOCORE®",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/DJ+CHRISTIAN+NXC/PERREOCORE%C2%AE"
+      },
+      {
+        "name": "2025: Club Diaries",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/b1433b86fd59bc6945bcb5c765a2ff2e.png",
+        "url": "https://www.last.fm/music/DJ+CHRISTIAN+NXC/2025:+Club+Diaries"
+      },
+      {
+        "name": "nightcore4totalsluts VA003",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/DJ+CHRISTIAN+NXC/nightcore4totalsluts+VA003"
+      },
+      {
+        "name": "DARK EP (PART 1)",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/3c1f3b9752125e81ed3ddce1b39232f8.png",
+        "url": "https://www.last.fm/music/DJ+CHRISTIAN+NXC/DARK+EP+(PART+1)"
+      },
+      {
+        "name": "LIGHT EP (PART 2)",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2d25ff21dfb45eccb9b59ec131a49435.png",
+        "url": "https://www.last.fm/music/DJ+CHRISTIAN+NXC/LIGHT+EP+(PART+2)"
+      }
+    ],
+    "related": [
+      "GaSOIID",
+      "nightcore4totalsluts",
+      "NIGHTCHOP",
+      "ELFZ",
+      "SURATI"
+    ]
+  },
+  "private-caller": {
+    "slug": "private-caller",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb75d7f2c334d261692c4791c1",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "6DdQkLoTNaLBGWVULVnwOz",
+        "name": "Dublin (Kid Distance Remix)",
+        "releaseDate": "2026-04-03",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27358848f7e9927baf236cb1425",
+        "url": "https://open.spotify.com/album/6DdQkLoTNaLBGWVULVnwOz"
+      },
+      {
+        "id": "1rXRMxEV3otnMCGN11IND2",
+        "name": "Decks",
+        "releaseDate": "2026-03-13",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2739606b4634e017d83f7d88046",
+        "url": "https://open.spotify.com/album/1rXRMxEV3otnMCGN11IND2"
+      },
+      {
+        "id": "6tRBEhQ7XgJxSZqx9WdMzw",
+        "name": "Dublin",
+        "releaseDate": "2026-02-13",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2739314dc569383763f933e7e2a",
+        "url": "https://open.spotify.com/album/6tRBEhQ7XgJxSZqx9WdMzw"
+      },
+      {
+        "id": "44LvWAiUGUB74dRbmEHYsP",
+        "name": "Where The Vibe's Come From",
+        "releaseDate": "2023-10-16",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273e17f79da8d3239fd72512611",
+        "url": "https://open.spotify.com/album/44LvWAiUGUB74dRbmEHYsP"
+      },
+      {
+        "id": "5iHz377RZZbiGkiye5XuZo",
+        "name": "N.O.N.B.",
+        "releaseDate": "2023-07-07",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2738289ef23136fb6cc2a804665",
+        "url": "https://open.spotify.com/album/5iHz377RZZbiGkiye5XuZo"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Hooversound Presents: Private Caller & Mani Festo",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/46efcf1c0214a6ad3563dc0ad72891c2.png",
+        "url": "https://www.last.fm/music/Private+Caller/Hooversound+Presents:+Private+Caller+&+Mani+Festo"
+      },
+      {
+        "name": "Let Me Know / Want Me",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/9ae55c3572d23472ac476f90e4f362b1.png",
+        "url": "https://www.last.fm/music/Private+Caller/Let+Me+Know+%2F+Want+Me"
+      },
+      {
+        "name": "All That I Can Do",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Private+Caller/All+That+I+Can+Do"
+      },
+      {
+        "name": "Luv",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Private+Caller/Luv"
+      },
+      {
+        "name": "History In The Making EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/db4bb69db65280b81582b2c50196e972.png",
+        "url": "https://www.last.fm/music/Private+Caller/History+In+The+Making+EP"
+      }
+    ],
+    "related": [
+      "Mani Festo",
+      "Borai",
+      "Tower Block Dreams",
+      "Pinder",
+      "Soundbwoy Killah"
+    ]
+  },
+  "local-group": {
+    "slug": "local-group",
+    "profileImage": "https://i.scdn.co/image/ab67616d0000b273baa89b1f87af9ee826368c3c",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "0ZvM6jiSLDfFcOntjDghme",
+        "name": "2 B Free",
+        "releaseDate": "2025-07-25",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273fa2342e38392499a22b48370",
+        "url": "https://open.spotify.com/album/0ZvM6jiSLDfFcOntjDghme"
+      },
+      {
+        "id": "2Fl35BoMaGxdwiHXo3AAah",
+        "name": "No More Tears",
+        "releaseDate": "2025-05-02",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2737cc0129f25524da034c63924",
+        "url": "https://open.spotify.com/album/2Fl35BoMaGxdwiHXo3AAah"
+      },
+      {
+        "id": "6Cworo0rlyxBcYpga88Nvf",
+        "name": "Quantacid",
+        "releaseDate": "2025-03-31",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2739e6f5f130c282c1e9208fa6f",
+        "url": "https://open.spotify.com/album/6Cworo0rlyxBcYpga88Nvf"
+      },
+      {
+        "id": "4U5gqVTvagXnWrGUAWOEvf",
+        "name": "Planet Earth - EP",
+        "releaseDate": "2023-12-08",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273f76b5118e57a1f7bf8743c32",
+        "url": "https://open.spotify.com/album/4U5gqVTvagXnWrGUAWOEvf"
+      },
+      {
+        "id": "6v6vT27AIVY65uOnHcFwLe",
+        "name": "Stand Up EP",
+        "releaseDate": "2022-08-26",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27308b9d6f78932c0a64edf03a8",
+        "url": "https://open.spotify.com/album/6v6vT27AIVY65uOnHcFwLe"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Laser Dome",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/db578eda143c4157e10c67bf42d287db.png",
+        "url": "https://www.last.fm/music/Local+group/Laser+Dome"
+      },
+      {
+        "name": "Fresh Rhythms EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2434e796d1be86c70801bbf733e84789.png",
+        "url": "https://www.last.fm/music/Local+group/Fresh+Rhythms+EP"
+      },
+      {
+        "name": "Rhythmic Trip",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Local+group/Rhythmic+Trip"
+      },
+      {
+        "name": "Big Beats Are The Best",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/be885b3174098ac0c4cfc798c8b04441.png",
+        "url": "https://www.last.fm/music/Local+group/Big+Beats+Are+The+Best"
+      },
+      {
+        "name": "Rhythmic Trip (Angel D'Lite Remix)",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/5debfcc323ccb852535c7a40e6543871.png",
+        "url": "https://www.last.fm/music/Local+group/Rhythmic+Trip+(Angel+D%27Lite+Remix)"
+      }
+    ],
+    "related": [
+      "Angel D'lite",
+      "Mani Festo",
+      "Soundbwoy Killah",
+      "LMajor",
+      "Maruwa"
+    ]
+  },
+  "origin8a-propa": {
+    "slug": "origin8a-propa",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eba153e442d784a875a1146fb6",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "5m9qkKm2ULnBhXt8erWa9T",
+        "name": "100% Hardcore",
+        "releaseDate": "2026-02-04",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273008c6e91b8769ff513009766",
+        "url": "https://open.spotify.com/album/5m9qkKm2ULnBhXt8erWa9T"
+      },
+      {
+        "id": "7mha33py92kgbjGAI5OCBm",
+        "name": "Nitestick / XLR8",
+        "releaseDate": "2025-05-07",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2735ff90f328e1f2c79dbe2733a",
+        "url": "https://open.spotify.com/album/7mha33py92kgbjGAI5OCBm"
+      },
+      {
+        "id": "4rfz4PR1skghpQaf4G7hrH",
+        "name": "For The Sake of E's",
+        "releaseDate": "2024-08-30",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27303cd53edf98147f34b07f6ff",
+        "url": "https://open.spotify.com/album/4rfz4PR1skghpQaf4G7hrH"
+      },
+      {
+        "id": "6bBhp5vGQQmfk9MOy3qymI",
+        "name": "90’s Baby EP",
+        "releaseDate": "2024-08-23",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273598edbac203eb953dbeec3bc",
+        "url": "https://open.spotify.com/album/6bBhp5vGQQmfk9MOy3qymI"
+      },
+      {
+        "id": "20LuSsHUe6iVtD5rh1rzC5",
+        "name": "The Next Chapter (The Album)",
+        "releaseDate": "2020-12-11",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2736ffd909d3f2ffb1310b413e1",
+        "url": "https://open.spotify.com/album/20LuSsHUe6iVtD5rh1rzC5"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Harmony",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/5cecbad678c1e5952a90469235d7039e.png",
+        "url": "https://www.last.fm/music/Origin8a+&+Propa/Harmony"
+      },
+      {
+        "name": "Freedom To Party EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/da15ae064891247f62248e1d715a97f1.png",
+        "url": "https://www.last.fm/music/Origin8a+&+Propa/Freedom+To+Party+EP"
+      },
+      {
+        "name": "For The Sake of E's",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/496ceb6904ddb7b02bd7590902bac335.png",
+        "url": "https://www.last.fm/music/Origin8a+&+Propa/For+The+Sake+of+E%27s"
+      },
+      {
+        "name": "Back To The Streets",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/a69125724f21f2bd6492f1da69c9f6bb.png",
+        "url": "https://www.last.fm/music/Origin8a+&+Propa/Back+To+The+Streets"
+      },
+      {
+        "name": "Harmony (Lee Mvtthews Remix)",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Origin8a+&+Propa/Harmony+(Lee+Mvtthews+Remix)"
+      }
+    ],
+    "related": [
+      "Janaway",
+      "Toby Ross",
+      "MKII",
+      "Case 82",
+      "Bruk"
+    ]
+  },
+  "case-82": {
+    "slug": "case-82",
+    "profileImage": "https://i.scdn.co/image/ab67616d0000b273d6cbe47c6608584ab5b0c85d",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "4XGD4RXoWpu89kjmOtH6uG",
+        "name": "Without You",
+        "releaseDate": "2026-01-06",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27399e605476c0a93b94d5cc0db",
+        "url": "https://open.spotify.com/album/4XGD4RXoWpu89kjmOtH6uG"
+      },
+      {
+        "id": "5oZzCOy5rz39Rph7vtqqdv",
+        "name": "My Heart",
+        "releaseDate": "2025-12-04",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2731624aeafb971b697a6953f42",
+        "url": "https://open.spotify.com/album/5oZzCOy5rz39Rph7vtqqdv"
+      },
+      {
+        "id": "4tL1t6ozOKvFCLsVDh0jui",
+        "name": "That Old Piano",
+        "releaseDate": "2025-11-07",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27398d4abfb3e43ed1d39b46e5b",
+        "url": "https://open.spotify.com/album/4tL1t6ozOKvFCLsVDh0jui"
+      },
+      {
+        "id": "2CaIjhTRxtkNLzfYl51WVe",
+        "name": "Take It Slow",
+        "releaseDate": "2025-09-18",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273c396a1d1fb61a40a573df240",
+        "url": "https://open.spotify.com/album/2CaIjhTRxtkNLzfYl51WVe"
+      },
+      {
+        "id": "3tAglI8srAFUYBTAReRj4V",
+        "name": "The Story So Far",
+        "releaseDate": "2019-09-23",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273c020dcaff8ad1658bfedbf90",
+        "url": "https://open.spotify.com/album/3tAglI8srAFUYBTAReRj4V"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Elevate Your Love",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/c9d6ab6b3d2e18281e6a623881b9ee44.png",
+        "url": "https://www.last.fm/music/Case+82/Elevate+Your+Love"
+      },
+      {
+        "name": "The Story So Far",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/a5eec32d49157a48ef39ab2c124cddf9.png",
+        "url": "https://www.last.fm/music/Case+82/The+Story+So+Far"
+      },
+      {
+        "name": "Positive Vibrations",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/caf9ebfa0bc1ee18a3f7aa096c6894c0.png",
+        "url": "https://www.last.fm/music/Case+82/Positive+Vibrations"
+      },
+      {
+        "name": "Get On The Move",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Case+82/Get+On+The+Move"
+      },
+      {
+        "name": "Lost In Desire",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Case+82/Lost+In+Desire"
+      }
+    ],
+    "related": [
+      "MKII",
+      "Origin8a & Propa",
+      "Jimmy J",
+      "DJ's Unite",
+      "Finning Hamilton"
+    ]
+  },
+  "bruk": {
+    "slug": "bruk",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb6e059bd912cd7fecdd07cd3f",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "4WTNBIGsISUa41cF0QlcZq",
+        "name": "Love Fast Cry Young",
+        "releaseDate": "2026-01-30",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273aafd5a151d20383faf6c02d5",
+        "url": "https://open.spotify.com/album/4WTNBIGsISUa41cF0QlcZq"
+      },
+      {
+        "id": "3IJBAslkMW7M1I3vXk8H2y",
+        "name": "Echo",
+        "releaseDate": "2025-09-16",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2738820566e0d39eac86edbb563",
+        "url": "https://open.spotify.com/album/3IJBAslkMW7M1I3vXk8H2y"
+      },
+      {
+        "id": "6VueSIGMnzOCJtWg3a2IWO",
+        "name": "Cry A Little Louder",
+        "releaseDate": "2025-08-19",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2739118b949be254eee6cf71f4d",
+        "url": "https://open.spotify.com/album/6VueSIGMnzOCJtWg3a2IWO"
+      },
+      {
+        "id": "5uwHcTv2yXjrzTcCaGRUx8",
+        "name": "Kinda Like",
+        "releaseDate": "2025-07-22",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273268072d273904d0364fe7d02",
+        "url": "https://open.spotify.com/album/5uwHcTv2yXjrzTcCaGRUx8"
+      },
+      {
+        "id": "41WDnb9UzGRXDrIsw324UT",
+        "name": "Echo",
+        "releaseDate": "2025-06-24",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27391b91215e917f974126664dc",
+        "url": "https://open.spotify.com/album/41WDnb9UzGRXDrIsw324UT"
+      }
+    ],
+    "albums": [],
+    "related": [
+      "Toby Ross",
+      "Janaway",
+      "Origin8a & Propa",
+      "SHIRLEY TEMPER",
+      "DJ Gaw"
+    ]
+  },
+  "toby-ross": {
+    "slug": "toby-ross",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb48d015b8040087dd87c5f550",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "1nbdhwhOu9OgsdgEj27GEQ",
+        "name": "Autotronic EP",
+        "releaseDate": "2026-02-06",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2730ec8128b9f2fb6b2410eb7a9",
+        "url": "https://open.spotify.com/album/1nbdhwhOu9OgsdgEj27GEQ"
+      },
+      {
+        "id": "1mloSA0aSeMjnTbd9gGYKo",
+        "name": "Check It",
+        "releaseDate": "2025-12-25",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27359778eb5b6e4bf53a6dd231e",
+        "url": "https://open.spotify.com/album/1mloSA0aSeMjnTbd9gGYKo"
+      },
+      {
+        "id": "3nEPcBc0jpfK4Idgv5Ir6C",
+        "name": "Set Me Free",
+        "releaseDate": "2025-09-26",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27361e76d33d35f8e38960a8353",
+        "url": "https://open.spotify.com/album/3nEPcBc0jpfK4Idgv5Ir6C"
+      },
+      {
+        "id": "4xOg11UDL4OmTWiWRjTGF0",
+        "name": "Lifeforms / Visionary",
+        "releaseDate": "2025-08-13",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27399081b60fbe15c4644dc5707",
+        "url": "https://open.spotify.com/album/4xOg11UDL4OmTWiWRjTGF0"
+      },
+      {
+        "id": "6GHHyDDRipJnX5ZJpDySNX",
+        "name": "Utopia EP",
+        "releaseDate": "2025-02-26",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273f100b4c7e1a8fa7131028acb",
+        "url": "https://open.spotify.com/album/6GHHyDDRipJnX5ZJpDySNX"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Tuff Breaks",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/7b2998a643dabebd8fd329f146c4d746.png",
+        "url": "https://www.last.fm/music/Toby+Ross/Tuff+Breaks"
+      },
+      {
+        "name": "Wide Roach",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/3fd4b739c87c1554733ae313b8a76aeb.png",
+        "url": "https://www.last.fm/music/Toby+Ross/Wide+Roach"
+      },
+      {
+        "name": "Ruff Cutz / Supernova",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/983b135d9c413b246f753817774ca797.png",
+        "url": "https://www.last.fm/music/Toby+Ross/Ruff+Cutz+%2F+Supernova"
+      },
+      {
+        "name": "Toby Ross & Friends",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/8ddedbcfa8110c8af449c6395386f9c9.png",
+        "url": "https://www.last.fm/music/Toby+Ross/Toby+Ross+&+Friends"
+      },
+      {
+        "name": "Foundation",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/eb3310e37986916f35d5233a08272dd6.png",
+        "url": "https://www.last.fm/music/Toby+Ross/Foundation"
+      }
+    ],
+    "related": [
+      "Janaway",
+      "Bruk",
+      "Origin8a & Propa",
+      "Frisbee Aerobics",
+      "Tweakz"
+    ]
+  },
+  "mkii": {
+    "slug": "mkii",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eba3f5c27335aa4ab7ee35f2ca",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "7BSdi3ZHMbrpWG5bgqcjWv",
+        "name": "This Time",
+        "releaseDate": "2025-06-18",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273f4b2767f6b83a3c434baed44",
+        "url": "https://open.spotify.com/album/7BSdi3ZHMbrpWG5bgqcjWv"
+      },
+      {
+        "id": "6kpHMfZ4mrblI0BaTCEpu2",
+        "name": "On Your Own EP",
+        "releaseDate": "2024-02-09",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2738cf1e0c66ab22ceeb0f550cc",
+        "url": "https://open.spotify.com/album/6kpHMfZ4mrblI0BaTCEpu2"
+      },
+      {
+        "id": "23lc4QfraXMECk5itDxDAL",
+        "name": "Jupiter",
+        "releaseDate": "2023-12-01",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27390db4a591bf57fbaedf28166",
+        "url": "https://open.spotify.com/album/23lc4QfraXMECk5itDxDAL"
+      },
+      {
+        "id": "1liqqHeKuQZlULjIxlEdHE",
+        "name": "Home",
+        "releaseDate": "2022-12-23",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273ad4d39171758a3f056370f2c",
+        "url": "https://open.spotify.com/album/1liqqHeKuQZlULjIxlEdHE"
+      },
+      {
+        "id": "6VX5IGg6njOfrbwAvugkYs",
+        "name": "Universal LP",
+        "releaseDate": "2022-08-12",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27394e286307c46508fc5a1a77b",
+        "url": "https://open.spotify.com/album/6VX5IGg6njOfrbwAvugkYs"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Flashback EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/f65235ccad9a309a7d7652174d02ba38.png",
+        "url": "https://www.last.fm/music/MKII/Flashback+EP"
+      },
+      {
+        "name": "Evil",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/7b208818d7dcefdefef6fadfcac77cac.png",
+        "url": "https://www.last.fm/music/MKII/Evil"
+      },
+      {
+        "name": "Let It Roll EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/534f6478b93be5dd245eab23ab3b4b00.png",
+        "url": "https://www.last.fm/music/MKII/Let+It+Roll+EP"
+      },
+      {
+        "name": "M1 EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/aae2b9e9b5f9d1529679daad48082e4e.png",
+        "url": "https://www.last.fm/music/MKII/M1+EP"
+      },
+      {
+        "name": "This Is / Can't You See",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/MKII/This+Is+%2F+Can%27t+You+See"
+      }
+    ],
+    "related": [
+      "Case 82",
+      "Origin8a & Propa",
+      "FM-3",
+      "Private Caller",
+      "Pete Cannon"
+    ]
+  },
+  "janaway": {
+    "slug": "janaway",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5ebee06b1344f08b6bf0ad71670",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "6jsWY61Gr2uXvEddqzMYS0",
+        "name": "International Luv",
+        "releaseDate": "2025-12-03",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273bb2fa8ea98701d238d90ad2d",
+        "url": "https://open.spotify.com/album/6jsWY61Gr2uXvEddqzMYS0"
+      },
+      {
+        "id": "639vtWAaV1PZNIzhdZvX33",
+        "name": "50/50 Vision",
+        "releaseDate": "2025-11-19",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273da0f5e7f9960be34c2f15ff2",
+        "url": "https://open.spotify.com/album/639vtWAaV1PZNIzhdZvX33"
+      },
+      {
+        "id": "4aUQP2zCyOn5NzO6dqsQ18",
+        "name": "Jungle Funk Vol.3",
+        "releaseDate": "2025-03-12",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273cea08b2b65573793e71ad86c",
+        "url": "https://open.spotify.com/album/4aUQP2zCyOn5NzO6dqsQ18"
+      },
+      {
+        "id": "41BJp9T86HUZpCYcAGjGh9",
+        "name": "Jungle Funk Vol.2",
+        "releaseDate": "2024-12-12",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273a781c5ed94496a44f42e062c",
+        "url": "https://open.spotify.com/album/41BJp9T86HUZpCYcAGjGh9"
+      },
+      {
+        "id": "2xC7Hp1IY8otINmxhyJ1zw",
+        "name": "Body Rockin'",
+        "releaseDate": "2024-10-23",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2734a6260467b72aff00185f8fb",
+        "url": "https://open.spotify.com/album/2xC7Hp1IY8otINmxhyJ1zw"
+      }
+    ],
+    "albums": [
+      {
+        "name": "BRZ009 - JANAWAY",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/02645bc532f9588a520a24b4908f71a2.png",
+        "url": "https://www.last.fm/music/Janaway/BRZ009+-+JANAWAY"
+      },
+      {
+        "name": "Jungle Funk Vol.3",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/b1dba267b13e6c62930efdd404b092f2.png",
+        "url": "https://www.last.fm/music/Janaway/Jungle+Funk+Vol.3"
+      },
+      {
+        "name": "Undercover EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/963922cb9e5f6017c4ae55dc13dacb51.png",
+        "url": "https://www.last.fm/music/Janaway/Undercover+EP"
+      },
+      {
+        "name": "International Luv",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/fff0b3821688f0f944536a9fc99c5afe.png",
+        "url": "https://www.last.fm/music/Janaway/International+Luv"
+      },
+      {
+        "name": "Janaway & Worsleyy EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/b48af123cb7fb300e6f255def157bee0.png",
+        "url": "https://www.last.fm/music/Janaway/Janaway+&+Worsleyy+EP"
+      }
+    ],
+    "related": [
+      "Toby Ross",
+      "Origin8a & Propa",
+      "Worsleyy",
+      "Lavery",
+      "Bruk"
+    ]
+  },
+  "jimmy-j": {
+    "slug": "jimmy-j",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb0b87531dee57a7262cadae3f",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "4IcZyUiMlb1UkBPMNbVFO7",
+        "name": "X LAS REDES",
+        "releaseDate": "2026-04-16",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2736c694f452b31ba2a04c2b7d6",
+        "url": "https://open.spotify.com/album/4IcZyUiMlb1UkBPMNbVFO7"
+      },
+      {
+        "id": "52tCGnjcDVvOQjWZQWCWhx",
+        "name": "Después del Show",
+        "releaseDate": "2026-03-12",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273771d6e5748420e4c2f93033d",
+        "url": "https://open.spotify.com/album/52tCGnjcDVvOQjWZQWCWhx"
+      },
+      {
+        "id": "2ydJ2pKmiIPieFhSnEoTYi",
+        "name": "DINERO DIGITAL",
+        "releaseDate": "2026-02-19",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27341402aeac13d188b11316f5c",
+        "url": "https://open.spotify.com/album/2ydJ2pKmiIPieFhSnEoTYi"
+      },
+      {
+        "id": "1Y0OxQxtII9DspAiSIJ1o2",
+        "name": "DE LAS 2",
+        "releaseDate": "2026-01-14",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27378330330beaa2eb3553f14f6",
+        "url": "https://open.spotify.com/album/1Y0OxQxtII9DspAiSIJ1o2"
+      },
+      {
+        "id": "4yIW06ivJc0JwfBQUz2vbB",
+        "name": "Vendetta",
+        "releaseDate": "2026-01-08",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273576d17a2cd7ae58e0b59e339",
+        "url": "https://open.spotify.com/album/4yIW06ivJc0JwfBQUz2vbB"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Seventh Day",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/35eaabd3dcf44b1fd64546641b8f46a1.png",
+        "url": "https://www.last.fm/music/Jimmy+J/Seventh+Day"
+      },
+      {
+        "name": "Ool Lortnoc",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Jimmy+J/Ool+Lortnoc"
+      },
+      {
+        "name": "Remix Records & Kniteforce Present The Remixes, Pt. 1 (Remastered)",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/4a3201d1b6264343b5ecb50fbb22ad8d.png",
+        "url": "https://www.last.fm/music/Jimmy+J/Remix+Records+&+Kniteforce+Present+The+Remixes,+Pt.+1+(Remastered)"
+      },
+      {
+        "name": "The Best Of Jimmy J & Cru-l-t Remastered Vol. 1",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Jimmy+J/The+Best+Of+Jimmy+J+&+Cru-l-t+Remastered+Vol.+1"
+      },
+      {
+        "name": "Let's Go",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Jimmy+J/Let%27s+Go"
+      }
+    ],
+    "related": [
+      "DJ Force & The Evolution",
+      "The Timespan",
+      "Future Primitive",
+      "DJ Ham",
+      "Edit V"
+    ]
+  },
+  "finning-hamilton": {
+    "slug": "finning-hamilton",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5ebecc4771f18498ddad961a802",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "6TBMCViM3lcrdmx5ZnHJ9L",
+        "name": "Counting On Me",
+        "releaseDate": "2023-08-25",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273e185db8f3507950e39b1966e",
+        "url": "https://open.spotify.com/album/6TBMCViM3lcrdmx5ZnHJ9L"
+      },
+      {
+        "id": "6D90utSto7EJUG6S9if2lw",
+        "name": "Something I’m Afraid Of",
+        "releaseDate": "2022-02-04",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273d1c14358ed1af06df6115f41",
+        "url": "https://open.spotify.com/album/6D90utSto7EJUG6S9if2lw"
+      },
+      {
+        "id": "3HasOlavETpVLjEe7eTxu8",
+        "name": "Your Love",
+        "releaseDate": "2022-01-19",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2736ca12711b42fc3e44ef9e8cc",
+        "url": "https://open.spotify.com/album/3HasOlavETpVLjEe7eTxu8"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Something I’m Afraid Of",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Finning+Hamilton/Something+I%E2%80%99m+Afraid+Of"
+      },
+      {
+        "name": "Counting On Me",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Finning+Hamilton/Counting+On+Me"
+      },
+      {
+        "name": "Hardcore Energy - Volume One",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Finning+Hamilton/Hardcore+Energy+-+Volume+One"
+      },
+      {
+        "name": "Hardcore Energy - Volume One (DJ Mix)",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/7583944d40affc6400ee42a6bfc65808.png",
+        "url": "https://www.last.fm/music/Finning+Hamilton/Hardcore+Energy+-+Volume+One+(DJ+Mix)"
+      },
+      {
+        "name": "Your Love",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Finning+Hamilton/Your+Love"
+      }
+    ],
+    "related": [
+      "SwankOut",
+      "Case 82",
+      "Javy Groove",
+      "MKII",
+      "Burno"
+    ]
+  },
+  "dj-s-unite": {
+    "slug": "dj-s-unite",
+    "profileImage": "https://i.scdn.co/image/ab67616d0000b2733eff1206b43af8131fbf7925",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "DJ's Unite Vol. 3",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/156e220868f34e02bf03a4abafd57bd2.png",
+        "url": "https://www.last.fm/music/DJ%27s+Unite/DJ%27s+Unite+Vol.+3"
+      },
+      {
+        "name": "DJ's Unite Vol. 2",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/8a52e50c144bbf67a0ce71cd9e71711d.png",
+        "url": "https://www.last.fm/music/DJ%27s+Unite/DJ%27s+Unite+Vol.+2"
+      },
+      {
+        "name": "DJ's Unite Volume 1",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/DJ%27s+Unite/DJ%27s+Unite+Volume+1"
+      },
+      {
+        "name": "The Best of Impact Mixed By Slipmatt",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/DJ%27s+Unite/The+Best+of+Impact+Mixed+By+Slipmatt"
+      },
+      {
+        "name": "Untitled / Made in 5 Hours",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/DJ%27s+Unite/Untitled+%2F+Made+in+5+Hours"
+      }
+    ],
+    "related": [
+      "Sy-Kick",
+      "Edit V",
+      "Rhythm Section",
+      "Dance Conspiracy",
+      "DJ Seduction"
+    ]
+  },
+  "alice-gas": {
+    "slug": "alice-gas",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb7ed6ddbb1b983cff15e87bee",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "11xk2GmSS3DE6aNjdqbdYu",
+        "name": "Turn It Up ! (Alice Gas Remix)",
+        "releaseDate": "2022-06-21",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273daf1c552f3d7b993eb85d463",
+        "url": "https://open.spotify.com/album/11xk2GmSS3DE6aNjdqbdYu"
+      },
+      {
+        "id": "2b6EUsEThRPhdFRgdlhHCr",
+        "name": "ENGINE IN THE BACK",
+        "releaseDate": "2022-04-29",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2736470405f41c1d7b7cb66993f",
+        "url": "https://open.spotify.com/album/2b6EUsEThRPhdFRgdlhHCr"
+      },
+      {
+        "id": "2SmLSzKyZ5c133Dp76Vzw3",
+        "name": "HARDCORE HEAVEN",
+        "releaseDate": "2021-10-23",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273866f980ac2201bce27cb17a6",
+        "url": "https://open.spotify.com/album/2SmLSzKyZ5c133Dp76Vzw3"
+      },
+      {
+        "id": "3mKfIrC5xunHzcXdvAV5dn",
+        "name": "MEMORIES!!!",
+        "releaseDate": "2021-10-11",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273ae7e2ca6335dc16497e1fa93",
+        "url": "https://open.spotify.com/album/3mKfIrC5xunHzcXdvAV5dn"
+      },
+      {
+        "id": "7EiXapIOP0Z0Eh47YfsMUz",
+        "name": "Sorry 4 Being Famous",
+        "releaseDate": "2019-12-10",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2737d218a6d1248e272ef896b28",
+        "url": "https://open.spotify.com/album/7EiXapIOP0Z0Eh47YfsMUz"
+      }
+    ],
+    "albums": [
+      {
+        "name": "SORRY 4 BEING FAMOUS",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/d1afea18f8edf83de90fe5c4c867a17a.png",
+        "url": "https://www.last.fm/music/Alice+Gas/SORRY+4+BEING+FAMOUS"
+      },
+      {
+        "name": "Paranoid",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/05c8b1fad3172e04663a08d96175e09f.png",
+        "url": "https://www.last.fm/music/Alice+Gas/Paranoid"
+      },
+      {
+        "name": "HARDCORE HEAVEN",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/39bb473e08e2e7936a4f5fe622a42e96.png",
+        "url": "https://www.last.fm/music/Alice+Gas/HARDCORE+HEAVEN"
+      },
+      {
+        "name": "PULLINGALLMYHAIROUT",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/231b66c6e224244b143bbf834550b74d.png",
+        "url": "https://www.last.fm/music/Alice+Gas/PULLINGALLMYHAIROUT"
+      },
+      {
+        "name": "leg room",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/c9710bfdc9f324662010539b8fc82770.png",
+        "url": "https://www.last.fm/music/Alice+Gas/leg+room"
+      }
+    ],
+    "related": [
+      "gupi",
+      "fraxiom",
+      "8485",
+      "blackwinterwells",
+      "100 gecs"
+    ]
+  },
+  "sophie": {
+    "slug": "sophie",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb0a5f93747d4d50f1ea5ab6f0",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "00x7wb3nZ4UCqAjOMhaN9P",
+        "name": "Sunscreen",
+        "releaseDate": "2025-08-22",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273952848f0c216c72b07f88dbb",
+        "url": "https://open.spotify.com/album/00x7wb3nZ4UCqAjOMhaN9P"
+      },
+      {
+        "id": "0JB2T1lOZ03obXXun0CLzY",
+        "name": "PRODUCT",
+        "releaseDate": "2025-06-18",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273e77ecae9169e22bbe544e479",
+        "url": "https://open.spotify.com/album/0JB2T1lOZ03obXXun0CLzY"
+      },
+      {
+        "id": "0Oq6SlyCH8N77Ou4o6sDWI",
+        "name": "SOPHIE",
+        "releaseDate": "2024-09-25",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2732750183bcc4c7beda2178697",
+        "url": "https://open.spotify.com/album/0Oq6SlyCH8N77Ou4o6sDWI"
+      },
+      {
+        "id": "7vQKfsKKrI0xObMqojazHR",
+        "name": "OIL OF EVERY PEARL'S UN-INSIDES NON-STOP REMIX ALBUM",
+        "releaseDate": "2019-09-06",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2739055d203d0655972321f1c5a",
+        "url": "https://open.spotify.com/album/7vQKfsKKrI0xObMqojazHR"
+      },
+      {
+        "id": "23lnmHhZwyercCJhmyPXYN",
+        "name": "OIL OF EVERY PEARL'S UN-INSIDES",
+        "releaseDate": "2018-06-15",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2739517eea594dfb828ec793e09",
+        "url": "https://open.spotify.com/album/23lnmHhZwyercCJhmyPXYN"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Oil of Every Pearl's Un-Insides",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/b482e95ee228abbaaccd0d5a31b81ad2.png",
+        "url": "https://www.last.fm/music/Sophie/Oil+of+Every+Pearl%27s+Un-Insides"
+      },
+      {
+        "name": "Vyzee",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/232c6c7871e58d843492aa1efee4afff.png",
+        "url": "https://www.last.fm/music/Sophie/Vyzee"
+      },
+      {
+        "name": "PRODUCT",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/564d9bea5bb533071e757d0b116af2f6.png",
+        "url": "https://www.last.fm/music/Sophie/PRODUCT"
+      },
+      {
+        "name": "OIL OF EVERY PEARL'S UN-INSIDES Non-Stop Remix Album",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/d4e5b0e4dc16f08873689fae64f1e917.png",
+        "url": "https://www.last.fm/music/Sophie/OIL+OF+EVERY+PEARL%27S+UN-INSIDES+Non-Stop+Remix+Album"
+      },
+      {
+        "name": "Bipp",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/c35f9a2641652d82a6a6ed6e7d93e964.png",
+        "url": "https://www.last.fm/music/Sophie/Bipp"
+      }
+    ],
+    "related": [
+      "Arca",
+      "GFOTY",
+      "QT",
+      "A. G. Cook",
+      "Charli xcx"
+    ]
+  },
+  "vaporia": {
+    "slug": "vaporia",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eba009220e6dd44232be1df732",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "Best of Chill-Out - Listen an",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Vaporia/Best+of+Chill-Out+-+Listen+an"
+      },
+      {
+        "name": "Best of Chill-Out",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Vaporia/Best+of+Chill-Out"
+      },
+      {
+        "name": "Best of Chill-Out - Listen and Relax (CD3)",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Vaporia/Best+of+Chill-Out+-+Listen+and+Relax+(CD3)"
+      },
+      {
+        "name": "Best of Chill-Out - Listen and Relax",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/e6ac460a8f1a42acadbe35bd83ed53f3.png",
+        "url": "https://www.last.fm/music/Vaporia/Best+of+Chill-Out+-+Listen+and+Relax"
+      },
+      {
+        "name": "Magic Island Lounge Ibiza Top 55",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Vaporia/Magic+Island+Lounge+Ibiza+Top+55"
+      }
+    ],
+    "related": [
+      "architecture in tokyo",
+      "trushinitas",
+      "ぬいぐるみクレヨン Lush Crayon",
+      "豊平区民TOYOHIRAKUMIN",
+      "US Golf 95"
+    ]
+  },
+  "lush-crayon": {
+    "slug": "lush-crayon",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb9041db59279c856be7461514",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "6WaYYs02PMsF9gRx4cJnKe",
+        "name": "The Shattered Veil",
+        "releaseDate": "2024-11-09",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273e44535b9a3a3fe4f2ac46098",
+        "url": "https://open.spotify.com/album/6WaYYs02PMsF9gRx4cJnKe"
+      },
+      {
+        "id": "5wzyug6mHFmihwt0hFvhdb",
+        "name": "Sushi, and Other Interesting Human Behaviors",
+        "releaseDate": "2024-04-23",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273910dbb49ebed96388a6ba3ef",
+        "url": "https://open.spotify.com/album/5wzyug6mHFmihwt0hFvhdb"
+      },
+      {
+        "id": "3xZ33Nokw9wREm4qK9w0oY",
+        "name": "Mine on the Street",
+        "releaseDate": "2021-08-12",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273f1113e65ab5948e1fa99e429",
+        "url": "https://open.spotify.com/album/3xZ33Nokw9wREm4qK9w0oY"
+      },
+      {
+        "id": "6kbzsonChpXbEwv7ww6Ord",
+        "name": "Ｇｅｔ Ａ Ｊｏｂ 林檎",
+        "releaseDate": "2019-08-18",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273bbdaa58d80347ff279ab24d3",
+        "url": "https://open.spotify.com/album/6kbzsonChpXbEwv7ww6Ord"
+      },
+      {
+        "id": "1SkdaCoT2HtMf5LxwG8JMv",
+        "name": "Styrofoam Scaffold (A E S T H E T I C)",
+        "releaseDate": "2017-06-13",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2736e28dc41db55867a438748c3",
+        "url": "https://open.spotify.com/album/1SkdaCoT2HtMf5LxwG8JMv"
+      }
+    ],
+    "albums": [
+      {
+        "name": "本物のオリジナル",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/9f7dd9d7f13aa0cf266d006a7cca5a02.png",
+        "url": "https://www.last.fm/music/%E3%81%AC%E3%81%84%E3%81%90%E3%82%8B%E3%81%BF%E3%82%AF%E3%83%AC%E3%83%A8%E3%83%B3+Lush+Crayon/%E6%9C%AC%E7%89%A9%E3%81%AE%E3%82%AA%E3%83%AA%E3%82%B8%E3%83%8A%E3%83%AB"
+      },
+      {
+        "name": "get a job 林檎",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/ef2abe8fce3fac6fcd7d6af364eac39e.png",
+        "url": "https://www.last.fm/music/%E3%81%AC%E3%81%84%E3%81%90%E3%82%8B%E3%81%BF%E3%82%AF%E3%83%AC%E3%83%A8%E3%83%B3+Lush+Crayon/get+a+job+%E6%9E%97%E6%AA%8E"
+      },
+      {
+        "name": "CoronaWave: コロナウイルス",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/e0f1ba4ad57b4a4861575ea34e8e667a.png",
+        "url": "https://www.last.fm/music/%E3%81%AC%E3%81%84%E3%81%90%E3%82%8B%E3%81%BF%E3%82%AF%E3%83%AC%E3%83%A8%E3%83%B3+Lush+Crayon/CoronaWave:+%E3%82%B3%E3%83%AD%E3%83%8A%E3%82%A6%E3%82%A4%E3%83%AB%E3%82%B9"
+      },
+      {
+        "name": "本物のオリジナル、部に",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/34cf0cbed35b4f7485b3dac80f79457d.png",
+        "url": "https://www.last.fm/music/%E3%81%AC%E3%81%84%E3%81%90%E3%82%8B%E3%81%BF%E3%82%AF%E3%83%AC%E3%83%A8%E3%83%B3+Lush+Crayon/%E6%9C%AC%E7%89%A9%E3%81%AE%E3%82%AA%E3%83%AA%E3%82%B8%E3%83%8A%E3%83%AB%E3%80%81%E9%83%A8%E3%81%AB"
+      },
+      {
+        "name": "ｇｅｔ　ａ　ｊｏｂ 林檎",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/50f0f2cfef1ae79ce32b375de7ac183b.png",
+        "url": "https://www.last.fm/music/%E3%81%AC%E3%81%84%E3%81%90%E3%82%8B%E3%81%BF%E3%82%AF%E3%83%AC%E3%83%A8%E3%83%B3+Lush+Crayon/%EF%BD%87%EF%BD%85%EF%BD%94%E3%80%80%EF%BD%81%E3%80%80%EF%BD%8A%EF%BD%8F%EF%BD%82+%E6%9E%97%E6%AA%8E"
+      }
+    ],
+    "related": [
+      "architecture in tokyo",
+      "trushinitas",
+      "bbrainz",
+      "Vaporia",
+      "猫 シ Corp."
+    ]
+  },
+  "architecture-in-tokyo": {
+    "slug": "architecture-in-tokyo",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5ebee61e6bf556635bd5990abf6",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "07NlhmwEDsYnH7ATAI98X5",
+        "name": "singles (2013​-​2018)",
+        "releaseDate": "2020-03-06",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27371d9d44ebc520e5920d9dedb",
+        "url": "https://open.spotify.com/album/07NlhmwEDsYnH7ATAI98X5"
+      },
+      {
+        "id": "3m3FAl1OVyOAuH5zyTFZjW",
+        "name": "Summer Paradise",
+        "releaseDate": "2013",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273079e5b22fe2caf34b9e13f2e",
+        "url": "https://open.spotify.com/album/3m3FAl1OVyOAuH5zyTFZjW"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Summer Paradise",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/338dee0139464ae3ad721eeb12abee02.png",
+        "url": "https://www.last.fm/music/architecture+in+tokyo/Summer+Paradise"
+      },
+      {
+        "name": "Singles (2013​-​2018)",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/3afa25a5b1a50344de599dc7b73c20b4.png",
+        "url": "https://www.last.fm/music/architecture+in+tokyo/Singles+(2013%E2%80%8B-%E2%80%8B2018)"
+      },
+      {
+        "name": "Royal Club, Vol. 3",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/9f09705d3f93e5348310d4b152cf12ec.png",
+        "url": "https://www.last.fm/music/architecture+in+tokyo/Royal+Club,+Vol.+3"
+      },
+      {
+        "name": "marble",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/250bc29506b02124b1a14349eb7640ce.png",
+        "url": "https://www.last.fm/music/architecture+in+tokyo/marble"
+      },
+      {
+        "name": "architecture in tokyo",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/fcd1c2a79a5d4a7dca47ae79a402d1bb.png",
+        "url": "https://www.last.fm/music/architecture+in+tokyo/architecture+in+tokyo"
+      }
+    ],
+    "related": [
+      "ぬいぐるみクレヨン Lush Crayon",
+      "bbrainz",
+      "trushinitas",
+      "Vaporia",
+      "豊平区民TOYOHIRAKUMIN"
+    ]
+  },
+  "paco-osuna": {
+    "slug": "paco-osuna",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb0c0f154e0e8db0e4022f504a",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "4ZugmF962xhvfnDGLdWdDe",
+        "name": "Turn Around (Hey What's Wrong With You) [Paco Osuna Remix]",
+        "releaseDate": "2025-08-22",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27373666eef859353570b4e4312",
+        "url": "https://open.spotify.com/album/4ZugmF962xhvfnDGLdWdDe"
+      },
+      {
+        "id": "6d8Ac2JBTOdyqh4a5aAkoh",
+        "name": "Long Play",
+        "releaseDate": "2014-10-20",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273867e70082661ac234864b759",
+        "url": "https://open.spotify.com/album/6d8Ac2JBTOdyqh4a5aAkoh"
+      },
+      {
+        "id": "4q9pjdlvlHUYSjg4mGgE2p",
+        "name": "Lemon Juice",
+        "releaseDate": "2009-10-28",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2738124ee4bfec294fff23bc988",
+        "url": "https://open.spotify.com/album/4q9pjdlvlHUYSjg4mGgE2p"
+      },
+      {
+        "id": "6W53vlf354DMZlRyoWmPrd",
+        "name": "Orbeat",
+        "releaseDate": "2008-04-02",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27356d1c091a1d7215ef36d1ce1",
+        "url": "https://open.spotify.com/album/6W53vlf354DMZlRyoWmPrd"
+      },
+      {
+        "id": "6XyVWDHmDDEviTs7MTLWAq",
+        "name": "Crazy",
+        "releaseDate": "2007-03-02",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2731d5c23ff777e9340411eb36a",
+        "url": "https://open.spotify.com/album/6XyVWDHmDDEviTs7MTLWAq"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Twins",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/5d4b1c866230f8cadd512744c59be610.png",
+        "url": "https://www.last.fm/music/Paco+Osuna/Twins"
+      },
+      {
+        "name": "Four EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/feabc371f9644f4d9337ac0e433fb6e7.png",
+        "url": "https://www.last.fm/music/Paco+Osuna/Four+EP"
+      },
+      {
+        "name": "Amigos",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/616c57b42f3441b4bbbb472ce743ab02.png",
+        "url": "https://www.last.fm/music/Paco+Osuna/Amigos"
+      },
+      {
+        "name": "Playing With Foc...",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/5cd15d2540c68b7e1cd466b0f3a5b246.png",
+        "url": "https://www.last.fm/music/Paco+Osuna/Playing+With+Foc..."
+      },
+      {
+        "name": "Lemon Juice",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/037402d77a834e948c9ea83a008624fd.png",
+        "url": "https://www.last.fm/music/Paco+Osuna/Lemon+Juice"
+      }
+    ],
+    "related": [
+      "Barem",
+      "Ambivalent",
+      "Fabrizio Maurizi",
+      "Click Box",
+      "Tractile"
+    ]
+  },
+  "seth-troxler": {
+    "slug": "seth-troxler",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5ebae415c295c042f2193594a8e",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "0HhDBVklVNxBBq1bGxLSAi",
+        "name": "This Is Then",
+        "releaseDate": "2018-05-18",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273e85d1e50fed7b5b4f272dae2",
+        "url": "https://open.spotify.com/album/0HhDBVklVNxBBq1bGxLSAi"
+      },
+      {
+        "id": "2S4zSFyMOezKzP9hmouSYD",
+        "name": "DJ-Kicks (Seth Troxler) [DJ Mix]",
+        "releaseDate": "2015-10-16",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273b4f3ba251bb4151e195c383c",
+        "url": "https://open.spotify.com/album/2S4zSFyMOezKzP9hmouSYD"
+      },
+      {
+        "id": "7jExRtgTSBlkfw1TS3nfS3",
+        "name": "Mixmag Presents Seth Troxler: The Illusion Nouveau (DJ Mix)",
+        "releaseDate": "2013",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2731e7c1be4e5d28433462543d0",
+        "url": "https://open.spotify.com/album/7jExRtgTSBlkfw1TS3nfS3"
+      },
+      {
+        "id": "1lWeLK2QogsTrnjuPWJBM7",
+        "name": "Mixmag Presents Jamie Jones vs. Seth Troxler",
+        "releaseDate": "2010",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2731a808bce492a0f7a6c27002f",
+        "url": "https://open.spotify.com/album/1lWeLK2QogsTrnjuPWJBM7"
+      },
+      {
+        "id": "7zVBdTSgN3grBMBoYMbS1l",
+        "name": "Love Never Sleeps",
+        "releaseDate": "2008-12-08",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273566c3bf0ff19052908f05124",
+        "url": "https://open.spotify.com/album/7zVBdTSgN3grBMBoYMbS1l"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Panic, Stop. Repeat!",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/48547aea352d45f480c5c7746cc344ca.png",
+        "url": "https://www.last.fm/music/Seth+Troxler/Panic,+Stop.+Repeat%21"
+      },
+      {
+        "name": "Aphrika",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/7e974b72b02846b8b70d865965c7e5d0.png",
+        "url": "https://www.last.fm/music/Seth+Troxler/Aphrika"
+      },
+      {
+        "name": "Love Never Sleeps EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/dfec249fb81448d1b6ad7505bef43b01.png",
+        "url": "https://www.last.fm/music/Seth+Troxler/Love+Never+Sleeps+EP"
+      },
+      {
+        "name": "Just Back",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/f5d7f896948f1e55ce76f2b76baa5324.png",
+        "url": "https://www.last.fm/music/Seth+Troxler/Just+Back"
+      },
+      {
+        "name": "Lumartes",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/69fdbec9c68e6b886680dfdbad6c1b72.png",
+        "url": "https://www.last.fm/music/Seth+Troxler/Lumartes"
+      }
+    ],
+    "related": [
+      "Lee Curtiss",
+      "Gadi Mizrahi",
+      "Maayan Nidam",
+      "Guillaume & The Coutu Dumonts",
+      "Wolf + Lamb"
+    ]
+  },
+  "lee-curtiss": {
+    "slug": "lee-curtiss",
+    "profileImage": "https://i.scdn.co/image/ab67616d0000b273552f3237e28304c12863b411",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "5cbgnoRGsWae3fdD54QfmX",
+        "name": "Late Night Swim (Lee Curtiss Remix)",
+        "releaseDate": "2025-09-12",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273a87394e26c07de0a2cef01b1",
+        "url": "https://open.spotify.com/album/5cbgnoRGsWae3fdD54QfmX"
+      },
+      {
+        "id": "5UCrKywPtCzreTXk278S0U",
+        "name": "Tell Me (Lil'T Tello Me How You Feel Mix)",
+        "releaseDate": "2021-11-19",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2736095c7be1156a45ace3d9e03",
+        "url": "https://open.spotify.com/album/5UCrKywPtCzreTXk278S0U"
+      },
+      {
+        "id": "7IeYurksQXZQlNV6dWrTKX",
+        "name": "Opened Up",
+        "releaseDate": "2020-04-24",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2737b4e0fb2f3cb59a9476c59e2",
+        "url": "https://open.spotify.com/album/7IeYurksQXZQlNV6dWrTKX"
+      },
+      {
+        "id": "7xLMUyVLkqPzWYaZzP7MbE",
+        "name": "The Dream Adjacent EP",
+        "releaseDate": "2019-10-11",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2738fb36f415c5fc6c1167c143e",
+        "url": "https://open.spotify.com/album/7xLMUyVLkqPzWYaZzP7MbE"
+      },
+      {
+        "id": "1hxuJVF8Oam2DWJuRp2tfj",
+        "name": "Swipe",
+        "releaseDate": "2019-07-26",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273b1bdfd3eec2e640f5d1a11ab",
+        "url": "https://open.spotify.com/album/1hxuJVF8Oam2DWJuRp2tfj"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Smoking Mirrors",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/727b041c0e4e9ca7be0931776fcbf08d.png",
+        "url": "https://www.last.fm/music/Lee+Curtiss/Smoking+Mirrors"
+      },
+      {
+        "name": "DJ-Kicks",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/37181b50a7aa4a4a9dc45c912872e18c.png",
+        "url": "https://www.last.fm/music/Lee+Curtiss/DJ-Kicks"
+      },
+      {
+        "name": "Sexy Dancer EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/f202bd9059d14caba55007d839f34365.png",
+        "url": "https://www.last.fm/music/Lee+Curtiss/Sexy+Dancer+EP"
+      },
+      {
+        "name": "The Black Door EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/e716f3520ddb498abeeffd4f8dc93842.png",
+        "url": "https://www.last.fm/music/Lee+Curtiss/The+Black+Door+EP"
+      },
+      {
+        "name": "Love In The Key Of Freak",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/123bd6112f2947969aef1875681c4ab7.png",
+        "url": "https://www.last.fm/music/Lee+Curtiss/Love+In+The+Key+Of+Freak"
+      }
+    ],
+    "related": [
+      "Gadi Mizrahi",
+      "Wolf + Lamb",
+      "Greg Paulus",
+      "Zev",
+      "Seth Troxler"
+    ]
+  },
+  "gadi-mizrahi": {
+    "slug": "gadi-mizrahi",
+    "profileImage": "https://i.scdn.co/image/ab67616d0000b27352f8eb41af01a9d29be7bfaa",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "2DCboem0iYdyNQ5NAXcBXt",
+        "name": "Can't Stop This Feeling",
+        "releaseDate": "2010-03-22",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27352f8eb41af01a9d29be7bfaa",
+        "url": "https://open.spotify.com/album/2DCboem0iYdyNQ5NAXcBXt"
+      },
+      {
+        "id": "79segy7ODU9l8HkZkNp6MS",
+        "name": "I Can Never Get Enough",
+        "releaseDate": "2010-02-23",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27355ee45d2374688a7ec6ab532",
+        "url": "https://open.spotify.com/album/79segy7ODU9l8HkZkNp6MS"
+      },
+      {
+        "id": "1azTVPpTKX7WI17ZFf97NP",
+        "name": "Oh Love",
+        "releaseDate": "2009-12-07",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2734826e083d38646f719614a62",
+        "url": "https://open.spotify.com/album/1azTVPpTKX7WI17ZFf97NP"
+      }
+    ],
+    "albums": [
+      {
+        "name": "DJ-Kicks",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/ff9655bf542c4a6a8b0c4fdc38bb63ca.png",
+        "url": "https://www.last.fm/music/Gadi+Mizrahi/DJ-Kicks"
+      },
+      {
+        "name": "I Know",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2426fc5b1bb3afb6fcc2e76553938dd0.png",
+        "url": "https://www.last.fm/music/Gadi+Mizrahi/I+Know"
+      },
+      {
+        "name": "I Can Never Get Enough EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/cefd2053c9b84a789a9da643735e38bb.png",
+        "url": "https://www.last.fm/music/Gadi+Mizrahi/I+Can+Never+Get+Enough+EP"
+      },
+      {
+        "name": "Significant Others",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/1c4e97875a1041fda63c06a80993f52d.png",
+        "url": "https://www.last.fm/music/Gadi+Mizrahi/Significant+Others"
+      },
+      {
+        "name": "Document",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/b2eaee4cd326477c973754818d68bab3.png",
+        "url": "https://www.last.fm/music/Gadi+Mizrahi/Document"
+      }
+    ],
+    "related": [
+      "Lee Curtiss",
+      "Wolf + Lamb",
+      "Jozif",
+      "Maayan Nidam",
+      "Deniz Kurtel"
+    ]
+  },
+  "maayan-nidam": {
+    "slug": "maayan-nidam",
+    "profileImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "New Moon",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/d20bcb7eab544cb1a534c8b02e8a0a3c.png",
+        "url": "https://www.last.fm/music/Maayan+Nidam/New+Moon"
+      },
+      {
+        "name": "A Turnaround",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/62654795a1114b11afd37e7211e0ae15.png",
+        "url": "https://www.last.fm/music/Maayan+Nidam/A+Turnaround"
+      },
+      {
+        "name": "Resident Advisor podcast",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Maayan+Nidam/Resident+Advisor+podcast"
+      },
+      {
+        "name": "Greatest Tits",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/f8f08f731d5d4650911194024d8f879a.png",
+        "url": "https://www.last.fm/music/Maayan+Nidam/Greatest+Tits"
+      },
+      {
+        "name": "Nightlong",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/de8fb2082c68445a817ad18f0c5db05f.png",
+        "url": "https://www.last.fm/music/Maayan+Nidam/Nightlong"
+      }
+    ],
+    "related": [
+      "Gadi Mizrahi",
+      "Jozif",
+      "Wolf + Lamb",
+      "Lee Curtiss",
+      "Guillaume & The Coutu Dumonts"
+    ]
+  },
+  "guillaume-the-coutu-dumonts": {
+    "slug": "guillaume-the-coutu-dumonts",
+    "profileImage": "https://i.scdn.co/image/0ef620c4013fa51312ffa482c6b36bc389e07edd",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "0M5w5D16lslkq4iCm2t2JJ",
+        "name": "The Chase",
+        "releaseDate": "2021-07-02",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27385464aeb9ff444383e81a6cf",
+        "url": "https://open.spotify.com/album/0M5w5D16lslkq4iCm2t2JJ"
+      },
+      {
+        "id": "73Iqz79dzncTPuNlR3loJX",
+        "name": "Shipuchiy",
+        "releaseDate": "2020-03-27",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27314cd0d89ea49ab5970e05a43",
+        "url": "https://open.spotify.com/album/73Iqz79dzncTPuNlR3loJX"
+      },
+      {
+        "id": "54MvLpkTekfMyDpSSZgV0b",
+        "name": "Yuzo Kosho Do EP",
+        "releaseDate": "2019-11-15",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273927e0d2d9114feb5bf9a98c7",
+        "url": "https://open.spotify.com/album/54MvLpkTekfMyDpSSZgV0b"
+      },
+      {
+        "id": "0EbEgNDTdbYqQvvffiKyr0",
+        "name": "Twice Around the Sun",
+        "releaseDate": "2012-10-08",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273595993028903104c13008e2b",
+        "url": "https://open.spotify.com/album/0EbEgNDTdbYqQvvffiKyr0"
+      },
+      {
+        "id": "3qsj5xQLXdARgrjQCZSYPT",
+        "name": "Breaking the Fourth Wall",
+        "releaseDate": "2010-05-03",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2735d8a187f7bfe8c5764b06637",
+        "url": "https://open.spotify.com/album/3qsj5xQLXdARgrjQCZSYPT"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Breaking the Fourth Wall",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/71dce2c7d8665b3266fc9cdb5e1fbe01.png",
+        "url": "https://www.last.fm/music/Guillaume+&+The+Coutu+Dumonts/Breaking+the+Fourth+Wall"
+      },
+      {
+        "name": "SÉlection Surnaturelle",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/65a24594ecbd42a5b59d5faaba8e6d3f.png",
+        "url": "https://www.last.fm/music/Guillaume+&+The+Coutu+Dumonts/S%C3%89lection+Surnaturelle"
+      },
+      {
+        "name": "The Pussy Shepherd",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/a131d8963abc4082a3d3f41ea1de414e.png",
+        "url": "https://www.last.fm/music/Guillaume+&+The+Coutu+Dumonts/The+Pussy+Shepherd"
+      },
+      {
+        "name": "Cocoon Compilation I",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Guillaume+&+The+Coutu+Dumonts/Cocoon+Compilation+I"
+      },
+      {
+        "name": "I Was On My Way To Hell",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/54c4630896464913a028a0639e695322.png",
+        "url": "https://www.last.fm/music/Guillaume+&+The+Coutu+Dumonts/I+Was+On+My+Way+To+Hell"
+      }
+    ],
+    "related": [
+      "Johnny D",
+      "Wareika",
+      "Dave Aju",
+      "Miss Fitz",
+      "Mathias Kaden"
+    ]
+  },
+  "wolf-lamb": {
+    "slug": "wolf-lamb",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5ebc16aa58d6a4f0bd77cf36acd",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "4NPeO22C58f8PklsbckJ3Q",
+        "name": "No Habla (Stefano Amalfi Remix)",
+        "releaseDate": "2022-12-16",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273b2714b9658bdd722b532263c",
+        "url": "https://open.spotify.com/album/4NPeO22C58f8PklsbckJ3Q"
+      },
+      {
+        "id": "5xB4FV7oZC0OP6JvdMPD7J",
+        "name": "Versus",
+        "releaseDate": "2012-10-22",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273993bbd24b324aa68469f1b81",
+        "url": "https://open.spotify.com/album/5xB4FV7oZC0OP6JvdMPD7J"
+      },
+      {
+        "id": "7tV8Yf5hxCHs2p6HTjmnTW",
+        "name": "DJ-KiCKS (Wolf + Lamb vs Soul Clap) [DJ Mix]",
+        "releaseDate": "2011-03-25",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273d04f435aff0537e2b863a7da",
+        "url": "https://open.spotify.com/album/7tV8Yf5hxCHs2p6HTjmnTW"
+      },
+      {
+        "id": "7vgjfcGPWG15ggcB9jl7G2",
+        "name": "Love Someone",
+        "releaseDate": "2010-06-21",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27322d333839f1b7021cca3ecfa",
+        "url": "https://open.spotify.com/album/7vgjfcGPWG15ggcB9jl7G2"
+      },
+      {
+        "id": "7DeyMZplxnDQt1rfdU4m9U",
+        "name": "Brooklynn",
+        "releaseDate": "2009-04-15",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273a2736a10ead18342a8fa8bd7",
+        "url": "https://open.spotify.com/album/7DeyMZplxnDQt1rfdU4m9U"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Brooklynn EP",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Wolf+++Lamb/Brooklynn+EP"
+      },
+      {
+        "name": "Love Someone",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Wolf+++Lamb/Love+Someone"
+      },
+      {
+        "name": "Versus LP",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Wolf+++Lamb/Versus+LP"
+      },
+      {
+        "name": "Beats In Space Radio Podcast",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Wolf+++Lamb/Beats+In+Space+Radio+Podcast"
+      },
+      {
+        "name": "Subsoul 2014",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Wolf+++Lamb/Subsoul+2014"
+      }
+    ],
+    "related": []
+  },
+  "barem": {
+    "slug": "barem",
+    "profileImage": "https://i.scdn.co/image/ab6761610000e5eb655bb7b625f60d06e459e8f4",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "62EMs5mqv4FKQ3KCdRBPBB",
+        "name": "Little Helpers 364",
+        "releaseDate": "2020-05-05",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b27304355702dd22e2e59404c036",
+        "url": "https://open.spotify.com/album/62EMs5mqv4FKQ3KCdRBPBB"
+      },
+      {
+        "id": "4r3PPyPsn7SAeqV5oah4fK",
+        "name": "Acid Pie EP",
+        "releaseDate": "2019-12-19",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273336de3f3704bcc5574196d0e",
+        "url": "https://open.spotify.com/album/4r3PPyPsn7SAeqV5oah4fK"
+      },
+      {
+        "id": "1CrwfVOu0KjgHidNvyQLZq",
+        "name": "Hollow EP",
+        "releaseDate": "2019-11-15",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273fcd5811fd63d8266f4b70dce",
+        "url": "https://open.spotify.com/album/1CrwfVOu0KjgHidNvyQLZq"
+      },
+      {
+        "id": "1XhIZmXbGHA0jwiDGcjo7Z",
+        "name": "After the Storm",
+        "releaseDate": "2011-07-06",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273862ed3ec3188e1e0d06a752b",
+        "url": "https://open.spotify.com/album/1XhIZmXbGHA0jwiDGcjo7Z"
+      },
+      {
+        "id": "3gaaTdz7PNTZ9flr6c5glf",
+        "name": "Never Better Than Late",
+        "releaseDate": "2007-12-06",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2739385c728766c0976a9d0ae7d",
+        "url": "https://open.spotify.com/album/3gaaTdz7PNTZ9flr6c5glf"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Campo Madness EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/103f859b17648e833e0abe0c6cf6fa05.png",
+        "url": "https://www.last.fm/music/Barem/Campo+Madness+EP"
+      },
+      {
+        "name": "After The Storm",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/645b4a3e999822182f9db7c430f85403.png",
+        "url": "https://www.last.fm/music/Barem/After+The+Storm"
+      },
+      {
+        "name": "Suki",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/dd91671d14f4df02cf1c88fbaf3b5bd6.png",
+        "url": "https://www.last.fm/music/Barem/Suki"
+      },
+      {
+        "name": "Never Better Than Late",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/a28600b6201a4b209418b491d06c3568.png",
+        "url": "https://www.last.fm/music/Barem/Never+Better+Than+Late"
+      },
+      {
+        "name": "Kolimar",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2a5b457eb2054cb8b1421c43ae322fee.png",
+        "url": "https://www.last.fm/music/Barem/Kolimar"
+      }
+    ],
+    "related": [
+      "Ambivalent",
+      "Troy Pierce",
+      "Tractile",
+      "Paul Ritch",
+      "Paco Osuna"
+    ]
+  },
+  "ambivalent": {
+    "slug": "ambivalent",
+    "profileImage": "https://i.scdn.co/image/ab67616d0000b27317da154508f9b4b6a2ae3464",
+    "tracks": [
+      {
+        "id": "2gFBjvmjhee3A97YCH7lNv",
+        "name": "Statikphunk - Ambivalent Remix",
+        "popularity": 14,
+        "durationMs": 364360,
+        "previewUrl": null,
+        "url": "https://open.spotify.com/track/2gFBjvmjhee3A97YCH7lNv",
+        "albumName": "The Remixes",
+        "albumCover": "https://i.scdn.co/image/ab67616d00001e0212ab7b31020a2d98e00e8c20"
+      },
+      {
+        "id": "3oa3mPzJQgbhMYinxRxiUZ",
+        "name": "Daylights",
+        "popularity": 12,
+        "durationMs": 449175,
+        "previewUrl": null,
+        "url": "https://open.spotify.com/track/3oa3mPzJQgbhMYinxRxiUZ",
+        "albumName": "Daylights",
+        "albumCover": "https://i.scdn.co/image/ab67616d00001e0217da154508f9b4b6a2ae3464"
+      },
+      {
+        "id": "4mdyUGigIw21NjRpZD5Uvs",
+        "name": "R U OK",
+        "popularity": 11,
+        "durationMs": 391668,
+        "previewUrl": null,
+        "url": "https://open.spotify.com/track/4mdyUGigIw21NjRpZD5Uvs",
+        "albumName": "R U OK",
+        "albumCover": "https://i.scdn.co/image/ab67616d00001e02a398d35dec327d67ce1a4244"
+      },
+      {
+        "id": "2ek9nyhE6pyzJRQcLzVl2S",
+        "name": "Sentinel - Ambivalent Remix",
+        "popularity": 7,
+        "durationMs": 358835,
+        "previewUrl": null,
+        "url": "https://open.spotify.com/track/2ek9nyhE6pyzJRQcLzVl2S",
+        "albumName": "Rock the Disco",
+        "albumCover": "https://i.scdn.co/image/ab67616d00001e02e57354097516b57016e6d666"
+      },
+      {
+        "id": "6EGzErCqAUce0Eam4TsIIn",
+        "name": "Whyou",
+        "popularity": 7,
+        "durationMs": 368271,
+        "previewUrl": null,
+        "url": "https://open.spotify.com/track/6EGzErCqAUce0Eam4TsIIn",
+        "albumName": "Speicher 92",
+        "albumCover": "https://i.scdn.co/image/ab67616d00001e020d1fd37d2ffb4ee937148c9c"
+      },
+      {
+        "id": "1DJGlokYK2P4zCqCXiiVIV",
+        "name": "R U OK - Kasper Is OK Remix",
+        "popularity": 6,
+        "durationMs": 449520,
+        "previewUrl": null,
+        "url": "https://open.spotify.com/track/1DJGlokYK2P4zCqCXiiVIV",
+        "albumName": "R U OK (Remixes)",
+        "albumCover": "https://i.scdn.co/image/ab67616d00001e02681b7b0f930f8e6cb2424c60"
+      },
+      {
+        "id": "41hVhITPL8gkhoKWwbaQDJ",
+        "name": "Drag - Amotik Remix",
+        "popularity": 5,
+        "durationMs": 351377,
+        "previewUrl": null,
+        "url": "https://open.spotify.com/track/41hVhITPL8gkhoKWwbaQDJ",
+        "albumName": "Drag",
+        "albumCover": "https://i.scdn.co/image/ab67616d00001e02082b942a002a38d413a5d8c8"
+      },
+      {
+        "id": "63ZDooPjYjwSdYequaHNpu",
+        "name": "Whyou - Michael Mayer Mix",
+        "popularity": 4,
+        "durationMs": 433803,
+        "previewUrl": null,
+        "url": "https://open.spotify.com/track/63ZDooPjYjwSdYequaHNpu",
+        "albumName": "Speicher 92",
+        "albumCover": "https://i.scdn.co/image/ab67616d00001e020d1fd37d2ffb4ee937148c9c"
+      },
+      {
+        "id": "3o8BdebieYs6ZJIsTUxGXa",
+        "name": "Portmanteau",
+        "popularity": 4,
+        "durationMs": 403214,
+        "previewUrl": null,
+        "url": "https://open.spotify.com/track/3o8BdebieYs6ZJIsTUxGXa",
+        "albumName": "A-Sides, Vol. 6",
+        "albumCover": "https://i.scdn.co/image/ab67616d00001e02947797c8676db2497a749b4c"
+      },
+      {
+        "id": "4wJ2zICyQauWX77uEd1Kkx",
+        "name": "And",
+        "popularity": 3,
+        "durationMs": 382316,
+        "previewUrl": null,
+        "url": "https://open.spotify.com/track/4wJ2zICyQauWX77uEd1Kkx",
+        "albumName": "And/Or",
+        "albumCover": "https://i.scdn.co/image/ab67616d00001e02f308566b91fae1e97ed6fbed"
+      }
+    ],
+    "releases": [],
+    "albums": [
+      {
+        "name": "Roomies EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/48c8574fba0e4171b66eac13ba98e68e.png",
+        "url": "https://www.last.fm/music/Ambivalent/Roomies+EP"
+      },
+      {
+        "name": "Down",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/787c67234d5142f3baa1a7e29c91ca32.png",
+        "url": "https://www.last.fm/music/Ambivalent/Down"
+      },
+      {
+        "name": "R U OK",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/d39c9c1a57e77a656b3d01539e2314a6.png",
+        "url": "https://www.last.fm/music/Ambivalent/R+U+OK"
+      },
+      {
+        "name": "Is 5",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/723728aa9c6b4189a25aab1d08c69440.png",
+        "url": "https://www.last.fm/music/Ambivalent/Is+5"
+      },
+      {
+        "name": "Rumors",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/08368f50d47341889f840e014e289f8c.png",
+        "url": "https://www.last.fm/music/Ambivalent/Rumors"
+      }
+    ],
+    "related": [
+      "Tractile",
+      "Troy Pierce",
+      "Barem",
+      "Run Stop Restore",
+      "JPLS"
+    ]
+  },
+  "fabrizio-maurizi": {
+    "slug": "fabrizio-maurizi",
+    "profileImage": "https://i.scdn.co/image/ab67616d0000b2736535044180e7e61669fb4ad0",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "0Oc2ba4DkXcfxx0M0mayk0",
+        "name": "Elements",
+        "releaseDate": "2021-02-26",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273513656be1fa82836113504c0",
+        "url": "https://open.spotify.com/album/0Oc2ba4DkXcfxx0M0mayk0"
+      },
+      {
+        "id": "2HYKpIp8xx8eqNn9qOgRvG",
+        "name": "Jumping",
+        "releaseDate": "2020-10-02",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273626c10df25131ff3a0af2f34",
+        "url": "https://open.spotify.com/album/2HYKpIp8xx8eqNn9qOgRvG"
+      },
+      {
+        "id": "3mBEY1PEgieUZdSxj9OjHD",
+        "name": "Coaxial EP",
+        "releaseDate": "2019-11-01",
+        "releaseType": "single",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b273a5e6c02c8200c1e5659789c0",
+        "url": "https://open.spotify.com/album/3mBEY1PEgieUZdSxj9OjHD"
+      },
+      {
+        "id": "3oKarcqqqrUt6VeHhViH7G",
+        "name": "Chronicles",
+        "releaseDate": "2010-10-20",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2733f520d0c17f8fbb881fab2b7",
+        "url": "https://open.spotify.com/album/3oKarcqqqrUt6VeHhViH7G"
+      },
+      {
+        "id": "0LfNQtlt0zy1atRqdHrpW3",
+        "name": "Habitat",
+        "releaseDate": "2009-07-22",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2736535044180e7e61669fb4ad0",
+        "url": "https://open.spotify.com/album/0LfNQtlt0zy1atRqdHrpW3"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Habitat",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/4216ce4eaa8c4da5bd18f80f00e53542.png",
+        "url": "https://www.last.fm/music/Fabrizio+Maurizi/Habitat"
+      },
+      {
+        "name": "Chronicles",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/8f033e847ec443fb9f4176d96dd4543e.png",
+        "url": "https://www.last.fm/music/Fabrizio+Maurizi/Chronicles"
+      },
+      {
+        "name": "OK, Switch On",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/9a208c8990cc0a2634ffe797045956bc.png",
+        "url": "https://www.last.fm/music/Fabrizio+Maurizi/OK,+Switch+On"
+      },
+      {
+        "name": "Making Contakt Soundtrack",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/f67d435689e745bab4b81437d3998a30.png",
+        "url": "https://www.last.fm/music/Fabrizio+Maurizi/Making+Contakt+Soundtrack"
+      },
+      {
+        "name": "Making Contakt - Soundtrack",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/ebb15ff6701649c7b86512a89498a3b1.png",
+        "url": "https://www.last.fm/music/Fabrizio+Maurizi/Making+Contakt+-+Soundtrack"
+      }
+    ],
+    "related": [
+      "Click Box",
+      "Ambivalent & JPLS",
+      "Niederflur",
+      "Run Stop Restore",
+      "JPLS"
+    ]
+  },
+  "click-box": {
+    "slug": "click-box",
+    "profileImage": "/artist-media/click-box/profile-click-box.webp",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "Wake Up Call",
+        "coverImage": "/artist-media/click-box/album-wake-up-call.webp",
+        "url": "https://www.last.fm/music/Click+Box/Wake+Up+Call"
+      },
+      {
+        "name": "Shades",
+        "coverImage": "/artist-media/click-box/album-shades.webp",
+        "url": "https://www.last.fm/music/Click+Box/Shades"
+      },
+      {
+        "name": "Espaco E Tempo",
+        "coverImage": "/artist-media/click-box/album-espaco-e-tempo.webp",
+        "url": "https://www.last.fm/music/Click+Box/Espaco+E+Tempo"
+      },
+      {
+        "name": "Magda's Fabric 49 Parts",
+        "coverImage": "/artist-media/click-box/album-magda-s-fabric-49-parts.webp",
+        "url": "https://www.last.fm/music/Click+Box/Magda%27s+Fabric+49+Parts"
+      },
+      {
+        "name": "Making Contakt - Soundtrack",
+        "coverImage": "/artist-media/click-box/album-making-contakt-soundtrack.webp",
+        "url": "https://www.last.fm/music/Click+Box/Making+Contakt+-+Soundtrack"
+      }
+    ],
+    "related": [
+      "Fabrizio Maurizi",
+      "Ambivalent & JPLS",
+      "Niederflur",
+      "Run Stop Restore",
+      "JPLS"
+    ]
+  },
+  "tractile": {
+    "slug": "tractile",
+    "profileImage": "https://i.scdn.co/image/ab67616d0000b2731144dd689ee24077d4a4c740",
+    "tracks": [],
+    "releases": [
+      {
+        "id": "6pKuuoopLRfoLfT4VnaZCO",
+        "name": "Silent Movie",
+        "releaseDate": "2007-01-19",
+        "releaseType": "album",
+        "coverImage": "https://i.scdn.co/image/ab67616d0000b2731144dd689ee24077d4a4c740",
+        "url": "https://open.spotify.com/album/6pKuuoopLRfoLfT4VnaZCO"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Silent Movie",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/8dff7b5efe654923abb0b1b3f9bf8ca8.png",
+        "url": "https://www.last.fm/music/Tractile/Silent+Movie"
+      },
+      {
+        "name": "2 Kontakt RTW",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/4f212d1fa7b7454592756aa4daf0a525.png",
+        "url": "https://www.last.fm/music/Tractile/2+Kontakt+RTW"
+      },
+      {
+        "name": "min2MAX",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/d3121c7de7c64a20ac8606c0aecce3d7.png",
+        "url": "https://www.last.fm/music/Tractile/min2MAX"
+      },
+      {
+        "name": "Random number...colors start",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Tractile/Random+number...colors+start"
+      },
+      {
+        "name": "Minus Tour Promo",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/fadad2dc7b5b4c05cca2fb0b99fb1181.png",
+        "url": "https://www.last.fm/music/Tractile/Minus+Tour+Promo"
+      }
+    ],
+    "related": [
+      "Run Stop Restore",
+      "Ambivalent",
+      "Troy Pierce",
+      "Barem",
+      "Niederflur"
+    ]
+  },
+  "jess-mills": {
+    "slug": "jess-mills",
+    "profileImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "Live For What I'd Die For",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/9866dc8f692846bcbedb227bb0669ae5.png",
+        "url": "https://www.last.fm/music/Jess+Mills/Live+For+What+I%27d+Die+For"
+      },
+      {
+        "name": "Vultures EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/d0c1a5d88723420da9fbf617fe4944f3.png",
+        "url": "https://www.last.fm/music/Jess+Mills/Vultures+EP"
+      },
+      {
+        "name": "Pixelated People",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/c445bfc0d01d45349039f5031e0c426e.png",
+        "url": "https://www.last.fm/music/Jess+Mills/Pixelated+People"
+      },
+      {
+        "name": "Toolroom Records Ibiza 2011 Vol. 2",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/95767149c1eb4bfdb583a27946f5e63a.png",
+        "url": "https://www.last.fm/music/Jess+Mills/Toolroom+Records+Ibiza+2011+Vol.+2"
+      },
+      {
+        "name": "Live for What I'd Die for (Distance Remix)",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/94fbba57c30f9c6676ef2f7fb4a51ecd.png",
+        "url": "https://www.last.fm/music/Jess+Mills/Live+for+What+I%27d+Die+for+(Distance+Remix)"
+      }
+    ],
+    "related": [
+      "Ayah Marar",
+      "Yasmin",
+      "Youngman",
+      "Yogi feat. Ayah Marar",
+      "RackNRuin"
+    ]
+  },
+  "jeff-mills": {
+    "slug": "jeff-mills",
+    "profileImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "SIGHT SOUND AND SPACE",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/7cd8862153c70502b65f2d321718a824.png",
+        "url": "https://www.last.fm/music/Jeff+Mills/SIGHT+SOUND+AND+SPACE"
+      },
+      {
+        "name": "Purpose Maker Compilation",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/8f765e91b33f437aadb4f2119c11b42c.png",
+        "url": "https://www.last.fm/music/Jeff+Mills/Purpose+Maker+Compilation"
+      },
+      {
+        "name": "Blue Potential - Live with Montpelier Philharmonic Orchestra",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/68fe479b095446978f4adec88722c4d8.png",
+        "url": "https://www.last.fm/music/Jeff+Mills/Blue+Potential+-+Live+with+Montpelier+Philharmonic+Orchestra"
+      },
+      {
+        "name": "The Other Day",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/f4d4c176175539e1b0620b51fcb702b2.png",
+        "url": "https://www.last.fm/music/Jeff+Mills/The+Other+Day"
+      },
+      {
+        "name": "At First Sight",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/273cad6c554888b9c370df7abf140c42.png",
+        "url": "https://www.last.fm/music/Jeff+Mills/At+First+Sight"
+      }
+    ],
+    "related": [
+      "Millsart",
+      "Joey Beltram",
+      "Circuit Breaker",
+      "Robert Hood",
+      "Richie Hawtin"
+    ]
+  },
+  "millsart": {
+    "slug": "millsart",
+    "profileImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "Cream Collect Techno (Disc 3)",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/58c18f9470e76d3c31663595b4a1efe6.png",
+        "url": "https://www.last.fm/music/Millsart/Cream+Collect+Techno+(Disc+3)"
+      },
+      {
+        "name": "Mecca EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/f6349a45b1c54d70a549b7bd5dd42fa0.png",
+        "url": "https://www.last.fm/music/Millsart/Mecca+EP"
+      },
+      {
+        "name": "Every Dog Has Its Day",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/ac0f3a5887e894e8368881a744293ff1.png",
+        "url": "https://www.last.fm/music/Millsart/Every+Dog+Has+Its+Day"
+      },
+      {
+        "name": "Fear And Loathing",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/f593856b703c47cbb57df3c671af15dc.png",
+        "url": "https://www.last.fm/music/Millsart/Fear+And+Loathing"
+      },
+      {
+        "name": "Humana",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/43b824c68a7643f8bb292c0a4a5f0593.png",
+        "url": "https://www.last.fm/music/Millsart/Humana"
+      }
+    ],
+    "related": [
+      "Jeff Mills",
+      "Claude Young",
+      "Circuit Breaker",
+      "Rhythim Is Rhythim",
+      "Joey Beltram"
+    ]
+  },
+  "joey-beltram": {
+    "slug": "joey-beltram",
+    "profileImage": "/artist-media/joey-beltram/profile-joey-beltram.webp",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "Classics",
+        "coverImage": "/artist-media/joey-beltram/album-classics.webp",
+        "url": "https://www.last.fm/music/Joey+Beltram/Classics"
+      },
+      {
+        "name": "Places",
+        "coverImage": "/artist-media/joey-beltram/album-places.webp",
+        "url": "https://www.last.fm/music/Joey+Beltram/Places"
+      },
+      {
+        "name": "The Rising Sun",
+        "coverImage": "/artist-media/joey-beltram/album-the-rising-sun.webp",
+        "url": "https://www.last.fm/music/Joey+Beltram/The+Rising+Sun"
+      },
+      {
+        "name": "Trax Classix",
+        "coverImage": "/artist-media/joey-beltram/album-trax-classix.webp",
+        "url": "https://www.last.fm/music/Joey+Beltram/Trax+Classix"
+      },
+      {
+        "name": "The Caliber EP",
+        "coverImage": "/artist-media/joey-beltram/album-the-caliber-ep.webp",
+        "url": "https://www.last.fm/music/Joey+Beltram/The+Caliber+EP"
+      }
+    ],
+    "related": [
+      "Jeff Mills",
+      "Millsart",
+      "Circuit Breaker",
+      "Robert Hood",
+      "Surgeon"
+    ]
+  },
+  "circuit-breaker": {
+    "slug": "circuit-breaker",
+    "profileImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "Bass005-Boomin Bass EP",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/a81be8b90bd9ac89b8b9d6a06eed5f5f.png",
+        "url": "https://www.last.fm/music/Circuit+Breaker/Bass005-Boomin+Bass+EP"
+      },
+      {
+        "name": "From My Mind To Yours",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Circuit+Breaker/From+My+Mind+To+Yours"
+      },
+      {
+        "name": "Bass001-Muthufukka EP",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Circuit+Breaker/Bass001-Muthufukka+EP"
+      },
+      {
+        "name": "FABRICLIVE 67",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2ae15028a5af448b80dd434bd2371bca.png",
+        "url": "https://www.last.fm/music/Circuit+Breaker/FABRICLIVE+67"
+      },
+      {
+        "name": "Rock n' Roll Me",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/27bc3a2d6f25626a751b7a80b9634259.png",
+        "url": "https://www.last.fm/music/Circuit+Breaker/Rock+n%27+Roll+Me"
+      }
+    ],
+    "related": [
+      "Jeff Mills",
+      "Millsart",
+      "Joey Beltram",
+      "Wicked Wipe",
+      "Dj Skull"
+    ]
+  },
+  "robert-hood": {
+    "slug": "robert-hood",
+    "profileImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "Minimal Nation",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/042fedd873169884bfd7e4f0ea9d493c.png",
+        "url": "https://www.last.fm/music/Robert+Hood/Minimal+Nation"
+      },
+      {
+        "name": "The Greatest Dancer",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/4f4dd9dfd5e640bd971a0899e887ba32.png",
+        "url": "https://www.last.fm/music/Robert+Hood/The+Greatest+Dancer"
+      },
+      {
+        "name": "Point Blank",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/87c5974ff8cb73d0ee0ace946e5c2908.png",
+        "url": "https://www.last.fm/music/Robert+Hood/Point+Blank"
+      },
+      {
+        "name": "Motor: Nighttime World 3",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/a04cc0a8d5d9a6dfd190234ff935b7b8.png",
+        "url": "https://www.last.fm/music/Robert+Hood/Motor:+Nighttime+World+3"
+      },
+      {
+        "name": "Internal Empire",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/6fa09287b7ea8414ddfb8123d9f6a722.png",
+        "url": "https://www.last.fm/music/Robert+Hood/Internal+Empire"
+      }
+    ],
+    "related": [
+      "Floorplan",
+      "Jeff Mills",
+      "Surgeon",
+      "Juan Atkins",
+      "James Ruskin"
+    ]
+  },
+  "richie-hawtin": {
+    "slug": "richie-hawtin",
+    "profileImage": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "DE9 Transitions",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/fbed3f53efedf7ce4ea5919bc56785bb.png",
+        "url": "https://www.last.fm/music/Richie+Hawtin/DE9+Transitions"
+      },
+      {
+        "name": "Consumed In Key",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/1252ee9ae0d5ba205788a10f30f39d0b.png",
+        "url": "https://www.last.fm/music/Richie+Hawtin/Consumed+In+Key"
+      },
+      {
+        "name": "Minus Orange",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/4f758afa1e69006be6b92d9dd0fcd8fa.png",
+        "url": "https://www.last.fm/music/Richie+Hawtin/Minus+Orange"
+      },
+      {
+        "name": "From My Mind To Yours",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/dd8ce4418529394bbbbfe1cbf471b890.png",
+        "url": "https://www.last.fm/music/Richie+Hawtin/From+My+Mind+To+Yours"
+      },
+      {
+        "name": "Decks, EFX & 909",
+        "coverImage": "https://lastfm.freetls.fastly.net/i/u/300x300/d8f3b3f694504abb88b8b6009b196569.png",
+        "url": "https://www.last.fm/music/Richie+Hawtin/Decks,+EFX+&+909"
+      }
+    ],
+    "related": [
+      "Richard Harvey",
+      "Jeff Mills",
+      "Santos Rodriguez",
+      "Plastikman",
+      "Ricardo Villalobos"
+    ]
+  },
+  "noizekid": {
+    "slug": "noizekid",
+    "profileImage": null,
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "Dale Tra",
+        "coverImage": "/artist-media/noizekid/album-dale-tra.webp",
+        "url": "https://www.last.fm/music/Noizekid/Dale+Tra"
+      },
+      {
+        "name": "Suban Las Manos",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Noizekid/Suban+Las+Manos"
+      },
+      {
+        "name": "Azota",
+        "coverImage": "/artist-media/noizekid/album-azota.webp",
+        "url": "https://www.last.fm/music/Noizekid/Azota"
+      },
+      {
+        "name": "Ritmo",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Noizekid/Ritmo"
+      },
+      {
+        "name": "Mamacita",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Noizekid/Mamacita"
+      }
+    ],
+    "related": [
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ]
+  },
+  "etc-etc": {
+    "slug": "etc-etc",
+    "profileImage": "/artist-media/etc-etc/profile-etc-etc.webp",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "TROMPA",
+        "coverImage": "/artist-media/etc-etc/album-trompa.webp",
+        "url": "https://www.last.fm/music/ETC%21ETC%21/TROMPA"
+      },
+      {
+        "name": "Money (feat. Hawkeye)",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/ETC%21ETC%21/Money+(feat.+Hawkeye)"
+      },
+      {
+        "name": "Wicked EP",
+        "coverImage": "/artist-media/etc-etc/album-wicked-ep.webp",
+        "url": "https://www.last.fm/music/ETC%21ETC%21/Wicked+EP"
+      },
+      {
+        "name": "Not My Tempo",
+        "coverImage": "/artist-media/etc-etc/album-not-my-tempo.webp",
+        "url": "https://www.last.fm/music/ETC%21ETC%21/Not+My+Tempo"
+      },
+      {
+        "name": "Supa Hot Fire",
+        "coverImage": "/artist-media/etc-etc/album-supa-hot-fire.webp",
+        "url": "https://www.last.fm/music/ETC%21ETC%21/Supa+Hot+Fire"
+      }
+    ],
+    "related": [
+      "Sazon Booya",
+      "Willy Joy",
+      "BAD ROYALE",
+      "Jay Fay",
+      ":DFace"
+    ]
+  },
+  "los-dutis": {
+    "slug": "los-dutis",
+    "profileImage": "/artist-media/los-dutis/profile-los-dutis.webp",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "SURREAL",
+        "coverImage": "/artist-media/los-dutis/album-surreal.webp",
+        "url": "https://www.last.fm/music/Los+Dutis/SURREAL"
+      },
+      {
+        "name": "FIESTA MEXA",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Los+Dutis/FIESTA+MEXA"
+      },
+      {
+        "name": "Nitrocumbia",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Los+Dutis/Nitrocumbia"
+      },
+      {
+        "name": "Future Fiesta",
+        "coverImage": "/artist-media/los-dutis/album-future-fiesta.webp",
+        "url": "https://www.last.fm/music/Los+Dutis/Future+Fiesta"
+      },
+      {
+        "name": "We Want Some Dutis",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Los+Dutis/We+Want+Some+Dutis"
+      }
+    ],
+    "related": [
+      "Freebot",
+      "Chzter",
+      "Bsno",
+      "Noizekid",
+      "Sabor Kolombia"
+    ]
+  },
+  "freebot": {
+    "slug": "freebot",
+    "profileImage": "/artist-media/freebot/profile-freebot.webp",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "Tus Besos",
+        "coverImage": "/artist-media/freebot/album-tus-besos.webp",
+        "url": "https://www.last.fm/music/Freebot/Tus+Besos"
+      },
+      {
+        "name": "Dame",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Freebot/Dame"
+      },
+      {
+        "name": "TRIBALEROS",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Freebot/TRIBALEROS"
+      },
+      {
+        "name": "Tus Besos (French Version)",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Freebot/Tus+Besos+(French+Version)"
+      },
+      {
+        "name": "Global Sound System",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Freebot/Global+Sound+System"
+      }
+    ],
+    "related": [
+      "Los Dutis",
+      "Bsno",
+      "Noizekid",
+      "El Irreal Veintiuno",
+      "John W"
+    ]
+  },
+  "bsno": {
+    "slug": "bsno",
+    "profileImage": "/artist-media/bsno/profile-bsno.webp",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "Alcohol",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Bsno/Alcohol"
+      },
+      {
+        "name": "La Música",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Bsno/La+M%C3%BAsica"
+      },
+      {
+        "name": "Alcohol (Radio Mix)",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Bsno/Alcohol+(Radio+Mix)"
+      },
+      {
+        "name": "Juntos",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Bsno/Juntos"
+      },
+      {
+        "name": "Dance Alone",
+        "coverImage": "/artist-media/bsno/album-dance-alone.webp",
+        "url": "https://www.last.fm/music/Bsno/Dance+Alone"
+      }
+    ],
+    "related": [
+      "Sheeqo Beat",
+      "Tom & Collins",
+      "Le Twins",
+      "Los Dutis",
+      "Xookwankii"
+    ]
+  },
+  "sheeqo-beat": {
+    "slug": "sheeqo-beat",
+    "profileImage": "/artist-media/sheeqo-beat/profile-sheeqo-beat.webp",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "Turn On the Bass",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Sheeqo+Beat/Turn+On+the+Bass"
+      },
+      {
+        "name": "Playlist",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Sheeqo+Beat/Playlist"
+      },
+      {
+        "name": "Shake It Off",
+        "coverImage": "/artist-media/sheeqo-beat/album-shake-it-off.webp",
+        "url": "https://www.last.fm/music/Sheeqo+Beat/Shake+It+Off"
+      },
+      {
+        "name": "Pick It Up",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Sheeqo+Beat/Pick+It+Up"
+      },
+      {
+        "name": "Deliciosa",
+        "coverImage": "/artist-media/sheeqo-beat/album-deliciosa.webp",
+        "url": "https://www.last.fm/music/Sheeqo+Beat/Deliciosa"
+      }
+    ],
+    "related": [
+      "Bsno",
+      "Erick Rincon",
+      "Le Twins",
+      "Chela Rivas",
+      "Valentina Moretti"
+    ]
+  },
+  "tom-collins": {
+    "slug": "tom-collins",
+    "profileImage": "/artist-media/tom-collins/profile-tom-collins.webp",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "Ando High",
+        "coverImage": "/artist-media/tom-collins/album-ando-high.webp",
+        "url": "https://www.last.fm/music/Tom+&+Collins/Ando+High"
+      },
+      {
+        "name": "Give Me One Reason",
+        "coverImage": "/artist-media/tom-collins/album-give-me-one-reason.webp",
+        "url": "https://www.last.fm/music/Tom+&+Collins/Give+Me+One+Reason"
+      },
+      {
+        "name": "Only One",
+        "coverImage": "/artist-media/tom-collins/album-only-one.webp",
+        "url": "https://www.last.fm/music/Tom+&+Collins/Only+One"
+      },
+      {
+        "name": "Serena",
+        "coverImage": "/artist-media/tom-collins/album-serena.webp",
+        "url": "https://www.last.fm/music/Tom+&+Collins/Serena"
+      },
+      {
+        "name": "Se Va",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Tom+&+Collins/Se+Va"
+      }
+    ],
+    "related": [
+      "Jude & Frank",
+      "Juos",
+      "Bsno",
+      "Ky William",
+      "Flo Dosh"
+    ]
+  },
+  "xookwankii": {
+    "slug": "xookwankii",
+    "profileImage": "/artist-media/xookwankii/profile-xookwankii.webp",
+    "tracks": [],
+    "releases": [],
+    "albums": [
+      {
+        "name": "10 Years of Xookwankii",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Xookwankii/10+Years+of+Xookwankii"
+      },
+      {
+        "name": "Komodo",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Xookwankii/Komodo"
+      },
+      {
+        "name": "Évidemment",
+        "coverImage": "/artist-media/xookwankii/album-videmment.webp",
+        "url": "https://www.last.fm/music/Xookwankii/%C3%89videmment"
+      },
+      {
+        "name": "Made of Stars",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Xookwankii/Made+of+Stars"
+      },
+      {
+        "name": "Shiva",
+        "coverImage": null,
+        "url": "https://www.last.fm/music/Xookwankii/Shiva"
+      }
+    ],
+    "related": [
+      "Mark Alvarado",
+      "Jose Spinnin Cortes",
+      "Chela Rivas",
+      "Yinon Yahel",
+      "Sagi Kariv"
     ]
   }
 }

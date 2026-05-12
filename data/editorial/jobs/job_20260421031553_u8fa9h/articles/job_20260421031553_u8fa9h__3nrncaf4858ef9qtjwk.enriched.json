@@ -1,0 +1,150 @@
+{
+  "jobId": "job_20260421031553_u8fa9h",
+  "taskId": "job_20260421031553_u8fa9h__3nrncaf4858ef9qtjwk",
+  "target": {
+    "key": "artist:3nrncaf4858ef9qtjwk",
+    "type": "artist",
+    "name": "WHOTF"
+  },
+  "researchPacket": {
+    "targetName": "WHOTF",
+    "sourceMode": "existing_db",
+    "artistContext": null,
+    "genreContext": null,
+    "relatedArtists": [],
+    "provenance": [
+      {
+        "type": "raw_article",
+        "value": "3nrncaf4858ef9qtjwk"
+      },
+      {
+        "type": "music_artists",
+        "value": "content/music-artists.json"
+      },
+      {
+        "type": "artist_media_cache",
+        "value": "content/artist-media-cache.json"
+      }
+    ]
+  },
+  "promptConfig": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "modelOutput": {
+    "writer": {
+      "id": 1,
+      "slug": "flood-dubs-dariacore-innovator-chaos-vibes",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "FloodDubs: Dariacore Innovator Bringing Chaos Vibes",
+      "subtitle": "A raw, glitchy, and experimental sound that transforms chaotic energy into a symphony of unfiltered vibes.",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-21",
+      "readTime": "4 min",
+      "excerpt": "FloodDubs emerges as an underrated gem in the hyper-creative world of dariacore, with a sound that is raw, glitchy, and unapologetically experimental.",
+      "featured": false,
+      "image_url": "https://gw.ipfs-lens.dev/ipfs/bafkreid4hkgggn5q6l4riqu2wnr4hp2h5r7hl4h5x2r6iff7aehs6u5ecm",
+      "tags": [
+        "dariacore",
+        "electronic",
+        "experimental",
+        "glitch",
+        "chaos",
+        "hyperpop"
+      ],
+      "linkedArtists": [
+        "WHOTF",
+        "ROBEL KETEMA",
+        "DSG"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "FloodDubs stands out as an innovative force in the dariacore scene, crafting a sound that is raw, glitchy, and unapologetically experimental. Their work transforms chaotic energy into a symphony of pure, unfiltered vibes, resulting in music that functions as an adrenaline rush wrapped in synths and distortion."
+        },
+        {
+          "type": "paragraph",
+          "text": "FloodDubs thrives in the unconventional, blending erratic beats with hypnotic soundscapes that are impossible to forget. Their style is characterized by high-octane, late-night mind trips that defy easy categorization."
+        },
+        {
+          "type": "paragraph",
+          "text": "Essential tracks from FloodDubs include 'GARFIELDCORE,' a cheeky, chaotic masterpiece that captures the artist's flair for experimental beats and wild concepts. 'Glass Cannon,' a collaboration with blackwinterwells, layers emotional vulnerability over a glitchy electronic beat, creating a contrast as sharp as the synths. 'World Ends' reimagines a Britney Spears sample into a dystopian dance anthem, while 'What U Wanted' teases with a distorted vibe while maintaining emotional depth."
+        },
+        {
+          "type": "paragraph",
+          "text": "FloodDubs shares creative space with artists such as WHOTF, ROBEL KETEMA, and DSG—each known for their unpredictable edge and innovative approaches to music. Together, they form a collective that pushes boundaries and throws conventional thinking out the window."
+        },
+        {
+          "type": "paragraph",
+          "text": "FloodDubs' artistry is a mosaic of chaos, emotion, and innovation. From the quirky energy of 'GARFIELDCORE' to the intense emotional pulls in 'Glass Cannon,' their work refuses to be boxed in. Each track is a journey into a world where nothing is predictable, yet everything is intriguing."
+        }
+      ],
+      "monetization": []
+    },
+    "editor": {
+      "id": 1,
+      "slug": "flood-dubs-dariacore-innovator-chaos-vibes",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "FloodDubs: Dariacore Innovator Bringing Chaos Vibes",
+      "subtitle": "A raw, glitchy, and experimental sound that transforms chaotic energy into a symphony of unfiltered vibes.",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-21",
+      "readTime": "4 min",
+      "excerpt": "FloodDubs emerges as an underrated gem in the hyper-creative world of dariacore, with a sound that is raw, glitchy, and unapologetically experimental.",
+      "featured": false,
+      "image_url": "https://gw.ipfs-lens.dev/ipfs/bafkreid4hkgggn5q6l4riqu2wnr4hp2h5r7hl4h5x2r6iff7aehs6u5ecm",
+      "tags": [
+        "dariacore",
+        "electronic",
+        "experimental",
+        "glitch",
+        "chaos",
+        "hyperpop"
+      ],
+      "linkedArtists": [
+        "WHOTF",
+        "ROBEL KETEMA",
+        "DSG"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "FloodDubs stands out as an innovative force in the dariacore scene, crafting a sound that is raw, glitchy, and unapologetically experimental. Their work transforms chaotic energy into a symphony of pure, unfiltered vibes, resulting in music that functions as an adrenaline rush wrapped in synths and distortion."
+        },
+        {
+          "type": "paragraph",
+          "text": "FloodDubs thrives in the unconventional, blending erratic beats with hypnotic soundscapes that are impossible to forget. Their style is characterized by high-octane, late-night mind trips that defy easy categorization."
+        },
+        {
+          "type": "paragraph",
+          "text": "Essential tracks from FloodDubs include 'GARFIELDCORE,' a cheeky, chaotic masterpiece that captures the artist's flair for experimental beats and wild concepts. 'Glass Cannon,' a collaboration with blackwinterwells, layers emotional vulnerability over a glitchy electronic beat, creating a contrast as sharp as the synths. 'World Ends' reimagines a Britney Spears sample into a dystopian dance anthem, while 'What U Wanted' teases with a distorted vibe while maintaining emotional depth."
+        },
+        {
+          "type": "paragraph",
+          "text": "FloodDubs shares creative space with artists such as WHOTF, ROBEL KETEMA, and DSG—each known for their unpredictable edge and innovative approaches to music. Together, they form a collective that pushes boundaries and throws conventional thinking out the window."
+        },
+        {
+          "type": "paragraph",
+          "text": "FloodDubs' artistry is a mosaic of chaos, emotion, and innovation. From the quirky energy of 'GARFIELDCORE' to the intense emotional pulls in 'Glass Cannon,' their work refuses to be boxed in. Each track is a journey into a world where nothing is predictable, yet everything is intriguing."
+        }
+      ],
+      "monetization": []
+    }
+  },
+  "review": {
+    "status": "needs_review",
+    "notes": ""
+  }
+}

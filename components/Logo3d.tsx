@@ -74,7 +74,7 @@ export default function Logo3D() {
   // Always fire intro as ready so nothing blocks the page
   useEffect(() => {
     window.dispatchEvent(
-      new CustomEvent("spectra-home-intro", { detail: { ready: true } }),
+      new CustomEvent("axis-home-intro", { detail: { ready: true } }),
     );
   }, []);
 
@@ -152,3 +152,4 @@ export default function Logo3D() {
     </div>
   );
 }
+

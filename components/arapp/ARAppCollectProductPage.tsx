@@ -66,6 +66,10 @@ function connectorLabel(id: string, name: string) {
   return name || "Connect Wallet";
 }
 
+function getCallsStatusId(value: { id?: string } | string | undefined): string {
+  return typeof value === "string" ? value : value?.id ?? "";
+}
+
 type ViewMode = "image" | "model" | "video";
 
 type Props = { drop: ARAppCollectDrop; episode: EpisodeConfig; isContractDeployed?: boolean };
@@ -113,15 +117,15 @@ export default function ARAppCollectProductPage({ drop, episode, isContractDeplo
   const alreadyClaimed = balance !== undefined && balance > 0n;
   const { sendCalls, data: callsId, isPending: sendingCalls } = useSendCalls();
   const { data: callsStatus } = useCallsStatus({
-    id: callsId as string,
-    query: { enabled: Boolean(callsId), refetchInterval: (q) => (q.state.data?.status === "CONFIRMED" ? false : 1000) },
+    id: getCallsStatusId(callsId as { id?: string } | string | undefined),
+    query: { enabled: Boolean(callsId), refetchInterval: (q) => (q.state.data?.status === "success" ? false : 1000) },
   });
   const [claimTxHash, setClaimTxHash] = useState<`0x${string}` | null>(null);
   const claimReceipt = useWaitForTransactionReceipt({ hash: claimTxHash ?? undefined });
-  const isCallSuccess = callsStatus?.status === "CONFIRMED";
+  const isCallSuccess = callsStatus?.status === "success";
   const isDirectSuccess = claimReceipt.status === "success";
   const isSuccess = isCallSuccess || isDirectSuccess;
-  const confirming = (Boolean(callsId) && callsStatus?.status !== "CONFIRMED") || (Boolean(claimTxHash) && claimReceipt.status !== "success");
+  const confirming = (Boolean(callsId) && callsStatus?.status !== "success") || (Boolean(claimTxHash) && claimReceipt.status !== "success");
 
   const claimed = alreadyClaimed || isSuccess;
 
@@ -154,7 +158,6 @@ export default function ARAppCollectProductPage({ drop, episode, isContractDeplo
             functionName: "mint",
             args: [tokenId],
           }),
-          gas: 250000n,
         }],
         capabilities: {
           paymasterService: { url: PAYMASTER_URL },

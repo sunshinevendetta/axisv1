@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260421003004_a3te2l",
+  "tasks": [
+    {
+      "id": "job_20260421003004_a3te2l__skrillex",
+      "jobId": "job_20260421003004_a3te2l",
+      "targetKey": "artist:skrillex",
+      "targetType": "artist",
+      "slug": "skrillex",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "skrillex",
+        "artistName": "Skrillex"
+      },
+      "status": "queued",
+      "draftPath": "data\\editorial\\jobs\\job_20260421003004_a3te2l\\articles\\job_20260421003004_a3te2l__skrillex.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421003004_a3te2l\\articles\\job_20260421003004_a3te2l__skrillex.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421003004_a3te2l\\articles\\job_20260421003004_a3te2l__skrillex.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 0,
+      "updatedAt": "2026-04-21T00:30:04.046Z"
+    }
+  ]
+}

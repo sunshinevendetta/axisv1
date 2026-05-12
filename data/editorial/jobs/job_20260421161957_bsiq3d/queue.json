@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260421161957_bsiq3d",
+  "tasks": [
+    {
+      "id": "job_20260421161957_bsiq3d__mkii",
+      "jobId": "job_20260421161957_bsiq3d",
+      "targetKey": "artist:mkii",
+      "targetType": "artist",
+      "slug": "mkii-breakbeat-electronic-jungle-uk-garage-producer",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "mkii",
+        "artistName": "MKII"
+      },
+      "status": "published",
+      "draftPath": "data\\editorial\\jobs\\job_20260421161957_bsiq3d\\articles\\job_20260421161957_bsiq3d__mkii.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421161957_bsiq3d\\articles\\job_20260421161957_bsiq3d__mkii.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421161957_bsiq3d\\articles\\job_20260421161957_bsiq3d__mkii.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": "https://api.grove.storage/7c7bf0a58498b5957020d14a097a3cc589bbaa715528361a97b21904d3889839",
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 2,
+      "updatedAt": "2026-04-21T16:26:39.393Z"
+    }
+  ]
+}

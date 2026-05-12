@@ -15,7 +15,6 @@ import {
 type Props = { params: Promise<{ id: string }> };
 
 export async function generateStaticParams() {
-  // Episode slugs + individual product slugs both resolve here
   const episodeParams = STORE_EPISODE_CONFIG.map((e) => ({ id: e.slug }));
   return episodeParams;
 }
@@ -45,7 +44,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProductsPage({ params }: Props) {
   const { id } = await params;
 
-  // Episode grid
   const episode = getStoreEpisodeBySlug(id);
   if (episode) {
     const drops = getDropsByEpisode(episode.number);
@@ -72,7 +70,6 @@ export default async function ProductsPage({ params }: Props) {
     );
   }
 
-  // Individual product (direct link)
   const drop = getARAppDropById(id);
   if (!drop) notFound();
 

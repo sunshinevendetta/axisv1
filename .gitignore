@@ -59,3 +59,33 @@ AGENTS.md
 
 # Artist scraper — local tooling, never pushed
 tools/artist-scraper/
+tools/node20/
+tools/
+Justice - DJ Set INSTAGRAM.mp4
+
+*.pid
+*.md
+.claude/worktrees/
+.claude/
+.codex
+docs/
+contracts/
+src/abi/
+app/owner/
+components/admin/
+tools/article-enricher/
+scripts/
+rsv-pizza-disclosure/
+graphv1/
+COORDINATION.md
+PLAN.md
+final/
+deployments.json
+artifacts/
+
+# CrewAI Phase 1 generated/runtime output
+echopulz/echopulz_crew/tools/sources/ts-bridge/node_modules/
+echopulz/echopulz_crew/tools/sources/ts-bridge/dist/
+echopulz/echopulz_crew/tools/**/__pycache__/
+echopulz/echopulz_crew/tools/**/.cache/
+echopulz/echopulz_crew/output/blawan-round-trip-test.json

@@ -27,7 +27,7 @@ function normalizeRole(role: string) {
 }
 
 async function main() {
-  await artifacts.readArtifact("SpectraOwnerAccess1155");
+  await artifacts.readArtifact("AxisOwnerAccess1155");
 
   const rpcUrl = process.env.OWNER_ACCESS_MINT_RPC_URL ?? required("OWNER_ACCESS_DEPLOY_RPC_URL");
   const privateKey =

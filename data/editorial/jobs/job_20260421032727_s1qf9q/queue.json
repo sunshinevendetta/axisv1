@@ -1,0 +1,28 @@
+{
+  "jobId": "job_20260421032727_s1qf9q",
+  "tasks": [
+    {
+      "id": "job_20260421032727_s1qf9q__3149qcp3y4rj17srnwt",
+      "jobId": "job_20260421032727_s1qf9q",
+      "targetKey": "artist:3149qcp3y4rj17srnwt",
+      "targetType": "artist",
+      "slug": "estelle-allen-hyper-rock-innovator",
+      "sourceRef": {
+        "kind": "raw_article",
+        "rawId": "81689769898014597562894067490014836829359807365570770310944843938492418155750",
+        "rawSlug": "3149qcp3y4rj17srnwt",
+        "rawFolder": "0014_3149qcp3y4rj17srnwt"
+      },
+      "status": "published",
+      "draftPath": "data\\editorial\\jobs\\job_20260421032727_s1qf9q\\articles\\job_20260421032727_s1qf9q__3149qcp3y4rj17srnwt.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421032727_s1qf9q\\articles\\job_20260421032727_s1qf9q__3149qcp3y4rj17srnwt.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421032727_s1qf9q\\articles\\job_20260421032727_s1qf9q__3149qcp3y4rj17srnwt.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": "https://api.grove.storage/1365e69ef0caad01e0264c64d44cafd8d2ffc5dc99ff0e98b62be1e50d90ad85",
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 2,
+      "updatedAt": "2026-04-21T16:57:16.788Z"
+    }
+  ]
+}

@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import type { MagazineArticle } from "./types";
 import MagazineCard from "./MagazineCard";
 
-const FILTER_CATEGORIES = ["ALL", "INTERVIEW", "NEWS", "ESSAY", "CULTURE", "TECHNOLOGY", "EVENT"];
+const FILTER_CATEGORIES = ["ALL", "PROFILE", "INTERVIEW", "NEWS", "ESSAY", "CULTURE", "TECHNOLOGY", "EVENT"];
 
 type Props = {
   articles: MagazineArticle[];
@@ -82,7 +82,7 @@ export default function MagazineGrid({
       {filtered.length > 0 ? (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
           {filtered.map((article) => (
-            <MagazineCard key={article.id} article={article} onClick={onOpenArticle} onOpenArtist={onOpenArtist} />
+            <MagazineCard key={article.slug} article={article} onClick={onOpenArticle} onOpenArtist={onOpenArtist} />
           ))}
         </div>
       ) : (

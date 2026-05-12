@@ -1,0 +1,25 @@
+{
+  "id": "job_20260422045301_oml4vl",
+  "mode": "single",
+  "source": "existing_db",
+  "targetType": "artist",
+  "filters": {
+    "artistSlugs": [],
+    "genre": null,
+    "scene": null,
+    "city": null,
+    "missingOnly": false
+  },
+  "count": 1,
+  "concurrency": 1,
+  "status": "completed",
+  "createdAt": "2026-04-22T04:53:01.149Z",
+  "updatedAt": "2026-04-22T04:53:14.439Z",
+  "completedAt": "2026-04-22T04:53:14.439Z",
+  "createdBy": "owner",
+  "promptProfile": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "notes": ""
+}

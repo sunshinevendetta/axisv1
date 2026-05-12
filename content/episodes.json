@@ -19,7 +19,7 @@
     "meta": {
       "es": "El venue se transforma en un entorno mapeado con realidad aumentada. Cada visitante recorre checkpoints, nodos de reliquias y activadores que desbloquean piezas digitales mediante la Base App. Glitch Jam toma el salón principal con distorsión analógica, monitores CRT y loops reactivos que responden al sonido, al movimiento y a los triggers AR.",
       "en": "The venue becomes an AR-mapped environment guiding guests through checkpoints, relic nodes, and triggers that unlock digital pieces via Base App. Glitch Jam occupies the main hall with analog distortion, CRT monitors, and reactive feedback loops responding to sound, movement, and AR triggers.",
-      "music": ["Cyberreality", "Mami Pistola", "Machin Sound", "Omarov", "Sunshine Vendetta"],
+      "music": ["Cyberreality", "Machin Sound", "Omarov", "Sunshine Vendetta"],
       "allies": ["Las Flores Web3", "NOUNS AMIGOS", "color.fun", "ZORA", "Base App"],
       "tags": ["AR", "Base App", "onchain", "digital art", "music", "CRT", "CDMX"]
     },
@@ -29,6 +29,9 @@
       "imageUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,anim=false,background=white,quality=75,width=500,height=500/event-covers/kt/201e7bb1-f77e-4ac6-84f7-96120456973f.jpg",
       "glbUri": "/assets/3d/episode1/ep1.glb",
       "videoUri": "/assets/3d/episode1/ep1.webm",
+      "videoTexture": {
+        "flipX": true
+      },
       "ar": {
         "enabled": true,
         "placementMode": "floor"
@@ -145,17 +148,55 @@
   {
     "id": 5,
     "slug": "episode-5",
-    "title": "AXIS 5",
-    "shortTitle": "episode 5",
-    "status": "locked",
+    "title": "PIZZA DAO PARTY",
+    "shortTitle": "pizza dao party",
+    "status": "open",
     "season": 1,
     "year": 2026,
-    "startsAt": "2026-04-28T20:00:00-06:00",
+    "startsAt": "2026-05-22T20:00:00-06:00",
     "timezone": "America/Mexico_City",
-    "venueName": "TBD",
-    "city": "Mexico City",
-    "summary": "Details unlock closer to the event release.",
-    "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+    "venueName": "Studio Berlin, CDMX",
+    "city": "Ciudad de México",
+    "summary": "Global Pizza Party x AXIS. Bitcoin Pizza Day celebrated in 500+ cities. Free pizza, top DJs, livestream, onchain + AI program, curated art gallery. CDMX.",
+    "description": "On May 22, 2010, two pizzas changed everything. Laszlo Hanyecz paid 10,000 BTC to Jeremy Sturdivant for two pizzas — the first real-world Bitcoin transaction and the spark of a global movement. Now PizzaDAO invites you to the Global Pizza Party, a worldwide celebration of Bitcoin Pizza Day in 500+ cities, taken to another level from AXIS. Free pizza, global crypto community, builders and curious minds, top national and international DJs, real-time livestream, an onchain and AI program, and a curated art gallery.",
+    "externalUrl": "https://www.rsv.pizza/mexicocity",
+    "meta": {
+      "es": "El 22 de mayo de 2010, dos pizzas cambiaron todo. Laszlo Hanyecz pagó 10,000 BTC a Jeremy Sturdivant para que le pidiera dos pizzas. Fue la primera transacción real con Bitcoin y el inicio de un movimiento global. Ahora, PizzaDAO te invita al Global Pizza Party, una celebración mundial del Bitcoin Pizza Day en más de 500 ciudades. Y nosotros lo llevamos a otro nivel desde AXIS. Qué puedes esperar: 🍕 Pizza gratis · 🌍 Celebración global en 500+ ciudades · ₿ Gente del mundo crypto, builders, curiosos · 🎧 Top DJ's nacionales e internacionales · 📡 Livestream en tiempo real · 🧠 Programa con temas de onchain y AI · 🖼️ Galería de arte curada para la experiencia. Ya estés metido en crypto o solo vengas por una rebanada, esta es tu invitación para ser parte de la historia otra vez.",
+      "en": "On May 22, 2010, two pizzas changed everything. Laszlo Hanyecz paid 10,000 BTC to Jeremy Sturdivant for two pizzas — the first real Bitcoin transaction and the beginning of a global movement. Now PizzaDAO invites you to the Global Pizza Party, a worldwide celebration of Bitcoin Pizza Day in 500+ cities. And we're taking it to another level from AXIS. What to expect: 🍕 Free pizza · 🌍 Global celebration in 500+ cities · ₿ Crypto people, builders, the curious · 🎧 Top national and international DJs · 📡 Real-time livestream · 🧠 Onchain and AI program · 🖼️ Curated art gallery for the experience. Whether you're deep in crypto or just here for a slice, this is your invitation to be part of history again.",
+      "allies": [
+        "PizzaDAO",
+        "ENS",
+        "World Pizza Champions",
+        "Brave",
+        "@studioberlin__",
+        "@11oncepizza",
+        "Digital Spenders Club"
+      ],
+      "venue": "@studioberlin__",
+      "tags": ["PizzaDAO", "Bitcoin Pizza Day", "onchain", "AI", "music", "art", "CDMX"],
+      "alliesDetails": {
+        "en": {
+          "PizzaDAO": "PizzaDAO is an international pizza co-op bringing the pizza industry onchain. They throw a global pizza party every year, arrange conference events every month, and support other organizers' meetups with pizza.",
+          "ENS": "ENS (Ethereum Name Service) is the decentralized naming protocol that powers human-readable names on the internet. Instead of copying and pasting long blockchain addresses, ENS lets you replace them with a simple, memorable name (like pizzadao.eth) that works across wallets, apps, and the decentralized web.",
+          "World Pizza Champions": "World Pizza Champions is a U.S. based non-profit, multinational group of elite pizza professionals dedicated to educational outreach, community service, and promoting pizza.",
+          "Brave": "Brave browser is a fast, private and secure web browser for PC, Mac and mobile. A faster ad-free browsing experience that saves data.",
+          "Studio Berlin": "Mexico City's premier social club — comedy shows, live music, ambient and experimental performances. A place to meet new people, hang out with friends, or simply spend time on your own, working or unwinding.",
+          "11oncepizza": "🍕 NY style artesanal + alma mexa. 11:11 — Narvarte. Dark Kitchen Delivery + Pickup.",
+          "Axis": "Unexpected experiences at unusual places.",
+          "Digital Spenders Club": "A bridge between crypto networks and physical culture, translating digital ecosystems into limited-run objects that people can wear, collect, and identify with in the real world."
+        },
+        "es": {
+          "PizzaDAO": "PizzaDAO es una cooperativa internacional de pizza que está llevando la industria de la pizza onchain. Organizan una fiesta global de pizza cada año, eventos mensuales y apoyan a otros organizadores con pizza para sus meetups.",
+          "ENS": "ENS (Ethereum Name Service) es el protocolo descentralizado de nombres que permite usar nombres legibles en internet. En lugar de copiar direcciones blockchain largas, ENS te permite usar un nombre simple y memorable (como pizzadao.eth) que funciona en wallets, apps y la web descentralizada.",
+          "World Pizza Champions": "World Pizza Champions es un grupo multinacional sin fines de lucro con base en EE. UU., formado por profesionales de élite de la pizza. Dedicados a la educación, el servicio comunitario y la promoción de la pizza.",
+          "Brave": "Brave es un navegador web rápido, privado y seguro para PC, Mac y móvil. Una experiencia de navegación sin anuncios que ahorra datos.",
+          "Studio Berlin": "El club social más destacado de Ciudad de México — comedia, música en vivo, performances ambient y experimentales. Un lugar para conocer gente, pasar tiempo con amigos o simplemente estar a tu aire, trabajando o desconectando.",
+          "11oncepizza": "🍕 NY style artesanal + alma mexa. 11:11 — Narvarte. Dark Kitchen Delivery + Pickup.",
+          "Axis": "Experiencias inesperadas en lugares inusuales.",
+          "Digital Spenders Club": "Un puente entre las redes cripto y la cultura física, traduciendo ecosistemas digitales en objetos de tirada limitada que la gente puede usar, coleccionar e identificar en el mundo real."
+        }
+      }
+    },
     "assets": {
       "sourceUri": "/soon.jpg",
       "posterUri": "/soon.jpg",
@@ -166,12 +207,12 @@
   {
     "id": 6,
     "slug": "episode-6",
-    "title": "PIZZA GLOBAL PARTY",
-    "shortTitle": "pizza global party",
+    "title": "AXIS 6",
+    "shortTitle": "episode 6",
     "status": "locked",
     "season": 1,
     "year": 2026,
-    "startsAt": "2026-05-22T20:00:00-06:00",
+    "startsAt": "2026-06-01T20:00:00-06:00",
     "timezone": "America/Mexico_City",
     "venueName": "TBD",
     "city": "Mexico City",

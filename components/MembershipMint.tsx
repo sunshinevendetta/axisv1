@@ -74,6 +74,10 @@ const MEMBERSHIP_ABI = [
   },
 ] as const;
 
+function getCallsStatusId(value: { id?: string } | string | undefined): string {
+  return typeof value === "string" ? value : value?.id ?? "";
+}
+
 export default function MembershipMint() {
   const { isConnected, address } = useAccount();
   const { connect, connectors } = useConnect();
@@ -99,18 +103,11 @@ export default function MembershipMint() {
 
   const { sendCalls, data: callsId, isPending: writePending } = useSendCalls();
   const { data: callsStatus } = useCallsStatus({
-    id: callsId as string,
-    query: { enabled: Boolean(callsId), refetchInterval: (query) => (query.state.data?.status === "CONFIRMED" ? false : 1000) },
+    id: getCallsStatusId(callsId as { id?: string } | string | undefined),
+    query: { enabled: Boolean(callsId), refetchInterval: (query) => (query.state.data?.status === "success" ? false : 1000) },
   });
-  const isSuccess = callsStatus?.status === "CONFIRMED";
-  const txLoading = Boolean(callsId) && callsStatus?.status !== "CONFIRMED";
-  const collectPrice = process.env.NEXT_PUBLIC_COLLECT_PRICE_USD?.trim();
-  const numericPrice = collectPrice ? Number(collectPrice) : NaN;
-  const priceLabel = Number.isFinite(numericPrice)
-    ? numericPrice === 0
-      ? "Limited Edition"
-      : `$${numericPrice.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`
-    : "";
+  const isSuccess = callsStatus?.status === "success";
+  const txLoading = Boolean(callsId) && callsStatus?.status !== "success";
 
   const handleCollect = () => {
     sendCalls({

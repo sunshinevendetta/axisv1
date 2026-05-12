@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readEpisodeCatalog, writeEpisodeCatalog } from "@/src/lib/episodes-store";
-import { hasOwnerSession } from "@/src/lib/owner-session";
 import { type EpisodeCatalogEntry } from "@/src/content/episodes";
 
 type RouteContext = {
@@ -10,9 +9,6 @@ type RouteContext = {
 };
 
 export async function PUT(request: NextRequest, context: RouteContext) {
-  if (!(await hasOwnerSession())) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
 
   const { slug } = await context.params;
   const incomingEpisode = (await request.json()) as EpisodeCatalogEntry;
@@ -36,7 +32,12 @@ export async function PUT(request: NextRequest, context: RouteContext) {
   };
 
   catalog[index] = updatedEpisode;
-  await writeEpisodeCatalog(catalog);
+  try {
+    await writeEpisodeCatalog(catalog);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Episode catalog write failed.";
+    return NextResponse.json({ error: message }, { status: 503 });
+  }
 
   return NextResponse.json({ episode: updatedEpisode });
 }

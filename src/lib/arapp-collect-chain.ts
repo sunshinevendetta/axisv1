@@ -7,13 +7,30 @@
  */
 
 import { createPublicClient, http } from "viem";
-import { base } from "viem/chains";
+import { defineChain } from "viem/utils";
 import type { ARAppCollectMetadata } from "./arapp-collect";
 
 const CONTRACT_ADDRESS = (
   process.env.NEXT_PUBLIC_COLLECT_CONTRACT_ADDRESS ??
   "0x0000000000000000000000000000000000000000"
 ) as `0x${string}`;
+
+const base = defineChain({
+  id: 8453,
+  name: "Base",
+  nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
+  rpcUrls: {
+    default: {
+      http: [process.env.BASE_RPC_URL ?? "https://mainnet.base.org"],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: "Basescan",
+      url: "https://basescan.org",
+    },
+  },
+});
 
 export const IS_CONTRACT_DEPLOYED =
   CONTRACT_ADDRESS !== "0x0000000000000000000000000000000000000000";

@@ -20,6 +20,17 @@ export default function MagazineHero({ article, onRead }: Props) {
   return (
     <section className="relative isolate min-h-[80vh] overflow-hidden bg-black">
 
+      {/* Cover image */}
+      {article.image_url && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={article.image_url}
+          alt={article.title}
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          style={{ opacity: 0.35 }}
+        />
+      )}
+
       {/* Radial glow */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -47,10 +58,10 @@ export default function MagazineHero({ article, onRead }: Props) {
 
       <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-6xl flex-col justify-end px-6 pb-16 pt-36 sm:pb-20 sm:pt-44">
 
-        {/* Journal masthead */}
+        {/* Hypermedia masthead */}
         <div className="mb-10 flex items-center gap-4">
           <span className="text-[9px] uppercase tracking-[0.48em] text-white/24">
-            AXIS Journal
+            AXIS Hypermedia
           </span>
           <div className="h-px w-10 bg-white/14" />
           <span className="text-[9px] uppercase tracking-[0.34em] text-white/16">

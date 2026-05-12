@@ -1,0 +1,21 @@
+{
+  "key": "artist:skrillex",
+  "type": "artist",
+  "name": "skrillex",
+  "slug": "skrillex",
+  "sourceMode": "new_target",
+  "status": "draft",
+  "genres": [],
+  "tags": [],
+  "relatedArtists": [],
+  "city": null,
+  "summary": "",
+  "provenance": [
+    {
+      "type": "manual",
+      "value": "owner_hq"
+    }
+  ],
+  "createdAt": "2026-04-21T00:04:30.540Z",
+  "updatedAt": "2026-04-21T00:04:30.540Z"
+}

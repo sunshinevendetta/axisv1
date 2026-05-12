@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260421042123_ls605f",
+  "tasks": [
+    {
+      "id": "job_20260421042123_ls605f__gasoiid",
+      "jobId": "job_20260421042123_ls605f",
+      "targetKey": "artist:gasoiid",
+      "targetType": "artist",
+      "slug": "gasoiid",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "gasoiid",
+        "artistName": "GaSOIID"
+      },
+      "status": "rejected",
+      "draftPath": "data\\editorial\\jobs\\job_20260421042123_ls605f\\articles\\job_20260421042123_ls605f__gasoiid.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421042123_ls605f\\articles\\job_20260421042123_ls605f__gasoiid.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421042123_ls605f\\articles\\job_20260421042123_ls605f__gasoiid.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": "Writer pass failed for raw article \"gasoiid\".",
+      "attempts": 1,
+      "updatedAt": "2026-04-21T16:57:48.412Z"
+    }
+  ]
+}

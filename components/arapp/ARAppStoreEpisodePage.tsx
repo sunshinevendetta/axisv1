@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { type ARAppDrop, type ARAppDropStatus } from "@/src/lib/arapp-catalog";
 import type { StoreEpisodeSlug } from "@/src/lib/arapp-catalog";
 

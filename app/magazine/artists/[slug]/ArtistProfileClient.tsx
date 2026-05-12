@@ -5,7 +5,13 @@ import Link from "next/link";
 import PillNav from "@/components/PillNav";
 import Footer from "@/components/Footer";
 import type { ArtistProfile } from "@/src/content/artists";
-import type { PillNavItem } from "@/components/PillNav";
+import type { PillNavItem } from "@/src/lib/navigation-types";
+
+function formatTrackMetric(track: ArtistProfile["latestTracks"][number]): string {
+  return typeof track.playcount === "number"
+    ? `${track.playcount.toLocaleString()} plays`
+    : `${track.popularity}/100 popularity`;
+}
 
 // ─── Bio Drawer ──────────────────────────────────────────────────────────────
 
@@ -110,7 +116,7 @@ function BioDrawer({
                 >
                   <span className="text-xs tracking-wide text-white/62">{track.name}</span>
                   <span className="text-[8px] tracking-wide text-white/22">
-                    {track.playcount.toLocaleString()} plays
+                    {formatTrackMetric(track)}
                   </span>
                 </a>
               ))}
@@ -124,16 +130,27 @@ function BioDrawer({
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
+type ArtistArticle = {
+  slug: string;
+  title: string;
+  category: string;
+  date: string;
+  excerpt: string;
+  readTime: string;
+};
+
 export default function ArtistProfileClient({
   artist,
   relatedArtists,
   allArtists,
   navItems,
+  artistArticles = [],
 }: {
   artist: ArtistProfile;
   relatedArtists: ArtistProfile[];
   allArtists: ArtistProfile[];
   navItems: PillNavItem[];
+  artistArticles?: ArtistArticle[];
 }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -218,6 +235,19 @@ export default function ArtistProfileClient({
                   </span>
                 )) : <span className="text-xs tracking-wide text-white/24">No genre data yet.</span>}
               </div>
+              {(artist.countryOfOrigin || artist.formedYear || artist.members.length > 0) ? (
+                <div className="mt-4 space-y-1.5">
+                  {artist.countryOfOrigin ? (
+                    <div className="text-[8px] tracking-wide text-white/28">{artist.countryOfOrigin}</div>
+                  ) : null}
+                  {artist.formedYear ? (
+                    <div className="text-[8px] tracking-wide text-white/22">Est. {artist.formedYear}</div>
+                  ) : null}
+                  {artist.members.length > 0 ? (
+                    <div className="text-[8px] tracking-wide text-white/22">{artist.members.join(", ")}</div>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
             <div className="bg-black p-5">
               <div className="text-[8px] uppercase tracking-[0.34em] text-white/22">Links</div>
@@ -301,8 +331,111 @@ export default function ArtistProfileClient({
                     <span className="w-4 shrink-0 text-[8px] text-white/18">{i + 1}</span>
                     <span className="flex-1 text-sm tracking-wide text-white/62">{track.name}</span>
                     <span className="shrink-0 text-[8px] tracking-wide text-white/22">
-                      {track.playcount.toLocaleString()} plays ↗
+                      {formatTrackMetric(track)} ↗
                     </span>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {artist.upcomingGigs.length > 0 ? (
+            <section className="mt-10 border border-white/8 p-5 sm:p-6">
+              <div className="mb-4 text-[10px] uppercase tracking-[0.32em] text-white/32">Upcoming Shows</div>
+              <div className="space-y-2">
+                {artist.upcomingGigs.map((gig) => (
+                  <a key={gig.id} href={gig.eventUrl} target="_blank" rel="noreferrer"
+                    className="flex items-start justify-between gap-4 border border-white/6 px-4 py-3 transition-colors hover:border-white/14 hover:bg-white/[0.02]">
+                    <div className="min-w-0">
+                      <div className="text-sm tracking-wide text-white/72 truncate">{gig.title}</div>
+                      <div className="mt-1 text-[9px] uppercase tracking-[0.24em] text-white/32">
+                        {gig.venueName} · {gig.city}, {gig.country}
+                      </div>
+                    </div>
+                    <div className="shrink-0 text-right">
+                      <div className="text-[9px] tracking-wide text-white/40">
+                        {new Date(gig.date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+                      </div>
+                      {gig.isTicketed ? (
+                        <div className="mt-1 text-[7px] uppercase tracking-[0.3em] text-white/24">Tickets ↗</div>
+                      ) : null}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {artist.videos.length > 0 ? (
+            <section className="mt-10 border border-white/8 p-5 sm:p-6">
+              <div className="mb-4 text-[10px] uppercase tracking-[0.32em] text-white/32">Videos</div>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-2">
+                {artist.videos.slice(0, 6).map((video) => (
+                  <a key={video.id} href={video.url} target="_blank" rel="noreferrer" className="group block">
+                    <div className="relative overflow-hidden aspect-video bg-white/[0.04]">
+                      {video.thumbnail ? (
+                        <img src={video.thumbnail} alt={video.title}
+                          className="w-full h-full object-cover opacity-72 transition-opacity group-hover:opacity-100" />
+                      ) : null}
+                    </div>
+                    <div className="mt-1.5 line-clamp-2 text-[8px] leading-4 tracking-wide text-white/38 group-hover:text-white/68 transition-colors">
+                      {video.title}
+                    </div>
+                    <div className="mt-0.5 text-[7px] tracking-wide text-white/20">
+                      {video.viewCount.toLocaleString()} views
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {artist.mixes.length > 0 ? (
+            <section className="mt-10 border border-white/8 p-5 sm:p-6">
+              <div className="mb-4 text-[10px] uppercase tracking-[0.32em] text-white/32">Mixes</div>
+              <div className="space-y-2">
+                {artist.mixes.map((mix) => (
+                  <a key={mix.key} href={mix.url} target="_blank" rel="noreferrer"
+                    className="flex items-center gap-4 border border-white/6 px-4 py-3 transition-colors hover:border-white/14 hover:bg-white/[0.02] group">
+                    {mix.picture ? (
+                      <img src={mix.picture} alt={mix.title} className="h-10 w-10 shrink-0 object-cover opacity-72 group-hover:opacity-100 transition-opacity" />
+                    ) : (
+                      <div className="h-10 w-10 shrink-0 bg-white/[0.04] border border-white/8" />
+                    )}
+                    <div className="min-w-0 flex-1">
+                      <div className="text-sm tracking-wide text-white/68 truncate">{mix.title}</div>
+                      <div className="mt-0.5 text-[8px] tracking-wide text-white/28">
+                        {mix.playCount.toLocaleString()} plays · {Math.round(mix.duration / 60)}m
+                      </div>
+                    </div>
+                    <span className="shrink-0 text-[9px] text-white/20 group-hover:text-white/50 transition-colors">↗</span>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {artist.vinylReleases.length > 0 ? (
+            <section className="mt-10 border border-white/8 p-5 sm:p-6">
+              <div className="mb-5 text-[10px] uppercase tracking-[0.32em] text-white/32">Physical Releases</div>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+                {artist.vinylReleases.map((release) => (
+                  <a key={release.id} href={release.url} target="_blank" rel="noreferrer" className="group block">
+                    {release.coverImage ? (
+                      <img src={release.coverImage} alt={release.title}
+                        className="aspect-square w-full object-cover opacity-72 group-hover:opacity-100 transition-opacity" />
+                    ) : (
+                      <div className="aspect-square w-full border border-white/8 bg-white/[0.04]" />
+                    )}
+                    <div className="mt-1.5 line-clamp-1 text-[8px] leading-4 tracking-wide text-white/38 group-hover:text-white/68 transition-colors">
+                      {release.title}
+                    </div>
+                    <div className="mt-0.5 text-[7px] tracking-wide text-white/20">
+                      {release.year ?? "—"} · {release.format}
+                    </div>
+                    {release.labels.length > 0 ? (
+                      <div className="mt-0.5 text-[7px] tracking-wide text-white/16 truncate">{release.labels[0]}</div>
+                    ) : null}
                   </a>
                 ))}
               </div>
@@ -423,6 +556,42 @@ export default function ArtistProfileClient({
                       </Link>
                     ) : null}
                   </div>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {/* Articles mentioning this artist */}
+          {artistArticles.length > 0 ? (
+            <section className="mt-14 border border-white/8 p-5 sm:p-6">
+              <div className="mb-5 text-[10px] uppercase tracking-[0.32em] text-white/32">
+                Featured In
+                <span className="ml-2 text-white/18">{artistArticles.length}</span>
+              </div>
+              <div className="space-y-2">
+                {artistArticles.map((article) => (
+                  <Link
+                    key={article.slug}
+                    href={`/magazine/${article.slug}`}
+                    className="group flex items-start gap-4 border border-white/6 px-4 py-3 transition-colors hover:border-white/16 hover:bg-white/[0.025]"
+                  >
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-[8px] uppercase tracking-[0.34em] text-white/24">{article.category}</span>
+                        <span className="text-white/12">·</span>
+                        <span className="text-[8px] uppercase tracking-[0.24em] text-white/18">{article.readTime} read</span>
+                      </div>
+                      <div className="text-sm leading-5 tracking-wide text-white/72 transition-colors group-hover:text-white">
+                        {article.title}
+                      </div>
+                      {article.excerpt && (
+                        <div className="mt-1 line-clamp-1 text-xs leading-5 tracking-wide text-white/32">
+                          {article.excerpt}
+                        </div>
+                      )}
+                    </div>
+                    <span className="shrink-0 mt-1 text-[9px] text-white/20 transition-colors group-hover:text-white/50">↗</span>
+                  </Link>
                 ))}
               </div>
             </section>

@@ -2,15 +2,15 @@ import type { Mixtape } from "@/components/magazine/mixtapes/types";
 import type { MagazineArticle } from "@/components/magazine/types";
 import HomePageClient from "@/components/home/HomePageClient";
 import { artistGenreIndex, artistTypeIndex, featuredArtistProfiles } from "@/src/content/artists";
+import { getEditorialPublicMagazineData } from "@/src/lib/editorial-public";
 import { getUpcomingEpisodes } from "@/src/lib/episodes";
 import { arappDrops } from "@/src/lib/arapp-catalog";
 import rawMixtapes from "@/content/mixtapes.json";
-import rawArticles from "@/content/magazine.json";
 
 const mixtapes = rawMixtapes as Mixtape[];
-const articles = rawArticles as MagazineArticle[];
 
-export default function Home() {
+export default async function Home() {
+  const { articles } = await getEditorialPublicMagazineData();
   const upcomingEpisodes = getUpcomingEpisodes().map((ep) => ({
     title: ep.title,
     startsAtISO: ep.startsAt,

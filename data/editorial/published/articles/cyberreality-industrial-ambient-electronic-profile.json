@@ -1,0 +1,324 @@
+{
+  "id": 1,
+  "slug": "cyberreality-industrial-ambient-electronic-profile",
+  "axis": "music",
+  "category": "PROFILE",
+  "contentType": "ARTICLE",
+  "mode": "EXPERT",
+  "frame": "OBSERVE",
+  "persona": "ANALYST",
+  "title": "Cyberreality: Industrial Ambient Electronic Production",
+  "subtitle": "A profile of an artist working across industrial, ambient, and electronic sound design.",
+  "author": "L. Nakamura",
+  "authorRole": "Contributor",
+  "date": "2026-04-21",
+  "readTime": "3 min",
+  "excerpt": "Cyberreality operates at the intersection of industrial, ambient, and electronic production, crafting textured noise constructions and spatial sound design.",
+  "featured": false,
+  "image_url": "https://i.scdn.co/image/ab6761610000e5ebb9733bb7f9d06daf3f531e29",
+  "tags": [
+    "industrial",
+    "ambient",
+    "electronic",
+    "hyperbass",
+    "noise",
+    "sound design",
+    "experimental"
+  ],
+  "linkedArtists": [],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Cyberreality is an artist whose work spans industrial, ambient, and electronic production. Their output is characterized by textured noise constructions and spatial sound design, establishing a distinct presence within experimental electronic circles."
+    },
+    {
+      "type": "paragraph",
+      "text": "The artist has released several albums including CYBERROR, r e c u e r d o, and Internet Dating 1.5. These works demonstrate a consistent exploration of complex soundscapes and layered electronic textures."
+    },
+    {
+      "type": "paragraph",
+      "text": "In addition to solo albums, Cyberreality has contributed to compilations such as Selected Juke Werkz, Vol. 1. This appearance situates the artist within a broader network of experimental electronic music producers."
+    },
+    {
+      "type": "paragraph",
+      "text": "Recent releases include CYBERROR (Remixes) and r e c u e r d o, both issued in early 2022. These recordings further develop the artist's signature blend of industrial grit and ambient depth."
+    },
+    {
+      "type": "paragraph",
+      "text": "Cyberreality's approach to production emphasizes detailed sound design and spatial arrangement, resulting in immersive listening experiences that challenge conventional genre boundaries."
+    }
+  ],
+  "monetization": [],
+  "translations": {
+    "es": {
+      "title": "Ciberrealidad: Producción Electrónica Ambiental Industrial",
+      "subtitle": "Un perfil de un artista que trabaja en diseño sonoro industrial, ambient y electrónico.",
+      "excerpt": "Cyberreality opera en la intersección de la producción industrial, ambiental y electrónica, creando construcciones de ruido texturizado y diseño sonoro espacial.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Cyberreality es un artista cuyo trabajo abarca la producción industrial, ambient y electrónica. Su producción se caracteriza por construcciones de ruido texturizado y diseño de sonido espacial, estableciendo una presencia distintiva dentro de los círculos experimentales de la electrónica."
+        },
+        {
+          "type": "paragraph",
+          "text": "El artista ha lanzado varios álbumes, entre ellos CYBERROR, r e c u e r d o e Internet Dating 1.5. Estas obras demuestran una exploración constante de paisajes sonoros complejos y texturas electrónicas en capas."
+        },
+        {
+          "type": "paragraph",
+          "text": "Además de álbumes en solitario, Cyberreality ha contribuido a compilaciones como Selected Juke Werkz, Vol. 1. Esta aparición sitúa al artista dentro de una red más amplia de productores de música electrónica experimental."
+        },
+        {
+          "type": "paragraph",
+          "text": "Las recientes lanzamientos incluyen CYBERROR (Remixes) y r e c u e r d o, ambos publicados a principios de 2022. Estas grabaciones desarrollan aún más la mezcla característica del artista entre la crudeza industrial y la profundidad ambiental."
+        },
+        {
+          "type": "paragraph",
+          "text": "El enfoque de Cyberreality en la producción se centra en un diseño de sonido detallado y una disposición espacial, lo que da como resultado experiencias auditivas inmersivas que desafían los límites convencionales de los géneros."
+        }
+      ]
+    },
+    "fr": {
+      "title": "Cyber-réalité : Production électronique ambientale industrielle",
+      "subtitle": "Un profil d'artiste travaillant dans les domaines du son industriel, ambient et de la conception sonore électronique.",
+      "excerpt": "Cyberreality opère à la croisée de la production industrielle, ambiante et électronique, créant des constructions de bruits texturés et un design sonore spatial.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Cyberreality est un artiste dont le travail s'étend à la production industrielle, ambient et électronique. Son œuvre est caractérisée par des constructions de bruits texturés et un design sonore spatial, établissant une présence distincte au sein des cercles expérimentaux de musique électronique."
+        },
+        {
+          "type": "paragraph",
+          "text": "L'artiste a sorti plusieurs albums, dont CYBERROR, r e c u e r d o et Internet Dating 1.5. Ces œuvres témoignent d'une exploration constante de paysages sonores complexes et de textures électroniques superposées."
+        },
+        {
+          "type": "paragraph",
+          "text": "En plus des albums solo, Cyberreality a contribué à des compilations telles que Selected Juke Werkz, Vol. 1. Cette apparition situe l'artiste au sein d'un réseau plus large de producteurs de musique électronique expérimentale."
+        },
+        {
+          "type": "paragraph",
+          "text": "Les sorties récentes incluent CYBERROR (Remixes) et r e c u e r d o, tous deux publiés au début de 2022. Ces enregistrements approfondissent davantage le mélange signature de l'artiste entre la rudesse industrielle et la profondeur ambiante."
+        },
+        {
+          "type": "paragraph",
+          "text": "L'approche de Cyberreality en matière de production met l'accent sur une conception sonore détaillée et un agencement spatial, aboutissant à des expériences auditives immersives qui remettent en question les frontières conventionnelles des genres."
+        }
+      ]
+    },
+    "de": {
+      "title": "Cyberrealität: Industrielle Ambient-Elektronische Produktion",
+      "subtitle": "Ein Profil eines Künstlers, der in den Bereichen Industrie-, Ambient- und elektronische Klanggestaltung arbeitet.",
+      "excerpt": "Cyberreality agiert an der Schnittstelle von industrieller, ambienter und elektronischer Produktion und gestaltet texturierte Noise-Konstruktionen sowie räumliches Sounddesign.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Cyberreality ist ein Künstler, dessen Werk sich über industrielle, Ambient- und elektronische Produktionen erstreckt. Seine Arbeit zeichnet sich durch texturierte Geräuschkonstruktionen und räumliches Sounddesign aus, wodurch er eine prägnante Präsenz in experimentellen elektronischen Kreisen etabliert hat."
+        },
+        {
+          "type": "paragraph",
+          "text": "Der Künstler hat mehrere Alben veröffentlicht, darunter CYBERROR, r e c u e r d o und Internet Dating 1.5. Diese Werke zeigen eine konsequente Erforschung komplexer Klanglandschaften und geschichteter elektronischer Texturen."
+        },
+        {
+          "type": "paragraph",
+          "text": "Neben Soloalben hat Cyberreality auch zu Kompilationen wie \"Selected Juke Werkz, Vol. 1\" beigetragen. Dieses Auftreten positioniert den Künstler innerhalb eines breiteren Netzwerks von experimentellen Elektronik-Musikproduzenten."
+        },
+        {
+          "type": "paragraph",
+          "text": "Kürzlich veröffentlichte Alben sind CYBERROR (Remixes) und r e c u e r d o, beide im frühen Jahr 2022 erschienen. Diese Aufnahmen vertiefen die charakteristische Mischung des Künstlers aus industrieller Rauheit und ambienter Tiefe weiter."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cyberrealitys Ansatz in der Produktion legt den Schwerpunkt auf detaillierte Sound-Designs und räumliche Anordnungen, was zu immersiven Höherlebnissen führt, die konventionelle Genre-Grenzen herausfordern."
+        }
+      ]
+    },
+    "ja": {
+      "title": "サイバーリアリティ: インダストリアルアンビエントエレクトロニックプロダクション",
+      "subtitle": "工業、アンビエント、エレクトロニック・サウンドデザインの分野で活動するアーティストのプロフィール。",
+      "excerpt": "サイバーリアリティは、産業、アンビエント、エレクトロニック制作の交差点で活動し、テクスチャードノイズ構造と空間音響デザインを制作しています。",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "サイバーリアリティは、インダストリアル、アンビエント、エレクトロニック制作を手がけるアーティストです。その作品は、テクスチャードノイズの構築と空間的なサウンドデザインによって特徴づけられ、実験的なエレクトロニックの分野で独自の存在感を確立しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "アーティストは、CYBERROR、r e c u e r d o、そしてInternet Dating 1.5を含むいくつかのアルバムをリリースしています。これらの作品は、複雑なサウンドスケープと層状の電子テクスチャを探求する一貫した姿勢を示しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ソロアルバムに加えて、Cyberrealityは「Selected Juke Werkz, Vol. 1」などのコンピレーションアルバムに参加しています。この出演により、Cyberrealityは実験的なエレクトロニックミュージックプロデューサーの広範なネットワークの中に位置付けられています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最近のリリースには、2022年初頭に発表されたCYBERROR (Remixes)とr e c u e r d oがあります。これらの録音は、インダストリアルな荒々しさとアンビエントな深みを融合したアーティストの特徴的なスタイルをさらに発展させています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サイバーリアリティの制作手法は、詳細なサウンドデザインと空間配置に重点を置いており、これにより従来のジャンル境界を超えた没入感のあるリスニング体験が生み出されます。"
+        }
+      ]
+    },
+    "ru": {
+      "title": "Киберреальность: Промышленное Эмбиент Электронное Производство",
+      "subtitle": "Профиль художника, работающего в области промышленного, амбиентного и электронного звукового дизайна.",
+      "excerpt": "Киберреальность функционирует на стыке индустриальной, амбиентальной и электронной музыки, создавая текстурированные шумовые композиции и пространственный звуковой дизайн.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Киберреальность - это художник, чья работа охватывает промышленность, амбиент и электронное производство. Его творчество характеризуется текстурованными шумовыми конструкциями и пространственным звуковым дизайном, что позволяет занять особое место в экспериментальных электронных кругах."
+        },
+        {
+          "type": "paragraph",
+          "text": "Художник выпустил несколько альбомов, включая CYBERROR, r e c u e r d o и Internet Dating 1.5. Эти работы демонстрируют последовательное исследование сложных звуковых пейзажей и многослойных электронных текстур."
+        },
+        {
+          "type": "paragraph",
+          "text": "Помимо сольных альбомов, Cyberreality принимал участие в сборниках, таких как Selected Juke Werkz, Vol. 1. Это участие позволяет отнести артиста к более широкой сети экспериментальных продюсеров электронной музыки."
+        },
+        {
+          "type": "paragraph",
+          "text": "Среди недавних релизов выделяются CYBERROR (Remixes) и r e c u e r d o, оба выпущенные в начале 2022 года. Эти записи продолжают развивать фирменное сочетание индустриальной грубости и глубины амбиента в творчестве артиста."
+        },
+        {
+          "type": "paragraph",
+          "text": "Подход Cyberreality к производству делает акцент на детальной звуковой разработке и пространственном расположении, что приводит к погружающим в опыт прослушивания, которые преодолевают традиционные границы жанров."
+        }
+      ]
+    },
+    "zh": {
+      "title": "网络现实：工业环境电子制作",
+      "subtitle": "一个跨越工业、环境和电子音效设计的艺术家概况。",
+      "excerpt": "网络现实运营在工业、环境和电子制作的交汇处，创作纹理化噪音构造和空间音效设计。",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Cyberreality是一位艺术家，其作品跨越了工业、环境和电子制作领域。他们的作品以纹理化的噪音构造和空间音效设计为特征，在实验电子音乐领域树立了独特的存在。"
+        },
+        {
+          "type": "paragraph",
+          "text": "艺术家已经发布了几张专辑，包括《CYBERROR》、《r e c u e r d o》和《Internet Dating 1.5》。这些作品展示了对复杂声音风景和分层电子质感的持续探索。"
+        },
+        {
+          "type": "paragraph",
+          "text": "除了个人专辑，Cyberreality 还为诸如《精选 Juke Werkz 第一卷》等合辑做出了贡献。这种出现在合辑中的现象将艺术家置于实验电子音乐制作人的更广泛网络之中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "近期发行的作品包括《CYBERROR》（混音版）和《r e c u e r d o》，均于2022年初发布。这些录音作品进一步发展了艺术家标志性的工业质感与环境深度的结合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cyberreality在制作过程中强调细致入微的音效设计和空间布局，创造出引人入胜的聆听体验，打破传统流派界限。"
+        }
+      ]
+    },
+    "it": {
+      "title": "Cyberreality: Produzione Elettronica Ambient Industriale",
+      "subtitle": "Un profilo di un artista che lavora attraverso il suono industriale, ambient e la progettazione sonora elettronica.",
+      "excerpt": "Cyberreality opera all'intersezione tra produzione industriale, ambient e elettronica, plasmando costruzioni rumoristiche texturate e sound design spaziale.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Cyberreality è un artista il cui lavoro spazia tra produzione industriale, ambient e elettronica. Il suo lavoro è caratterizzato da costruzioni di rumore testurizzato e sound design spaziale, stabilendo una presenza distintiva all'interno degli ambienti sperimentali elettronici."
+        },
+        {
+          "type": "paragraph",
+          "text": "L'artista ha pubblicato diversi album, tra cui CYBERROR, r e c u e r d o e Internet Dating 1.5. Questi lavori dimostrano una costante esplorazione di paesaggi sonori complessi e texture elettroniche stratificate."
+        },
+        {
+          "type": "paragraph",
+          "text": "Oltre agli album solisti, Cyberreality ha contribuito a compilation come Selected Juke Werkz, Vol. 1. Questa apparizione colloca l'artista all'interno di una più ampia rete di produttori di musica elettronica sperimentale."
+        },
+        {
+          "type": "paragraph",
+          "text": "Le uscite recenti includono CYBERROR (Remixes) e r e c u e r d o, entrambi pubblicati all'inizio del 2022. Queste registrazioni sviluppano ulteriormente la caratteristica fusione dell'artista tra la grinta industriale e la profondità ambientale."
+        },
+        {
+          "type": "paragraph",
+          "text": "L'approccio di Cyberreality alla produzione si concentra su un sound design dettagliato e su un'organizzazione spaziale, creando esperienze di ascolto immersive che sfidano i confini convenzionali dei generi musicali."
+        }
+      ]
+    },
+    "nl": {
+      "title": "Cyberrealiteit: Industriële Ambient Elektronische Productie",
+      "subtitle": "Een profiel van een artiest die werkt aan industriële, ambient en elektronische geluidsontwerp.",
+      "excerpt": "Cyberreality opereert op het snijvlak van industriële, ambient en elektronische productie, waarbij het getextureerde geluidsconstructies en ruimtelijk geluidsontwerp vervaardigt.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Cyberreality is een artiest wiens werk zich uitstrekt over industriële, ambient en elektronische productie. Hun output wordt gekenmerkt door textuurrijke geluidsconstructies en ruimtelijk geluidsontwerp, waarmee ze een opvallende aanwezigheid vestigen binnen experimentele elektronische kringen."
+        },
+        {
+          "type": "paragraph",
+          "text": "De artiest heeft verschillende albums uitgebracht, waaronder CYBERROR, r e c u e r d o en Internet Dating 1.5. Deze werken tonen een consistente verkenning van complexe geluidslandschappen en gelaagde elektronische texturen."
+        },
+        {
+          "type": "paragraph",
+          "text": "Naast soloalbums heeft Cyberreality bijgedragen aan compilaties zoals Selected Juke Werkz, Vol. 1. Dit optreden plaatst de artiest binnen een bredere netwerk van experimentele elektronische muziekproducenten."
+        },
+        {
+          "type": "paragraph",
+          "text": "Recente releases omvatten CYBERROR (Remixes) en r e c u e r d o, beide uitgebracht begin 2022. Deze opnamen ontwikkelen de handtekening van de artiest verder, met een mix van industriële ruwheid en ambient diepte."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cyberreality's benadering van productie legt de nadruk op gedetailleerd geluidsontwerp en ruimtelijke opstelling, wat resulteert in immersieve luisterervaringen die de conventionele genregrenzen uitdagen."
+        }
+      ]
+    },
+    "pt": {
+      "title": "Ciberrealidade: Produção Eletrônica Industrial Ambient",
+      "subtitle": "Um perfil de um artista que trabalha com som industrial, ambient e design eletrônico.",
+      "excerpt": "A Cyberreality atua na interseção da produção industrial, ambiental e eletrônica, criando construções de ruído texturizado e design de som espacial.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Cyberreality é um artista cujo trabalho abrange produções industriais, ambient e eletrônicas. Sua produção é caracterizada por construções de ruído texturizado e design de som espacial, estabelecendo uma presença distinta nos círculos de música eletrônica experimental."
+        },
+        {
+          "type": "paragraph",
+          "text": "O artista lançou vários álbuns, incluindo CYBERROR, r e c u e r d o e Internet Dating 1.5. Esses trabalhos demonstram uma exploração consistente de paisagens sonoras complexas e texturas eletrônicas em camadas."
+        },
+        {
+          "type": "paragraph",
+          "text": "Além de álbuns solo, a Cyberreality contribuiu para compilações como Selected Juke Werkz, Vol. 1. Essa participação situa o artista dentro de uma rede mais ampla de produtores de música eletrônica experimental."
+        },
+        {
+          "type": "paragraph",
+          "text": "Lançamentos recentes incluem CYBERROR (Remixes) e r e c u e r d o, ambos lançados no início de 2022. Essas gravações aprofundam ainda mais a mistura característica do artista entre a textura industrial e a profundidade ambiental."
+        },
+        {
+          "type": "paragraph",
+          "text": "A abordagem da Cyberreality na produção enfatiza o design sonoro detalhado e a arranjo espacial, resultando em experiências de audição imersivas que desafiam os limites convencionais dos gêneros."
+        }
+      ]
+    },
+    "ko": {
+      "title": "사이버리얼리티: 산업 앰비언트 전자 음악 제작",
+      "subtitle": "산업, 앰비언트, 전자적 사운드 디자인을 아우르는 예술가의 프로필.",
+      "excerpt": "사이버리얼리티는 산업, 앰비언트, 전자 음악 생산의 교차점에서 운영되며, 질감 있는 노이즈 구성을 만들고 공간적 사운드 디자인을 구축합니다.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "사이버리얼리티는 산업, 앰비언트, 전자 음악 제작을 아우르는 아티스트입니다. 그들의 작품은 질감 있는 노이즈 구성과 공간적 사운드 디자인으로 특징지어져, 실험적인 전자 음악계에서 독특한 존재감을 확립했습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아티스트는 CYBERROR, r e c u e r d o, 그리고 Internet Dating 1.5를 포함한 여러 앨범을 발표했습니다. 이러한 작품들은 복잡한 사운드 스케이프와 층층이 쌓인 전자음악 텍스처를 일관되게 탐구하고 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "솔로 앨범 외에도 Cyberreality는 Selected Juke Werkz, Vol. 1과 같은 컴필레이션에 기여했습니다. 이 출연은 예술가를 더 넓은 실험적 전자 음악 프로듀서 네트워크 내에 위치시킵니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "최근 발매된 작품으로는 2022년 초에 발표된 CYBERROR (Remixes)와 r e c u e r d o가 있습니다. 이 녹음들은 아티스트의 독특한 산업적 거친 질감과 앰비언트 깊이의 조화를 더욱 발전시켰습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사이버리얼리티의 제작 방식은 세심한 사운드 디자인과 공간적 배치를 강조하여, 전통적인 장르 경계를 넘나드는 몰입감 있는 청취 경험을 만들어냅니다."
+        }
+      ]
+    }
+  }
+}

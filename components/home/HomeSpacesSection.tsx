@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import type { MagazineArticle } from "@/components/magazine/types";
+import type { MagazineLang } from "@/src/types/magazine";
 
 type Props = {
   articles: MagazineArticle[];
+  lang: MagazineLang;
 };
 
 // Spaces are articles tagged with EVENT or CULTURE categories
@@ -23,8 +25,9 @@ function formatDate(dateStr: string) {
   });
 }
 
-export default function HomeSpacesSection({ articles }: Props) {
+export default function HomeSpacesSection({ articles, lang }: Props) {
   const spaces = getSpaceArticles(articles);
+  const isRussian = lang === "ru";
 
   // Always show at least 4 slots
   const fillerCount = Math.max(0, 4 - spaces.length);
@@ -54,14 +57,25 @@ export default function HomeSpacesSection({ articles }: Props) {
           {spaces.map((article) => (
             <Link
               key={article.slug}
-              href="/magazine"
+              href={`/magazine/${article.slug}`}
               className="group flex flex-col justify-between gap-6 bg-black p-7 transition-colors hover:bg-white/[0.02]"
             >
               <div>
+                {article.image_url ? (
+                  <div className="relative mb-5 overflow-hidden border border-white/8 bg-white/[0.02]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={article.image_url}
+                      alt={article.title}
+                      className="h-40 w-full object-cover opacity-78 transition duration-300 group-hover:scale-[1.01] group-hover:opacity-90"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.14)_46%,rgba(0,0,0,0.44)_100%)]" />
+                  </div>
+                ) : null}
                 <div className="mb-4 text-[8px] uppercase tracking-[0.36em] text-white/24">
                   {article.category} · {formatDate(article.date)}
                 </div>
-                <h3 className="text-sm leading-5 tracking-wide text-white/68 transition-colors group-hover:text-white/90">
+                <h3 className={`${isRussian ? "text-[0.7rem] sm:text-[0.78rem]" : "text-sm"} leading-5 tracking-wide text-white/68 transition-colors group-hover:text-white/90`}>
                   {article.title}
                 </h3>
                 <p className="mt-3 text-[11px] leading-5 text-white/36 line-clamp-3">
@@ -94,7 +108,7 @@ export default function HomeSpacesSection({ articles }: Props) {
 
         <div className="mt-8 border-t border-white/6 pt-6">
           <p className="text-[9px] uppercase tracking-[0.32em] text-white/18">
-            Activated locations · Documented in the journal
+            Activated locations · Documented in hypermedia
           </p>
         </div>
       </div>

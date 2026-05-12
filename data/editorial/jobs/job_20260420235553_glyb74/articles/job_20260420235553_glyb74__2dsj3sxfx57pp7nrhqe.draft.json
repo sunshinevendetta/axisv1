@@ -1,0 +1,58 @@
+{
+  "jobId": "job_20260420235553_glyb74",
+  "taskId": "job_20260420235553_glyb74__2dsj3sxfx57pp7nrhqe",
+  "targetKey": "artist:2dsj3sxfx57pp7nrhqe",
+  "article": {
+    "id": 1,
+    "slug": "osno1-the-early-experimental-sound-of-laura-les",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "OSNO1: The Early Experimental Sound of Laura Les",
+    "subtitle": "A foundational blueprint in the evolution of hyperpop",
+    "author": "V. Reyes",
+    "authorRole": "Staff Writer",
+    "date": "2026-04-20",
+    "readTime": "5 min",
+    "excerpt": "OSNO1 represents Laura Les's early experimental phase, characterized by glitchcore and digicore elements that laid the groundwork for her later work in 100 gecs.",
+    "featured": false,
+    "image_url": "https://gw.ipfs-lens.dev/ipfs/bafkreih7pqaccvb3offihsayjrl42lwlgyovu3vshwwx6kr32hnl4o7mse",
+    "tags": [
+      "hyperpop",
+      "glitchcore",
+      "digicore",
+      "experimental",
+      "electronic",
+      "100 gecs",
+      "laura les"
+    ],
+    "linkedArtists": [
+      "100 gecs",
+      "Fraxiom",
+      "Jane Remover",
+      "Gupi"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "OSNO1, the early solo project of Laura Les, serves as a crucial precursor to her later work with Dylan Brady in 100 gecs. This period is marked by raw, experimental electronic music that blends glitchcore and digicore influences, establishing a sonic blueprint for the hyperpop genre."
+      },
+      {
+        "type": "paragraph",
+        "text": "The OSNO1 sound is defined by its use of screeching synths, distorted vocals, and lyrics that evoke an internet-era aesthetic. Tracks such as 'A Conversation I Overheard' and 'I'm Sorry' exemplify this style, combining surreal narratives with glitchy, hypnotic production."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before forming 100 gecs, Laura Les was crafting a unique universe of experimental electronic music under the OSNO1 moniker. This early work laid the foundation for the hyperpop movement, influencing a new wave of artists including Fraxiom, Jane Remover, and Gupi."
+      },
+      {
+        "type": "paragraph",
+        "text": "The OSNO1 era is characterized by a DIY digital punk energy, featuring pitched-up vocals and frenetic beats that capture the essence of early internet culture. This period represents a significant moment in the evolution of electronic music, marking the transition from experimental sounds to the hyperpop genre."
+      }
+    ],
+    "monetization": []
+  }
+}

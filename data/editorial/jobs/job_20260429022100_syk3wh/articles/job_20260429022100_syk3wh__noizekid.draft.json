@@ -1,0 +1,61 @@
+{
+  "jobId": "job_20260429022100_syk3wh",
+  "taskId": "job_20260429022100_syk3wh__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborator with DJ Snake, Bad Bunny, and Major Lazer",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for his collaborations with prominent industry figures and his distinctive sample pack release.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "sample pack",
+      "barnation"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer known for his collaborations with prominent industry figures such as DJ Snake, Bad Bunny, and Major Lazer."
+      },
+      {
+        "type": "paragraph",
+        "text": "He has released the 'Noizekid Sample Pack' in collaboration with Barnation, which includes all of his samples, loops and drums used in various of his works."
+      },
+      {
+        "type": "paragraph",
+        "text": "His work is noted for its distinctive production choices and integration of moombahton and dancehall elements."
+      },
+      {
+        "type": "paragraph",
+        "text": "Noizekid is associated with similar artists such as ETC!ETC!, Los Dutis, LOOJAN, Bsno, and Freebot."
+      }
+    ],
+    "monetization": []
+  }
+}

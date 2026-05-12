@@ -1,0 +1,28 @@
+{
+  "jobId": "job_20260422044809_k5ngf1",
+  "tasks": [
+    {
+      "id": "job_20260422044809_k5ngf1__2dsj3sxfx57pp7nrhqe",
+      "jobId": "job_20260422044809_k5ngf1",
+      "targetKey": "artist:2dsj3sxfx57pp7nrhqe",
+      "targetType": "artist",
+      "slug": "osno1-the-glitchcore-phantom-before-100-gecs",
+      "sourceRef": {
+        "kind": "raw_article",
+        "rawId": "40970118635543001552607643510322803667784642603277374104042455534303891046447",
+        "rawSlug": "2dsj3sxfx57pp7nrhqe",
+        "rawFolder": "0002_2dsj3sxfx57pp7nrhqe"
+      },
+      "status": "published",
+      "draftPath": "data\\editorial\\jobs\\job_20260422044809_k5ngf1\\articles\\job_20260422044809_k5ngf1__2dsj3sxfx57pp7nrhqe.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260422044809_k5ngf1\\articles\\job_20260422044809_k5ngf1__2dsj3sxfx57pp7nrhqe.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260422044809_k5ngf1\\articles\\job_20260422044809_k5ngf1__2dsj3sxfx57pp7nrhqe.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": "https://api.grove.storage/5c392f1dd2e5012f4774bd7a9d3ea14b349119010af9bb44a61695df21ba148b",
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-22T04:51:38.043Z"
+    }
+  ]
+}

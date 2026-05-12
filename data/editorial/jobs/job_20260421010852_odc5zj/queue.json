@@ -1,0 +1,28 @@
+{
+  "jobId": "job_20260421010852_odc5zj",
+  "tasks": [
+    {
+      "id": "job_20260421010852_odc5zj__qt7b8m9z473r9a5e4v",
+      "jobId": "job_20260421010852_odc5zj",
+      "targetKey": "artist:qt7b8m9z473r9a5e4v",
+      "targetType": "artist",
+      "slug": "qt7b8m9z473r9a5e4v",
+      "sourceRef": {
+        "kind": "raw_article",
+        "rawId": "106263668280442503358509756106515901811991766528561366036055950998117059442749",
+        "rawSlug": "qt7b8m9z473r9a5e4v",
+        "rawFolder": "0033_qt7b8m9z473r9a5e4v"
+      },
+      "status": "queued",
+      "draftPath": "data\\editorial\\jobs\\job_20260421010852_odc5zj\\articles\\job_20260421010852_odc5zj__qt7b8m9z473r9a5e4v.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421010852_odc5zj\\articles\\job_20260421010852_odc5zj__qt7b8m9z473r9a5e4v.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421010852_odc5zj\\articles\\job_20260421010852_odc5zj__qt7b8m9z473r9a5e4v.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 0,
+      "updatedAt": "2026-04-21T01:08:52.922Z"
+    }
+  ]
+}

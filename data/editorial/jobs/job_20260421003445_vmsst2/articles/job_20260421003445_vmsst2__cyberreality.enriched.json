@@ -1,0 +1,147 @@
+{
+  "jobId": "job_20260421003445_vmsst2",
+  "taskId": "job_20260421003445_vmsst2__cyberreality",
+  "target": {
+    "key": "artist:cyberreality",
+    "type": "artist",
+    "name": "Cyberreality"
+  },
+  "researchPacket": {
+    "targetName": "Cyberreality",
+    "sourceMode": "existing_db",
+    "artistContext": {
+      "name": "Cyberreality",
+      "genres": [
+        "industrial",
+        "ambient",
+        "electronic"
+      ],
+      "tags": [
+        "HYPERBASS"
+      ],
+      "summary": "Cyberreality works across industrial, ambient, and electronic production, releasing albums including CYBERROR, r e c u e r d o, and Internet Dating 1.5. Their output spans textured noise constructions and spatial sound design, with compilation appearances on Selected Juke Werkz, Vol. 1 situating them within a broader experimental electronic network."
+    },
+    "genreContext": null,
+    "relatedArtists": [],
+    "provenance": [
+      {
+        "type": "raw_article",
+        "value": "cyberreality"
+      },
+      {
+        "type": "music_artists",
+        "value": "content/music-artists.json"
+      },
+      {
+        "type": "artist_media_cache",
+        "value": "content/artist-media-cache.json"
+      }
+    ]
+  },
+  "promptConfig": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "modelOutput": {
+    "writer": {
+      "id": 1,
+      "slug": "cyberreality-industrial-ambient-electronic-profile",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "EXPERT",
+      "frame": "OBSERVE",
+      "persona": "ANALYST",
+      "title": "Cyberreality: Industrial Ambient Electronic Production",
+      "subtitle": "Textured noise constructions and spatial sound design define this experimental artist.",
+      "author": "L. Nakamura",
+      "authorRole": "Contributor",
+      "date": "2026-04-21",
+      "readTime": "3 min",
+      "excerpt": "Cyberreality operates at the intersection of industrial, ambient, and electronic music, crafting textured noise constructions and spatial sound design.",
+      "featured": false,
+      "image_url": "https://i.scdn.co/image/ab6761610000e5ebb9733bb7f9d06daf3f531e29",
+      "tags": [
+        "industrial",
+        "ambient",
+        "electronic",
+        "hyperbass",
+        "experimental",
+        "sound design",
+        "noise"
+      ],
+      "linkedArtists": [],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Cyberreality is an experimental electronic artist whose work spans industrial, ambient, and electronic production. Their output is characterized by textured noise constructions and spatial sound design, establishing a distinct presence within the broader experimental electronic network."
+        },
+        {
+          "type": "paragraph",
+          "text": "The artist has released several albums that showcase their approach to sound. These include CYBERROR, r e c u e r d o, and Internet Dating 1.5. Their work is further contextualized by compilation appearances, such as on Selected Juke Werkz, Vol. 1."
+        },
+        {
+          "type": "paragraph",
+          "text": "Recent releases demonstrate Cyberreality's continued exploration of electronic soundscapes. CYBERROR (Remixes) appeared in early 2022, followed by the album r e c u e r d o in January of that year. Earlier works include the original CYBERROR album from mid-2021 and Internet Dating 1.5 from late 2020."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cyberreality's production choices emphasize layered textures and precise spatial arrangements. Their sound often incorporates elements of hyperbass, contributing to a dense and immersive listening experience that aligns with contemporary experimental electronic trends."
+        }
+      ],
+      "monetization": []
+    },
+    "editor": {
+      "id": 1,
+      "slug": "cyberreality-industrial-ambient-electronic-profile",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "EXPERT",
+      "frame": "OBSERVE",
+      "persona": "ANALYST",
+      "title": "Cyberreality: Industrial Ambient Electronic Production",
+      "subtitle": "Textured noise constructions and spatial sound design define this experimental artist.",
+      "author": "L. Nakamura",
+      "authorRole": "Contributor",
+      "date": "2026-04-21",
+      "readTime": "3 min",
+      "excerpt": "Cyberreality operates at the intersection of industrial, ambient, and electronic music, crafting textured noise constructions and spatial sound design.",
+      "featured": false,
+      "image_url": "https://i.scdn.co/image/ab6761610000e5ebb9733bb7f9d06daf3f531e29",
+      "tags": [
+        "industrial",
+        "ambient",
+        "electronic",
+        "hyperbass",
+        "experimental",
+        "sound design",
+        "noise"
+      ],
+      "linkedArtists": [],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Cyberreality is an experimental electronic artist whose work spans industrial, ambient, and electronic production. Their output is characterized by textured noise constructions and spatial sound design, establishing a distinct presence within the broader experimental electronic network."
+        },
+        {
+          "type": "paragraph",
+          "text": "The artist has released several albums that showcase their approach to sound. These include CYBERROR, r e c u e r d o, and Internet Dating 1.5. Their work is further contextualized by compilation appearances, such as on Selected Juke Werkz, Vol. 1."
+        },
+        {
+          "type": "paragraph",
+          "text": "Recent releases demonstrate Cyberreality's continued exploration of electronic soundscapes. CYBERROR (Remixes) appeared in early 2022, followed by the album r e c u e r d o in January of that year. Earlier works include the original CYBERROR album from mid-2021 and Internet Dating 1.5 from late 2020."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cyberreality's production choices emphasize layered textures and precise spatial arrangements. Their sound often incorporates elements of hyperbass, contributing to a dense and immersive listening experience that aligns with contemporary experimental electronic trends."
+        }
+      ],
+      "monetization": []
+    }
+  },
+  "review": {
+    "status": "needs_review",
+    "notes": ""
+  }
+}

@@ -1,11 +1,12 @@
 import {
   collectiblesCatalog,
   type ARAppCollectMetadata,
-  type ARAppCollectMetadataProperties,
   type ARAppCollectStatus,
   type ARAppCollectTrait,
 } from "@/src/content/collectibles";
-import { episodeCatalog } from "@/src/content/episodes";
+import { STORE_EPISODE_CONFIG } from "@/src/lib/arapp-catalog";
+
+export type { ARAppCollectMetadata, ARAppCollectStatus } from "@/src/content/collectibles";
 
 export type ARAppCollectToken = {
   tokenId: number;
@@ -19,10 +20,9 @@ export type ARAppCollectToken = {
 
 // ─── Episode configuration ────────────────────────────────────────────────────
 
-export type EpisodeConfig = {
-  slug: string;
-  label: string;
-  number: number;
+type StoreEpisodeConfig = (typeof STORE_EPISODE_CONFIG)[number];
+
+export type EpisodeConfig = StoreEpisodeConfig & {
   claimOpen: boolean;
   chainId?: number;
   contractAddress?: string;
@@ -41,19 +41,19 @@ function resolveEffectiveStatus(status: ARAppCollectStatus, claimOpen: boolean):
   return status;
 }
 
-export const EPISODE_CONFIG: EpisodeConfig[] = episodeCatalog.map((episode) => {
+export const EPISODE_CONFIG: EpisodeConfig[] = STORE_EPISODE_CONFIG.map((episode) => {
   const configuredEpisode = collectiblesCatalog.episodes.find((entry) => entry.slug === episode.slug);
 
   return {
-    slug: episode.slug,
-    label: `Episode ${episode.id}`,
-    number: episode.id,
+    ...episode,
     claimOpen: configuredEpisode?.claimOpen ?? false,
     chainId: configuredEpisode?.chainId,
     contractAddress: configuredEpisode?.contractAddress,
     tokenIds: configuredEpisode?.tokens.map((token) => token.tokenId) ?? [],
   };
 });
+
+const episodeNumberBySlug = new Map(STORE_EPISODE_CONFIG.map((episode) => [episode.slug, episode.number]));
 
 export function getEpisodeBySlug(slug: string): EpisodeConfig | undefined {
   return EPISODE_CONFIG.find((e) => e.slug === slug);
@@ -82,15 +82,13 @@ export type ARAppCollectDrop = {
   attributes: ARAppCollectTrait[];
 };
 
-export const arappCollectCollection = {
-  ...collectiblesCatalog.collection,
-};
+export const arappCollectCollection = collectiblesCatalog.collection;
 
 export const arappCollectTokens: ARAppCollectToken[] = collectiblesCatalog.episodes.flatMap((episode) =>
   episode.tokens.map((token) => ({
     tokenId: token.tokenId,
     slug: `${episode.slug}-${token.tokenId}`,
-    episode: Number(episode.slug.replace("episode-", "")),
+    episode: episodeNumberBySlug.get(episode.slug as "episode-1" | "episode-2") ?? Number(episode.slug.replace("episode-", "")),
     episodeSlug: episode.slug,
     status: resolveEffectiveStatus(token.status, episode.claimOpen),
     remaining: token.remaining,

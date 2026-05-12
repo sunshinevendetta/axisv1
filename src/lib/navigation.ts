@@ -49,40 +49,40 @@ const membersAreaNavItem: PillNavItem = {
 export const publicNavItems: PillNavItem[] = [
   { label: "home", href: "/#home" },
   { label: "about", href: "/#about" },
-  { label: "join", href: "/#join" },
+  // { label: "join", href: "/#join" },
   { label: "episodes", href: "/#episodes" },
-  {
-    label: "magazine",
-    href: "/magazine",
-    children: [
-      {
-        label: "Editorial", href: "/magazine"},
-      { label: "Artists", href: "/magazine/artists" },
-      { label: "Mixtapes", href: "/magazine/mixtapes" },
-    ],
-  },
-  membersAreaNavItem,
+  // {
+  //   label: "magazine",
+  //   href: "/magazine",
+  //   children: [
+  //     {
+  //       label: "Editorial", href: "/magazine"},
+  //     { label: "Artists", href: "/magazine/artists" },
+  //     { label: "Mixtapes", href: "/magazine/mixtapes" },
+  //   ],
+  // },
+  // membersAreaNavItem,
   { label: "submit", href: "/#submit" },
-  {
-    label: "store",
-    href: "/arapp",
-    children: buildStoreChildren(),
-  },
-  {
-    label: "collect",
-    href: "/arapp/collect",
-    children: buildCollectChildren(),
-  },
-  
-   {
-     label: "docs",
-     href: "/docs",
-     children: [
-       { label: "Documents", href: "/docs" },
-       { label: "Diagrams", href: "/docs/diagrams" },
-       { label: "Episode Schema", href: "/docs/episode-description-schema" },
-     ],
-   },
+  // {
+  //   label: "store",
+  //   href: "/arapp",
+  //   children: buildStoreChildren(),
+  // },
+  // {
+  //   label: "collect",
+  //   href: "/arapp/collect",
+  //   children: buildCollectChildren(),
+  // },
+  //
+  //  {
+  //    label: "docs",
+  //    href: "/docs",
+  //    children: [
+  //      { label: "Documents", href: "/docs" },
+  //      { label: "Diagrams", href: "/docs/diagrams" },
+  //      { label: "Episode Schema", href: "/docs/episode-description-schema" },
+  //    ],
+  //  },
    // adminDashboardNavItem,
 ];
 

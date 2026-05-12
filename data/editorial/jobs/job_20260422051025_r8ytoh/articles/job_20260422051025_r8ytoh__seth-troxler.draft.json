@@ -1,0 +1,58 @@
+{
+  "jobId": "job_20260422051025_r8ytoh",
+  "taskId": "job_20260422051025_r8ytoh__seth-troxler",
+  "targetKey": "artist:seth-troxler",
+  "article": {
+    "id": 1,
+    "slug": "seth-troxler-profile",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Seth Troxler: A Distinctive Voice in Techno",
+    "subtitle": "Detroit roots and Berlin relocation define a rising talent.",
+    "author": "A. Stern",
+    "authorRole": "Staff Writer",
+    "date": "2026-04-22",
+    "readTime": "4 min",
+    "excerpt": "Seth Troxler's distinctive techno sound is shaped by his Detroit roots and recent relocation to Berlin, with releases on respected labels cementing his presence in the European scene.",
+    "featured": false,
+    "image_url": "https://i.scdn.co/image/ab6761610000e5ebae415c295c042f2193594a8e",
+    "tags": [
+      "techno",
+      "minimal",
+      "minimal techno",
+      "detroit techno",
+      "berlin techno",
+      "artist profile"
+    ],
+    "linkedArtists": [
+      "Lee Curtiss",
+      "Gadi Mizrahi",
+      "Maayan Nidam",
+      "Guillaume & The Coutu Dumonts",
+      "Wolf + Lamb"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Seth Troxler has quickly established himself as a distinctive voice in the techno scene. Despite his young age, his achievements are notable and his sound is unmistakably influenced by his Detroit roots."
+      },
+      {
+        "type": "paragraph",
+        "text": "His recent relocation to Berlin has further solidified his position within the European techno elite. Troxler's work is characterized by a distinctive style that draws from a range of unconventional influences."
+      },
+      {
+        "type": "paragraph",
+        "text": "Troxler's releases on respected labels such as Spectral, Wagon Repair, and M_NUS have garnered attention and praise. These works showcase his evolving approach to techno production and performance."
+      },
+      {
+        "type": "paragraph",
+        "text": "Recent releases including This Is Then, DJ-Kicks (Seth Troxler) [DJ Mix], and Mixmag Presents Seth Troxler: The Illusion Nouveau (DJ Mix) demonstrate his continued growth and influence in the genre."
+      }
+    ],
+    "monetization": []
+  }
+}

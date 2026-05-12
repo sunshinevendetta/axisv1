@@ -2,8 +2,7 @@
 
 import { useCallback, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
-import type { Mixtape } from "./types";
-import type { AudioMeta } from "./hooks/useAllMetadata";
+import type { AudioMeta, Mixtape } from "./types";
 import type { HydraControls } from "./HydraBackground";
 
 const HydraBackground = dynamic(() => import("./HydraBackground"), { ssr: false });

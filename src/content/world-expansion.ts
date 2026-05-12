@@ -139,3 +139,114 @@ function normalizeArtistName(value: string) {
 export function findArtistWorldProfile(name: string) {
   return artistWorldProfiles.find((profile) => profile.slug === normalizeArtistName(name) || profile.name.toLowerCase() === name.trim().toLowerCase()) ?? null;
 }
+
+// ── Platform / data source nodes ─────────────────────────────────────────────
+
+export type PlatformNodeKind =
+  | "data-source"
+  | "event-layer"
+  | "identity-layer"
+  | "social-signal"
+  | "physical-releases";
+
+export type PlatformNode = {
+  id: string;
+  name: string;
+  kind: PlatformNodeKind[];
+  description: string;
+  fields: string[];
+  envKeys: string[];
+  status: "active" | "pending-approval" | "future";
+  pass: number;
+};
+
+export const platformNodes: PlatformNode[] = [
+  {
+    id: "youtube",
+    name: "YouTube Data API v3",
+    kind: ["data-source"],
+    description: "Channel thumbnail, top videos by view count, latest uploads. Fallback when Spotify is unavailable.",
+    fields: ["channelId", "videos", "latestUploads", "profileImage"],
+    envKeys: ["YOUTUBE_API_KEY"],
+    status: "active",
+    pass: 3,
+  },
+  {
+    id: "resident-advisor",
+    name: "Resident Advisor",
+    kind: ["data-source", "event-layer"],
+    description: "Artist profiles, upcoming and past gigs, DJ rankings, promoter directory. Primary source for electronic music events.",
+    fields: ["raId", "raSlug", "raBio", "raProfileImage", "upcomingGigs", "pastGigs", "allPromoterIds"],
+    envKeys: [],
+    status: "active",
+    pass: 2,
+  },
+  {
+    id: "discogs",
+    name: "Discogs",
+    kind: ["data-source", "physical-releases"],
+    description: "Physical release history — vinyl, CD, cassette. Label history and collector data.",
+    fields: ["discogsId", "vinylReleases"],
+    envKeys: ["DISCOGS_TOKEN"],
+    status: "active",
+    pass: 4,
+  },
+  {
+    id: "mixcloud",
+    name: "Mixcloud",
+    kind: ["data-source"],
+    description: "DJ mixes and live sets. Essential for electronic artists not fully represented on Spotify.",
+    fields: ["mixes"],
+    envKeys: ["MIXCLOUD_CLIENT_ID"],
+    status: "active",
+    pass: 4,
+  },
+  {
+    id: "knowledge-graph",
+    name: "Google Knowledge Graph + Wikidata",
+    kind: ["identity-layer"],
+    description: "Canonical entity identity, Wikipedia bio, country of origin, formed year, band members, instruments, record labels.",
+    fields: ["kgId", "wikidataId", "wikipediaBio", "countryOfOrigin", "formedYear", "recordLabels", "members", "instruments"],
+    envKeys: ["GOOGLE_KG_API_KEY"],
+    status: "active",
+    pass: 2,
+  },
+  {
+    id: "tiktok",
+    name: "TikTok",
+    kind: ["social-signal"],
+    description: "Latest videos and oEmbed player for known TikTok URLs. Display API pending review.",
+    fields: ["tiktokLatest", "tiktokEmbedHtml"],
+    envKeys: ["TIKTOK_CLIENT_KEY", "TIKTOK_CLIENT_SECRET"],
+    status: "pending-approval",
+    pass: 4,
+  },
+  {
+    id: "meta",
+    name: "Meta / Instagram + Facebook",
+    kind: ["social-signal"],
+    description: "Instagram public posts and Facebook public events. Feeds into artist activity signals.",
+    fields: ["instagramPosts", "facebookEvents"],
+    envKeys: ["META_APP_ID", "META_APP_SECRET", "META_APP_ACCESS_TOKEN"],
+    status: "active",
+    pass: 4,
+  },
+  {
+    id: "bandcamp",
+    name: "Bandcamp",
+    kind: ["data-source"],
+    description: "oEmbed player for Bandcamp releases detected via MusicBrainz URL relations.",
+    fields: ["bandcampEmbed"],
+    envKeys: [],
+    status: "active",
+    pass: 4,
+  },
+];
+
+export function findPlatformNode(id: string): PlatformNode | undefined {
+  return platformNodes.find((n) => n.id === id);
+}
+
+export function getPlatformNodesByKind(kind: PlatformNodeKind): PlatformNode[] {
+  return platformNodes.filter((n) => n.kind.includes(kind));
+}

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import GlobalTicker from "@/components/GlobalTicker";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -14,6 +13,18 @@ const bodyFont = localFont({
 const displayFont = localFont({
   src: "../public/fonts/AGURA.woff2",
   variable: "--font-display",
+  display: "swap",
+});
+
+const bebasNeue = localFont({
+  src: "../public/fonts/PRENOPTICA.woff2",
+  variable: "--font-bebas",
+  display: "swap",
+});
+
+const notoSansKR = localFont({
+  src: "../public/fonts/PRENOPTICA.woff2",
+  variable: "--font-noto-kr",
   display: "swap",
 });
 
@@ -53,6 +64,14 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: ["/favicon.png"],
+  },
 };
 
 export default function RootLayout({
@@ -62,29 +81,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${bodyFont.variable} ${displayFont.variable} pb-8 font-sans antialiased`} suppressHydrationWarning>
-        <div style={{
-          position: "fixed",
-          inset: 0,
-          zIndex: 99999,
-          background: "#000",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}>
-          <p style={{
-            color: "#fff",
-            fontFamily: "var(--font-display), sans-serif",
-            fontSize: "clamp(1.2rem, 3vw, 2rem)",
-            letterSpacing: "0.1em",
-            textAlign: "center",
-            margin: 0,
-          }}>
-            SPECTRA is now AXIS
-          </p>
-        </div>
+      <body className={`${bodyFont.variable} ${displayFont.variable} ${bebasNeue.variable} ${notoSansKR.variable} pb-8 font-sans antialiased`} suppressHydrationWarning>
         <Providers>{children}</Providers>
-        <GlobalTicker />
         <SpeedInsights />
       </body>
     </html>

@@ -1,0 +1,156 @@
+{
+  "jobId": "job_20260421003543_16ytt5",
+  "taskId": "job_20260421003543_16ytt5__1jzwarebg04nh1qyqnr",
+  "target": {
+    "key": "artist:1jzwarebg04nh1qyqnr",
+    "type": "artist",
+    "name": "1jzwarebg04nh1qyqnr"
+  },
+  "researchPacket": {
+    "targetName": "1jzwarebg04nh1qyqnr",
+    "sourceMode": "existing_db",
+    "artistContext": null,
+    "genreContext": null,
+    "relatedArtists": [],
+    "provenance": [
+      {
+        "type": "raw_article",
+        "value": "1jzwarebg04nh1qyqnr"
+      },
+      {
+        "type": "music_artists",
+        "value": "content/music-artists.json"
+      },
+      {
+        "type": "artist_media_cache",
+        "value": "content/artist-media-cache.json"
+      }
+    ]
+  },
+  "promptConfig": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "modelOutput": {
+    "writer": {
+      "id": 1,
+      "slug": "girls-rituals-avant-garde-sound-weirdcore-glitch-pop",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Girls Rituals: An Avant-Garde Sound in Weirdcore and Glitch Pop",
+      "subtitle": "Canadian artist Devi McCallion crafts experimental soundscapes with layered synths and emotionally raw lyrics.",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-21",
+      "readTime": "6 min",
+      "excerpt": "Girls Rituals, the project of Canadian artist Devi McCallion, presents an avant-garde sound that merges weirdcore and glitch pop with emotionally raw lyrics.",
+      "featured": false,
+      "image_url": "https://ik.imagekit.io/lens/media-snapshot/5b671c9c876d704fea05a603164ac31db15da6728e60c12e02870a6b1c00a546.jpg",
+      "tags": [
+        "weirdcore",
+        "glitch pop",
+        "indietronica",
+        "experimental",
+        "underground",
+        "avant-garde",
+        "indie",
+        "synth"
+      ],
+      "linkedArtists": [
+        "Black Dresses",
+        "Katie Dey",
+        "8485",
+        "Fraxiom"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Girls Rituals, the project of Canadian artist Devi McCallion, has emerged as a distinctive voice in the underground music scene. Known for an avant-garde sound that blends weirdcore and glitch pop, her work is characterized by layered synths and emotionally raw lyrics."
+        },
+        {
+          "type": "paragraph",
+          "text": "McCallion’s experimental approach is evident in tracks such as 'I Know,' which combines chaotic energy with dreamy, glitchy beats. Her lyrics often explore themes of rebellion and self-exploration, creating a sonic landscape that is both introspective and rebellious."
+        },
+        {
+          "type": "paragraph",
+          "text": "Other notable tracks include 'Black Crow,' a dark and poetic piece that delves into existential musings, and 'Treat Me Like a Doll,' which conveys raw self-doubt wrapped in a plea for connection. These songs reflect a deep emotional core that resonates with listeners."
+        },
+        {
+          "type": "paragraph",
+          "text": "Girls Rituals’ albums, such as Reddishness and Emergency!, offer immersive sonic journeys. Each track builds on the last, creating an emotional mosaic that invites full attention. Her work is further enriched by collaborations and ties to projects like Black Dresses."
+        },
+        {
+          "type": "paragraph",
+          "text": "For those seeking similar experimental vibes, related artists include Katie Dey, 8485, and Fraxiom. Girls Rituals continues to redefine the boundaries of indie and experimental music with a sound that is both chaotic and beautiful."
+        }
+      ],
+      "monetization": []
+    },
+    "editor": {
+      "id": 1,
+      "slug": "girls-rituals-avant-garde-sound-weirdcore-glitch-pop",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Girls Rituals: An Avant-Garde Sound in Weirdcore and Glitch Pop",
+      "subtitle": "Canadian artist Devi McCallion crafts experimental soundscapes with layered synths and emotionally raw lyrics.",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-21",
+      "readTime": "6 min",
+      "excerpt": "Girls Rituals, the project of Canadian artist Devi McCallion, presents an avant-garde sound that merges weirdcore and glitch pop with emotionally raw lyrics.",
+      "featured": false,
+      "image_url": "https://ik.imagekit.io/lens/media-snapshot/5b671c9c876d704fea05a603164ac31db15da6728e60c12e02870a6b1c00a546.jpg",
+      "tags": [
+        "weirdcore",
+        "glitch pop",
+        "indietronica",
+        "experimental",
+        "underground",
+        "avant-garde",
+        "indie",
+        "synth"
+      ],
+      "linkedArtists": [
+        "Black Dresses",
+        "Katie Dey",
+        "8485",
+        "Fraxiom"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Girls Rituals, the project of Canadian artist Devi McCallion, has emerged as a distinctive voice in the underground music scene. Known for an avant-garde sound that blends weirdcore and glitch pop, her work is characterized by layered synths and emotionally raw lyrics."
+        },
+        {
+          "type": "paragraph",
+          "text": "McCallion’s experimental approach is evident in tracks such as 'I Know,' which combines chaotic energy with dreamy, glitchy beats. Her lyrics often explore themes of rebellion and self-exploration, creating a sonic landscape that is both introspective and rebellious."
+        },
+        {
+          "type": "paragraph",
+          "text": "Other notable tracks include 'Black Crow,' a dark and poetic piece that delves into existential musings, and 'Treat Me Like a Doll,' which conveys raw self-doubt wrapped in a plea for connection. These songs reflect a deep emotional core that resonates with listeners."
+        },
+        {
+          "type": "paragraph",
+          "text": "Girls Rituals’ albums, such as Reddishness and Emergency!, offer immersive sonic journeys. Each track builds on the last, creating an emotional mosaic that invites full attention. Her work is further enriched by collaborations and ties to projects like Black Dresses."
+        },
+        {
+          "type": "paragraph",
+          "text": "For those seeking similar experimental vibes, related artists include Katie Dey, 8485, and Fraxiom. Girls Rituals continues to redefine the boundaries of indie and experimental music with a sound that is both chaotic and beautiful."
+        }
+      ],
+      "monetization": []
+    }
+  },
+  "review": {
+    "status": "needs_review",
+    "notes": ""
+  }
+}

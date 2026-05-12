@@ -1,13 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-export type AudioMeta = {
-  title?: string;
-  artist?: string;
-  album?: string;
-  coverArt?: string; // blob URL
-};
+import type { AudioMeta } from "../types";
 
 /**
  * Loads ID3 metadata for every URL in the array concurrently.
@@ -16,6 +10,7 @@ export type AudioMeta = {
  */
 export function useAllMetadata(urls: string[]): Record<number, AudioMeta> {
   const [metaMap, setMetaMap] = useState<Record<number, AudioMeta>>({});
+  const urlsKey = urls.join("|");
 
   useEffect(() => {
     const blobUrls: string[] = [];
@@ -23,14 +18,12 @@ export function useAllMetadata(urls: string[]): Record<number, AudioMeta> {
 
     (async () => {
       try {
-        const jsmTag = await import("jsmediatags");
-        // CJS default export
-        const jsmediatags = (jsmTag as any).default ?? jsmTag;
+        const { default: jsmediatags } = await import("jsmediatags");
 
         urls.forEach((url, i) => {
           try {
             jsmediatags.read(url, {
-              onSuccess: (tag: any) => {
+              onSuccess: (tag) => {
                 if (cancelled) return;
                 const { title, artist, album, picture } = tag.tags ?? {};
                 let coverArt: string | undefined;
@@ -66,7 +59,7 @@ export function useAllMetadata(urls: string[]): Record<number, AudioMeta> {
       cancelled = true;
       blobUrls.forEach((u) => URL.revokeObjectURL(u));
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps — urls are static
+  }, [urls, urlsKey]);
 
   return metaMap;
 }

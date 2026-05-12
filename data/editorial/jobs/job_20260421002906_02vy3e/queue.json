@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260421002906_02vy3e",
+  "tasks": [
+    {
+      "id": "job_20260421002906_02vy3e__skrillex",
+      "jobId": "job_20260421002906_02vy3e",
+      "targetKey": "artist:skrillex",
+      "targetType": "artist",
+      "slug": "skrillex-electronic-music-profile",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "skrillex",
+        "artistName": "Skrillex"
+      },
+      "status": "rejected",
+      "draftPath": "data\\editorial\\jobs\\job_20260421002906_02vy3e\\articles\\job_20260421002906_02vy3e__skrillex.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421002906_02vy3e\\articles\\job_20260421002906_02vy3e__skrillex.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421002906_02vy3e\\articles\\job_20260421002906_02vy3e__skrillex.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-21T16:58:49.397Z"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "jobId": "job_20260422051008_wgs9u1",
+  "taskId": "job_20260422051008_wgs9u1__seth-troxler",
+  "targetKey": "artist:seth-troxler",
+  "article": {
+    "id": 1,
+    "slug": "seth-troxler-profile-detroit-techno-berlin-elite",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Seth Troxler: A Young Force in Techno",
+    "subtitle": "Detroit Roots and Berlin Ascendancy Define a Distinctive Sound",
+    "author": "A. Stern",
+    "authorRole": "Staff Writer",
+    "date": "2026-04-22",
+    "readTime": "3 min",
+    "excerpt": "Seth Troxler has quickly established himself as a significant presence in techno despite his young age, with a sound deeply influenced by his Detroit roots and refined in Berlin.",
+    "featured": false,
+    "image_url": "https://i.scdn.co/image/ab6761610000e5ebae415c295c042f2193594a8e",
+    "tags": [
+      "techno",
+      "minimal",
+      "minimal techno",
+      "detroit techno",
+      "detroit",
+      "berlin",
+      "seth troxler"
+    ],
+    "linkedArtists": [
+      "Lee Curtiss",
+      "Gadi Mizrahi",
+      "Maayan Nidam",
+      "Guillaume & The Coutu Dumonts",
+      "Wolf + Lamb"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Seth Troxler, at only 22 years of age, has already made significant strides in the techno scene. His Detroit origins are unmistakable, and his recent move to Berlin has quickly earned him a prominent position among the European techno elite."
+      },
+      {
+        "type": "paragraph",
+        "text": "Troxler's musical influences are eclectic, ranging from the natural sounds of chirping crickets to the imaginative whirring of space ships and the evocative sounds of whistling voodoo magic. These diverse inspirations contribute to his distinctive approach to techno."
+      },
+      {
+        "type": "paragraph",
+        "text": "His work has been featured on respected labels such as Spectral, Wagon Repair, and M_NUS. These releases have helped solidify his reputation for a unique, sensual techno sound that continues to gain attention across the electronic music landscape."
+      },
+      {
+        "type": "paragraph",
+        "text": "Recent releases including This Is Then, DJ-Kicks (Seth Troxler) [DJ Mix], Mixmag Presents Seth Troxler: The Illusion Nouveau (DJ Mix), Mixmag Presents Jamie Jones vs. Seth Troxler, and Love Never Sleeps further illustrate his evolving style and growing influence in the genre."
+      }
+    ],
+    "monetization": []
+  }
+}

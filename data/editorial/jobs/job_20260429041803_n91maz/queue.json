@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260429041803_n91maz",
+  "tasks": [
+    {
+      "id": "job_20260429041803_n91maz__noizekid",
+      "jobId": "job_20260429041803_n91maz",
+      "targetKey": "artist:noizekid",
+      "targetType": "artist",
+      "slug": "noizekid",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "noizekid",
+        "artistName": "Noizekid"
+      },
+      "status": "failed",
+      "draftPath": "data\\editorial\\jobs\\job_20260429041803_n91maz\\articles\\job_20260429041803_n91maz__noizekid.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260429041803_n91maz\\articles\\job_20260429041803_n91maz__noizekid.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260429041803_n91maz\\articles\\job_20260429041803_n91maz__noizekid.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": "Writer pass failed for raw article \"noizekid\".",
+      "attempts": 1,
+      "updatedAt": "2026-04-29T04:18:14.634Z"
+    }
+  ]
+}

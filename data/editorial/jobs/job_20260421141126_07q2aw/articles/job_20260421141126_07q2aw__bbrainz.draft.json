@@ -1,0 +1,63 @@
+{
+  "jobId": "job_20260421141126_07q2aw",
+  "taskId": "job_20260421141126_07q2aw__bbrainz",
+  "targetKey": "artist:bbrainz",
+  "article": {
+    "id": 1,
+    "slug": "bbrainz-argentine-vaporwave-artist-profile",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "ANALYST",
+    "title": "Bbrainz: Argentine Vaporwave Artist Profile",
+    "subtitle": "Exploring the sonic landscape of an emerging South American electronic producer",
+    "author": "L. Nakamura",
+    "authorRole": "Contributor",
+    "date": "2026-04-21",
+    "readTime": "4 min",
+    "excerpt": "Bbrainz, also known as slythe, is an Argentine electronic artist whose work spans vaporwave, synthwave, and ambient genres. His catalog reveals a consistent exploration of hypnagogic pop textures and newbreed aesthetics.",
+    "featured": false,
+    "image_url": "https://i.scdn.co/image/ab6761610000e5eb4ef6006623ed06de12b07ae9",
+    "tags": [
+      "vaporwave",
+      "synthwave",
+      "ambient",
+      "argentina",
+      "hypnagogic pop",
+      "newbreed",
+      "electronic music"
+    ],
+    "linkedArtists": [
+      "architecture in tokyo",
+      "trushinitas",
+      "ぬいぐるみクレヨン Lush Crayon",
+      "豊平区民TOYOHIRAKUMIN",
+      "Vaporia"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Bbrainz, also known as slythe, is an Argentine electronic artist whose work spans vaporwave, synthwave, and ambient genres. His catalog reveals a consistent exploration of hypnagogic pop textures and newbreed aesthetics."
+      },
+      {
+        "type": "paragraph",
+        "text": "The artist’s production choices are characterized by a deliberate use of vintage synthesizer tones and manipulated samples, creating a distinctive retro-futuristic atmosphere that is central to the vaporwave genre. His sound design often incorporates layered, dreamlike textures that evoke a sense of nostalgia and digital decay."
+      },
+      {
+        "type": "paragraph",
+        "text": "Bbrainz’s discography includes several notable releases such as Crystal, echo, Internet Lust, and pizza contigo. These albums demonstrate a progression in his compositional approach, with each release refining his signature blend of ambient soundscapes and synthwave rhythms."
+      },
+      {
+        "type": "paragraph",
+        "text": "Within the broader context of the international electronic music scene, Bbrainz’s work is often compared to that of artists like architecture in tokyo, trushinitas, ぬいぐるみクレヨン Lush Crayon, 豊平区民TOYOHIRAKUMIN, and Vaporia. This association highlights his role in a global network of producers who are redefining the boundaries of electronic music through experimental production techniques."
+      },
+      {
+        "type": "paragraph",
+        "text": "Although his top tracks are not indexed in mainstream databases, Bbrainz’s releases have garnered attention within niche online communities dedicated to vaporwave and experimental electronic music. His work continues to influence emerging artists in the genre."
+      }
+    ],
+    "monetization": []
+  }
+}

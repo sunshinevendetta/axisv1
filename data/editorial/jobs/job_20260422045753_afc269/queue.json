@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260422045753_afc269",
+  "tasks": [
+    {
+      "id": "job_20260422045753_afc269__seth-troxler",
+      "jobId": "job_20260422045753_afc269",
+      "targetKey": "artist:seth-troxler",
+      "targetType": "artist",
+      "slug": "seth-troxler-berlin-techno-profile",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "seth-troxler",
+        "artistName": "Seth Troxler"
+      },
+      "status": "rejected",
+      "draftPath": "data\\editorial\\jobs\\job_20260422045753_afc269\\articles\\job_20260422045753_afc269__seth-troxler.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260422045753_afc269\\articles\\job_20260422045753_afc269__seth-troxler.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260422045753_afc269\\articles\\job_20260422045753_afc269__seth-troxler.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-22T04:58:35.443Z"
+    }
+  ]
+}

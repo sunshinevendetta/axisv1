@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { Mixtape } from "./types";
-import type { AudioMeta } from "./hooks/useAllMetadata";
+import type { AudioMeta, Mixtape } from "./types";
+import { resetAudioReactiveState, updateAudioReactiveState } from "./audioReactive";
 
 type Props = {
   mixtape: Mixtape;
@@ -20,6 +20,12 @@ function fmtTime(s: number): string {
 
 export default function MixtapePlayer({ mixtape, meta, onPlayStateChange, onOpenArtist }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const analyserRef = useRef<AnalyserNode | null>(null);
+  const audioSourceRef = useRef<MediaElementAudioSourceNode | null>(null);
+  const sampleFrameRef = useRef<number>(0);
+  const sampledBytesRef = useRef<Uint8Array<ArrayBuffer> | null>(null);
+  const graphReadyRef = useRef(false);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -41,9 +47,20 @@ export default function MixtapePlayer({ mixtape, meta, onPlayStateChange, onOpen
     setProgress(0);
     setCurrentTime(0);
     setDuration(0);
+    resetAudioReactiveState();
     if (wasSwitch) {
       setLoading(true);
-      audio.play().catch(() => setLoading(false));
+      void (async () => {
+        try {
+          const ctx = audioContextRef.current;
+          if (ctx && ctx.state !== "running") {
+            await ctx.resume();
+          }
+          await audio.play();
+        } catch {
+          setLoading(false);
+        }
+      })();
     } else {
       setPlaying(false);
       setLoading(false);
@@ -55,6 +72,74 @@ export default function MixtapePlayer({ mixtape, meta, onPlayStateChange, onOpen
     if (audioRef.current) audioRef.current.volume = volume;
   }, [volume]);
 
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const AudioContextCtor = window.AudioContext ?? (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+    if (!AudioContextCtor) return;
+
+    if (!audioContextRef.current) {
+      audioContextRef.current = new AudioContextCtor();
+    }
+
+    const ctx = audioContextRef.current;
+    if (!ctx) return;
+
+    if (!graphReadyRef.current) {
+      try {
+        if (!audioSourceRef.current) {
+          audioSourceRef.current = ctx.createMediaElementSource(audio);
+        }
+
+        if (!analyserRef.current) {
+          const analyser = ctx.createAnalyser();
+          analyser.fftSize = 1024;
+          analyser.smoothingTimeConstant = 0.78;
+          audioSourceRef.current.connect(analyser);
+          analyser.connect(ctx.destination);
+          analyserRef.current = analyser;
+          sampledBytesRef.current = new Uint8Array(analyser.frequencyBinCount) as Uint8Array<ArrayBuffer>;
+        }
+
+        graphReadyRef.current = true;
+      } catch (err) {
+        graphReadyRef.current = false;
+        console.warn("[MixtapePlayer] Audio graph unavailable, continuing with direct playback:", err);
+      }
+    }
+
+    let mounted = true;
+
+    const sample = () => {
+      if (!mounted) return;
+      const analyser = analyserRef.current;
+      const bins = sampledBytesRef.current;
+      const sourceAudio = audioRef.current;
+      if (analyser && bins && sourceAudio) {
+        analyser.getByteFrequencyData(bins);
+        updateAudioReactiveState(bins, {
+          playing: !sourceAudio.paused && !sourceAudio.ended,
+          ready: sourceAudio.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA,
+        });
+      }
+      sampleFrameRef.current = window.requestAnimationFrame(sample);
+    };
+
+    sample();
+
+    return () => {
+      mounted = false;
+      window.cancelAnimationFrame(sampleFrameRef.current);
+      audioContextRef.current?.close().catch(() => undefined);
+      audioContextRef.current = null;
+      analyserRef.current = null;
+      audioSourceRef.current = null;
+      sampledBytesRef.current = null;
+      graphReadyRef.current = false;
+    };
+  }, []);
+
   const togglePlay = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -62,7 +147,17 @@ export default function MixtapePlayer({ mixtape, meta, onPlayStateChange, onOpen
       audio.pause();
     } else {
       setLoading(true);
-      audio.play().catch(() => setLoading(false));
+      void (async () => {
+        try {
+          const ctx = audioContextRef.current;
+          if (ctx && ctx.state !== "running") {
+            await ctx.resume();
+          }
+          await audio.play();
+        } catch {
+          setLoading(false);
+        }
+      })();
     }
   }, [playing]);
 
@@ -86,6 +181,7 @@ export default function MixtapePlayer({ mixtape, meta, onPlayStateChange, onOpen
       <audio
         ref={audioRef}
         src={mixtape.audioUrl}
+        crossOrigin="anonymous"
         preload="metadata"
         onTimeUpdate={() => {
           const a = audioRef.current;
@@ -98,7 +194,11 @@ export default function MixtapePlayer({ mixtape, meta, onPlayStateChange, onOpen
           if (a) setDuration(a.duration);
           setLoading(false);
         }}
-        onPlay={() => { setPlaying(true); setLoading(false); onPlayStateChange(true); }}
+        onPlay={() => {
+          setPlaying(true);
+          setLoading(false);
+          onPlayStateChange(true);
+        }}
         onPause={() => { setPlaying(false); onPlayStateChange(false); }}
         onEnded={() => {
           setPlaying(false);

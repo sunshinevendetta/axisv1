@@ -1,0 +1,60 @@
+{
+  "jobId": "job_20260429033313_1phlhb",
+  "taskId": "job_20260429033313_1phlhb__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Moombahton and Dancehall Production in Mexico",
+    "subtitle": "Collaborations with DJ Snake, Bad Bunny, and Major Lazer define his work.",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for his collaborations with prominent artists and his distinctive sample pack release.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "sample pack"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer recognized for his work with prominent figures in the music industry, including DJ Snake, Bad Bunny, and Major Lazer."
+      },
+      {
+        "type": "paragraph",
+        "text": "His production style is characterized by a fusion of electronic and dancehall elements, establishing a distinct sound within the Latin electronic scene."
+      },
+      {
+        "type": "paragraph",
+        "text": "In collaboration with Barnation, Noizekid released the 'Noizekid Sample Pack,' which includes a comprehensive collection of his samples, loops, and drum sounds used across various productions."
+      },
+      {
+        "type": "paragraph",
+        "text": "This release provides insight into his production techniques and has been well received by producers and enthusiasts in the electronic music community."
+      }
+    ],
+    "monetization": []
+  }
+}

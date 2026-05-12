@@ -21,6 +21,7 @@ export type ArtistTrack = {
   id: string;
   name: string;
   popularity: number;       // 0–100
+  playcount?: number;
   durationMs: number;
   previewUrl: string | null;
   url: string;              // Spotify link
@@ -39,7 +40,6 @@ export type ArtistAlbum = {
 type ArtistMediaCacheEntry = {
   slug: string;
   profileImage: string | null;
-  // tracks may be old Last.fm shape { name, playcount, url } or new Spotify shape
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   tracks: any[];
   releases: Array<{
@@ -52,6 +52,71 @@ type ArtistMediaCacheEntry = {
   }>;
   albums: ArtistAlbum[];
   related?: string[];
+  // ── YouTube (Pass 3) ──────────────────────────────────────────────────────
+  channelId?: string | null;
+  videos?: Array<{
+    id: string; title: string; viewCount: number;
+    thumbnail: string | null; url: string; publishedAt: string;
+  }>;
+  // ── Knowledge Graph / Wikidata (Pass 2A) ─────────────────────────────────
+  kgId?: string | null;
+  wikidataId?: string | null;
+  countryOfOrigin?: string | null;
+  formedYear?: string | null;
+  recordLabels?: string[];
+  members?: string[];
+  instruments?: string[];
+  // ── Resident Advisor (Pass 2B) ────────────────────────────────────────────
+  raId?: string | null;
+  raSlug?: string | null;
+  raBio?: string | null;
+  raProfileImage?: string | null;
+  raUrl?: string | null;
+  city?: string | null;
+  upcomingGigs?: Array<{
+    id: string; title: string; date: string; startTime?: string | null;
+    venueName: string; venueUrl?: string | null;
+    city: string; country: string; countryCode?: string; eventUrl: string;
+    flyerImage: string | null; isTicketed: boolean;
+    promoterIds?: string[]; genres?: string[];
+  }>;
+  pastGigs?: Array<{
+    id: string; title: string; date: string; startTime?: string | null;
+    venueName: string; venueUrl?: string | null;
+    city: string; country: string; countryCode?: string; eventUrl: string;
+    flyerImage?: string | null; isTicketed?: boolean;
+    promoterIds?: string[]; genres?: string[];
+  }>;
+  // ── Discogs (Pass 4) ──────────────────────────────────────────────────────
+  discogsId?: number | null;
+  vinylReleases?: Array<{
+    id: number; title: string; year: number | null; format: string;
+    labels: string[]; coverImage: string | null; url: string;
+    communityRating: number | null; wantCount?: number | null;
+  }>;
+  // ── Mixcloud (Pass 4) ─────────────────────────────────────────────────────
+  mixes?: Array<{
+    key: string; title: string; url: string; playCount: number;
+    picture: string | null; createdAt: string; duration: number;
+  }>;
+  // ── TikTok (Pass 4) ───────────────────────────────────────────────────────
+  tiktokLatest?: Array<{
+    id: string; title: string; thumbnail: string | null;
+    viewCount: number; url: string; createdAt: string;
+  }>;
+  tiktokEmbedHtml?: string | null;
+  // ── Meta / Instagram (Pass 4) ────────────────────────────────────────────
+  instagramPosts?: Array<{
+    id: string; caption: string | null; mediaUrl: string | null;
+    permalink: string; timestamp: string;
+  }>;
+  facebookEvents?: Array<{
+    id: string; name: string; startTime: string; endTime: string | null;
+    placeName: string | null; city?: string | null;
+    coverImage: string | null; ticketUrl: string | null;
+  }>;
+  // ── Bandcamp (Pass 4) ─────────────────────────────────────────────────────
+  bandcampEmbed?: string | null;
 };
 
 const artistMediaCache = rawArtistMediaCache as Record<string, ArtistMediaCacheEntry>;
@@ -95,6 +160,47 @@ export type ArtistProfile = {
   zoraProfileUrl: string | null;
   zoraAvatar: string | null;
   zoraEmbeds: ArtistZoraEmbed[];
+  countryOfOrigin: string | null;
+  city: string | null;
+  formedYear: string | null;
+  recordLabels: string[];
+  members: string[];
+  instruments: string[];
+  upcomingGigs: Array<{
+    id: string; title: string; date: string; venueName: string;
+    city: string; country: string; eventUrl: string; flyerImage: string | null; isTicketed: boolean;
+  }>;
+  pastGigs: Array<{
+    id: string; title: string; date: string; venueName: string;
+    city: string; country: string; eventUrl: string;
+  }>;
+  vinylReleases: Array<{
+    id: number; title: string; year: number | null; format: string;
+    labels: string[]; coverImage: string | null; url: string;
+    communityRating: number | null;
+  }>;
+  mixes: Array<{
+    key: string; title: string; url: string; playCount: number;
+    picture: string | null; createdAt: string; duration: number;
+  }>;
+  tiktokLatest: Array<{
+    id: string; title: string; thumbnail: string | null;
+    viewCount: number; url: string; createdAt: string;
+  }>;
+  instagramPosts: Array<{
+    id: string; caption: string | null; mediaUrl: string | null;
+    permalink: string; timestamp: string;
+  }>;
+  facebookEvents: Array<{
+    id: string; name: string; startTime: string; endTime: string | null;
+    placeName: string | null; coverImage: string | null; ticketUrl: string | null;
+  }>;
+  raUrl: string | null;
+  bandcampEmbed: string | null;
+  videos: Array<{
+    id: string; title: string; viewCount: number;
+    thumbnail: string | null; url: string; publishedAt: string;
+  }>;
 };
 
 type VisualArtistSource = {
@@ -201,6 +307,22 @@ const musicArtists = (rawMusicArtists as MusicArtistSource[]).map((artist, index
   zoraProfileUrl: null,
   zoraAvatar: null,
   zoraEmbeds: [],
+  countryOfOrigin: null,
+  city: null,
+  formedYear: null,
+  recordLabels: [],
+  members: [],
+  instruments: [],
+  upcomingGigs: [],
+  pastGigs: [],
+  vinylReleases: [],
+  mixes: [],
+  tiktokLatest: [],
+  instagramPosts: [],
+  facebookEvents: [],
+  raUrl: null,
+  bandcampEmbed: null,
+  videos: [],
 })) satisfies ArtistProfile[];
 
 const visualArtists = (rawVisualArtists as VisualArtistSource[]).map((artist, index) => ({
@@ -232,6 +354,22 @@ const visualArtists = (rawVisualArtists as VisualArtistSource[]).map((artist, in
   zoraProfileUrl: extractZoraHandle(artist.link) ? artist.link ?? null : null,
   zoraAvatar: null,
   zoraEmbeds: [],
+  countryOfOrigin: null,
+  city: null,
+  formedYear: null,
+  recordLabels: [],
+  members: [],
+  instruments: [],
+  upcomingGigs: [],
+  pastGigs: [],
+  vinylReleases: [],
+  mixes: [],
+  tiktokLatest: [],
+  instagramPosts: [],
+  facebookEvents: [],
+  raUrl: null,
+  bandcampEmbed: null,
+  videos: [],
 })) satisfies ArtistProfile[];
 
 function mergeProfiles(base: ArtistProfile, incoming: ArtistProfile): ArtistProfile {
@@ -259,6 +397,22 @@ function mergeProfiles(base: ArtistProfile, incoming: ArtistProfile): ArtistProf
     zoraProfileUrl: base.zoraProfileUrl ?? incoming.zoraProfileUrl,
     zoraAvatar: base.zoraAvatar ?? incoming.zoraAvatar,
     zoraEmbeds: base.zoraEmbeds.length > 0 ? base.zoraEmbeds : incoming.zoraEmbeds,
+    countryOfOrigin: base.countryOfOrigin ?? incoming.countryOfOrigin,
+    city: base.city ?? incoming.city,
+    formedYear: base.formedYear ?? incoming.formedYear,
+    recordLabels: base.recordLabels.length > 0 ? base.recordLabels : incoming.recordLabels,
+    members: base.members.length > 0 ? base.members : incoming.members,
+    instruments: base.instruments.length > 0 ? base.instruments : incoming.instruments,
+    upcomingGigs: base.upcomingGigs.length > 0 ? base.upcomingGigs : incoming.upcomingGigs,
+    pastGigs: base.pastGigs.length > 0 ? base.pastGigs : incoming.pastGigs,
+    vinylReleases: base.vinylReleases.length > 0 ? base.vinylReleases : incoming.vinylReleases,
+    mixes: base.mixes.length > 0 ? base.mixes : incoming.mixes,
+    tiktokLatest: base.tiktokLatest.length > 0 ? base.tiktokLatest : incoming.tiktokLatest,
+    instagramPosts: base.instagramPosts.length > 0 ? base.instagramPosts : incoming.instagramPosts,
+    facebookEvents: base.facebookEvents.length > 0 ? base.facebookEvents : incoming.facebookEvents,
+    raUrl: base.raUrl ?? incoming.raUrl,
+    bandcampEmbed: base.bandcampEmbed ?? incoming.bandcampEmbed,
+    videos: base.videos.length > 0 ? base.videos : incoming.videos,
   };
 }
 
@@ -307,6 +461,22 @@ const enrichedArtistProfiles = rawArtistProfiles.map((artist) => {
     zoraAvatar,
     zoraEmbeds: zoraRecord?.embeds ?? artist.zoraEmbeds,
     shortBio: zoraRecord?.profile?.bio ?? artist.shortBio,
+    countryOfOrigin: mediaRecord?.countryOfOrigin ?? artist.countryOfOrigin ?? null,
+    city: mediaRecord?.city ?? null,
+    formedYear: mediaRecord?.formedYear ?? null,
+    recordLabels: mediaRecord?.recordLabels ?? [],
+    members: mediaRecord?.members ?? [],
+    instruments: mediaRecord?.instruments ?? [],
+    upcomingGigs: mediaRecord?.upcomingGigs ?? [],
+    pastGigs: mediaRecord?.pastGigs ?? [],
+    vinylReleases: mediaRecord?.vinylReleases ?? [],
+    mixes: mediaRecord?.mixes ?? [],
+    tiktokLatest: mediaRecord?.tiktokLatest ?? [],
+    instagramPosts: mediaRecord?.instagramPosts ?? [],
+    facebookEvents: mediaRecord?.facebookEvents ?? [],
+    raUrl: mediaRecord?.raUrl ?? null,
+    bandcampEmbed: mediaRecord?.bandcampEmbed ?? null,
+    videos: mediaRecord?.videos ?? [],
   };
 });
 

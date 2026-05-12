@@ -48,7 +48,7 @@
     "signals": [
       {
         "timestamp": "2026-03-15",
-        "text": "Interview published in AXIS Journal.",
+        "text": "Interview published in AXIS Hypermedia.",
         "link": {
           "label": "Open Magazine",
           "href": "/magazine"
@@ -301,63 +301,3016 @@
     "aliases": []
   },
   {
-    "name": "Mami Pistola",
+    "name": "Skrillex",
+    "mbid": "ae002c5d-aac6-490b-a39a-30aa9e2edf2b",
     "artistTypes": [
       "music"
     ],
-    "gridIndex": "A-05",
-    "profilePageLabel": "Mini profile",
-    "summary": "Mami Pistola works with field recordings and found sound, applying an editorial approach to material gathered from transit environments and everyday spaces. The practice sits at the intersection of documentary sound and composition, selecting and arranging rather than synthesizing.",
+    "summary": "Skrillex is the pseudonym used by Los Angeles, California, USA musician Sonny Moore to differentiate his electronic solo work from his work with From First to Last and his other solo projects. As Skrillex, Moore is an electronic DJ and producer boasting a musical style that incorporates electro house, fidget house, and brostep. Moore began producing and performing under the alias Skrillex at clubs in the Los Angeles area in 2008. Throughout 2010, Skrillex became a bigger and bigger part of Moore’s life.",
+    "genres": [
+      "Dubstep",
+      "Electronic",
+      "Breakcore",
+      "Electro"
+    ],
+    "tags": [
+      "electronica"
+    ],
+    "similar": [
+      "Dog Blood",
+      "Zomboy",
+      "Jack Ü",
+      "Virtual Riot",
+      "Knife Party"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/1472585"
+      },
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/479897"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5he5w2lnU9x7JFhnwcekXX"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/525643"
+      },
+      {
+        "platform": "website",
+        "url": "https://press.atlanticrecords.com/skrillex"
+      },
+      {
+        "platform": "website",
+        "url": "https://www.skrillex.com/"
+      },
+      {
+        "platform": "apple-music",
+        "url": "https://music.apple.com/us/artist/356545647"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/skrillex/121017"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/Skrillex"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/skrillex"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/skrillex/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/skrillex"
+      },
+      {
+        "platform": "tidal",
+        "url": "https://tidal.com/artist/3853703"
+      },
+      {
+        "platform": "youtube",
+        "url": "https://www.youtube.com/channel/UCMYbLgav7tU6jjl8gMi1C2Q"
+      },
+      {
+        "platform": "youtube",
+        "url": "https://www.youtube.com/channel/UC_TVqp_SyG6j5hG-xVRy95A"
+      }
+    ],
+    "aliases": [],
+    "featured": true,
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Dog Blood",
+    "mbid": "c5e1a355-2be6-451b-bd21-99c9b2b2c3a5",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Dog Blood is a collaboration between Boys Noize and Skrillex. Boys Noize, along with BNR, and Skrillex, along with his label OWSLA, have a new collab going down between two of the biggest dudes in electronic music. Germany’s Boys Noize and Los Angeles’ Skrillex have teamed up to bring you quite a different sound. On one hand, you have the master of techno and electro, Boys Noize, and then dubstep poster child Skrillex. If you listen closely enough, you’ll hear their very distinctive sounds slowly forming together.",
+    "genres": [
+      "Dubstep",
+      "Electronic",
+      "Techno",
+      "Electro",
+      "Electro House"
+    ],
+    "tags": [],
+    "similar": [
+      "Skrillex",
+      "Zomboy",
+      "Wiwek",
+      "Getter",
+      "Kill the Noise"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/2876997"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/2amyu5pkgYMYdNQZmB3GgY"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/3655711"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/dog-blood/281447"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/dogblood"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/dogbloodofficial"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/officialdogblood/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/dogblood"
+      },
+      {
+        "platform": "apple-music",
+        "url": "https://music.apple.com/us/artist/328183952"
+      },
+      {
+        "platform": "tidal",
+        "url": "https://tidal.com/artist/4686371"
+      },
+      {
+        "platform": "youtube",
+        "url": "https://www.youtube.com/channel/UCBFhRQPcXgxXLGCGEOsKA5Q"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "CYBEREALITYライフ",
+    "mbid": "3748756f-799a-4a1a-bf62-b7e1c2b26b6c",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "CYBEREALITYライフ is a vaporwave artist from Mexico. https://cybereality90.bandcamp.com/",
+    "genres": [
+      "Vaporwave",
+      "Electronic",
+      "Experimental"
+    ],
+    "tags": [
+      "mexico",
+      "newbreed"
+    ],
+    "similar": [
+      "豊平区民TOYOHIRAKUMIN",
+      "Incorporeal Visions Deluxe",
+      "bbrainz",
+      "trushinitas",
+      "LensCorp™ International"
+    ],
+    "links": [
+      {
+        "platform": "bandcamp",
+        "url": "https://cybereality90.bandcamp.com/"
+      },
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/3614410"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/cybereality90"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5wxQkBn8VmHggkeH94BdYf"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "豊平区民TOYOHIRAKUMIN",
+    "mbid": "f583430d-79cb-4266-998a-f98c4b41fc43",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "http://toyohirakumin.bandcamp.com/ https://soundcloud.com/toyohirakumin",
+    "genres": [
+      "Vaporwave",
+      "Jazz",
+      "Chillout"
+    ],
+    "tags": [
+      "japanese",
+      "lounge"
+    ],
+    "similar": [
+      "trushinitas",
+      "CYBEREALITYライフ",
+      "Ｏｃｅａｎ Ｓｈｏｒｅｓ",
+      "bbrainz",
+      "Incorporeal Visions Deluxe"
+    ],
+    "links": [
+      {
+        "platform": "bandcamp",
+        "url": "https://toyohirakumin.bandcamp.com/"
+      },
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/3896031"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/4fsJpVczcZYWFbvvMWgTEN"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Incorporeal Visions Deluxe",
+    "mbid": "e04a5311-99b2-4da3-a204-df9a98a08218",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Located in Not Japan, Japan, emerging in 2014 via soundcloud, and having mysterious ties to the collective Dream Catalogue , Incorporeal Visions Deluxe brings you timeless vaporwave-esque tunes. Much of their work presumed to be lost media. Via bandcamp: https://incorporealvisionsdeluxe.bandcamp.com/ 無形ビジョンDELUXE 提示：ネットワークエンティティ 音楽はあなたの健康に貢献し、十分であることに この現代のコンピュータ時代に",
+    "genres": [
+      "Vaporwave",
+      "Electronic",
+      "Ambient",
+      "Chillout"
+    ],
+    "tags": [
+      "japanese"
+    ],
+    "similar": [
+      "豊平区民TOYOHIRAKUMIN",
+      "LensCorp™ International",
+      "CYBEREALITYライフ",
+      "CVLTVRΣ",
+      "architecture in tokyo"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/4018415"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/6oN8dTpjc9s7SfQOuTt87e"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "bbrainz",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "slythe / bbrainz is a vaporwave artist from Argentina.",
+    "genres": [
+      "Vaporwave",
+      "Synthwave",
+      "Ambient"
+    ],
+    "tags": [
+      "newbreed",
+      "hypnagogic pop"
+    ],
+    "similar": [
+      "architecture in tokyo",
+      "trushinitas",
+      "ぬいぐるみクレヨン Lush Crayon",
+      "豊平区民TOYOHIRAKUMIN",
+      "Vaporia"
+    ],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/4WjLhyf6zlQ4R9v7uVDN2E"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "trushinitas",
+    "mbid": "2e859aba-bc31-4579-a978-8797d5a087bb",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Trushinitas is a Mexico-based vaporwave artist known for their releases such as \"Ocean Breeze\" and \"Vhs Tape\" albums, as well as singles like \"Mieles y Flores\" and \"404\". Their sound aligns with similar artists such as 豊平区民TOYOHIRAKUMIN, architecture in tokyo, and Vaporia, and they are present on platforms including Bandcamp, Discogs, and Spotify.",
+    "genres": [
+      "Vaporwave"
+    ],
+    "tags": [
+      "mexico",
+      "vaprwave",
+      "liminal"
+    ],
+    "similar": [
+      "豊平区民TOYOHIRAKUMIN",
+      "architecture in tokyo",
+      "ぬいぐるみクレヨン Lush Crayon",
+      "Vaporia",
+      "bbrainz"
+    ],
+    "links": [
+      {
+        "platform": "bandcamp",
+        "url": "https://trushinitas.bandcamp.com/"
+      },
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/6663302"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/7bvJ0n5X6XPbbSCEdKEEvI"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "LensCorp™ International",
+    "mbid": "107ac347-71b4-47b9-8dfa-f076a35e573f",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "One-time alias of CVLTVRΣ, used for the release \"Online(tm)\".",
+    "genres": [
+      "Vaporwave",
+      "Electronic",
+      "Ambient"
+    ],
+    "tags": [
+      "french",
+      "mallsoft"
+    ],
+    "similar": [
+      "m a l i b l u e : (",
+      "Incorporeal Visions Deluxe",
+      "CYBEREALITYライフ",
+      "豊平区民TOYOHIRAKUMIN",
+      "Ｏｃｅａｎ Ｓｈｏｒｅｓ"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/4140608"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5lmw1MJ22ttKw0PP7MZWyy"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Soundbwoy Killah",
+    "mbid": "384badd1-25ae-4553-b43d-bbe765c5e138",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Soundbwoy Killah produces a diverse range of electronic music spanning jungle, hardcore, ambient, and house, with recent singles such as \"Something Special\" and \"Pang\" alongside the album \"Halcyon Daze.\" His work draws comparisons to artists like Borai, Mani Festo, and AceMoMa, reflecting a contemporary yet varied approach to electronic production.",
+    "genres": [
+      "Jungle",
+      "Electronic",
+      "Hardcore",
+      "Ambient",
+      "House"
+    ],
+    "tags": [],
+    "similar": [
+      "Borai",
+      "Mani Festo",
+      "Private Caller",
+      "Local group",
+      "AceMoMa"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/4311592"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/Soundbwoykillah"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/soundbwoykillahdem"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/7GWKj0q6ycOb9PvBAX81w4"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Mani Festo",
+    "mbid": "70484036-9b73-484f-a31b-9d86832ba84e",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Mani Festo produces a high-energy blend of jungle, techno, and breakbeat, often incorporating hardcore elements. His tracks draw comparisons to artists like Borai, K-65, and Soundbwoy Killah, and he maintains an active presence across multiple platforms including Bandcamp, Spotify, and SoundCloud.",
+    "genres": [
+      "Jungle",
+      "Techno",
+      "Breakbeat",
+      "Hardcore",
+      "Electronic"
+    ],
+    "tags": [],
+    "similar": [
+      "Borai",
+      "K-65",
+      "Private Caller",
+      "Soundbwoy Killah",
+      "Hooverian Blur"
+    ],
+    "links": [
+      {
+        "platform": "bandcamp",
+        "url": "https://mani-festo.bandcamp.com/"
+      },
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/6915591"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5Uhy5m7C7k0TaJsDy6yQNg"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/Mani_FestoDj"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/manifestodj"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/mani_festodj/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/mani_festo"
+      },
+      {
+        "platform": "youtube",
+        "url": "https://www.youtube.com/channel/UC9_R_oDe8smwKVrRAr76tbQ"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "LMajor",
+    "mbid": "daeba993-e4cb-4569-b71a-6944f994fd60",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "LMajor produces electronic music spanning electro, techno, dubstep, and drum & bass, with a ghettotech influence. His recent singles include \"The Path / Melt,\" \"X Mod / Soundman Ting,\" and \"Pressure,\" as well as the album \"Club Glow, Vol. 2.\" Artists such as Local group, K-65, Benton, Disaffected, and Yazzus share stylistic similarities with LMajor's work.",
+    "genres": [
+      "Electro",
+      "Techno",
+      "Dubstep",
+      "Drum & Bass"
+    ],
+    "tags": [
+      "ghettotech"
+    ],
+    "similar": [
+      "Local group",
+      "K-65",
+      "Benton",
+      "Disaffected",
+      "Yazzus"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/6561637"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/1Wgq66SuPyQ092YS7OMoR9"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/lmajormusic"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/lmajor"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Borai",
+    "mbid": "0384baa5-3296-4cd6-8d88-f7375478e188",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Borai produces Jungle, Hardcore, House, and Rave music, with recent singles including \"Go With The Flow,\" \"I Need Relief,\" and \"Why The Tiger And Monkey Are Sworn Enemies,\" alongside albums \"Penumbra\" and \"Club Glow, Vol. 1.\" His work draws comparisons to artists such as Mani Festo, Soundbwoy Killah, and Origin8a & Propa, and is available on platforms like Spotify, Beatport, and Apple Music.",
+    "genres": [
+      "Jungle",
+      "Hardcore",
+      "House",
+      "Rave"
+    ],
+    "tags": [
+      "all"
+    ],
+    "similar": [
+      "Mani Festo",
+      "Soundbwoy Killah",
+      "Private Caller",
+      "Local group",
+      "Origin8a & Propa"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/1640065"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5H8NL83Hl16bYRy4LCqriO"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/1661472"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/borai/93443"
+      },
+      {
+        "platform": "apple-music",
+        "url": "https://music.apple.com/gb/artist/294243870"
+      },
+      {
+        "platform": "tidal",
+        "url": "https://tidal.com/artist/4588548"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Hooverian Blur",
+    "mbid": "c4a6ad66-2903-4bd7-ba95-d55904255e15",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Hooverian Blur produces electronic music with a focus on breakbeat, incorporating elements of UK breaks and Fijian influences. The artist's recent singles include \"Feed The Bones,\" \"Cut & Dried EP,\" \"Hypnotizer,\" and \"Project One.\" Hooverian Blur's sound is comparable to that of Mani Festo, Private Caller, Local group, French II, and An Avrin.",
+    "genres": [
+      "Electronic",
+      "Breakbeat"
+    ],
+    "tags": [
+      "uk",
+      "breaks",
+      "fiji"
+    ],
+    "similar": [
+      "Mani Festo",
+      "Private Caller",
+      "Local group",
+      "French II",
+      "An Avrin"
+    ],
+    "links": [
+      {
+        "platform": "bandcamp",
+        "url": "https://hooverianblur.bandcamp.com/"
+      },
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/6854853"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5T7kj0FGU8N9XGGlM1pEFm"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/65688892"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/hooverianblur"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/hooverianblur/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/hooverianblur"
+      },
+      {
+        "platform": "apple-music",
+        "url": "https://music.apple.com/gb/artist/1464584145"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Danny Stranger",
+    "mbid": "e77c81f0-177a-4b29-ad7f-b3c117b2c817",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Danny Stranger operates within the realms of Hard Dance, Trap, Nightcore, Footwork, and Pop, often blending these genres into a high-energy, rhythmically complex sound. His work draws comparisons to artists such as virginmistry, Texas Baby, NIGHTCHOP, GaSOIID, and Dinomight, and he has recently released the single \"Espresso.\" Danny Stranger's music is available on Spotify.",
+    "genres": [
+      "Hard Dance",
+      "Trap",
+      "Nightcore",
+      "Footwork",
+      "Pop"
+    ],
+    "tags": [],
+    "similar": [
+      "virginmistry",
+      "Texas Baby",
+      "NIGHTCHOP",
+      "GaSOIID",
+      "Dinomight"
+    ],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/2gCDZ3Ob13DLtOa5rnUJxG"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Texas Baby",
+    "mbid": "96809f23-348f-4ff3-a594-998ca8456422",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "https://soundcloud.com/countrynxc",
+    "genres": [
+      "Hard Dance",
+      "Trap",
+      "Nightcore",
+      "Footwork",
+      "Hardcore"
+    ],
+    "tags": [],
+    "similar": [
+      "Danny Stranger",
+      "nightcore4totalsluts",
+      "GaSOIID",
+      "virginmistry",
+      "NIGHTCHOP"
+    ],
+    "links": [],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "NIGHTCHOP",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Producer from Bristol, UK.",
+    "genres": [
+      "Hard Dance",
+      "Trap",
+      "Pop"
+    ],
+    "tags": [
+      "post-nightcore",
+      "uk footwork"
+    ],
+    "similar": [
+      "Decoded Flows",
+      "Danny Stranger",
+      "GaSOIID",
+      "exjaynine",
+      "Texas Baby"
+    ],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/0M2CO5ijP35MDhNwvpgxTV"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "DJ CHRISTIAN NXC",
+    "mbid": "c37698bf-cbf0-4d6b-88b2-fed62782076f",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "DJ CHRISTIAN NXC produces a high-energy blend of Hard Dance, Pop, Trap, Footwork, and Nightcore. His album \"PERREOCORE®\" showcases his distinctive style, which draws comparisons to artists like GaSOIID, nightcore4totalsluts, NIGHTCHOP, ELFZ, and SURATI. His music is available on Spotify.",
+    "genres": [
+      "Hard Dance",
+      "Pop",
+      "Trap",
+      "Footwork",
+      "Nightcore"
+    ],
+    "tags": [],
+    "similar": [
+      "GaSOIID",
+      "nightcore4totalsluts",
+      "NIGHTCHOP",
+      "ELFZ",
+      "SURATI"
+    ],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/35gIGLBuEz1nqRvsaxM5C6"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Private Caller",
+    "mbid": "36f9b783-38d9-494d-884d-f42fb4761291",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Private Caller produces electronic music rooted in jungle and UK garage, with a sound that draws comparisons to artists like Mani Festo, Borai, and Soundbwoy Killah. The UK-based artist has released a series of singles including \"Dublin,\" \"Decks,\" and \"Where The Vibe's Come From,\" showcasing their rhythmic, bass-heavy style. Private Caller maintains an active presence across platforms such as Spotify, SoundCloud, and Instagram.",
+    "genres": [
+      "Electronic",
+      "Jungle",
+      "UK Garage"
+    ],
+    "tags": [
+      "uk",
+      "uk garage"
+    ],
+    "similar": [
+      "Mani Festo",
+      "Borai",
+      "Tower Block Dreams",
+      "Pinder",
+      "Soundbwoy Killah"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/8377398"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/6GGMKy0F3XJehneXW9EM4y"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/privatecallerr"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/private_caller_music/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/private-caller-music"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Local group",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Local Group produces breakbeat, electro, hardcore, and jungle-infused electronic music, as evidenced by singles like \"2 B Free,\" \"No More Tears,\" and the \"Stand Up EP.\" Their sound aligns with similar artists such as Angel D'lite, Mani Festo, and Soundbwoy Killah, and is available on Spotify.",
+    "genres": [
+      "Breakbeat",
+      "Electro",
+      "Hardcore",
+      "Electronic",
+      "Jungle"
+    ],
+    "tags": [],
+    "similar": [
+      "Angel D'lite",
+      "Mani Festo",
+      "Soundbwoy Killah",
+      "LMajor",
+      "Maruwa"
+    ],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/7JwBRX0muY9ZBgFU0xbwJV"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Origin8a & Propa",
+    "mbid": "ee2593a2-bf94-4e5c-8768-37e53ff94f7e",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Origin8a & Propa produce breakbeat, jungle, hardcore, and drum & bass, with singles such as \"100% Hardcore\" and \"Nitestick / XLR8\" and an album titled \"The Next Chapter (The Album)\". Their work is comparable to that of Janaway, Toby Ross, and MKII, among others.",
+    "genres": [
+      "Breakbeat",
+      "Jungle",
+      "Hardcore",
+      "Electronic",
+      "Drum & Bass"
+    ],
+    "tags": [],
+    "similar": [
+      "Janaway",
+      "Toby Ross",
+      "MKII",
+      "Case 82",
+      "Bruk"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/7191934"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/0LZYLSeAxzr71uR8WOf5UY"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/60613252"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/origin8a"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/origin8aandpropa/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/origin8a"
+      },
+      {
+        "platform": "tidal",
+        "url": "https://tidal.com/artist/15167583"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Case 82",
+    "mbid": "39d165c5-e106-45ae-a428-292b6fd75621",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Case 82 produces breakbeat and hardcore music with an oldskool influence, as evidenced by singles such as \"Without You,\" \"My Heart,\" \"That Old Piano,\" and \"Take It Slow,\" as well as the album \"The Story So Far.\" The artist's work aligns with similar acts like MKII, Origin8a & Propa, Jimmy J, DJ's Unite, and Finning Hamilton, and is available on platforms including Spotify and SoundCloud.",
+    "genres": [
+      "Breakbeat",
+      "Hardcore"
+    ],
+    "tags": [
+      "oldskool"
+    ],
+    "similar": [
+      "MKII",
+      "Origin8a & Propa",
+      "Jimmy J",
+      "DJ's Unite",
+      "Finning Hamilton"
+    ],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/70DDP8Ovryxa572RGfeCsB"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/case-82"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Bruk",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Bruk is a Polish band which plays diffrent music styles, like hard rock or melodic metal. Their vocalist, mr Krzysztof Kieres, is also a physics teacher in secondary school.",
+    "genres": [
+      "Drum & Bass",
+      "Jungle",
+      "Rock",
+      "Electronic"
+    ],
+    "tags": [
+      "deep dnb"
+    ],
+    "similar": [
+      "Toby Ross",
+      "Janaway",
+      "Origin8a & Propa",
+      "SHIRLEY TEMPER",
+      "DJ Gaw"
+    ],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/4fjAtF6VmMxQHxKI5C3HPO"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Toby Ross",
+    "mbid": "fe9c7cb8-30b1-4a97-b39e-13b5da17f42c",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Toby Ross is an American electronic music producer specializing in jungle, drum & bass, and UK garage. His recent singles include \"Autotronic EP,\" \"Check It,\" \"Set Me Free,\" \"Lifeforms / Visionary,\" and \"Utopia EP.\" Ross's sound draws comparisons to artists such as Janaway, Bruk, Origin8a & Propa, Frisbee Aerobics, and Tweakz.",
+    "genres": [
+      "Jungle",
+      "Drum & Bass",
+      "Electronic",
+      "UK Garage"
+    ],
+    "tags": [
+      "american"
+    ],
+    "similar": [
+      "Janaway",
+      "Bruk",
+      "Origin8a & Propa",
+      "Frisbee Aerobics",
+      "Tweakz"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/8202061"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5lh6kMg3lTcj521cD0eXNo"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/75095142"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/toby-ross/874211"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/tobyross01"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/tobyross_/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/tobyross1"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "MKII",
+    "mbid": "71b407e5-5174-4ca9-8525-05483ee8f519",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "MKII produces breakbeat, electronic, jungle, UK garage, and happy hardcore, with releases including the albums \"Home\" and \"Universal LP\" as well as singles \"This Time,\" \"On Your Own EP,\" and \"Jupiter.\" The artist's sound is comparable to Case 82, Origin8a & Propa, FM-3, Private Caller, and Pete Cannon, and MKII maintains an active presence across platforms such as Bandcamp, Discogs, Spotify, Deezer, Beatport, Instagram, SoundCloud, and Apple Music.",
+    "genres": [
+      "Breakbeat",
+      "Electronic",
+      "Jungle",
+      "UK Garage",
+      "Happy Hardcore"
+    ],
+    "tags": [],
+    "similar": [
+      "Case 82",
+      "Origin8a & Propa",
+      "FM-3",
+      "Private Caller",
+      "Pete Cannon"
+    ],
+    "links": [
+      {
+        "platform": "bandcamp",
+        "url": "https://mkiimusiic.bandcamp.com/"
+      },
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/5920881"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5f3LuTeqMEAwXLyyCHXlLq"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/4092374"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/mkii/748637"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/mkiimusiic/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/mkiimusiic"
+      },
+      {
+        "platform": "apple-music",
+        "url": "https://music.apple.com/gb/artist/1453402066"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Janaway",
+    "mbid": "b0a103f4-ac47-4252-ab12-24697c40ca25",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Janaway is an electronic music producer specializing in jungle, drum & bass, and breakbeat styles. His recent singles, including \"International Luv,\" \"50/50 Vision,\" and the \"Jungle Funk\" series, showcase his rhythmic and bass-heavy sound. Janaway's work draws comparisons to UK-based artists such as Toby Ross, Origin8a & Propa, and Worsleyy.",
+    "genres": [
+      "Electronic",
+      "Jungle",
+      "Drum & Bass",
+      "Breakbeat"
+    ],
+    "tags": [
+      "uk"
+    ],
+    "similar": [
+      "Toby Ross",
+      "Origin8a & Propa",
+      "Worsleyy",
+      "Lavery",
+      "Bruk"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/8407557"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/janaway_/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/janawaydj"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/57AV6TbmHpHujySKHSjQ7Z"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Jimmy J",
+    "mbid": "7f062177-b307-4baa-8120-3a8fcfa10aa4",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Jimmy Guzman produces hardcore and rave music with an oldskool sensibility, evident in his singles \"X LAS REDES,\" \"Después del Show,\" and \"DINERO DIGITAL.\" His work aligns with artists such as DJ Force & The Evolution and Future Primitive, and he maintains a presence on platforms like Discogs and Spotify despite having under 2000 listeners.",
+    "genres": [
+      "Hardcore",
+      "Rave",
+      "Happy Hardcore"
+    ],
+    "tags": [
+      "oldskool",
+      "under 2000 listeners"
+    ],
+    "similar": [
+      "DJ Force & The Evolution",
+      "The Timespan",
+      "Future Primitive",
+      "DJ Ham",
+      "Edit V"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/25999"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/3A4wpNVgD1v07jIbFQBVTr"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Finning Hamilton",
+    "mbid": "7d3b7298-8f14-4c3e-ba0a-aabd1895a4c3",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "",
+    "genres": [],
+    "tags": [],
+    "similar": [
+      "SwankOut",
+      "Case 82",
+      "Javy Groove",
+      "MKII",
+      "Burno"
+    ],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/0AuxLC7NhsULs5hzVfWuLn"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/finninghamilton/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/finning-hamilton"
+      },
+      {
+        "platform": "youtube",
+        "url": "https://www.youtube.com/channel/UCVkyWm2JulZ6pj3AnC7kuYA"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "DJ's Unite",
+    "mbid": "afd6abdf-add5-4d28-8c84-de2069ed1187",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "DJ's United produces breakbeat, rave, and hardcore tracks characterized by oldskool influences. Their sound aligns with artists such as Sy-Kick, Edit V, and DJ Seduction. The project is active on platforms including Discogs and Spotify.",
+    "genres": [
+      "Breakbeat",
+      "Rave",
+      "Hardcore"
+    ],
+    "tags": [
+      "oldskool",
+      "oldskool hardcore"
+    ],
+    "similar": [
+      "Sy-Kick",
+      "Edit V",
+      "Rhythm Section",
+      "Dance Conspiracy",
+      "DJ Seduction"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/7464"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/6JNqmAGgQGp5SLxO1pWMYp"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Alice Gas",
+    "mbid": "62770345-475e-434b-9dd8-8f335dabafe3",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Alice Gas is an artist and producer who is also a member of 909 worldwide. Alice is known for making hyperpop and happy hardcore music. Her work frequently features influences from genres such as emo and rap. also she is god of the :3",
+    "genres": [
+      "Hyperpop",
+      "Happy Hardcore",
+      "Glitchcore",
+      "Hardcore",
+      "Electronic"
+    ],
+    "tags": [],
+    "similar": [
+      "gupi",
+      "fraxiom",
+      "8485",
+      "blackwinterwells",
+      "100 gecs"
+    ],
+    "links": [
+      {
+        "platform": "bandcamp",
+        "url": "https://alicegas.bandcamp.com/"
+      },
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/8132242"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/4RhJ79LFbfmdtpuir6C9nR"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/alice_gas"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/alice-gass"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Sophie",
+    "mbid": "8b4a0e08-3e96-4123-afaf-34163355b527",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "There are multiple artists that have performed under the name Sophie: 1) Sophie Xeon (September 17, 1986 – January 30, 2021), mononymously known by her stage name Sophie (stylized in all caps), was a Scottish producer and singer-songwriter who worked in Los Angeles and lived in Greece. She came to prominence in 2013 with her single \"Bipp\"/\"Elle\" and released \"Lemonade\"/\"Hard\" the following year. She worked closely with artists from the PC Music label and produced for acts including Charli XCX",
+    "genres": [
+      "Bubblegum Bass",
+      "Electronic",
+      "Experimental",
+      "Post-Club",
+      "UK Bass"
+    ],
+    "tags": [],
+    "similar": [
+      "Arca",
+      "GFOTY",
+      "QT",
+      "A. G. Cook",
+      "Charli xcx"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/282392"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5a2w2tgpLwv26BYJf2qYwu"
+      }
+    ],
+    "aliases": [],
+    "featured": true,
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Vaporia",
+    "mbid": "60054b97-3915-42c3-a0ba-084b4cfb8f81",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Vaporia is an American vaporwave artist known for their nostalgic, sample-based compositions. Their work draws comparisons to artists such as architecture in tokyo, trushinitas, and ぬいぐるみクレヨン Lush Crayon, and is available on Spotify. Vaporia's music often incorporates elements of 80s and 90s pop culture, recontextualizing familiar sounds into dreamlike, atmospheric tracks.",
+    "genres": [
+      "Vaporwave"
+    ],
+    "tags": [
+      "american"
+    ],
+    "similar": [
+      "architecture in tokyo",
+      "trushinitas",
+      "ぬいぐるみクレヨン Lush Crayon",
+      "豊平区民TOYOHIRAKUMIN",
+      "US Golf 95"
+    ],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5SC9C6RypItKDBF82OKOgj"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "ぬいぐるみクレヨン Lush Crayon",
+    "mbid": "b76963d3-8dee-4e8c-9092-2de6e6d58630",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Lush Crayon crafts a distinctive blend of vaporwave, synthwave, and experimental electronic music, often incorporating future funk elements. Their recent albums such as \"The Shattered Veil,\" \"Sushi, and Other Interesting Human Behaviors,\" and \"Styrofoam Scaffold (A E S T H E T I C)\" showcase their unique sound, which draws comparisons to artists like architecture in tokyo, trushinitas, and 猫 シ Corp. The artist maintains an active presence on platforms including Bandcamp, SoundCloud, and Spotify.",
+    "genres": [
+      "Vaporwave",
+      "Synthwave",
+      "Experimental",
+      "Electronic"
+    ],
+    "tags": [
+      "future funk"
+    ],
+    "similar": [
+      "architecture in tokyo",
+      "trushinitas",
+      "bbrainz",
+      "Vaporia",
+      "猫 シ Corp."
+    ],
+    "links": [
+      {
+        "platform": "bandcamp",
+        "url": "https://lushcrayon.bandcamp.com/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/lushcrayon"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/62v3nR2gE0z1AFSFHxKepe"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "architecture in tokyo",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Delicious and tasteful, employing styles of years past, decades even, yet a completely modern feel. The music of today.",
+    "genres": [
+      "Vaporwave",
+      "Electronic"
+    ],
+    "tags": [
+      "plunderphonics",
+      "newbreed",
+      "future funk"
+    ],
+    "similar": [
+      "ぬいぐるみクレヨン Lush Crayon",
+      "bbrainz",
+      "trushinitas",
+      "Vaporia",
+      "豊平区民TOYOHIRAKUMIN"
+    ],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/6hQx28f86hT8QSpaKammmZ"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Paco Osuna",
+    "mbid": "bf6335a3-9dc3-46bf-844a-fdb432ddefd5",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Born in Barcelona. He started dj'ing in 1994 and became one of the best dj's of Spain. He's the resident dj of the well-known Amnesia club in Ibiza. He has released several records on labels such as plus 8, shake records and Noise Music.",
+    "genres": [
+      "Minimal",
+      "Minimal Techno",
+      "Techno",
+      "Electronic"
+    ],
+    "tags": [
+      "tech"
+    ],
+    "similar": [
+      "Barem",
+      "Ambivalent",
+      "Fabrizio Maurizi",
+      "Click Box",
+      "Tractile"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/110995"
+      },
+      {
+        "platform": "website",
+        "url": "http://www.pacoosuna.com/"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/paco_osuna"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/PacoOsunaOfficial"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/pacoosuna/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/paco-osuna"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/6vdIozDDsH4uJEAHN8tyS3"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Seth Troxler",
+    "mbid": "d701634c-95a1-4244-92d6-903113bd79d3",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "As a comparable youth on the scene, Seth Troxler's achievements far outweigh his tender age of 22. His Detroit roots are unmistakable and his recent relocation to Berlin has already earned him a place in the elite of the European techno scene. Seth's musical influences include the chirping of crickets, the whirring of space ships, and the sweet sounds of whistling voodoo magic. With much-hyped and played releases on revered labels such as Spectral, Wagon Repair and M_NUS, each join the dots of his distinctive sexy techno sound.",
+    "genres": [
+      "Techno",
+      "Minimal",
+      "Minimal Techno"
+    ],
+    "tags": [
+      "detroit techno",
+      "detroit"
+    ],
+    "similar": [
+      "Lee Curtiss",
+      "Gadi Mizrahi",
+      "Maayan Nidam",
+      "Guillaume & The Coutu Dumonts",
+      "Wolf + Lamb"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/410990"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/3JkLFcTej6tdwZoQT6Nx4B"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/63773"
+      },
+      {
+        "platform": "website",
+        "url": "https://sethtroxler.com/"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/seth-troxler/19798"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/sethtroxlerofficial"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/stroxler/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/sethtroxler"
+      },
+      {
+        "platform": "apple-music",
+        "url": "https://music.apple.com/gb/artist/156867690"
+      },
+      {
+        "platform": "tidal",
+        "url": "https://tidal.com/artist/3659568"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Lee Curtiss",
+    "mbid": "bfe0b3d2-eee6-471f-b660-25f372705284",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "A Western Michigan native and long-time Detroit resident, Lee Curtiss has been forging his uniquely backwoods, yet avant-garde and primal brand of deep and twisted dance music since the late 1990’s. A constantly changing and ever-eager student to his craft, Lee’s finger has been pressed upon, if not thrust into, the throbbing aorta of underground dance music for quite some time – even if his production skills and amazing live PA have only recently begun to garner the attention of techno and house music’s elite.",
+    "genres": [
+      "Tech House",
+      "Minimal",
+      "Techno",
+      "Minimal Techno",
+      "Deep House"
+    ],
+    "tags": [],
+    "similar": [
+      "Gadi Mizrahi",
+      "Wolf + Lamb",
+      "Greg Paulus",
+      "Zev",
+      "Seth Troxler"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/58745"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5qCdmZXBkJc15PLLbFadVV"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/176916"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/leecurtissofficial"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Gadi Mizrahi",
+    "mbid": "89619bfa-e7e3-4c9c-a0c8-69b3563ce30a",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Gadi Mizrahi has been a staple of the Brooklyn’s dance-music scene for nearly a decade, DJing as half of the Wolf + Lamb duo, co-founding the influential Wolf + Lamb label, and throwing legendary underground parties. Gadi has been steeped in music since his earliest days on earth, always associating himself with musical souls and visionary creative forces. His Egyptian father played traditional Arabic music; his older brother was a DJ himself. After years spent digesting his musical surroundings",
+    "genres": [
+      "Minimal Techno",
+      "Minimal",
+      "Deep House"
+    ],
+    "tags": [
+      "nyc",
+      "wolf  lamb"
+    ],
+    "similar": [
+      "Lee Curtiss",
+      "Wolf + Lamb",
+      "Jozif",
+      "Maayan Nidam",
+      "Deniz Kurtel"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/795127"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5GAUVOjDt7CpFstCcFk34a"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Maayan Nidam",
+    "mbid": "4a808eaa-1880-4066-8466-b2030abb17fc",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Maayan Nidam aka Miss-Fitz has been spinning and producing music since 1999. Her releases on Archipel CA, Eklo FR, on Kalimari as Uli Kunkel (together with Shaun Reeves & Lee Curtiss) and on Raum Musik, got remixed by Jeff Samuel, Ryan Crosson, Mossa, Pheek, Spasm & more. Although based in Berlin, Fitz keeps on the move, spinning a mixture of underground techno and house around the globe in venues such as Club Transmediale Berlin, Wolf+Lamb NY, Main Hall Montreal",
+    "genres": [
+      "Minimal Techno",
+      "Minimal",
+      "House",
+      "Electronic",
+      "Tech House"
+    ],
+    "tags": [],
+    "similar": [
+      "Gadi Mizrahi",
+      "Jozif",
+      "Wolf + Lamb",
+      "Lee Curtiss",
+      "Guillaume & The Coutu Dumonts"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/598741"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/MaayanNidam"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/maayan.nidam.music/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/maayan"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/1AAKYGIgVpz7Dy8omoY19S"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Guillaume & The Coutu Dumonts",
+    "mbid": "48cfdd46-9d06-4823-9327-abe3f897e881",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "::Guillaume & the Coutu Dumonts: !!! me no dj !!! Ever an energetic actor in the electronic music scene, Montreal based artist Guillaume Coutu Dumont maintains numerous collaborative projects, performing regularly in his hometown and around the world. Driven by his passion for hybrid forms of musical expression, Guillaume continues on his quest for the ultimate ham bone funk recipe with his solo project: Guillaume & the Coutu Dumonts a special blend of funk, house, techno, gospel, swing, barbershop quartet and afro-beat.",
+    "genres": [
+      "Tech House",
+      "Minimal",
+      "Minimal Techno",
+      "House",
+      "Minimal House"
+    ],
+    "tags": [],
+    "similar": [
+      "Johnny D",
+      "Wareika",
+      "Dave Aju",
+      "Miss Fitz",
+      "Mathias Kaden"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/526867"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/63964"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/guillaumecoutudumont"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/38VSXuULUeBkwd4BVLooHq"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Wolf   Lamb",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "",
+    "genres": [],
+    "tags": [],
+    "similar": [],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/6HGrNLNAYp8B1B84tLNKH0"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Barem",
+    "mbid": "69fe07b3-920c-4b72-af6a-a13dddc0b63a",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "‘Everything you do in life affects your music if you do music with passion. It's YOU in there, with everything good or bad inside’. Barem Mauricio Barembuem (a.k.a. Barem) perfectly personifies the new breed of electronic musician who has grown up in the digital age, using intuitive software programs like Reason and Ableton to spontaneously express ideas and emotions. On-line distribution has also made it possible for them to reach out and connect with audiences across the globe",
+    "genres": [
+      "Minimal",
+      "Minimal Techno",
+      "Techno",
+      "Electronic"
+    ],
+    "tags": [
+      "minus"
+    ],
+    "similar": [
+      "Ambivalent",
+      "Troy Pierce",
+      "Tractile",
+      "Paul Ritch",
+      "Paco Osuna"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/315294"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/baremminus"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/barem"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/0TWkbr1C1Wv88FwmZc8Il3"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Ambivalent",
+    "mbid": "8927c67e-8ef0-41d5-a809-56cb06ed7f5d",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "There have been a number of artists going by the name of Ambivalent: (1) A electronic musician from United States (2) A hip-hop producer from Detroit, Michigan (3) A visual kei band from Japan (4) A hip-hop crew from Germany “The curtain went up before I knew I was on stage.” -Ambivalent aka Kevin McHugh Currently working out of Berlin, Kevin McHugh has spent the last decade living in the German capital or New York",
+    "genres": [
+      "Minimal",
+      "Minimal Techno",
+      "Techno",
+      "Electronic"
+    ],
+    "tags": [
+      "minus"
+    ],
+    "similar": [
+      "Tractile",
+      "Troy Pierce",
+      "Barem",
+      "Run Stop Restore",
+      "JPLS"
+    ],
+    "links": [
+      {
+        "platform": "bandcamp",
+        "url": "https://la-4a.bandcamp.com/"
+      },
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/660203"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/6mP9zMUpvIMUMxkHfB5GUB"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/7hEP466HwI3wpx5IdXPHwT"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/1518794"
+      },
+      {
+        "platform": "website",
+        "url": "http://ambivalent.dj/"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/ambivalent/26608"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/ambivalent"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/AmbivalentBeats"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/ambivalent_kevin/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/ambivalent"
+      },
+      {
+        "platform": "youtube",
+        "url": "https://www.youtube.com/channel/UCShbVv9ekcsp2GB8kh397Cg"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Fabrizio Maurizi",
+    "mbid": "5278630a-1f95-4845-9ad3-3e04e3be67dc",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Fabrizio Maurizi (a.k.a Roger on the Italian scene) is a native of Bologna, IT (Italy), a city that has always paid particular attention to the original Detroit Techno movement, making it the perfect place to grow up in terms of music. After a brief spell as part of the city's militant illegal rave scene, Fabrizio soon graduated to residencies at some of the most important clubs in the country. Fascinated by the Neapolitan techno scene and above all",
+    "genres": [
+      "Minimal",
+      "Techno",
+      "Minimal Techno",
+      "Electronic"
+    ],
+    "tags": [
+      "minus"
+    ],
+    "similar": [
+      "Click Box",
+      "Ambivalent & JPLS",
+      "Niederflur",
+      "Run Stop Restore",
+      "JPLS"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/505982"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/4bW7klBXLl6UeBvkqChh5q"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Click Box",
+    "mbid": "7eb91124-ef7c-42d9-bece-dfe49a7e3b11",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "In October 2004, Brazilian music producers Pedro Turra and Marco AS decided to pursue new electronic sounds, moving away from conventional techno and aiming to bring a more interesting musical form to the dance floor. This is when Click Box was formed; an electronic music project derived from techno and house music, based on minimal constructions. Click Box produces music which is constant and with a limited number of simultaneous elements, conveing at times feelings of extreme tension or relaxation",
+    "genres": [
+      "Minimal",
+      "Minimal Techno",
+      "Techno",
+      "Tech House"
+    ],
+    "tags": [
+      "m-nus"
+    ],
+    "similar": [
+      "Fabrizio Maurizi",
+      "Ambivalent & JPLS",
+      "Niederflur",
+      "Run Stop Restore",
+      "JPLS"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/392843"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5LjMHAD29dk9CgxPmyuBrw"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Tractile",
+    "mbid": "acda0ea1-da3f-484c-b99f-14090b3d9f7b",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "If someone was asked what it would sound like if all of the most frightening, most exciting and sexiest scenes in cinema history were spliced together and merged with a robotic dance score, “Tractile” would surely be the reply. Adam Young (b. 1983) and Joel Boychuk (b. 1985), with several years of miscellaneous music experience behind them and a few years as great friends and partners-in-crime, decided to reinvent their sound and call themselves “Tractile.",
+    "genres": [
+      "Minimal",
+      "Minimal Techno",
+      "Techno",
+      "Electronic"
+    ],
+    "tags": [
+      "m-nus"
+    ],
+    "similar": [
+      "Run Stop Restore",
+      "Ambivalent",
+      "Troy Pierce",
+      "Barem",
+      "Niederflur"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/247486"
+      },
+      {
+        "platform": "website",
+        "url": "http://www.tractile.net/"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/7JSiq3yPk7Mzqn1nLhr2T2"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Jess Mills",
+    "mbid": "0a0839b7-05e1-4a08-9f6c-f090a9240397",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Jess Mills is an English singer and musician, currently signed to Island Records, who has done collaborations with many UK Electronic Music producers including Photek, Distance and Breakage. She grew up in Kentish Town, North London. At school there she met Niomi McLean-Daley, better known as Ms Dynamite, becoming friends and, \"doing dodgy dance routines in assembly together.\" After graduating from Sussex University, Jess began working in a local pub in order to fund a continued interest in music on the side.",
+    "genres": [
+      "Electronic",
+      "Pop",
+      "Dubstep"
+    ],
+    "tags": [
+      "british",
+      "female vocalists"
+    ],
+    "similar": [
+      "Ayah Marar",
+      "Yasmin",
+      "Youngman",
+      "Yogi feat. Ayah Marar",
+      "RackNRuin"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/1227680"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/7bAXVI22sw2xKPcc1AJuTP"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/1208820"
+      },
+      {
+        "platform": "website",
+        "url": "http://jessmills.co.uk/"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/t_s_u"
+      },
+      {
+        "platform": "apple-music",
+        "url": "https://music.apple.com/gb/artist/414250538"
+      },
+      {
+        "platform": "youtube",
+        "url": "https://www.youtube.com/user/JessMillsVEVO"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Jeff Mills",
+    "mbid": "470a4ced-1323-4c91-8fd5-0bb3fb4c932a",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "In the course of the eighties Jeff Mills was an influential radio DJ on WJLB under the pseudonym The Wizard. Mills' sets were a highlight of the nightly show from \"The Electrifying Mojo,\" Charles Johnson. Complimenting Mojo's eclectic playlists, Mills would spin obscure detroit techno, hiphop, electro, freestyle, miami bass, chicago house and classic new wave tracks. In going on to create his own music Mills is credited with laying the foundations for legendary detroit techno collective",
+    "genres": [
+      "Techno",
+      "Minimal",
+      "Electronic"
+    ],
+    "tags": [
+      "detroit techno",
+      "detroit"
+    ],
+    "similar": [
+      "Millsart",
+      "Joey Beltram",
+      "Circuit Breaker",
+      "Robert Hood",
+      "Richie Hawtin"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/205"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/2eIDAcLKnWc4D350YyzvgS"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/8290"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/jeff-mills/39662"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/DJJeffMills"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/JeffMills"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/jeff_mills_official/"
+      },
+      {
+        "platform": "apple-music",
+        "url": "https://music.apple.com/us/artist/5207761"
+      },
+      {
+        "platform": "tidal",
+        "url": "https://tidal.com/artist/3712637"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Millsart",
+    "mbid": "1e7a51db-e1a9-4a01-a879-957572988253",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Alias of Jeff Mills",
+    "genres": [
+      "Techno",
+      "Minimal Techno",
+      "Electronic"
+    ],
+    "tags": [
+      "detroit techno",
+      "detroit"
+    ],
+    "similar": [
+      "Jeff Mills",
+      "Claude Young",
+      "Circuit Breaker",
+      "Rhythim Is Rhythim",
+      "Joey Beltram"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/1362"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Joey Beltram",
+    "mbid": "5330d6d0-711b-415b-93e4-071e46d0d5f2",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Joey Beltram (born 6 November 1971) is an American DJ and record producer, known best for the pioneering techno music recordings \"Energy Flash\" and \"Mentasm\". Though he has never belonged to any particular urban scene, he has nevertheless fascinated his audience through his musical independence. Nor can he as a “non-Manhattaner”, be counted as part of the New York scene: ”...with my productions I have to have my own sound”. His tracks present what he sees",
+    "genres": [
+      "Techno",
+      "Electronic",
+      "House"
+    ],
+    "tags": [
+      "detroit techno",
+      "detroit"
+    ],
+    "similar": [
+      "Jeff Mills",
+      "Millsart",
+      "Circuit Breaker",
+      "Robert Hood",
+      "Surgeon"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/891"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/1xHvi1NUVjzUP8wo1aTVvr"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/4OW0w5K2UNaWtbpRqzWqI0"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/fxxp/sets/joey-beltram/"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/165306"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/4819470"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/joey-beltram/223"
+      },
+      {
+        "platform": "resident-advisor",
+        "url": "https://ra.co/dj/joeybeltram"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/JoeyBeltram"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/joeybeltramofficial"
+      },
+      {
+        "platform": "apple-music",
+        "url": "https://music.apple.com/gb/artist/5429154"
+      },
+      {
+        "platform": "tidal",
+        "url": "https://tidal.com/artist/3532615"
+      },
+      {
+        "platform": "youtube",
+        "url": "https://www.youtube.com/user/Beats78"
+      },
+      {
+        "platform": "youtube",
+        "url": "https://www.youtube.com/user/InOrderToDance"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Circuit Breaker",
+    "mbid": "3a9a7946-26ce-4599-9d4a-48c61dbf1a37",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "There are several acts that use the name Circuit Breaker. (1) It is a moniker for Richie Hawtin's early output (1st release circa 1991). (2) Circuit Breaker is a breakbeat producer Jochen Gühlke (1st release circa 1997). (3) A post-punk synth duo consisting of Peter and Edward Simpson (1st release circa 2013).",
+    "genres": [
+      "Breakbeat",
+      "Techno",
+      "Acid"
+    ],
+    "tags": [
+      "breakbeat",
+      "acid techno"
+    ],
+    "similar": [
+      "Jeff Mills",
+      "Millsart",
+      "Joey Beltram",
+      "Wicked Wipe",
+      "Dj Skull"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/4577"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Robert Hood",
+    "mbid": "e8a61400-baf7-4fb3-a3e3-c9e7b665547f",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Robert Hood makes minimal Detroit techno with an emphasis on soul and experimentation over flash and popularity. Having recorded for Metroplex, as well as the Austrian Cheap label and Jeff Mills' Axis label, Hood also owns and operates the M-Plant imprint (including the two sub-labels Drama and Duet) through which he has released the bulk of his solo material. Hood was a founding member, along with Jeff Mills and Mike Banks, of the Underground Resistance label",
+    "genres": [
+      "Techno",
+      "Minimal",
+      "Minimal Techno"
+    ],
+    "tags": [
+      "detroit techno",
+      "detroit"
+    ],
+    "similar": [
+      "Floorplan",
+      "Jeff Mills",
+      "Surgeon",
+      "Juan Atkins",
+      "James Ruskin"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/1136"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/5ipQlfnpRCtyOuhYqvPvQ8"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/182613"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/284523761"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/robert-hood/5625"
+      },
+      {
+        "platform": "apple-music",
+        "url": "https://music.apple.com/gb/artist/202614687"
+      },
+      {
+        "platform": "tidal",
+        "url": "https://tidal.com/artist/3519582"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Richie Hawtin",
+    "mbid": "76da816f-ea05-4172-ad9e-ffb69c32199f",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Richard \"Richie\" Hawtin (born June 4, 1970) is a British-Canadian electronic musician and DJ. A three-time DJ Awards winner, he became involved with Detroit techno's second wave in the early 1990s, and has been a leading exponent of minimal techno since the mid-1990s. He became known for his recordings under the Plastikman and F.U.S.E. aliases. Under the latter, he released his debut album Dimension Intrusion (1993) as part of Warp's Artificial Intelligence series.",
+    "genres": [
+      "Minimal",
+      "Techno",
+      "Minimal Techno",
+      "Electronic"
+    ],
+    "tags": [
+      "detroit techno"
+    ],
+    "similar": [
+      "Richard Harvey",
+      "Jeff Mills",
+      "Santos Rodriguez",
+      "Plastikman",
+      "Ricardo Villalobos"
+    ],
+    "links": [
+      {
+        "platform": "bandcamp",
+        "url": "https://richiehawtin.bandcamp.com/"
+      },
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/835"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/3AhwIUus3pIaA3CvYBEtpy"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/498301"
+      },
+      {
+        "platform": "website",
+        "url": "http://www.richiehawtin.com/"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/richie-hawtin/3618"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/rhawtin"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/rhawtin_live"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/richiehawtin"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/PlastikmanOfficial"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/richiehawtin/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/richiehawtin"
+      },
+      {
+        "platform": "youtube",
+        "url": "https://www.youtube.com/user/minusofficial"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Noizekid",
+    "mbid": "81b8e9e0-6fb9-4873-9b44-91dc1b4e5dea",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Noizekid is a Mexican moombahton and dancehall producer known for working with the likes of DJ Snake, Bad Bunny, Major Lazer and several other names in the music industry. He released the 'Noizekid Sample Pack' in collaboration with Barnation, which includes all of his samples, loops and drums used in various of his works.",
     "genres": [],
     "tags": [
-      "field recordings",
-      "transit",
-      "editorial selection"
+      "mexico"
     ],
-    "featured": true,
-    "linkedEpisodes": [
+    "similar": [
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "links": [
       {
-        "label": "AXIS III"
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/2753525"
       },
       {
-        "label": "Transit Sounds interview",
-        "href": "/magazine"
-      }
-    ],
-    "linkedArtifacts": [
-      {
-        "label": "Sounds Collected in Transit",
-        "href": "/magazine"
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/4iyBKGl1IpJn4WHdVzrVmg"
       },
       {
-        "label": "Episode III dispatch",
-        "href": "/magazine"
-      }
-    ],
-    "spaces": [
-      {
-        "name": "Transit capture layer",
-        "episode": "AXIS III",
-        "note": "Activated sonic material sourced from airports, terminals, and buses."
-      }
-    ],
-    "signals": [
-      {
-        "timestamp": "2026-02-10",
-        "text": "Interview published with field-recording notes.",
-        "link": {
-          "label": "Open Magazine",
-          "href": "/magazine"
-        }
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/1203618"
       },
       {
-        "timestamp": "2026-02-20",
-        "text": "Episode III dispatch confirmed closing-set presence.",
-        "link": {
-          "label": "Open Magazine",
-          "href": "/magazine"
-        }
+        "platform": "twitter",
+        "url": "https://twitter.com/Noizekid"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/NoizekidMuzik"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/noizekid_oficial/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/noizekid"
+      },
+      {
+        "platform": "tidal",
+        "url": "https://tidal.com/artist/4305296"
       }
-    ]
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "ETC!ETC!",
+    "mbid": "b6537d5b-5a95-4424-9eb9-004754191fe6",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "ETC!ETC! produces Latin-influenced electronic music with a focus on moombahton and etnobeats, blending traditional rhythms with modern trap elements. His sound draws comparisons to artists such as Sazon Booya, Willy Joy, and Jay Fay. ETC!ETC! maintains an active presence across various music platforms, including Spotify, SoundCloud, and Beatport.",
+    "genres": [
+      "Latin",
+      "Electronic",
+      "Trap"
+    ],
+    "tags": [
+      "moombahton",
+      "etnobeats"
+    ],
+    "similar": [
+      "Sazon Booya",
+      "Willy Joy",
+      "BAD ROYALE",
+      "Jay Fay",
+      ":DFace"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/2374968"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/0iDBD558yJl5IfRXg9Yfwt"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/2QjKZXBhZhUhJiFrPj4LvS"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/1037505"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/etcetc/146448"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/iametc"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/DJETCETC"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/etc-etc"
+      },
+      {
+        "platform": "tidal",
+        "url": "https://tidal.com/artist/4181533"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Los Dutis",
+    "mbid": "f16fb7b3-7f7f-4c4e-8b8e-3dc24d694fe8",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Los Dutis is a Mexican electronic music producer associated with artists such as Freebot, Chzter, Bsno, Noizekid, and Sabor Kolombia. Their sound blends elements of reggaeton, moombahton, and Latin trap, often incorporating traditional Mexican rhythms and instrumentation. Los Dutis maintains an active presence across major streaming platforms including Spotify, Deezer, Beatport, and YouTube, as well as social media channels like Twitter, Facebook, and Instagram.",
+    "genres": [],
+    "tags": [
+      "mexico"
+    ],
+    "similar": [
+      "Freebot",
+      "Chzter",
+      "Bsno",
+      "Noizekid",
+      "Sabor Kolombia"
+    ],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/7euy0eWE4fAyce469eL2fi"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/10275732"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/los-dutis/549962"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/losdutis"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/people/Los-Dutis/100046739570713"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/losdutis/"
+      },
+      {
+        "platform": "apple-music",
+        "url": "https://music.apple.com/mx/artist/1106747017"
+      },
+      {
+        "platform": "tidal",
+        "url": "https://tidal.com/artist/7771077"
+      },
+      {
+        "platform": "youtube",
+        "url": "https://www.youtube.com/user/gio1410ful"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Freebot",
+    "mbid": "a3765354-1a2a-490e-80eb-25386e1d7b18",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Freebot is a techno and tribal producer from Monterrey, Mexico, associated with the tribal guarachero movement. His sound draws comparisons to artists like Los Dutis, Bsno, Noizekid, El Irreal Veintiuno, and John W. Freebot maintains an active presence across major music platforms including Discogs, Spotify, Beatport, and social media channels such as Twitter, Facebook, Instagram, SoundCloud, and YouTube.",
+    "genres": [
+      "Techno",
+      "Tribal"
+    ],
+    "tags": [
+      "mexico",
+      "monterrey",
+      "tribal guarachero"
+    ],
+    "similar": [
+      "Los Dutis",
+      "Bsno",
+      "Noizekid",
+      "El Irreal Veintiuno",
+      "John W"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/5504892"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/1ID8wBJ6PWBtuuERZxavHd"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/freebot/441328"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/freebot_music"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/freebotmusic"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/freebot_/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/freebot-music"
+      },
+      {
+        "platform": "youtube",
+        "url": "https://www.youtube.com/channel/UCDi0ZjExZPHy2n8Z_4xSthA"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Bsno",
+    "mbid": "31d0b1ea-b325-4749-aeb2-85a34838cabf",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Bsno is a house music producer from Mexico. His sound aligns with the work of similar artists such as Sheeqo Beat, Tom & Collins, Le Twins, Los Dutis, and Xookwankii. Bsno's music is documented on Discogs, indicating an active presence in the electronic music scene.",
+    "genres": [
+      "House"
+    ],
+    "tags": [
+      "mexico"
+    ],
+    "similar": [
+      "Sheeqo Beat",
+      "Tom & Collins",
+      "Le Twins",
+      "Los Dutis",
+      "Xookwankii"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/1207564"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Sheeqo Beat",
+    "mbid": "94876e9a-1a1a-4ecb-875c-addd41b39f5d",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Sheeqo Beat is an electronic music producer from Mexico associated with the movimiento tribal scene. His sound draws comparisons to artists like Bsno, Erick Rincon, Le Twins, Chela Rivas, and Valentina Moretti. Sheeqo Beat's music is available on major streaming platforms including Spotify, Deezer, Apple Music, as well as social media channels Facebook and Instagram.",
+    "genres": [
+      "Electronic"
+    ],
+    "tags": [
+      "mexico",
+      "movimiento tribal"
+    ],
+    "similar": [
+      "Bsno",
+      "Erick Rincon",
+      "Le Twins",
+      "Chela Rivas",
+      "Valentina Moretti"
+    ],
+    "links": [
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/4PPVTIy0XtTMJuiA7mC4Ak"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/616133"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/SheeqoBeat"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/sheeqobeat/"
+      },
+      {
+        "platform": "apple-music",
+        "url": "https://music.apple.com/mx/artist/336401271"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Tom & Collins",
+    "mbid": "4fb1e64b-0598-4db9-b0da-9c3188b030b1",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Mexican duo Tom & Collins burst into the Top 100 DJs chart for the first time last year, and they’ve once again proven why they’re one of the region’s biggest acts. Hailing from Mexico City, Tom & Collins (real names Juan Pablo Escudero and Jorge Corral) have made their mark with a pop-friendly mix of deep house and deep tech, garnering them millions of Spotify plays and remix work for TOKiMONSTA, Thirty Seconds To Mars, Gorgon City, Duke Dumont, and even Madonna.",
+    "genres": [
+      "House"
+    ],
+    "tags": [
+      "mexico"
+    ],
+    "similar": [
+      "Jude & Frank",
+      "Juos",
+      "Bsno",
+      "Ky William",
+      "Flo Dosh"
+    ],
+    "links": [
+      {
+        "platform": "discogs",
+        "url": "https://www.discogs.com/artist/4577663"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://open.spotify.com/artist/1XU5MjR4kex9BGyY4UMtta"
+      },
+      {
+        "platform": "deezer",
+        "url": "https://www.deezer.com/artist/5287184"
+      },
+      {
+        "platform": "website",
+        "url": "https://www.tomandcollins.com/"
+      },
+      {
+        "platform": "beatport",
+        "url": "https://www.beatport.com/artist/tom-collins/366872"
+      },
+      {
+        "platform": "juno",
+        "url": "https://www.junodownload.com/artists/Tom+%2526+Collins/"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/tomandcollins"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/TomAndCollins"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/tomandcollins/"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://soundcloud.com/TOMANDCOLLINS"
+      },
+      {
+        "platform": "apple-music",
+        "url": "https://music.apple.com/gb/artist/1098006057"
+      }
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Xookwankii",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Xookwankii produces house and electronic dance music, drawing comparisons to artists such as Mark Alvarado, Jose Spinnin Cortes, Chela Rivas, Yinon Yahel, and Sagi Kariv. Their tracks emphasize rhythmic, club-oriented grooves and energetic electronic textures suited for dancefloors.",
+    "genres": [
+      "House",
+      "Electronic"
+    ],
+    "tags": [
+      "dance"
+    ],
+    "similar": [
+      "Mark Alvarado",
+      "Jose Spinnin Cortes",
+      "Chela Rivas",
+      "Yinon Yahel",
+      "Sagi Kariv"
+    ],
+    "links": [],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Pinch",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Pinch is the DJ and producer behind Tectonic Recordings, a dubstep-focused label known for shaping the genre's infrastructure and sound over two decades.",
+    "genres": [
+      "dubstep",
+      "bass music",
+      "electronic"
+    ],
+    "tags": [
+      "tectonic",
+      "dubstep",
+      "producer"
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Skee Mask",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Skee Mask is a producer on Ilian Tape whose work moves through dubstep, breakbeat, techno, and low-end spatial design with a strong focus on room interaction.",
+    "genres": [
+      "dubstep",
+      "breakbeat",
+      "techno",
+      "electronic"
+    ],
+    "tags": [
+      "ilian tape",
+      "808bb",
+      "compro",
+      "sound design"
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
+  },
+  {
+    "name": "Ilian Tape",
+    "artistTypes": [
+      "music"
+    ],
+    "summary": "Ilian Tape is a Munich label built around dubstep, techno, and leftfield electronic releases with an emphasis on collective identity and careful sound construction.",
+    "genres": [
+      "dubstep",
+      "techno",
+      "electronic"
+    ],
+    "tags": [
+      "label",
+      "dubstep",
+      "electronic"
+    ],
+    "aliases": [],
+    "linkedEpisodes": [],
+    "linkedArtifacts": [],
+    "spaces": [],
+    "signals": []
   }
 ]

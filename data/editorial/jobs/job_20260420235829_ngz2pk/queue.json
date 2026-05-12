@@ -1,0 +1,28 @@
+{
+  "jobId": "job_20260420235829_ngz2pk",
+  "tasks": [
+    {
+      "id": "job_20260420235829_ngz2pk__19bcvxew3ca3hskrppw",
+      "jobId": "job_20260420235829_ngz2pk",
+      "targetKey": "artist:19bcvxew3ca3hskrppw",
+      "targetType": "artist",
+      "slug": "yameii-online-digital-dreamscape-queen",
+      "sourceRef": {
+        "kind": "raw_article",
+        "rawId": "91406212595100859767611083543407228533422908630988582835931158103668393386861",
+        "rawSlug": "19bcvxew3ca3hskrppw",
+        "rawFolder": "0001_19bcvxew3ca3hskrppw"
+      },
+      "status": "needs_review",
+      "draftPath": "data\\editorial\\jobs\\job_20260420235829_ngz2pk\\articles\\job_20260420235829_ngz2pk__19bcvxew3ca3hskrppw.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260420235829_ngz2pk\\articles\\job_20260420235829_ngz2pk__19bcvxew3ca3hskrppw.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260420235829_ngz2pk\\articles\\job_20260420235829_ngz2pk__19bcvxew3ca3hskrppw.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-20T23:58:50.223Z"
+    }
+  ]
+}

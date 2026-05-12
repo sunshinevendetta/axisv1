@@ -260,7 +260,7 @@ function MarketsInner() {
         <div className="border-b border-white/[0.05] px-4 py-6 sm:px-6">
           <div className="mx-auto max-w-6xl">
             <p className="mb-2 text-[8px] uppercase tracking-[0.5em] text-white/20">
-              AXIS Journal
+              AXIS Hypermedia
             </p>
             <h1 className="[font-family:var(--font-display)] text-[clamp(2rem,5vw,3.6rem)] leading-[0.88] tracking-[-0.05em] text-white">
               Markets
@@ -417,3 +417,4 @@ export default function MarketsPage() {
     </Suspense>
   );
 }
+

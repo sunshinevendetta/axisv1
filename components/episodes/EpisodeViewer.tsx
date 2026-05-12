@@ -53,8 +53,29 @@ export function EpisodeViewer({ asset, title }: Props) {
   const showPlayOverlay = canRender && !playing && !videoFailed && Boolean(asset?.videoUrl);
   const overlayLabel = useMemo(() => {
     if (!asset?.videoUrl) return "3D episode object";
-    return videoReady ? "Pause texture" : "Play texture";
+    return videoReady ? "Pause video texture" : "Play video texture";
   }, [asset?.videoUrl, videoReady]);
+
+  const controlHint = useMemo(() => {
+    if (arActive) {
+      return {
+        title: "XR mode",
+        text: "Move the phone to place the scene. Tap Exit AR to leave the session.",
+      };
+    }
+
+    if (asset?.videoUrl) {
+      return {
+        title: "Desktop controls",
+        text: "Drag to orbit, scroll to zoom, and use the button to start or stop the video texture.",
+      };
+    }
+
+    return {
+      title: "Desktop controls",
+      text: "Drag to orbit and scroll to zoom around the 3D object.",
+    };
+  }, [arActive, asset?.videoUrl]);
 
   if (!canRender) {
     return <EpisodeFallback title={title} posterUrl={asset?.posterUrl} compact />;
@@ -81,6 +102,11 @@ export function EpisodeViewer({ asset, title }: Props) {
 
       <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/50 to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/75 to-transparent" />
+
+      <div className="absolute left-4 top-4 z-10 max-w-[16rem] border border-white/12 bg-black/45 px-3 py-2 backdrop-blur-sm">
+        <div className="text-[9px] uppercase tracking-[0.28em] text-white/38">{controlHint.title}</div>
+        <div className="mt-1 text-[10px] leading-4 text-white/62">{controlHint.text}</div>
+      </div>
 
       {showPlayOverlay && (
         <button

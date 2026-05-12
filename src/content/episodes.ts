@@ -37,6 +37,10 @@ export type EpisodeCatalogEntry = {
     imageUri?: string;
     posterUri: string;
     meshTarget?: string;
+    videoTexture?: {
+      flipX?: boolean;
+      flipY?: boolean;
+    };
     scale?: EpisodeAsset["scale"];
     position?: EpisodeAsset["position"];
     rotation?: EpisodeAsset["rotation"];

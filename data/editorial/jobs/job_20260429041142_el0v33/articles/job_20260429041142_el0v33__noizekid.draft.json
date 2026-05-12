@@ -1,0 +1,65 @@
+{
+  "jobId": "job_20260429041142_el0v33",
+  "taskId": "job_20260429041142_el0v33__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborations with DJ Snake, Bad Bunny, and Major Lazer Define His Trajectory",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for his collaborations with prominent industry figures and his distinctive sample pack release.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "collaboration",
+      "sample pack"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer whose work has gained recognition through collaborations with notable figures in the music industry."
+      },
+      {
+        "type": "paragraph",
+        "text": "He has worked with artists such as DJ Snake, Bad Bunny, and Major Lazer, establishing a presence in the global electronic music scene."
+      },
+      {
+        "type": "paragraph",
+        "text": "In addition to his production work, Noizekid released the 'Noizekid Sample Pack' in collaboration with Barnation, which includes a comprehensive collection of his samples, loops, and drums used across various productions."
+      },
+      {
+        "type": "paragraph",
+        "text": "His approach to sound design and rhythmic patterns reflects a deep understanding of both moombahton and dancehall genres, contributing to his distinct sonic identity."
+      },
+      {
+        "type": "paragraph",
+        "text": "While his top tracks and recent releases are not indexed, his influence is evident through his collaborations and the release of his sample pack, which has become a valuable resource for producers in the field."
+      }
+    ],
+    "monetization": []
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260421031917_awh23r",
+  "tasks": [
+    {
+      "id": "job_20260421031917_awh23r__dj-christian-nxc",
+      "jobId": "job_20260421031917_awh23r",
+      "targetKey": "artist:dj-christian-nxc",
+      "targetType": "artist",
+      "slug": "dj-christian-nxc",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "dj-christian-nxc",
+        "artistName": "DJ CHRISTIAN NXC"
+      },
+      "status": "rejected",
+      "draftPath": "data\\editorial\\jobs\\job_20260421031917_awh23r\\articles\\job_20260421031917_awh23r__dj-christian-nxc.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421031917_awh23r\\articles\\job_20260421031917_awh23r__dj-christian-nxc.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421031917_awh23r\\articles\\job_20260421031917_awh23r__dj-christian-nxc.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": "Writer pass failed for raw article \"dj-christian-nxc\".",
+      "attempts": 1,
+      "updatedAt": "2026-04-21T16:57:26.414Z"
+    }
+  ]
+}

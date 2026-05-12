@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260421033007_5eo4u8",
+  "tasks": [
+    {
+      "id": "job_20260421033007_5eo4u8__toyohirakumin",
+      "jobId": "job_20260421033007_5eo4u8",
+      "targetKey": "artist:toyohirakumin",
+      "targetType": "artist",
+      "slug": "toyohirakumin-vaporwave-jazz-chillout-profile",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "toyohirakumin",
+        "artistName": "豊平区民TOYOHIRAKUMIN"
+      },
+      "status": "published",
+      "draftPath": "data\\editorial\\jobs\\job_20260421033007_5eo4u8\\articles\\job_20260421033007_5eo4u8__toyohirakumin.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421033007_5eo4u8\\articles\\job_20260421033007_5eo4u8__toyohirakumin.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421033007_5eo4u8\\articles\\job_20260421033007_5eo4u8__toyohirakumin.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": "https://api.grove.storage/4d19d6e4de833d1b888043ff1c807a8a63c78b0c8ab94f539fabad3dfdb3061d",
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-21T16:58:08.138Z"
+    }
+  ]
+}

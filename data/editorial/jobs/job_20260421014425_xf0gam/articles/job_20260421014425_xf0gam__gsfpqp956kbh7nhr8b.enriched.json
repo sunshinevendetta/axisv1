@@ -1,0 +1,160 @@
+{
+  "jobId": "job_20260421014425_xf0gam",
+  "taskId": "job_20260421014425_xf0gam__gsfpqp956kbh7nhr8b",
+  "target": {
+    "key": "artist:gsfpqp956kbh7nhr8b",
+    "type": "artist",
+    "name": "gsfpqp956kbh7nhr8b"
+  },
+  "researchPacket": {
+    "targetName": "gsfpqp956kbh7nhr8b",
+    "sourceMode": "existing_db",
+    "artistContext": null,
+    "genreContext": null,
+    "relatedArtists": [],
+    "provenance": [
+      {
+        "type": "raw_article",
+        "value": "gsfpqp956kbh7nhr8b"
+      },
+      {
+        "type": "music_artists",
+        "value": "content/music-artists.json"
+      },
+      {
+        "type": "artist_media_cache",
+        "value": "content/artist-media-cache.json"
+      }
+    ]
+  },
+  "promptConfig": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "modelOutput": {
+    "writer": {
+      "id": 1,
+      "slug": "prolaps-hyperpop-chaos-architects",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "ProLaps: Hyperpop's Unhinged Chaos Architects",
+      "subtitle": "The duo blends distorted beats and unfiltered madness into a sound that feels like getting dropkicked into the future.",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-21",
+      "readTime": "4 min",
+      "excerpt": "ProLaps is here to melt your brain and send you spiraling into the most chaotic rave of your life. This duo blends distorted beats, ear-shattering bass, and unfiltered madness into a sound that feels like getting dropkicked into the future.",
+      "featured": false,
+      "image_url": "https://gw.ipfs-lens.dev/ipfs/QmPa2zubUUpoPoAh1eg8nJskbUGwA829oG7xdNgP3heJxW",
+      "tags": [
+        "hyperpop",
+        "prolaps",
+        "club music",
+        "experimental",
+        "distorted beats",
+        "bass music"
+      ],
+      "linkedArtists": [
+        "Dorian Electra",
+        "Fraxiom",
+        "Machine Girl",
+        "Lil Mariko"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "ProLaps is here to melt your brain and send you spiraling into the most chaotic rave of your life. This duo, made up of legendary internet provocateurs, blends distorted beats, ear-shattering bass, and unfiltered madness into a sound that feels like getting dropkicked into the future. If you thought hyperpop couldn’t get any wilder, ProLaps is here to prove you wrong."
+        },
+        {
+          "type": "paragraph",
+          "text": "The energy of ProLaps is pure audio anarchy. We're talking blown-out bass, over-processed vocals, and beats that hit like a brick to the skull. If you like your music aggressive, glitchy, and absolutely unhinged, ProLaps is the endgame."
+        },
+        {
+          "type": "paragraph",
+          "text": "Essential tracks include 'CUMSHOT,' a full-throttle destruction with industrial hyperpop energy that makes your heartbeat sync with a malfunctioning strobe light. 'HOT CUM' is a sonic assault that blends gabber, breakcore, and hyperpop into one of the most chaotic club tracks ever, imagining a warehouse rave hosted by cyborgs on bath salts. 'LICKITY SPLIT' is fast, manic, and brain-melting, with a BPM that feels like your body is being rewired in real time."
+        },
+        {
+          "type": "paragraph",
+          "text": "ProLaps thrives in the digital underground, where sound is weaponized and nothing is sacred. Think Dorian Electra, Fraxiom, and the most insane corners of the hyperpop scene."
+        },
+        {
+          "type": "paragraph",
+          "text": "ProLaps isn’t here to make pretty music; they’re here to burn it all down. This is club music for people who want to feel like they’re glitching out of reality. The production is aggressive, the lyrics are chaotic, and the energy is unmatched. You either love it or fear it."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you’re ready for the absolute limit of what hyperpop and club music can be, ProLaps is calling. Answer the call, crank the volume, and let the chaos consume you."
+        }
+      ],
+      "monetization": []
+    },
+    "editor": {
+      "id": 1,
+      "slug": "prolaps-hyperpop-chaos-architects",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "ProLaps: Hyperpop's Unhinged Chaos Architects",
+      "subtitle": "The duo blends distorted beats and unfiltered madness into a sound that feels like getting dropkicked into the future.",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-21",
+      "readTime": "4 min",
+      "excerpt": "ProLaps is here to melt your brain and send you spiraling into the most chaotic rave of your life. This duo blends distorted beats, ear-shattering bass, and unfiltered madness into a sound that feels like getting dropkicked into the future.",
+      "featured": false,
+      "image_url": "https://gw.ipfs-lens.dev/ipfs/QmPa2zubUUpoPoAh1eg8nJskbUGwA829oG7xdNgP3heJxW",
+      "tags": [
+        "hyperpop",
+        "prolaps",
+        "club music",
+        "experimental",
+        "distorted beats",
+        "bass music"
+      ],
+      "linkedArtists": [
+        "Dorian Electra",
+        "Fraxiom",
+        "Machine Girl",
+        "Lil Mariko"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "ProLaps is here to melt your brain and send you spiraling into the most chaotic rave of your life. This duo, made up of legendary internet provocateurs, blends distorted beats, ear-shattering bass, and unfiltered madness into a sound that feels like getting dropkicked into the future. If you thought hyperpop couldn’t get any wilder, ProLaps is here to prove you wrong."
+        },
+        {
+          "type": "paragraph",
+          "text": "The energy of ProLaps is pure audio anarchy. We're talking blown-out bass, over-processed vocals, and beats that hit like a brick to the skull. If you like your music aggressive, glitchy, and absolutely unhinged, ProLaps is the endgame."
+        },
+        {
+          "type": "paragraph",
+          "text": "Essential tracks include 'CUMSHOT,' a full-throttle destruction with industrial hyperpop energy that makes your heartbeat sync with a malfunctioning strobe light. 'HOT CUM' is a sonic assault that blends gabber, breakcore, and hyperpop into one of the most chaotic club tracks ever, imagining a warehouse rave hosted by cyborgs on bath salts. 'LICKITY SPLIT' is fast, manic, and brain-melting, with a BPM that feels like your body is being rewired in real time."
+        },
+        {
+          "type": "paragraph",
+          "text": "ProLaps thrives in the digital underground, where sound is weaponized and nothing is sacred. Think Dorian Electra, Fraxiom, and the most insane corners of the hyperpop scene."
+        },
+        {
+          "type": "paragraph",
+          "text": "ProLaps isn’t here to make pretty music; they’re here to burn it all down. This is club music for people who want to feel like they’re glitching out of reality. The production is aggressive, the lyrics are chaotic, and the energy is unmatched. You either love it or fear it."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you’re ready for the absolute limit of what hyperpop and club music can be, ProLaps is calling. Answer the call, crank the volume, and let the chaos consume you."
+        }
+      ],
+      "monetization": []
+    }
+  },
+  "review": {
+    "status": "needs_review",
+    "notes": ""
+  }
+}

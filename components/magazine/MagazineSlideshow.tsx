@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import type { MagazineArticle } from "./types";
 
 const SLIDE_DURATION = 6000;
@@ -27,33 +27,50 @@ type Props = {
   onRead: (slug: string) => void;
   /** top offset in px (nav + ticker height) */
   topOffset?: number;
+  currentIndex?: number;
+  onIndexChange?: (index: number) => void;
+  forcePaused?: boolean;
 };
 
-export default function MagazineSlideshow({ articles, onRead, topOffset = 88 }: Props) {
-  const [current, setCurrent] = useState(0);
+export default function MagazineSlideshow({
+  articles,
+  onRead,
+  topOffset = 88,
+  currentIndex,
+  onIndexChange,
+  forcePaused = false,
+}: Props) {
+  const [internalCurrent, setInternalCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
   const [progressKey, setProgressKey] = useState(0);
-  const touchStart = useRef<number | null>(null);
+  const pointerStart = useRef<number | null>(null);
+  const pointerId = useRef<number | null>(null);
 
   const count = articles.length;
+  const current = currentIndex ?? internalCurrent;
 
   const goTo = useCallback(
     (idx: number) => {
-      setCurrent(((idx % count) + count) % count);
-      setProgressKey((k) => k + 1);
+      const nextIndex = ((idx % count) + count) % count;
+      setInternalCurrent(nextIndex);
+      onIndexChange?.(nextIndex);
     },
-    [count],
+    [count, onIndexChange],
   );
 
   const next = useCallback(() => goTo(current + 1), [current, goTo]);
   const prev = useCallback(() => goTo(current - 1), [current, goTo]);
 
+  useEffect(() => {
+    setProgressKey((k) => k + 1);
+  }, [current]);
+
   // Auto-advance
   useEffect(() => {
-    if (paused) return;
+    if (paused || forcePaused) return;
     const id = setInterval(next, SLIDE_DURATION);
     return () => clearInterval(id);
-  }, [paused, next]);
+  }, [forcePaused, paused, next]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -65,64 +82,134 @@ export default function MagazineSlideshow({ articles, onRead, topOffset = 88 }: 
     return () => window.removeEventListener("keydown", onKey);
   }, [next, prev]);
 
-  // Touch swipe
-  const onTouchStart = (e: React.TouchEvent) => {
-    touchStart.current = e.touches[0].clientX;
+  const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    pointerStart.current = e.clientX;
+    pointerId.current = e.pointerId;
+    setPaused(true);
+    e.currentTarget.setPointerCapture(e.pointerId);
   };
-  const onTouchEnd = (e: React.TouchEvent) => {
-    if (touchStart.current === null) return;
-    const delta = e.changedTouches[0].clientX - touchStart.current;
-    if (Math.abs(delta) > 40) delta < 0 ? next() : prev();
-    touchStart.current = null;
+
+  const onPointerUp = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (pointerStart.current === null) return;
+    const delta = e.clientX - pointerStart.current;
+    if (Math.abs(delta) > 40) {
+      if (delta < 0) next();
+      else prev();
+    }
+    if (pointerId.current !== null && e.currentTarget.hasPointerCapture(pointerId.current)) {
+      e.currentTarget.releasePointerCapture(pointerId.current);
+    }
+    pointerStart.current = null;
+    pointerId.current = null;
+    setPaused(false);
+  };
+
+  const onPointerCancel = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (pointerId.current !== null && e.currentTarget.hasPointerCapture(pointerId.current)) {
+      e.currentTarget.releasePointerCapture(pointerId.current);
+    }
+    pointerStart.current = null;
+    pointerId.current = null;
+    setPaused(false);
   };
 
   const article = articles[current];
-  const bg = CATEGORY_BG[article.category] ?? CATEGORY_BG.NEWS;
+  void (CATEGORY_BG[article.category] ?? CATEGORY_BG.NEWS);
 
   return (
     <div
-      className="relative w-full overflow-hidden bg-black select-none"
+      className="relative w-full overflow-hidden bg-black select-none touch-pan-y"
       style={{ height: `calc(100vh - ${topOffset}px)`, minHeight: 520 }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      onTouchStart={onTouchStart}
-      onTouchEnd={onTouchEnd}
+      onPointerDown={onPointerDown}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
     >
       {/* Slides */}
       {articles.map((a, i) => {
         const slideBg = CATEGORY_BG[a.category] ?? CATEGORY_BG.NEWS;
         return (
           <div
-            key={a.id}
+            key={a.slug}
             aria-hidden={i !== current}
             className="absolute inset-0 transition-opacity duration-[1400ms] ease-in-out"
             style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
           >
-            {/* Gradient background */}
-            <div className="absolute inset-0" style={{ background: slideBg }} />
+            {/* Cover image — fills the slide, darkened for legibility */}
+            {a.image_url && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={a.image_url}
+                alt={a.title}
+                className="absolute inset-0 h-full w-full object-cover"
+                style={{ opacity: 0.38 }}
+              />
+            )}
 
-            {/* Grid texture */}
+            {/* Gradient background (always present — acts as colour tint / fallback) */}
+            <div className="absolute inset-0" style={{ background: slideBg, opacity: a.image_url ? 0.55 : 1 }} />
+
+            {/* Image treatment: soft white wash plus the same grid language used in mixtapes */}
             <div
-              className="pointer-events-none absolute inset-0 opacity-[0.022]"
+              className="pointer-events-none absolute inset-0"
               style={{
+                background:
+                  "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 24%, rgba(255,255,255,0.04) 52%, rgba(255,255,255,0) 100%)",
+                opacity: a.image_url ? 0.5 : 0.12,
+              }}
+            />
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                opacity: a.image_url ? 0.012 : 0.008,
                 backgroundImage:
                   "linear-gradient(to right,#fff 1px,transparent 1px),linear-gradient(to bottom,#fff 1px,transparent 1px)",
-                backgroundSize: "64px 64px",
+                backgroundSize: "24px 24px",
+              }}
+            />
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                opacity: a.image_url ? 0.34 : 0.48,
+                mixBlendMode: "screen",
+                maskImage: "radial-gradient(65% 90% at 16% 30%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.68) 42%, rgba(0,0,0,0.26) 62%, transparent 82%)",
+                WebkitMaskImage: "radial-gradient(65% 90% at 16% 30%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.68) 42%, rgba(0,0,0,0.26) 62%, transparent 82%)",
+                backgroundImage:
+                  "linear-gradient(to right, rgba(190,235,255,1) 1px, transparent 1px), linear-gradient(to bottom, rgba(190,235,255,1) 1px, transparent 1px)",
+                backgroundSize: "24px 24px, 24px 24px",
+                animation: "magazine-grid-zone-a 6.6s cubic-bezier(0.33, 0.02, 0.2, 1) infinite",
+              }}
+            />
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                opacity: a.image_url ? 0.38 : 0.14,
+                mixBlendMode: "screen",
+                maskImage: "radial-gradient(62% 78% at 50% 48%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.94) 18%, rgba(0,0,0,0.72) 40%, rgba(0,0,0,0.3) 60%, transparent 82%)",
+                WebkitMaskImage: "radial-gradient(62% 78% at 50% 48%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.94) 18%, rgba(0,0,0,0.72) 40%, rgba(0,0,0,0.3) 60%, transparent 82%)",
+                backgroundImage:
+                  "linear-gradient(to right, rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,1) 1px, transparent 1px)",
+                backgroundSize: "24px 24px, 24px 24px",
+                animation: "magazine-grid-zone-b 8.4s cubic-bezier(0.38, 0.06, 0.22, 1) infinite",
               }}
             />
 
-            {/* Large faint background watermark */}
-            <div
-              className="pointer-events-none absolute inset-0 flex items-center justify-end overflow-hidden pr-8 sm:pr-16"
-              style={{ zIndex: 0 }}
-            >
-              <span
-                className="[font-family:var(--font-display)] leading-none text-white/[0.032]"
-                style={{ fontSize: "clamp(14rem,28vw,32rem)", marginBottom: "-4rem" }}
+            {/* Large faint background watermark — only when no image */}
+            {!a.image_url && (
+              <div
+                className="pointer-events-none absolute inset-0 flex items-center justify-end overflow-hidden pr-8 sm:pr-16"
+                style={{ zIndex: 0 }}
               >
-                {String(i + 1).padStart(2, "0")}
-              </span>
-            </div>
+                <span
+                  className="[font-family:var(--font-display)] leading-none text-white/[0.032]"
+                  style={{ fontSize: "clamp(14rem,28vw,32rem)", marginBottom: "-4rem" }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+            )}
           </div>
         );
       })}
@@ -134,13 +221,13 @@ export default function MagazineSlideshow({ articles, onRead, topOffset = 88 }: 
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-20 bg-gradient-to-b from-black/60 to-transparent" />
 
       {/* Content */}
-      <div className="absolute inset-x-0 bottom-0 z-20 mx-auto max-w-7xl px-4 pb-14 sm:px-6 sm:pb-16">
+      <div className="absolute inset-x-0 bottom-0 z-20 mx-auto max-w-7xl px-4 pb-10 sm:px-6 sm:pb-12 lg:pb-10">
         <div className="flex items-end justify-between gap-8">
 
           {/* Article info */}
           <div className="max-w-2xl flex-1">
             {/* Category + date */}
-            <div className="mb-5 flex items-center gap-3">
+            <div className="mb-4 flex items-center gap-3">
               <span className="text-[9px] uppercase tracking-[0.44em] text-white/32">
                 {article.category}
               </span>
@@ -152,14 +239,14 @@ export default function MagazineSlideshow({ articles, onRead, topOffset = 88 }: 
 
             {/* Title */}
             <h2
-              className="mb-4 [font-family:var(--font-display)] leading-[0.86] tracking-[-0.06em] text-white"
-              style={{ fontSize: "clamp(1.7rem,4.5vw,4rem)" }}
+              className="mb-8 [font-family:var(--font-display)] leading-[0.86] tracking-[-0.06em] text-white sm:mb-10 lg:mb-7"
+              style={{ fontSize: "clamp(1.7rem,3.8vw + 0.5rem,3.6rem)" }}
             >
               {article.title}
             </h2>
 
             {/* Subtitle */}
-            <p className="mb-8 max-w-lg text-xs leading-6 tracking-wide text-white/44 sm:text-sm sm:leading-7">
+            <p className="mb-6 max-w-lg text-xs leading-6 tracking-wide text-white/44 sm:mb-7 sm:text-sm sm:leading-7 lg:mb-5">
               {article.subtitle}
             </p>
 
@@ -242,7 +329,7 @@ export default function MagazineSlideshow({ articles, onRead, topOffset = 88 }: 
 
       {/* Progress bar */}
       <div className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/6">
-        {!paused && (
+        {!paused && !forcePaused && (
           <div
             key={progressKey}
             className="h-full origin-left bg-white/32"
@@ -252,6 +339,62 @@ export default function MagazineSlideshow({ articles, onRead, topOffset = 88 }: 
           />
         )}
       </div>
+
+      <style jsx>{`
+        @keyframes magazine-grid-zone-a {
+          0% {
+            opacity: 0;
+          }
+          11% {
+            opacity: 0.02;
+          }
+          24% {
+            opacity: 0.11;
+          }
+          39% {
+            opacity: 0.29;
+          }
+          54% {
+            opacity: 0.16;
+          }
+          72% {
+            opacity: 0.025;
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+
+        @keyframes magazine-grid-zone-b {
+          0% {
+            opacity: 0;
+          }
+          14% {
+            opacity: 0.015;
+          }
+          28% {
+            opacity: 0.025;
+          }
+          46% {
+            opacity: 0.08;
+          }
+          61% {
+            opacity: 0.19;
+          }
+          74% {
+            opacity: 0.32;
+          }
+          87% {
+            opacity: 0.09;
+          }
+          94% {
+            opacity: 0.04;
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+      `}</style>
     </div>
   );
 }

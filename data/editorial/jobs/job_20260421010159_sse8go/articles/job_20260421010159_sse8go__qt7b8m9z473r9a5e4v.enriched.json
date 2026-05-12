@@ -1,0 +1,168 @@
+{
+  "jobId": "job_20260421010159_sse8go",
+  "taskId": "job_20260421010159_sse8go__qt7b8m9z473r9a5e4v",
+  "target": {
+    "key": "artist:qt7b8m9z473r9a5e4v",
+    "type": "artist",
+    "name": "qt7b8m9z473r9a5e4v"
+  },
+  "researchPacket": {
+    "targetName": "qt7b8m9z473r9a5e4v",
+    "sourceMode": "existing_db",
+    "artistContext": null,
+    "genreContext": null,
+    "relatedArtists": [],
+    "provenance": [
+      {
+        "type": "raw_article",
+        "value": "qt7b8m9z473r9a5e4v"
+      },
+      {
+        "type": "music_artists",
+        "value": "content/music-artists.json"
+      },
+      {
+        "type": "artist_media_cache",
+        "value": "content/artist-media-cache.json"
+      }
+    ]
+  },
+  "promptConfig": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "modelOutput": {
+    "writer": {
+      "id": 1,
+      "slug": "dylan-brady-hyperpop-chaos-and-glitchy-innovation",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Dylan Brady: Hyperpop's Chaotic Architect",
+      "subtitle": "A deep dive into the glitchy, genre-defying soundscapes of Dylan Brady",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-21",
+      "readTime": "6 min",
+      "excerpt": "Dylan Brady stands as a central figure in hyperpop's chaotic evolution, crafting unpredictable soundscapes that defy genre conventions.",
+      "featured": false,
+      "image_url": "https://gw.ipfs-lens.dev/ipfs/QmQ9UdXaYhdps2iWYekhzrCUhQ4syyaaivM7yEa18CShhi",
+      "tags": [
+        "hyperpop",
+        "dylan brady",
+        "100 gecs",
+        "glitch",
+        "experimental",
+        "collaboration"
+      ],
+      "linkedArtists": [
+        "Skrillex",
+        "Noisia",
+        "Laura Les",
+        "Ravenna Golden"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Dylan Brady emerges as a pivotal figure in the hyperpop movement, recognized for his innovative and chaotic approach to sound design. As co-founder of 100 gecs, Brady consistently pushes creative boundaries, merging glitchy textures with unpredictable rhythms to craft a distinctive sonic identity."
+        },
+        {
+          "type": "paragraph",
+          "text": "His track Supersonic (my existence) exemplifies this approach, featuring a collaboration with Skrillex and Noisia. The piece delivers an overwhelming sonic experience, blending cerebral elements with an energetic, rave-inspired drop that challenges conventional structures."
+        },
+        {
+          "type": "paragraph",
+          "text": "In Money Machine, Brady teams up with Laura Les to produce a track that embodies hyperpop's sarcastic and in-your-face energy. The distorted beats and biting lyrical delivery create a sound that is both abrasive and engaging, solidifying its place within the genre."
+        },
+        {
+          "type": "paragraph",
+          "text": "Stupid Horse showcases Brady's ability to infuse humor into his compositions. The track transforms a narrative of loss into a punkish hyperpop meltdown, driven by a manic beat and sharp wit that underscores the artist's creative range."
+        },
+        {
+          "type": "paragraph",
+          "text": "Brady's work extends to more introspective territory with tracks like Ringtone, where he contrasts upbeat choruses with reflective verses, resulting in an emotionally complex piece that balances lightheartedness with a sense of melancholy."
+        },
+        {
+          "type": "paragraph",
+          "text": "Tracks such as 800db Cloud and Black Rum further illustrate Brady's versatility. The former is a rebellious anthem marked by distorted vocals and chaotic energy, while the latter, featuring haunting contributions from Ravenna Golden, delves into darker, more eerie soundscapes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Dylan Brady's body of work represents a multiverse of sound, where each track offers an unpredictable ride filled with emotion, humor, and innovative production techniques. His contributions continue to shape the hyperpop landscape, appealing to listeners who crave the unexpected."
+        }
+      ],
+      "monetization": []
+    },
+    "editor": {
+      "id": 1,
+      "slug": "dylan-brady-hyperpop-chaos-and-glitchy-innovation",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Dylan Brady: Hyperpop's Chaotic Architect",
+      "subtitle": "A deep dive into the glitchy, genre-defying soundscapes of Dylan Brady",
+      "author": "V. Reyes",
+      "authorRole": "Staff Writer",
+      "date": "2026-04-21",
+      "readTime": "6 min",
+      "excerpt": "Dylan Brady stands as a central figure in hyperpop's chaotic evolution, crafting unpredictable soundscapes that defy genre conventions.",
+      "featured": false,
+      "image_url": "https://gw.ipfs-lens.dev/ipfs/QmQ9UdXaYhdps2iWYekhzrCUhQ4syyaaivM7yEa18CShhi",
+      "tags": [
+        "hyperpop",
+        "dylan brady",
+        "100 gecs",
+        "glitch",
+        "experimental",
+        "collaboration"
+      ],
+      "linkedArtists": [
+        "Skrillex",
+        "Noisia",
+        "Laura Les",
+        "Ravenna Golden"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Dylan Brady emerges as a pivotal figure in the hyperpop movement, recognized for his innovative and chaotic approach to sound design. As co-founder of 100 gecs, Brady consistently pushes creative boundaries, merging glitchy textures with unpredictable rhythms to craft a distinctive sonic identity."
+        },
+        {
+          "type": "paragraph",
+          "text": "His track Supersonic (my existence) exemplifies this approach, featuring a collaboration with Skrillex and Noisia. The piece delivers an overwhelming sonic experience, blending cerebral elements with an energetic, rave-inspired drop that challenges conventional structures."
+        },
+        {
+          "type": "paragraph",
+          "text": "In Money Machine, Brady teams up with Laura Les to produce a track that embodies hyperpop's sarcastic and in-your-face energy. The distorted beats and biting lyrical delivery create a sound that is both abrasive and engaging, solidifying its place within the genre."
+        },
+        {
+          "type": "paragraph",
+          "text": "Stupid Horse showcases Brady's ability to infuse humor into his compositions. The track transforms a narrative of loss into a punkish hyperpop meltdown, driven by a manic beat and sharp wit that underscores the artist's creative range."
+        },
+        {
+          "type": "paragraph",
+          "text": "Brady's work extends to more introspective territory with tracks like Ringtone, where he contrasts upbeat choruses with reflective verses, resulting in an emotionally complex piece that balances lightheartedness with a sense of melancholy."
+        },
+        {
+          "type": "paragraph",
+          "text": "Tracks such as 800db Cloud and Black Rum further illustrate Brady's versatility. The former is a rebellious anthem marked by distorted vocals and chaotic energy, while the latter, featuring haunting contributions from Ravenna Golden, delves into darker, more eerie soundscapes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Dylan Brady's body of work represents a multiverse of sound, where each track offers an unpredictable ride filled with emotion, humor, and innovative production techniques. His contributions continue to shape the hyperpop landscape, appealing to listeners who crave the unexpected."
+        }
+      ],
+      "monetization": []
+    }
+  },
+  "review": {
+    "status": "needs_review",
+    "notes": ""
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260428054046_10db0c",
+  "tasks": [
+    {
+      "id": "job_20260428054046_10db0c__jeff-mills",
+      "jobId": "job_20260428054046_10db0c",
+      "targetKey": "artist:jeff-mills",
+      "targetType": "artist",
+      "slug": "jeff-mills-detroit-techno-pioneer",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "jeff-mills",
+        "artistName": "Jeff Mills"
+      },
+      "status": "needs_review",
+      "draftPath": "data\\editorial\\jobs\\job_20260428054046_10db0c\\articles\\job_20260428054046_10db0c__jeff-mills.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260428054046_10db0c\\articles\\job_20260428054046_10db0c__jeff-mills.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260428054046_10db0c\\articles\\job_20260428054046_10db0c__jeff-mills.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-28T05:40:55.634Z"
+    }
+  ]
+}

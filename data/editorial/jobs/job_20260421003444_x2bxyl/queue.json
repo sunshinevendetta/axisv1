@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260421003444_x2bxyl",
+  "tasks": [
+    {
+      "id": "job_20260421003444_x2bxyl__cyberreality",
+      "jobId": "job_20260421003444_x2bxyl",
+      "targetKey": "artist:cyberreality",
+      "targetType": "artist",
+      "slug": "cyberreality-industrial-ambient-electronic-profile",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "cyberreality",
+        "artistName": "Cyberreality"
+      },
+      "status": "needs_review",
+      "draftPath": "data\\editorial\\jobs\\job_20260421003444_x2bxyl\\articles\\job_20260421003444_x2bxyl__cyberreality.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421003444_x2bxyl\\articles\\job_20260421003444_x2bxyl__cyberreality.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421003444_x2bxyl\\articles\\job_20260421003444_x2bxyl__cyberreality.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-21T00:35:06.180Z"
+    }
+  ]
+}

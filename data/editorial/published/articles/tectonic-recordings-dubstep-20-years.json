@@ -1,0 +1,67 @@
+{
+  "id": 8,
+  "slug": "tectonic-recordings-dubstep-20-years",
+  "axis": "music",
+  "category": "PROFILE",
+  "contentType": "ARTICLE",
+  "mode": "ENTRY",
+  "frame": "OBSERVE",
+  "persona": "ANALYST",
+  "title": "Tectonic Recordings: 20 Years of Shaping Dubstep's Sound",
+  "subtitle": "The label's enduring influence on the genre, as highlighted in DJ Mag's 2025 feature",
+  "author": "val_rx",
+  "authorRole": "Journalist",
+  "date": "2025-12-31",
+  "readTime": "7 min",
+  "excerpt": "Tectonic Recordings has maintained its position as a driving force in dubstep for two decades, emphasizing sonic community and collective sound, as recognized in DJ Mag's 2025 feature.",
+  "featured": true,
+  "image_url": "https://example.com/tectonic-recordings.jpg",
+  "linkedArtists": [
+    "Tectonic Recordings",
+    "Pinch"
+  ],
+  "tags": [
+    "dubstep",
+    "Tectonic Recordings",
+    "DJ Mag",
+    "electronic music"
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Tectonic Recordings has stood at the forefront of dubstep for 20 years, as noted in DJ Mag's 2025 feature on the label's influence. Rob Ellis, aka Pinch, the DJ and producer behind Tectonic, says 'For me, Tectonic is about sonic community,' highlighting the label's focus on building a collective sound. This approach has allowed Tectonic to maintain its position as a driving force in the dubstep scene."
+    },
+    {
+      "type": "quote",
+      "text": "For me, Tectonic is about sonic community."
+    },
+    {
+      "type": "heading",
+      "text": "A Legacy of Sonic Community"
+    },
+    {
+      "type": "paragraph",
+      "text": "The label's influence extends beyond dubstep, shaping the wider dance music landscape. Mixmag's 2017 list of the top 50 Labels Of The Decade underscores the significance of labels like Tectonic in defining electronic music's evolution. Though not explicitly named, the feature reflects the broader impact of such entities. Tectonic's emphasis on collective creativity mirrors the dance music world's recurring theme of family and shared artistic vision, as noted in Mixmag's coverage."
+    },
+    {
+      "type": "heading",
+      "text": "Enduring Recognition"
+    },
+    {
+      "type": "paragraph",
+      "text": "DJ Mag's Best of British awards, running for 16 years, have consistently celebrated UK talent. While Tectonic was not named a winner in 2022 or 2023, the awards highlight the magazine's dedication to showcasing excellence. The 2025 feature on Tectonic's 20-year anniversary reaffirms its adaptability and steadfast commitment to core values amid a shifting musical landscape."
+    },
+    {
+      "type": "paragraph",
+      "text": "Mixmag's 2025 list of the Top 25 Producers Who Defined The Year illustrates the diversity of current dance music. Though Tectonic is not directly mentioned, the list reflects the label's indirect influence on emerging artists. As the scene evolves, Tectonic's role in inspiring new generations remains evident."
+    },
+    {
+      "type": "heading",
+      "text": "Shaping the Future"
+    },
+    {
+      "type": "paragraph",
+      "text": "Tectonic Recordings' 20-year milestone marks two decades of genre-defining work. Its focus on sonic community continues to resonate, influencing both artists and labels. As DJ Mag's 2025 feature notes, the label's impact persists, ensuring its legacy endures as dubstep and electronic music progress."
+    }
+  ]
+}

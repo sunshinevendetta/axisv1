@@ -53,7 +53,7 @@ export async function POST(request: Request) {
       metadata: {
         orderReference,
         walletAddress: body.walletAddress || "",
-        source: "spectra-arapp",
+        source: "axis-arapp",
         items: items.map((item) => ({
           id: item.drop.id,
           title: item.drop.title,

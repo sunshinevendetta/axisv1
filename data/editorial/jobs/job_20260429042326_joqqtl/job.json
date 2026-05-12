@@ -1,0 +1,25 @@
+{
+  "id": "job_20260429042326_joqqtl",
+  "mode": "single",
+  "source": "existing_db",
+  "targetType": "artist",
+  "filters": {
+    "artistSlugs": [],
+    "genre": null,
+    "scene": null,
+    "city": null,
+    "missingOnly": false
+  },
+  "count": 1,
+  "concurrency": 1,
+  "status": "completed",
+  "createdAt": "2026-04-29T04:23:26.899Z",
+  "updatedAt": "2026-04-29T04:23:40.505Z",
+  "completedAt": "2026-04-29T04:23:40.505Z",
+  "createdBy": "owner",
+  "promptProfile": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "notes": "Artist catalog generation for Noizekid"
+}

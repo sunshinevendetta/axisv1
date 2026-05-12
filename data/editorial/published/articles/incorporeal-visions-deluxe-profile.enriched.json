@@ -1,0 +1,172 @@
+{
+  "jobId": "job_20260422043312_0ut0bt",
+  "taskId": "job_20260422043312_0ut0bt__incorporeal-visions-deluxe",
+  "target": {
+    "key": "artist:incorporeal-visions-deluxe",
+    "type": "artist",
+    "name": "Incorporeal Visions Deluxe"
+  },
+  "researchPacket": {
+    "targetName": "Incorporeal Visions Deluxe",
+    "sourceMode": "existing_db",
+    "artistContext": {
+      "name": "Incorporeal Visions Deluxe",
+      "genres": [
+        "Vaporwave",
+        "Electronic",
+        "Ambient",
+        "Chillout"
+      ],
+      "tags": [
+        "japanese"
+      ],
+      "summary": "Located in Not Japan, Japan, emerging in 2014 via soundcloud, and having mysterious ties to the collective Dream Catalogue , Incorporeal Visions Deluxe brings you timeless vaporwave-esque tunes. Much of their work presumed to be lost media. Via bandcamp: https://incorporealvisionsdeluxe.bandcamp.com/ 無形ビジョンDELUXE 提示：ネットワークエンティティ 音楽はあなたの健康に貢献し、十分であることに この現代のコンピュータ時代に"
+    },
+    "genreContext": null,
+    "relatedArtists": [
+      "豊平区民TOYOHIRAKUMIN",
+      "LensCorp™ International",
+      "CYBEREALITYライフ",
+      "CVLTVRΣ",
+      "architecture in tokyo"
+    ],
+    "provenance": [
+      {
+        "type": "raw_article",
+        "value": "incorporeal-visions-deluxe"
+      },
+      {
+        "type": "music_artists",
+        "value": "content/music-artists.json"
+      },
+      {
+        "type": "artist_media_cache",
+        "value": "content/artist-media-cache.json"
+      }
+    ]
+  },
+  "promptConfig": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "modelOutput": {
+    "writer": {
+      "id": 1,
+      "slug": "incorporeal-visions-deluxe-profile",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Incorporeal Visions Deluxe: Vaporwave's Enigmatic Presence",
+      "subtitle": "Emerging from Not Japan, Japan in 2014, this artist crafts timeless vaporwave-esque soundscapes.",
+      "author": "L. Nakamura",
+      "authorRole": "Contributor",
+      "date": "2026-04-22",
+      "readTime": "4 min",
+      "excerpt": "Incorporeal Visions Deluxe is an enigmatic vaporwave artist whose work is presumed to be lost media, emerging from Not Japan, Japan in 2014.",
+      "featured": false,
+      "image_url": "https://i.scdn.co/image/ab67616d0000b27365e7d8f816c020a727832533",
+      "tags": [
+        "vaporwave",
+        "electronic",
+        "ambient",
+        "chillout",
+        "japanese",
+        "dream catalogue"
+      ],
+      "linkedArtists": [
+        "豊平区民TOYOHIRAKUMIN",
+        "LensCorp™ International",
+        "CYBEREALITYライフ",
+        "CVLTVRΣ",
+        "architecture in tokyo"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Incorporeal Visions Deluxe is an enigmatic vaporwave artist whose work is presumed to be lost media, emerging from Not Japan, Japan in 2014."
+        },
+        {
+          "type": "paragraph",
+          "text": "The artist first appeared on SoundCloud and has mysterious ties to the collective Dream Catalogue. Their music is characterized by timeless vaporwave-esque tunes that evoke a sense of nostalgia and digital decay."
+        },
+        {
+          "type": "paragraph",
+          "text": "Incorporeal Visions Deluxe's sound draws from genres such as vaporwave, electronic, ambient, and chillout. The artist's work is often associated with the Japanese vaporwave scene, though their exact location remains unclear."
+        },
+        {
+          "type": "paragraph",
+          "text": "Recent releases include the single Cyber Boy and the album Network Entities. The artist maintains a presence on Bandcamp, where their music is described as contributing to one's health in the modern computer era."
+        },
+        {
+          "type": "paragraph",
+          "text": "Incorporeal Visions Deluxe's mysterious persona and presumed lost media status contribute to their enigmatic presence in the vaporwave community. Their work continues to influence and inspire within the genre."
+        }
+      ],
+      "monetization": []
+    },
+    "editor": {
+      "id": 1,
+      "slug": "incorporeal-visions-deluxe-profile",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "ENTRY",
+      "frame": "OBSERVE",
+      "persona": "INSIDER",
+      "title": "Incorporeal Visions Deluxe: Vaporwave's Enigmatic Presence",
+      "subtitle": "Emerging from Not Japan, Japan in 2014, this artist crafts timeless vaporwave-esque soundscapes.",
+      "author": "L. Nakamura",
+      "authorRole": "Contributor",
+      "date": "2026-04-22",
+      "readTime": "4 min",
+      "excerpt": "Incorporeal Visions Deluxe is an enigmatic vaporwave artist whose work is presumed to be lost media, emerging from Not Japan, Japan in 2014.",
+      "featured": false,
+      "image_url": "https://i.scdn.co/image/ab67616d0000b27365e7d8f816c020a727832533",
+      "tags": [
+        "vaporwave",
+        "electronic",
+        "ambient",
+        "chillout",
+        "japanese",
+        "dream catalogue"
+      ],
+      "linkedArtists": [
+        "豊平区民TOYOHIRAKUMIN",
+        "LensCorp™ International",
+        "CYBEREALITYライフ",
+        "CVLTVRΣ",
+        "architecture in tokyo"
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Incorporeal Visions Deluxe is an enigmatic vaporwave artist whose work is presumed to be lost media, emerging from Not Japan, Japan in 2014."
+        },
+        {
+          "type": "paragraph",
+          "text": "The artist first appeared on SoundCloud and has mysterious ties to the collective Dream Catalogue. Their music is characterized by timeless vaporwave-esque tunes that evoke a sense of nostalgia and digital decay."
+        },
+        {
+          "type": "paragraph",
+          "text": "Incorporeal Visions Deluxe's sound draws from genres such as vaporwave, electronic, ambient, and chillout. The artist's work is often associated with the Japanese vaporwave scene, though their exact location remains unclear."
+        },
+        {
+          "type": "paragraph",
+          "text": "Recent releases include the single Cyber Boy and the album Network Entities. The artist maintains a presence on Bandcamp, where their music is described as contributing to one's health in the modern computer era."
+        },
+        {
+          "type": "paragraph",
+          "text": "Incorporeal Visions Deluxe's mysterious persona and presumed lost media status contribute to their enigmatic presence in the vaporwave community. Their work continues to influence and inspire within the genre."
+        }
+      ],
+      "monetization": []
+    }
+  },
+  "review": {
+    "status": "needs_review",
+    "notes": ""
+  }
+}

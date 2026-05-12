@@ -1,4 +1,4 @@
-export type SpectraEvent = {
+export type AxisEvent = {
   id: string;
   title: string;
   startsAtISO: string;
@@ -10,7 +10,7 @@ export type SpectraEvent = {
   status: "upcoming" | "live" | "ended";
 };
 
-export function normalizeLumaEvent(luma: any): SpectraEvent {
+export function normalizeLumaEvent(luma: any): AxisEvent {
   const startsAtISO = luma.start_at || luma.startAt;
   const endsAtISO = luma.end_at || luma.endAt;
 
@@ -133,3 +133,4 @@ export async function resolveLumaEvent(reference: string): Promise<LumaResolvedE
     summary: toSummary(description),
   };
 }
+

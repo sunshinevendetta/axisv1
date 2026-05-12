@@ -1,7 +1,7 @@
-const address = process.env.NEXT_PUBLIC_SPECTRAFORM_ADDRESS;
+const address = process.env.NEXT_PUBLIC_AXISFORM_ADDRESS;
 
 if (!address) {
-  throw new Error('NEXT_PUBLIC_SPECTRAFORM_ADDRESS is missing in .env');
+  throw new Error('NEXT_PUBLIC_AXISFORM_ADDRESS is missing in .env');
 }
 
-export const SPECTRAFORM_ADDRESS = address as `0x${string}`;
+export const AXISFORM_ADDRESS = address as `0x${string}`;

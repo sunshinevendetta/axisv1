@@ -1,0 +1,62 @@
+{
+  "jobId": "job_20260421033007_5eo4u8",
+  "taskId": "job_20260421033007_5eo4u8__toyohirakumin",
+  "targetKey": "artist:toyohirakumin",
+  "article": {
+    "id": 1,
+    "slug": "toyohirakumin-vaporwave-jazz-chillout-profile",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "ANALYST",
+    "title": "豊平区民TOYOHIRAKUMIN: Vaporwave, Jazz, and Chillout Synthesis",
+    "subtitle": "A profile of the Japanese electronic artist blending vaporwave, jazz, and lounge aesthetics.",
+    "author": "C. Mora",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-21",
+    "readTime": "3 min",
+    "excerpt": "豊平区民TOYOHIRAKUMIN crafts a distinctive sound by merging vaporwave, jazz, and chillout elements into a cohesive, lounge-inspired aesthetic.",
+    "featured": false,
+    "image_url": "https://i.scdn.co/image/ab67616d0000b273fd8a41748e9d3d1f55aa72d4",
+    "tags": [
+      "vaporwave",
+      "jazz",
+      "chillout",
+      "japanese",
+      "lounge",
+      "electronic"
+    ],
+    "linkedArtists": [
+      "trushinitas",
+      "CYBEREALITYライフ",
+      "Ｏｃｅａｎ Ｓｈｏｒｅｓ",
+      "bbrainz",
+      "Incorporeal Visions Deluxe"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "豊平区民TOYOHIRAKUMIN is an electronic artist whose work is characterized by a fusion of vaporwave, jazz, and chillout influences. The artist’s sound is further defined by a distinct lounge sensibility, creating a unique sonic identity within the electronic music landscape."
+      },
+      {
+        "type": "paragraph",
+        "text": "Drawing from a palette that includes vintage synthesizers and sampled textures, 豊平区民TOYOHIRAKUMIN’s compositions evoke a sense of retro-futurism. This approach is complemented by a relaxed, atmospheric production style that invites listeners into a contemplative auditory space."
+      },
+      {
+        "type": "paragraph",
+        "text": "The artist’s discography includes several notable releases such as DRIVE, オーロラ・タウン, Into the Wild, and Music in the Air. These albums demonstrate a consistent exploration of ambient and downtempo soundscapes, often layered with subtle jazz motifs and vaporwave-inspired electronic elements."
+      },
+      {
+        "type": "paragraph",
+        "text": "豊平区民TOYOHIRAKUMIN’s work resonates with a community of listeners who appreciate the intersection of experimental electronic music and traditional jazz textures. The artist’s sound is further contextualized by associations with similar acts in the scene, reinforcing a shared aesthetic among like-minded producers."
+      },
+      {
+        "type": "paragraph",
+        "text": "While the artist’s catalog does not currently feature indexed tracks, the overall body of work provides a rich tapestry of sound that continues to evolve. This evolution is marked by a careful balance between nostalgic influences and contemporary electronic production techniques."
+      }
+    ],
+    "monetization": []
+  }
+}

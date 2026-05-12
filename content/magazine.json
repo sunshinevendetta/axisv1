@@ -27,7 +27,7 @@
   },
   {
     "id": 2,
-    "slug": "spectra-40-mexico-city-march-2026",
+    "slug": "axis-40-mexico-city-march-2026",
     "category": "NEWS",
     "title": "AXIS 4.0 Confirmed for Mexico City, March 21",
     "subtitle": "The fourth edition marks the most ambitious program in the series history",
@@ -131,7 +131,7 @@
     "readTime": "6 min",
     "excerpt": "AXIS Episode III ran four hours over schedule. Nobody complained. This is a report from inside.",
     "featured": false,
-    "linkedArtists": ["Sunshine Vendetta", "Mami Pistola"],
+    "linkedArtists": ["Sunshine Vendetta"],
     "tags": ["event", "recap", "CDMX", "Episode III", "music"],
     "content": [
       { "type": "paragraph", "text": "The address came through at 17:48, twelve minutes before the announced start time. By then, most people were already nearby, circling the block in the way you circle something you can't quite identify. The space was a warehouse in Colonia Industrial — 800 square meters of concrete, bad lighting, and a loading dock that had been converted into a secondary stage." },
@@ -139,7 +139,6 @@
       { "type": "heading", "text": "The Music" },
       { "type": "paragraph", "text": "Omarov opened. His set — an hour of layered percussion and sampled speech — established the pace. Not fast, not exactly slow, but relentless. Sunshine Vendetta followed with something closer to ambient techno: structured enough to be legible, diffuse enough to work against the space's industrial hardness." },
       { "type": "quote", "text": "The best part was watching people decide whether they were listening or dancing. Most of them were doing both, badly, which is how it should be." },
-      { "type": "paragraph", "text": "Mami Pistola closed the main stage at 2:30. Her set drew from recordings made in transit — airports, terminals, the interior of buses — and reprocessed them into something unmistakably local. The samples sat inside the live synthesis like objects inside water, visible but changed." },
       { "type": "paragraph", "text": "The installations ran throughout. One piece — a screen mounted at floor level, showing code executing in real time — stopped working for twenty minutes around 1:00 AM. The crowd gathered anyway. Watching a broken installation try to fix itself is, it turns out, more interesting than watching it work." }
     ]
   },
@@ -168,26 +167,158 @@
   },
   {
     "id": 8,
-    "slug": "mami-pistola-transit-sounds",
-    "category": "INTERVIEW",
-    "title": "Mami Pistola: Sounds Collected in Transit",
-    "subtitle": "The producer on field recording, airports, and why she never uses headphones on planes",
-    "author": "AXIS Editorial",
-    "authorRole": "Staff Writer",
-    "date": "2026-02-10",
+    "slug": "tectonic-recordings-dubstep-20-years",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "ANALYST",
+    "title": "Tectonic Recordings: 20 Years of Shaping Dubstep's Sound",
+    "subtitle": "The label's enduring influence on the genre, as highlighted in DJ Mag's 2025 feature",
+    "author": "val_rx",
+    "authorRole": "Journalist",
+    "date": "2025-12-31",
     "readTime": "7 min",
-    "excerpt": "Mami Pistola records everything. Every taxi, every terminal, every moment of waiting. 'The world is always making music,' she says. 'I just keep the receipts.'",
-    "featured": false,
-    "linkedArtists": ["Mami Pistola"],
-    "tags": ["interview", "music", "field recording", "electronic", "production"],
+    "excerpt": "Tectonic Recordings has maintained its position as a driving force in dubstep for two decades, emphasizing sonic community and collective sound, as recognized in DJ Mag's 2025 feature.",
+    "featured": true,
+    "image_url": "https://example.com/tectonic-recordings.jpg",
+    "linkedArtists": [
+      "Tectonic Recordings",
+      "Pinch"
+    ],
+    "tags": [
+      "dubstep",
+      "Tectonic Recordings",
+      "DJ Mag",
+      "electronic music"
+    ],
     "content": [
-      { "type": "paragraph", "text": "The phone is always out, always recording. That is the first thing you notice about Mami Pistola — or rather, the first thing she tells you about herself before you notice anything else. 'I record everything,' she says. 'Taxi rides. Waiting rooms. Arguments I'm not involved in. The sound a refrigerator makes at 3 AM.' She pauses. 'Some of it ends up in the music.'" },
-      { "type": "paragraph", "text": "Her set at AXIS Episode III used source material collected across four countries over two years. You couldn't tell — that was the point. The recorded environments became texture, became rhythm, became the grain of the synthesis against which her live processing ran. The transit sounds were there, but they had become something else." },
-      { "type": "heading", "text": "On Field Recording" },
-      { "type": "paragraph", "text": "'People think field recording is romantic,' she says. 'The lone artist with the microphone, capturing the authentic voice of a place. That's a fantasy. What I'm doing is editorial. I record ten hours and use forty seconds. The forty seconds I choose says more about me than about where I was.'" },
-      { "type": "quote", "text": "The world is always making music. I just keep the receipts. What I do with the receipts — that's the work." },
-      { "type": "paragraph", "text": "She plays me three minutes of the source recording from Mexico City's Benito Juárez airport — baggage claim, Terminal 2, a Tuesday afternoon. It is chaotic and somehow rhythmic. There is a recurrence to the announcements. There is a percussion in the bag wheels. I can hear, dimly, what she hears." },
-      { "type": "paragraph", "text": "'I don't use headphones on planes,' she says. 'Everyone thinks I'm crazy. But the plane is the most interesting sound environment. Three hundred people in a metal tube at 35,000 feet, all pretending they're comfortable. The whole thing vibrates. You can feel it if you pay attention.'" }
+      {
+        "type": "paragraph",
+        "text": "Tectonic Recordings has stood at the forefront of dubstep for 20 years, as noted in DJ Mag's 2025 feature on the label's influence. Rob Ellis, aka Pinch, the DJ and producer behind Tectonic, says 'For me, Tectonic is about sonic community,' highlighting the label's focus on building a collective sound. This approach has allowed Tectonic to maintain its position as a driving force in the dubstep scene."
+      },
+      {
+        "type": "quote",
+        "text": "For me, Tectonic is about sonic community."
+      },
+      {
+        "type": "heading",
+        "text": "A Legacy of Sonic Community"
+      },
+      {
+        "type": "paragraph",
+        "text": "The label's influence extends beyond dubstep, shaping the wider dance music landscape. Mixmag's 2017 list of the top 50 Labels Of The Decade underscores the significance of labels like Tectonic in defining electronic music's evolution. Though not explicitly named, the feature reflects the broader impact of such entities. Tectonic's emphasis on collective creativity mirrors the dance music world's recurring theme of family and shared artistic vision, as noted in Mixmag's coverage."
+      },
+      {
+        "type": "heading",
+        "text": "Enduring Recognition"
+      },
+      {
+        "type": "paragraph",
+        "text": "DJ Mag's Best of British awards, running for 16 years, have consistently celebrated UK talent. While Tectonic was not named a winner in 2022 or 2023, the awards highlight the magazine's dedication to showcasing excellence. The 2025 feature on Tectonic's 20-year anniversary reaffirms its adaptability and steadfast commitment to core values amid a shifting musical landscape."
+      },
+      {
+        "type": "paragraph",
+        "text": "Mixmag's 2025 list of the Top 25 Producers Who Defined The Year illustrates the diversity of current dance music. Though Tectonic is not directly mentioned, the list reflects the label's indirect influence on emerging artists. As the scene evolves, Tectonic's role in inspiring new generations remains evident."
+      },
+      {
+        "type": "heading",
+        "text": "Shaping the Future"
+      },
+      {
+        "type": "paragraph",
+        "text": "Tectonic Recordings' 20-year milestone marks two decades of genre-defining work. Its focus on sonic community continues to resonate, influencing both artists and labels. As DJ Mag's 2025 feature notes, the label's impact persists, ensuring its legacy endures as dubstep and electronic music progress."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "slug": "skee-mask-architect-of-sound",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "ANALYST",
+    "title": "Skee Mask and the Architecture of Sound",
+    "subtitle": "How Ilian Tape’s Visionary Producer Reshapes the Spaces His Music Occupies",
+    "author": "calprice",
+    "authorRole": "Journalist",
+    "date": "2025-12-31",
+    "readTime": "5 min",
+    "excerpt": "You walk into a room where the bass is not just heard but held. The air is thick with it, a physical presence that presses against your chest and lingers in your throat. This is the kind of space Skee Mask’s music demands.",
+    "featured": false,
+    "image_url": "",
+    "linkedArtists": [
+      "Skee Mask",
+      "Ilian Tape"
+    ],
+    "tags": [
+      "Skee Mask",
+      "Ilian Tape",
+      "Electronic Music",
+      "Sound Design",
+      "808BB",
+      "Compro"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "You walk into a room where the bass is not just heard but held. The air is thick with it, a physical presence that presses against your chest and lingers in your throat. This is the kind of space Skee Mask’s music demands, one where the speakers are not just equipment but participants, where the room itself becomes part of the composition."
+      },
+      {
+        "type": "paragraph",
+        "text": "His work on Ilian Tape has never been about fitting into a scene. It has been about reshaping the room to suit the sound, not the other way around. Ilian Tape, the label that has released some of Skee Mask’s most defining work, was voted into Mixmag’s *Top 50 Labels Of The Decade* in 2017. The write-up called it a family, a group of artists who found creative common ground and treated each other’s art with the kind of respect that borders on kinship."
+      },
+      {
+        "type": "paragraph",
+        "text": "That word, family, carries weight in electronic music, where scenes often fracture under the pressure of trends and egos. But Ilian Tape has always operated differently. It is not a label that chases the next big thing. It is a label that builds its own rooms, brick by brick, release by release. Skee Mask’s *808BB* and *Compro* are two of those bricks."
+      },
+      {
+        "type": "paragraph",
+        "text": "Both EPs arrived on Ilian Tape, both carrying the hallmarks of his production: jagged rhythms that refuse to settle, synths that sound like they’re being pulled apart and reassembled in real time, basslines that coil and strike without warning. You hear *808BB* and you think of a room where the floor is not level, where the walls lean in at odd angles, where the dancers are not just moving but recalibrating their balance with every beat."
+      },
+      {
+        "type": "paragraph",
+        "text": "*Compro* does something similar, but darker. The rhythms are tighter, the textures more abrasive. It is music that does not ask for your attention, it demands it, then repays it with something unsettling and precise. What makes Skee Mask’s work stand out is not just the technical skill, though there is plenty of that. It is the way his tracks feel like they are in conversation with the room itself."
+      },
+      {
+        "type": "paragraph",
+        "text": "Electronic music is often discussed in terms of its ability to transcend space, to be played anywhere, to sound the same in a Berlin club as it does in a Melbourne warehouse. But Skee Mask’s productions resist that kind of portability. They are site-specific, not in the literal sense, but in the way they interact with the environment they’re played in. A track like *M3* from *Compro* feels like it is testing the limits of the speakers, pushing them to their breaking point, then pulling back just before they give out."
+      },
+      {
+        "type": "paragraph",
+        "text": "This approach has not gone unnoticed. In 2025, Mixmag named Skee Mask one of *The Top 25 Producers Who Defined The Year*. The write-up described his work as an existential threat to the culture industries, not because it seeks to destroy, but because it refuses to conform. That refusal is not a gimmick. It is a condition of the music itself. Skee Mask’s tracks do not perform for the rooms they are played in. They reshape those rooms to fit their own logic."
+      },
+      {
+        "type": "paragraph",
+        "text": "You hear it in the way *808BB*’s rhythms stutter and restart, as if the track itself is figuring out its own structure in real time. You hear it in the way *Compro*’s basslines feel like they are tunneling through the floor, searching for something just out of reach. This is not music that arrives fully formed. It is music that evolves in the listening, that reveals itself slowly, like a room coming into focus as your eyes adjust to the dark."
+      },
+      {
+        "type": "paragraph",
+        "text": "That patience is part of what makes Skee Mask’s work endure. In an era where electronic music is often reduced to algorithms and playlists, his tracks feel like they are being built in front of you. They are not just played, they are performed, even when no one is behind the decks. Ilian Tape’s influence extends beyond its own releases. The label’s ethos, its emphasis on creative common ground, its refusal to chase trends, has seeped into the broader electronic music landscape."
+      },
+      {
+        "type": "paragraph",
+        "text": "You hear it in the way younger producers approach rhythm, in the way they treat bass not as a foundation but as a living, breathing element of the track. You hear it in the way rooms are being designed now, not just as spaces to play music, but as spaces to experience it. Skee Mask’s work is part of that shift. It is not just a sound, it is a way of thinking about what music can do when it stops trying to please the room and starts trying to change it."
+      },
+      {
+        "type": "paragraph",
+        "text": "That change is not always comfortable. Skee Mask’s tracks do not offer easy resolutions. They do not wrap up neatly at the end of four minutes. They leave you with a sense of something unfinished, something still unfolding. That is by design. Electronic music has always been about movement, about the way sound can push a room forward. But Skee Mask’s work is about something more specific: the way sound can make a room feel like it is tilting, like the ground beneath your feet is not as stable as it seemed."
+      },
+      {
+        "type": "paragraph",
+        "text": "In 2025, Mixmag’s *Top 25 Producers Who Defined The Year* list framed Skee Mask’s work as part of a broader conversation about the future of electronic music. The write-up asked whether the culture industries could survive their own existential threats, streaming algorithms, homogenization, the erosion of physical spaces. Skee Mask’s answer, embedded in his productions, is clear: the future of electronic music is not in its ability to adapt to the room, but in its ability to remake the room in its own image."
+      },
+      {
+        "type": "paragraph",
+        "text": "His tracks are not just played, they are inhabited. They do not just fill a space, they redefine it. That redefinition is not limited to the clubs and warehouses where his music is played. It extends to the way we think about production itself. Skee Mask’s work is a reminder that electronic music is not just about sound, it is about space, about the way sound occupies and transforms the environment it is played in. His tracks do not just exist in a room, they reshape it, they challenge it, they make it new."
+      },
+      {
+        "type": "paragraph",
+        "text": "That is why his work on Ilian Tape matters. It is not just music, it is a blueprint for how to build something that lasts."
+      }
     ]
   }
 ]

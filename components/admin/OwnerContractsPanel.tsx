@@ -73,7 +73,7 @@ type DeployTrack = "artwork" | "legacy";
 const emptySession: SessionState = { authenticated: false, configured: false, subject: null };
 const emptyStatus: ServerStatus = {
   deployReady: false, writeReady: false, adminReady: false,
-  defaults: { contractAddress: "", adminAddress: "", initialMinterAddress: "", baseUri: "ipfs://spectra-owner-access/{id}.json", contractMetadataUri: "ipfs://spectra-owner-access/contract.json", deployRpcUrl: "", ownerTokenGate: "" },
+  defaults: { contractAddress: "", adminAddress: "", initialMinterAddress: "", baseUri: "ipfs://axis-owner-access/{id}.json", contractMetadataUri: "ipfs://axis-owner-access/contract.json", deployRpcUrl: "", ownerTokenGate: "" },
   missing: { deploy: [], mint: [], admin: [] },
 };
 const emptyProvider = (): VerificationProvider => ({ status: "idle", message: "Waiting for deployment." });
@@ -89,7 +89,7 @@ const emptyDeployments = (): Deployments => ({
   founderMembership: emptyRecord(),
   eventRegistry: emptyRecord(),
 });
-const storageKey = "spectra-deployment-hq-v3";
+const storageKey = "axis-deployment-hq-v3";
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -219,8 +219,8 @@ export default function OwnerContractsPanel() {
   // ── Legacy track forms ──
   const [ownerAccessForm, setOwnerAccessForm] = useState({
     adminAddress: "", initialMinterAddress: "",
-    baseUri: "ipfs://spectra-owner-access/{id}.json",
-    contractMetadataUri: "ipfs://spectra-owner-access/contract.json",
+    baseUri: "ipfs://axis-owner-access/{id}.json",
+    contractMetadataUri: "ipfs://axis-owner-access/contract.json",
   });
   const [submissionAdmin, setSubmissionAdmin] = useState("");
   const [founderForm, setFounderForm] = useState({
@@ -268,6 +268,10 @@ export default function OwnerContractsPanel() {
   const { connect, connectors, isPending: isConnecting } = useConnect();
   const { disconnect } = useDisconnect();
   const { signMessageAsync } = useSignMessage();
+  const [ownerToken, setOwnerToken] = useState<string | null>(null);
+  function authHeaders(): HeadersInit {
+    return ownerToken ? { Authorization: `Bearer ${ownerToken}` } : {};
+  }
   const { switchChainAsync, isPending: isSwitchingChain } = useSwitchChain();
   const { deployContractAsync, isPending: isDeploying } = useDeployContract();
   const { writeContractAsync, isPending: isWriting } = useWriteContract();
@@ -277,7 +281,7 @@ export default function OwnerContractsPanel() {
   const artworkDeployedCount = useMemo(() => artworkDeploymentSteps.filter((k) => Boolean(deployments[k].address)).length, [deployments]);
   const legacyDeployedCount = useMemo(() => legacyDeploymentSteps.filter((k) => Boolean(deployments[k].address)).length, [deployments]);
   const totalDeployedCount = artworkDeployedCount + legacyDeployedCount;
-  const verifiedCount = useMemo(() => [...artworkDeploymentSteps, ...legacyDeploymentSteps].filter((k) => deployments[k].verification.basescan.status === "verified" || deployments[k].verification.blockscout.status === "verified").length, [deployments]);
+  void useMemo(() => [...artworkDeploymentSteps, ...legacyDeploymentSteps].filter((k) => deployments[k].verification.basescan.status === "verified" || deployments[k].verification.blockscout.status === "verified").length, [deployments]);
   const artworkStackReady = artworkDeployedCount === artworkDeploymentSteps.length;
   const hasSavedProgress = totalDeployedCount > 0 || activity.length > 0;
   const selectedEpisodeRecord = useMemo(
@@ -307,8 +311,8 @@ export default function OwnerContractsPanel() {
 
   // Env previews
   const artworkEnvPreview = useMemo(() => [
-    `SPECTRA_SEASON_REGISTRY_ADDRESS=${deployments.seasonRegistry.address}`,
-    `SPECTRA_EPISODE_CONTRACT_ADDRESS=${deployments.episodeContract.address}`,
+    `AXIS_SEASON_REGISTRY_ADDRESS=${deployments.seasonRegistry.address}`,
+    `AXIS_EPISODE_CONTRACT_ADDRESS=${deployments.episodeContract.address}`,
   ].join("\n"), [deployments]);
   const bootstrapEnvPreview = useMemo(() => [
     "EPISODES_ADMIN_SESSION_SECRET=<set-a-long-random-secret>",
@@ -326,9 +330,9 @@ export default function OwnerContractsPanel() {
   ].join("\n"), [deployments.ownerAccess.address, selectedChainId]);
   const legacyEnvPreview = useMemo(() => [
     `OWNER_ACCESS_CONTRACT_ADDRESS=${deployments.ownerAccess.address}`,
-    `SPECTRA_SUBMISSION_REGISTRY_ADDRESS=${deployments.submissionRegistry.address}`,
-    `SPECTRA_FOUNDER_MEMBERSHIP_ADDRESS=${deployments.founderMembership.address}`,
-    `SPECTRA_EVENT_ACCESS_REGISTRY_ADDRESS=${deployments.eventRegistry.address}`,
+    `AXIS_SUBMISSION_REGISTRY_ADDRESS=${deployments.submissionRegistry.address}`,
+    `AXIS_FOUNDER_MEMBERSHIP_ADDRESS=${deployments.founderMembership.address}`,
+    `AXIS_EVENT_ACCESS_REGISTRY_ADDRESS=${deployments.eventRegistry.address}`,
   ].join("\n"), [deployments]);
   const paymasterEnvPreview = useMemo(() => [
     "NEXT_PUBLIC_PAYMASTER_URL=/api/paymaster",
@@ -407,7 +411,7 @@ export default function OwnerContractsPanel() {
   }
 
   async function refreshManagedCatalog() {
-    const response = await fetch("/api/admin/collectibles", { cache: "no-store" });
+    const response = await fetch("/api/admin/collectibles", { cache: "no-store", headers: authHeaders() });
     if (!response.ok) {
       throw new Error("Failed to load live episode contracts.");
     }
@@ -420,7 +424,7 @@ export default function OwnerContractsPanel() {
   async function saveManagedEpisode(nextEpisode: EpisodeCollectibleRecord, successMessage: string) {
     const response = await fetch("/api/admin/collectibles", {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", ...authHeaders() },
       body: JSON.stringify({ episode: nextEpisode }),
     });
     const data = (await response.json()) as { episode?: EpisodeCollectibleRecord; episodes?: EpisodeCollectibleRecord[]; error?: string };
@@ -521,15 +525,15 @@ export default function OwnerContractsPanel() {
   // ── Auto-copy env after deploy ──
   async function autoCopyEnvAfterDeploy(key: DeploymentContractKey, addr: string) {
     const lines: string[] = [];
-    if (key === "seasonRegistry") lines.push(`SPECTRA_SEASON_REGISTRY_ADDRESS=${addr}`);
-    else if (key === "episodeContract") lines.push(`SPECTRA_EPISODE_CONTRACT_ADDRESS=${addr}`);
+    if (key === "seasonRegistry") lines.push(`AXIS_SEASON_REGISTRY_ADDRESS=${addr}`);
+    else if (key === "episodeContract") lines.push(`AXIS_EPISODE_CONTRACT_ADDRESS=${addr}`);
     else if (key === "ownerAccess") {
       lines.push(`OWNER_ACCESS_CONTRACT_ADDRESS=${addr}`);
       lines.push(`EPISODES_OWNER_ERC1155_ADDRESS=${addr}`);
       lines.push(`EPISODES_OWNER_ERC1155_TOKEN_ID=1,2`);
-    } else if (key === "submissionRegistry") lines.push(`SPECTRA_SUBMISSION_REGISTRY_ADDRESS=${addr}`);
-    else if (key === "founderMembership") lines.push(`SPECTRA_FOUNDER_MEMBERSHIP_ADDRESS=${addr}`);
-    else lines.push(`SPECTRA_EVENT_ACCESS_REGISTRY_ADDRESS=${addr}`);
+    } else if (key === "submissionRegistry") lines.push(`AXIS_SUBMISSION_REGISTRY_ADDRESS=${addr}`);
+    else if (key === "founderMembership") lines.push(`AXIS_FOUNDER_MEMBERSHIP_ADDRESS=${addr}`);
+    else lines.push(`AXIS_EVENT_ACCESS_REGISTRY_ADDRESS=${addr}`);
     try {
       await navigator.clipboard.writeText(lines.join("\n"));
       push(`Env vars for ${deploymentLabels[key]} auto-copied to clipboard.`, "success");
@@ -552,7 +556,7 @@ export default function OwnerContractsPanel() {
           }]),
         ),
       };
-      const response = await fetch("/api/admin/contracts/manifest", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+      const response = await fetch("/api/admin/contracts/manifest", { method: "POST", headers: { "Content-Type": "application/json", ...authHeaders() }, body: JSON.stringify(payload) });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Failed to save manifest.");
       push(`deployments.json saved. Run \`npm run env:sync\` to patch .env.`, "success");
@@ -570,7 +574,7 @@ export default function OwnerContractsPanel() {
         for (const slug of slugs) {
           const response = await fetch("/api/admin/artists/zora-sync", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", ...authHeaders() },
             body: JSON.stringify({ slug }),
           });
           const data = await response.json();
@@ -590,7 +594,7 @@ export default function OwnerContractsPanel() {
       } else {
         const response = await fetch("/api/admin/artists/zora-sync", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", ...authHeaders() },
           body: JSON.stringify({ scope: "all" }),
         });
         const data = await response.json();
@@ -640,7 +644,7 @@ export default function OwnerContractsPanel() {
     setVerifyingKey(key);
     patchDeployment(key, { verification: { basescan: { status: "pending", message: "Submitting to BaseScan..." }, blockscout: { status: "pending", message: "Submitting to Blockscout..." } } });
     try {
-      const response = await fetch("/api/admin/contracts/verify", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ address: verifyAddress, chainId, contractKey: key, constructorArgs: args }, storageReplacer) });
+      const response = await fetch("/api/admin/contracts/verify", { method: "POST", headers: { "Content-Type": "application/json", ...authHeaders() }, body: JSON.stringify({ address: verifyAddress, chainId, contractKey: key, constructorArgs: args }, storageReplacer) });
       const data = await response.json();
       if (!response.ok || !data.results) throw new Error(data.error || "Verification failed.");
       patchDeployment(key, { verification: data.results });
@@ -685,7 +689,7 @@ export default function OwnerContractsPanel() {
 
   // ── Server action ──
   async function handleServerAction(payload: Record<string, string>) {
-    const response = await fetch("/api/admin/contracts/owner-access", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+    const response = await fetch("/api/admin/contracts/owner-access", { method: "POST", headers: { "Content-Type": "application/json", ...authHeaders() }, body: JSON.stringify(payload) });
     const data = await response.json();
     if (!response.ok) throw new Error(data.error || "Server action failed.");
     if (data.contractAddress) {
@@ -750,15 +754,23 @@ export default function OwnerContractsPanel() {
   // ── Auth ──
   async function handleWalletLogin() {
     if (!address) return push("Connect a wallet first.", "warning");
-    const challengeResponse = await fetch("/api/admin/session", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mode: "challenge", address }) });
-    const challengeData = await challengeResponse.json();
-    if (!challengeResponse.ok || !challengeData.message) return push(challengeData.error || "Failed to create wallet challenge.", "danger");
-    const signature = await signMessageAsync({ message: challengeData.message });
-    const verifyResponse = await fetch("/api/admin/session", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mode: "wallet", address, signature }) });
-    const verifyData = await verifyResponse.json();
-    if (!verifyResponse.ok) return push(verifyData.error || "Wallet sign-in failed.", "danger");
-    setSession((c) => ({ ...c, authenticated: true, subject: `wallet:${address}` }));
-    push("Wallet verified. Deployment HQ unlocked.", "success");
+    try {
+      const timestamp = Date.now();
+      const message = `AXIS owner access\nAddress: ${address}\nTimestamp: ${timestamp}`;
+      const signature = await signMessageAsync({ message });
+      const res = await fetch("/api/admin/session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ address, signature, timestamp }),
+      });
+      const data = (await res.json()) as { token?: string; error?: string };
+      if (!res.ok || !data.token) return push(data.error ?? "Sign-in failed.", "danger");
+      setOwnerToken(data.token);
+      setSession((c) => ({ ...c, authenticated: true, subject: `wallet:${address}` }));
+      push("Wallet verified. Deployment HQ unlocked.", "success");
+    } catch (e) {
+      push(e instanceof Error ? e.message : "Sign failed.", "danger");
+    }
   }
 
   // ── Reset ──
@@ -776,7 +788,7 @@ export default function OwnerContractsPanel() {
     const d = serverStatus.defaults;
     setSeasonRegistryForm({ admin: d.adminAddress || "", seasonId: "1", seasonName: "AXIS Season 1" });
     setEpisodeForm({ admin: d.adminAddress || "", name: "", symbol: "", seasonId: "1", episodeNumber: "1", baseUri: "", contractMetadataUri: "" });
-    setOwnerAccessForm({ adminAddress: d.adminAddress || "", initialMinterAddress: d.initialMinterAddress || "", baseUri: d.baseUri || "ipfs://spectra-owner-access/{id}.json", contractMetadataUri: d.contractMetadataUri || "ipfs://spectra-owner-access/contract.json" });
+    setOwnerAccessForm({ adminAddress: d.adminAddress || "", initialMinterAddress: d.initialMinterAddress || "", baseUri: d.baseUri || "ipfs://axis-owner-access/{id}.json", contractMetadataUri: d.contractMetadataUri || "ipfs://axis-owner-access/contract.json" });
     setSubmissionAdmin(d.adminAddress || "");
     setFounderForm({ adminAddress: d.adminAddress || "", submissionRegistryAddress: "", baseUri: defaultFounderBaseUri, contractMetadataUri: defaultFounderContractMetadataUri, maxSupply: "333" });
     setEventAdmin(d.adminAddress || "");
@@ -803,7 +815,7 @@ export default function OwnerContractsPanel() {
       if (typeof stored.submissionAdmin === "string") setSubmissionAdmin(stored.submissionAdmin);
       if (stored.founderForm) setFounderForm((c) => ({ ...c, ...stored.founderForm }));
       if (typeof stored.eventAdmin === "string") setEventAdmin(stored.eventAdmin);
-      if (typeof stored.paymasterAddress === "string") setPaymasterAddress(stored.paymasterAddress);
+      if (typeof (stored as Record<string, unknown>).paymasterAddress === "string") setPaymasterAddress((stored as Record<string, unknown>).paymasterAddress as string);
       if (stored.activity) setActivity(stored.activity);
     } catch {}
   }, []);
@@ -912,12 +924,7 @@ export default function OwnerContractsPanel() {
     window.localStorage.setItem(storageKey, JSON.stringify({ deployments, seasonRegistryForm, episodeForm, ownerAccessForm, submissionAdmin, founderForm, eventAdmin, paymasterAddress, activity }, storageReplacer));
   }, [activity, deployments, seasonRegistryForm, episodeForm, ownerAccessForm, submissionAdmin, founderForm, eventAdmin, paymasterAddress]);
 
-  useEffect(() => {
-    void fetch("/api/admin/session", { cache: "no-store" }).then(async (r) => {
-      if (!r.ok) throw new Error("Failed to load session.");
-      setSession((await r.json()) as SessionState);
-    }).catch((e) => push(e instanceof Error ? e.message : "Failed to load session.", "danger"));
-  }, []);
+  // No server-side session to check — auth is stateless via signed token
 
   useEffect(() => {
     if (!session.authenticated) {
@@ -1267,9 +1274,9 @@ export default function OwnerContractsPanel() {
               </p>
             </div>
             <button
-              onClick={async () => {
-                await fetch("/api/admin/session", { method: "DELETE" });
+              onClick={() => {
                 disconnect();
+                setOwnerToken(null);
                 setSession((c) => ({ ...c, authenticated: false, subject: null }));
               }}
               className={glow(false, false)}
@@ -2406,7 +2413,7 @@ export default function OwnerContractsPanel() {
                 <button
                   onClick={() => {
                     const log = JSON.stringify({ generatedAt: new Date().toISOString(), chain: { id: selectedChainId, ...deploymentChainMeta[selectedChainId] }, activity, contracts: Object.fromEntries([...artworkDeploymentSteps, ...legacyDeploymentSteps].map((k) => [k, { label: deploymentLabels[k], address: deployments[k].address, txHash: deployments[k].txHash, deployedAt: deployments[k].deployedAt, verification: deployments[k].verification }])) }, storageReplacer, 2);
-                    downloadText(`spectra-deploy-log-${Date.now()}.json`, log, "application/json");
+                    downloadText(`axis-deploy-log-${Date.now()}.json`, log, "application/json");
                     push("Deployment log downloaded.", "success");
                   }}
                   className={glow(Boolean(totalDeployedCount || activity.length), false)}

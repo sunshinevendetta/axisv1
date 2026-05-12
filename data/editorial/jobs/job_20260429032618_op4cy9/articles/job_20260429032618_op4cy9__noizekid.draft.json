@@ -1,0 +1,60 @@
+{
+  "jobId": "job_20260429032618_op4cy9",
+  "taskId": "job_20260429032618_op4cy9__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborator with DJ Snake, Bad Bunny, and Major Lazer",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for his work with prominent industry figures and his own sample pack release.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "sample pack"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer recognized for his collaborations with prominent figures in the music industry. His work has intersected with the likes of DJ Snake, Bad Bunny, and Major Lazer, establishing him as a notable contributor within these genres."
+      },
+      {
+        "type": "paragraph",
+        "text": "In addition to his production work, Noizekid has released the 'Noizekid Sample Pack' in collaboration with Barnation. This pack includes an extensive collection of his samples, loops, and drums, offering a glimpse into the sonic toolkit he employs across his productions."
+      },
+      {
+        "type": "paragraph",
+        "text": "His approach to production is characterized by a blend of moombahton and dancehall elements, creating a distinct sound that has resonated within club and electronic music circles. The release of his sample pack further underscores his commitment to sharing his creative process with fellow producers."
+      },
+      {
+        "type": "paragraph",
+        "text": "While his top tracks and recent releases are not indexed in available databases, Noizekid's influence is evident through his collaborations and the resources he provides to the production community. His work continues to shape the landscape of Latin electronic music."
+      }
+    ],
+    "monetization": []
+  }
+}

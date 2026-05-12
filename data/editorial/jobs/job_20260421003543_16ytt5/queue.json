@@ -1,0 +1,28 @@
+{
+  "jobId": "job_20260421003543_16ytt5",
+  "tasks": [
+    {
+      "id": "job_20260421003543_16ytt5__1jzwarebg04nh1qyqnr",
+      "jobId": "job_20260421003543_16ytt5",
+      "targetKey": "artist:1jzwarebg04nh1qyqnr",
+      "targetType": "artist",
+      "slug": "girls-rituals-avant-garde-sound-weirdcore-glitch-pop",
+      "sourceRef": {
+        "kind": "raw_article",
+        "rawId": "115255409709720953862234376999210282125611163613853326130480817974563241914578",
+        "rawSlug": "1jzwarebg04nh1qyqnr",
+        "rawFolder": "0006_1jzwarebg04nh1qyqnr"
+      },
+      "status": "published",
+      "draftPath": "data\\editorial\\jobs\\job_20260421003543_16ytt5\\articles\\job_20260421003543_16ytt5__1jzwarebg04nh1qyqnr.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421003543_16ytt5\\articles\\job_20260421003543_16ytt5__1jzwarebg04nh1qyqnr.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421003543_16ytt5\\articles\\job_20260421003543_16ytt5__1jzwarebg04nh1qyqnr.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": "https://api.grove.storage/c048d4819ea3fb70a2ef006b4c99e38692307b6dddba246b279af6d02171bd5e",
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-22T04:46:00.390Z"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "jobId": "job_20260421031553_u8fa9h",
+  "tasks": [
+    {
+      "id": "job_20260421031553_u8fa9h__3nrncaf4858ef9qtjwk",
+      "jobId": "job_20260421031553_u8fa9h",
+      "targetKey": "artist:3nrncaf4858ef9qtjwk",
+      "targetType": "artist",
+      "slug": "flood-dubs-dariacore-innovator-chaos-vibes",
+      "sourceRef": {
+        "kind": "raw_article",
+        "rawId": "5502916069082536120006942400757646670217439266602373210278409200560265538097",
+        "rawSlug": "3nrncaf4858ef9qtjwk",
+        "rawFolder": "0012_3nrncaf4858ef9qtjwk"
+      },
+      "status": "published",
+      "draftPath": "data\\editorial\\jobs\\job_20260421031553_u8fa9h\\articles\\job_20260421031553_u8fa9h__3nrncaf4858ef9qtjwk.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421031553_u8fa9h\\articles\\job_20260421031553_u8fa9h__3nrncaf4858ef9qtjwk.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421031553_u8fa9h\\articles\\job_20260421031553_u8fa9h__3nrncaf4858ef9qtjwk.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": "https://api.grove.storage/21fe8b92d4cf489e5f6606e9abc79dd0ea2fa61961150451cdebab39c7aff2da",
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-21T16:58:18.602Z"
+    }
+  ]
+}

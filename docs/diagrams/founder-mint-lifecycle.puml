@@ -3,8 +3,8 @@ title Founder Submission to Founder Mint
 
 actor Applicant
 actor Approver
-participant "SpectraSubmissionRegistry" as Submission
-participant "SpectraFounderSeason1_1155" as Founder1155
+participant "AxisSubmissionRegistry" as Submission
+participant "AxisFounderSeason1_1155" as Founder1155
 
 Applicant -> Submission : createSubmission(emailHash, metadataURI)
 Submission --> Applicant : submissionId

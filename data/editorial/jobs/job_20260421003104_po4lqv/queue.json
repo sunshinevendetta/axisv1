@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260421003104_po4lqv",
+  "tasks": [
+    {
+      "id": "job_20260421003104_po4lqv__dog-blood",
+      "jobId": "job_20260421003104_po4lqv",
+      "targetKey": "artist:dog-blood",
+      "targetType": "artist",
+      "slug": "dog-blood-collaboration-profile",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "dog-blood",
+        "artistName": "Dog Blood"
+      },
+      "status": "drafting",
+      "draftPath": "data\\editorial\\jobs\\job_20260421003104_po4lqv\\articles\\job_20260421003104_po4lqv__dog-blood.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421003104_po4lqv\\articles\\job_20260421003104_po4lqv__dog-blood.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421003104_po4lqv\\articles\\job_20260421003104_po4lqv__dog-blood.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 2,
+      "updatedAt": "2026-04-21T16:58:57.008Z"
+    }
+  ]
+}

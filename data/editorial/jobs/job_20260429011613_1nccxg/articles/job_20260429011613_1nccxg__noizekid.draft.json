@@ -1,0 +1,59 @@
+{
+  "jobId": "job_20260429011613_1nccxg",
+  "taskId": "job_20260429011613_1nccxg__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborations with DJ Snake, Bad Bunny, and Major Lazer",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for working with the likes of DJ Snake, Bad Bunny, Major Lazer and several other names in the music industry.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "dj snake",
+      "bad bunny",
+      "major lazer"
+    ],
+    "linkedArtists": [
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer known for working with the likes of DJ Snake, Bad Bunny, Major Lazer and several other names in the music industry."
+      },
+      {
+        "type": "paragraph",
+        "text": "He released the 'Noizekid Sample Pack' in collaboration with Barnation, which includes all of his samples, loops and drums used in various of his works."
+      },
+      {
+        "type": "paragraph",
+        "text": "Noizekid is associated with similar artists such as ETC!ETC!, Los Dutis, LOOJAN, Bsno, and Freebot."
+      },
+      {
+        "type": "paragraph",
+        "text": "His work is characterized by a focus on moombahton and dancehall production styles, with a clear connection to the Mexican electronic music scene."
+      }
+    ],
+    "monetization": []
+  }
+}

@@ -41,6 +41,10 @@ function connectorLabel(id: string, name: string) {
   return name || "Connect Wallet";
 }
 
+function getCallsStatusId(value: { id?: string } | string | undefined): string {
+  return typeof value === "string" ? value : value?.id ?? "";
+}
+
 function attr(metadata: ARAppCollectMetadata, key: string): string {
   return metadata.attributes.find((a) => a.trait_type === key)?.value ?? "—";
 }
@@ -74,11 +78,11 @@ function ClaimButton({
 
   const { sendCalls, data: callsId, isPending: writing } = useSendCalls();
   const { data: callsStatus } = useCallsStatus({
-    id: callsId as string,
-    query: { enabled: Boolean(callsId), refetchInterval: (q) => (q.state.data?.status === "CONFIRMED" ? false : 1000) },
+    id: getCallsStatusId(callsId as { id?: string } | string | undefined),
+    query: { enabled: Boolean(callsId), refetchInterval: (q) => (q.state.data?.status === "success" ? false : 1000) },
   });
-  const isSuccess = callsStatus?.status === "CONFIRMED";
-  const confirming = Boolean(callsId) && callsStatus?.status !== "CONFIRMED";
+  const isSuccess = callsStatus?.status === "success";
+  const confirming = Boolean(callsId) && callsStatus?.status !== "success";
   const done = alreadyClaimed || isSuccess;
 
   if (!canClaim) return (
@@ -103,7 +107,7 @@ function ClaimButton({
     <button
       type="button"
       onClick={() => address && sendCalls({
-        calls: [{ to: collectContract, data: encodeFunctionData({ abi: COLLECT_ABI, functionName: "mint", args: [BigInt(tokenId)] }), gas: 250000n }],
+        calls: [{ to: collectContract, data: encodeFunctionData({ abi: COLLECT_ABI, functionName: "mint", args: [BigInt(tokenId)] }) }],
         capabilities: PAYMASTER_URL ? { paymasterService: { url: PAYMASTER_URL } } : undefined,
       })}
       disabled={writing || confirming || !contractAddress}
@@ -117,10 +121,10 @@ function ClaimButton({
 type Props = {
   episode: EpisodeConfig;
   tokens: ARAppCollectToken[];
-  isContractDeployed: boolean;
+  isContractDeployed?: boolean;
 };
 
-export default function ARAppCollectEpisodePage({ episode, tokens, isContractDeployed }: Props) {
+export default function ARAppCollectEpisodePage({ episode, tokens }: Props) {
   const { address, chain, isConnected } = useAccount();
   const { connect, connectors, isPending } = useConnect();
   const { disconnect } = useDisconnect();
@@ -144,9 +148,10 @@ export default function ARAppCollectEpisodePage({ episode, tokens, isContractDep
       : [],
     query: { enabled: Boolean(address) && Boolean(episode.contractAddress) && tokens.length > 0 },
   });
+  const tokenBalanceResults = Array.isArray(tokenBalances) ? tokenBalances : [];
 
   const collectedTokens = tokens.filter((token, index) => {
-    const balance = tokenBalances?.[index]?.result;
+    const balance = tokenBalanceResults[index]?.result;
     return typeof balance === "bigint" && balance > 0n;
   });
 

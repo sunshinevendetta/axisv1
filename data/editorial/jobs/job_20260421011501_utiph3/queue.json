@@ -1,0 +1,28 @@
+{
+  "jobId": "job_20260421011501_utiph3",
+  "tasks": [
+    {
+      "id": "job_20260421011501_utiph3__soundbwoy-killah",
+      "jobId": "job_20260421011501_utiph3",
+      "targetKey": "artist:soundbwoy-killah",
+      "targetType": "artist",
+      "slug": "soundbwoy-killah",
+      "sourceRef": {
+        "kind": "raw_article",
+        "rawId": "artist:soundbwoy-killah",
+        "rawSlug": "soundbwoy-killah",
+        "rawFolder": null
+      },
+      "status": "rejected",
+      "draftPath": "data\\editorial\\jobs\\job_20260421011501_utiph3\\articles\\job_20260421011501_utiph3__soundbwoy-killah.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421011501_utiph3\\articles\\job_20260421011501_utiph3__soundbwoy-killah.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421011501_utiph3\\articles\\job_20260421011501_utiph3__soundbwoy-killah.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": "Raw article \"artist:soundbwoy-killah\" was not found in data/articles/index.json.",
+      "attempts": 0,
+      "updatedAt": "2026-04-21T16:57:35.880Z"
+    }
+  ]
+}

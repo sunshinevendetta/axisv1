@@ -1,0 +1,65 @@
+{
+  "jobId": "job_20260429015112_o4x8mv",
+  "taskId": "job_20260429015112_o4x8mv__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborator with DJ Snake, Bad Bunny, and Major Lazer",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for his collaborations with prominent industry names and his distinctive sample pack release.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "sample pack",
+      "barnation"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer who has made significant inroads in the music industry through collaborations with well-known artists such as DJ Snake, Bad Bunny, and Major Lazer."
+      },
+      {
+        "type": "paragraph",
+        "text": "His work is characterized by a fusion of electronic dance music elements with dancehall rhythms, resulting in a distinctive sound that has garnered attention from both fans and industry peers."
+      },
+      {
+        "type": "paragraph",
+        "text": "In addition to his production work, Noizekid has released the 'Noizekid Sample Pack' in collaboration with Barnation, which includes a comprehensive collection of his samples, loops, and drums used across various projects."
+      },
+      {
+        "type": "paragraph",
+        "text": "This sample pack provides producers and musicians with direct access to the sonic tools that define his style, further cementing his influence in the electronic music landscape."
+      },
+      {
+        "type": "paragraph",
+        "text": "While his top tracks and recent releases are not indexed in available databases, his contributions to the moombahton and dancehall genres continue to shape the sound of contemporary electronic music."
+      }
+    ],
+    "monetization": []
+  }
+}

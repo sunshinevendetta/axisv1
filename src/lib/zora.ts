@@ -180,7 +180,7 @@ function buildSocials(profile: NonNullable<ZoraProfileResponse["profile"]>, hand
   return socials;
 }
 
-function buildEmbed(coin: NonNullable<NonNullable<ZoraProfileCoinsResponse["profile"]>["createdCoins"]>["edges"][number]["node"]): ArtistZoraEmbed | null {
+function buildEmbed(coin: NonNullable<NonNullable<NonNullable<ZoraProfileCoinsResponse["profile"]>["createdCoins"]>["edges"]>[number]["node"]): ArtistZoraEmbed | null {
   if (!coin?.id || !coin.address) {
     return null;
   }

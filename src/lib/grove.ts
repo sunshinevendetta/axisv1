@@ -289,22 +289,20 @@ export async function uploadToGrove(input: {
       "Content-Type": input.contentType,
       "X-File-Name": input.fileName,
     },
-    body: input.bytes,
+    body: input.bytes as BodyInit,
   });
 
+  const responseText = await response.text();
+
   if (!response.ok) {
-    throw new Error(await response.text());
+    throw new Error(responseText);
   }
 
   try {
-    return normalizeGroveResponse(await response.json());
-  } catch {
-    return normalizeGroveResponse({
-      storage_key: null,
-      gateway_url: null,
-      uri: null,
-      status_url: null,
-      raw_text: await response.text(),
+    return normalizeGroveResponse(JSON.parse(responseText));
+  } catch (error) {
+    throw new Error("Grove returned an invalid JSON response.", {
+      cause: error instanceof Error ? error : undefined,
     });
   }
 }

@@ -27,8 +27,6 @@ function createVideoTexture(src: string): { texture: THREE.VideoTexture; video: 
   return { texture, video };
 }
 
-// ─── Glass logo rendered into an offscreen target, then ASCII-ified ───────────
-
 function GlassLogo({
   groupRef,
 }: {
@@ -75,7 +73,6 @@ function GlassLogo({
   );
 }
 
-// Injects AsciiEffect into the R3F renderer loop
 function AsciiInjector({
   onEffect,
   onLoaded,
@@ -91,10 +88,20 @@ function AsciiInjector({
   const effectRef = useRef<AsciiEffect | null>(null);
   const idleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const autoRotate = useRef(true);
+  const onEffectRef = useRef(onEffect);
+  const onLoadedRef = useRef(onLoaded);
 
   useEffect(() => {
-    onLoaded();
+    onEffectRef.current = onEffect;
+  }, [onEffect]);
+
+  useEffect(() => {
+    onLoadedRef.current = onLoaded;
   }, [onLoaded]);
+
+  useEffect(() => {
+    onLoadedRef.current();
+  }, []);
 
   useEffect(() => {
     const effect = new AsciiEffect(gl, " .:-+*=%@#", { invert: true });
@@ -109,12 +116,11 @@ function AsciiInjector({
     effect.domElement.style.fontSize = "9px";
     effect.domElement.style.pointerEvents = "none";
     effectRef.current = effect;
-    onEffect(effect);
+    onEffectRef.current(effect);
 
     return () => {
       effectRef.current = null;
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gl]);
 
   useEffect(() => {
@@ -131,7 +137,6 @@ function AsciiInjector({
     }
   }, 1);
 
-  // Wire idle-rotate to OrbitControls events
   useEffect(() => {
     const controls = controlsRef.current;
     if (!controls) return;
@@ -233,10 +238,8 @@ export default function Logo3dAsciiGlass() {
         overflow: "hidden",
       }}
     >
-      {/* Video background always behind everything */}
       <PrismBackground />
 
-      {/* Caustic light shimmer — CSS only, no 3D changes */}
       <style>{`
         @keyframes caustic-drift {
           0%   { transform: translate(-50%, -50%) scale(1)    rotate(0deg);   opacity: 0.18; }
@@ -273,7 +276,6 @@ export default function Logo3dAsciiGlass() {
         }} />
       </div>
 
-      {/* Subtle vignette */}
       <div
         style={{
           position: "absolute",
@@ -285,7 +287,6 @@ export default function Logo3dAsciiGlass() {
         }}
       />
 
-      {/* ASCII overlay — appended by handleEffect */}
       <div
         ref={asciiContainerRef}
         style={{
@@ -298,7 +299,6 @@ export default function Logo3dAsciiGlass() {
         }}
       />
 
-      {/* R3F canvas — renders glass, AsciiInjector intercepts the draw call */}
       <div
         style={{
           position: "absolute",
@@ -321,7 +321,6 @@ export default function Logo3dAsciiGlass() {
         </Canvas>
       </div>
 
-      {/* Loading label */}
       <div
         style={{
           position: "absolute",

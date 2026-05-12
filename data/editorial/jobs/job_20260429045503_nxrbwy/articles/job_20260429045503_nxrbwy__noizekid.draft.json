@@ -1,0 +1,63 @@
+{
+  "jobId": "job_20260429045503_nxrbwy",
+  "taskId": "job_20260429045503_nxrbwy__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborations with DJ Snake, Bad Bunny, and Major Lazer",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for his work with prominent artists in the music industry.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "dj snake",
+      "bad bunny",
+      "major lazer",
+      "barnation"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer who has made a mark in the music industry through his collaborations with well-known artists such as DJ Snake, Bad Bunny, and Major Lazer."
+      },
+      {
+        "type": "paragraph",
+        "text": "His production style is characterized by the fusion of moombahton and dancehall elements, creating a distinctive sound that has garnered attention from both fans and fellow artists."
+      },
+      {
+        "type": "paragraph",
+        "text": "In addition to his work with major artists, Noizekid has released the 'Noizekid Sample Pack' in collaboration with Barnation. This pack includes a comprehensive collection of his samples, loops, and drums used in various productions, offering insight into his creative process."
+      },
+      {
+        "type": "paragraph",
+        "text": "His approach to music production and collaboration has positioned him as a notable figure within the Latin electronic music scene, with a growing influence on contemporary dance music."
+      }
+    ],
+    "monetization": []
+  }
+}

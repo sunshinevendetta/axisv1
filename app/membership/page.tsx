@@ -54,13 +54,10 @@ const BENEFITS = [
 export default function MembershipPage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-black text-white">
-      {/* Video bg */}
       <PrismBackground />
 
-      {/* Gradient overlays */}
       <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(0,0,0,0.75)_0%,rgba(0,0,0,0.10)_30%,rgba(0,0,0,0.10)_60%,rgba(0,0,0,0.90)_100%)]" />
 
-      {/* Nav */}
       <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
         <PillNav
           logo="/logo.png"
@@ -71,7 +68,6 @@ export default function MembershipPage() {
       </div>
 
       <div className="relative z-20">
-        {/* Hero */}
         <section className="flex min-h-screen flex-col items-center justify-center px-6 pb-20 pt-32 text-center">
           <div className="text-[9px] uppercase tracking-[0.44em] text-white/32">
             AXIS membership
@@ -106,13 +102,11 @@ export default function MembershipPage() {
             </Link>
           </div>
 
-          {/* Scroll cue */}
           <div className="mt-14 text-[9px] uppercase tracking-[0.34em] text-white/20 animate-pulse">
             scroll ↓
           </div>
         </section>
 
-        {/* What is AXIS */}
         <section className="px-6 pb-24 pt-8">
           <div className="mx-auto max-w-6xl">
             <div className="mb-12 text-center">
@@ -140,7 +134,6 @@ export default function MembershipPage() {
           </div>
         </section>
 
-        {/* Benefits bento */}
         <section className="px-6 pb-24">
           <div className="mx-auto max-w-6xl">
             <div className="mb-10 text-center">
@@ -167,7 +160,6 @@ export default function MembershipPage() {
           </div>
         </section>
 
-        {/* Collect CTA */}
         <section id="collect" className="overflow-hidden px-6 pb-32 pt-20 sm:pt-24">
           <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
             <div className="text-[9px] uppercase tracking-[0.44em] text-white/28">
@@ -185,7 +177,6 @@ export default function MembershipPage() {
               One membership. Permanent access. Sign in and claim your place in AXIS.
             </p>
 
-            {/* Glass card for wallet connect */}
             <div className="relative mt-12 w-full max-w-[39rem] overflow-hidden rounded-3xl border border-white/10 bg-white/4 px-6 py-8 shadow-[0_32px_80px_rgba(0,0,0,0.6)] backdrop-blur-2xl sm:px-8 sm:py-10">
               <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(ellipse_90%_60%_at_50%_0%,rgba(255,255,255,0.07),transparent_70%)]" />
               <div className="relative flex flex-col items-center gap-6">
@@ -205,7 +196,6 @@ export default function MembershipPage() {
           </div>
         </section>
 
-        {/* Footer nav */}
         <div className="pb-16 text-center">
           <Link
             href="/"

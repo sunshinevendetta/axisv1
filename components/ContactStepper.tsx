@@ -1,7 +1,6 @@
-// components/ContactStepper.tsx
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import Stepper, { Step } from "./Stepper";
 
 import {
@@ -14,7 +13,7 @@ import {
 import { encodeFunctionData } from "viem";
 import { base } from "wagmi/chains";
 
-const SPECTRA_FORM_ABI = [
+const AXIS_FORM_ABI = [
   {
     name: "submit",
     type: "function",
@@ -30,6 +29,12 @@ const SPECTRA_FORM_ABI = [
   },
 ] as const;
 
+const COINBASE_CONNECTOR_IDS = new Set([
+  "coinbaseWalletSDK",
+  "coinbaseWallet",
+  "coinbaseSmartWallet",
+]);
+
 function isEmail(s: string) {
   const v = (s || "").trim();
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -41,9 +46,24 @@ function normalizeHandle(s: string) {
   return v.startsWith("@") ? v : `@${v}`;
 }
 
+function isCoinbaseConnector(id: string) {
+  return COINBASE_CONNECTOR_IDS.has(id);
+}
+
+function getCallsStatusId(value: unknown): string {
+  if (typeof value === "string") {
+    return value;
+  }
+  if (value && typeof value === "object" && "id" in value) {
+    const id = (value as { id?: unknown }).id;
+    return typeof id === "string" ? id : "";
+  }
+  return "";
+}
+
 export default function ContactStepper() {
-  const contractAddress = process.env.NEXT_PUBLIC_SPECTRA_FORM_ADDRESS as `0x${string}` | undefined;
-const [currentStep, setCurrentStep] = useState<number>(1);
+  const contractAddress = process.env.NEXT_PUBLIC_AXIS_FORM_ADDRESS as `0x${string}` | undefined;
+  const [currentStep, setCurrentStep] = useState<number>(1);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -54,55 +74,39 @@ const [currentStep, setCurrentStep] = useState<number>(1);
 
   const [uiError, setUiError] = useState<string>("");
 
-  const { address, chainId, isConnected } = useAccount();
+  const { chainId, isConnected } = useAccount();
   const { connect, connectors, isPending: isConnecting } = useConnect();
   const { disconnect } = useDisconnect();
 
   const paymasterUrl = process.env.NEXT_PUBLIC_PAYMASTER_URL;
 
   const { sendCalls, data: callsId, isPending: isWriting, reset } = useSendCalls();
+  const callsStatusId = getCallsStatusId(callsId);
   const { data: callsStatus } = useCallsStatus({
-    id: typeof callsId === "string" ? callsId : (callsId as unknown as { id?: string })?.id ?? "",
+    id: callsStatusId,
     query: { enabled: Boolean(callsId), refetchInterval: (q) => (q.state.data?.status === "success" ? false : 1000) },
   });
   const isConfirming = Boolean(callsId) && callsStatus?.status !== "success";
   const isConfirmed = callsStatus?.status === "success";
   const isReceiptError = callsStatus?.status === "failure";
 
-  const canProceedStep2 = useMemo(() => {
-    return isConnected && chainId === base.id;
-  }, [isConnected, chainId]);
-
-  const canProceedStep3 = useMemo(() => {
-    return name.trim().length > 0 && isEmail(email);
-  }, [name, email]);
-
-  const stepGuardMessage = useMemo(() => {
-    if (currentStep === 2) {
-      if (!isConnected) return "";
-      if (chainId !== base.id) return "";
-      return "";
-    }
-    if (currentStep === 3) {
-      if (!name.trim()) return "name is required";
-      if (!isEmail(email)) return "valid email is required";
-      return "";
-    }
-    return "";
-  }, [currentStep, isConnected, chainId, name, email]);
-
-  const nextDisabled = useMemo(() => {
-    if (currentStep === 1) return false;
-    if (currentStep === 2) return !canProceedStep2;
-    if (currentStep === 3) return !canProceedStep3;
-    return false;
-  }, [currentStep, canProceedStep2, canProceedStep3]);
+  const canProceedStep2 = isConnected && chainId === base.id;
+  const canProceedStep3 = name.trim().length > 0 && isEmail(email);
+  const stepValidationMessage =
+    currentStep === 3
+      ? !name.trim()
+        ? "name is required"
+        : !isEmail(email)
+          ? "valid email is required"
+          : ""
+      : "";
+  const nextDisabled = currentStep === 1 ? false : currentStep === 2 ? !canProceedStep2 : currentStep === 3 ? !canProceedStep3 : false;
 
   const submitOnchain = () => {
     setUiError("");
 
     if (!contractAddress) {
-      setUiError("missing NEXT_PUBLIC_SPECTRA_FORM_ADDRESS");
+      setUiError("missing NEXT_PUBLIC_AXIS_FORM_ADDRESS");
       return;
     }
     if (!isConnected) {
@@ -133,7 +137,7 @@ const [currentStep, setCurrentStep] = useState<number>(1);
       calls: [{
         to: contractAddress,
         data: encodeFunctionData({
-          abi: SPECTRA_FORM_ABI,
+          abi: AXIS_FORM_ABI,
           functionName: "submit",
           args: [name.trim(), safePhone, packedEmail || safeIg, safeX, safeTt],
         }),
@@ -144,10 +148,7 @@ const [currentStep, setCurrentStep] = useState<number>(1);
 
   const injectedConnector = connectors.find((connector) => connector.id === "injected");
   const coinbaseConnector = connectors.find(
-    (connector) =>
-      connector.id === "coinbaseWalletSDK" ||
-      connector.id === "coinbaseWallet" ||
-      connector.id === "coinbaseSmartWallet",
+    (connector) => isCoinbaseConnector(connector.id),
   );
   const walletConnectConnector = connectors.find((connector) => connector.id === "walletConnect");
 
@@ -185,16 +186,15 @@ const [currentStep, setCurrentStep] = useState<number>(1);
 
   return (
     <div className="w-full max-w-2xl mx-auto px-6">
-      <Stepper
-        initialStep={1}
-        onStepChange={(s) => {
-          setUiError("");
-          setCurrentStep(s);
-        }}
-        onFinalStepCompleted={() => {}}
-        backButtonText="previous"
-        nextButtonText="next"
-        nextButtonProps={{
+        <Stepper
+          initialStep={1}
+          onStepChange={(s) => {
+            setUiError("");
+            setCurrentStep(s);
+          }}
+          backButtonText="previous"
+          nextButtonText="next"
+          nextButtonProps={{
           disabled: nextDisabled,
           "aria-disabled": nextDisabled,
         }}
@@ -208,12 +208,6 @@ const [currentStep, setCurrentStep] = useState<number>(1);
 
         <Step>
           <h2 className="text-xl text-white">connect</h2>
-
-          {stepGuardMessage ? (
-            <div className="mt-4 text-sm text-white border border-white/20 rounded-xl p-3">
-              {stepGuardMessage}
-            </div>
-          ) : null}
 
           {uiError ? (
             <div className="mt-4 text-sm text-white border border-white/20 rounded-xl p-3">
@@ -269,9 +263,9 @@ const [currentStep, setCurrentStep] = useState<number>(1);
             name + email required.
           </p>
 
-          {stepGuardMessage ? (
+          {stepValidationMessage ? (
             <div className="mt-4 text-sm text-white border border-white/20 rounded-xl p-3">
-              {stepGuardMessage}
+              {stepValidationMessage}
             </div>
           ) : null}
 

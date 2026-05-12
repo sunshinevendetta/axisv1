@@ -36,11 +36,70 @@ export type MarketData = {
   network?: string;
 };
 
+type CoinGeckoMarket = {
+  symbol?: string;
+  name?: string;
+  current_price?: number;
+  price_change_percentage_24h?: number | null;
+  total_volume?: number | null;
+  market_cap?: number | null;
+  sparkline_in_7d?: {
+    price?: number[];
+  };
+};
+
+type CoinGeckoTicker = {
+  market?: {
+    identifier?: string;
+    name?: string;
+  };
+  converted_last?: {
+    usd?: number;
+  };
+  converted_volume?: {
+    usd?: number | null;
+  };
+  trade_url?: string | null;
+};
+
+type CoinGeckoTickersResponse = {
+  tickers?: CoinGeckoTicker[];
+};
+
+type GeckoTerminalPoolAttributes = {
+  name?: string;
+  base_token_price_usd?: string;
+  price_change_percentage?: {
+    h24?: string;
+  };
+  volume_usd?: {
+    h24?: string;
+  };
+};
+
+type GeckoTerminalPoolRelationships = {
+  base_token?: {
+    data?: {
+      id?: string;
+    };
+  };
+};
+
+type GeckoTerminalPool = {
+  id?: string;
+  attributes?: GeckoTerminalPoolAttributes;
+  relationships?: GeckoTerminalPoolRelationships;
+};
+
+type GeckoTerminalTrendingPoolsResponse = {
+  data?: GeckoTerminalPool[];
+};
+
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const CG = "https://api.coingecko.com/api/v3";
 const GT = "https://api.geckoterminal.com/api/v2";
-const MARKET_CACHE_KEY_PREFIX = "spectra:market-data:v1:";
+const MARKET_CACHE_KEY_PREFIX = "axis:market-data:v1:";
 /** CoinGecko IDs for the main tab options */
 export const CG_IDS: Record<string, string> = {
   bitcoin:  "bitcoin",
@@ -100,7 +159,8 @@ async function fetchCoinGeckoMarket(cgId: string): Promise<Partial<MarketData>> 
       { cache: "no-store" },
     );
     if (!marketsRes.ok) return {};
-    const [coin] = await marketsRes.json();
+    const markets = (await marketsRes.json()) as CoinGeckoMarket[];
+    const coin = markets[0];
     if (!coin) return {};
 
     return {
@@ -124,20 +184,18 @@ async function fetchCoinGeckoTickers(cgId: string): Promise<{ dex: ExchangeEntry
       { cache: "no-store" },
     );
     if (!res.ok) return { dex: [], cex: [] };
-    const data = await res.json();
-    const tickers: unknown[] = data.tickers ?? [];
+    const data = (await res.json()) as CoinGeckoTickersResponse;
+    const tickers = data.tickers ?? [];
 
     const dex: ExchangeEntry[] = [];
     const cex: ExchangeEntry[] = [];
 
-    for (const raw of tickers) {
-      const t = raw as Record<string, unknown>;
-      const market = t.market as Record<string, unknown> | undefined;
-      const identifier = (market?.identifier as string) ?? "";
-      const name = (market?.name as string) ?? identifier;
-      const price = (t.converted_last as Record<string, number>)?.usd ?? 0;
-      const vol = (t.converted_volume as Record<string, number>)?.usd ?? null;
-      const url = (t.trade_url as string) ?? undefined;
+    for (const ticker of tickers) {
+      const identifier = ticker.market?.identifier ?? "";
+      const name = ticker.market?.name ?? identifier;
+      const price = ticker.converted_last?.usd ?? 0;
+      const vol = ticker.converted_volume?.usd ?? null;
+      const url = ticker.trade_url ?? undefined;
       if (price <= 0) continue;
 
       const entry: ExchangeEntry = { name, price, volume24h: vol, url };
@@ -163,43 +221,33 @@ async function fetchBaseTrending(): Promise<Partial<MarketData>> {
       { cache: "no-store" },
     );
     if (!res.ok) return {};
-    const data = await res.json();
-    const rawPools: unknown[] = data.data ?? [];
+    const data = (await res.json()) as GeckoTerminalTrendingPoolsResponse;
+    const rawPools = data.data ?? [];
 
     const pools: PoolEntry[] = rawPools.slice(0, 3).map((raw) => {
-      const p = raw as Record<string, unknown>;
-      const attrs = p.attributes as Record<string, unknown>;
-      const name = (attrs?.name as string) ?? "Pool";
-      const price = parseFloat((attrs?.base_token_price_usd as string) ?? "0");
-      const pcp = attrs?.price_change_percentage as Record<string, string> | undefined;
-      const change = parseFloat(pcp?.h24 ?? "NaN");
-      const vol = parseFloat((attrs?.volume_usd as Record<string, string>)?.h24 ?? "NaN");
-      const rel = p.relationships as Record<string, unknown> | undefined;
-      const addrData = (rel?.["base_token"] as Record<string, unknown>)?.data as Record<string, unknown> | undefined;
+      const attrs = raw.attributes;
+      const name = attrs?.name ?? "Pool";
+      const price = parseFloat(attrs?.base_token_price_usd ?? "0");
+      const change = parseFloat(attrs?.price_change_percentage?.h24 ?? "NaN");
+      const vol = parseFloat(attrs?.volume_usd?.h24 ?? "NaN");
       return {
         name,
         price,
         change24h: isNaN(change) ? null : change,
         volume24h: isNaN(vol) ? null : vol,
-        address: addrData?.id as string | undefined,
+        address: raw.relationships?.base_token?.data?.id,
       };
     }).filter((p) => p.price > 0);
 
     // Top pool info for main display
-    const top = rawPools[0] as Record<string, unknown> | undefined;
-    const topAttrs = top?.attributes as Record<string, unknown> | undefined;
-    const topName = (topAttrs?.name as string) ?? "";
+    const top = rawPools[0];
+    const topAttrs = top?.attributes;
+    const topName = topAttrs?.name ?? "";
     const topSymbol = topName.split("/")[0]?.trim() ?? "BASE";
-    const topPrice = parseFloat((topAttrs?.base_token_price_usd as string) ?? "0");
-    const topPcp = topAttrs?.price_change_percentage as Record<string, string> | undefined;
-    const topChange = parseFloat(topPcp?.h24 ?? "NaN");
-    const topVol = parseFloat((topAttrs?.volume_usd as Record<string, string>)?.h24 ?? "NaN");
-    const topPool = rawPools[0] as Record<string, unknown>;
-    const topRel = topPool?.relationships as Record<string, unknown> | undefined;
-    const topAddr = ((topRel?.pool_created_at) || topPool?.id) as string | undefined;
-    // Pool address from pool id: "base_0x..." → extract the 0x part
-    const poolId = topPool?.id as string | undefined;
-    const poolAddress = poolId?.replace(/^base_/, "") ?? undefined;
+    const topPrice = parseFloat(topAttrs?.base_token_price_usd ?? "0");
+    const topChange = parseFloat(topAttrs?.price_change_percentage?.h24 ?? "NaN");
+    const topVol = parseFloat(topAttrs?.volume_usd?.h24 ?? "NaN");
+    const poolAddress = top?.id?.replace(/^base_/, "") ?? undefined;
 
     return {
       symbol: topSymbol,

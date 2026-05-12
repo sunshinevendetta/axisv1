@@ -1,0 +1,27 @@
+{
+  "jobId": "job_20260421213213_cbp9co",
+  "tasks": [
+    {
+      "id": "job_20260421213213_cbp9co__fiesta-soundsystem",
+      "jobId": "job_20260421213213_cbp9co",
+      "targetKey": "artist:fiesta-soundsystem",
+      "targetType": "artist",
+      "slug": "fiesta-soundsystem-uk-adjacent-leftfield-continuum",
+      "sourceRef": {
+        "kind": "artist_catalog",
+        "artistSlug": "fiesta-soundsystem",
+        "artistName": "Fiesta Soundsystem"
+      },
+      "status": "published",
+      "draftPath": "data\\editorial\\jobs\\job_20260421213213_cbp9co\\articles\\job_20260421213213_cbp9co__fiesta-soundsystem.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260421213213_cbp9co\\articles\\job_20260421213213_cbp9co__fiesta-soundsystem.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260421213213_cbp9co\\articles\\job_20260421213213_cbp9co__fiesta-soundsystem.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": "https://api.grove.storage/8e17db7ccd632dc8324863508e762523858041cc5c6a723cc5e2eeeab587d0ce",
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-21T21:34:03.430Z"
+    }
+  ]
+}

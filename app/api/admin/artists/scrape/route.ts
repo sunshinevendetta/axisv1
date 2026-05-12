@@ -5,7 +5,9 @@
  * and streams log output back to the client as newline-delimited JSON events.
  *
  * Body:
- *   { artists?: string[] }   — optional subset; omit to run all from config
+ *   { artists?: string[], mode?: "full" | "profile-image" }
+ *   - `mode: "profile-image"` refreshes only the artist profile image cache.
+ *   - `mode: "full"` runs the existing scraper pipeline.
  *
  * Each streamed line is a JSON object:
  *   { type: "log", text: string }
@@ -16,7 +18,6 @@
  */
 
 import { NextRequest } from "next/server";
-import { hasOwnerSession } from "@/src/lib/owner-session";
 import { execFile } from "node:child_process";
 import path from "node:path";
 
@@ -24,15 +25,19 @@ const REPO_ROOT = path.resolve(process.cwd());
 const SCRAPER_ENTRY = path.join(REPO_ROOT, "tools/artist-scraper/scraper.ts");
 
 export async function POST(request: NextRequest) {
-  if (!(await hasOwnerSession())) {
-    return new Response(JSON.stringify({ error: "Unauthorized" }), {
-      status: 401,
+  let body: { artists?: string[]; mode?: "full" | "profile-image" };
+
+  try {
+    body = (await request.json()) as { artists?: string[]; mode?: "full" | "profile-image" };
+  } catch {
+    return new Response(JSON.stringify({ error: "Invalid JSON body." }), {
+      status: 400,
       headers: { "Content-Type": "application/json" },
     });
   }
 
-  const body = await request.json().catch(() => ({})) as { artists?: string[] };
   const artistOverride = Array.isArray(body.artists) ? body.artists : null;
+  const runMode = body.mode === "profile-image" ? "profile-image" : "full";
 
   const encoder = new TextEncoder();
 
@@ -48,13 +53,14 @@ export async function POST(request: NextRequest) {
         LASTFM_API_KEY: process.env.LASTFM_API_KEY ?? "",
         SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID ?? "",
         SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET ?? "",
-        ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY ?? "",
+        NOUS_API_KEY: process.env.NOUS_API_KEY ?? "",
       };
 
       // If specific artists requested, write a temp override via env var
       if (artistOverride) {
         env["SCRAPER_ARTIST_OVERRIDE"] = artistOverride.join("|");
       }
+      env["SCRAPER_RUN_MODE"] = runMode;
 
       const child = execFile(
         "npx",

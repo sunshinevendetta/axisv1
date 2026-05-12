@@ -1,0 +1,67 @@
+{
+  "jobId": "job_20260422045245_q8lhzi",
+  "taskId": "job_20260422045245_q8lhzi__1h6ef30v13x447h4xne",
+  "targetKey": "artist:1h6ef30v13x447h4xne",
+  "article": {
+    "id": 1,
+    "slug": "machine-girl-digital-punk-nightmare-fuel",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Machine Girl: Digital Punk Nightmare Fuel",
+    "subtitle": "Cyberpunk breakcore at its most feral and chaotic",
+    "author": "V. Reyes",
+    "authorRole": "Staff Writer",
+    "date": "2026-04-22",
+    "readTime": "4 min",
+    "excerpt": "Machine Girl delivers cyberpunk breakcore at its most feral, a full-throttle sprint into chaotic, distorted, and glitchy soundscapes. Imagine a rave inside a malfunctioning arcade cabinet while a robot tries to strangle you.",
+    "featured": false,
+    "image_url": "https://gw.ipfs-lens.dev/ipfs/QmNa27kuhpB5rz2fokg482Lzygj6FqZ3x1JCSVsrUPg9M1",
+    "tags": [
+      "machine girl",
+      "breakcore",
+      "cyberpunk",
+      "punk",
+      "jungle",
+      "noise",
+      "digital punk",
+      "glitch"
+    ],
+    "linkedArtists": [
+      "Death Grips",
+      "Sewerslvt",
+      "ProLaps",
+      "Iglooghost"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Machine Girl delivers cyberpunk breakcore at its most feral, a full-throttle sprint into chaotic, distorted, and glitchy soundscapes. Imagine a rave inside a malfunctioning arcade cabinet while a robot tries to strangle you."
+      },
+      {
+        "type": "paragraph",
+        "text": "Machine Girl's sound is a lawless mashup of breakcore, punk, jungle, and noise, running at hyperspeed with distorted screams and frantic percussion. It is the kind of music that makes you want to punch a hole in reality."
+      },
+      {
+        "type": "paragraph",
+        "text": "Essential tracks include 'NEON WHITE,' with blistering breakbeats and insane vocal chops that feel like free-falling into digital hell. 'FULL METAL DISGUSTING' sounds like an AI uprising set to the hardest drums ever heard, unrelenting and dripping with cybernetic rage. 'THIS IS YOUR FACE ON DOGS' is glitchy, aggressive, and completely off the rails."
+      },
+      {
+        "type": "paragraph",
+        "text": "Machine Girl shares a sonic universe with artists like Death Grips, Sewerslvt, and ProLaps. If your music taste includes the words 'chaotic,' 'violent,' and 'unhinged,' you are in the right place."
+      },
+      {
+        "type": "paragraph",
+        "text": "The Machine Girl experience is punk for the apocalypse. The BPMs are through the roof, the energy is feral, and the aesthetic is pure cyber-anarchy. Every track feels like a boss battle in a game that is actively trying to kill you."
+      },
+      {
+        "type": "paragraph",
+        "text": "Listeners who enjoy Machine Girl may also appreciate Death Grips, ProLaps, and Iglooghost."
+      }
+    ],
+    "monetization": []
+  }
+}

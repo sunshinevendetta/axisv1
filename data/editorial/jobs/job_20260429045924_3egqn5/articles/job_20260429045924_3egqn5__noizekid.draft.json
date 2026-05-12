@@ -1,0 +1,65 @@
+{
+  "jobId": "job_20260429045924_3egqn5",
+  "taskId": "job_20260429045924_3egqn5__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborations with DJ Snake, Bad Bunny, and Major Lazer",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for his collaborations with major industry names and his distinctive sample pack release.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "sample pack",
+      "barnation"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer known for his collaborations with major industry names. His work has been recognized for its distinctive production style, which blends elements of moombahton and dancehall to create a unique sonic identity."
+      },
+      {
+        "type": "paragraph",
+        "text": "He has worked with prominent figures such as DJ Snake, Bad Bunny, and Major Lazer, among others. These collaborations have helped establish Noizekid as a significant figure in the Latin electronic music scene."
+      },
+      {
+        "type": "paragraph",
+        "text": "In addition to his production work, Noizekid released the 'Noizekid Sample Pack' in collaboration with Barnation. This pack includes a comprehensive collection of his samples, loops, and drums used in various productions, offering insight into his creative process."
+      },
+      {
+        "type": "paragraph",
+        "text": "Noizekid's approach to music production is characterized by a meticulous attention to detail and a focus on creating high-energy, dancefloor-ready tracks. His sound is deeply rooted in the moombahton and dancehall genres, while also incorporating contemporary electronic music elements."
+      },
+      {
+        "type": "paragraph",
+        "text": "The release of his sample pack has further solidified his reputation as a producer who values transparency and community engagement within the music production world. By sharing his tools and techniques, Noizekid contributes to the ongoing dialogue and evolution of electronic music production."
+      }
+    ],
+    "monetization": []
+  }
+}

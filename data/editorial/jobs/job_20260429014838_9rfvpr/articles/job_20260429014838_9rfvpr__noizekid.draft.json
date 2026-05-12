@@ -1,0 +1,61 @@
+{
+  "jobId": "job_20260429014838_9rfvpr",
+  "taskId": "job_20260429014838_9rfvpr__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: A Profile of the Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborations with DJ Snake, Bad Bunny, and Major Lazer mark his ascent.",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid has emerged as a notable figure in the moombahton and dancehall landscape, gaining recognition through collaborations with prominent artists and a distinctive sample pack release.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "sample pack",
+      "barnation"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican producer whose work in moombahton and dancehall has garnered attention from industry figures such as DJ Snake, Bad Bunny, and Major Lazer."
+      },
+      {
+        "type": "paragraph",
+        "text": "His production style is characterized by a blend of electronic and dancehall influences, resulting in a sound that resonates within both club and mainstream contexts."
+      },
+      {
+        "type": "paragraph",
+        "text": "In addition to his collaborative efforts, Noizekid has released the 'Noizekid Sample Pack' in partnership with Barnation, offering a comprehensive collection of his original samples, loops, and drum patterns."
+      },
+      {
+        "type": "paragraph",
+        "text": "This sample pack provides insight into the tools and techniques that define his production approach, further cementing his role as an influential figure in the electronic music scene."
+      }
+    ],
+    "monetization": []
+  }
+}

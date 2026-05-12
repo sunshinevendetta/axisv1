@@ -1,0 +1,64 @@
+{
+  "jobId": "job_20260429022636_bgf7ds",
+  "taskId": "job_20260429022636_bgf7ds__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborations with DJ Snake, Bad Bunny, and Major Lazer",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "2 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for working with the likes of DJ Snake, Bad Bunny, Major Lazer and several other names in the music industry.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "dj snake",
+      "bad bunny",
+      "major lazer",
+      "barnation"
+    ],
+    "linkedArtists": [
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer known for working with the likes of DJ Snake, Bad Bunny, Major Lazer and several other names in the music industry."
+      },
+      {
+        "type": "paragraph",
+        "text": "He released the 'Noizekid Sample Pack' in collaboration with Barnation, which includes all of his samples, loops and drums used in various of his works."
+      },
+      {
+        "type": "paragraph",
+        "text": "Noizekid's work is situated within the broader context of Latin electronic music, with his productions reflecting a distinct regional flavor."
+      },
+      {
+        "type": "paragraph",
+        "text": "His approach to production emphasizes the use of carefully selected samples and rhythmic loops, which are made available to other producers through his sample pack."
+      },
+      {
+        "type": "paragraph",
+        "text": "Noizekid's collaborations with established artists have helped solidify his position within the international dance music scene."
+      }
+    ],
+    "monetization": []
+  }
+}

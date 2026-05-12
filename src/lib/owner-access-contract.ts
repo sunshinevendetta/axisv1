@@ -1,4 +1,4 @@
-import ownerAccessArtifact from "@/artifacts/contracts/SpectraOwnerAccess1155.sol/SpectraOwnerAccess1155.json";
+import ownerAccessArtifact from "@/artifacts/contracts/AxisOwnerAccess1155.sol/AxisOwnerAccess1155.json";
 import { keccak256, toBytes } from "viem";
 
 export const ownerAccessAbi = ownerAccessArtifact.abi;
@@ -48,3 +48,4 @@ export function normalizeOwnerAccessContractRoleName(value: string): OwnerAccess
 
   return normalized as OwnerAccessContractRoleName;
 }
+

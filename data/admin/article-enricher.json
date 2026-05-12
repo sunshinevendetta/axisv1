@@ -1,0 +1,15 @@
+{
+  "articleSourceSlug": null,
+  "articleLimit": 1,
+  "writerPrompt": {
+    "systemPromptOverride": null,
+    "promptIntroOverride": null,
+    "rulesOverride": null,
+    "extraRules": []
+  },
+  "editorPrompt": {
+    "systemPromptOverride": null,
+    "checksOverride": null,
+    "extraChecks": []
+  }
+}

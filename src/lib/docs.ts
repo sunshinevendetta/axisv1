@@ -201,7 +201,7 @@ function markdownToHtml(markdown: string) {
       .join("");
     const body = tableRows
       .map((row, index) => {
-        const cells = tableHeaders
+        const cells = tableHeaders!
           .map((header, index) => {
             const value = row[index] ?? "";
             return `<td class="block px-4 py-3 align-top text-white/76 before:mb-1 before:block before:text-[10px] before:font-medium before:uppercase before:tracking-[0.16em] before:text-white/42 before:content-[attr(data-label)] sm:table-cell sm:before:hidden" data-label="${escapeHtml(header)}">${renderInline(value)}</td>`;

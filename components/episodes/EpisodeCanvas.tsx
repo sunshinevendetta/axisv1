@@ -9,7 +9,7 @@ import { VideoTextureMesh } from "@/components/episodes/VideoTextureMesh";
 import type { EpisodeAsset } from "@/src/types/episode";
 
 export const episodeXRStore = createXRStore({
-  requiredFeatures: ["hit-test", "local-floor"],
+  hitTest: "required",
 });
 
 type Props = {

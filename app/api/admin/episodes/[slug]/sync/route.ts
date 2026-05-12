@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { syncEpisodeToRegistry } from "@/src/lib/episode-sync";
-import { hasOwnerSession } from "@/src/lib/owner-session";
 
 type RouteContext = {
   params: Promise<{
@@ -9,9 +8,6 @@ type RouteContext = {
 };
 
 export async function POST(_request: Request, context: RouteContext) {
-  if (!(await hasOwnerSession())) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
 
   const { slug } = await context.params;
 

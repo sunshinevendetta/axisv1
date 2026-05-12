@@ -33,7 +33,6 @@ function ProjectedLogo({ texture }: { texture: THREE.VideoTexture | null }) {
   useEffect(() => {
     if (!spotlightRef.current) return;
     spotlightRef.current.map = texture;
-    spotlightRef.current.needsUpdate = true;
   }, [texture]);
 
   useEffect(() => {

@@ -1,0 +1,25 @@
+{
+  "id": "job_20260420233415_u1h08i",
+  "mode": "single",
+  "source": "existing_db",
+  "targetType": "artist",
+  "filters": {
+    "artistSlugs": [],
+    "genre": null,
+    "scene": null,
+    "city": null,
+    "missingOnly": false
+  },
+  "count": 1,
+  "concurrency": 1,
+  "status": "queued",
+  "createdAt": "2026-04-20T23:34:15.246Z",
+  "updatedAt": "2026-04-20T23:34:15.246Z",
+  "completedAt": null,
+  "createdBy": "owner",
+  "promptProfile": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "notes": ""
+}

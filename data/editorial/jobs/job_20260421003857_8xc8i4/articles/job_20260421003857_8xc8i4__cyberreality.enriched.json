@@ -1,0 +1,155 @@
+{
+  "jobId": "job_20260421003857_8xc8i4",
+  "taskId": "job_20260421003857_8xc8i4__cyberreality",
+  "target": {
+    "key": "artist:cyberreality",
+    "type": "artist",
+    "name": "Cyberreality"
+  },
+  "researchPacket": {
+    "targetName": "Cyberreality",
+    "sourceMode": "existing_db",
+    "artistContext": {
+      "name": "Cyberreality",
+      "genres": [
+        "industrial",
+        "ambient",
+        "electronic"
+      ],
+      "tags": [
+        "HYPERBASS"
+      ],
+      "summary": "Cyberreality works across industrial, ambient, and electronic production, releasing albums including CYBERROR, r e c u e r d o, and Internet Dating 1.5. Their output spans textured noise constructions and spatial sound design, with compilation appearances on Selected Juke Werkz, Vol. 1 situating them within a broader experimental electronic network."
+    },
+    "genreContext": null,
+    "relatedArtists": [],
+    "provenance": [
+      {
+        "type": "raw_article",
+        "value": "cyberreality"
+      },
+      {
+        "type": "music_artists",
+        "value": "content/music-artists.json"
+      },
+      {
+        "type": "artist_media_cache",
+        "value": "content/artist-media-cache.json"
+      }
+    ]
+  },
+  "promptConfig": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "modelOutput": {
+    "writer": {
+      "id": 1,
+      "slug": "cyberreality-industrial-ambient-electronic-profile",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "EXPERT",
+      "frame": "OBSERVE",
+      "persona": "ANALYST",
+      "title": "Cyberreality: Industrial, Ambient, and Electronic Sound Design",
+      "subtitle": "A profile of an artist working across textured noise constructions and spatial sound design.",
+      "author": "L. Nakamura",
+      "authorRole": "Contributor",
+      "date": "2026-04-21",
+      "readTime": "3 min",
+      "excerpt": "Cyberreality operates within industrial, ambient, and electronic production, crafting textured noise constructions and spatial sound design. Their work is situated within a broader experimental electronic network.",
+      "featured": false,
+      "image_url": "https://i.scdn.co/image/ab6761610000e5ebb9733bb7f9d06daf3f531e29",
+      "tags": [
+        "industrial",
+        "ambient",
+        "electronic",
+        "hyperbass",
+        "sound design",
+        "noise",
+        "experimental"
+      ],
+      "linkedArtists": [],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Cyberreality is an artist whose work spans industrial, ambient, and electronic production. Their output is characterized by textured noise constructions and spatial sound design, situating them within a broader experimental electronic network."
+        },
+        {
+          "type": "paragraph",
+          "text": "The artist has released several albums including CYBERROR, r e c u e r d o, and Internet Dating 1.5. Their discography also includes CYBERROR (Remixes) and a compilation appearance on Selected Juke Werkz, Vol. 1."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cyberreality's approach to sound design emphasizes spatial qualities and layered noise textures. Their work demonstrates a clear focus on experimental electronic composition and production techniques."
+        },
+        {
+          "type": "paragraph",
+          "text": "The artist's recent releases include CYBERROR (Remixes) from 2022, r e c u e r d o from early 2022, and the original CYBERROR album from mid-2021. Earlier work such as Internet Dating 1.5 dates back to late 2020."
+        },
+        {
+          "type": "paragraph",
+          "text": "While Cyberreality's work is primarily solo, their inclusion on compilations like Selected Juke Werkz, Vol. 1 indicates engagement with a wider experimental electronic scene. The artist is currently not closely associated with any specific similar acts."
+        }
+      ],
+      "monetization": []
+    },
+    "editor": {
+      "id": 1,
+      "slug": "cyberreality-industrial-ambient-electronic-profile",
+      "axis": "music",
+      "category": "PROFILE",
+      "contentType": "ARTICLE",
+      "mode": "EXPERT",
+      "frame": "OBSERVE",
+      "persona": "ANALYST",
+      "title": "Cyberreality: Industrial, Ambient, and Electronic Sound Design",
+      "subtitle": "A profile of an artist working across textured noise constructions and spatial sound design.",
+      "author": "L. Nakamura",
+      "authorRole": "Contributor",
+      "date": "2026-04-21",
+      "readTime": "3 min",
+      "excerpt": "Cyberreality operates within industrial, ambient, and electronic production, crafting textured noise constructions and spatial sound design. Their work is situated within a broader experimental electronic network.",
+      "featured": false,
+      "image_url": "https://i.scdn.co/image/ab6761610000e5ebb9733bb7f9d06daf3f531e29",
+      "tags": [
+        "industrial",
+        "ambient",
+        "electronic",
+        "hyperbass",
+        "sound design",
+        "noise",
+        "experimental"
+      ],
+      "linkedArtists": [],
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Cyberreality is an artist whose work spans industrial, ambient, and electronic production. Their output is characterized by textured noise constructions and spatial sound design, situating them within a broader experimental electronic network."
+        },
+        {
+          "type": "paragraph",
+          "text": "The artist has released several albums including CYBERROR, r e c u e r d o, and Internet Dating 1.5. Their discography also includes CYBERROR (Remixes) and a compilation appearance on Selected Juke Werkz, Vol. 1."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cyberreality's approach to sound design emphasizes spatial qualities and layered noise textures. Their work demonstrates a clear focus on experimental electronic composition and production techniques."
+        },
+        {
+          "type": "paragraph",
+          "text": "The artist's recent releases include CYBERROR (Remixes) from 2022, r e c u e r d o from early 2022, and the original CYBERROR album from mid-2021. Earlier work such as Internet Dating 1.5 dates back to late 2020."
+        },
+        {
+          "type": "paragraph",
+          "text": "While Cyberreality's work is primarily solo, their inclusion on compilations like Selected Juke Werkz, Vol. 1 indicates engagement with a wider experimental electronic scene. The artist is currently not closely associated with any specific similar acts."
+        }
+      ],
+      "monetization": []
+    }
+  },
+  "review": {
+    "status": "needs_review",
+    "notes": ""
+  }
+}

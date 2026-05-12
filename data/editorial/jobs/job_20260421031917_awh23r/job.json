@@ -1,0 +1,25 @@
+{
+  "id": "job_20260421031917_awh23r",
+  "mode": "single",
+  "source": "existing_db",
+  "targetType": "artist",
+  "filters": {
+    "artistSlugs": [],
+    "genre": null,
+    "scene": null,
+    "city": null,
+    "missingOnly": false
+  },
+  "count": 1,
+  "concurrency": 1,
+  "status": "running",
+  "createdAt": "2026-04-21T03:19:17.286Z",
+  "updatedAt": "2026-04-21T03:19:17.293Z",
+  "completedAt": null,
+  "createdBy": "owner",
+  "promptProfile": {
+    "writerProfile": "default",
+    "editorProfile": "default"
+  },
+  "notes": "Artist catalog generation for DJ CHRISTIAN NXC"
+}

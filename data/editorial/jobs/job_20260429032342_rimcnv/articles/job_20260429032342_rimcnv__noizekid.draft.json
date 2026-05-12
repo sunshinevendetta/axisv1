@@ -1,0 +1,63 @@
+{
+  "jobId": "job_20260429032342_rimcnv",
+  "taskId": "job_20260429032342_rimcnv__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborations with DJ Snake, Bad Bunny, and Major Lazer define his profile.",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for his work with prominent industry names and his own sample pack release.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "dj snake",
+      "bad bunny",
+      "major lazer",
+      "barnation"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer known for his work with prominent industry names. His production style is characterized by the fusion of moombahton and dancehall elements, establishing a distinct sound within the electronic music landscape."
+      },
+      {
+        "type": "paragraph",
+        "text": "He has collaborated with several well-known artists, including DJ Snake, Bad Bunny, and Major Lazer. These collaborations have helped shape his profile and contributed to his recognition in the music industry."
+      },
+      {
+        "type": "paragraph",
+        "text": "In addition to his production work, Noizekid released the 'Noizekid Sample Pack' in collaboration with Barnation. This pack includes a comprehensive collection of his samples, loops, and drums used in various productions, offering insight into his creative process."
+      },
+      {
+        "type": "paragraph",
+        "text": "His work is often associated with a network of similar artists such as ETC!ETC!, Los Dutis, LOOJAN, Bsno, and Freebot, further situating him within a broader scene of electronic music production."
+      }
+    ],
+    "monetization": []
+  }
+}

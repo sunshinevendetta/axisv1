@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { hasOwnerSession } from "@/src/lib/owner-session";
 import { artistProfiles, findArtistProfile } from "@/src/content/artists";
 import { readArtistZoraCache, writeArtistZoraCache } from "@/src/lib/artist-store";
 import { fetchArtistZoraRecord } from "@/src/lib/zora";
@@ -9,11 +8,15 @@ function sleep(ms: number) {
 }
 
 export async function POST(request: NextRequest) {
-  if (!(await hasOwnerSession())) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+  let body: { slug?: unknown };
+
+  try {
+    body = (await request.json()) as { slug?: unknown };
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
   }
 
-  const body = await request.json().catch(() => ({}));
   const slug = typeof body.slug === "string" ? body.slug.trim() : "";
 
   const targets = slug

@@ -1,0 +1,50 @@
+{
+  "slots": [
+    {
+      "time": "3:00 PM - 4:00 PM",
+      "status": "open"
+    },
+    {
+      "time": "4:00 PM - 5:00 PM",
+      "status": "locked",
+      "community": "https://www.blokko.us/",
+      "hostDisplayName": "Blokko",
+      "link": "https://www.blokko.us/",
+      "language": "bilingual",
+      "topic": "Stablecoins at the register: how merchants can accept digital dollars and settle in pesos",
+      "topicEs": "Stablecoins en la caja: cómo los comercios pueden aceptar dólares digitales y cobrar en pesos",
+      "notes": "Plug stablecoin and crypto acceptance into a real business — keep MXN settlement, skip chargebacks, no POS rebuild. Customer pays in USDC; you settle in pesos through your existing bank. Clean accounting, fiat treasury (or not — your call). Built for operators who run businesses, not just speculate.",
+      "notesEs": "Conecta la aceptación de stablecoins y cripto a un negocio real — liquidación en MXN, sin contracargos, sin rehacer el POS. El cliente paga con USDC; tú cobras en pesos por tu banco de siempre. Contabilidad limpia, tesorería en fiat (o no — tú decides). Para operadores que manejan negocios, no especuladores."
+    },
+    {
+      "time": "5:00 PM - 6:00 PM",
+      "status": "locked",
+      "community": "https://rootstock.io/",
+      "hostDisplayName": "Rootstock",
+      "link": "https://rootstock.io/",
+      "language": "bilingual",
+      "attendees": [],
+      "topic": "Bitcoin treasury for businesses, made simple",
+      "topicEs": "Tesorería en Bitcoin para empresas, fácil y profesional",
+      "notes": "Build a productive Bitcoin treasury from business cash flow — without selling BTC, losing custody, or the CeFi risk that took down Celsius. Three patterns: BTC-backed working-capital loans, on-chain yield on idle reserves, and BTC-backed stablecoin issuance. Built on Rootstock — for CFOs and operators, not crypto natives.",
+      "notesEs": "Arma una tesorería en Bitcoin con el flujo de caja de tu negocio — sin vender BTC, sin perder custodia, sin el riesgo CeFi que tumbó a Celsius. Tres patrones: préstamos de capital de trabajo con BTC, rendimiento on-chain sobre reservas, y stablecoins respaldadas por BTC. Sobre Rootstock — para CFOs y operadores, no nativos cripto."
+    },
+    {
+      "time": "6:00 PM - 7:00 PM",
+      "status": "open"
+    },
+    {
+      "time": "7:00 PM - 8:00 PM",
+      "status": "open"
+    },
+    {
+      "time": "8:00 PM - 9:00 PM",
+      "status": "open"
+    },
+    {
+      "time": "9:00 PM - 10:00 PM",
+      "status": "open"
+    }
+  ],
+  "rsvps": []
+}

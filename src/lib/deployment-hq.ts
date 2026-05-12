@@ -1,7 +1,7 @@
-import eventRegistryArtifact from "@/artifacts/contracts/SpectraEventAccessRegistry.sol/SpectraEventAccessRegistry.json";
-import founderArtifact from "@/artifacts/contracts/SpectraFounderSeason1_1155.sol/SpectraFounderSeason1_1155.json";
-import ownerAccessArtifact from "@/artifacts/contracts/SpectraOwnerAccess1155.sol/SpectraOwnerAccess1155.json";
-import submissionRegistryArtifact from "@/artifacts/contracts/SpectraSubmissionRegistry.sol/SpectraSubmissionRegistry.json";
+import eventRegistryArtifact from "@/artifacts/contracts/AxisEventAccessRegistry.sol/AxisEventAccessRegistry.json";
+import founderArtifact from "@/artifacts/contracts/AxisFounderSeason1_1155.sol/AxisFounderSeason1_1155.json";
+import ownerAccessArtifact from "@/artifacts/contracts/AxisOwnerAccess1155.sol/AxisOwnerAccess1155.json";
+import submissionRegistryArtifact from "@/artifacts/contracts/AxisSubmissionRegistry.sol/AxisSubmissionRegistry.json";
 
 // New artwork contracts — artifacts generated after `npm run contracts:compile`
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,9 +11,9 @@ let episodeArtifact: any = { abi: [], bytecode: "0x" };
 try {
   // Dynamic require so missing artifacts don't crash the whole module at import time
   // eslint-disable-next-line @typescript-eslint/no-require-imports
-  seasonRegistryArtifact = require("@/artifacts/contracts/SpectraSeasonRegistry.sol/SpectraSeasonRegistry.json");
+  seasonRegistryArtifact = require("@/artifacts/contracts/AxisSeasonRegistry.sol/AxisSeasonRegistry.json");
   // eslint-disable-next-line @typescript-eslint/no-require-imports
-  episodeArtifact = require("@/artifacts/contracts/SpectraEpisode1155.sol/SpectraEpisode1155.json");
+  episodeArtifact = require("@/artifacts/contracts/AxisEpisode1155.sol/AxisEpisode1155.json");
 } catch {
   // Contracts not compiled yet — run `npm run contracts:compile` first
 }
@@ -114,8 +114,8 @@ export type DeploymentChainId = 8453 | 84532;
 
 // ─── Defaults ─────────────────────────────────────────────────────────────────
 
-export const defaultFounderBaseUri = "ipfs://spectra-founder-season1/";
-export const defaultFounderContractMetadataUri = "ipfs://spectra-founder-season1/contract.json";
+export const defaultFounderBaseUri = "ipfs://axis-founder-season1/";
+export const defaultFounderContractMetadataUri = "ipfs://axis-founder-season1/contract.json";
 
 // ─── Guide types ──────────────────────────────────────────────────────────────
 
@@ -188,11 +188,11 @@ export const deploymentGuides: Record<DeploymentContractKey, DeploymentContractG
     ],
     afterDeploy: [
       "Save the season registry address — you'll register every episode contract here after each deploy.",
-      "Copy SPECTRA_SEASON_REGISTRY_ADDRESS into your .env file (or use 'Save to Manifest' + env:sync).",
+      "Copy AXIS_SEASON_REGISTRY_ADDRESS into your .env file (or use 'Save to Manifest' + env:sync).",
       "Verify the contract on BaseScan so the registry is publicly auditable.",
       "You're ready to deploy episode contracts. They can be deployed in any order and registered here when ready.",
     ],
-    envKeys: ["SPECTRA_SEASON_REGISTRY_ADDRESS"],
+    envKeys: ["AXIS_SEASON_REGISTRY_ADDRESS"],
   },
 
   episodeContract: {
@@ -277,13 +277,13 @@ export const deploymentGuides: Record<DeploymentContractKey, DeploymentContractG
     ],
     afterDeploy: [
       "Call registerArtwork() for each AR piece in this episode (from the Episodes HQ admin panel or directly via the contract).",
-      "Register this contract in the season registry by calling registerEpisode() on SpectraSeasonRegistry.",
+      "Register this contract in the season registry by calling registerEpisode() on AxisSeasonRegistry.",
       "Call setOpenMint(tokenId, true) for each artwork when the event day arrives.",
       "Save the episode contract address to episodes.json under 'episodeContractAddress'.",
       "Use 'Save to Manifest' and run npm run env:sync to patch .env.",
       "Verify the contract on BaseScan so minting is publicly auditable.",
     ],
-    envKeys: ["SPECTRA_EPISODE_CONTRACT_ADDRESS"],
+    envKeys: ["AXIS_EPISODE_CONTRACT_ADDRESS"],
   },
 
   // ── Legacy management stack ────────────────────────────────────────────────
@@ -321,7 +321,7 @@ export const deploymentGuides: Record<DeploymentContractKey, DeploymentContractG
         key: "baseUri",
         name: "Base URI — where token images & info live",
         required: true,
-        placeholder: "ipfs://spectra-owner-access/{id}.json",
+        placeholder: "ipfs://axis-owner-access/{id}.json",
         description:
           "This is the folder address where each access key's image and description is stored. When someone's wallet shows their access token, it reads the info from this location. The {id} part gets replaced with the token number (1, 2, or 3). Use IPFS so it stays permanent and no one can change it.",
         recommended:
@@ -331,7 +331,7 @@ export const deploymentGuides: Record<DeploymentContractKey, DeploymentContractG
         key: "contractMetadataUri",
         name: "Collection info URI — the contract's public profile",
         required: true,
-        placeholder: "ipfs://spectra-owner-access/contract.json",
+        placeholder: "ipfs://axis-owner-access/contract.json",
         description:
           "This is a link to a single JSON file that describes the whole collection — its name, description, and image. Think of it as the 'about page' for this contract on OpenSea or any explorer.",
         recommended:
@@ -375,10 +375,10 @@ export const deploymentGuides: Record<DeploymentContractKey, DeploymentContractG
     afterDeploy: [
       "Copy this contract address — you'll need it for the next deployment (Founder Membership).",
       "After deploying Founder Membership, come back and link them together with the 'Link Founder Into Registry' button.",
-      "Add SPECTRA_SUBMISSION_REGISTRY_ADDRESS to your .env file.",
+      "Add AXIS_SUBMISSION_REGISTRY_ADDRESS to your .env file.",
       "Verify the contract so people can see how applications are reviewed.",
     ],
-    envKeys: ["SPECTRA_SUBMISSION_REGISTRY_ADDRESS"],
+    envKeys: ["AXIS_SUBMISSION_REGISTRY_ADDRESS"],
   },
 
   founderMembership: {
@@ -414,7 +414,7 @@ export const deploymentGuides: Record<DeploymentContractKey, DeploymentContractG
         key: "baseUri",
         name: "Base URI — where founder token art & info live",
         required: true,
-        placeholder: "ipfs://spectra-founder-season1/",
+        placeholder: "ipfs://axis-founder-season1/",
         description:
           "The IPFS folder where each founder's token image and description is stored. Each token ID gets its own file: 1.json, 2.json, etc. This must end with a slash.",
         recommended:
@@ -424,7 +424,7 @@ export const deploymentGuides: Record<DeploymentContractKey, DeploymentContractG
         key: "contractMetadataUri",
         name: "Collection info URI — the contract's public profile",
         required: true,
-        placeholder: "ipfs://spectra-founder-season1/contract.json",
+        placeholder: "ipfs://axis-founder-season1/contract.json",
         description:
           "A link to a JSON file describing the whole founder collection — name, description, image. Shows up on OpenSea and explorers as the collection's profile.",
         recommended:
@@ -443,11 +443,11 @@ export const deploymentGuides: Record<DeploymentContractKey, DeploymentContractG
     ],
     afterDeploy: [
       "Click 'Link Founder Into Registry' to connect this contract back to the Submission Registry.",
-      "Add SPECTRA_FOUNDER_MEMBERSHIP_ADDRESS to your .env file.",
+      "Add AXIS_FOUNDER_MEMBERSHIP_ADDRESS to your .env file.",
       "Double-check the submission registry address in the constructor was correct before going live.",
       "Verify the contract so minted founder tokens show up properly on explorers.",
     ],
-    envKeys: ["SPECTRA_FOUNDER_MEMBERSHIP_ADDRESS"],
+    envKeys: ["AXIS_FOUNDER_MEMBERSHIP_ADDRESS"],
   },
 
   eventRegistry: {
@@ -471,10 +471,11 @@ export const deploymentGuides: Record<DeploymentContractKey, DeploymentContractG
       },
     ],
     afterDeploy: [
-      "Add SPECTRA_EVENT_ACCESS_REGISTRY_ADDRESS to your .env file.",
+      "Add AXIS_EVENT_ACCESS_REGISTRY_ADDRESS to your .env file.",
       "Only start creating events once your event metadata workflow is ready.",
       "Verify the contract so event access writes are publicly auditable.",
     ],
-    envKeys: ["SPECTRA_EVENT_ACCESS_REGISTRY_ADDRESS"],
+    envKeys: ["AXIS_EVENT_ACCESS_REGISTRY_ADDRESS"],
   },
 };
+

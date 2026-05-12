@@ -34,6 +34,15 @@ type BuildInfoInput = {
   };
 };
 
+type VerificationContext = {
+  artifact: (typeof deploymentArtifacts)[DeploymentContractKey];
+  buildInfo: BuildInfoInput;
+  sourceName: string;
+  license: ReturnType<typeof getLicenseMeta>;
+  optimizerEnabled: boolean;
+  optimizerRuns: number;
+};
+
 function cleanExplorerMessage(value: string | undefined, fallback: string) {
   const raw = value?.trim();
   if (!raw) return fallback;
@@ -160,7 +169,7 @@ function coerceAbiValue(param: AbiParameter, value: unknown): unknown {
 
 function getConstructorArgs(contractKey: DeploymentContractKey, values: unknown[]) {
   const artifact = getArtifact(contractKey);
-  const ctor = artifact.abi.find((entry) => entry.type === "constructor");
+  const ctor = artifact.abi.find((entry: { type: string }) => entry.type === "constructor");
   if (!ctor || !("inputs" in ctor) || !ctor.inputs?.length) return "";
   const encoded = encodeAbiParameters(ctor.inputs as AbiParameter[], toAbiValues(ctor.inputs as AbiParameter[], values));
   return encoded.slice(2);
@@ -192,6 +201,21 @@ function getLicenseMeta(spdx: string) {
   return licenses[normalized] ?? { etherscan: "2", blockscout: "none" };
 }
 
+async function loadVerificationContext(contractKey: DeploymentContractKey): Promise<VerificationContext> {
+  const { artifact, buildInfo } = await getBuildInfo(contractKey);
+  const sourceName = artifact.inputSourceName || artifact.sourceName;
+  const source = buildInfo.input.sources[sourceName]?.content;
+
+  return {
+    artifact,
+    buildInfo,
+    sourceName,
+    license: getLicenseMeta(getSpdxIdentifier(source)),
+    optimizerEnabled: Boolean(buildInfo.input.settings.optimizer?.enabled),
+    optimizerRuns: buildInfo.input.settings.optimizer?.runs ?? 200,
+  };
+}
+
 async function submitBaseScanVerification(request: VerificationRequest) {
   const { apiKey, endpoint } = resolveBaseScanConfig(request.chainId);
   const explorerBaseUrl = deploymentChainMeta[request.chainId].explorerUrl;
@@ -204,12 +228,8 @@ async function submitBaseScanVerification(request: VerificationRequest) {
     } satisfies VerificationResult;
   }
 
-  const { artifact, buildInfo } = await getBuildInfo(request.contractKey);
-  const sourceName = artifact.inputSourceName || artifact.sourceName;
-  const source = buildInfo.input.sources[sourceName]?.content;
-  const license = getLicenseMeta(getSpdxIdentifier(source));
-  const optimizerEnabled = Boolean(buildInfo.input.settings.optimizer?.enabled);
-  const optimizerRuns = buildInfo.input.settings.optimizer?.runs ?? 200;
+  const { artifact, buildInfo, sourceName, license, optimizerEnabled, optimizerRuns } =
+    await loadVerificationContext(request.contractKey);
   const constructorArguments = getConstructorArgs(request.contractKey, request.constructorArgs);
 
   const body = new URLSearchParams({
@@ -304,17 +324,15 @@ async function submitBaseScanVerification(request: VerificationRequest) {
 async function submitBlockscoutVerification(request: VerificationRequest) {
   const apiUrl = resolveBlockscoutApiUrl(request.chainId);
   const siteUrl = deploymentChainMeta[request.chainId].blockscoutUrl;
-  const { artifact, buildInfo } = await getBuildInfo(request.contractKey);
-  const sourceName = artifact.inputSourceName || artifact.sourceName;
-  const source = buildInfo.input.sources[sourceName]?.content;
-  const license = getLicenseMeta(getSpdxIdentifier(source));
+  const { artifact, buildInfo, sourceName, license, optimizerEnabled, optimizerRuns } =
+    await loadVerificationContext(request.contractKey);
   const form = new FormData();
   form.set("compiler_version", buildInfo.solcLongVersion);
   form.set("contract_name", artifact.contractName);
   form.set("file_name", sourceName);
   form.set("license_type", license.blockscout);
-  form.set("is_optimization_enabled", String(Boolean(buildInfo.input.settings.optimizer?.enabled)));
-  form.set("optimization_runs", String(buildInfo.input.settings.optimizer?.runs ?? 200));
+  form.set("is_optimization_enabled", String(optimizerEnabled));
+  form.set("optimization_runs", String(optimizerRuns));
   form.set("evm_version", buildInfo.input.settings.evmVersion || "default");
   form.set("autodetect_constructor_args", "false");
   form.set("constructor_args", getConstructorArgs(request.contractKey, request.constructorArgs));
@@ -348,7 +366,7 @@ async function submitBlockscoutVerification(request: VerificationRequest) {
     return {
       provider: "blockscout",
       status: "failed",
-      message: normalizeStatusMessage("blockscout", "failed", error instanceof Error ? error.message : undefined),
+      message: normalizeStatusMessage("blockscout", "failed", error instanceof Error ? error.message : ""),
       url: `${siteUrl}/address/${request.address}?tab=contract`,
     } satisfies VerificationResult;
   }

@@ -57,6 +57,14 @@ function formatEpisodeDateLabel(isoDate: string) {
   }).format(new Date(isoDate));
 }
 
+function formatEpisodeSubtitle(episode: EpisodeCatalogEntry) {
+  if (episode.status === "locked") {
+    return String(episode.year);
+  }
+
+  return formatEpisodeDate(episode.startsAt);
+}
+
 export function getEpisodeCatalog() {
   return episodeCatalog;
 }
@@ -89,7 +97,7 @@ export function toEpisodeCard(episode: EpisodeCatalogEntry): EpisodeCard {
     id: episode.id,
     slug: episode.slug,
     title: episode.shortTitle,
-    subtitle: formatEpisodeDate(episode.startsAt),
+    subtitle: formatEpisodeSubtitle(episode),
     status: episode.status,
     year: episode.year,
     image: resolveEpisodeImageUri(episode),
@@ -110,6 +118,7 @@ export function toEpisodeCard(episode: EpisodeCatalogEntry): EpisodeCard {
       videoUrl: episode.assets.videoUri,
       posterUrl: episode.assets.imageUri ?? episode.assets.posterUri,
       meshTarget: episode.assets.meshTarget,
+      videoTexture: episode.assets.videoTexture,
       scale: episode.assets.scale,
       position: episode.assets.position,
       rotation: episode.assets.rotation,
@@ -127,9 +136,11 @@ export function getEpisodeCardsFromCatalog(catalog: EpisodeCatalogEntry[]) {
 }
 
 export function buildEpisodeTraits(episode: EpisodeCatalogEntry): EpisodeTrait[] {
+  const dateValue = episode.status === "locked" ? String(episode.year) : formatEpisodeDateLabel(episode.startsAt);
+
   return [
     { trait_type: "Event", value: episode.title },
-    { trait_type: "Date", value: formatEpisodeDateLabel(episode.startsAt) },
+    { trait_type: "Date", value: dateValue },
     { trait_type: "Season", value: `Season ${episode.season}` },
     { trait_type: "Episode", value: `Episode ${episode.id}` },
     { trait_type: "Venue", value: episode.venueName },

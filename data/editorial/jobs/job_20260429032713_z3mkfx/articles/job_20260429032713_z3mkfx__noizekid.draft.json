@@ -1,0 +1,60 @@
+{
+  "jobId": "job_20260429032713_z3mkfx",
+  "taskId": "job_20260429032713_z3mkfx__noizekid",
+  "targetKey": "artist:noizekid",
+  "article": {
+    "id": 1,
+    "slug": "noizekid-mexican-moombahton-dancehall-producer",
+    "axis": "music",
+    "category": "PROFILE",
+    "contentType": "ARTICLE",
+    "mode": "ENTRY",
+    "frame": "OBSERVE",
+    "persona": "INSIDER",
+    "title": "Noizekid: Mexican Moombahton and Dancehall Producer",
+    "subtitle": "Collaborations with DJ Snake, Bad Bunny, and Major Lazer",
+    "author": "D. Varela",
+    "authorRole": "Contributing Editor",
+    "date": "2026-04-29",
+    "readTime": "3 min",
+    "excerpt": "Noizekid is a Mexican moombahton and dancehall producer known for his collaborations with prominent industry figures and his distinctive sample pack release.",
+    "featured": false,
+    "image_url": "",
+    "tags": [
+      "mexico",
+      "moombahton",
+      "dancehall",
+      "producer",
+      "sample pack"
+    ],
+    "linkedArtists": [
+      "DJ Snake",
+      "Bad Bunny",
+      "Major Lazer",
+      "ETC!ETC!",
+      "Los Dutis",
+      "LOOJAN",
+      "Bsno",
+      "Freebot"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Noizekid is a Mexican moombahton and dancehall producer who has made significant inroads in the music industry through collaborations with prominent artists such as DJ Snake, Bad Bunny, and Major Lazer."
+      },
+      {
+        "type": "paragraph",
+        "text": "His work is characterized by a fusion of electronic and dancehall elements, reflecting a dynamic approach to production that has earned him recognition within the Latin electronic music scene."
+      },
+      {
+        "type": "paragraph",
+        "text": "In addition to his collaborative efforts, Noizekid has expanded his creative output by releasing the 'Noizekid Sample Pack' in collaboration with Barnation. This pack includes a comprehensive collection of his samples, loops, and drums, offering producers a glimpse into his production toolkit."
+      },
+      {
+        "type": "paragraph",
+        "text": "The release of the sample pack underscores Noizekid's commitment to sharing his creative process and resources with the broader music production community."
+      }
+    ],
+    "monetization": []
+  }
+}

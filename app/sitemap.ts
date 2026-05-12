@@ -15,9 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/docs/diagrams",
     "/arapp",
     "/arapp/collect",
-    "/owner/episodes",
-    "/owner/contracts",
-    "/owner/artists",
+    "/membership",
+    "/members",
   ].map((path) => ({
     url: `${siteUrl}${path}`,
     lastModified: new Date(),

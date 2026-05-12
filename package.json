@@ -1,5 +1,5 @@
 {
-  "name": "spectrart",
+  "name": "axis",
   "version": "1.0",
   "private": true,
   "type": "module",
@@ -98,3 +98,4 @@
     "lightningcss-win32-x64-msvc": "^1.32.0"
   }
 }
+

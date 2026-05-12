@@ -1,0 +1,28 @@
+{
+  "jobId": "job_20260422045301_oml4vl",
+  "tasks": [
+    {
+      "id": "job_20260422045301_oml4vl__1h6ef30v13x447h4xne",
+      "jobId": "job_20260422045301_oml4vl",
+      "targetKey": "artist:1h6ef30v13x447h4xne",
+      "targetType": "artist",
+      "slug": "machine-girl-digital-punk-nightmare-fuel",
+      "sourceRef": {
+        "kind": "raw_article",
+        "rawId": "89497683994087632520576192048708523428174778441751694145976822409198447188014",
+        "rawSlug": "1h6ef30v13x447h4xne",
+        "rawFolder": "0004_1h6ef30v13x447h4xne"
+      },
+      "status": "approved",
+      "draftPath": "data\\editorial\\jobs\\job_20260422045301_oml4vl\\articles\\job_20260422045301_oml4vl__1h6ef30v13x447h4xne.draft.json",
+      "enrichedPath": "data\\editorial\\jobs\\job_20260422045301_oml4vl\\articles\\job_20260422045301_oml4vl__1h6ef30v13x447h4xne.enriched.json",
+      "reviewPath": "data\\editorial\\jobs\\job_20260422045301_oml4vl\\articles\\job_20260422045301_oml4vl__1h6ef30v13x447h4xne.review.json",
+      "groveUri": null,
+      "groveGatewayUrl": null,
+      "groveStorageKey": null,
+      "error": null,
+      "attempts": 1,
+      "updatedAt": "2026-04-22T04:54:00.091Z"
+    }
+  ]
+}

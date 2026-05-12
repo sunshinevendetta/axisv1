@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { getAudioReactiveState } from "./audioReactive";
 
 export type HydraControls = {
   noiseA1: number;
@@ -65,6 +66,49 @@ export type HydraControls = {
   shape3: number;
   scaleD1: number;
   scaleD2: number;
+};
+
+type HydraArg = number | (() => number);
+
+interface HydraChain {
+  mult(source: HydraChain): HydraChain;
+  noise(...args: HydraArg[]): HydraChain;
+  osc(...args: HydraArg[]): HydraChain;
+  brightness(value: HydraArg): HydraChain;
+  contrast(value: HydraArg): HydraChain;
+  modulate(source: HydraChain, amount?: HydraArg): HydraChain;
+  diff(source: HydraChain): HydraChain;
+  scale(...args: HydraArg[]): HydraChain;
+  modulateScale(source: HydraChain, amount?: HydraArg): HydraChain;
+  pixelate(x: HydraArg, y: HydraArg): HydraChain;
+  rotate(angle: HydraArg, speed?: HydraArg): HydraChain;
+  shape(...args: HydraArg[]): HydraChain;
+  invert(): HydraChain;
+  out(target?: HydraChain): HydraChain;
+}
+
+interface HydraSynthApi extends HydraChain {
+  time: number;
+  speed: number;
+  o0: HydraChain;
+}
+
+interface HydraInstance {
+  synth: HydraSynthApi;
+}
+
+interface HydraOptions {
+  canvas: HTMLCanvasElement;
+  autoLoop: boolean;
+  makeGlobal: boolean;
+  detectAudio: boolean;
+  enableStreamCapture: boolean;
+  width: number;
+  height: number;
+}
+
+type HydraModule = {
+  default: new (options: HydraOptions) => HydraInstance;
 };
 
 export const DEFAULT_HYDRA_CONTROLS: HydraControls = {
@@ -230,7 +274,7 @@ type Props = {
  */
 export default function HydraBackground({ sketchIndex, playing, controls }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const hydraRef = useRef<any>(null);
+  const hydraRef = useRef<HydraInstance | null>(null);
   const rafRef = useRef<number>(0);
   const isFallbackRef = useRef(false);
 
@@ -249,19 +293,15 @@ export default function HydraBackground({ sketchIndex, playing, controls }: Prop
 
     const initHydra = async () => {
       try {
-        const HydraModule = await import("hydra-synth");
-        const Hydra = HydraModule.default ?? HydraModule;
+        const { default: Hydra } = (await import("hydra-synth")) as HydraModule;
 
         if (!mounted || !canvas) return;
-
-        // Dispose previous instance
-        try { hydraRef.current?.synth?.stop?.(); } catch {}
 
         const h = new Hydra({
           canvas,
           autoLoop: true,
           makeGlobal: false,
-          detectAudio: true,
+          detectAudio: false,
           enableStreamCapture: false,
           width: canvas.width,
           height: canvas.height,
@@ -281,7 +321,7 @@ export default function HydraBackground({ sketchIndex, playing, controls }: Prop
     return () => {
       mounted = false;
       window.removeEventListener("resize", resize);
-      try { hydraRef.current?.synth?.stop?.(); } catch {}
+      hydraRef.current = null;
       cancelAnimationFrame(rafRef.current);
     };
   }, []); // init once
@@ -291,10 +331,8 @@ export default function HydraBackground({ sketchIndex, playing, controls }: Prop
     if (isFallbackRef.current) return;
     const synth = hydraRef.current?.synth;
     if (!synth) return;
-    try {
-      synth.speed = playing ? 1.0 : 0.25;
-      runSketch(synth, playing, controls);
-    } catch {}
+    synth.speed = playing ? 1.0 : 0.25;
+    runSketch(synth, playing, controls);
   }, [sketchIndex, playing, controls]);
 
   return (
@@ -308,28 +346,25 @@ export default function HydraBackground({ sketchIndex, playing, controls }: Prop
 
 // ── Shared Hydra sketch — always active behind the disc ──────────────────────
 
-function runSketch(synth: any, playing: boolean, controls: HydraControls) {
+function runSketch(synth: HydraSynthApi, playing: boolean, controls: HydraControls) {
   synth.speed = playing ? 1.0 : 0.25;
 
   try {
-    const audio = synth.a;
-    if (audio?.setBins) {
-      audio.setBins(8);
-    }
+    const audio = () => getAudioReactiveState();
 
     synth
       .noise(controls.noiseA1, controls.noiseA2)
       .mult(synth.osc(controls.oscA1, controls.oscA2, () => Math.sin(synth.time / controls.oscA3) * controls.oscA4, controls.oscA5))
       .mult(
-        synth.noise(controls.noiseB1, controls.noiseB2, controls.noiseB3, () => (audio?.fft?.[3] ?? 0) * controls.noiseB4)
-          .brightness(() => (audio?.fft?.[1] ?? 0) * controls.brightnessA)
+        synth.noise(controls.noiseB1, controls.noiseB2, controls.noiseB3, () => audio().fft[3] * controls.noiseB4)
+          .brightness(() => audio().fft[1] * controls.brightnessA)
           .contrast(controls.contrastA)
           .mult(synth.osc(controls.oscB1, controls.oscB2, () => Math.sin(synth.time / controls.oscB3) + controls.oscB4)),
       )
       .out(synth.o0);
 
     synth
-      .noise(controls.noiseC1, () => (audio?.fft?.[0] ?? 0) / controls.noiseC2, controls.noiseC3)
+      .noise(controls.noiseC1, () => audio().fft[0] / controls.noiseC2, controls.noiseC3)
       .modulate(synth.osc(controls.oscC1, controls.oscC2, () => controls.oscC3).diff(synth.o0))
       .diff(
         synth.noise(controls.noiseD1, controls.noiseD2, controls.noiseD3, controls.noiseD4)
@@ -342,15 +377,15 @@ function runSketch(synth: any, playing: boolean, controls: HydraControls) {
       .modulateScale(
         synth.osc(controls.oscE1, controls.oscE2, () => controls.oscE3)
           .mult(synth.osc(controls.oscF1, controls.oscF2, controls.oscF3).rotate(controls.rotateB1 / controls.rotateB2))
-          .rotate(() => (audio?.fft?.[3] ?? 0) / controls.scaleB1)
-          .scale(controls.scaleB2, () => (audio?.fft?.[2] ?? 0) + 1)
-          .scale(controls.scaleC1, () => (audio?.fft?.[6] ?? 0) + controls.scaleC2)
+          .rotate(() => audio().fft[3] / controls.scaleB1)
+          .scale(controls.scaleB2, () => audio().fft[2] + 1)
+          .scale(controls.scaleC1, () => audio().fft[6] + controls.scaleC2)
           .invert(),
-        () => (audio?.fft?.[1] ?? 0) * Math.sin(synth.time / controls.modScaleA),
+        () => audio().fft[1] * Math.sin(synth.time / controls.modScaleA),
       )
       .pixelate(controls.pixelateX, controls.pixelateY)
       .rotate(controls.rotateC1, () => synth.time / controls.rotateC2)
-      .mult(synth.shape(() => controls.shape1, controls.shape2, controls.shape3).scale(controls.scaleD1, () => (audio?.fft?.[0] ?? 0) * controls.scaleD2))
+      .mult(synth.shape(() => controls.shape1, controls.shape2, controls.shape3).scale(controls.scaleD1, () => audio().fft[0] * controls.scaleD2))
       .out();
   } catch (err) {
     console.warn("[HydraBackground] Sketch error:", err);

@@ -12,6 +12,7 @@ import PageGradualBlur from "@/components/PageGradualBlur";
 import PillNav from "@/components/PillNav";
 import SubmitSection from "@/components/SubmitSection";
 import HomeArtistsSection from "@/components/home/HomeArtistsSection";
+import HomeRSVPSection from "@/components/home/HomeRSVPSection";
 import HomeCollectSection from "@/components/home/HomeCollectSection";
 import HomeMagazineSection from "@/components/home/HomeMagazineSection";
 import HomeMixtapesSection from "@/components/home/HomeMixtapesSection";
@@ -105,6 +106,8 @@ export default function HomePageClient({
           </div>
         </section>
 
+        <HomeRSVPSection />
+
         {upcomingEpisodes.length > 0 ? <CountdownSection episodes={upcomingEpisodes} /> : null}
         <EpisodesSection />
         {/* <HomeFeaturedArtifactsSection drops={drops} /> */}
@@ -114,20 +117,20 @@ export default function HomePageClient({
           activeMixtapeId={activeMixtape?.id ?? null}
           isPlaying={playerPlaying}
         />
-        <HomeMagazineSection articles={articles} />
+        <HomeMagazineSection articles={articles} lang="en" />
         <HomeArtistsSection
           artists={featuredArtists}
           musicCount={musicCount}
           visualCount={visualCount}
           genreLabels={genreLabels}
         />
-        <HomeSpacesSection articles={articles} />
-        <HomeStoreSection drops={drops} />
-        <HomeCollectSection />
+        {/* <HomeSpacesSection articles={articles} /> */}
+        {/* <HomeStoreSection drops={drops} /> */}
+        {/* <HomeCollectSection /> */}
 
-        <section id="join" className="bg-black">
+        {/* <section id="join" className="bg-black">
           <GatedMembershipFlow />
-        </section>
+        </section> */}
 
         <AboutSection />
 

@@ -5,7 +5,7 @@ actor OwnerAdmin
 participant "Owner Episodes Dashboard" as Dashboard
 database "episodes.json" as Catalog
 participant "Episode Sync Service" as SyncSvc
-participant "SpectraEventAccessRegistry" as Registry
+participant "AxisEventAccessRegistry" as Registry
 
 OwnerAdmin -> Dashboard : edit episode
 Dashboard -> Catalog : save record
