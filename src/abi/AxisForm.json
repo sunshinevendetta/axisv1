@@ -1,0 +1,47 @@
+[
+  {
+    "name": "SubmissionReceived",
+    "type": "event",
+    "inputs": [
+      { "name": "submissionId", "type": "uint256", "indexed": true, "internalType": "uint256" },
+      { "name": "applicant", "type": "address", "indexed": true, "internalType": "address" },
+      { "name": "timestamp", "type": "uint256", "indexed": false, "internalType": "uint256" }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "getSubmission",
+    "type": "function",
+    "inputs": [{ "name": "_index", "type": "uint256", "internalType": "uint256" }],
+    "outputs": [
+      { "name": "applicant", "type": "address", "internalType": "address" },
+      { "name": "timestamp", "type": "uint256", "internalType": "uint256" },
+      { "name": "name", "type": "string", "internalType": "string" },
+      { "name": "phone", "type": "string", "internalType": "string" },
+      { "name": "instagram", "type": "string", "internalType": "string" },
+      { "name": "x", "type": "string", "internalType": "string" },
+      { "name": "tiktok", "type": "string", "internalType": "string" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "getSubmissionCount",
+    "type": "function",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "name": "submit",
+    "type": "function",
+    "inputs": [
+      { "name": "_name", "type": "string", "internalType": "string" },
+      { "name": "_phone", "type": "string", "internalType": "string" },
+      { "name": "_instagram", "type": "string", "internalType": "string" },
+      { "name": "_x", "type": "string", "internalType": "string" },
+      { "name": "_tiktok", "type": "string", "internalType": "string" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  }
+]
