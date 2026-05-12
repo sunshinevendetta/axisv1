@@ -55,6 +55,8 @@ components/admin/
 src/lib/article-enricher-hq.ts
 src/lib/deployment-hq.ts
 src/lib/owner-access-contract.ts
+src/lib/contract-verification.ts
+src/lib/owner-access-admin.ts
 
 # Local/generated junk
 *.log
