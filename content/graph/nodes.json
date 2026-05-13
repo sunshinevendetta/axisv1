@@ -359,8 +359,8 @@
         ]
       },
       "media": {
-        "cover": "/soon.jpg",
-        "image": "/soon.jpg",
+        "cover": "/pizzadao/pizzadaoflyer.webp",
+        "image": "/pizzadao/pizzadaoflyer.webp",
         "model": "/models/logo.glb"
       },
       "attributes": {

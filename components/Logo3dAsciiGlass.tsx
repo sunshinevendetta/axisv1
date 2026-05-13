@@ -29,8 +29,10 @@ function createVideoTexture(src: string): { texture: THREE.VideoTexture; video: 
 
 function GlassLogo({
   groupRef,
+  scale,
 }: {
   groupRef: React.RefObject<THREE.Group>;
+  scale: number;
 }) {
   const { nodes } = useGLTF("/models/logo.glb");
   const meshes = useMemo(
@@ -39,7 +41,7 @@ function GlassLogo({
   );
 
   return (
-    <group ref={groupRef} scale={4.5}>
+    <group ref={groupRef} scale={scale}>
       {meshes.map((mesh, i) => (
         <mesh
           key={i}
@@ -85,6 +87,7 @@ function AsciiInjector({
   controlsRef: React.RefObject<OrbitControlsImpl | null>;
 }) {
   const { gl, scene, camera, size } = useThree();
+  const { width, height } = size;
   const effectRef = useRef<AsciiEffect | null>(null);
   const idleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const autoRotate = useRef(true);
@@ -105,7 +108,7 @@ function AsciiInjector({
 
   useEffect(() => {
     const effect = new AsciiEffect(gl, " .:-+*=%@#", { invert: true });
-    effect.setSize(size.width, size.height);
+    effect.setSize(width, height);
     effect.domElement.style.color = "white";
     effect.domElement.style.backgroundColor = "transparent";
     effect.domElement.style.position = "absolute";
@@ -121,12 +124,12 @@ function AsciiInjector({
     return () => {
       effectRef.current = null;
     };
-  }, [gl]);
+  }, [gl, width, height]);
 
   useEffect(() => {
     if (!effectRef.current) return;
-    effectRef.current.setSize(size.width, size.height);
-  }, [size]);
+    effectRef.current.setSize(width, height);
+  }, [width, height]);
 
   useFrame((_, delta) => {
     if (groupRef.current && autoRotate.current) {
@@ -172,10 +175,12 @@ function Scene({
   onEffect,
   onLoaded,
   videoTexture,
+  logoScale,
 }: {
   onEffect: (effect: AsciiEffect) => void;
   onLoaded: () => void;
   videoTexture: THREE.VideoTexture | null;
+  logoScale: number;
 }) {
   const groupRef = useRef<THREE.Group>(null!);
   const controlsRef = useRef<OrbitControlsImpl>(null);
@@ -185,14 +190,14 @@ function Scene({
       <OrbitControls
         ref={controlsRef}
         enablePan={false}
-        enableZoom={true}
+        enableZoom={false}
         minDistance={2}
         maxDistance={12}
       />
       <ambientLight intensity={5} />
       <directionalLight position={[4, 5, 6]} intensity={1.5} />
       {videoTexture ? <VideoBackground texture={videoTexture} /> : null}
-      <GlassLogo groupRef={groupRef} />
+      <GlassLogo groupRef={groupRef} scale={logoScale} />
       <AsciiInjector
         onEffect={onEffect}
         onLoaded={onLoaded}
@@ -206,8 +211,22 @@ function Scene({
 export default function Logo3dAsciiGlass() {
   const [modelLoaded, setModelLoaded] = useState(false);
   const [videoTexture, setVideoTexture] = useState<THREE.VideoTexture | null>(null);
+  const [logoScale, setLogoScale] = useState(4.5);
   const asciiContainerRef = useRef<HTMLDivElement>(null);
   const asciiEffectRef = useRef<AsciiEffect | null>(null);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const updateScale = () => {
+      setLogoScale(mediaQuery.matches ? 6.3 : 4.5);
+    };
+
+    updateScale();
+    mediaQuery.addEventListener("change", updateScale);
+    return () => {
+      mediaQuery.removeEventListener("change", updateScale);
+    };
+  }, []);
 
   useEffect(() => {
     const isMobile = !window.matchMedia("(min-width: 768px)").matches;
@@ -312,11 +331,16 @@ export default function Logo3dAsciiGlass() {
         <Canvas
           camera={{ position: [0, 0, 6], fov: 55 }}
           gl={{ antialias: true, alpha: true }}
-          style={{ background: "transparent" }}
+          style={{ background: "transparent", touchAction: "pan-y" }}
           frameloop="always"
         >
           <Suspense fallback={null}>
-            <Scene onEffect={handleEffect} onLoaded={() => setModelLoaded(true)} videoTexture={videoTexture} />
+            <Scene
+              onEffect={handleEffect}
+              onLoaded={() => setModelLoaded(true)}
+              videoTexture={videoTexture}
+              logoScale={logoScale}
+            />
           </Suspense>
         </Canvas>
       </div>

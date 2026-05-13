@@ -1,0 +1,39 @@
+{
+  "updatedAt": "2026-05-13T20:09:26.133Z",
+  "payload": {
+    "symbol": "GITLAWB",
+    "name": "GITLAWB / WETH",
+    "price": 0.000179081806277563,
+    "change24h": 43.932,
+    "volume24h": 2570066.01207611,
+    "marketCap": null,
+    "sparkline": [],
+    "pools": [
+      {
+        "name": "GITLAWB / WETH",
+        "price": 0.000179081806277563,
+        "change24h": 43.932,
+        "volume24h": 2570066.01207611,
+        "address": "base_0x5f980dcfc4c0fa3911554cf5ab288ed0eb13dba3"
+      },
+      {
+        "name": "BNKR / WETH 1%",
+        "price": 0.000404396764985114,
+        "change24h": 24.865,
+        "volume24h": 2208184.29944973,
+        "address": "base_0x22af33fe49fd1fa80c7149773dde5890d3c76f3b"
+      },
+      {
+        "name": "ClawBank / WETH",
+        "price": 0.0000561649495378252,
+        "change24h": 61.889,
+        "volume24h": 1307928.99159904,
+        "address": "base_0x16332535e2c27da578bc2e82beb09ce9d3c8eb07"
+      }
+    ],
+    "dex": [],
+    "cex": [],
+    "poolAddress": "0xec33256bf1ded407a57fd3c1965e7556e42ac14db09bc4e6fef57d5e2eb0b0b9",
+    "network": "Base"
+  }
+}

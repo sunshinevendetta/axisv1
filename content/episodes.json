@@ -198,9 +198,9 @@
       }
     },
     "assets": {
-      "sourceUri": "/soon.jpg",
-      "posterUri": "/soon.jpg",
-      "imageUri": "/soon.jpg",
+      "sourceUri": "/pizzadao/pizzadaoflyer.webp",
+      "posterUri": "/pizzadao/pizzadaoflyer.webp",
+      "imageUri": "/pizzadao/pizzadaoflyer.webp",
       "glbUri": "/models/logo.glb"
     }
   },

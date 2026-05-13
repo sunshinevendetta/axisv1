@@ -16,6 +16,17 @@ function fmtPrice(n: number): string {
   return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 4, maximumFractionDigits: 6 });
 }
 
+function formatRelative(iso: string): string {
+  const then = new Date(iso).getTime();
+  if (!Number.isFinite(then)) return "";
+  const diffMs = Date.now() - then;
+  const hours = Math.max(0, Math.floor(diffMs / 3_600_000));
+  if (hours < 1) return "updated <1h ago";
+  if (hours < 48) return `updated ${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  return `updated ${days}d ago`;
+}
+
 function fmtCompact(n: number | null): string {
   if (n === null || isNaN(n)) return "—";
   if (n >= 1e12) return "$" + (n / 1e12).toFixed(2) + "T";
@@ -209,7 +220,7 @@ function MarketsInner() {
   const router = useRouter();
   const active = params.get("active") ?? "bitcoin";
 
-  const { data, loading } = useMarketData(active);
+  const { data, updatedAt, loading } = useMarketData(active);
 
   const up = (data?.change24h ?? 0) >= 0;
 
@@ -247,11 +258,10 @@ function MarketsInner() {
               <span className="text-[9px] uppercase tracking-[0.4em] text-white/18">Markets</span>
             </div>
             <span className="flex items-center gap-1.5">
-              <span
-                className="h-1.5 w-1.5 rounded-full bg-white/50"
-                style={{ animation: "live-blink 1s step-start infinite" }}
-              />
-              <span className="text-[7px] uppercase tracking-[0.4em] text-white/22">Live</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-white/50" />
+              <span className="text-[7px] uppercase tracking-[0.4em] text-white/22">
+                24h prices{updatedAt ? ` · ${formatRelative(updatedAt)}` : ""}
+              </span>
             </span>
           </div>
         </div>
