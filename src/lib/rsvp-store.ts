@@ -1,5 +1,6 @@
 import path from "node:path";
 import { readJsonFile, writeJsonFile } from "@/src/lib/json-store";
+import defaultSlots from "@/src/content/rsvp-default-slots.json";
 
 export type MainTicketStatus = "sent" | "failed" | "pending";
 
@@ -18,6 +19,7 @@ export type RsvpSlot = {
   community?: string;
   rsvpId?: string;
   attendees?: Attendee[];
+  logoUrl?: string;
   topic?: string;
   topicEs?: string;
   notes?: string;
@@ -53,15 +55,7 @@ export type RsvpStoreData = {
 
 const RSVP_STORE_PATH = path.join(process.cwd(), "data", "admin", "rsvp.json");
 
-const DEFAULT_SLOTS: RsvpSlot[] = [
-  { time: "3:00 PM - 4:00 PM", status: "open" },
-  { time: "4:00 PM - 5:00 PM", status: "open" },
-  { time: "5:00 PM - 6:00 PM", status: "open" },
-  { time: "6:00 PM - 7:00 PM", status: "open" },
-  { time: "7:00 PM - 8:00 PM", status: "open" },
-  { time: "8:00 PM - 9:00 PM", status: "open" },
-  { time: "9:00 PM - 10:00 PM", status: "open" },
-];
+const DEFAULT_SLOTS = defaultSlots as RsvpSlot[];
 
 function isStore(value: unknown): value is RsvpStoreData {
   return Boolean(value) && typeof value === "object" && "slots" in (value as Record<string, unknown>);
@@ -261,7 +255,7 @@ export function buildSlotCard(slot: RsvpSlot, entry?: RsvpEntry): SlotCard {
       topic: entry.topic,
       notes: entry.notes,
       language: entry.language,
-      logoUrl: entry.logoUrl ?? null,
+      logoUrl: entry.logoUrl ?? slot.logoUrl ?? null,
       link: detectLink(entry.communityName) ?? detectLink(entry.notes),
       attendeeCount: (slot.attendees?.length ?? entry.attendees?.length) ?? 0,
       rsvpId: entry.id,
@@ -282,7 +276,7 @@ export function buildSlotCard(slot: RsvpSlot, entry?: RsvpEntry): SlotCard {
       topic: topicParts.join(" · ") || `Hosted by ${hostName}`,
       notes: noteParts.join("\n\n") || "",
       language: slot.language ?? "english",
-      logoUrl: null,
+      logoUrl: slot.logoUrl ?? null,
       link,
       attendeeCount: slot.attendees?.length ?? 0,
       rsvpId: null,
@@ -296,7 +290,7 @@ export function buildSlotCard(slot: RsvpSlot, entry?: RsvpEntry): SlotCard {
       ? `This hour is hosted by ${community}. Visit their site to learn more.`
       : "This slot is reserved.",
     language: "english",
-    logoUrl: null,
+    logoUrl: slot.logoUrl ?? null,
     link,
     attendeeCount: slot.attendees?.length ?? 0,
     rsvpId: null,

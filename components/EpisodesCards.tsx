@@ -114,7 +114,6 @@ export default function EpisodesCards(props: EpisodesCardsProps) {
   const { episodes: episodesProp, initialOpenId = null, onClose } = props;
 
   const [openId, setOpenId] = useState<number | null>(initialOpenId);
-  const [fetchedEpisodes, setFetchedEpisodes] = useState<Episode[] | null>(null);
   const [activeFilter, setActiveFilter] = useState<ActiveFilter>(null);
 
   useEffect(() => {
@@ -132,41 +131,8 @@ export default function EpisodesCards(props: EpisodesCardsProps) {
     }
   }, []);
 
-  useEffect(() => {
-    if (episodesProp && episodesProp.length > 0) {
-      return;
-    }
-
-    const controller = new AbortController();
-
-    fetch("/api/episodes", {
-      cache: "no-store",
-      signal: controller.signal,
-    })
-      .then(async (response) => {
-        if (!response.ok) {
-          throw new Error("Failed to load episodes.");
-        }
-
-        const data = (await response.json()) as { episodes: Episode[] };
-        setFetchedEpisodes(data.episodes);
-      })
-      .catch((error) => {
-        if (controller.signal.aborted) {
-          return;
-        }
-
-        console.error(error);
-      });
-
-    return () => controller.abort();
-  }, [episodesProp]);
-
-  const allEpisodes: Episode[] = useMemo(() => {
-    if (episodesProp && episodesProp.length > 0) return episodesProp;
-    if (fetchedEpisodes && fetchedEpisodes.length > 0) return fetchedEpisodes;
-    return getEpisodeCards();
-  }, [episodesProp, fetchedEpisodes]);
+  const allEpisodes: Episode[] =
+    episodesProp && episodesProp.length > 0 ? episodesProp : getEpisodeCards();
 
   const episodes = useMemo(() => {
     if (!activeFilter) return allEpisodes;

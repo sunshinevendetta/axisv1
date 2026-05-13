@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -44,6 +44,7 @@ export default function PillNav({
   onMobileMenuClick,
 }: PillNavProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
   const menuItems = useMemo(() => dedupeItems(items), [items]);
   const activeGroupHref = useMemo(
     () =>
@@ -57,10 +58,53 @@ export default function PillNav({
   );
   const [expandedGroupHref, setExpandedGroupHref] = useState<string | null>(activeGroupHref);
 
-  useEffect(() => {
+  const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  useEffect(() => {
+    closeMenu();
     setExpandedGroupHref(activeGroupHref);
   }, [activeGroupHref, activeHref]);
+
+  useEffect(() => {
+    const handleHashNavigation = () => {
+      closeMenu();
+    };
+
+    window.addEventListener("hashchange", handleHashNavigation);
+    window.addEventListener("popstate", handleHashNavigation);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashNavigation);
+      window.removeEventListener("popstate", handleHashNavigation);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) {
+        closeMenu();
+      }
+    };
+    const handleScroll = () => closeMenu();
+
+    document.addEventListener("pointerdown", handlePointerDown, true);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("wheel", handleScroll, { passive: true });
+    window.addEventListener("touchmove", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown, true);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("touchmove", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen((current) => {
@@ -80,7 +124,7 @@ export default function PillNav({
           <Link
             href={child.href}
             aria-label={child.ariaLabel || child.label}
-            onClick={() => setIsMenuOpen(false)}
+            onClick={closeMenu}
             className={`block truncate rounded-lg px-2 py-1.5 text-[11px] tracking-[0.08em] transition-colors duration-150 ${
               isChildActive
                 ? "bg-white/10 text-white"
@@ -99,7 +143,7 @@ export default function PillNav({
     });
 
   return (
-    <div className={`relative w-fit max-w-full ${className}`}>
+    <div ref={rootRef} className={`relative w-fit max-w-full ${className}`}>
       <nav aria-label="Primary" className="flex items-center justify-center gap-4 text-white">
         <button
           type="button"
@@ -195,7 +239,7 @@ export default function PillNav({
                   key={item.href}
                   href={item.href}
                   aria-label={item.ariaLabel || item.label}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={closeMenu}
                   className={`block rounded-xl px-3 py-2 text-[10px] uppercase tracking-[0.26em] transition-colors duration-150 ${
                     isActive
                       ? "bg-white/8 text-white"

@@ -1,0 +1,47 @@
+name: Refresh market snapshots
+
+on:
+  schedule:
+    # Daily at 00:00 UTC.
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-markets
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install tsx
+        run: npm install --no-save tsx
+
+      - name: Refresh snapshots
+        run: npx tsx scripts/refresh-market-snapshots.ts
+        # Script exits non-zero if any single endpoint fails after retries, but
+        # the other snapshots are still written. We don't want a partial failure
+        # to abort the commit step — yesterday's data is preserved automatically
+        # by the script (it only writes on success). So continue regardless.
+        continue-on-error: true
+
+      - name: Commit changes
+        run: |
+          git config user.name "axis-market-bot"
+          git config user.email "axis-market-bot@users.noreply.github.com"
+          git add public/data/markets
+          if git diff --cached --quiet; then
+            echo "No snapshot changes."
+            exit 0
+          fi
+          git commit -m "chore(markets): refresh snapshots $(date -u +%Y-%m-%d)"
+          git push

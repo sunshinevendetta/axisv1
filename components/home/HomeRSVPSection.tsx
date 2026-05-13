@@ -1,5 +1,6 @@
 "use client";
 
+import defaultTimeSlotsData from "@/src/content/rsvp-default-slots.json";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { FormEvent } from "react";
@@ -14,18 +15,10 @@ type TimeSlot = {
   rsvpId?: string;
 };
 
-const defaultTimeSlots: TimeSlot[] = [
-  { time: "3:00 PM - 4:00 PM", status: "open" },
-  { time: "4:00 PM - 5:00 PM", status: "open" },
-  { time: "5:00 PM - 6:00 PM", status: "open" },
-  { time: "6:00 PM - 7:00 PM", status: "open" },
-  { time: "7:00 PM - 8:00 PM", status: "open" },
-  { time: "8:00 PM - 9:00 PM", status: "open" },
-  { time: "9:00 PM - 10:00 PM", status: "open" },
-];
+const defaultTimeSlots = defaultTimeSlotsData as TimeSlot[];
 
 const carouselImages = [
-  { src: "/pizzadao/pizzadao.webp", alt: "Pizza DAO party flyer" },
+  { src: "/pizzadao/pizzadaoflyer.webp", alt: "Pizza DAO party flyer" },
   { src: "/pizzadao/berlin1.webp", alt: "Berlin community gathering" },
   { src: "/pizzadao/berlin2.webp", alt: "Berlin community gathering" },
   { src: "/pizzadao/berlin3.webp", alt: "Berlin community gathering" },
@@ -38,7 +31,7 @@ const inclusions = [
 ];
 
 export default function HomeRSVPSection() {
-  const [timeSlots, setTimeSlots] = useState<TimeSlot[]>(defaultTimeSlots);
+  const timeSlots = defaultTimeSlots;
   const allSoldOut = timeSlots.every((s) => s.status === "locked");
 
   const [communityName, setCommunityName] = useState("");
@@ -69,20 +62,6 @@ export default function HomeRSVPSection() {
       setCarouselIndex((i) => (i + 1) % carouselImages.length);
     }, 4500);
     return () => clearInterval(id);
-  }, []);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/rsvp/slots")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => {
-        if (cancelled || !data?.slots) return;
-        setTimeSlots(data.slots as TimeSlot[]);
-      })
-      .catch(() => {});
-    return () => {
-      cancelled = true;
-    };
   }, []);
 
   const selectedLabel = useMemo(
@@ -157,7 +136,7 @@ export default function HomeRSVPSection() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(255,140,60,0.10),transparent_36%),radial-gradient(circle_at_85%_85%,rgba(120,90,255,0.10),transparent_38%),radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.025),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(255,140,60,0.10),transparent_36%),radial-gradient(circle_at_85%_85%,rgba(210,220,232,0.10),transparent_38%),radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.028),transparent_55%)]"
       />
       <div
         aria-hidden
@@ -168,7 +147,7 @@ export default function HomeRSVPSection() {
         {/* LEFT: Narrative + image carousel */}
         <div className="flex flex-col">
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1.5 text-[10px] uppercase tracking-[0.32em] text-white/60 backdrop-blur">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.7)]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-white/70 shadow-[0_0_10px_rgba(255,255,255,0.35)]" />
             Pizza DAO Party · May 22 · Hosted by Axis
           </div>
 
