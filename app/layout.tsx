@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const bodyFont = localFont({
   src: "../public/fonts/BINGO.woff2",
@@ -83,6 +84,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${bodyFont.variable} ${displayFont.variable} ${bebasNeue.variable} ${notoSansKR.variable} pb-8 font-sans antialiased`} suppressHydrationWarning>
         <Providers>{children}</Providers>
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
