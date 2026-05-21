@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { type ReactNode, useEffect, useState } from "react";
 import { createConfig, http, WagmiProvider, type Config } from "wagmi";
 import { base, baseSepolia } from "wagmi/chains";
+import { LanguageSwitch, SiteLanguageProvider } from "@/components/site-language";
 
 const safeConfig = createConfig({
   chains: [base, baseSepolia],
@@ -42,7 +43,10 @@ export function Providers({
   return (
     <WagmiProvider config={config ?? safeConfig}>
       <QueryClientProvider client={queryClient}>
-        {children}
+        <SiteLanguageProvider>
+          {children}
+          <LanguageSwitch />
+        </SiteLanguageProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

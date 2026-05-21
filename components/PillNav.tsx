@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSiteLanguage } from "@/components/site-language";
 
 export type PillNavItem = {
   label: string;
@@ -35,6 +36,32 @@ function dedupeItems(items: PillNavItem[]): PillNavItem[] {
     }));
 }
 
+function translateNavLabel(label: string, language: "en" | "es") {
+  if (language === "en") return label;
+
+  const map: Record<string, string> = {
+    home: "inicio",
+    about: "acerca",
+    episodes: "episodios",
+    submit: "enviar",
+    "pizza day": "día pizza",
+    "all products": "todos los productos",
+    "all episodes": "todos los episodios",
+    "admin dashboard": "panel admin",
+    "members area": "área de miembros",
+    login: "iniciar sesión",
+    "get membership": "obtener membresía",
+    "episodes hq": "hq episodios",
+    "contracts hq": "hq contratos",
+    "live episode hq": "hq episodio en vivo",
+    "artwork json hq": "hq JSON de obras",
+    "artist hq": "hq artistas",
+    "session secret hq": "hq secreto de sesión",
+  };
+
+  return map[label.toLowerCase()] ?? label;
+}
+
 export default function PillNav({
   logo,
   logoAlt = "Logo",
@@ -45,6 +72,7 @@ export default function PillNav({
 }: PillNavProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const { language } = useSiteLanguage();
   const menuItems = useMemo(() => dedupeItems(items), [items]);
   const activeGroupHref = useMemo(
     () =>
@@ -118,12 +146,13 @@ export default function PillNav({
     items.map((child: PillNavItem) => {
       const isChildActive = child.href === activeHref;
       const hasNestedChildren = Boolean(child.children?.length);
+      const translatedLabel = translateNavLabel(child.label, language);
 
       return (
         <div key={child.href} className={level > 0 ? "mt-1" : ""}>
           <Link
             href={child.href}
-            aria-label={child.ariaLabel || child.label}
+            aria-label={child.ariaLabel || translatedLabel}
             onClick={closeMenu}
             className={`block truncate rounded-lg px-2 py-1.5 text-[11px] tracking-[0.08em] transition-colors duration-150 ${
               isChildActive
@@ -131,7 +160,7 @@ export default function PillNav({
                 : "text-white/55 hover:bg-white/5 hover:text-white/80"
             } ${level > 0 ? "ml-4" : ""}`}
           >
-            {child.label}
+            {translatedLabel}
           </Link>
           {hasNestedChildren ? (
             <div className="mt-1 space-y-0.5">
@@ -186,6 +215,7 @@ export default function PillNav({
               const isActive =
                 item.href === activeHref ||
                 Boolean(item.children?.some((child: PillNavItem) => child.href === activeHref));
+              const translatedLabel = translateNavLabel(item.label, language);
 
               if (hasChildren) {
                 const isExpanded = expandedGroupHref === item.href;
@@ -206,7 +236,7 @@ export default function PillNav({
                           : "text-white/60 hover:bg-white/5 hover:text-white/90"
                       }`}
                     >
-                      <span className="text-[10px] uppercase tracking-[0.26em]">{item.label}</span>
+                      <span className="text-[10px] uppercase tracking-[0.26em]">{translatedLabel}</span>
                       <span
                         aria-hidden="true"
                         className={`text-[10px] text-white/30 transition-transform duration-200 ${
@@ -238,7 +268,7 @@ export default function PillNav({
                 <Link
                   key={item.href}
                   href={item.href}
-                  aria-label={item.ariaLabel || item.label}
+                  aria-label={item.ariaLabel || translatedLabel}
                   onClick={closeMenu}
                   className={`block rounded-xl px-3 py-2 text-[10px] uppercase tracking-[0.26em] transition-colors duration-150 ${
                     isActive
@@ -246,7 +276,7 @@ export default function PillNav({
                       : "text-white/60 hover:bg-white/5 hover:text-white/90"
                   }`}
                 >
-                  {item.label}
+                  {translatedLabel}
                 </Link>
               );
             })}
