@@ -82,12 +82,35 @@ export function clearPizzaDayAuthRecord() {
 export async function verifyPizzaDayAuthRecord(record: PizzaDayAuthRecord) {
   if (Date.now() > record.expiresAt) return false;
 
+  // Connection-only auth: no signature was collected at sign-in. The wallet
+  // connection itself is the proof of access — on-chain medal uniqueness is
+  // enforced contract-side, so we don't need a SIWE signature to gate UI.
+  if (record.signature === "0x") return true;
+
   const recovered = await recoverMessageAddress({
     message: record.message,
     signature: record.signature,
   });
 
   return isAddressEqual(recovered, record.address);
+}
+
+/**
+ * Build a no-signature auth record. The wallet connection is treated as the
+ * proof; access is bounded by `ttlMs` (default 12h).
+ */
+export function buildConnectionOnlyAuthRecord(
+  address: `0x${string}`,
+  ttlMs = 12 * 60 * 60 * 1000,
+): PizzaDayAuthRecord {
+  const now = Date.now();
+  return {
+    address,
+    message: "",
+    signature: "0x" as `0x${string}`,
+    issuedAt: now,
+    expiresAt: now + ttlMs,
+  };
 }
 
 export function shortPizzaDayAddress(address: `0x${string}`) {

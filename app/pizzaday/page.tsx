@@ -4,7 +4,7 @@ import PizzaDayApp from "@/components/pizzaday/PizzaDayApp";
 export const metadata: Metadata = {
   title: "Pizza Day Quest",
   description:
-    "AXIS Pizza Day Quest — a one-day pizza quest at Chihuahua 10, Roma Norte, CDMX. Medals for presence.",
+    "AXIS Pizza Day Quest — a one-day pizza quest at Supremo, Dr. Carmona y Valle 147, Doctores, CDMX. Medals for presence.",
   alternates: { canonical: "/pizzaday" },
   openGraph: {
     title: "AXIS · Pizza Day Quest",
