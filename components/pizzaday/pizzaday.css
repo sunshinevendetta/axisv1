@@ -104,17 +104,55 @@
   display: flex; align-items: center; gap: 6px; background: #f5f5f5; color: #0a0a0a;
   border-radius: 999px; padding: 6px; box-shadow: 0 8px 32px rgba(0,0,0,0.4),
     0 0 0 1px rgba(255,255,255,0.1);
-  font-family: var(--pdq-mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase;
+  font-family: var(--font-body), sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
 }
 .pdq-topnav button {
   appearance: none; border: 0; background: transparent; color: #0a0a0a;
-  font: inherit; letter-spacing: inherit; text-transform: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1;
+  letter-spacing: inherit;
+  text-transform: inherit;
   padding: 9px 14px; border-radius: 999px; cursor: pointer; transition: all .2s;
   display: inline-flex; align-items: center; gap: 8px;
 }
 .pdq-topnav button:hover { background: rgba(0,0,0,0.06); }
+.pdq-topnav button.pdq-logo-toggle:hover { background: transparent; }
 .pdq-topnav button.active { background: #0a0a0a; color: #f5f5f5; }
 .pdq-topnav .nav-sep { width: 1px; height: 14px; background: rgba(0,0,0,0.15); margin: 0 2px; }
+
+.pdq-menu-panel button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-body), sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+.pdq-menu-panel button:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.9);
+}
+.pdq-menu-panel button.active {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
 
 /* status pill */
 .pdq-status-pill {

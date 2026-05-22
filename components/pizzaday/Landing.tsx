@@ -27,7 +27,7 @@ export function Landing({ onEnter, hero = "feed" }: { onEnter: () => void; hero?
 
         <div style={{ marginTop: "auto", paddingTop: 80, borderTop: "1px solid var(--pdq-line)" }}>
           <div className="pdq-line-label" style={{ marginBottom: 18 }}>
-            <span>LIVE FEED, PDQ·01, Roma Norte, {D.feed.length * 17} clears per day</span>
+            <span>LIVE FEED, PDQ·01, Supremo · Doctores, {D.feed.length * 17} clears per day</span>
           </div>
           <LiveTicker items={D.feed as FeedItem[]} speed={50} />
         </div>
@@ -243,7 +243,7 @@ export function Landing({ onEnter, hero = "feed" }: { onEnter: () => void; hero?
 
       <section className="pdq-section" style={{ textAlign: "center", padding: "140px var(--pdq-pad-x)" }}>
         <div className="pdq-eyebrow" style={{ marginBottom: 32, justifyContent: "center" }}>
-          START PDQ·01, Roma Norte
+          START PDQ·01, Supremo · Doctores
         </div>
         <h2
           className="pdq-display"
@@ -293,7 +293,7 @@ export function Landing({ onEnter, hero = "feed" }: { onEnter: () => void; hero?
         {[
           {
             h: "EPISODES",
-            items: ["PDQ·01, Roma Norte", "PDQ·02, Juárez", "PDQ·03, Polanco", "Pilot, Condesa"],
+            items: ["PDQ·01, Supremo · Doctores", "PDQ·02, Juárez", "PDQ·03, Polanco", "Pilot, Condesa"],
           },
           { h: "INFO", items: ["Tasks", "Medals", "Ranks", "Chips"] },
           {
@@ -331,7 +331,7 @@ function HeroEyebrow() {
     >
       <div className="pdq-eyebrow">AXIS · PIZZA DAY / PDQ·01 · LIVE</div>
       <div className="pdq-mono" style={{ color: "var(--pdq-ink-4)" }}>
-        21·06·2026, Chihuahua 10, Roma Norte, CDMX
+        21·06·2026, Supremo · Dr. Carmona y Valle 147, Doctores, CDMX
       </div>
     </div>
   );
@@ -386,8 +386,8 @@ function HeroFeed({ onEnter }: { onEnter: () => void }) {
             margin: "0 0 28px",
           }}
         >
-          Pizza Day is a one-day event in Roma Norte. You sign in with your wallet, tap tasks on site,
-          and collect medals as you go.
+          Pizza Day is a one-day event at Supremo, in Doctores. You sign in with your wallet, tap tasks
+          on site, and collect medals as you go.
         </p>
         <div style={{ display: "flex", gap: 14 }}>
           <button type="button" className="pdq-btn lg" onClick={onEnter}>

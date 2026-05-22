@@ -27,7 +27,7 @@ export function MissionMap({
   const { language } = useSiteLanguage();
   const t = (value: string) => localizedText(value, language);
   const [filter, setFilter] = useState<string>("all");
-  const [floor, setFloor] = useState<string>("ground");
+  const [floor, setFloor] = useState<string>("entrance");
 
   const filtered = useMemo(() => {
     return D.missions.filter((m) => {
@@ -65,10 +65,10 @@ export function MissionMap({
             style={{ fontSize: "clamp(32px, 4.5vw, 68px)", margin: 0, lineHeight: 0.9 }}
           >
             <span>{t("PIZZA DAY QUEST / RUTA")}</span>
-            <span style={{ color: "var(--pdq-ink-3)", marginLeft: 10 }}>ROMA NORTE</span>
+            <span style={{ color: "var(--pdq-ink-3)", marginLeft: 10 }}>SUPREMO · DOCTORES</span>
           </h1>
           <div className="pdq-mono" style={{ marginTop: 16, color: "var(--pdq-ink-3)" }}>
-            CHIHUAHUA 10 · CDMX · 21·06·2026 · 12:00 → 23:30
+            DR. CARMONA Y VALLE 147 · CDMX · 21·06·2026 · 12:00 → 23:30
           </div>
         </div>
         <div
@@ -134,7 +134,7 @@ export function MissionMap({
               borderBottom: "1px solid var(--pdq-line)",
             }}
           >
-            <span className="pdq-mono">{t("VENUE / SEDE")} · CHIHUAHUA 10 · ROMA NORTE</span>
+            <span className="pdq-mono">{t("VENUE / SEDE")} · SUPREMO · DOCTORES</span>
             <span className="pdq-mono">
               {filtered.length} / {D.missions.length} {t("VISIBLE / VISIBLES")}
             </span>
@@ -300,15 +300,18 @@ function BuildingAxon({
   const stack = floors;
   const W = 880;
   const H = 460;
-  const cx = W / 2;
-  const cy = H * 0.78;
-  const sx = 200;
-  const sy = 100;
-  const slabH = 56;
+  const sx = 110;
+  const sy = 55;
+  // Supremo is a single-story warehouse: lay zones out horizontally instead
+  // of stacking them. Each "level" index shifts the block to the right.
+  const zoneStride = sx * 2.4;
+  const totalWidth = zoneStride * Math.max(0, stack.length - 1) + sx * 2;
+  const cx = W / 2 - (totalWidth / 2 - sx);
+  const cy = H * 0.62;
 
   const project = (lvl: number, dx: number, dy: number): [number, number] => {
-    const x = cx + dx * sx + dy * sx;
-    const y = cy - dx * sy + dy * sy - lvl * slabH;
+    const x = cx + lvl * zoneStride + dx * sx + dy * sx;
+    const y = cy - dx * sy + dy * sy;
     return [x, y];
   };
 
@@ -338,7 +341,14 @@ function BuildingAxon({
         </defs>
         <rect width={W} height={H} fill="url(#pdq-grid2)" />
 
-        <ellipse cx={cx} cy={cy + 8} rx={sx + 20} ry={sy * 0.5} fill="rgba(0,0,0,0.5)" opacity="0.7" />
+        <ellipse
+          cx={cx + (zoneStride * (stack.length - 1)) / 2}
+          cy={cy + 8}
+          rx={totalWidth / 2 + 20}
+          ry={sy * 0.5}
+          fill="rgba(0,0,0,0.5)"
+          opacity="0.7"
+        />
 
         <g
           fontFamily="var(--font-body)"
@@ -347,16 +357,15 @@ function BuildingAxon({
           letterSpacing="0.1em"
         >
           <text x={cx - sx - 12} y={cy + sy + 18} textAnchor="end">
-            CHIHUAHUA →
+            DR. CARMONA Y VALLE →
           </text>
-          <text x={cx + sx + 12} y={cy + sy + 18}>
-            ALLEY ↓
+          <text x={cx + zoneStride * (stack.length - 1) + sx + 12} y={cy + sy + 18}>
+            BACK ↓
           </text>
         </g>
 
         {stack.map((f, i) => {
           const isActive = f.id === active;
-          const isTerrace = f.id === "terrace";
           const lvl = i;
 
           const p_bl = project(lvl, -1, 1);
@@ -374,36 +383,30 @@ function BuildingAxon({
 
           return (
             <g key={f.id} style={{ cursor: "pointer" }} onClick={() => onPick(f.id)}>
-              {isTerrace ? (
-                <TerraceLevel bl={p_bl} br={p_br} fr={p_fr} fl={p_fl} isActive={isActive} />
-              ) : (
-                <>
-                  <polygon
-                    points={`${p_br[0]},${p_br[1]} ${p_fr[0]},${p_fr[1]} ${p_fr_top[0]},${p_fr_top[1]} ${p_br_top[0]},${p_br_top[1]}`}
-                    fill="url(#pdq-wallG)"
-                    stroke="rgba(255,255,255,0.7)"
-                    strokeWidth={isActive ? 1.2 : 0.7}
-                    opacity={wallOpacity}
-                  />
-                  <polygon
-                    points={`${p_bl[0]},${p_bl[1]} ${p_br[0]},${p_br[1]} ${p_br_top[0]},${p_br_top[1]} ${p_bl_top[0]},${p_bl_top[1]}`}
-                    fill="url(#pdq-wallGdim)"
-                    stroke="rgba(255,255,255,0.55)"
-                    strokeWidth={isActive ? 1.2 : 0.7}
-                    opacity={wallOpacity}
-                  />
-                  <polygon
-                    points={`${p_bl_top[0]},${p_bl_top[1]} ${p_br_top[0]},${p_br_top[1]} ${p_fr_top[0]},${p_fr_top[1]} ${p_fl_top[0]},${p_fl_top[1]}`}
-                    fill={isActive ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.025)"}
-                    stroke="rgba(255,255,255,0.9)"
-                    strokeWidth={isActive ? 1.4 : 0.8}
-                    opacity={isActive ? 1 : 0.7}
-                  />
+              <polygon
+                points={`${p_br[0]},${p_br[1]} ${p_fr[0]},${p_fr[1]} ${p_fr_top[0]},${p_fr_top[1]} ${p_br_top[0]},${p_br_top[1]}`}
+                fill="url(#pdq-wallG)"
+                stroke="rgba(255,255,255,0.7)"
+                strokeWidth={isActive ? 1.2 : 0.7}
+                opacity={wallOpacity}
+              />
+              <polygon
+                points={`${p_bl[0]},${p_bl[1]} ${p_br[0]},${p_br[1]} ${p_br_top[0]},${p_br_top[1]} ${p_bl_top[0]},${p_bl_top[1]}`}
+                fill="url(#pdq-wallGdim)"
+                stroke="rgba(255,255,255,0.55)"
+                strokeWidth={isActive ? 1.2 : 0.7}
+                opacity={wallOpacity}
+              />
+              <polygon
+                points={`${p_bl_top[0]},${p_bl_top[1]} ${p_br_top[0]},${p_br_top[1]} ${p_fr_top[0]},${p_fr_top[1]} ${p_fl_top[0]},${p_fl_top[1]}`}
+                fill={isActive ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.025)"}
+                stroke="rgba(255,255,255,0.9)"
+                strokeWidth={isActive ? 1.4 : 0.8}
+                opacity={isActive ? 1 : 0.7}
+              />
 
-                  <FrontWindows bl={p_bl} br={p_br} blTop={p_bl_top} brTop={p_br_top} active={isActive} />
-                  <SideWindows br={p_br} fr={p_fr} brTop={p_br_top} frTop={p_fr_top} active={isActive} />
-                </>
-              )}
+              <FrontWindows bl={p_bl} br={p_br} blTop={p_bl_top} brTop={p_br_top} active={isActive} />
+              <SideWindows br={p_br} fr={p_fr} brTop={p_br_top} frTop={p_fr_top} active={isActive} />
 
               <g opacity={labelOpacity}>
                 <line
@@ -629,71 +632,6 @@ function FloorDots({
           </g>
         );
       })}
-    </g>
-  );
-}
-
-function TerraceLevel({
-  bl,
-  br,
-  fr,
-  fl,
-  isActive,
-}: {
-  bl: [number, number];
-  br: [number, number];
-  fr: [number, number];
-  fl: [number, number];
-  isActive: boolean;
-}) {
-  return (
-    <g opacity={isActive ? 1 : 0.55}>
-      <polygon
-        points={`${bl[0]},${bl[1]} ${br[0]},${br[1]} ${fr[0]},${fr[1]} ${fl[0]},${fl[1]}`}
-        fill={isActive ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.025)"}
-        stroke="rgba(255,255,255,0.9)"
-        strokeWidth={isActive ? 1.4 : 0.8}
-      />
-      <polygon
-        points={`${bl[0]},${bl[1]} ${br[0]},${br[1]} ${br[0]},${br[1] + 6} ${bl[0]},${bl[1] + 6}`}
-        fill="rgba(0,0,0,0.4)"
-        stroke="rgba(255,255,255,0.4)"
-        strokeWidth="0.5"
-      />
-      <polygon
-        points={`${br[0]},${br[1]} ${fr[0]},${fr[1]} ${fr[0]},${fr[1] + 6} ${br[0]},${br[1] + 6}`}
-        fill="rgba(0,0,0,0.5)"
-        stroke="rgba(255,255,255,0.35)"
-        strokeWidth="0.5"
-      />
-      <g stroke={isActive ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.5)"} strokeWidth="0.6">
-        {Array.from({ length: 12 }).map((_, i) => {
-          const tt = (i + 0.5) / 12;
-          const x = bl[0] + (br[0] - bl[0]) * tt;
-          const y = bl[1] + (br[1] - bl[1]) * tt;
-          return <line key={`f${i}`} x1={x} y1={y} x2={x} y2={y - 12} />;
-        })}
-        {Array.from({ length: 10 }).map((_, i) => {
-          const tt = (i + 0.5) / 10;
-          const x = br[0] + (fr[0] - br[0]) * tt;
-          const y = br[1] + (fr[1] - br[1]) * tt;
-          return <line key={`r${i}`} x1={x} y1={y} x2={x} y2={y - 10} />;
-        })}
-        <line x1={bl[0]} y1={bl[1] - 12} x2={br[0]} y2={br[1] - 12} />
-        <line x1={br[0]} y1={br[1] - 10} x2={fr[0]} y2={fr[1] - 10} />
-      </g>
-      <g fill={isActive ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.45)"}>
-        {([
-          [-0.3, 0.2],
-          [0.2, -0.1],
-          [0.5, 0.4],
-          [-0.1, -0.4],
-        ] as Array<[number, number]>).map(([dx, dy], i) => {
-          const x = (bl[0] + br[0] + fr[0] + fl[0]) / 4 + dx * 60;
-          const y = (bl[1] + br[1] + fr[1] + fl[1]) / 4 + dy * 30 - 4;
-          return <circle key={i} cx={x} cy={y} r="2.5" />;
-        })}
-      </g>
     </g>
   );
 }
