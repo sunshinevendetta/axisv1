@@ -32,6 +32,7 @@ const adminDashboardNavItem: PillNavItem = {
     { label: "Contracts HQ", href: "/owner/contracts" },
     { label: "Live Episode HQ", href: "/owner/contracts?section=episodes" },
     { label: "Artwork JSON HQ", href: "/owner/contracts?section=collectibles" },
+    { label: "Pizza Day HQ", href: "/owner/pizzaday" },
     { label: "Artist HQ", href: "/owner/artists" },
     { label: "Session Secret HQ", href: "/tools/session-secret" },
   ],
