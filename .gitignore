@@ -98,6 +98,12 @@ final/
 deployments.json
 artifacts/
 
+# Stray scratch media at repo root (deck exports, scratch audio)
+/pbo-*.png
+/v-*.png
+/*.mp3
+/*.mp4
+
 # CrewAI Phase 1 generated/runtime output
 echopulz/echopulz_crew/tools/sources/ts-bridge/node_modules/
 echopulz/echopulz_crew/tools/sources/ts-bridge/dist/
