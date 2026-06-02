@@ -27,6 +27,23 @@ export function brandLogoSrc(): string {
 }
 
 /**
+ * Inline attachment for an arbitrary image under /public, referenced by `cid`.
+ * Use the returned `cid` as the <img src> (e.g. `cid:clubmexa-poster`).
+ */
+export function inlineImageAttachment(publicRelPath: string, cid: string) {
+  const filePath = path.join(process.cwd(), "public", ...publicRelPath.split("/"));
+  const ext = path.extname(publicRelPath).toLowerCase().replace(".", "") || "png";
+  const contentType = ext === "jpg" ? "image/jpeg" : `image/${ext}`;
+  return {
+    filename: path.basename(publicRelPath),
+    content: fs.readFileSync(filePath),
+    contentType,
+    cid,
+    contentDisposition: "inline" as const,
+  };
+}
+
+/**
  * Replace every kind of dash (hyphen, en dash, em dash, minus, etc.)
  * with the word "a" (Spanish/English friendly when used between times,
  * e.g. "3:00 PM a 4:00 PM"). Intended for short user-supplied strings

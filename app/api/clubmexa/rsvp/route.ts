@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { brandLogoAttachment, brandShell } from "@/src/lib/brand-email";
+import { brandLogoAttachment, brandShell, inlineImageAttachment } from "@/src/lib/brand-email";
+
+const POSTER_CID = "clubmexa-poster";
 
 export const runtime = "nodejs";
 
@@ -67,30 +69,58 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    await transporter.sendMail({
-      from: `"AXIS" <${process.env.CUSTOM_FROM || "rsvp@axis.show"}>`,
-      to: email,
-      subject: "Clubmexa RSVP received",
-      html: brandShell(`
-        <tr><td style="padding:0 30px 20px; text-align:center;">
-          <h1 style="margin:0; font-size:28px; color:#ffffff;">RSVP received, ${safeName}.</h1>
-          <p style="margin:12px 0 0; font-size:15px; line-height:1.7; color:#cccccc;">
-            You are on the Clubmexa list. We will use this email only for your confirmation and event-related details.
-          </p>
-        </td></tr>
-        <tr><td style="padding:0 30px 30px; font-size:15px; line-height:1.7; color:#dddddd;">
-          <p style="margin:0 0 10px;"><strong>Your check-in:</strong></p>
-          <ul style="margin:0; padding-left:20px; color:#cccccc;">
-            <li><strong>Name:</strong> ${safeName}</li>
-            <li><strong>Mail:</strong> ${safeEmail}</li>
-          </ul>
-          <p style="margin:24px 0 0; color:#aaaaaa; font-size:13px;">
-            We respect your inbox. No spam.
-          </p>
-        </td></tr>
-      `),
-      attachments: [brandLogoAttachment()],
-    });
+    const firstName = escapeHtml(name.split(" ")[0] || name);
+    const pink = "#ff1b9f";
+
+    // Attendee confirmation — isolated so its failure surfaces distinctly and
+    // doesn't get masked by a successful admin send above.
+    try {
+      await transporter.sendMail({
+        from: `"Club Mexa · AXIS" <${process.env.CUSTOM_FROM || "rsvp@axis.show"}>`,
+        to: email,
+        subject: `You're in, ${firstName} — Club Mexa · June 3`,
+        html: brandShell(`
+          <tr><td style="padding:0 24px 18px;">
+            <img src="cid:${POSTER_CID}" alt="Club Mexa" width="100%" style="display:block; width:100%; max-width:552px; height:auto; border-radius:14px; border:1px solid rgba(255,27,159,0.4);" />
+          </td></tr>
+          <tr><td style="padding:0 30px 8px; text-align:center;">
+            <p style="margin:0; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:${pink};">You're checked in</p>
+            <h1 style="margin:8px 0 0; font-size:30px; line-height:1.05; color:#ffffff; text-transform:uppercase;">See you there, ${firstName}.</h1>
+            <p style="margin:12px 0 0; font-size:15px; line-height:1.7; color:#cccccc;">
+              You're on the list for <strong style="color:#fff;">Club Mexa</strong> — dance your human.
+            </p>
+          </td></tr>
+          <tr><td style="padding:6px 30px 4px; text-align:center;">
+            <p style="margin:0; font-size:20px; color:#ffffff; text-transform:uppercase; letter-spacing:1px;">Miércoles 3 de Junio 2026</p>
+            <p style="margin:6px 0 0; font-size:18px; color:${pink}; letter-spacing:4px;">9 PM — 2 AM</p>
+          </td></tr>
+          <tr><td style="padding:18px 30px 30px; font-size:15px; line-height:1.8; color:#dddddd;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #222; border-bottom:1px solid #222;">
+              <tr><td style="padding:14px 0; color:#999; font-size:13px; text-transform:uppercase; letter-spacing:2px;">Where</td>
+                  <td style="padding:14px 0; text-align:right; color:#fff;">Álvaro Obregón 180 · Roma Norte, CDMX</td></tr>
+              <tr><td style="padding:14px 0; border-top:1px solid #1a1a1a; color:#999; font-size:13px; text-transform:uppercase; letter-spacing:2px;">Dress code</td>
+                  <td style="padding:14px 0; border-top:1px solid #1a1a1a; text-align:right; color:#fff;">Indie Sleaze 2000s</td></tr>
+              <tr><td style="padding:14px 0; border-top:1px solid #1a1a1a; color:#999; font-size:13px; text-transform:uppercase; letter-spacing:2px;">DJ sets</td>
+                  <td style="padding:14px 0; border-top:1px solid #1a1a1a; text-align:right; color:${pink};">Gallo · Karlos Leon · Waxey G</td></tr>
+              <tr><td style="padding:14px 0; border-top:1px solid #1a1a1a; color:#999; font-size:13px; text-transform:uppercase; letter-spacing:2px;">Guest</td>
+                  <td style="padding:14px 0; border-top:1px solid #1a1a1a; text-align:right; color:#fff;">${safeName}</td></tr>
+            </table>
+            <p style="margin:22px 0 0; font-size:14px; line-height:1.7; color:#bbbbbb;">
+              Hosted upstairs at MEXA Cocina del Alma. Produced by High Vibe Events. We respect your inbox — confirmation only, no spam.
+            </p>
+          </td></tr>
+        `),
+        attachments: [
+          brandLogoAttachment(),
+          inlineImageAttachment("clubmexa/poster.jpg", POSTER_CID),
+        ],
+      });
+    } catch (mailErr) {
+      console.error("[clubmexa] attendee confirmation email failed:", mailErr);
+      // Admin record was saved; report partial success so the guest can be
+      // followed up manually rather than seeing a hard failure.
+      return NextResponse.json({ success: true, attendeeEmail: "failed" });
+    }
 
     return NextResponse.json({ success: true });
   } catch (err: unknown) {
