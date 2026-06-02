@@ -1,0 +1,25 @@
+{
+  "name": "Blokko",
+  "event": "Pizza Day",
+  "description": "Blokko is a collectible for people who scanned the QR code or used the NFC at the AXIS Mexico City PizzaDAO Global Pizza Party on 22/May/2026. PizzaDAO is a global community that brings people together through pizza, internet culture, and real-world gatherings.",
+  "image": "https://api.grove.storage/6164985217275622ded65e74fee00b79dd7b78899cc06e04661fc6d7f36fdfce",
+  "animation_url": "https://api.grove.storage/e70051705843900d42760f03491ed432ccabcaa47768abe424d9a0582e258f73",
+  "attributes": [
+    {
+      "trait_type": "Sponsor",
+      "value": "Blokko"
+    },
+    {
+      "trait_type": "Event",
+      "value": "Pizza Day"
+    },
+    {
+      "trait_type": "Date",
+      "value": "22/May/2026"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Supremo, Mexico City"
+    }
+  ]
+}

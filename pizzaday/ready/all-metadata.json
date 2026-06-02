@@ -1,0 +1,202 @@
+{
+  "1": {
+    "name": "AXIS",
+    "event": "Pizza Day",
+    "description": "AXIS is a collectible for people who scanned the QR code or used the NFC at the AXIS Mexico City PizzaDAO Global Pizza Party on 22/May/2026. PizzaDAO is a global community that brings people together through pizza, internet culture, and real-world gatherings.",
+    "image": "https://api.grove.storage/d4f4c3edc27baac764b7e8f1fcfc3570604b822a09965d16e2ccdd94773ed3c9",
+    "animation_url": "https://api.grove.storage/1c9c984118d9334b22042eee2b5bcb1521f4294a89486a2a23406907c14c18e3",
+    "attributes": [
+      {
+        "trait_type": "Sponsor",
+        "value": "AXIS"
+      },
+      {
+        "trait_type": "Event",
+        "value": "Pizza Day"
+      },
+      {
+        "trait_type": "Date",
+        "value": "22/May/2026"
+      },
+      {
+        "trait_type": "Venue",
+        "value": "Supremo, Mexico City"
+      }
+    ]
+  },
+  "2": {
+    "name": "Studio Berlin",
+    "event": "Pizza Day",
+    "description": "Studio Berlin is a collectible for people who scanned the QR code or used the NFC at the AXIS Mexico City PizzaDAO Global Pizza Party on 22/May/2026. PizzaDAO is a global community that brings people together through pizza, internet culture, and real-world gatherings.",
+    "image": "https://api.grove.storage/2bba9b604ed85a5285f929f4b2ed8585ae379f22438e8e9b864d6db8ea3f9b17",
+    "animation_url": "https://api.grove.storage/6fc5892ac636e63098e21d180715f192932150014e9da299a281de4900056b0a",
+    "attributes": [
+      {
+        "trait_type": "Sponsor",
+        "value": "Studio Berlin"
+      },
+      {
+        "trait_type": "Event",
+        "value": "Pizza Day"
+      },
+      {
+        "trait_type": "Date",
+        "value": "22/May/2026"
+      },
+      {
+        "trait_type": "Venue",
+        "value": "Supremo, Mexico City"
+      }
+    ]
+  },
+  "3": {
+    "name": "Blokko",
+    "event": "Pizza Day",
+    "description": "Blokko is a collectible for people who scanned the QR code or used the NFC at the AXIS Mexico City PizzaDAO Global Pizza Party on 22/May/2026. PizzaDAO is a global community that brings people together through pizza, internet culture, and real-world gatherings.",
+    "image": "https://api.grove.storage/6164985217275622ded65e74fee00b79dd7b78899cc06e04661fc6d7f36fdfce",
+    "animation_url": "https://api.grove.storage/e70051705843900d42760f03491ed432ccabcaa47768abe424d9a0582e258f73",
+    "attributes": [
+      {
+        "trait_type": "Sponsor",
+        "value": "Blokko"
+      },
+      {
+        "trait_type": "Event",
+        "value": "Pizza Day"
+      },
+      {
+        "trait_type": "Date",
+        "value": "22/May/2026"
+      },
+      {
+        "trait_type": "Venue",
+        "value": "Supremo, Mexico City"
+      }
+    ]
+  },
+  "4": {
+    "name": "Brave",
+    "event": "Pizza Day",
+    "description": "Brave is a collectible for people who scanned the QR code or used the NFC at the AXIS Mexico City PizzaDAO Global Pizza Party on 22/May/2026. PizzaDAO is a global community that brings people together through pizza, internet culture, and real-world gatherings.",
+    "image": "https://api.grove.storage/07e014c33d9f80bf2342d98a9565479eaae1759a9be992800305c6e0c7c2f58b",
+    "animation_url": "https://api.grove.storage/6a3e9e16d99f97ff5f5f049e24c65ac038d4a3c0d5f839c4ccb37229ad4127de",
+    "attributes": [
+      {
+        "trait_type": "Sponsor",
+        "value": "Brave"
+      },
+      {
+        "trait_type": "Event",
+        "value": "Pizza Day"
+      },
+      {
+        "trait_type": "Date",
+        "value": "22/May/2026"
+      },
+      {
+        "trait_type": "Venue",
+        "value": "Supremo, Mexico City"
+      }
+    ]
+  },
+  "5": {
+    "name": "Criptec",
+    "event": "Pizza Day",
+    "description": "Criptec is a collectible for people who scanned the QR code or used the NFC at the AXIS Mexico City PizzaDAO Global Pizza Party on 22/May/2026. PizzaDAO is a global community that brings people together through pizza, internet culture, and real-world gatherings.",
+    "image": "https://api.grove.storage/9465e1b3ddf416f8a168c00a78097a60627e37b82364a9f02cab4791baca5576",
+    "animation_url": "https://api.grove.storage/63b8addb19d6128504e49b93d4626f71bc858d2ed0a174d06801f17ce5bed658",
+    "attributes": [
+      {
+        "trait_type": "Sponsor",
+        "value": "Criptec"
+      },
+      {
+        "trait_type": "Event",
+        "value": "Pizza Day"
+      },
+      {
+        "trait_type": "Date",
+        "value": "22/May/2026"
+      },
+      {
+        "trait_type": "Venue",
+        "value": "Supremo, Mexico City"
+      }
+    ]
+  },
+  "6": {
+    "name": "Digital Spenders Club",
+    "event": "Pizza Day",
+    "description": "Digital Spenders Club is a collectible for people who scanned the QR code or used the NFC at the AXIS Mexico City PizzaDAO Global Pizza Party on 22/May/2026. PizzaDAO is a global community that brings people together through pizza, internet culture, and real-world gatherings.",
+    "image": "https://api.grove.storage/0117419acf4a498a015d60107387a54216bb43ec6ff1e453bd5f9b87449e4e2f",
+    "animation_url": "https://api.grove.storage/9124f893dff2fe7af350913b3a2f6eeec2685069b34cf08572ac2a92d840e703",
+    "attributes": [
+      {
+        "trait_type": "Sponsor",
+        "value": "Digital Spenders Club"
+      },
+      {
+        "trait_type": "Event",
+        "value": "Pizza Day"
+      },
+      {
+        "trait_type": "Date",
+        "value": "22/May/2026"
+      },
+      {
+        "trait_type": "Venue",
+        "value": "Supremo, Mexico City"
+      }
+    ]
+  },
+  "7": {
+    "name": "ENS",
+    "event": "Pizza Day",
+    "description": "ENS is a collectible for people who scanned the QR code or used the NFC at the AXIS Mexico City PizzaDAO Global Pizza Party on 22/May/2026. PizzaDAO is a global community that brings people together through pizza, internet culture, and real-world gatherings.",
+    "image": "https://api.grove.storage/2d3212c0df1b23540ee20f926cd43f8069d4b1a21cf90ebc53b7c34bf66e411e",
+    "animation_url": "https://api.grove.storage/45a1b57d9463300bf3006edb28e5c1ef901fb3f9e2ed56855e52f15596a0c206",
+    "attributes": [
+      {
+        "trait_type": "Sponsor",
+        "value": "ENS"
+      },
+      {
+        "trait_type": "Event",
+        "value": "Pizza Day"
+      },
+      {
+        "trait_type": "Date",
+        "value": "22/May/2026"
+      },
+      {
+        "trait_type": "Venue",
+        "value": "Supremo, Mexico City"
+      }
+    ]
+  },
+  "8": {
+    "name": "PizzaDAO",
+    "event": "Pizza Day",
+    "description": "PizzaDAO is a collectible for people who scanned the QR code or used the NFC at the AXIS Mexico City PizzaDAO Global Pizza Party on 22/May/2026. PizzaDAO is a global community that brings people together through pizza, internet culture, and real-world gatherings.",
+    "image": "https://api.grove.storage/85547310567bab32b490d5ee490cbce243eb07ce8a04b4714d092aa71a15c258",
+    "animation_url": "https://api.grove.storage/3cedfd9b9e3ff0257b8eac717de6f51d74206c2acc0bc151bd59b538c8cb8e08",
+    "attributes": [
+      {
+        "trait_type": "Sponsor",
+        "value": "PizzaDAO"
+      },
+      {
+        "trait_type": "Event",
+        "value": "Pizza Day"
+      },
+      {
+        "trait_type": "Date",
+        "value": "22/May/2026"
+      },
+      {
+        "trait_type": "Venue",
+        "value": "Supremo, Mexico City"
+      }
+    ]
+  }
+}

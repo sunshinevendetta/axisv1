@@ -1,0 +1,57 @@
+{
+  "standard": "ERC-1155",
+  "collection": "Pizza Day Collectibles",
+  "event": "Pizza Day",
+  "date": "22/May/2026",
+  "venue": "Supremo, Mexico City",
+  "files": [
+    {
+      "token_id": 1,
+      "file": "1.json",
+      "name": "AXIS",
+      "source": "https://api.grove.storage/7d8fb26c51868115685836eb748c471e07b2b2204c2d22f59577a53824eeb50e"
+    },
+    {
+      "token_id": 2,
+      "file": "2.json",
+      "name": "Studio Berlin",
+      "source": "https://api.grove.storage/4ba55c660b2cc59b182f5276564b921ef39a769c99856d4c28c1c5d7ece9215f"
+    },
+    {
+      "token_id": 3,
+      "file": "3.json",
+      "name": "Blokko",
+      "source": "https://api.grove.storage/45a2170abb285d9bef72b1797642cf50c3197bbb153e541a3353b829f34ecfd5"
+    },
+    {
+      "token_id": 4,
+      "file": "4.json",
+      "name": "Brave",
+      "source": "https://api.grove.storage/5ec7cdf4887df08064cea86f3ba4d8b3b657589276ad2d11b82187bf1fcb6700"
+    },
+    {
+      "token_id": 5,
+      "file": "5.json",
+      "name": "Criptec",
+      "source": "https://api.grove.storage/56319d41acfb6707ab5ff0bf06235afa22189c0dc1776d783e55700e6cd17d54"
+    },
+    {
+      "token_id": 6,
+      "file": "6.json",
+      "name": "Digital Spenders Club",
+      "source": "https://api.grove.storage/ef4870ac0967aa8a93158e15cf3fd91ad5ca9162d54e12a49bdf03a80cadf56b"
+    },
+    {
+      "token_id": 7,
+      "file": "7.json",
+      "name": "ENS",
+      "source": "https://api.grove.storage/567b05b38fe5572bc9e8e50dc242816de57a3843cd0d1b800a2b0871ef1b1991"
+    },
+    {
+      "token_id": 8,
+      "file": "8.json",
+      "name": "PizzaDAO",
+      "source": "https://api.grove.storage/bc58df50d108aff8099678f03b8778c431c080e19c5110ce5d1887fd34a0fb46"
+    }
+  ]
+}

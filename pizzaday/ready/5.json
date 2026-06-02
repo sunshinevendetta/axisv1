@@ -1,0 +1,25 @@
+{
+  "name": "Criptec",
+  "event": "Pizza Day",
+  "description": "Criptec is a collectible for people who scanned the QR code or used the NFC at the AXIS Mexico City PizzaDAO Global Pizza Party on 22/May/2026. PizzaDAO is a global community that brings people together through pizza, internet culture, and real-world gatherings.",
+  "image": "https://api.grove.storage/9465e1b3ddf416f8a168c00a78097a60627e37b82364a9f02cab4791baca5576",
+  "animation_url": "https://api.grove.storage/63b8addb19d6128504e49b93d4626f71bc858d2ed0a174d06801f17ce5bed658",
+  "attributes": [
+    {
+      "trait_type": "Sponsor",
+      "value": "Criptec"
+    },
+    {
+      "trait_type": "Event",
+      "value": "Pizza Day"
+    },
+    {
+      "trait_type": "Date",
+      "value": "22/May/2026"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Supremo, Mexico City"
+    }
+  ]
+}

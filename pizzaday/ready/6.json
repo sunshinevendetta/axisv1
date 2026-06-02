@@ -1,0 +1,25 @@
+{
+  "name": "Digital Spenders Club",
+  "event": "Pizza Day",
+  "description": "Digital Spenders Club is a collectible for people who scanned the QR code or used the NFC at the AXIS Mexico City PizzaDAO Global Pizza Party on 22/May/2026. PizzaDAO is a global community that brings people together through pizza, internet culture, and real-world gatherings.",
+  "image": "https://api.grove.storage/0117419acf4a498a015d60107387a54216bb43ec6ff1e453bd5f9b87449e4e2f",
+  "animation_url": "https://api.grove.storage/9124f893dff2fe7af350913b3a2f6eeec2685069b34cf08572ac2a92d840e703",
+  "attributes": [
+    {
+      "trait_type": "Sponsor",
+      "value": "Digital Spenders Club"
+    },
+    {
+      "trait_type": "Event",
+      "value": "Pizza Day"
+    },
+    {
+      "trait_type": "Date",
+      "value": "22/May/2026"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Supremo, Mexico City"
+    }
+  ]
+}
