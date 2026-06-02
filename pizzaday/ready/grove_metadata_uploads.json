@@ -1,0 +1,62 @@
+{
+  "1.json": {
+    "storage_key": "7d8fb26c51868115685836eb748c471e07b2b2204c2d22f59577a53824eeb50e",
+    "uri": "lens://7d8fb26c51868115685836eb748c471e07b2b2204c2d22f59577a53824eeb50e",
+    "gateway_url": "https://api.grove.storage/7d8fb26c51868115685836eb748c471e07b2b2204c2d22f59577a53824eeb50e",
+    "status_url": "https://api.grove.storage/status/7d8fb26c51868115685836eb748c471e07b2b2204c2d22f59577a53824eeb50e"
+  },
+  "2.json": {
+    "storage_key": "4ba55c660b2cc59b182f5276564b921ef39a769c99856d4c28c1c5d7ece9215f",
+    "uri": "lens://4ba55c660b2cc59b182f5276564b921ef39a769c99856d4c28c1c5d7ece9215f",
+    "gateway_url": "https://api.grove.storage/4ba55c660b2cc59b182f5276564b921ef39a769c99856d4c28c1c5d7ece9215f",
+    "status_url": "https://api.grove.storage/status/4ba55c660b2cc59b182f5276564b921ef39a769c99856d4c28c1c5d7ece9215f"
+  },
+  "3.json": {
+    "storage_key": "45a2170abb285d9bef72b1797642cf50c3197bbb153e541a3353b829f34ecfd5",
+    "uri": "lens://45a2170abb285d9bef72b1797642cf50c3197bbb153e541a3353b829f34ecfd5",
+    "gateway_url": "https://api.grove.storage/45a2170abb285d9bef72b1797642cf50c3197bbb153e541a3353b829f34ecfd5",
+    "status_url": "https://api.grove.storage/status/45a2170abb285d9bef72b1797642cf50c3197bbb153e541a3353b829f34ecfd5"
+  },
+  "4.json": {
+    "storage_key": "5ec7cdf4887df08064cea86f3ba4d8b3b657589276ad2d11b82187bf1fcb6700",
+    "uri": "lens://5ec7cdf4887df08064cea86f3ba4d8b3b657589276ad2d11b82187bf1fcb6700",
+    "gateway_url": "https://api.grove.storage/5ec7cdf4887df08064cea86f3ba4d8b3b657589276ad2d11b82187bf1fcb6700",
+    "status_url": "https://api.grove.storage/status/5ec7cdf4887df08064cea86f3ba4d8b3b657589276ad2d11b82187bf1fcb6700"
+  },
+  "5.json": {
+    "storage_key": "56319d41acfb6707ab5ff0bf06235afa22189c0dc1776d783e55700e6cd17d54",
+    "uri": "lens://56319d41acfb6707ab5ff0bf06235afa22189c0dc1776d783e55700e6cd17d54",
+    "gateway_url": "https://api.grove.storage/56319d41acfb6707ab5ff0bf06235afa22189c0dc1776d783e55700e6cd17d54",
+    "status_url": "https://api.grove.storage/status/56319d41acfb6707ab5ff0bf06235afa22189c0dc1776d783e55700e6cd17d54"
+  },
+  "6.json": {
+    "storage_key": "ef4870ac0967aa8a93158e15cf3fd91ad5ca9162d54e12a49bdf03a80cadf56b",
+    "uri": "lens://ef4870ac0967aa8a93158e15cf3fd91ad5ca9162d54e12a49bdf03a80cadf56b",
+    "gateway_url": "https://api.grove.storage/ef4870ac0967aa8a93158e15cf3fd91ad5ca9162d54e12a49bdf03a80cadf56b",
+    "status_url": "https://api.grove.storage/status/ef4870ac0967aa8a93158e15cf3fd91ad5ca9162d54e12a49bdf03a80cadf56b"
+  },
+  "7.json": {
+    "storage_key": "567b05b38fe5572bc9e8e50dc242816de57a3843cd0d1b800a2b0871ef1b1991",
+    "uri": "lens://567b05b38fe5572bc9e8e50dc242816de57a3843cd0d1b800a2b0871ef1b1991",
+    "gateway_url": "https://api.grove.storage/567b05b38fe5572bc9e8e50dc242816de57a3843cd0d1b800a2b0871ef1b1991",
+    "status_url": "https://api.grove.storage/status/567b05b38fe5572bc9e8e50dc242816de57a3843cd0d1b800a2b0871ef1b1991"
+  },
+  "8.json": {
+    "storage_key": "bc58df50d108aff8099678f03b8778c431c080e19c5110ce5d1887fd34a0fb46",
+    "uri": "lens://bc58df50d108aff8099678f03b8778c431c080e19c5110ce5d1887fd34a0fb46",
+    "gateway_url": "https://api.grove.storage/bc58df50d108aff8099678f03b8778c431c080e19c5110ce5d1887fd34a0fb46",
+    "status_url": "https://api.grove.storage/status/bc58df50d108aff8099678f03b8778c431c080e19c5110ce5d1887fd34a0fb46"
+  },
+  "all-metadata.json": {
+    "storage_key": "fcbeebe739263d5341fb6e519ae57c2628e405c5a4896ce262e7f9c07253a5e6",
+    "uri": "lens://fcbeebe739263d5341fb6e519ae57c2628e405c5a4896ce262e7f9c07253a5e6",
+    "gateway_url": "https://api.grove.storage/fcbeebe739263d5341fb6e519ae57c2628e405c5a4896ce262e7f9c07253a5e6",
+    "status_url": "https://api.grove.storage/status/fcbeebe739263d5341fb6e519ae57c2628e405c5a4896ce262e7f9c07253a5e6"
+  },
+  "manifest.json": {
+    "storage_key": "2196f54eb5bed18b9a655f413aac957056022ac21e482f55149834c107d12711",
+    "uri": "lens://2196f54eb5bed18b9a655f413aac957056022ac21e482f55149834c107d12711",
+    "gateway_url": "https://api.grove.storage/2196f54eb5bed18b9a655f413aac957056022ac21e482f55149834c107d12711",
+    "status_url": "https://api.grove.storage/status/2196f54eb5bed18b9a655f413aac957056022ac21e482f55149834c107d12711"
+  }
+}

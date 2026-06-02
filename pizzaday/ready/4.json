@@ -1,0 +1,25 @@
+{
+  "name": "Brave",
+  "event": "Pizza Day",
+  "description": "Brave is a collectible for people who scanned the QR code or used the NFC at the AXIS Mexico City PizzaDAO Global Pizza Party on 22/May/2026. PizzaDAO is a global community that brings people together through pizza, internet culture, and real-world gatherings.",
+  "image": "https://api.grove.storage/07e014c33d9f80bf2342d98a9565479eaae1759a9be992800305c6e0c7c2f58b",
+  "animation_url": "https://api.grove.storage/6a3e9e16d99f97ff5f5f049e24c65ac038d4a3c0d5f839c4ccb37229ad4127de",
+  "attributes": [
+    {
+      "trait_type": "Sponsor",
+      "value": "Brave"
+    },
+    {
+      "trait_type": "Event",
+      "value": "Pizza Day"
+    },
+    {
+      "trait_type": "Date",
+      "value": "22/May/2026"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Supremo, Mexico City"
+    }
+  ]
+}

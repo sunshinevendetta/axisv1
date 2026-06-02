@@ -98,6 +98,9 @@ final/
 deployments.json
 artifacts/
 
+# Playwright MCP browser scratch logs
+.playwright-mcp/
+
 # Stray scratch media at repo root (deck exports, scratch audio)
 /pbo-*.png
 /v-*.png
