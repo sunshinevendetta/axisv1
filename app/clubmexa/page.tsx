@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import ClubMexaRsvp from "@/components/clubmexa/ClubMexaRsvp";
 
 export const metadata: Metadata = {
-  title: "Clubmexa RSVP",
-  description: "A simple Clubmexa RSVP check-in by AXIS.",
+  title: "Clubmexa Check In",
+  description: "Welcome to Club Mexa.",
   alternates: { canonical: "/clubmexa" },
   openGraph: {
-    title: "Clubmexa RSVP",
-    description: "A simple Clubmexa RSVP check-in by AXIS.",
+    title: "Clubmexa Check In",
+    description: "Welcome to Club Mexa.",
     url: "https://axis.show/clubmexa",
     images: [
       {

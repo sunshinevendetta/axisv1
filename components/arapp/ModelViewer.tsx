@@ -12,9 +12,21 @@ type Props = {
   poster?: string;
   alt?: string;
   className?: string;
+  /**
+   * Reveal the model immediately and start auto-rotating without waiting for a
+   * user interaction. Use for hero models that should spin on load. Defaults to
+   * the model-viewer default (poster shown until interaction).
+   */
+  autoReveal?: boolean;
 };
 
-export default function ModelViewer({ src, poster, alt = "3D collectible", className = "" }: Props) {
+export default function ModelViewer({
+  src,
+  poster,
+  alt = "3D collectible",
+  className = "",
+  autoReveal = false,
+}: Props) {
   const [ready, setReady] = useState(false);
   const [error, setError] = useState(false);
   const ref = useRef<HTMLElement>(null);
@@ -52,11 +64,14 @@ export default function ModelViewer({ src, poster, alt = "3D collectible", class
         alt={alt}
         camera-controls
         auto-rotate
+        {...(autoReveal
+          ? { reveal: "auto", "auto-rotate-delay": "0", "interaction-prompt": "none" }
+          : {})}
         ar
         ar-modes="webxr scene-viewer quick-look"
         shadow-intensity="0.6"
         exposure="0.9"
-        loading="lazy"
+        loading={autoReveal ? "eager" : "lazy"}
         class={`w-full h-full rounded-2xl bg-black/40 ${className}`}
         style={{ display: "block" }}
       />

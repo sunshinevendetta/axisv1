@@ -101,6 +101,28 @@ h6 {
   font-family: var(--font-display), var(--font-body), sans-serif;
 }
 
+@font-face {
+  font-family: "Bingo";
+  src:
+    url("/fonts/BINGO.woff2") format("woff2"),
+    url("/fonts/BINGO.TTF") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bingo";
+  src: url("/fonts/BINGO-ITALIC.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+.font-bingo {
+  font-family: "Bingo", sans-serif;
+}
+
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -166,8 +188,15 @@ h6 {
   text-shadow: 0 0 16px rgba(255, 255, 255, 0.14);
 }
 
-a {
-  color: rgba(255, 255, 255, 0.92);
+a,
+a:visited,
+a:hover,
+a:active,
+a:focus,
+a:focus-visible {
+  color: #fff !important;
+  opacity: 1;
+  text-decoration-color: currentColor;
 }
 
 ::selection {
