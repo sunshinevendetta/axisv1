@@ -75,8 +75,15 @@ h3.sub{font-family:var(--ff-display);font-weight:700;font-variation-settings:"wd
 .imgslot::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:28px 28px;opacity:.6;}
 .imgslot.has-image::before,.imgslot.has-image::after{display:none;}
 .imgslot img{display:block;width:100%;height:100%;object-fit:cover;}
+a,
+a:visited,
+a:hover,
+a:active,
+a:focus,
+a:focus-visible{color:#fff!important;opacity:1;text-decoration-color:currentColor;}
 .rep-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line-soft);font-size:13px;color:var(--paper-soft);font-weight:500;}
-.rep-row span{color:var(--ink-500);font-family:var(--ff-display);font-size:10px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
+.rep-row span:not(.rep-label){color:var(--ink-500);font-family:var(--ff-display);font-size:10px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
+.rep-row .rep-label{white-space:normal;}
 .rep-row span.accent{color:var(--accent);}
 
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
@@ -359,7 +366,7 @@ section[data-label="Reward cycle"] .inner{max-width:620px;}
 .budgetv-call p{margin:5px 0 0;font-size:10px;line-height:1.25;color:var(--paper-soft);}
 .budgetv-table{border:1px solid var(--line-strong);border-radius:8px;overflow:hidden;background:rgba(255,255,255,.012);}
 .budgetv-table-title{display:block;padding:10px 12px;border-bottom:1px solid var(--line);text-align:center;font-family:var(--ff-display);font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--paper);}
-.budgetv-row{display:grid;grid-template-columns:44px 58px 1fr;align-items:center;min-height:31px;border-bottom:1px solid var(--line);font-size:10.5px;color:var(--paper-soft);}
+.budgetv-row{display:grid;grid-template-columns:44px auto 1fr;align-items:center;min-height:31px;border-bottom:1px solid var(--line);font-size:10.5px;color:var(--paper-soft);}
 .budgetv-row:last-child{border-bottom:0;}
 .budgetv-row>*{padding:0 9px;border-right:1px solid var(--line);height:100%;display:flex;align-items:center;justify-content:center;}
 .budgetv-row>*:last-child{border-right:0;justify-content:flex-start;}
@@ -381,7 +388,7 @@ section[data-label="Reward cycle"] .inner{max-width:620px;}
   .budgetv-call .amount{font-size:13px;}
   .budgetv-call b{font-size:20px;}
   .budgetv-call p{font-size:9px;}
-  .budgetv-row{grid-template-columns:38px 52px 1fr;font-size:9px;}
+  .budgetv-row{grid-template-columns:38px auto 1fr;font-size:9px;}
   .budgetv-row>*{padding:0 6px;}
 }
 
@@ -436,6 +443,11 @@ section[data-label="Beats logo placement"] .sec-foot{margin-top:18px;}
   font-family:var(--ff-display);font-weight:700;font-size:9px;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 0 16px var(--accent-glow-soft);white-space:nowrap;}
 .pill-inc .ic{flex:0 0 12px;width:12px;height:12px;}
 .pill-inc .ic svg{stroke:var(--accent-2);}
+.pill-measured{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;padding:0 8px;border-radius:999px;
+  background:linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.05));color:var(--paper)!important;border:1px solid var(--accent-line);
+  box-shadow:0 0 18px var(--accent-glow-soft),0 0 24px rgba(255,255,255,.08);}
+.pill-measured .ic{flex:0 0 12px;width:12px;height:12px;}
+.pill-measured .ic svg{stroke:var(--accent-2);}
 .cat-head{display:flex;align-items:center;gap:10px;}
 .cat-head .inode{width:34px;height:34px;flex:0 0 34px;}
 .cat-head .inode .ic{width:18px;height:18px;}
@@ -598,8 +610,8 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
       </div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;" data-anim>
-        <div class="imgslot" style="aspect-ratio:4/5;border-radius:10px;" data-ph="Flyer propuesta · 18 jun"></div>
-        <div class="imgslot" style="aspect-ratio:4/5;border-radius:10px;" data-ph="Flyer propuesta · 25 jun"></div>
+        <div class="imgslot has-image" style="aspect-ratio:4/5;border-radius:10px;" data-ph="Flyer propuesta · 18 jun"><img src="../fifa/18jun.webp" alt="Flyer propuesta 18 jun"></div>
+        <div class="imgslot has-image" style="aspect-ratio:4/5;border-radius:10px;" data-ph="Flyer propuesta · 25 jun"><img src="../fifa/25jun.webp" alt="Flyer propuesta 25 jun"></div>
       </div>
     </div>
     <div class="program-old" aria-hidden="true">
@@ -682,30 +694,27 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
   <div class="inner">
     <div class="kicker" data-anim><span class="num">06</span><span>Noche Dos</span></div>
     <h2 class="title" data-anim>Bar Oriente · <span class="accent">25 jun</span></h2>
-    <div style="display:flex;gap:8px;align-items:center;margin-top:10px;" data-anim>
+    <div style="display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap;" data-anim>
       <span class="chip solid" style="font-size:10px;">Lineup</span>
-      <span class="body" style="font-size:12px;color:var(--ink-500);">Cartel sujeto a confirmación</span>
+      <span class="body hl" style="font-size:12px;">Ritmos de La Noche Takeover</span>
     </div>
+    <p class="body" style="font-size:13px;line-height:1.55;margin-top:10px;" data-anim>La noche dos es el takeover de <span class="hl">Ritmos de La Noche</span> en Bar Oriente. El Cuarto Rosa se entrega a su línea de DJs para una segunda noche en sintonía con esa agenda.</p>
     <div style="display:flex;flex-direction:column;gap:12px;margin-top:20px;" data-stagger data-axfx="cell">
       <div class="card" style="display:flex;flex-direction:column;gap:8px;" data-anim>
-        <div style="display:flex;justify-content:space-between;align-items:center;"><span class="tag accent" style="font-size:10px;">Headliner</span><span class="tag" style="font-size:10px;">22:00 – 00:00</span></div>
-        <span class="hl" style="font-family:var(--ff-display);font-weight:800;font-size:26px;color:var(--ink-500);text-transform:uppercase;">[ DJ 01 ]</span>
-        <span class="body" style="font-size:12px;">Set / género · agregar detalle</span>
+        <span class="hl" style="font-family:var(--ff-display);font-weight:800;font-size:24px;text-transform:uppercase;">Saturna</span>
+        <span class="body" style="font-size:12px;color:var(--ink-500);">Carolina, DJ de la Ciudad de México. Cierra la noche con un set legendario de house.</span>
       </div>
       <div class="card" style="display:flex;flex-direction:column;gap:8px;" data-anim>
-        <div style="display:flex;justify-content:space-between;align-items:center;"><span class="tag" style="font-size:10px;">Support</span><span class="tag" style="font-size:10px;">00:00 – 01:30</span></div>
-        <span class="hl" style="font-family:var(--ff-display);font-weight:800;font-size:26px;color:var(--ink-500);text-transform:uppercase;">[ DJ 02 ]</span>
-        <span class="body" style="font-size:12px;">Set / género · agregar detalle</span>
+        <span class="hl" style="font-family:var(--ff-display);font-weight:800;font-size:24px;text-transform:uppercase;">Isaac Olmos</span>
+        <span class="body" style="font-size:12px;color:var(--ink-500);">DJ de la Ciudad de México. Presenta un set de house para la noche dos.</span>
       </div>
       <div class="card" style="display:flex;flex-direction:column;gap:8px;" data-anim>
-        <div style="display:flex;justify-content:space-between;align-items:center;"><span class="tag" style="font-size:10px;">Support</span><span class="tag" style="font-size:10px;">01:30 – 03:00</span></div>
-        <span class="hl" style="font-family:var(--ff-display);font-weight:800;font-size:26px;color:var(--ink-500);text-transform:uppercase;">[ DJ 03 ]</span>
-        <span class="body" style="font-size:12px;">Set / género · agregar detalle</span>
+        <span class="hl" style="font-family:var(--ff-display);font-weight:800;font-size:24px;text-transform:uppercase;">Lulú</span>
+        <span class="body" style="font-size:12px;color:var(--ink-500);">Ludmila Poma, DJ argentina radicada en México. Aporta su sello al Cuarto Rosa con un set de house.</span>
       </div>
       <div class="card" style="display:flex;flex-direction:column;gap:8px;" data-anim>
-        <div style="display:flex;justify-content:space-between;align-items:center;"><span class="tag" style="font-size:10px;">Opener</span><span class="tag" style="font-size:10px;">03:00 – close</span></div>
-        <span class="hl" style="font-family:var(--ff-display);font-weight:800;font-size:26px;color:var(--ink-500);text-transform:uppercase;">[ DJ 04 ]</span>
-        <span class="body" style="font-size:12px;">Set / género · agregar detalle</span>
+        <span class="hl" style="font-family:var(--ff-display);font-weight:800;font-size:24px;text-transform:uppercase;">Malu GO</span>
+        <span class="body" style="font-size:12px;color:var(--ink-500);">María Luz Gómez Oliva, cantautora y proyecto de música electrónica. Suma una propuesta distinta a la noche con un set de house.</span>
       </div>
     </div>
     <div class="sec-foot"><span>Noche dos · cuatro actos</span><span>Bar Oriente · 25 jun 2026</span></div>
@@ -722,13 +731,13 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
         <span class="fmt-v-title">A. Cultura</span>
         <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="image"></span></span><div><span class="fmt-v-name">Galería de arte</span><span class="fmt-v-copy">Obras visuales dentro del entorno del evento.</span></div></div>
         <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="music"></span></span><div><span class="fmt-v-name">Sets de DJ</span><span class="fmt-v-copy">Programación en vivo grabada para uso posterior al evento.</span></div></div>
-        <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="projector"></span></span><div><span class="fmt-v-name">Video mapping</span><span class="fmt-v-copy">Visuales espaciales integrados en la sede.</span></div></div>
+        <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="projector"></span></span><div><span class="fmt-v-name">Video mapping</span><span class="fmt-v-copy">Visuales espaciales integrados en la sede en el Cuarto Rosa con proyectores.</span></div></div>
       </div>
       <div class="fmt-v-group" data-anim>
         <span class="fmt-v-title">B. Medios en Sede</span>
         <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="monitor"></span></span><div><span class="fmt-v-name">Pantalla LED de 12 m</span><span class="fmt-v-copy">Superficie de intervención visual en Bar Oriente.</span></div></div>
         <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="broadcast"></span></span><div><span class="fmt-v-name">Livestream</span><span class="fmt-v-copy">Transmisión en vivo o grabada capturada en sitio.</span></div></div>
-        <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="camera"></span></span><div><span class="fmt-v-name">Fotografía</span><span class="fmt-v-copy">Documentación de alto contraste de la noche.</span></div></div>
+        <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="camera"></span></span><div><span class="fmt-v-name">Fotografía</span><span class="fmt-v-copy">Archivo fotográfico y video post evento.</span></div></div>
       </div>
       <div class="fmt-v-hub" data-anim><img src="logo.png" alt="AXIS"></div>
       <div class="fmt-v-group" data-anim>
@@ -740,20 +749,20 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
       <div class="fmt-v-group" data-anim>
         <span class="fmt-v-title">D. Sistema de Acceso</span>
         <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="ticket"></span></span><div><span class="fmt-v-name">Boletos por wallet</span><span class="fmt-v-copy">Los invitados acceden mediante pases basados en wallet.</span></div></div>
-        <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="tap"></span></span><div><span class="fmt-v-name">Cubos NFC</span><span class="fmt-v-copy">Toques físicos ingresan a los invitados al flujo.</span></div></div>
+        <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="tap"></span></span><div><span class="fmt-v-name">Cubos NFC</span><span class="fmt-v-copy">Interacciones via Tap para ejecutar dinámicas especiales.</span></div></div>
         <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="screen"></span></span><div><span class="fmt-v-name">Onboarding</span><span class="fmt-v-copy">Instrucciones claras entregadas en sitio.</span></div></div>
       </div>
       <div class="fmt-v-group" data-anim>
         <span class="fmt-v-title">E. Capa de Activación</span>
         <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="staff"></span></span><div><span class="fmt-v-name">Guiado por staff</span><span class="fmt-v-copy">El staff guía a los invitados por el flujo de recompensas.</span></div></div>
-        <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="drink"></span></span><div><span class="fmt-v-name">Bebidas financiadas</span><span class="fmt-v-copy">Los invitados canjean bebidas mediante el flujo de recompensas.</span></div></div>
-        <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="key"></span></span><div><span class="fmt-v-name">Acceso a cover</span><span class="fmt-v-copy">La sede puede financiar beneficios de acceso.</span></div></div>
+        <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="drink"></span></span><div><span class="fmt-v-name">Créditos de consumo</span><span class="fmt-v-copy">Nuestro sponsor pagará créditos de consumo para que los invitados gasten en el lugar.</span></div></div>
+        <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="key"></span></span><div><span class="fmt-v-name">Guestlist para invitados</span><span class="fmt-v-copy">Pedimos cupos a la sede para invitar personas.</span></div></div>
       </div>
       <div class="fmt-v-group" data-anim>
         <span class="fmt-v-title">F. Crecimiento + Reportes</span>
         <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="share"></span></span><div><span class="fmt-v-name">Amplificación social</span><span class="fmt-v-copy">Los invitados publican, etiquetan o comparten para extenderla.</span></div></div>
         <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="repeat"></span></span><div><span class="fmt-v-name">Flujo de recompensas</span><span class="fmt-v-copy">El sistema integral de acceso y canje.</span></div></div>
-        <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="report"></span></span><div><span class="fmt-v-name">Reporte de la sede</span><span class="fmt-v-copy">Reclamos, canjes, contenido y asistencia después.</span></div></div>
+        <div class="fmt-v-item"><span class="inode"><span class="ic" data-icon="report"></span></span><div><span class="fmt-v-name">Insights post-evento</span><span class="fmt-v-copy">Coleccionables digitales, canjes, contenido y asistencia después.</span></div></div>
     </div>
     </div>
     <div class="sec-foot"><span>18 módulos, un sistema</span><span>Ciudad de México, junio 2026</span></div>
@@ -763,23 +772,23 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
 <!-- 06 SYSTEM -->
 <section class="slide bg-grid" id="system" data-label="System architecture">
   <div class="inner">
-    <div class="kicker" data-anim><span class="num">08</span><span>Cómo Funciona el Sistema en la Sede</span></div>
-    <h2 class="title" data-anim>De la activación a la documentación medida</h2>
-    <h2 class="title s06-title" data-anim>De la activación<br>a la documentación medida</h2>
+    <div class="kicker" data-anim><span class="num">07</span><span>System Design</span></div>
+    <h2 class="title" data-anim>Cómo Funciona el Sistema</h2>
+    <h2 class="title s06-title" data-anim>Cómo Funciona el Sistema</h2>
     <p class="body s06-copy" data-anim>Un flujo continuo. AXIS está presente en cada paso que toca el invitado.</p>
 
     <div class="s06-cycle" data-stagger data-axfx="node" aria-label="12 step venue flow">
       <div class="s06-hub ax-pulse" data-anim><img src="logo.png" alt="AXIS"><b>AXIS&reg;</b><p>AXIS está presente en todo el flujo, desde la activación hasta la documentación.</p></div>
-      <div class="s06-node" style="--x:50%;--y:6%;" data-anim><span class="s06-num">01</span><span class="inode"><span class="ic" data-icon="coins"></span></span><span class="s06-label">La sede financia el paquete</span></div>
+      <div class="s06-node" style="--x:50%;--y:6%;" data-anim><span class="s06-num">01</span><span class="inode"><span class="ic" data-icon="coins"></span></span><span class="s06-label">AXIS financia el evento</span></div>
       <div class="s06-node" style="--x:72%;--y:13%;" data-anim><span class="s06-num">02</span><span class="inode"><span class="ic" data-icon="layers"></span></span><span class="s06-label">AXIS construye la capa de recompensas</span></div>
       <div class="s06-node" style="--x:88%;--y:29%;" data-anim><span class="s06-num">03</span><span class="inode"><span class="ic" data-icon="enter"></span></span><span class="s06-label">Los invitados llegan al sitio</span></div>
       <div class="s06-node" style="--x:94%;--y:50%;" data-anim><span class="s06-num">04</span><span class="inode"><span class="ic" data-icon="staff"></span></span><span class="s06-label">El staff guía a los invitados</span></div>
       <div class="s06-node" style="--x:88%;--y:71%;" data-anim><span class="s06-num">05</span><span class="inode"><span class="ic" data-icon="tap"></span></span><span class="s06-label">Los invitados tocan cubos NFC</span></div>
       <div class="s06-node" style="--x:72%;--y:87%;" data-anim><span class="s06-num">06</span><span class="inode"><span class="ic" data-icon="screen"></span></span><span class="s06-label">Pantallas de onboarding</span></div>
       <div class="s06-node" style="--x:50%;--y:94%;" data-anim><span class="s06-num">07</span><span class="inode"><span class="ic" data-icon="wallet"></span></span><span class="s06-label">Reclamar acceso por wallet</span></div>
-      <div class="s06-node" style="--x:28%;--y:87%;" data-anim><span class="s06-num">08</span><span class="inode"><span class="ic" data-icon="gift"></span></span><span class="s06-label">Desbloquear bebidas y beneficios</span></div>
+      <div class="s06-node" style="--x:28%;--y:87%;" data-anim><span class="s06-num">08</span><span class="inode"><span class="ic" data-icon="gift"></span></span><span class="s06-label">Desbloquear créditos para bebidas y beneficios</span></div>
       <div class="s06-node" style="--x:12%;--y:71%;" data-anim><span class="s06-num">09</span><span class="inode"><span class="ic" data-icon="share"></span></span><span class="s06-label">Publicar, etiquetar, compartir</span></div>
-      <div class="s06-node" style="--x:6%;--y:50%;" data-anim><span class="s06-num">10</span><span class="inode"><span class="ic" data-icon="monitor"></span></span><span class="s06-label">La sede en el momento, LED y contenido</span></div>
+      <div class="s06-node" style="--x:6%;--y:50%;" data-anim><span class="s06-num">10</span><span class="inode"><span class="ic" data-icon="monitor"></span></span><span class="s06-label">Intervención interactiva visual on site</span></div>
       <div class="s06-node" style="--x:12%;--y:29%;" data-anim><span class="s06-num">11</span><span class="inode"><span class="ic" data-icon="camera"></span></span><span class="s06-label">AXIS captura todo</span></div>
       <div class="s06-node is-end" style="--x:28%;--y:13%;" data-anim><span class="s06-num">12</span><span class="inode glow ax-pulse"><span class="ic" data-icon="report"></span></span><span class="s06-label">La sede recibe el reporte</span></div>
     </div>
@@ -790,21 +799,21 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
         <span class="inode s06-phase-ic"><span class="ic" data-icon="coins"></span></span>
         <span class="tag">A. Financiar y construir</span>
         <span class="s06-phase-title">Fund</span>
-        <span class="s06-phase-copy">La sede financia el paquete; AXIS construye la capa de wallet, acceso y recompensas antes de abrir puertas.</span>
+        <span class="s06-phase-copy">AXIS financia el evento; AXIS construye la capa de wallet, acceso y recompensas antes de abrir puertas.</span>
       </div>
       <div class="s06-phase-card" data-anim>
         <span class="cnr tl"></span><span class="cnr tr"></span><span class="cnr bl"></span><span class="cnr br"></span>
         <span class="inode s06-phase-ic"><span class="ic" data-icon="staff"></span></span>
         <span class="tag">B. Activación en sitio</span>
         <span class="s06-phase-title">Activate</span>
-        <span class="s06-phase-copy">Toque NFC guiado por staff hacia el onboarding, luego reclamo por wallet, bebidas, acceso y beneficios, y después los invitados publican y comparten.</span>
+        <span class="s06-phase-copy">Toque NFC guiado por staff hacia el onboarding, luego canje de coleccionables digitales por wallet, bebidas, acceso y beneficios, y después los invitados publican y comparten.</span>
       </div>
       <div class="s06-phase-card" data-anim>
         <span class="cnr tl"></span><span class="cnr tr"></span><span class="cnr bl"></span><span class="cnr br"></span>
         <span class="inode s06-phase-ic"><span class="ic" data-icon="camera"></span></span>
         <span class="tag">C. Capturar y reportar</span>
         <span class="s06-phase-title">Reporte</span>
-        <span class="s06-phase-copy">La sede aparece en el momento de recompensa y en el LED; AXIS lo captura y entrega un reporte medido.</span>
+        <span class="s06-phase-copy">Los asistentes interactúan y participan en la instalación visual en tiempo real; AXIS captura todos los momentos y entrega los insights.</span>
       </div>
     </div>
     <p class="body" style="margin-top:12px;" data-anim>Un flujo continuo. AXIS está presente en cada paso que toca el invitado.</p>
@@ -813,7 +822,7 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
       <div class="arch-phase">
         <div class="arch-head" data-anim><b>A</b> Financiar y construir</div>
         <div class="arch-flow" data-stagger data-axfx="node">
-          <div class="arch-node" data-anim><div class="inode"><span class="ic" data-icon="coins"></span></div><span class="arch-num">01</span><span class="arch-t">La sede financia el paquete</span></div>
+          <div class="arch-node" data-anim><div class="inode"><span class="ic" data-icon="coins"></span></div><span class="arch-num">01</span><span class="arch-t">AXIS financia el evento</span></div>
           <div class="arch-node" data-anim><span class="arch-arrow">&#9650;</span><div class="inode"><span class="ic" data-icon="layers"></span></div><span class="arch-num">02</span><span class="arch-t">AXIS construye la capa de recompensas</span></div>
         </div>
       </div>
@@ -825,7 +834,7 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
           <div class="arch-node" data-anim><span class="arch-arrow">&#9650;</span><div class="inode"><span class="ic" data-icon="tap"></span></div><span class="arch-num">05</span><span class="arch-t">Los invitados tocan cubos NFC</span></div>
           <div class="arch-node" data-anim><span class="arch-arrow">&#9650;</span><div class="inode"><span class="ic" data-icon="screen"></span></div><span class="arch-num">06</span><span class="arch-t">Pantallas de onboarding</span></div>
           <div class="arch-node" data-anim><span class="arch-arrow">&#9650;</span><div class="inode"><span class="ic" data-icon="wallet"></span></div><span class="arch-num">07</span><span class="arch-t">Reclamar acceso por wallet</span></div>
-          <div class="arch-node" data-anim><span class="arch-arrow">&#9650;</span><div class="inode"><span class="ic" data-icon="gift"></span></div><span class="arch-num">08</span><span class="arch-t">Desbloquear bebidas y beneficios</span></div>
+          <div class="arch-node" data-anim><span class="arch-arrow">&#9650;</span><div class="inode"><span class="ic" data-icon="gift"></span></div><span class="arch-num">08</span><span class="arch-t">Desbloquear créditos para bebidas y beneficios</span></div>
           <div class="arch-node" data-anim><span class="arch-arrow">&#9650;</span><div class="inode"><span class="ic" data-icon="share"></span></div><span class="arch-num">09</span><span class="arch-t">Publicar, etiquetar, compartir</span></div>
           <div class="arch-node" data-anim><span class="arch-arrow">&#9650;</span><div class="inode"><span class="ic" data-icon="monitor"></span></div><span class="arch-num">10</span><span class="arch-t">Patrocinador en el momento, LED</span></div>
         </div>
@@ -846,33 +855,33 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
 <section class="slide bg-energy bg-grid" data-label="Reward cycle">
   <div class="inner budgetv">
     <div class="kicker" data-anim><span class="num">09</span><span>Dónde se concentra el esfuerzo</span></div>
-    <h2 class="budgetv-title" data-anim>Cada noche se construye alrededor de la experiencia del asistente</h2>
+    <h2 class="budgetv-title" data-anim>Contruimos la experiencia alrededor del asistente</h2>
     <p class="budgetv-copy" data-anim>El trabajo de cada noche se reparte entre recompensas para asistentes, operación en sitio, captura de medios e integración visual. Así se arma el formato dentro del Cuarto Rosa.</p>
 
     <div class="budgetv-map">
       <div class="budgetv-call c1" data-anim>
         <span class="budgetv-num">01</span>
-        <b>25%</b>
+        <b>Recompensas</b>
         <strong>Recompensas para asistentes</strong>
-        <p>Bebidas, beneficios de acceso, reclamos de recompensa, incentivos de publicación social.</p>
+        <p>Bebidas, beneficios de acceso, coleccionables digitales de recompensa, incentivos de publicación social.</p>
       </div>
       <div class="budgetv-call c2" data-anim>
         <span class="budgetv-num">02</span>
-        <b>30%</b>
+        <b>Operación</b>
         <strong>Operación en sitio</strong>
         <p>Apoyo de staff, manejo de cubos NFC, pantallas de onboarding, guía de invitados, gestión de activación.</p>
       </div>
       <div class="budgetv-call c3" data-anim>
         <span class="budgetv-num">03</span>
-        <b>20%</b>
+        <b>Captura</b>
         <strong>Captura de medios</strong>
         <p>Fotografía, video, capturas de emplazamiento, captura de testimonios, material de aftermovie.</p>
       </div>
       <div class="budgetv-call c4" data-anim>
         <span class="budgetv-num">04</span>
-        <b>25%</b>
+        <b>Integración</b>
         <strong>Integración visual</strong>
-        <p>Emplazamiento LED, emplazamiento en mapping, pantallas de recompensa, pantallas de acceso, créditos visuales, documentación.</p>
+        <p>Intervención visual en mapping y pantalla LED, site de recompensa, créditos visuales.</p>
       </div>
       <div class="budgetv-donut" data-anim>
         <svg viewBox="0 0 360 360" aria-hidden="true">
@@ -883,7 +892,7 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
           <circle class="budgetv-seg s4" cx="180" cy="180" r="118" pathLength="100"></circle>
         </svg>
         <div class="budgetv-core">
-          <b>100%</b>
+          <b>Total</b>
           <small>El formato de cada noche</small>
           <p>El esfuerzo se vuelve acceso, bebidas, recompensas, contenido y documentación.</p>
         </div>
@@ -892,25 +901,24 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
 
     <div class="budgetv-table" data-anim>
       <span class="budgetv-table-title">Reparto del esfuerzo por noche</span>
-      <div class="budgetv-row"><span class="budgetv-row-num">01</span><strong>25%</strong><span>Recompensas para asistentes</span></div>
-      <div class="budgetv-row"><span class="budgetv-row-num">02</span><strong>30%</strong><span>Operación en sitio</span></div>
-      <div class="budgetv-row"><span class="budgetv-row-num">03</span><strong>20%</strong><span>Captura de medios</span></div>
-      <div class="budgetv-row"><span class="budgetv-row-num">04</span><strong>25%</strong><span>Integración visual</span></div>
+      <div class="budgetv-row"><span class="budgetv-row-num">01</span><strong>Recompensas</strong><span>para asistentes</span></div>
+      <div class="budgetv-row"><span class="budgetv-row-num">02</span><strong>Operación</strong><span>en sitio</span></div>
+      <div class="budgetv-row"><span class="budgetv-row-num">03</span><strong>Captura</strong><span>de medios</span></div>
+      <div class="budgetv-row"><span class="budgetv-row-num">04</span><strong>Integración</strong><span>visual</span></div>
     </div>
 
     <div class="budgetv-proof" data-anim>
       <img src="logo.png" alt="AXIS">
       <p>Los invitados ven la activación.<br>Usan el sistema que construimos en la sede.</p>
     </div>
-    <div class="budgetv-strip" data-anim>Acceso. Bebidas. Recompensas. Contenido. Documentación.</div>
     <div class="sec-foot"><span>Reparto del esfuerzo , experiencia del asistente</span><span>Ciudad de México , junio 2026</span></div>
   </div>
 </section>
 <!-- 07 BEATS LOGO -->
 <section class="slide bg-grid" data-label="Beats logo placement">
   <div class="inner">
-    <div class="kicker" data-anim><span class="num">10</span><span>Por Qué Supera al Emplazamiento de Logo</span></div>
-    <h2 class="title" data-anim>Flujo de recompensas medido.</h2>
+    <div class="kicker" data-anim><span class="num">09</span><span>System Design</span></div>
+    <h2 class="title" data-anim>Flujo de Recompensas</h2>
     <div style="border:1px solid var(--line);padding:18px;margin-top:18px;opacity:.72;" data-anim>
       <div style="display:flex;justify-content:space-between;"><span class="tag">Giveaway básico</span><span class="tag">✕</span></div>
       <div class="col" style="gap:6px;margin-top:10px;">
@@ -927,7 +935,7 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
         <span class="cmp-row"><span class="cmp-ic ic" data-icon="check"></span><span class="body hl" style="font-size:14px;">Guiado por staff</span></span><span class="cmp-row"><span class="cmp-ic ic" data-icon="check"></span><span class="body hl" style="font-size:14px;">Toque NFC</span></span>
         <span class="cmp-row"><span class="cmp-ic ic" data-icon="check"></span><span class="body hl" style="font-size:14px;">Reclamo por wallet</span></span><span class="cmp-row"><span class="cmp-ic ic" data-icon="check"></span><span class="body hl" style="font-size:14px;">Canje de bebida</span></span>
         <span class="cmp-row"><span class="cmp-ic ic" data-icon="check"></span><span class="body hl" style="font-size:14px;">Beneficio de acceso</span></span><span class="cmp-row"><span class="cmp-ic ic" data-icon="check"></span><span class="body hl" style="font-size:14px;">Amplif. social</span></span>
-        <span class="cmp-row"><span class="cmp-ic ic" data-icon="check"></span><span class="body hl" style="font-size:14px;">Captura de contenido</span></span><span class="cmp-row"><span class="cmp-ic ic" data-icon="check"></span><span class="body hl" style="font-size:14px;">Reporte de la sede</span></span>
+        <span class="cmp-row"><span class="cmp-ic ic" data-icon="check"></span><span class="body hl" style="font-size:14px;">Captura de contenido</span></span><span class="cmp-row"><span class="cmp-ic ic" data-icon="check"></span><span class="body hl" style="font-size:14px;">Insights post-evento</span></span>
       </div>
     </div>
     <h3 class="sub" style="font-size:16px;margin-top:22px;" data-anim>Por qué los invitados recuerdan</h3>
@@ -951,7 +959,7 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
 <!-- 08 CAPTURED -->
 <section class="slide bg-grid" data-label="Captured &amp; delivered">
   <div class="inner">
-    <div class="kicker" data-anim><span class="num">11</span><span>Capturado, Entregado y Para Quién Es</span></div>
+    <div class="kicker" data-anim><span class="num">11</span><span>Insights</span></div>
     <h3 class="sub" style="margin-top:14px;" data-anim>Producción de medios incluida</h3>
     <div class="grid2" style="margin-top:10px;" data-anim>
       <span class="chip" style="justify-content:flex-start;font-size:11px;"><span class="ic" data-icon="camera"></span>Fotografía</span><span class="chip" style="justify-content:flex-start;font-size:11px;"><span class="ic" data-icon="film"></span>Aftermovie</span>
@@ -968,11 +976,11 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
       <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="film"></span>Material de aftermovie</span><span class="pill-inc"><span class="ic" data-icon="check"></span>Included</span></div>
       <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="film"></span>Clips de video cortos</span><span class="pill-inc"><span class="ic" data-icon="check"></span>Included</span></div>
       <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="target"></span>Capturas de emplazamiento</span><span class="pill-inc"><span class="ic" data-icon="check"></span>Included</span></div>
-      <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="wallet"></span>Conteo de reclamos por wallet</span><span>medido</span></div>
-      <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="key"></span>Conteo de reclamos de acceso</span><span>medido</span></div>
-      <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="users"></span>Estimación de asistencia</span><span>medido</span></div>
-      <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="drink"></span>Conteo de canjes de bebidas</span><span>medido</span></div>
-      <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="share"></span>Amplificación social</span><span>medido</span></div>
+      <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="wallet"></span>Conteo de coleccionables digitales por wallet</span><span class="pill-measured" aria-label="checked"><span class="ic" data-icon="check"></span></span></div>
+      <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="key"></span>Conteo de coleccionables digitales de acceso</span><span class="pill-measured" aria-label="checked"><span class="ic" data-icon="check"></span></span></div>
+      <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="users"></span>Estimación de asistencia</span><span class="pill-measured" aria-label="checked"><span class="ic" data-icon="check"></span></span></div>
+      <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="drink"></span>Conteo de canjes de bebidas</span><span class="pill-measured" aria-label="checked"><span class="ic" data-icon="check"></span></span></div>
+      <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="share"></span>Amplificación social</span><span class="pill-measured" aria-label="checked"><span class="ic" data-icon="check"></span></span></div>
       <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="cube"></span>Coleccionables minted</span><span>cuando esté disponible</span></div>
       <div class="rep-row"><span class="rep-label"><span class="rep-ic ic" data-icon="quote"></span>Extractos de testimonios</span><span>cuando esté disponible</span></div>
       <div class="rep-row" style="background:var(--fill-2);"><span class="rep-label"><span class="rep-ic ic" data-icon="report"></span>Reporte escrito breve</span><span class="pill-inc"><span class="ic" data-icon="check"></span>Included</span></div>
@@ -1002,15 +1010,15 @@ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
     </div>
     <span class="tag" style="margin-top:22px;display:block;" data-anim>Lo que montamos incluye</span>
     <div class="inc-grid" data-stagger data-axfx="cell">
-      <span class="inc-cell" data-anim><span class="ic" data-icon="wallet"></span><span class="inc-t">Branding en wallet</span></span><span class="inc-cell" data-anim><span class="ic" data-icon="drink"></span><span class="inc-t">Bebidas financiadas</span></span>
-      <span class="inc-cell" data-anim><span class="ic" data-icon="key"></span><span class="inc-t">Acceso a cover</span></span><span class="inc-cell" data-anim><span class="ic" data-icon="tap"></span><span class="inc-t">Activación NFC</span></span>
+      <span class="inc-cell" data-anim><span class="ic" data-icon="wallet"></span><span class="inc-t">Branding en wallet</span></span><span class="inc-cell" data-anim><span class="ic" data-icon="drink"></span><span class="inc-t">Créditos de consumo</span></span>
+      <span class="inc-cell" data-anim><span class="ic" data-icon="key"></span><span class="inc-t">Guestlist para invitados</span></span><span class="inc-cell" data-anim><span class="ic" data-icon="tap"></span><span class="inc-t">Activación NFC</span></span>
       <span class="inc-cell" data-anim><span class="ic" data-icon="screen"></span><span class="inc-t">Pantallas de onboarding</span></span><span class="inc-cell" data-anim><span class="ic" data-icon="gift"></span><span class="inc-t">Pantallas de recompensa</span></span>
       <span class="inc-cell" data-anim><span class="ic" data-icon="monitor"></span><span class="inc-t">Intervención LED</span></span><span class="inc-cell" data-anim><span class="ic" data-icon="projector"></span><span class="inc-t">Projection mapping</span></span>
       <span class="inc-cell" data-anim><span class="ic" data-icon="image"></span><span class="inc-t">Galería de arte</span></span><span class="inc-cell" data-anim><span class="ic" data-icon="broadcast"></span><span class="inc-t">Emplazamiento en transmisión</span></span>
       <span class="inc-cell" data-anim><span class="ic" data-icon="camera"></span><span class="inc-t">Fotografía</span></span><span class="inc-cell" data-anim><span class="ic" data-icon="film"></span><span class="inc-t">Aftermovie</span></span>
       <span class="inc-cell" data-anim><span class="ic" data-icon="quote"></span><span class="inc-t">Captura de testimonios</span></span><span class="inc-cell" data-anim><span class="ic" data-icon="cube"></span><span class="inc-t">Coleccionables</span></span>
       <span class="inc-cell" data-anim><span class="ic" data-icon="share"></span><span class="inc-t">Amplif. social</span></span><span class="inc-cell" data-anim><span class="ic" data-icon="target"></span><span class="inc-t">Capturas de emplazamiento</span></span>
-      <span class="inc-cell" data-anim><span class="ic" data-icon="users"></span><span class="inc-t">Reporte de asistencia</span></span><span class="inc-cell" data-anim><span class="ic" data-icon="wallet"></span><span class="inc-t">Reporte de reclamos por wallet</span></span>
+      <span class="inc-cell" data-anim><span class="ic" data-icon="users"></span><span class="inc-t">Reporte de asistencia</span></span><span class="inc-cell" data-anim><span class="ic" data-icon="wallet"></span><span class="inc-t">Insights de coleccionables digitales por wallet</span></span>
       <span class="inc-cell" data-anim><span class="ic" data-icon="key"></span><span class="inc-t">Reporte de acceso</span></span><span class="inc-cell" data-anim><span class="ic" data-icon="receipt"></span><span class="inc-t">Reporte de canjes</span></span>
     </div>
     <div class="card" style="margin-top:22px;display:flex;flex-direction:column;gap:14px;" data-anim>

@@ -106,6 +106,12 @@ artifacts/
 /v-*.png
 /*.mp3
 /*.mp4
+/*.pdf
+/*-preview.png
+
+# Build error logs and design source files
+/build-*.err
+*.psd
 
 # CrewAI Phase 1 generated/runtime output
 echopulz/echopulz_crew/tools/sources/ts-bridge/node_modules/
