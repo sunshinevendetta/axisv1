@@ -162,7 +162,7 @@ export default function ClubMexaRsvp() {
                 className="!rounded-[26px] !bg-transparent"
               />
               <span
-                className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full border px-3 py-1 text-[9px] uppercase tracking-[0.3em] text-white/75 backdrop-blur"
+                className="pointer-events-none absolute bottom-14 left-1/2 -translate-x-1/2 rounded-full border px-3 py-1 text-[9px] uppercase tracking-[0.3em] text-white/75 backdrop-blur"
                 style={{ borderColor: `${PINK}55`, background: "rgba(0,0,0,0.4)" }}
               >
                 Drag to spin
