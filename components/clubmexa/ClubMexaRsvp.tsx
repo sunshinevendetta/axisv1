@@ -4,7 +4,7 @@ import type { FormEvent } from "react";
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FiArrowRight, FiCheck, FiLoader, FiMail, FiUser } from "react-icons/fi";
+import { FiArrowRight, FiCheck, FiLoader, FiMail, FiPhone, FiUser } from "react-icons/fi";
 import ModelViewer from "@/components/arapp/ModelViewer";
 
 type SubmitState = "idle" | "submitting" | "success" | "error";
@@ -22,12 +22,17 @@ const TICKER = [
 export default function ClubMexaRsvp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [status, setStatus] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
 
   const canSubmit = useMemo(
-    () => name.trim().length > 1 && email.trim().includes("@") && status !== "submitting",
-    [email, name, status],
+    () =>
+      name.trim().length > 1 &&
+      email.trim().includes("@") &&
+      phone.trim().length > 6 &&
+      status !== "submitting",
+    [email, name, phone, status],
   );
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -41,7 +46,11 @@ export default function ClubMexaRsvp() {
       const response = await fetch("/api/clubmexa/rsvp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name.trim(), email: email.trim() }),
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone.trim(),
+        }),
       });
 
       const data = await response.json().catch(() => ({}));
@@ -239,6 +248,7 @@ export default function ClubMexaRsvp() {
                   onClick={() => {
                     setName("");
                     setEmail("");
+                    setPhone("");
                     setStatus("idle");
                     setMessage("");
                   }}
@@ -287,6 +297,28 @@ export default function ClubMexaRsvp() {
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
                       placeholder="you@example.com"
+                      className="cm-input h-[50px] w-full rounded-none border border-white/12 bg-black/55 px-11 py-3 text-sm text-white outline-none transition placeholder:text-white/28"
+                    />
+                  </div>
+                </label>
+
+                <label className="block">
+                  <span className="mb-2 block text-[10px] uppercase tracking-[0.28em] text-white/50">
+                    Phone
+                  </span>
+                  <div className="group relative">
+                    <FiPhone
+                      aria-hidden
+                      className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-white/34"
+                      style={{ color: PINK }}
+                    />
+                    <input
+                      type="tel"
+                      autoComplete="tel"
+                      required
+                      value={phone}
+                      onChange={(event) => setPhone(event.target.value)}
+                      placeholder="+52 55 0000 0000"
                       className="cm-input h-[50px] w-full rounded-none border border-white/12 bg-black/55 px-11 py-3 text-sm text-white outline-none transition placeholder:text-white/28"
                     />
                   </div>
