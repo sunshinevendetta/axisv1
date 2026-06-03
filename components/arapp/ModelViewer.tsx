@@ -68,13 +68,31 @@ export default function ModelViewer({
           ? { reveal: "auto", "auto-rotate-delay": "0", "interaction-prompt": "none" }
           : {})}
         ar
-        ar-modes="webxr scene-viewer quick-look"
+        // Native viewers first: Scene Viewer (Android) and Quick Look (iOS) both
+        // provide the in-AR photo/video capture button. The in-browser `webxr`
+        // mode only places the model and has NO capture UI, so it is omitted.
+        // Quick Look needs no ios-src — model-viewer generates the USDZ on the fly.
+        ar-modes="scene-viewer quick-look"
+        ar-scale="fixed"
+        ar-placement="floor"
         shadow-intensity="0.6"
         exposure="0.9"
         loading={autoReveal ? "eager" : "lazy"}
         class={`w-full h-full rounded-2xl bg-black/40 ${className}`}
         style={{ display: "block" }}
-      />
+      >
+        <button
+          slot="ar-button"
+          type="button"
+          className="absolute bottom-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/55 px-3.5 py-2 text-[10px] font-medium uppercase tracking-[0.22em] text-white backdrop-blur transition hover:bg-black/75"
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+            <circle cx="12" cy="13" r="4" />
+          </svg>
+          View in your space
+        </button>
+      </ModelViewerElement>
     </>
   );
 }
