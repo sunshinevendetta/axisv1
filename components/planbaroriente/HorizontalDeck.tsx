@@ -1,10 +1,12 @@
 "use client";
 
-export default function HorizontalDeck() {
+export default function HorizontalDeck({ onLoad }: { onLoad?: () => void }) {
   return (
     <iframe
+      data-pbo-deck="true"
       src="/planbaroriente/axis-horizontal.html"
-      title="AXIS Sponsor Deck — Desktop"
+      title="AXIS Sponsor Deck Desktop"
+      onLoad={onLoad}
       style={{
         position: "fixed",
         inset: 0,

@@ -1,10 +1,12 @@
 "use client";
 
-export default function VerticalDeck() {
+export default function VerticalDeck({ onLoad }: { onLoad?: () => void }) {
   return (
     <iframe
+      data-pbo-deck="true"
       src="/planbaroriente/axis-vertical.html"
-      title="AXIS Sponsor Deck — Mobile"
+      title="AXIS Sponsor Deck Mobile"
+      onLoad={onLoad}
       style={{
         position: "fixed",
         inset: 0,

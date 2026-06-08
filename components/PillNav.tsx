@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSiteLanguage } from "@/components/site-language";
+import { useSiteLanguage, type SiteLanguage } from "@/components/site-language";
 
 export type PillNavItem = {
   label: string;
@@ -36,8 +36,8 @@ function dedupeItems(items: PillNavItem[]): PillNavItem[] {
     }));
 }
 
-function translateNavLabel(label: string, language: "en" | "es") {
-  if (language === "en") return label;
+function translateNavLabel(label: string, language: SiteLanguage) {
+  if (language !== "es") return label;
 
   const map: Record<string, string> = {
     home: "inicio",
