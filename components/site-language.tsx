@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
-export type SiteLanguage = "en" | "es";
+export type SiteLanguage = "zh" | "en" | "es";
 
 const STORAGE_KEY = "axis:site-language";
 
@@ -12,25 +13,31 @@ const SiteLanguageContext = createContext<{
   setLanguage: (language: SiteLanguage) => void;
 } | null>(null);
 
-function readStoredLanguage(): SiteLanguage {
-  if (typeof window === "undefined") return "en";
-  const value = window.localStorage.getItem(STORAGE_KEY);
-  return value === "es" ? "es" : "en";
+function normalizeLanguage(value: string | null, fallback: SiteLanguage = "en"): SiteLanguage {
+  return value === "zh" || value === "es" || value === "en" ? value : fallback;
+}
+
+function readStoredLanguage(fallback: SiteLanguage): SiteLanguage {
+  if (typeof window === "undefined") return fallback;
+  return normalizeLanguage(window.localStorage.getItem(STORAGE_KEY), fallback);
 }
 
 export function SiteLanguageProvider({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const defaultLanguage: SiteLanguage = pathname?.startsWith("/planbaroriente") ? "zh" : "en";
   const [language, setLanguageState] = useState<SiteLanguage>("en");
 
   useEffect(() => {
-    const next = readStoredLanguage();
+    const stored = readStoredLanguage(defaultLanguage);
+    const next = stored;
     setLanguageState(next);
-    document.documentElement.lang = next;
-  }, []);
+    document.documentElement.lang = next === "zh" ? "zh-CN" : next;
+  }, [defaultLanguage, pathname]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     window.localStorage.setItem(STORAGE_KEY, language);
-    document.documentElement.lang = language;
+    document.documentElement.lang = language === "zh" ? "zh-CN" : language;
   }, [language]);
 
   const value = useMemo(
@@ -57,13 +64,28 @@ export function useSiteLanguage() {
 
 export function LanguageSwitch() {
   const { language, setLanguage } = useSiteLanguage();
-  const nextLanguage = language === "en" ? "es" : "en";
+  const pathname = usePathname();
+  const supportsChinese = pathname?.startsWith("/planbaroriente") ?? false;
+  const languages: Array<{
+    code: SiteLanguage;
+    flag: string;
+    label: string;
+  }> = supportsChinese
+    ? [
+        { code: "zh", flag: "/flags/cn.svg", label: "Chinese" },
+        { code: "en", flag: "/flags/us.svg", label: "English" },
+        { code: "es", flag: "/flags/mx.svg", label: "Spanish" },
+      ]
+    : [
+        { code: "en", flag: "/flags/us.svg", label: "English" },
+        { code: "es", flag: "/flags/mx.svg", label: "Spanish" },
+      ];
+  const activeLanguage = supportsChinese ? language : language !== "zh" ? language : "en";
 
   return (
-    <button
-      type="button"
-      onClick={() => setLanguage(nextLanguage)}
-      aria-label={language === "en" ? "Switch to Spanish" : "Cambiar a inglés"}
+    <div
+      role="group"
+      aria-label="Select language"
       style={{
         position: "fixed",
         right: 16,
@@ -81,33 +103,33 @@ export function LanguageSwitch() {
         backdropFilter: "blur(12px)",
       }}
     >
-      <span className="sr-only">{language === "en" ? "English" : "Español"}</span>
-      <span
-        aria-hidden="true"
-        style={{
-          width: 18,
-          height: 18,
-          borderRadius: "50%",
-          overflow: "hidden",
-          boxShadow: language === "en" ? "0 0 0 2px rgba(255,255,255,0.6)" : "none",
-          opacity: language === "en" ? 1 : 0.45,
-        }}
-      >
-        <Image src="/flags/us.svg" alt="" width={18} height={18} style={{ width: 18, height: 18 }} />
-      </span>
-      <span
-        aria-hidden="true"
-        style={{
-          width: 18,
-          height: 18,
-          borderRadius: "50%",
-          overflow: "hidden",
-          boxShadow: language === "es" ? "0 0 0 2px rgba(255,255,255,0.6)" : "none",
-          opacity: language === "es" ? 1 : 0.45,
-        }}
-      >
-        <Image src="/flags/mx.svg" alt="" width={18} height={18} style={{ width: 18, height: 18 }} />
-      </span>
-    </button>
+      {languages.map((item) => (
+        <button
+          key={item.code}
+          type="button"
+          onClick={() => setLanguage(item.code)}
+          aria-label={`Select ${item.label}`}
+          aria-pressed={activeLanguage === item.code}
+          style={{
+            appearance: "none",
+            border: 0,
+            background: "transparent",
+            padding: 0,
+            width: 22,
+            height: 22,
+            borderRadius: "50%",
+            overflow: "hidden",
+            boxShadow: activeLanguage === item.code ? "0 0 0 2px rgba(255,255,255,0.6)" : "none",
+            opacity: activeLanguage === item.code ? 1 : 0.45,
+            cursor: activeLanguage === item.code ? "default" : "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Image src={item.flag} alt="" width={18} height={18} style={{ width: 18, height: 18 }} />
+        </button>
+      ))}
+    </div>
   );
 }

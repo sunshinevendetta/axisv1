@@ -1,11 +1,33 @@
 "use client";
 
+import { useCallback, useEffect } from "react";
 import HorizontalDeck from "./HorizontalDeck";
 import VerticalDeck from "./VerticalDeck";
+import { useSiteLanguage } from "@/components/site-language";
 
 const BREAKPOINT = 820;
 
 export default function PlanBarOrienteDeck() {
+  const { language } = useSiteLanguage();
+
+  const syncDeckLanguage = useCallback(() => {
+    if (typeof window === "undefined") return;
+
+    document.querySelectorAll<HTMLIFrameElement>('iframe[data-pbo-deck="true"]').forEach((iframe) => {
+      iframe.contentWindow?.postMessage(
+        {
+          type: "axis:language",
+          language,
+        },
+        window.location.origin,
+      );
+    });
+  }, [language]);
+
+  useEffect(() => {
+    syncDeckLanguage();
+  }, [syncDeckLanguage]);
+
   return (
     <>
       <style>{`
@@ -20,10 +42,10 @@ export default function PlanBarOrienteDeck() {
         }
       `}</style>
       <div className="pbo-deck-desktop">
-        <HorizontalDeck />
+        <HorizontalDeck onLoad={syncDeckLanguage} />
       </div>
       <div className="pbo-deck-mobile">
-        <VerticalDeck />
+        <VerticalDeck onLoad={syncDeckLanguage} />
       </div>
     </>
   );
