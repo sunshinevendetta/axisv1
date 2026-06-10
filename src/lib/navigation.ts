@@ -65,6 +65,7 @@ export const publicNavItems: PillNavItem[] = [
   // membersAreaNavItem,
   { label: "submit", href: "/#submit" },
   { label: "pizza day", href: "/pizzaday" },
+  { label: "aftercup", href: "/aftercup" },
   // {
   //   label: "store",
   //   href: "/arapp",

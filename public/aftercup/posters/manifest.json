@@ -1,0 +1,203 @@
+{
+  "source": "https://aftercup.mx/en/#aftercup",
+  "extractedAt": "2026-06-10T08:44:58.704Z",
+  "count": 10,
+  "events": [
+    {
+      "id": "dombrance",
+      "title": "Dombrance",
+      "date": "June 12",
+      "prices": [
+        {
+          "type": "General",
+          "price": "$1,200 MXN"
+        },
+        {
+          "type": "VIP",
+          "price": "$1,800 MXN"
+        }
+      ],
+      "ticketUrl": "https://feverup.com/m/647220",
+      "sourcePosterUrl": "https://aftercup.mx/wp-content/uploads/2026/05/ARTISTAS-04.jpg",
+      "sourceThumbnailUrl": "https://aftercup.mx/wp-content/uploads/2026/05/ARTISTAS-04-1024x1024.jpg",
+      "poster": "/aftercup/posters/june-12-dombrance.jpg",
+      "bytes": 523290
+    },
+    {
+      "id": "midnight-generation",
+      "title": "Midnight Generation",
+      "date": "June 18",
+      "prices": [
+        {
+          "type": "General",
+          "price": "$1,200 MXN"
+        },
+        {
+          "type": "VIP",
+          "price": "$1,800 MXN"
+        }
+      ],
+      "ticketUrl": "https://feverup.com/m/648237",
+      "sourcePosterUrl": "https://aftercup.mx/wp-content/uploads/2026/05/OK.jpg",
+      "sourceThumbnailUrl": "https://aftercup.mx/wp-content/uploads/2026/05/OK-1024x1024.jpg",
+      "poster": "/aftercup/posters/june-18-midnight-generation.jpg",
+      "bytes": 447577
+    },
+    {
+      "id": "hvob",
+      "title": "HVOB",
+      "date": "June 19",
+      "prices": [
+        {
+          "type": "General",
+          "price": "$1,750 MXN"
+        },
+        {
+          "type": "VIP",
+          "price": "$2,300 MXN"
+        }
+      ],
+      "ticketUrl": "https://feverup.com/m/647507",
+      "sourcePosterUrl": "https://aftercup.mx/wp-content/uploads/2026/05/HVOB_800X800.jpeg",
+      "sourceThumbnailUrl": "https://aftercup.mx/wp-content/uploads/2026/05/HVOB_800X800-1024x1024.jpeg",
+      "poster": "/aftercup/posters/june-19-hvob.jpeg",
+      "bytes": 379304
+    },
+    {
+      "id": "los-guitarrazos",
+      "title": "Los guitarrazos",
+      "date": "June 24",
+      "prices": [
+        {
+          "type": "General",
+          "price": "$1,100 MXN"
+        },
+        {
+          "type": "VIP",
+          "price": "$1,800 MXN"
+        }
+      ],
+      "ticketUrl": "https://feverup.com/m/652016",
+      "sourcePosterUrl": "https://aftercup.mx/wp-content/uploads/2026/05/LOS-GUITARRAZOS_800x800.jpg",
+      "sourceThumbnailUrl": "https://aftercup.mx/wp-content/uploads/2026/05/LOS-GUITARRAZOS_800x800-1024x1024.jpg",
+      "poster": "/aftercup/posters/june-24-los-guitarrazos.jpg",
+      "bytes": 422140
+    },
+    {
+      "id": "barba-azul",
+      "title": "Barba Azul",
+      "date": "June 25",
+      "prices": [
+        {
+          "type": "General",
+          "price": "$720 MXN"
+        }
+      ],
+      "ticketUrl": "https://feverup.com/m/652014",
+      "sourcePosterUrl": "https://aftercup.mx/wp-content/uploads/2026/05/Barba_azul_800x800_web.jpeg",
+      "sourceThumbnailUrl": "https://aftercup.mx/wp-content/uploads/2026/05/Barba_azul_800x800_web-1024x1024.jpeg",
+      "poster": "/aftercup/posters/june-25-barba-azul.jpeg",
+      "bytes": 464520
+    },
+    {
+      "id": "kungs",
+      "title": "Kungs",
+      "date": "June 26",
+      "prices": [
+        {
+          "type": "General",
+          "price": "$1,500 MXN"
+        },
+        {
+          "type": "VIP",
+          "price": "$2,000 MXN"
+        }
+      ],
+      "ticketUrl": "https://feverup.com/m/647506",
+      "sourcePosterUrl": "https://aftercup.mx/wp-content/uploads/2026/05/ARTISTAS-03.jpg",
+      "sourceThumbnailUrl": "https://aftercup.mx/wp-content/uploads/2026/05/ARTISTAS-03-1024x1024.jpg",
+      "poster": "/aftercup/posters/june-26-kungs.jpg",
+      "bytes": 439582
+    },
+    {
+      "id": "sbtrkt",
+      "title": "SBTRKT",
+      "date": "June 28",
+      "prices": [
+        {
+          "type": "General",
+          "price": "$1,350 MXN"
+        },
+        {
+          "type": "VIP",
+          "price": "$1,800 MXN"
+        }
+      ],
+      "ticketUrl": "https://feverup.com/m/647509",
+      "sourcePosterUrl": "https://aftercup.mx/wp-content/uploads/2026/05/ARTISTAS-02.jpg",
+      "sourceThumbnailUrl": "https://aftercup.mx/wp-content/uploads/2026/05/ARTISTAS-02-1024x1024.jpg",
+      "poster": "/aftercup/posters/june-28-sbtrkt.jpg",
+      "bytes": 470330
+    },
+    {
+      "id": "todd-terje",
+      "title": "Todd Terje",
+      "date": "July 3",
+      "prices": [
+        {
+          "type": "General",
+          "price": "$1,500 MXN"
+        },
+        {
+          "type": "VIP",
+          "price": "$2,000 MXN"
+        }
+      ],
+      "ticketUrl": "https://feverup.com/m/647505",
+      "sourcePosterUrl": "https://aftercup.mx/wp-content/uploads/2026/05/ARTISTAS-01.jpg",
+      "sourceThumbnailUrl": "https://aftercup.mx/wp-content/uploads/2026/05/ARTISTAS-01-1024x1024.jpg",
+      "poster": "/aftercup/posters/july-3-todd-terje.jpg",
+      "bytes": 447806
+    },
+    {
+      "id": "cut-copy",
+      "title": "Cut Copy",
+      "date": "July 5",
+      "prices": [
+        {
+          "type": "General",
+          "price": "$1,350 MXN"
+        },
+        {
+          "type": "VIP",
+          "price": "$1,800 MXN"
+        }
+      ],
+      "ticketUrl": "https://feverup.com/m/647508",
+      "sourcePosterUrl": "https://aftercup.mx/wp-content/uploads/2026/05/ARTISTAS-18.jpg",
+      "sourceThumbnailUrl": "https://aftercup.mx/wp-content/uploads/2026/05/ARTISTAS-18-1024x1024.jpg",
+      "poster": "/aftercup/posters/july-5-cut-copy.jpg",
+      "bytes": 474403
+    },
+    {
+      "id": "echonomist-b2b-jenia-tarsol",
+      "title": "Echonomist B2B Jenia Tarsol",
+      "date": "July 9",
+      "prices": [
+        {
+          "type": "General",
+          "price": "$1,200 MXN"
+        },
+        {
+          "type": "VIP",
+          "price": "$1,800 MXN"
+        }
+      ],
+      "ticketUrl": "https://feverup.com/m/647504",
+      "sourcePosterUrl": "https://aftercup.mx/wp-content/uploads/2026/05/Echonomist_800x800.jpeg",
+      "sourceThumbnailUrl": "https://aftercup.mx/wp-content/uploads/2026/05/Echonomist_800x800-1024x1024.jpeg",
+      "poster": "/aftercup/posters/july-9-echonomist-b2b-jenia-tarsol.jpeg",
+      "bytes": 456698
+    }
+  ]
+}
