@@ -1,0 +1,1362 @@
+/* ---------- AXIS AFTERCUP QUEST - scoped styles ---------- */
+.pdq-shell {
+  --pdq-bg: #07120f;
+  --pdq-bg-1: #0c1a15;
+  --pdq-bg-2: #16251e;
+  --pdq-surface: rgba(244, 232, 201, 0.045);
+  --pdq-surface-2: rgba(244, 232, 201, 0.07);
+  --pdq-surface-3: rgba(244, 232, 201, 0.1);
+  --pdq-line: rgba(207, 169, 92, 0.16);
+  --pdq-line-2: rgba(207, 169, 92, 0.28);
+  --pdq-line-3: rgba(244, 232, 201, 0.38);
+  --pdq-ink: #f7efd8;
+  --pdq-ink-2: rgba(247, 239, 216, 0.78);
+  --pdq-ink-3: rgba(247, 239, 216, 0.56);
+  --pdq-ink-4: rgba(247, 239, 216, 0.36);
+  --pdq-ink-5: rgba(247, 239, 216, 0.2);
+  --pdq-accent: #d7ad5a;
+  --pdq-accent-2: #8e2633;
+  --pdq-accent-3: #1f7d65;
+  --pdq-bronze: #9b6b3d;
+
+  /* Aftercup uses Bingo for everything. Agura (--font-display) is
+     intentionally NOT used on this surface. */
+  --pdq-display: var(--font-body);
+  --pdq-display-alt: var(--font-body);
+  --pdq-body: var(--font-body);
+  --pdq-mono: var(--font-body);
+
+  --pdq-gap: 24px;
+  --pdq-gap-s: 12px;
+  --pdq-gap-l: 48px;
+
+  --pdq-radius: 14px;
+  --pdq-radius-s: 8px;
+
+  --pdq-pad-x: 48px;
+
+  --pdq-d: 1;
+
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  background:
+    linear-gradient(135deg, rgba(215, 173, 90, 0.08) 0 1px, transparent 1px 32px),
+    linear-gradient(90deg, rgba(142, 38, 51, 0.1), transparent 34%, rgba(31, 125, 101, 0.12)),
+    var(--pdq-bg);
+  color: var(--pdq-ink);
+  font-family: var(--pdq-body);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01","cv11";
+}
+
+.pdq-shell * { box-sizing: border-box; }
+
+.pdq-shell::-webkit-scrollbar { width: 8px; height: 8px; }
+.pdq-shell::-webkit-scrollbar-track { background: transparent; }
+.pdq-shell::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 4px; }
+.pdq-shell::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
+
+/* ambient background */
+.pdq-bg-stage { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.pdq-bg-stage::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    linear-gradient(90deg, transparent 0 8%, rgba(215, 173, 90, 0.08) 8% 8.2%, transparent 8.2% 91.8%, rgba(215, 173, 90, 0.08) 91.8% 92%, transparent 92%),
+    linear-gradient(0deg, transparent 0 12%, rgba(244, 232, 201, 0.045) 12% 12.2%, transparent 12.2% 87.8%, rgba(244, 232, 201, 0.045) 87.8% 88%, transparent 88%),
+    linear-gradient(135deg, rgba(142, 38, 51, 0.12), transparent 34%, rgba(215, 173, 90, 0.08) 62%, transparent);
+  filter: none;
+}
+.pdq-bg-stage svg { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.4; }
+
+/* scanlines overlay */
+.pdq-scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(0deg,
+    rgba(255,255,255,0.012) 0px,
+    rgba(255,255,255,0.012) 1px,
+    transparent 1px,
+    transparent 3px);
+  mix-blend-mode: overlay;
+  opacity: 0.7;
+}
+.pdq-scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.45) 100%);
+  pointer-events: none;
+}
+
+.pdq-noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.pdq-content { position: relative; z-index: 1; }
+
+.pdq-section { position: relative; padding: calc(120px * var(--pdq-d)) var(--pdq-pad-x); }
+
+/* top nav */
+.pdq-topnav {
+  position: fixed; top: 24px; left: 50%; transform: translateX(-50%); z-index: 100;
+  display: flex; align-items: center; gap: 6px; background: #f7efd8; color: #07120f;
+  border-radius: 999px; padding: 6px; box-shadow: 0 8px 32px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(215,173,90,0.45);
+  font-family: var(--font-body), sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+.pdq-topnav button {
+  appearance: none; border: 0; background: transparent; color: #0a0a0a;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  padding: 9px 14px; border-radius: 999px; cursor: pointer; transition: all .2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.pdq-topnav button:hover { background: rgba(0,0,0,0.06); }
+.pdq-topnav button.pdq-logo-toggle:hover { background: transparent; }
+.pdq-topnav button.active { background: #0a0a0a; color: #f5f5f5; }
+.pdq-topnav .nav-sep { width: 1px; height: 14px; background: rgba(0,0,0,0.15); margin: 0 2px; }
+
+.pdq-menu-panel button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-body), sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+.pdq-menu-panel button:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.9);
+}
+.pdq-menu-panel button.active {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+/* status pill */
+.pdq-status-pill {
+  position: fixed; top: 30px; right: 24px; z-index: 100;
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--pdq-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--pdq-ink-3); background: rgba(10,10,10,0.6);
+  border: 1px solid var(--pdq-line); backdrop-filter: blur(12px);
+  padding: 8px 14px; border-radius: 999px;
+}
+.pdq-status-pill .pdq-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #3aff7a;
+  box-shadow: 0 0 8px #3aff7a; animation: pdqPulse 2s ease-in-out infinite;
+}
+@keyframes pdqPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+/* reg marks */
+.pdq-regmarks { position: fixed; inset: 16px; pointer-events: none; z-index: 50; }
+.pdq-regmarks .pdq-rm { position: absolute; width: 18px; height: 18px; border: 1px solid var(--pdq-ink-5); }
+.pdq-regmarks .pdq-rm.pdq-tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+.pdq-regmarks .pdq-rm.pdq-tr { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+.pdq-regmarks .pdq-rm.pdq-bl { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+.pdq-regmarks .pdq-rm.pdq-br { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+/* hud strip */
+.pdq-hud-strip {
+  position: fixed; bottom: 16px; left: 24px; right: 24px; z-index: 50;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--pdq-mono); font-size: 9.5px; letter-spacing: 0.12em;
+  color: var(--pdq-ink-4); text-transform: uppercase; pointer-events: none;
+}
+.pdq-hud-strip .left, .pdq-hud-strip .right { display: flex; gap: 18px; }
+.pdq-hud-strip span b { color: var(--pdq-ink-2); font-weight: 500; }
+
+/* type primitives */
+.pdq-display {
+  font-family: var(--pdq-display); font-weight: 800; letter-spacing: -0.01em;
+  line-height: 0.88; text-transform: uppercase; font-stretch: 125%;
+}
+.pdq-display-alt {
+  font-family: var(--pdq-display-alt); font-weight: 700; letter-spacing: 0.01em;
+  line-height: 0.92; text-transform: uppercase;
+}
+.pdq-mono {
+  font-family: var(--pdq-mono); letter-spacing: 0.04em; font-size: 11px;
+  text-transform: uppercase; color: var(--pdq-ink-3);
+}
+.pdq-mono-tight {
+  font-family: var(--pdq-mono); font-size: 10px; letter-spacing: 0.06em;
+}
+
+.pdq-eyebrow {
+  font-family: var(--pdq-mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--pdq-ink-3);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.pdq-eyebrow::before { content: ""; width: 18px; height: 1px; background: var(--pdq-ink-5); }
+
+/* buttons */
+.pdq-btn {
+  appearance: none; border: 0; cursor: pointer; font-family: var(--pdq-mono);
+  text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; font-weight: 500;
+  padding: 14px 22px; border-radius: 4px;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all .2s ease; position: relative;
+  background: var(--pdq-accent); color: #07120f;
+  box-shadow: 0 0 0 1px rgba(247,239,216,0.2),
+    inset 0 1px 0 rgba(247,239,216,0.4);
+}
+.pdq-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgba(215,173,90,0.2),
+    0 0 0 1px rgba(247,239,216,0.3),
+    inset 0 1px 0 rgba(247,239,216,0.5);
+}
+.pdq-btn:active { transform: translateY(0); }
+.pdq-btn.ghost { background: transparent; color: var(--pdq-ink);
+  box-shadow: inset 0 0 0 1px var(--pdq-line-3); }
+.pdq-btn.ghost:hover {
+  box-shadow: inset 0 0 0 1px var(--pdq-ink);
+  background: rgba(255,255,255,0.04);
+}
+.pdq-btn.lg { padding: 18px 28px; font-size: 12px; }
+.pdq-btn.sm { padding: 10px 14px; font-size: 10px; }
+.pdq-btn .arr { display: inline-block; transition: transform .2s; }
+.pdq-btn:hover .arr { transform: translateX(3px); }
+
+/* cards */
+.pdq-card {
+  position: relative; background: var(--pdq-surface);
+  border: 1px solid var(--pdq-line); border-radius: var(--pdq-radius-s);
+}
+.pdq-card.glass {
+  background:
+    linear-gradient(180deg, rgba(244,232,201,0.08), rgba(7,18,15,0.58)),
+    linear-gradient(135deg, rgba(215,173,90,0.1), transparent 42%, rgba(142,38,51,0.08));
+  box-shadow: inset 0 1px 0 rgba(247,239,216,0.08),
+    0 1px 0 rgba(0,0,0,0.4),
+    0 20px 48px rgba(0,0,0,0.42);
+}
+
+.pdq-brk { position: absolute; width: 14px; height: 14px; pointer-events: none; }
+.pdq-brk::before, .pdq-brk::after { content: ""; position: absolute; background: var(--pdq-ink-2); }
+.pdq-brk::before { width: 100%; height: 1px; top: 0; }
+.pdq-brk::after { width: 1px; height: 100%; left: 0; top: 0; }
+.pdq-brk.pdq-tl { top: -1px; left: -1px; }
+.pdq-brk.pdq-tr { top: -1px; right: -1px; transform: scaleX(-1); }
+.pdq-brk.pdq-bl { bottom: -1px; left: -1px; transform: scaleY(-1); }
+.pdq-brk.pdq-br { bottom: -1px; right: -1px; transform: scale(-1); }
+
+/* section head */
+.pdq-section-head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: calc(48px * var(--pdq-d)); gap: 24px; flex-wrap: wrap;
+}
+.pdq-section-head h2 {
+  font-family: var(--pdq-display); font-weight: 800;
+  font-size: clamp(22px, 3.2vw, 50px); line-height: 0.94; margin: 0;
+  text-transform: uppercase; letter-spacing: -0.015em; font-stretch: 125%;
+}
+
+/* ---- HARD TYPOGRAPHIC CEILING ----
+   All h1..h4 inside the shell are capped via clamp() with !important so
+   inline fontSize props can't push them past readable widths. */
+.pdq-shell h1,
+.pdq-shell h1.pdq-display {
+  font-size: clamp(22px, 2.8vw, 40px) !important;
+  line-height: 0.96 !important;
+  word-break: break-word;
+}
+.pdq-shell h2,
+.pdq-shell h2.pdq-display {
+  font-size: clamp(18px, 2.3vw, 32px) !important;
+  line-height: 0.98 !important;
+  word-break: break-word;
+}
+.pdq-shell h3 { font-size: clamp(15px, 1.8vw, 22px) !important; line-height: 1 !important; }
+.pdq-shell h4 { font-size: clamp(13px, 1.4vw, 18px) !important; line-height: 1.1 !important; }
+.pdq-section-meta {
+  text-align: right; color: var(--pdq-ink-3);
+  font-family: var(--pdq-mono); font-size: 11px; letter-spacing: 0.06em;
+  text-transform: uppercase; line-height: 1.6;
+}
+
+.pdq-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pdq-line-2) 20%, var(--pdq-line-2) 80%, transparent);
+  margin: 0 var(--pdq-pad-x);
+}
+
+/* ticker */
+.pdq-ticker {
+  display: flex; gap: 48px; overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.pdq-ticker-track {
+  display: flex; gap: 48px; animation: pdqTick 60s linear infinite; flex-shrink: 0;
+  padding-right: 48px;
+}
+@keyframes pdqTick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.pdq-ticker-item {
+  font-family: var(--pdq-mono); font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--pdq-ink-3); white-space: nowrap; display: flex;
+  align-items: center; gap: 12px;
+}
+.pdq-ticker-item .who { color: var(--pdq-ink); }
+.pdq-ticker-item .what { color: #c8c8c8; }
+.pdq-ticker-item .pdq-dot { width: 4px; height: 4px; background: var(--pdq-ink-5); border-radius: 50%; }
+
+/* glitch */
+.pdq-glitch { animation: pdqGlitchAnim 320ms steps(2) 1; }
+@keyframes pdqGlitchAnim {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px,1px); }
+  40% { transform: translate(2px,-1px); filter: hue-rotate(0) saturate(0) brightness(1.3); }
+  60% { transform: translate(-1px,-2px); }
+  80% { transform: translate(1px,2px); }
+  100% { transform: translate(0); }
+}
+
+/* fades */
+.pdq-fade-up { animation: pdqFadeUp .6s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes pdqFadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+.pdq-enter-fade { animation: pdqEnterFade .35s ease both; }
+@keyframes pdqEnterFade { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes pdqSpinY { from { transform: rotateY(0); } to { transform: rotateY(360deg); } }
+@keyframes pdqFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes pdqSpinR { to { transform: rotate(360deg); } }
+
+/* progress bar */
+.pdq-bar {
+  height: 2px; background: var(--pdq-line); border-radius: 2px; overflow: hidden; position: relative;
+}
+.pdq-bar > span {
+  display: block; height: 100%; background: var(--pdq-ink);
+  box-shadow: 0 0 8px rgba(255,255,255,0.4);
+}
+
+/* tag */
+.pdq-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--pdq-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--pdq-ink-2); padding: 4px 8px; border: 1px solid var(--pdq-line-2); border-radius: 3px;
+  background: rgba(255,255,255,0.02);
+}
+.pdq-tag.live { color: #d7ad5a; border-color: rgba(215,173,90,0.42); background: rgba(215,173,90,0.08); }
+.pdq-tag.live .pdq-dot {
+  width: 5px; height: 5px; background: #d7ad5a; border-radius: 50%;
+  box-shadow: 0 0 6px #d7ad5a; animation: pdqPulse 1.6s infinite;
+}
+.pdq-tag.locked { color: var(--pdq-ink-4); border-color: var(--pdq-line); }
+
+/* line label */
+.pdq-line-label {
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--pdq-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--pdq-ink-3);
+}
+.pdq-line-label::before, .pdq-line-label::after { content: ""; flex: 1; height: 1px; background: var(--pdq-line-2); }
+
+/* aftercup agenda */
+.aftercup-hero {
+  background:
+    linear-gradient(90deg, rgba(7, 18, 15, 0.98), rgba(7, 18, 15, 0.76)),
+    linear-gradient(135deg, rgba(215, 173, 90, 0.16), transparent 36%, rgba(142, 38, 51, 0.12));
+}
+
+.aftercup-hero-title {
+  text-shadow: 0 20px 48px rgba(0, 0, 0, 0.55);
+}
+
+.aftercup-stat {
+  min-height: 116px;
+}
+
+.aftercup-stat::after,
+.aftercup-activity::after,
+.aftercup-agenda-card::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(215, 173, 90, 0.12);
+  pointer-events: none;
+}
+
+.aftercup-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--pdq-line);
+  background: rgba(7, 18, 15, 0.72);
+}
+
+.aftercup-feature-list {
+  display: grid;
+  max-height: 640px;
+  overflow: auto;
+}
+
+.aftercup-agenda-list {
+  display: grid;
+  border: 1px solid var(--pdq-line);
+  background: rgba(7, 18, 15, 0.38);
+}
+
+.aftercup-month-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  padding: 0 0 14px;
+  font-family: var(--pdq-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pdq-ink-3);
+}
+
+.aftercup-month-label span:first-child {
+  color: var(--pdq-accent);
+  font-family: var(--pdq-display-alt);
+  font-size: 24px;
+  letter-spacing: 0.04em;
+}
+
+.aftercup-agenda-row {
+  display: grid;
+  grid-template-columns: 84px 0 1fr;
+  gap: 18px;
+  align-items: stretch;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--pdq-line);
+  min-height: 98px;
+}
+
+.aftercup-agenda-row:last-child {
+  border-bottom: 0;
+}
+
+.aftercup-agenda-row.compact {
+  min-height: 86px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--pdq-line);
+}
+
+.aftercup-agenda-row.after {
+  grid-template-columns: 84px 82px 1fr;
+}
+
+.aftercup-agenda-row.compact.after {
+  grid-template-columns: 72px 70px 1fr;
+}
+
+.aftercup-agenda-row.match {
+  grid-template-columns: 84px 1fr;
+  background: linear-gradient(90deg, rgba(31, 125, 101, 0.16), transparent);
+}
+
+.aftercup-agenda-row.after {
+  background: linear-gradient(90deg, rgba(142, 38, 51, 0.2), transparent);
+}
+
+.aftercup-agenda-row.closed {
+  grid-template-columns: 84px 1fr;
+  opacity: 0.52;
+}
+
+.aftercup-date {
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(215, 173, 90, 0.3);
+  background: rgba(7, 18, 15, 0.62);
+  color: var(--pdq-accent);
+  min-height: 66px;
+}
+
+.aftercup-date span {
+  font-family: var(--pdq-display-alt);
+  font-size: 30px;
+  line-height: 0.9;
+}
+
+.aftercup-date small {
+  font-family: var(--pdq-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--pdq-ink-3);
+}
+
+.aftercup-poster-thumb {
+  position: relative;
+  align-self: center;
+  width: 82px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(215, 173, 90, 0.32);
+  background: rgba(7, 18, 15, 0.7);
+  overflow: hidden;
+}
+
+.aftercup-agenda-row.compact .aftercup-poster-thumb {
+  width: 70px;
+}
+
+.aftercup-poster-thumb img {
+  object-fit: cover;
+}
+
+.aftercup-agenda-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.aftercup-agenda-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+  font-family: var(--pdq-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--pdq-ink-4);
+}
+
+.aftercup-agenda-meta span {
+  padding-right: 10px;
+  border-right: 1px solid var(--pdq-line);
+}
+
+.aftercup-agenda-meta span:last-child {
+  border-right: 0;
+}
+
+.aftercup-agenda-title {
+  font-family: var(--pdq-display-alt);
+  font-size: 18px;
+  line-height: 1.08;
+  text-transform: uppercase;
+  color: var(--pdq-ink);
+}
+
+.aftercup-agenda-price {
+  margin-top: 8px;
+  font-family: var(--pdq-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--pdq-accent);
+}
+
+.aftercup-marquee {
+  display: flex;
+  gap: 28px;
+  overflow: hidden;
+  font-family: var(--pdq-display-alt);
+  font-size: clamp(18px, 2.2vw, 32px);
+  line-height: 1;
+  color: rgba(215, 173, 90, 0.52);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.aftercup-marquee span {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.aftercup-marquee span::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: var(--pdq-accent-2);
+  transform: rotate(45deg);
+}
+
+/* medal */
+.pdq-medal {
+  position: relative; display: flex; align-items: center; justify-content: center;
+}
+.pdq-medal-shape {
+  width: 60%; aspect-ratio: 1; border-radius: 50%;
+  background: conic-gradient(from 180deg,
+    #2a2a2a,#888,#fff,#aaa,#444,#999,#fff,#3a3a3a,#2a2a2a);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.4),
+    inset 0 8px 20px rgba(255,255,255,0.3),
+    inset 0 -8px 20px rgba(0,0,0,0.4),
+    0 12px 36px rgba(255,255,255,0.08),
+    0 0 0 4px rgba(255,255,255,0.04),
+    0 0 0 5px rgba(255,255,255,0.08);
+  animation: pdqFloat 5s ease-in-out infinite, pdqSpinY 18s linear infinite;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.pdq-medal.poly .pdq-medal-shape {
+  border-radius: 0;
+  clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  animation: pdqFloat 5s ease-in-out infinite;
+}
+.pdq-medal.coin .pdq-medal-shape {
+  background: radial-gradient(circle at 30% 30%, #fff 0%, #ccc 20%, #555 60%, #2a2a2a 100%);
+  animation: pdqFloat 5s ease-in-out infinite, pdqSpinY 12s linear infinite;
+}
+.pdq-medal.foil .pdq-medal-shape {
+  border-radius: 8%;
+  background:
+    linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.6) 50%, transparent 70%),
+    conic-gradient(from 0deg, #444, #ddd, #888, #fff, #555, #aaa, #444);
+  background-blend-mode: overlay;
+  animation: pdqFloat 5s ease-in-out infinite;
+}
+.pdq-medal.poster .pdq-medal-shape {
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.28), transparent 38%, rgba(0,0,0,0.28)),
+    conic-gradient(from 180deg, #6e4b22, #d7ad5a, #f7efd8, #9b6b3d, #2b1b0f, #d7ad5a, #6e4b22);
+}
+.pdq-medal-poster {
+  position: absolute;
+  inset: 9%;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  box-shadow:
+    inset 0 0 0 1px rgba(247,239,216,0.38),
+    inset 0 18px 36px rgba(255,255,255,0.16),
+    inset 0 -18px 34px rgba(0,0,0,0.34);
+  transform: translateZ(1px);
+}
+.pdq-medal-poster::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, transparent 0 38%, rgba(255,255,255,0.28) 48%, transparent 58%),
+    radial-gradient(circle at 35% 20%, rgba(255,255,255,0.22), transparent 34%);
+  mix-blend-mode: screen;
+  opacity: 0.72;
+}
+.pdq-medal.poster .pdq-medal-glyph {
+  color: rgba(247,239,216,0.5) !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.55);
+  mix-blend-mode: normal !important;
+}
+.pdq-medal-ring {
+  position: absolute; inset: 8%; border-radius: 50%;
+  border: 1px solid var(--pdq-ink-5); pointer-events: none;
+}
+.pdq-medal-ring.r2 {
+  inset: 0; border: 1px dashed var(--pdq-ink-5);
+  animation: pdqSpinR 40s linear infinite;
+}
+
+/* reticle */
+.pdq-reticle {
+  position: absolute; border: 1px solid var(--pdq-ink-3);
+}
+.pdq-reticle::before, .pdq-reticle::after {
+  content: ""; position: absolute; background: var(--pdq-ink-3);
+}
+.pdq-reticle::before { width: 1px; height: 30%; left: 50%; top: -15%; }
+.pdq-reticle::after { width: 30%; height: 1px; top: 50%; left: -15%; }
+
+/* density */
+.pdq-shell.density-min { --pdq-d: 0.85; --pdq-pad-x: 36px; }
+.pdq-shell.density-reg { --pdq-d: 1; --pdq-pad-x: 48px; }
+.pdq-shell.density-hud { --pdq-d: 1.15; --pdq-pad-x: 56px; }
+.pdq-shell.density-min .pdq-hud-strip,
+.pdq-shell.density-min .pdq-regmarks { display: none; }
+
+/* responsive */
+@media (max-width: 1024px) {
+  .pdq-shell { --pdq-pad-x: 32px; }
+  .pdq-section { padding: calc(80px * var(--pdq-d)) var(--pdq-pad-x); }
+}
+
+@media (max-width: 780px) {
+  .pdq-shell { --pdq-pad-x: 16px; max-width: 100vw; overflow-x: hidden; }
+  .pdq-shell * { max-width: 100%; }
+  .pdq-section { padding: 56px var(--pdq-pad-x); }
+
+  /* tame flex rows that overflow horizontally */
+  .pdq-shell [style*="flex"][style*="space-between"] { flex-wrap: wrap; gap: 12px; }
+  .pdq-section-head h2 { font-size: clamp(20px, 5.4vw, 32px) !important; }
+  .pdq-section-head { margin-bottom: 22px; }
+  .pdq-section-meta { text-align: left; font-size: 10px; }
+  .aftercup-card-head { align-items: flex-start; }
+  .aftercup-feature-list { max-height: none; }
+  .aftercup-stat-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .aftercup-agenda-row,
+  .aftercup-agenda-row.compact {
+    grid-template-columns: 58px 1fr !important;
+    gap: 12px;
+    padding: 12px 12px;
+    min-height: 78px;
+  }
+  .aftercup-agenda-row.after,
+  .aftercup-agenda-row.compact.after {
+    grid-template-columns: 58px 58px 1fr !important;
+  }
+  .aftercup-agenda-row.match,
+  .aftercup-agenda-row.closed {
+    grid-template-columns: 58px 1fr !important;
+  }
+  .aftercup-poster-thumb,
+  .aftercup-agenda-row.compact .aftercup-poster-thumb {
+    width: 58px;
+  }
+  .aftercup-date {
+    min-height: 54px;
+  }
+  .aftercup-date span {
+    font-size: 24px;
+  }
+  .aftercup-agenda-title {
+    font-size: 15px;
+  }
+  .aftercup-agenda-meta {
+    font-size: 8.5px;
+    gap: 6px;
+  }
+  .aftercup-month-label span:first-child {
+    font-size: 20px;
+  }
+  .pdq-topnav { top: 12px; padding: 4px; gap: 2px; }
+  .pdq-topnav button { padding: 6px 9px; font-size: 9.5px; }
+  .pdq-status-pill { top: 18px; right: 12px; font-size: 9px; padding: 6px 10px; }
+  .pdq-hud-strip { font-size: 8px; bottom: 10px; left: 12px; right: 12px; }
+  .pdq-hud-strip .left, .pdq-hud-strip .right { gap: 10px; }
+  .pdq-regmarks { inset: 10px; }
+
+  /* shrink shell display type uniformly on mobile */
+  .pdq-shell h1,
+  .pdq-shell h1.pdq-display { font-size: clamp(20px, 5.2vw, 28px) !important; }
+  .pdq-shell h2,
+  .pdq-shell h2.pdq-display { font-size: clamp(16px, 4.4vw, 24px) !important; }
+
+  /* mobile grid collapse — every grid in the shell stacks to 1 column.
+     Broad on purpose — this page has many bespoke inline grids that all
+     break at narrow widths. Specific exceptions are listed below. */
+  .pdq-shell [style*="grid"][style*="repeat"],
+  .pdq-shell [style*="1fr 1fr"],
+  .pdq-shell [style*="1.2fr"],
+  .pdq-shell [style*="1fr 1.2fr"],
+  .pdq-grid-2,
+  .pdq-grid-3,
+  .pdq-grid-4,
+  .pdq-grid-collapse,
+  .pdq-hero-2col,
+  .pdq-footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Tight 2-col layouts that should KEEP their shape (label/value, icon/text). */
+  .pdq-shell [style*="32px 1fr auto"],
+  .pdq-shell [style*="36px 1fr auto"],
+  .pdq-shell [style*="54px 1fr auto"],
+  .pdq-shell [style*="minmax(0, 1fr) auto"] {
+    grid-template-columns: auto 1fr auto !important;
+    gap: 10px !important;
+  }
+
+  /* rank ladder row → stacked label/value/desc */
+  .pdq-rank-row {
+    grid-template-columns: 50px 1fr auto !important;
+    grid-auto-flow: row;
+    gap: 8px 14px !important;
+    padding: 16px 18px !important;
+  }
+  .pdq-rank-row > :nth-child(3) { grid-column: 1 / -1; font-size: 12px; }
+  .pdq-rank-row > :nth-child(4),
+  .pdq-rank-row > :nth-child(5) { grid-column: 1 / -1; font-size: 10px; }
+
+  /* episode row → 2-col compact list */
+  .pdq-episode-row {
+    grid-template-columns: 1fr auto !important;
+    grid-auto-flow: row;
+    gap: 6px 14px !important;
+    padding: 18px 18px !important;
+  }
+  .pdq-episode-row > :nth-child(n+3) { grid-column: 1 / -1; }
+
+  /* mobile divider tightening */
+  .pdq-divider { margin: 0 18px; }
+}
+
+@media (max-width: 480px) {
+  .pdq-shell { --pdq-pad-x: 14px; }
+  .pdq-section { padding: 44px var(--pdq-pad-x); }
+  .pdq-shell h1,
+  .pdq-shell h1.pdq-display { font-size: clamp(18px, 5.6vw, 24px) !important; }
+  .pdq-shell h2,
+  .pdq-shell h2.pdq-display { font-size: clamp(15px, 4.6vw, 20px) !important; }
+  .pdq-topnav button { padding: 5px 7px; font-size: 8.5px; letter-spacing: 0.02em; }
+  .pdq-status-pill { display: none; }
+}
+
+/* === SHEET (mission modal mobile) === */
+/* MissionDetail overlay → mobile-first sheet. Desktop (>720px) keeps the
+   original two-column, centered, max-width layout. Only mobile reflows.
+   Inline styles in MissionDetail.tsx provide the desktop baseline; these
+   rules override for small viewports (and use !important to beat inline). */
+
+/* The sheet card never exceeds the viewport; body scrolls internally.
+   maxHeight is set inline (90dvh) on the Brackets wrapper. */
+.pdq-sheet-body::-webkit-scrollbar { width: 8px; }
+.pdq-sheet-body::-webkit-scrollbar-track { background: transparent; }
+.pdq-sheet-body::-webkit-scrollbar-thumb {
+  background: rgba(207, 169, 92, 0.22);
+  border-radius: 4px;
+}
+
+/* Close button: keep a comfortable 44px tap target inside the header. */
+.pdq-sheet-close { min-width: 44px; min-height: 44px; }
+
+@media (max-width: 720px) {
+  /* Overlay: shrink padding so the sheet uses nearly the full width. */
+  .pdq-sheet-overlay {
+    padding: 12px !important;
+    align-items: stretch !important;
+  }
+
+  /* Card fills available width; the body scroll handles overflow. */
+  .pdq-sheet-card { max-width: 100% !important; }
+  .pdq-sheet-brackets { max-height: 92dvh !important; }
+
+  /* Header: keep code + status on the left, close button reachable. */
+  .pdq-sheet-head { padding: 12px 14px !important; }
+
+  /* All four phase grids collapse to a single column. The medal/reticle
+     preview (second grid child) falls below the text in source order. */
+  .pdq-sheet-2col {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    min-height: 0 !important;
+    align-items: start !important;
+  }
+
+  /* Tighter phase-view padding on mobile (40/32 → ~20). */
+  .pdq-sheet-pad { padding: 20px !important; }
+  .pdq-sheet-2col > .pdq-sheet-pad { padding: 20px !important; }
+
+  /* BriefView text column uses a right border on desktop; on mobile the
+     columns stack, so use a bottom divider instead. */
+  .pdq-sheet-2col > .pdq-sheet-pad:first-child {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--pdq-line) !important;
+  }
+
+  /* Reticle/medal previews are large fixed-pixel squares. On mobile the
+     .pdq-medal-stack (below) scales itself down via transform, so the column
+     only needs to center + clip. No zoom (zoom shifts absolute-positioned
+     children and pushed the medal off-center). */
+  .pdq-sheet-2col > div:last-child,
+  .pdq-sheet-2col > .pdq-sheet-pad:last-child {
+    align-items: center;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .pdq-sheet-overlay { padding: 8px !important; }
+  .pdq-sheet-pad { padding: 16px !important; }
+  .pdq-sheet-2col > .pdq-sheet-pad { padding: 16px !important; }
+}
+
+/* === MAP FIX === */
+/* Bug-fix layer for the Aftercup MissionMap. Presentation only — no new
+   colours, fonts, or component structure; reuses the existing HUD palette.
+   The map column stacks above the mission list at <= 780px via the global
+   .pdq-hero-2col collapse; these rules only tighten what the SVG floor-plan
+   labels and the floor-tabs row need on narrow phones. */
+
+.pdq-map-header { min-width: 0; }
+
+/* On phones, the inline pin labels on the floor plan are redundant with the
+   numbered, tappable pins + the right-side mission list (which names every
+   quest). Drop the labels under 560px so 3+ co-located pins never crowd or
+   run off the SVG edge — the pins themselves stay fully tappable. */
+@media (max-width: 560px) {
+  .pdq-pin-label { display: none; }
+}
+
+/* Floor-tabs row: the global mobile collapse turns the repeat(N, 1fr) zone
+   buttons into a single stacked column. Keep them as a compact 2-up grid so
+   PATIO / DANCEFLOOR stay side by side and the header doesn't grow tall at
+   390px. Scoped via :has() to the tabs only (their buttons carry a
+   .pdq-display-alt label), so other collapsed grids are untouched. */
+@media (max-width: 780px) {
+  .pdq-shell [style*="repeat"]:has(> button .pdq-display-alt) {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 !important;
+  }
+  .pdq-shell [style*="repeat"]:has(> button .pdq-display-alt) > button {
+    padding: 12px 12px !important;
+  }
+}
+
+/* Very small screens: trim the floor-tab type so both columns fit at
+   360-390px without wrapping awkwardly. */
+@media (max-width: 400px) {
+  .pdq-shell [style*="repeat"]:has(> button .pdq-display-alt) > button .pdq-display-alt {
+    font-size: 13px;
+  }
+  .pdq-shell [style*="repeat"]:has(> button .pdq-display-alt) > button {
+    padding: 10px 10px !important;
+  }
+}
+
+/* === MEDAL + PROFILE MODAL === */
+/* Bug-fix layer for the <Medal> glyph scaling, medal containment in small
+   grid cells, and the Profile medal-detail modal on phones. Presentation
+   only — reuses the existing HUD palette, the .pdq-sheet-* mobile-sheet
+   system, and the established .pdq-medal structure. No new colours/fonts. */
+
+/* (1) GLYPH SCALING — was a hardcoded 220px-based font-size that broke when
+   <Medal size="100%"> renders inside the small aspect-ratio:1 grid cells.
+   .pdq-medal-box now establishes a size-query context so the glyph can be
+   measured against the ACTUAL rendered box. The glyph is sized in cqmin
+   (≈ the old 0.32 * box ratio), and clamped so it stays legible at tiny
+   grid sizes and never overpowers the medal at 240/300 in modals. */
+.pdq-medal-box {
+  /* inline-size (not size) — `size` containment collapses the box's block
+     height to 0 in a flex/auto context, which is what shoved the medal out
+     of place. inline-size keeps height intrinsic while still giving the
+     glyph a query context to scale against. */
+  container-type: inline-size;
+}
+.pdq-medal-glyph {
+  font-size: clamp(10px, 32cqi, 96px);
+  line-height: 1;
+}
+/* Fallback for engines without container-query units: relative em keeps the
+   glyph proportional to whatever font-size the medal box inherits. */
+@supports not (width: 1cqi) {
+  .pdq-medal-glyph { font-size: 2em; }
+}
+
+/* (2) MEDAL STACK — the Reticle and Medal are SIBLINGS that must overlay
+   (reticle behind, medal centered on top). Previously they were laid out as
+   normal flex siblings with nothing forcing the overlap, so they drifted /
+   stacked and landed off-center (the bottom-right bug). The stack makes the
+   medal absolutely centered over the reticle, with the wrapper sized to the
+   reticle so the parent flexbox can center the whole unit reliably. */
+.pdq-medal-stack {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  transform-origin: center center;
+}
+.pdq-medal-stack-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* (3) PROFILE MEDAL MODAL + sheet previews — the fixed-pixel Reticle/Medal
+   squares (300–420px) overflow a phone. On mobile we cap the stack to a
+   viewport-relative box and scale its contents DOWN to fit that box, so the
+   element's real layout width never exceeds the screen (no horizontal
+   scroll). The inner reticle/medal keep their overlay alignment because the
+   transform-origin is centered and both share the same box. */
+@media (max-width: 720px) {
+  .pdq-medal-preview { margin: 0 auto; max-width: 100%; }
+  .pdq-medal-stack {
+    width: min(62vw, 240px);
+    height: min(62vw, 240px);
+    overflow: hidden;
+  }
+  /* Scale the fixed-size reticle + medal to fill the capped box. The reticle
+     is ~300–420px; min(62vw,240px)/360 ≈ the right shrink. We scale the
+     children, and because the stack has a hard width/height + overflow:hidden,
+     the layout footprint is the capped box — not the pre-scale pixels. */
+  .pdq-medal-stack > * {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.62);
+    transform-origin: center center;
+  }
+  .pdq-medal-stack-center > * {
+    transform: none;
+  }
+}
+
+@media (max-width: 390px) {
+  .pdq-medal-stack {
+    width: min(64vw, 200px);
+    height: min(64vw, 200px);
+  }
+  .pdq-medal-stack > * {
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+/* === INTRO === */
+/* Friendly "how it works" on-ramp (Intro.tsx). Mobile-first: a centered
+   glass card / bottom-sheet that fits a 390px phone, plus a small on-brand
+   floating "?" help button. Reuses the existing HUD palette, .glass card,
+   .pdq-eyebrow / .pdq-display / .pdq-display-alt type, and .pdq-btn. No new
+   colours, fonts, or component structure. */
+
+/* Floating "HOW IT WORKS" / "?" button — persistent re-open affordance.
+   Sits bottom-left so it clears the bottom-right LanguageSwitch and the
+   bottom HUD strip. */
+.pdq-intro-fab {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 9000;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  appearance: none;
+  cursor: pointer;
+  padding: 8px 14px 8px 8px;
+  border: 1px solid var(--pdq-line-2);
+  border-radius: 999px;
+  background: rgba(10, 18, 15, 0.78);
+  backdrop-filter: blur(12px);
+  color: var(--pdq-ink-2);
+  font-family: var(--pdq-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.pdq-intro-fab:hover {
+  color: var(--pdq-ink);
+  border-color: var(--pdq-accent);
+  transform: translateY(-1px);
+}
+.pdq-intro-fab-q {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--pdq-accent);
+  color: #07120f;
+  font-family: var(--pdq-display-alt);
+  font-size: 14px;
+  font-weight: 800;
+}
+.pdq-intro-fab-label { white-space: nowrap; }
+
+/* Overlay — dims the app and centers the card; doubles as a bottom-sheet on
+   small screens. */
+.pdq-intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: radial-gradient(ellipse at 50% 40%, rgba(7, 18, 15, 0.7), rgba(7, 18, 15, 0.9));
+  backdrop-filter: blur(6px);
+  animation: pdqEnterFade 0.25s ease both;
+}
+
+.pdq-intro-card {
+  width: 100%;
+  max-width: 420px;
+  max-height: 90dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: pdqFadeUp 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.pdq-intro-body {
+  padding: 26px 24px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.pdq-intro-body::-webkit-scrollbar { width: 8px; }
+.pdq-intro-body::-webkit-scrollbar-track { background: transparent; }
+.pdq-intro-body::-webkit-scrollbar-thumb {
+  background: rgba(207, 169, 92, 0.22);
+  border-radius: 4px;
+}
+
+.pdq-intro-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.pdq-intro-x {
+  appearance: none;
+  cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+  margin: -10px -8px -10px 0;
+  border: 0;
+  background: transparent;
+  color: var(--pdq-ink-3);
+  font-size: 16px;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+.pdq-intro-x:hover { color: var(--pdq-ink); }
+
+.pdq-intro-title {
+  margin: 0 0 12px;
+  font-size: clamp(20px, 5.4vw, 28px) !important;
+  line-height: 0.96 !important;
+}
+.pdq-intro-lede {
+  margin: 0 0 22px;
+  color: var(--pdq-ink-2);
+  font-family: var(--pdq-body);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.pdq-intro-steps {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pdq-intro-step {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 14px;
+  border: 1px solid var(--pdq-line);
+  border-radius: var(--pdq-radius-s);
+  background: rgba(255, 255, 255, 0.02);
+}
+.pdq-intro-step-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--pdq-line-2);
+  border-radius: var(--pdq-radius-s);
+  background: rgba(215, 173, 90, 0.06);
+}
+.pdq-intro-step-glyph {
+  font-family: var(--pdq-display-alt);
+  font-size: 20px;
+  line-height: 1;
+  color: var(--pdq-accent);
+}
+.pdq-intro-step-no {
+  font-family: var(--pdq-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.12em;
+  color: var(--pdq-ink-4);
+}
+.pdq-intro-step-text { min-width: 0; }
+.pdq-intro-step-head {
+  font-size: 16px;
+  margin-bottom: 2px;
+  letter-spacing: 0.02em;
+  color: var(--pdq-ink);
+}
+.pdq-intro-step-body {
+  margin: 0;
+  font-family: var(--pdq-body);
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--pdq-ink-3);
+}
+
+/* Rank ladder — one compact glance, not a sentence. */
+.pdq-intro-ranks {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 22px;
+  padding: 12px 14px;
+  border: 1px solid var(--pdq-line);
+  border-radius: var(--pdq-radius-s);
+  background: rgba(215, 173, 90, 0.04);
+  overflow-x: auto;
+}
+.pdq-intro-ranks-label {
+  flex-shrink: 0;
+  font-family: var(--pdq-mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: var(--pdq-ink-4);
+}
+.pdq-intro-ranks-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.pdq-intro-rank {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--pdq-display-alt);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--pdq-ink-2);
+}
+.pdq-intro-rank:first-child { color: var(--pdq-accent); }
+.pdq-intro-rank:last-child { color: var(--pdq-ink); }
+.pdq-intro-rank-arrow { color: var(--pdq-ink-5); }
+
+.pdq-intro-go {
+  width: 100%;
+  justify-content: center;
+  min-height: 48px;
+}
+
+@media (max-width: 480px) {
+  /* Snap to a bottom-sheet on phones for thumb reach. */
+  .pdq-intro-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .pdq-intro-card {
+    max-width: 100%;
+    max-height: 92dvh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .pdq-intro-body { padding: 22px 18px calc(18px + env(safe-area-inset-bottom)); }
+  .pdq-intro-fab-label { display: none; }
+  .pdq-intro-fab { padding: 6px; }
+}
+
+/* === AXON REBUILD === */
+/* Rebuild layer for the MissionMap axonometric (BuildingAxon) after the data
+   model moved from 2 zones to 3 (MATCH DAY / NIGHT / AREAS). Presentation only
+   — reuses the existing HUD palette, fonts, and .pdq-* type. No new colours or
+   component structure. Two concerns:
+     (1) the floor-tabs row is now 3 zones and must stay a 3-up grid on phones;
+     (2) the axon's centred above-block labels can crowd at very small widths,
+         so we trim them progressively the same way the floor-plan pin labels
+         are trimmed. */
+
+/* (1) FLOOR-TABS — 3 COLUMNS ON MOBILE.
+   The earlier MAP FIX layer collapsed the zone-tabs to a 2-up grid (1fr 1fr)
+   because there used to be exactly two floors. With three floors that 2-up
+   grid orphans the third tab onto a second row. This rule comes later in the
+   cascade (same specificity) so it wins, restoring an even 3-column row that
+   fits a 360-390px phone. Scoped identically (:has() on the zone buttons'
+   .pdq-display-alt label) so no other repeat() grid is affected. */
+@media (max-width: 780px) {
+  .pdq-shell [style*="repeat"]:has(> button .pdq-display-alt) {
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 0 !important;
+  }
+  .pdq-shell [style*="repeat"]:has(> button .pdq-display-alt) > button {
+    padding: 12px 9px !important;
+  }
+}
+
+/* Smallest phones: tighten the 3-up zone tabs so MD / NT / AR fit without the
+   name wrapping or the mono sub-line clipping. */
+@media (max-width: 460px) {
+  .pdq-shell [style*="repeat"]:has(> button .pdq-display-alt) > button {
+    padding: 10px 7px !important;
+  }
+  .pdq-shell [style*="repeat"]:has(> button .pdq-display-alt) > button .pdq-display-alt {
+    font-size: 13px;
+  }
+}
+
+/* (2) AXON BLOCK LABELS — the SVG already scales to container width, so the
+   three centred zone labels above the blocks shrink with it and never collide
+   at phone widths. Nothing further needed here; documented so the geometry is
+   the single source of truth and CSS isn't duplicating spacing math. */
+
+/* === NO HORIZONTAL SCROLL (global guard) === */
+/* Hard guarantee: nothing on the Aftercup surface produces a horizontal
+   scrollbar on mobile. `overflow-x: clip` can't be scrolled into (unlike
+   `hidden`, which a programmatic scroll or focus can still reach), and we
+   apply it at every level that could establish a scroll container. Every
+   descendant is also prevented from exceeding the viewport width. */
+.pdq-shell,
+.pdq-content {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  /* Belt-and-suspenders: clip at the shell + content, and stop any single
+     element (SVG with a fixed width attr, a maxWidth:1100 inline card, a
+     transformed preview, etc.) from forcing the page wider than the screen. */
+  .pdq-shell,
+  .pdq-content,
+  .pdq-section,
+  .pdq-content > div {
+    overflow-x: clip;
+    max-width: 100%;
+  }
+  .pdq-shell * {
+    max-width: 100%;
+  }
+  /* SVGs scale to their container; never let an intrinsic width push wider. */
+  .pdq-shell svg {
+    max-width: 100%;
+    height: auto;
+  }
+  /* Inline cards that hardcode large pixel max-widths must yield to the
+     viewport. */
+  .pdq-shell [style*="maxWidth"],
+  .pdq-shell [style*="max-width"] {
+    max-width: 100% !important;
+  }
+  /* Rows that intentionally scroll internally (rank ladder, mission list)
+     keep their own scroll but are clipped to the screen so they don't push
+     the PAGE wide. */
+  .pdq-intro-ranks { max-width: 100%; }
+  /* The fixed HUD strip / nav use left/right offsets, not width:100vw, so
+     they're already bounded; this just hardens against any 100vw usage. */
+  .pdq-shell [style*="100vw"] { max-width: 100% !important; }
+}
