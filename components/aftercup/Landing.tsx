@@ -42,7 +42,7 @@ export function Landing({ onEnter }: { onEnter: () => void; hero?: HeroMode }) {
           className="pdq-hero-2col"
           style={{
             display: "grid",
-            gridTemplateColumns: "1.05fr minmax(420px, 0.95fr)",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 340px), 1fr))",
             gap: 36,
             flex: 1,
             alignItems: "start",

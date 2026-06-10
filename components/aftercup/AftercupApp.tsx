@@ -12,7 +12,7 @@ import {
   verifyAftercupAuthRecord,
 } from "./auth";
 import { DATA, type MedalVariant, type Mission, type Operator } from "./data";
-import { BgStage, HudStrip, RegMarks } from "./Hud";
+import { BgStage } from "./Hud";
 import { Landing } from "./Landing";
 import { MissionDetail } from "./MissionDetail";
 import { MissionMap } from "./MissionMap";
@@ -163,8 +163,6 @@ export default function AftercupApp() {
     setMission(null);
   };
 
-  const screen = ({ landing: "LANDING", connect: "CHECK-IN", map: "MAP", profile: "DOSSIER" } as const)[route];
-  const securityLabel = auth.authenticated ? "CHECK-IN OK" : isDevLocal ? "DEV OPEN" : "CHECK-IN NEEDED";
   const cdmxTime = new Intl.DateTimeFormat("en-GB", {
     timeZone: "America/Mexico_City",
     hour: "2-digit",
@@ -205,10 +203,9 @@ export default function AftercupApp() {
         };
 
   return (
-    <div className="pdq-shell density-reg" data-screen-label={`00 ${screen}`}>
+    <div className="pdq-shell density-reg">
       <BgStage />
       <div className="pdq-noise" />
-      <RegMarks />
 
       <div
         style={{
@@ -223,7 +220,7 @@ export default function AftercupApp() {
         }}
       >
         <div ref={navRef} style={{ position: "relative", width: "max-content", pointerEvents: "auto" }}>
-          <nav className="pdq-topnav" style={{ position: "static", gap: 8 }}>
+          <nav className="pdq-topnav" style={{ position: "static", left: "auto", transform: "none", gap: 8 }}>
             <button
               type="button"
               className="pdq-logo-toggle"
@@ -385,7 +382,6 @@ export default function AftercupApp() {
         />
       )}
 
-      <HudStrip screen={screen} security={securityLabel} />
       {!authReady ? (
         <div
           aria-hidden
