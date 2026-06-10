@@ -44,20 +44,20 @@ const STEPS: Step[] = [
   {
     no: "01",
     glyph: "◈",
-    en: { head: "FIND", body: "Locate the NFC cubes to start missions." },
-    es: { head: "ENCUENTRA", body: "Ubica los cubos NFC para hacer misiones." },
+    en: { head: "EXPLORE", body: "Walk the venue and find the spots on your map." },
+    es: { head: "EXPLORA", body: "Recorre la sede y encuentra los puntos en tu mapa." },
   },
   {
     no: "02",
     glyph: "◇",
-    en: { head: "TAP OR SCAN", body: "Discover the mission and complete it." },
-    es: { head: "TAP O SCAN", body: "Descubre la misión y realízala." },
+    en: { head: "JOIN IN", body: "Take part in what's happening at each spot." },
+    es: { head: "PARTICIPA", body: "Únete a lo que está pasando en cada punto." },
   },
   {
     no: "03",
     glyph: "✦",
-    en: { head: "WIN", body: "Earn points, collect medals, unlock rewards." },
-    es: { head: "GANA", body: "Gana puntos, colecciona medallas y obtén recompensas." },
+    en: { head: "WIN", body: "Earn points, collect medals, and unlock prizes." },
+    es: { head: "GANA", body: "Gana puntos, colecciona medallas y obtén premios." },
   },
 ];
 
@@ -192,13 +192,13 @@ export function Intro({
               </div>
 
               <h2 className="pdq-display pdq-intro-title">
-                {es ? "JUEGA LA SEDE." : "PLAY THE VENUE."}
+                {es ? "VIVE LA SEDE." : "PLAY THE VENUE."}
               </h2>
 
               <p className="pdq-intro-lede">
                 {es
-                  ? "Tu mapa en vivo. Completa quests, gana puntos."
-                  : "Your live map. Clear quests, earn points."}
+                  ? "Tu mapa en vivo. Explora, participa y gana puntos."
+                  : "Your live map. Explore, join in, and earn points."}
               </p>
 
               <ol className="pdq-intro-steps">

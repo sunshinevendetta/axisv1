@@ -94,14 +94,15 @@ export function MissionMap({
       <div
         className="pdq-map-header"
         style={{
-          display: "grid",
-          gridTemplateColumns: "minmax(0, 1fr) auto",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
           alignItems: "flex-end",
           marginBottom: 28,
           gap: 24,
         }}
       >
-        <div style={{ minWidth: 0 }}>
+        <div style={{ minWidth: 0, flex: "1 1 320px" }}>
           <div className="pdq-eyebrow" style={{ marginBottom: 18 }}>
             {t("STEP 02 / 04 · QUEST MAP / MAPA")}
           </div>
