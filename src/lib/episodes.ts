@@ -1,4 +1,4 @@
-import { episodeCatalog, type EpisodeCatalogEntry, type EpisodeMeta } from "@/src/content/episodes";
+import { episodeCatalog, type EpisodeCatalogEntry, type EpisodeMeta, type EpisodeStatus } from "@/src/content/episodes";
 import type { EpisodeAsset } from "@/src/types/episode";
 
 export type { EpisodeMeta };
@@ -8,7 +8,7 @@ export type EpisodeCard = {
   slug: string;
   title: string;
   subtitle: string;
-  status: "open" | "locked";
+  status: EpisodeStatus;
   year: number;
   image: string;
   description: string;
@@ -62,6 +62,10 @@ function formatEpisodeSubtitle(episode: EpisodeCatalogEntry) {
     return String(episode.year);
   }
 
+  if (episode.status === "archived") {
+    return "archive";
+  }
+
   return formatEpisodeDate(episode.startsAt);
 }
 
@@ -104,7 +108,7 @@ export function toEpisodeCard(episode: EpisodeCatalogEntry): EpisodeCard {
     description: episode.description,
     startsAt: episode.startsAt,
     timezone: episode.timezone,
-    handle: episode.status === "locked" ? "locked" : "",
+    handle: episode.status === "locked" ? "locked" : episode.status === "archived" ? "archive" : "",
     lumaEvent: episode.lumaEventId,
     lumaUrl: episode.lumaUrl,
     registryEventId: episode.registryEventId,

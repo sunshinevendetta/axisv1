@@ -154,15 +154,17 @@ export default function EpisodesCards(props: EpisodesCardsProps) {
     image: ep.image,
     title: ep.title,
     subtitle: ep.subtitle,
-    handle: ep.status === "locked" ? "locked" : "",
-    borderColor: ep.status === "open" ? "#ffffff" : "#333333",
+    handle: ep.status === "locked" ? "locked" : ep.status === "archived" ? "archive" : "",
+    borderColor: ep.status === "open" ? "#ffffff" : ep.status === "archived" ? "#777777" : "#333333",
     gradient:
       ep.status === "open"
         ? "linear-gradient(145deg, #ffffff, #000000)"
+        : ep.status === "archived"
+          ? "linear-gradient(145deg, #777777, #050505)"
         : "linear-gradient(145deg, #444444, #000000)",
     url: "",
     episodeId: ep.id,
-    description: ep.status === "open" ? ep.summary : undefined,
+    description: ep.status !== "locked" ? ep.summary : undefined,
   }));
 
   const handleCardClick = (index: number) => {
@@ -244,7 +246,7 @@ export default function EpisodesCards(props: EpisodesCardsProps) {
               <div className="mt-6 mb-6 h-px w-full bg-white/8" />
 
               {/* CTA */}
-              {hasLumaButton ? (
+              {hasLumaButton && ep.status === "open" ? (
                 <a
                   href={ep.lumaUrl ?? `https://luma.com/event/${ep.lumaEvent}`}
                   target="_blank"
@@ -255,6 +257,10 @@ export default function EpisodesCards(props: EpisodesCardsProps) {
                 >
                   collect now
                 </a>
+              ) : ep.status === "archived" ? (
+                <p className="text-[10px] uppercase tracking-[0.3em] text-white/32">
+                  Archived event. RSVP is closed.
+                </p>
               ) : (
                 <p className="text-[10px] uppercase tracking-[0.3em] text-white/32">
                   Details unlock closer to the event.

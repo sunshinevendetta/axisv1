@@ -35,7 +35,7 @@ const emptyAuth: AuthState = {
   expiresAt: null,
 };
 
-export default function PizzaDayApp() {
+export default function PizzaDayApp({ archiveMode = false }: { archiveMode?: boolean }) {
   const { language } = useSiteLanguage();
   const isDevLocal = process.env.NODE_ENV === "development";
   const navRef = useRef<HTMLDivElement>(null);
@@ -163,7 +163,7 @@ export default function PizzaDayApp() {
   };
 
   const screen = ({ landing: "LANDING", connect: "AUTH", map: "MAP", profile: "DOSSIER" } as const)[route];
-  const securityLabel = auth.authenticated ? "AUTH OK" : isDevLocal ? "DEV OPEN" : "LOCKED";
+  const securityLabel = archiveMode ? "ARCHIVE" : auth.authenticated ? "AUTH OK" : isDevLocal ? "DEV OPEN" : "LOCKED";
   const cdmxTime = new Intl.DateTimeFormat("en-GB", {
     timeZone: "America/Mexico_City",
     hour: "2-digit",
@@ -173,6 +173,11 @@ export default function PizzaDayApp() {
   }).format(now);
 
   function goToRoute(next: Route) {
+    if (archiveMode && next !== "landing") {
+      setRoute("landing");
+      return;
+    }
+
     if ((next === "map" || next === "profile") && !auth.authenticated && !isDevLocal) {
       setRoute("connect");
       return;
@@ -191,7 +196,7 @@ export default function PizzaDayApp() {
           auth: "acceso",
           map: "mapa",
           profile: "perfil",
-          authStatus: auth.authenticated ? "AUTENTICADO" : "BLOQUEADO",
+          authStatus: archiveMode ? "ARCHIVO" : auth.authenticated ? "AUTENTICADO" : "BLOQUEADO",
           time: "HORA CDMX",
         }
       : {
@@ -199,7 +204,7 @@ export default function PizzaDayApp() {
           auth: "access",
           map: "map",
           profile: "profile",
-          authStatus: auth.authenticated ? "AUTH OK" : "AUTH LOCKED",
+          authStatus: archiveMode ? "ARCHIVE" : auth.authenticated ? "AUTH OK" : "AUTH LOCKED",
           time: "CDMX TIME",
         };
 
@@ -275,38 +280,44 @@ export default function PizzaDayApp() {
                 padding: 12,
               }}
             >
-              <div style={{ display: "grid", gap: 6 }}>
-                <button
-                  type="button"
-                  className={route === "connect" ? "active" : ""}
-                  onClick={() => {
-                    setMenuOpen(false);
-                    goToRoute("connect");
-                  }}
-                >
-                  {navCopy.auth}
-                </button>
-                <button
-                  type="button"
-                  className={route === "map" ? "active" : ""}
-                  onClick={() => {
-                    setMenuOpen(false);
-                    goToRoute("map");
-                  }}
-                >
-                  {navCopy.map}
-                </button>
-                <button
-                  type="button"
-                  className={route === "profile" ? "active" : ""}
-                  onClick={() => {
-                    setMenuOpen(false);
-                    goToRoute("profile");
-                  }}
-                >
-                  {navCopy.profile}
-                </button>
-              </div>
+              {archiveMode ? (
+                <div className="pdq-mono-tight" style={{ padding: "10px 12px", color: "var(--pdq-ink-3)" }}>
+                  Pizza Day Quest archive. Live access is closed.
+                </div>
+              ) : (
+                <div style={{ display: "grid", gap: 6 }}>
+                  <button
+                    type="button"
+                    className={route === "connect" ? "active" : ""}
+                    onClick={() => {
+                      setMenuOpen(false);
+                      goToRoute("connect");
+                    }}
+                  >
+                    {navCopy.auth}
+                  </button>
+                  <button
+                    type="button"
+                    className={route === "map" ? "active" : ""}
+                    onClick={() => {
+                      setMenuOpen(false);
+                      goToRoute("map");
+                    }}
+                  >
+                    {navCopy.map}
+                  </button>
+                  <button
+                    type="button"
+                    className={route === "profile" ? "active" : ""}
+                    onClick={() => {
+                      setMenuOpen(false);
+                      goToRoute("profile");
+                    }}
+                  >
+                    {navCopy.profile}
+                  </button>
+                </div>
+              )}
               <div
                 style={{
                   marginTop: 10,
@@ -348,7 +359,11 @@ export default function PizzaDayApp() {
 
       <div className="pdq-content" key={route}>
         {route === "landing" && (
-          <Landing onEnter={() => goToRoute(auth.authenticated || isDevLocal ? "map" : "connect")} hero="feed" />
+          <Landing
+            archiveMode={archiveMode}
+            onEnter={() => goToRoute(auth.authenticated || isDevLocal ? "map" : "connect")}
+            hero="feed"
+          />
         )}
         {route === "connect" && (
           <Connect

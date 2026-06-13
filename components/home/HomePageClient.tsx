@@ -12,7 +12,6 @@ import PageGradualBlur from "@/components/PageGradualBlur";
 import PillNav from "@/components/PillNav";
 import SubmitSection from "@/components/SubmitSection";
 import HomeArtistsSection from "@/components/home/HomeArtistsSection";
-import HomeRSVPSection from "@/components/home/HomeRSVPSection";
 import HomeCollectSection from "@/components/home/HomeCollectSection";
 import HomeMagazineSection from "@/components/home/HomeMagazineSection";
 import HomeMixtapesSection from "@/components/home/HomeMixtapesSection";
@@ -105,8 +104,6 @@ export default function HomePageClient({
             </div>
           </div>
         </section>
-
-        <HomeRSVPSection />
 
         {upcomingEpisodes.length > 0 ? <CountdownSection episodes={upcomingEpisodes} /> : null}
         <EpisodesSection />
