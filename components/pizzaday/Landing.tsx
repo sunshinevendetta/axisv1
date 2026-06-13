@@ -6,7 +6,15 @@ import { Brackets, Glitch, LiveTicker, Medal, Reticle, SectionHead } from "./Hud
 
 export type HeroMode = "feed" | "medal" | "type";
 
-export function Landing({ onEnter, hero = "feed" }: { onEnter: () => void; hero?: HeroMode }) {
+export function Landing({
+  onEnter,
+  hero = "feed",
+  archiveMode = false,
+}: {
+  onEnter: () => void;
+  hero?: HeroMode;
+  archiveMode?: boolean;
+}) {
   const D = DATA;
 
   return (
@@ -19,11 +27,11 @@ export function Landing({ onEnter, hero = "feed" }: { onEnter: () => void; hero?
           flexDirection: "column",
         }}
       >
-        <HeroEyebrow />
+        <HeroEyebrow archiveMode={archiveMode} />
 
-        {hero === "feed" && <HeroFeed onEnter={onEnter} />}
-        {hero === "medal" && <HeroMedal onEnter={onEnter} />}
-        {hero === "type" && <HeroType onEnter={onEnter} />}
+        {hero === "feed" && <HeroFeed archiveMode={archiveMode} onEnter={onEnter} />}
+        {hero === "medal" && <HeroMedal archiveMode={archiveMode} onEnter={onEnter} />}
+        {hero === "type" && <HeroType archiveMode={archiveMode} onEnter={onEnter} />}
 
         <div style={{ marginTop: "auto", paddingTop: 80, borderTop: "1px solid var(--pdq-line)" }}>
           <div className="pdq-line-label" style={{ marginBottom: 18 }}>
@@ -257,8 +265,14 @@ export function Landing({ onEnter, hero = "feed" }: { onEnter: () => void; hero?
           <br />
           <span style={{ color: "var(--pdq-ink-3)" }}>TO START?</span>
         </h2>
-        <button type="button" className="pdq-btn lg" onClick={onEnter}>
-          OPEN THE EVENT <span className="arr">→</span>
+        <button
+          type="button"
+          className="pdq-btn lg"
+          disabled={archiveMode}
+          onClick={archiveMode ? undefined : onEnter}
+          style={archiveMode ? { cursor: "not-allowed", opacity: 0.45 } : undefined}
+        >
+          {archiveMode ? "EVENT ARCHIVED" : "OPEN THE EVENT"} {!archiveMode && <span className="arr">→</span>}
         </button>
         <div
           style={{
@@ -268,7 +282,7 @@ export function Landing({ onEnter, hero = "feed" }: { onEnter: () => void; hero?
             fontFamily: "var(--pdq-mono)",
           }}
         >
-          WALLET SIGNATURE REQUIRED. NFC ISSUED ON ARRIVAL. BRING YOUR PHONE.
+          {archiveMode ? "RSVP AND LIVE PARTICIPATION ARE CLOSED." : "WALLET SIGNATURE REQUIRED. NFC ISSUED ON ARRIVAL. BRING YOUR PHONE."}
         </div>
       </section>
 
@@ -319,7 +333,7 @@ export function Landing({ onEnter, hero = "feed" }: { onEnter: () => void; hero?
   );
 }
 
-function HeroEyebrow() {
+function HeroEyebrow({ archiveMode = false }: { archiveMode?: boolean }) {
   return (
     <div
       style={{
@@ -329,7 +343,7 @@ function HeroEyebrow() {
         marginBottom: 48,
       }}
     >
-      <div className="pdq-eyebrow">AXIS · PIZZA DAY / PDQ·01 · LIVE</div>
+      <div className="pdq-eyebrow">AXIS · PIZZA DAY / PDQ·01 · {archiveMode ? "ARCHIVE" : "LIVE"}</div>
       <div className="pdq-mono" style={{ color: "var(--pdq-ink-4)" }}>
         21·06·2026, Supremo · Dr. Carmona y Valle 147, Doctores, CDMX
       </div>
@@ -337,7 +351,7 @@ function HeroEyebrow() {
   );
 }
 
-function HeroFeed({ onEnter }: { onEnter: () => void }) {
+function HeroFeed({ archiveMode = false, onEnter }: { archiveMode?: boolean; onEnter: () => void }) {
   const D = DATA;
   const [list, setList] = useState<FeedItem[]>(D.feed.slice(0, 6) as FeedItem[]);
   const idxRef = useRef(6);
@@ -390,11 +404,17 @@ function HeroFeed({ onEnter }: { onEnter: () => void }) {
           on site, and collect medals as you go.
         </p>
         <div style={{ display: "flex", gap: 14 }}>
-          <button type="button" className="pdq-btn lg" onClick={onEnter}>
-            OPEN THE EVENT <span className="arr">→</span>
+          <button
+            type="button"
+            className="pdq-btn lg"
+            disabled={archiveMode}
+            onClick={archiveMode ? undefined : onEnter}
+            style={archiveMode ? { cursor: "not-allowed", opacity: 0.45 } : undefined}
+          >
+            {archiveMode ? "EVENT ARCHIVED" : "OPEN THE EVENT"} {!archiveMode && <span className="arr">→</span>}
           </button>
           <button type="button" className="pdq-btn lg ghost">
-            VIEW PDQ·01
+            {archiveMode ? "VIEW ARCHIVE" : "VIEW PDQ·01"}
           </button>
         </div>
 
@@ -516,7 +536,7 @@ function HeroFeed({ onEnter }: { onEnter: () => void }) {
   );
 }
 
-function HeroMedal({ onEnter }: { onEnter: () => void }) {
+function HeroMedal({ archiveMode = false, onEnter }: { archiveMode?: boolean; onEnter: () => void }) {
   return (
     <div
       className="pdq-hero-2col"
@@ -548,8 +568,14 @@ function HeroMedal({ onEnter }: { onEnter: () => void }) {
           Each task gives you an AR medal. You can view it on any flat surface after you finish.
         </p>
         <div style={{ display: "flex", gap: 12 }}>
-          <button type="button" className="pdq-btn lg" onClick={onEnter}>
-            OPEN THE EVENT <span className="arr">→</span>
+          <button
+            type="button"
+            className="pdq-btn lg"
+            disabled={archiveMode}
+            onClick={archiveMode ? undefined : onEnter}
+            style={archiveMode ? { cursor: "not-allowed", opacity: 0.45 } : undefined}
+          >
+            {archiveMode ? "EVENT ARCHIVED" : "OPEN THE EVENT"} {!archiveMode && <span className="arr">→</span>}
           </button>
           <button type="button" className="pdq-btn lg ghost">
             SPEC SHEET
@@ -579,7 +605,7 @@ function HeroMedal({ onEnter }: { onEnter: () => void }) {
   );
 }
 
-function HeroType({ onEnter }: { onEnter: () => void }) {
+function HeroType({ archiveMode = false, onEnter }: { archiveMode?: boolean; onEnter: () => void }) {
   return (
     <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
       <h1
@@ -610,8 +636,14 @@ function HeroType({ onEnter }: { onEnter: () => void }) {
             One day. One building. Three floors and a terrace. Chips, medals, and ranks.
           </p>
         </div>
-        <button type="button" className="pdq-btn lg" onClick={onEnter}>
-          OPEN THE EVENT <span className="arr">→</span>
+        <button
+          type="button"
+          className="pdq-btn lg"
+          disabled={archiveMode}
+          onClick={archiveMode ? undefined : onEnter}
+          style={archiveMode ? { cursor: "not-allowed", opacity: 0.45 } : undefined}
+        >
+          {archiveMode ? "EVENT ARCHIVED" : "OPEN THE EVENT"} {!archiveMode && <span className="arr">→</span>}
         </button>
       </div>
     </div>
