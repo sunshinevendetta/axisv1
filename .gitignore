@@ -101,6 +101,9 @@ artifacts/
 # Playwright MCP browser scratch logs
 .playwright-mcp/
 
+# Local archives for deprecated pitch surfaces
+.local-archive/
+
 # Stray scratch media at repo root (deck exports, scratch audio)
 /pbo-*.png
 /v-*.png

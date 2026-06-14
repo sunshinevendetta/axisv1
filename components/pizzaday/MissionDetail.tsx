@@ -241,7 +241,7 @@ function BriefView({
   locked: boolean;
 }) {
   const { language } = useSiteLanguage();
-  const missionLanguage = language === "zh" ? "en" : language;
+  const missionLanguage = language;
   const t = (value: string) => localizedText(value, language);
   return (
     <div className="pdq-hero-2col" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", minHeight: 520 }}>
