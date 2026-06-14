@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
-export type SiteLanguage = "zh" | "en" | "es";
+export type SiteLanguage = "en" | "es";
 
 const STORAGE_KEY = "axis:site-language";
 
@@ -14,7 +13,7 @@ const SiteLanguageContext = createContext<{
 } | null>(null);
 
 function normalizeLanguage(value: string | null, fallback: SiteLanguage = "en"): SiteLanguage {
-  return value === "zh" || value === "es" || value === "en" ? value : fallback;
+  return value === "es" || value === "en" ? value : fallback;
 }
 
 function readStoredLanguage(fallback: SiteLanguage): SiteLanguage {
@@ -23,21 +22,20 @@ function readStoredLanguage(fallback: SiteLanguage): SiteLanguage {
 }
 
 export function SiteLanguageProvider({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
-  const defaultLanguage: SiteLanguage = pathname?.startsWith("/planbaroriente") ? "zh" : "en";
+  const defaultLanguage: SiteLanguage = "en";
   const [language, setLanguageState] = useState<SiteLanguage>("en");
 
   useEffect(() => {
     const stored = readStoredLanguage(defaultLanguage);
     const next = stored;
     setLanguageState(next);
-    document.documentElement.lang = next === "zh" ? "zh-CN" : next;
-  }, [defaultLanguage, pathname]);
+    document.documentElement.lang = next;
+  }, [defaultLanguage]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     window.localStorage.setItem(STORAGE_KEY, language);
-    document.documentElement.lang = language === "zh" ? "zh-CN" : language;
+    document.documentElement.lang = language;
   }, [language]);
 
   const value = useMemo(
@@ -64,23 +62,14 @@ export function useSiteLanguage() {
 
 export function LanguageSwitch() {
   const { language, setLanguage } = useSiteLanguage();
-  const pathname = usePathname();
-  const supportsChinese = pathname?.startsWith("/planbaroriente") ?? false;
   const languages: Array<{
     code: SiteLanguage;
     flag: string;
     label: string;
-  }> = supportsChinese
-    ? [
-        { code: "zh", flag: "/flags/cn.svg", label: "Chinese" },
-        { code: "en", flag: "/flags/us.svg", label: "English" },
-        { code: "es", flag: "/flags/mx.svg", label: "Spanish" },
-      ]
-    : [
-        { code: "en", flag: "/flags/us.svg", label: "English" },
-        { code: "es", flag: "/flags/mx.svg", label: "Spanish" },
-      ];
-  const activeLanguage = supportsChinese ? language : language !== "zh" ? language : "en";
+  }> = [
+    { code: "en", flag: "/flags/us.svg", label: "English" },
+    { code: "es", flag: "/flags/mx.svg", label: "Spanish" },
+  ];
 
   return (
     <div
@@ -109,7 +98,7 @@ export function LanguageSwitch() {
           type="button"
           onClick={() => setLanguage(item.code)}
           aria-label={`Select ${item.label}`}
-          aria-pressed={activeLanguage === item.code}
+          aria-pressed={language === item.code}
           style={{
             appearance: "none",
             border: 0,
@@ -119,9 +108,9 @@ export function LanguageSwitch() {
             height: 22,
             borderRadius: "50%",
             overflow: "hidden",
-            boxShadow: activeLanguage === item.code ? "0 0 0 2px rgba(255,255,255,0.6)" : "none",
-            opacity: activeLanguage === item.code ? 1 : 0.45,
-            cursor: activeLanguage === item.code ? "default" : "pointer",
+            boxShadow: language === item.code ? "0 0 0 2px rgba(255,255,255,0.6)" : "none",
+            opacity: language === item.code ? 1 : 0.45,
+            cursor: language === item.code ? "default" : "pointer",
             display: "inline-flex",
             alignItems: "center",
             justifyContent: "center",

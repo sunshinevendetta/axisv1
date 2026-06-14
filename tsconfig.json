@@ -28,6 +28,7 @@
     ".next",
     ".claude",
     ".codex",
+    ".local-archive",
     "artifacts",
     "cache",
     "data",

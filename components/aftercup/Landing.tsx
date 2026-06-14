@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useMemo } from "react";
-import { useSiteLanguage } from "@/components/site-language";
+import { useSiteLanguage, type SiteLanguage } from "@/components/site-language";
 import { DATA, type AgendaItem } from "./data";
 import { Brackets, SectionHead } from "./Hud";
 import { localizedText } from "./locale";
@@ -297,7 +297,7 @@ function AgendaRow({
 }: {
   item: AgendaItem;
   compact?: boolean;
-  language?: "en" | "es" | "zh";
+  language?: SiteLanguage;
 }) {
   const { language: siteLanguage } = useSiteLanguage();
   const activeLanguage = language ?? siteLanguage;
