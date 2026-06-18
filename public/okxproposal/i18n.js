@@ -77,9 +77,11 @@
       "@bar_oriente · 92.8K seguidores · 2,429 posts · linktr.ee/baroriente_": "@bar_oriente · 92.8K followers · 2,429 posts · linktr.ee/baroriente_",
       "Para Bar Oriente significa dos noches activadas con programación, producción y contenido": "You get two programmed nights with production and content",
       "Para Bar Oriente significa una noche activada con programación, producción y contenido": "For Bar Oriente, this means one night activated with programming, production, and content",
+      "Para la marca significa una noche activada con programación, producción y contenido": "For the brand, this means one night activated with programming, production, and content",
       "sin costo en producción extra para la casa": "without adding production cost for the venue",
       "sin costo extra para los involucrados": "at no extra cost for the involved parties",
       ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y las marcas involucradas ganan tráfico, usuarios y contenido, así como una experiencia inmersiva y diferente en la noche de evento.": ": we fill the room, bring the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.",
+      ": AXIS llena el cuarto, trae el line-up y el arte digital, y las marcas involucradas ganan tráfico, usuarios y contenido, así como una experiencia inmersiva y diferente en la noche de evento.": ": AXIS fills the room, brings the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.",
       "Intervención LED , Mapping , Onboarding , Pantallas de recompensa": "LED content, mapping, onboarding, reward screens",
       "El Programa de Junio": "The June Program",
       "Kiosco Morisco": "Kiosco Morisco",
@@ -155,7 +157,7 @@
       "Archivo fotográfico y video post evento.": "Photo archive and post-event video.",
       "C. Producción de Contenido": "C. Content Production",
       "Aftermovie": "Aftermovie",
-      "Material de resumen editado para uso de la sede.": "Edited recap material for venue use.",
+      "Material de resumen editado para uso de la marca.": "Edited recap material for brand use.",
       "Captura de testimonios": "Testimonial capture",
       "Frases de invitados y artistas capturadas cuando estén disponibles.": "Guest and artist quotes captured when available.",
       "Frases de invitados y artistas cuando estén disponibles.": "Guest and artist quotes when available.",
@@ -207,8 +209,8 @@
       "Publicar, etiquetar, compartir": "Post, tag, share",
       "Intervención interactiva visual on site": "Interactive visuals on site",
       "AXIS captura todo": "AXIS captures everything",
-      "La sede recibe el reporte": "OKX gets the report",
-      "OKX recibe el reporte": "OKX gets the report",
+      "La marca recibe el reporte": "The brand gets the report",
+      "La marca recibe el reporte": "The brand gets the report",
       "A. Financiar y construir": "A. Fund and Produce",
       "A, Financiar y construir": "A, Fund and Produce",
       "A Financiar y construir": "A Fund and Produce",
@@ -267,7 +269,7 @@
       "Fotografía, video, capturas de emplazamiento, captura de testimonios, material de aftermovie.": "Photography, video, placement captures, testimonial capture, aftermovie material.",
       "Intervención visual en mapping y pantalla LED, site de recompensa, créditos visuales.": "Mapping, LED screen visuals, reward site, and visual credits.",
       "Los invitados ven la activación.": "Guests see your role in the event.",
-      "Usan el sistema que construimos en la sede.": "They use the system we built at the venue.",
+      "Usan el sistema que construimos para la marca.": "They use the system we built for the brand.",
       "Flujo de Recompensas AXIS": "AXIS Reward Flow",
       "Flujo de recompensas AXIS": "AXIS reward flow",
       "08 / 11, Activación": "08 / 11, Activation",
@@ -275,7 +277,7 @@
       "Parte de la experiencia va": "Part of the experience goes",
       "directo a la": "directly to the",
       "experiencia del asistente.": "attendee experience.",
-      "La sede paga visibilidad y": "The venue pays for visibility and",
+      "La marca obtiene visibilidad y": "The brand gets visibility and",
       "momentos útiles dentro del evento.": "useful moments inside the event.",
       "Cada noche suma nuevos datos y contenido para la siguiente activación.": "Each night adds new numbers and content for the next activation.",
       "3,000 USD pueden financiar": "3,000 USD can fund",
@@ -308,10 +310,10 @@
       "Respaldado por data": "Backed by numbers",
       "Acceso, bebida, recompensa, contenido, reporte": "Access, drink, reward, content, report",
       "La experiencia queda asociada a la recompensa.": "Guests link the reward to your brand.",
-      "Los invitados desbloquean recompensas adicionales. Ãštil, opcional y sin obligación. La sede obtiene participación que se puede contar, documentar y reportar.": "Guests unlock extra rewards. The steps are useful, optional, and easy to count. You get participation you can document and report.",
+      "Los invitados desbloquean recompensas adicionales. Ãštil, opcional y sin obligación. La marca obtiene participación que se puede contar, documentar y reportar.": "Guests unlock extra rewards. The steps are useful, optional, and easy to count. The brand gets participation it can count, document, and report.",
       "Los invitados participan en OKX Outcomes para desbloquear recompensas. OKX obtiene participacion que se puede contar, documentar y reportar.": "Guests complete actions on OKX Outcomes to unlock extra rewards. OKX gets participation you can count, document, and report.",
       "Los invitados pueden publicar, etiquetar, compartir, reclamar e invitar durante la noche. Cada paso tiene su propia recompensa. No se garantiza alcance.": "Guests can post, tag, share, claim, and invite during the night. Each step has its own reward. Reach is not guaranteed.",
-      "Amplificación social, útil, opcional y sin obligación. La sede obtiene participación que se puede contar, documentar y reportar.": "Social action is optional. You still get participation you can count, document, and report.",
+      "Amplificación social, útil, opcional y sin obligación. La marca obtiene participación que se puede contar, documentar y reportar.": "Social action is optional. The brand gets participation it can count, document, and report.",
       "Publicar una historia": "Post a story",
       "Etiquetar a AXIS": "Tag AXIS",
       "Etiquetar a la sede": "Tag the venue",
@@ -330,7 +332,7 @@
       "Testimonios de artistas": "Artist testimonials",
       "Testimonio de artista": "Artist testimonial",
       "Contenido social": "Social content",
-      "Lo que recibe la sede después": "What you receive after the event",
+      "Lo que recibe la marca después": "What the brand receives after the event",
       "Carpeta de fotos": "Photo folder",
       "Material de aftermovie": "Aftermovie material",
       "Clips de video cortos": "Short video clips",
@@ -435,11 +437,11 @@
       "11 / 11, La Propuesta": "11 / 11, The Proposal",
       "Propuesta de colaboración": "Partnership proposal",
       "Izquierda / derecha, Espacio, Deslizar": "Left / right, Space, Swipe",
-      "La experiencia de la sede integra acceso, bebidas, contenido y reportes.": "The experience becomes access, drinks, content, and reporting.",
-      "La experiencia de la sede integra acceso, bebidas, recompensas, contenido y reportes.": "The experience becomes access, drinks, rewards, content, and reporting.",
+      "La experiencia de marca integra acceso, bebidas, contenido y reportes.": "The experience becomes access, drinks, content, and reporting.",
+      "La experiencia de marca integra acceso, bebidas, recompensas, contenido y reportes.": "The experience becomes access, drinks, rewards, content, and reporting.",
       "Los invitados desbloquean recompensas adicionales al publicar, etiquetar, compartir, reclamar o invitar.": "Guests unlock additional rewards by posting, tagging, sharing, claiming, or inviting.",
       "Ãštil, opcional y sin obligación.": "Useful, optional, and with no obligation.",
-      "La sede obtiene participación que se puede contar, documentar y reportar.": "You get participation you can count, document, and report.",
+      "La marca obtiene participación que se puede contar, documentar y reportar.": "The brand gets participation it can count, document, and report.",
       "Una noche": "One night",
       "Noche unica": "One night",
       "25 jun  noche unica": "Jun 25  one night",
@@ -453,7 +455,7 @@
       " en Bar Oriente. El Cuarto Rosa se entrega a su l?nea de DJs para una noche en sintonia con esa agenda.": " at Bar Oriente. Cuarto Rosa opens to its DJ line for one night aligned with that program.",
       "DJ de la Ciudad de M?xico. Presenta un set de house para la noche.": "Mexico City DJ. He presents a house set for the night.",
       "Para Bar Oriente significa una noche activada con programaci?n, producci?n y contenido": "For Bar Oriente, this means one night activated with programming, production, and content",
-      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y la sede gana tr?fico y material de marca de esa fecha, as como una experiencia inmersiva y diferente en la noche de evento.": ": we fill the room, bring the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.",
+      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y las marcas involucradas ganan trafico, usuarios y contenido, asi como una experiencia inmersiva y diferente en la noche de evento.": ": we fill the room, bring the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.",
       "Componentes de la experiencia": "Experience components",
       "Sistema de experiencia": "Experience system",
       "Un evento": "One event",
@@ -461,7 +463,7 @@
       " en Bar Oriente. El Cuarto Rosa se entrega a su l\u00ednea de DJs para una noche en sintonia con esa agenda.": " at Bar Oriente. Cuarto Rosa opens to its DJ line for one night aligned with that program.",
       "DJ de la Ciudad de M\u00e9xico. Presenta un set de house para la noche.": "Mexico City DJ. He presents a house set for the night.",
       "Para Bar Oriente significa una noche activada con programaci\u00f3n, producci\u00f3n y contenido": "For Bar Oriente, this means one night activated with programming, production, and content",
-      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y la sede gana tr\u00e1fico y material de marca de esa fecha, as\u00ed como una experiencia inmersiva y diferente en la noche de evento.": ": we fill the room, bring the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.",
+      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y las marcas involucradas ganan tr\u00e1fico, usuarios y contenido, as\u00ed como una experiencia inmersiva y diferente en la noche de evento.": ": we fill the room, bring the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.",
       "NFC de AXIS": "AXIS NFC",
       "El NFC de AXIS lleva rapido a las misiones OKX: OKX app, OKX Outcomes, OKX Card y OKX Pay.": "AXIS NFC sends guests quickly into OKX missions: OKX app, OKX Outcomes, OKX Card, and OKX Pay.",
       "Tickets de bebida": "Drink tickets",
@@ -498,7 +500,7 @@
       "Lulú": "Lulú",
       "Jun 25 · one night": "Jun 25 · one night",
       "Para Bar Oriente significa una noche activada con programación, producción y contenido": "For Bar Oriente, this means one night activated with programming, production, and content",
-      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y la sede gana tráfico y material de marca de esa fecha, así como una experiencia inmersiva y diferente en la noche de evento.": ": we fill the room, bring the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.",
+      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y las marcas involucradas ganan tráfico, usuarios y contenido, así como una experiencia inmersiva y diferente en la noche de evento.": ": we fill the room, bring the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.",
       "DJ de la Ciudad de México. Presenta un set de house para la noche.": "Mexico City DJ. Presents a house set for the night.",
       "Uno de los destinos de vida nocturna más fuertes de la Ciudad de México, con una audiencia cultural comprobada. Bar Oriente mueve cerca de 700 asistentes por noche y puede llegar a 1,200 en noches sold out. Activamos hasta 500 tickets de bebida para alinear la experiencia con la idea inicial de OKX. Además, habilitamos hasta 150 lugares de guestlist sin costo para que OKX pueda sumar invitados propios. La exposición visual llega al cuarto completo.": "Bar Oriente is one of Mexico City's strongest nightlife venues, with a proven cultural audience. The club brings about 700 attendees per night and can reach 1,200 on sold-out nights. We activate up to 500 drink tickets to align the experience with OKX's initial idea. We also enable up to 150 free guestlist spots so OKX can bring its own guests. Visual exposure reaches the full room.",
       "700 asistentes por noche. Hasta 1,200 en sold out. Hasta 500 tickets de bebida alineados con la idea inicial de OKX, más hasta 150 lugares de guestlist sin costo para invitados.": "700 attendees per night. Up to 1,200 on sold-out nights. Up to 500 drink tickets aligned with OKX's initial idea, plus up to 150 free guestlist spots for invited guests.",
@@ -725,7 +727,7 @@
       "Archivo fotográfico y video post evento.": "æ´»åŠ¨å½±åƒæ¡£æ¡ˆä¸Žæ´»åŠ¨åŽè§†é¢‘ã€‚",
       "C. Producción de Contenido": "C. å†…å®¹äº§å‡º",
       "Aftermovie": "Aftermovie",
-      "Material de resumen editado para uso de la sede.": "ä¸ºåœºåœ°æ–¹å‰ªè¾‘çš„æ´»åŠ¨å›žé¡¾ç´ æã€‚",
+      "Material de resumen editado para uso de la marca.": "ä¸ºåœºåœ°æ–¹å‰ªè¾‘çš„æ´»åŠ¨å›žé¡¾ç´ æã€‚",
       "Captura de testimonios": "å˜‰å®¾è¯è¨€é‡‡é›†",
       "Frases de invitados y artistas capturadas cuando estén disponibles.": "åœ¨æ¡ä»¶å…è®¸æ—¶é‡‡é›†å˜‰å®¾ä¸Žè‰ºäººçš„å¼•è¿°ã€‚",
       "Frases de invitados y artistas cuando estén disponibles.": "åœ¨æ¡ä»¶å…è®¸æ—¶é‡‡é›†å˜‰å®¾ä¸Žè‰ºäººçš„å¼•è¿°ã€‚",
@@ -777,8 +779,8 @@
       "Publicar, etiquetar, compartir": "å‘å¸ƒã€æ ‡è®°ã€åˆ†äº«",
       "Intervención interactiva visual on site": "çŽ°åœºäº’åŠ¨è§†è§‰è£…ç½®",
       "AXIS captura todo": "AXIS å…¨ç¨‹ç•™å­˜è®°å½•",
-      "La sede recibe el reporte": "OKX æ”¶åˆ°æ•°æ®æŠ¥å‘Š",
-      "OKX recibe el reporte": "OKX æ”¶åˆ°æ•°æ®æŠ¥å‘Š",
+      "La marca recibe el reporte": "OKX æ”¶åˆ°æ•°æ®æŠ¥å‘Š",
+      "La marca recibe el reporte": "OKX æ”¶åˆ°æ•°æ®æŠ¥å‘Š",
       "A. Financiar y construir": "A. å‡ºèµ„ä¸Žæ­å»º",
       "A, Financiar y construir": "Aï¼Œå‡ºèµ„ä¸Žæ­å»º",
       "A Financiar y construir": "A å‡ºèµ„ä¸Žæ­å»º",
@@ -837,7 +839,7 @@
       "Fotografía, video, capturas de emplazamiento, captura de testimonios, material de aftermovie.": "æ‘„å½±ã€è§†é¢‘ã€éœ²å‡ºç•™å­˜ã€å˜‰å®¾è¯è¨€é‡‡é›†ã€aftermovie ç´ æã€‚",
       "Intervención visual en mapping y pantalla LED, site de recompensa, créditos visuales.": "Mappingã€LED å±è§†è§‰ã€æ¿€åŠ±ç«™ç‚¹ä¸Žè§†è§‰ç½²åã€‚",
       "Los invitados ven la activación.": "å˜‰å®¾çœ‹åˆ°æ‚¨åœ¨æ´»åŠ¨ä¸­çš„è§’è‰²ã€‚",
-      "Usan el sistema que construimos en la sede.": "ä»–ä»¬ä½¿ç”¨æˆ‘ä»¬åœ¨åœºåœ°å†…æ­å»ºçš„ä½“ç³»ã€‚",
+      "Usan el sistema que construimos para la marca.": "ä»–ä»¬ä½¿ç”¨æˆ‘ä»¬åœ¨åœºåœ°å†…æ­å»ºçš„ä½“ç³»ã€‚",
       "Flujo de Recompensas AXIS": "AXIS æ¿€åŠ±æµç¨‹",
       "Flujo de recompensas AXIS": "AXIS æ¿€åŠ±æµç¨‹",
       "08 / 11, Activación": "08 / 11ï¼Œæ¿€æ´»",
@@ -845,7 +847,7 @@
       "Parte de la experiencia va": "éƒ¨åˆ†ä½“éªŒ",
       "directo a la": "ç›´æŽ¥æŠ•å…¥",
       "experiencia del asistente.": "å˜‰å®¾ä½“éªŒã€‚",
-      "La sede paga visibilidad y": "åœºåœ°æ–¹ä»¥æ­¤æ¢å–æ›å…‰å’Œ",
+      "La marca obtiene visibilidad y": "åœºåœ°æ–¹ä»¥æ­¤æ¢å–æ›å…‰å’Œ",
       "momentos útiles dentro del evento.": "æ´»åŠ¨å†…çš„æœ‰æ•ˆè§¦ç‚¹ã€‚",
       "Cada noche suma nuevos datos y contenido para la siguiente activación.": "æ¯æ™šç§¯ç´¯æ–°çš„æ•°æ®ä¸Žå†…å®¹ï¼Œä¸ºä¸‹ä¸€æ¬¡æ¿€æ´»æä¾›æ”¯æ’‘ã€‚",
       "3,000 USD pueden financiar": "3,000 USD å¯æ”¯æŒ",
@@ -878,10 +880,10 @@
       "Respaldado por data": "æ•°æ®æ”¯æ’‘",
       "Acceso, bebida, recompensa, contenido, reporte": "é€šè¡Œã€é¥®å“ã€æ¿€åŠ±ã€å†…å®¹ã€æŠ¥å‘Š",
       "La experiencia queda asociada a la recompensa.": "å˜‰å®¾å°†æ¿€åŠ±ä¸Žæ‚¨çš„å“ç‰Œç›´æŽ¥å…³è”ã€‚",
-      "Los invitados desbloquean recompensas adicionales. Ãštil, opcional y sin obligación. La sede obtiene participación que se puede contar, documentar y reportar.": "å˜‰å®¾è§£é”é¢å¤–æ¿€åŠ±ã€‚æ­¥éª¤å®žç”¨ã€è‡ªæ„¿å‚ä¸Žã€å¯é‡åŒ–ç»Ÿè®¡ã€‚æ‚¨èŽ·å¾—å¯è®°å½•ã€å¯æŠ¥å‘Šçš„å‚ä¸Žæ•°æ®ã€‚",
+      "Los invitados desbloquean recompensas adicionales. Ãštil, opcional y sin obligación. La marca obtiene participación que se puede contar, documentar y reportar.": "å˜‰å®¾è§£é”é¢å¤–æ¿€åŠ±ã€‚æ­¥éª¤å®žç”¨ã€è‡ªæ„¿å‚ä¸Žã€å¯é‡åŒ–ç»Ÿè®¡ã€‚æ‚¨èŽ·å¾—å¯è®°å½•ã€å¯æŠ¥å‘Šçš„å‚ä¸Žæ•°æ®ã€‚",
       "Los invitados participan en OKX Outcomes para desbloquear recompensas. OKX obtiene participacion que se puede contar, documentar y reportar.": "å˜‰å®¾å‚ä¸Ž OKX Outcomesï¼Œè§£é”é¢å¤–æ¿€åŠ±ã€‚OKX èŽ·å¾—å¯ç»Ÿè®¡ã€å¯è®°å½•ã€å¯æŠ¥å‘Šçš„OKX Outcomeså‚ä¸Žæ•°æ®ã€‚",
       "Los invitados pueden publicar, etiquetar, compartir, reclamar e invitar durante la noche. Cada paso tiene su propia recompensa. No se garantiza alcance.": "å˜‰å®¾å¯åœ¨å½“æ™šå‘å¸ƒã€æ ‡è®°ã€åˆ†äº«ã€é¢†å–æˆ–é‚€è¯·ä»–äººã€‚æ¯ä¸ªæ­¥éª¤å¯¹åº”ç‹¬ç«‹å¥–åŠ±ã€‚ä¼ æ’­è§¦è¾¾ä¸ä½œä¿è¯ã€‚",
-      "Amplificación social, útil, opcional y sin obligación. La sede obtiene participación que se puede contar, documentar y reportar.": "ç¤¾äº¤äº’åŠ¨ä¸ºå¯é€‰æ­¥éª¤ã€‚æ‚¨ä»å¯èŽ·å¾—å¯ç»Ÿè®¡ã€å¯è®°å½•ã€å¯æŠ¥å‘Šçš„å‚ä¸Žæ•°æ®ã€‚",
+      "Amplificación social, útil, opcional y sin obligación. La marca obtiene participación que se puede contar, documentar y reportar.": "ç¤¾äº¤äº’åŠ¨ä¸ºå¯é€‰æ­¥éª¤ã€‚æ‚¨ä»å¯èŽ·å¾—å¯ç»Ÿè®¡ã€å¯è®°å½•ã€å¯æŠ¥å‘Šçš„å‚ä¸Žæ•°æ®ã€‚",
       "Publicar una historia": "å‘å¸ƒåŠ¨æ€",
       "Etiquetar a AXIS": "æ ‡è®° AXIS",
       "Etiquetar a la sede": "æ ‡è®°åœºåœ°",
@@ -900,7 +902,7 @@
       "Testimonios de artistas": "è‰ºäººè¯è¨€",
       "Testimonio de artista": "è‰ºäººè¯è¨€",
       "Contenido social": "ç¤¾äº¤å†…å®¹",
-      "Lo que recibe la sede después": "æ´»åŠ¨åŽæ‚¨æ”¶åˆ°ä»€ä¹ˆ",
+      "Lo que recibe la marca después": "æ´»åŠ¨åŽæ‚¨æ”¶åˆ°ä»€ä¹ˆ",
       "Carpeta de fotos": "å›¾ç‰‡ç´ æåŒ…",
       "Material de aftermovie": "Aftermovie ç´ æ",
       "Clips de video cortos": "çŸ­è§†é¢‘ç‰‡æ®µ",
@@ -1064,11 +1066,11 @@
       "11 / 11, La Propuesta": "11 / 11ï¼Œææ¡ˆ",
       "Propuesta de colaboración": "åˆä½œææ¡ˆ",
       "Izquierda / derecha, Espacio, Deslizar": "å·¦å³é”® / ç©ºæ ¼ / æ»‘åŠ¨",
-      "La experiencia de la sede integra acceso, bebidas, contenido y reportes.": "æŠ•å…¥è½¬åŒ–ä¸ºå‚ä¸Žå…¥å£ã€é¥®å“ã€å†…å®¹ä¸Žæ•°æ®æŠ¥å‘Šã€‚",
-      "La experiencia de la sede integra acceso, bebidas, recompensas, contenido y reportes.": "æŠ•å…¥è½¬åŒ–ä¸ºå‚ä¸Žå…¥å£ã€é¥®å“ã€æ¿€åŠ±ã€å†…å®¹ä¸Žæ•°æ®æŠ¥å‘Šã€‚",
+      "La experiencia de marca integra acceso, bebidas, contenido y reportes.": "æŠ•å…¥è½¬åŒ–ä¸ºå‚ä¸Žå…¥å£ã€é¥®å“ã€å†…å®¹ä¸Žæ•°æ®æŠ¥å‘Šã€‚",
+      "La experiencia de marca integra acceso, bebidas, recompensas, contenido y reportes.": "æŠ•å…¥è½¬åŒ–ä¸ºå‚ä¸Žå…¥å£ã€é¥®å“ã€æ¿€åŠ±ã€å†…å®¹ä¸Žæ•°æ®æŠ¥å‘Šã€‚",
       "Los invitados desbloquean recompensas adicionales al publicar, etiquetar, compartir, reclamar o invitar.": "å˜‰å®¾é€šè¿‡å‘å¸ƒã€æ ‡è®°ã€åˆ†äº«ã€é¢†å–æˆ–é‚€è¯·è§£é”é¢å¤–æ¿€åŠ±ã€‚",
       "Ãštil, opcional y sin obligación.": "å®žç”¨ã€è‡ªæ„¿å‚ä¸Žã€æ— ä»»ä½•å¼ºåˆ¶ã€‚",
-      "La sede obtiene participación que se puede contar, documentar y reportar.": "æ‚¨èŽ·å¾—å¯ç»Ÿè®¡ã€å¯è®°å½•ã€å¯æŠ¥å‘Šçš„å‚ä¸Žæ•°æ®ã€‚",
+      "La marca obtiene participación que se puede contar, documentar y reportar.": "æ‚¨èŽ·å¾—å¯ç»Ÿè®¡ã€å¯è®°å½•ã€å¯æŠ¥å‘Šçš„å‚ä¸Žæ•°æ®ã€‚",
       "Una noche": "?",
       "Noche unica": "?",
       "25 jun  noche unica": "6?25  ?",
@@ -1079,7 +1081,7 @@
       " en Bar Oriente. El Cuarto Rosa se entrega a su l?nea de DJs para una noche en sintonia con esa agenda.": "  Bar Oriente ??Cuarto Rosa ?? DJ ????",
       "DJ de la Ciudad de M?xico. Presenta un set de house para la noche.": "? DJ?? house set?",
       "Para Bar Oriente significa una noche activada con programaci?n, producci?n y contenido": " Bar Oriente ????",
-      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y la sede gana tr?fico y material de marca de esa fecha, as como una experiencia inmersiva y diferente en la noche de evento.": "?AXIS ?????????",
+      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y las marcas involucradas ganan trafico, usuarios y contenido, asi como una experiencia inmersiva y diferente en la noche de evento.": "?AXIS ???????????",
       "One night": "?",
       "One Cuarto Rosa takeover night. You get OKX app onboarding, a OKX flow, drink credits, OKX Card and OKX Pay moments, OKX visuals, OKX Outcomes participations, and documentation inside Bar Oriente.": "Cuarto Rosa ? OKX app ??OKX flow?OKX Card / OKX Pay ??OKX ??OKX Outcomes  OKX Outcomes ? Bar Oriente ??",
       "One Cuarto Rosa takeover night. Exposure reaches the full room. Drink redemptions stay limited. You get OKX app onboarding, OKX Outcomes participation, OKX Card education, OKX Pay reward moments, OKX visuals, content capture, and documentation inside Bar Oriente.": "Cuarto Rosa ???? 500 ?? OKX app ??OKX flow?OKX Card / OKX Pay ??OKX ??OKX Outcomes  OKX Outcomes ? Bar Oriente ??",
@@ -1102,7 +1104,7 @@
       " en Bar Oriente. El Cuarto Rosa se entrega a su l\u00ednea de DJs para una noche en sintonia con esa agenda.": " \u5728 Bar Oriente \u63a5\u7ba1\u3002Cuarto Rosa \u5c06\u4ea4\u7ed9\u8fd9\u4e00 DJ \u9635\u5bb9\uff0c\u5f62\u6210\u4e0e\u8be5\u65e5\u7a0b\u4e00\u81f4\u7684\u4e00\u665a\u3002",
       "DJ de la Ciudad de M\u00e9xico. Presenta un set de house para la noche.": "\u58a8\u897f\u54e5\u57ce DJ\uff0c\u4e3a\u672c\u665a\u5448\u73b0 house set\u3002",
       "Para Bar Oriente significa una noche activada con programaci\u00f3n, producci\u00f3n y contenido": "\u5bf9 Bar Oriente \u800c\u8a00\uff0c\u8fd9\u662f\u4e00\u665a\u5b8c\u6574\u7684\u8282\u76ee\u3001\u5236\u4f5c\u4e0e\u5185\u5bb9\u6fc0\u6d3b",
-      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y la sede gana tr\u00e1fico y material de marca de esa fecha, as\u00ed como una experiencia inmersiva y diferente en la noche de evento.": "\uff1aAXIS \u8d1f\u8d23\u586b\u6ee1\u623f\u95f4\uff0c\u5e26\u6765\u9635\u5bb9\u4e0e\u6570\u5b57\u827a\u672f\uff0c\u573a\u5730\u83b7\u5f97\u8be5\u65e5\u671f\u7684\u5ba2\u6d41\u3001\u54c1\u724c\u7d20\u6750\uff0c\u4ee5\u53ca\u4e00\u4e2a\u4e0d\u540c\u7684\u6c89\u6d78\u5f0f\u6d3b\u52a8\u591c\u4f53\u9a8c\u3002",
+      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y las marcas involucradas ganan tr\u00e1fico, usuarios y contenido, as\u00ed como una experiencia inmersiva y diferente en la noche de evento.": "\uff1aAXIS \u8d1f\u8d23\u586b\u6ee1\u623f\u95f4\uff0c\u5e26\u6765\u9635\u5bb9\u4e0e\u6570\u5b57\u827a\u672f\uff0c\u76f8\u5173\u54c1\u724c\u83b7\u5f97\u5ba2\u6d41\u3001\u7528\u6237\u548c\u5185\u5bb9\uff0c\u5e76\u5728\u6d3b\u52a8\u5f53\u665a\u62e5\u6709\u4e00\u4e2a\u4e0d\u540c\u7684\u6c89\u6d78\u5f0f\u4f53\u9a8c\u3002",
       "One night": "\u4e00\u665a",
       "One Cuarto Rosa takeover night. You get OKX app onboarding, a OKX flow, drink credits, OKX Card and OKX Pay moments, OKX visuals, OKX Outcomes participations, and documentation inside Bar Oriente.": "Cuarto Rosa \u4e00\u665a\u63a5\u7ba1\u3002\u60a8\u83b7\u5f97 OKX app \u901a\u884c\u6743\u3001OKX flow\u3001\u996e\u54c1\u989d\u5ea6\u3001OKX Card / OKX Pay \u652f\u4ed8\u3001OKX \u89c6\u89c9\u3001OKX Outcomes \u6216 OKX Outcomes \u94fe\u4e0a\u64cd\u4f5c\uff0c\u4ee5\u53ca Bar Oriente \u5185\u7684\u5b8c\u6574\u5b58\u6863\u3002",
       "One Cuarto Rosa takeover night. Exposure reaches the full room. Drink redemptions stay limited. You get OKX app onboarding, OKX Outcomes participation, OKX Card education, OKX Pay reward moments, OKX visuals, content capture, and documentation inside Bar Oriente.": "Cuarto Rosa \u4e00\u665a\u63a5\u7ba1\u3002\u89c6\u89c9\u66dd\u5149\u8986\u76d6\u6574\u4e2a\u623f\u95f4\u3002\u996e\u54c1\u989d\u5ea6\u9650\u91cf 500 \u4e2a\u3002\u60a8\u83b7\u5f97 OKX app \u901a\u884c\u6743\u3001OKX flow\u3001OKX Card / OKX Pay \u652f\u4ed8\u3001OKX \u89c6\u89c9\u3001OKX Outcomes \u6216 OKX Outcomes \u94fe\u4e0a\u64cd\u4f5c\uff0c\u4ee5\u53ca Bar Oriente \u5185\u7684\u5b8c\u6574\u5b58\u6863\u3002",
@@ -1116,7 +1118,7 @@
       "Una noche completa.": "\u5b8c\u6574\u7684\u4e00\u665a\u3002",
       "DJ de la Ciudad de M\u00e9xico. Presenta un set de house para la noche.": "\u58a8\u897f\u54e5\u57ce DJ\uff0c\u4e3a\u672c\u665a\u5448\u73b0 house set\u3002",
       "Para Bar Oriente significa una noche activada con programaci\u00f3n, producci\u00f3n y contenido": "\u5bf9 Bar Oriente \u800c\u8a00\uff0c\u8fd9\u662f\u4e00\u665a\u5b8c\u6574\u7684\u8282\u76ee\u3001\u5236\u4f5c\u4e0e\u5185\u5bb9\u6fc0\u6d3b",
-      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y la sede gana tr\u00e1fico y material de marca de esa fecha, as\u00ed como una experiencia inmersiva y diferente en la noche de evento.": "\uff1aAXIS \u8d1f\u8d23\u586b\u6ee1\u623f\u95f4\uff0c\u5e26\u6765\u9635\u5bb9\u4e0e\u6570\u5b57\u827a\u672f\uff0c\u573a\u5730\u83b7\u5f97\u8be5\u65e5\u671f\u7684\u5ba2\u6d41\u3001\u54c1\u724c\u7d20\u6750\uff0c\u4ee5\u53ca\u4e00\u4e2a\u4e0d\u540c\u7684\u6c89\u6d78\u5f0f\u6d3b\u52a8\u591c\u4f53\u9a8c\u3002",
+      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y las marcas involucradas ganan tr\u00e1fico, usuarios y contenido, as\u00ed como una experiencia inmersiva y diferente en la noche de evento.": "\uff1aAXIS \u8d1f\u8d23\u586b\u6ee1\u623f\u95f4\uff0c\u5e26\u6765\u9635\u5bb9\u4e0e\u6570\u5b57\u827a\u672f\uff0c\u76f8\u5173\u54c1\u724c\u83b7\u5f97\u5ba2\u6d41\u3001\u7528\u6237\u548c\u5185\u5bb9\uff0c\u5e76\u5728\u6d3b\u52a8\u5f53\u665a\u62e5\u6709\u4e00\u4e2a\u4e0d\u540c\u7684\u6c89\u6d78\u5f0f\u4f53\u9a8c\u3002",
       "NFC de AXIS": "AXIS NFC",
       "El NFC de AXIS lleva rapido a las misiones OKX: OKX app, OKX Outcomes, OKX Card y OKX Pay.": "AXIS NFC å°†å˜‰å®¾å¿«é€Ÿå¸¦å…¥ OKX ä»»åŠ¡ï¼šOKX appã€OKX Outcomesã€OKX Card ä¸Ž OKX Payã€‚",
       "Tickets de bebida": "é¥®å“ç¥¨åˆ¸",
@@ -1164,7 +1166,7 @@
       "Lulú": "Lulú",
       "Jun 25 · one night": "6月25日 · 一晚",
       "Para Bar Oriente significa una noche activada con programación, producción y contenido": "对 Bar Oriente 而言，这是一晚完整的节目、制作与内容激活",
-      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y la sede gana tráfico y material de marca de esa fecha, así como una experiencia inmersiva y diferente en la noche de evento.": "：AXIS 负责填满房间，带来阵容与数字艺术，场地获得该日期的客流、品牌素材，以及一个不同的沉浸式活动夜体验。",
+      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y las marcas involucradas ganan tráfico, usuarios y contenido, así como una experiencia inmersiva y diferente en la noche de evento.": "：AXIS 负责填满房间，带来阵容与数字艺术，相关品牌获得客流、用户和内容，并在活动当晚拥有一个不同的沉浸式体验。",
       "DJ de la Ciudad de México. Presenta un set de house para la noche.": "墨西哥城 DJ，为本晚呈现 house set。"
 ,
       "Programa": "六月计划",
@@ -1197,8 +1199,11 @@
       "AXIS takeover, music curation by Ritmos de La Noche.": "AXIS 接管，音乐策划由 Ritmos de La Noche 负责。",
       "AXIS takeover, music curation by Ritmos de La Noche": "AXIS 接管，音乐策划由 Ritmos de La Noche 负责",
       "Para Bar Oriente significa una noche activada con programación, producción y contenido": "对 Bar Oriente 而言，这是一晚由节目、制作与内容驱动的激活",
+      "Para la marca significa una noche activada con programación, producción y contenido": "对品牌而言，这是一晚由节目、制作与内容驱动的激活",
       "sin costo extra para los involucrados": "不为相关方增加额外成本",
       ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y las marcas involucradas ganan tráfico, usuarios y contenido, así como una experiencia inmersiva y diferente en la noche de evento.": "：AXIS 负责填满房间，带来阵容与数字艺术，相关品牌获得客流、用户和内容，并在活动当晚拥有一个不同的沉浸式体验。"
+      ,
+      ": AXIS llena el cuarto, trae el line-up y el arte digital, y las marcas involucradas ganan tráfico, usuarios y contenido, así como una experiencia inmersiva y diferente en la noche de evento.": "：AXIS 负责填满房间，带来阵容与数字艺术，相关品牌获得客流、用户和内容，并在活动当晚拥有一个不同的沉浸式体验。"
     }
   };
 
@@ -1294,21 +1299,21 @@
     var fixedCompact = fixMojibakeText(compact);
     var fixedNormalized = fixMojibakeText(normalized);
     var upper = normalized.toUpperCase();
-    var boHead = "Para Bar Oriente significa una noche activada con programaci\u00f3n, producci\u00f3n y contenido";
+    var boHead = "Para la marca significa una noche activada con programaci\u00f3n, producci\u00f3n y contenido";
     var boCost = "sin costo extra para los involucrados";
-    var boTail = ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y las marcas involucradas ganan tr\u00e1fico, usuarios y contenido, as\u00ed como una experiencia inmersiva y diferente en la noche de evento.";
-    var boHeadLoose = fixedNormalized.indexOf("Para Bar Oriente significa una noche activada con programaci") === 0 && fixedNormalized.indexOf("producci") > -1 && fixedNormalized.indexOf("contenido") > -1;
-    var boTailLoose = fixedNormalized.indexOf("nosotros llenamos el cuarto") > -1 && fixedNormalized.indexOf("marcas involucradas ganan") > -1 && fixedNormalized.indexOf("usuarios y contenido") > -1;
+    var boTail = ": AXIS llena el cuarto, trae el line-up y el arte digital, y las marcas involucradas ganan tr\u00e1fico, usuarios y contenido, as\u00ed como una experiencia inmersiva y diferente en la noche de evento.";
+    var boHeadLoose = fixedNormalized.indexOf("Para la marca significa una noche activada con programaci") === 0 && fixedNormalized.indexOf("producci") > -1 && fixedNormalized.indexOf("contenido") > -1;
+    var boTailLoose = (fixedNormalized.indexOf("AXIS llena el cuarto") > -1 || fixedNormalized.indexOf("nosotros llenamos el cuarto") > -1) && fixedNormalized.indexOf("marcas involucradas ganan") > -1 && fixedNormalized.indexOf("usuarios y contenido") > -1;
     if (fixedNormalized === boHead || normalized === boHead || boHeadLoose) {
-      if (lang === "en") return "For Bar Oriente, this means one night activated with programming, production, and content";
-      if (lang === "zh") return "对 Bar Oriente 而言，这是一晚由节目、制作与内容驱动的激活";
+      if (lang === "en") return "For the brand, this means one night activated with programming, production, and content";
+      if (lang === "zh") return "对品牌而言，这是一晚由节目、制作与内容驱动的激活";
     }
     if (fixedNormalized === boCost || normalized === boCost) {
       if (lang === "en") return "at no extra cost for the involved parties";
       if (lang === "zh") return "不为相关方增加额外成本";
     }
     if (fixedNormalized === boTail || normalized === boTail || boTailLoose) {
-      if (lang === "en") return ": we fill the room, bring the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.";
+      if (lang === "en") return ": AXIS fills the room, brings the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.";
       if (lang === "zh") return "：AXIS 负责填满房间，带来阵容与数字艺术，相关品牌获得客流、用户和内容，并在活动当晚拥有一个不同的沉浸式体验。";
     }
     if (upper === "EXPERIENCIAS INESPERADAS EN LUGARES INUSUALES") return "UNEXPECTED EXPERIENCES IN UNUSUAL PLACES";

@@ -86,9 +86,9 @@ export default function PlanContent() {
         <section aria-labelledby="pbo-h-venue">
           <h2 id="pbo-h-venue">La Sede - Bar Oriente, Cuarto Rosa</h2>
           <p>
-            Para Bar Oriente significa una noche activada con programacion, produccion y contenido sin
-            costo en produccion extra para la casa: nosotros llenamos el cuarto, traemos el line-up y el
-            arte digital, y la sede gana trafico y material de marca de esa fecha.
+            Para la marca significa una noche activada con programacion, produccion y contenido sin
+            costo extra para los involucrados: AXIS llena el cuarto, trae el line-up y el arte digital,
+            y la marca gana trafico, usuarios y contenido de esa fecha.
           </p>
         </section>
 
