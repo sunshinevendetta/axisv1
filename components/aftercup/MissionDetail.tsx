@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useSiteLanguage } from "@/components/site-language";
+import { useSiteLanguage, type SiteLanguage } from "@/components/site-language";
 import {
   DATA,
   type MedalVariant,
@@ -436,7 +436,7 @@ function BriefView({
   );
 }
 
-function executionSteps(type: MissionTypeId, language: "en" | "es"): string[] {
+function executionSteps(type: MissionTypeId, language: SiteLanguage): string[] {
   switch (type) {
     case "nfc":
       return [
