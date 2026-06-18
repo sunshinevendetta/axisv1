@@ -76,7 +76,10 @@
       "Uno de los destinos de vida nocturna más fuertes de la Ciudad de México, con una audiencia cultural comprobada. Bar Oriente mueve cerca de 700 asistentes por noche y puede llegar a 1,200 en noches sold out. Activamos solo 500 canjes de bebida para que el beneficio se sienta escaso, cuidado y dirigido. La exposición visual llega al cuarto completo.": "Bar Oriente is one of Mexico City's strongest nightlife venues, with a proven cultural audience. The club brings about 700 attendees per night and can reach 1,200 on sold-out nights. We activate up to 500 drink redemptions so the benefit feels scarce, curated, and targeted. Visual exposure reaches the full room.",
       "@bar_oriente · 92.8K seguidores · 2,429 posts · linktr.ee/baroriente_": "@bar_oriente · 92.8K followers · 2,429 posts · linktr.ee/baroriente_",
       "Para Bar Oriente significa dos noches activadas con programación, producción y contenido": "You get two programmed nights with production and content",
+      "Para Bar Oriente significa una noche activada con programación, producción y contenido": "For Bar Oriente, this means one night activated with programming, production, and content",
       "sin costo en producción extra para la casa": "without adding production cost for the venue",
+      "sin costo extra para los involucrados": "at no extra cost for the involved parties",
+      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y las marcas involucradas ganan tráfico, usuarios y contenido, así como una experiencia inmersiva y diferente en la noche de evento.": ": we fill the room, bring the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.",
       "Intervención LED , Mapping , Onboarding , Pantallas de recompensa": "LED content, mapping, onboarding, reward screens",
       "El Programa de Junio": "The June Program",
       "Kiosco Morisco": "Kiosco Morisco",
@@ -449,16 +452,16 @@
       "07 / 11, Sistema": "07 / 11, System",
       " en Bar Oriente. El Cuarto Rosa se entrega a su l?nea de DJs para una noche en sintonia con esa agenda.": " at Bar Oriente. Cuarto Rosa opens to its DJ line for one night aligned with that program.",
       "DJ de la Ciudad de M?xico. Presenta un set de house para la noche.": "Mexico City DJ. He presents a house set for the night.",
-      "Para Bar Oriente significa una noche activada con programaci?n, producci?n y contenido": "For Bar Oriente, this means one activated night with programming, production, and content",
-      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y la sede gana tr?fico y material de marca de esa fecha, as como una experiencia inmersiva y diferente en la noche de evento.": ": AXIS fills the room, brings the lineup and digital art, and gives the venue traffic, brand material from that date, and a different immersive event-night experience.",
+      "Para Bar Oriente significa una noche activada con programaci?n, producci?n y contenido": "For Bar Oriente, this means one night activated with programming, production, and content",
+      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y la sede gana tr?fico y material de marca de esa fecha, as como una experiencia inmersiva y diferente en la noche de evento.": ": we fill the room, bring the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.",
       "Componentes de la experiencia": "Experience components",
       "Sistema de experiencia": "Experience system",
       "Un evento": "One event",
       "25 jun \u00b7 noche unica": "Jun 25 \u00b7 one night",
       " en Bar Oriente. El Cuarto Rosa se entrega a su l\u00ednea de DJs para una noche en sintonia con esa agenda.": " at Bar Oriente. Cuarto Rosa opens to its DJ line for one night aligned with that program.",
       "DJ de la Ciudad de M\u00e9xico. Presenta un set de house para la noche.": "Mexico City DJ. He presents a house set for the night.",
-      "Para Bar Oriente significa una noche activada con programaci\u00f3n, producci\u00f3n y contenido": "For Bar Oriente, this means one activated night with programming, production, and content",
-      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y la sede gana tr\u00e1fico y material de marca de esa fecha, as\u00ed como una experiencia inmersiva y diferente en la noche de evento.": ": AXIS fills the room, brings the lineup and digital art, and gives the venue traffic, brand material from that date, and a different immersive event-night experience.",
+      "Para Bar Oriente significa una noche activada con programaci\u00f3n, producci\u00f3n y contenido": "For Bar Oriente, this means one night activated with programming, production, and content",
+      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y la sede gana tr\u00e1fico y material de marca de esa fecha, as\u00ed como una experiencia inmersiva y diferente en la noche de evento.": ": we fill the room, bring the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.",
       "NFC de AXIS": "AXIS NFC",
       "El NFC de AXIS lleva rapido a las misiones OKX: OKX app, OKX Outcomes, OKX Card y OKX Pay.": "AXIS NFC sends guests quickly into OKX missions: OKX app, OKX Outcomes, OKX Card, and OKX Pay.",
       "Tickets de bebida": "Drink tickets",
@@ -494,8 +497,8 @@
       "✓": "✓",
       "Lulú": "Lulú",
       "Jun 25 · one night": "Jun 25 · one night",
-      "Para Bar Oriente significa una noche activada con programación, producción y contenido": "For Bar Oriente, this means one activated night with programming, production, and content",
-      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y la sede gana tráfico y material de marca de esa fecha, así como una experiencia inmersiva y diferente en la noche de evento.": ": AXIS fills the room, brings the lineup and digital art, and gives the venue traffic, brand material from that date, and a different immersive event-night experience.",
+      "Para Bar Oriente significa una noche activada con programación, producción y contenido": "For Bar Oriente, this means one night activated with programming, production, and content",
+      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y la sede gana tráfico y material de marca de esa fecha, así como una experiencia inmersiva y diferente en la noche de evento.": ": we fill the room, bring the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.",
       "DJ de la Ciudad de México. Presenta un set de house para la noche.": "Mexico City DJ. Presents a house set for the night.",
       "Uno de los destinos de vida nocturna más fuertes de la Ciudad de México, con una audiencia cultural comprobada. Bar Oriente mueve cerca de 700 asistentes por noche y puede llegar a 1,200 en noches sold out. Activamos hasta 500 tickets de bebida para alinear la experiencia con la idea inicial de OKX. Además, habilitamos hasta 150 lugares de guestlist sin costo para que OKX pueda sumar invitados propios. La exposición visual llega al cuarto completo.": "Bar Oriente is one of Mexico City's strongest nightlife venues, with a proven cultural audience. The club brings about 700 attendees per night and can reach 1,200 on sold-out nights. We activate up to 500 drink tickets to align the experience with OKX's initial idea. We also enable up to 150 free guestlist spots so OKX can bring its own guests. Visual exposure reaches the full room.",
       "700 asistentes por noche. Hasta 1,200 en sold out. Hasta 500 tickets de bebida alineados con la idea inicial de OKX, más hasta 150 lugares de guestlist sin costo para invitados.": "700 attendees per night. Up to 1,200 on sold-out nights. Up to 500 drink tickets aligned with OKX's initial idea, plus up to 150 free guestlist spots for invited guests.",
@@ -1192,7 +1195,10 @@
       "One Cuarto Rosa takeover night. Exposure reaches the full room. Drink redemptions stay limited. You get OKX app onboarding, OKX Outcomes participation, OKX Card education, OKX Pay reward moments, OKX visuals, content capture, and documentation inside Bar Oriente.": "Cuarto Rosa 一晚接管。视觉曝光覆盖整个房间。最多 500 个饮品兑换。内容包括 OKX app 引导、OKX Outcomes 参与、OKX Card 说明、OKX Pay 奖励时刻、OKX 视觉、内容拍摄以及 Bar Oriente 内的完整记录。",
       "OKX brings users into a real-world football experience people remember. Guests tap AXIS NFC, enter OKX Outcomes, take a match position, and can use OKX Card for on-site cashback moments. Bar Oriente brings about 700 attendees per night, with sold-out nights up to 1,200. Drink tickets stay limited, with a beer first and an OKX shot as the second reward layer.": "OKX 通过令人记住的线下足球体验激活用户。嘉宾触碰 AXIS NFC，进入 OKX Outcomes，选择比赛结果立场，并可在现场了解 OKX Card 返现时刻。Bar Oriente 每晚约 700 人，售罄可达 1,200 人。最多 500 张饮品票券：先啤酒，再以 OKX shot 作为第二层奖励。",
       "AXIS takeover, music curation by Ritmos de La Noche.": "AXIS 接管，音乐策划由 Ritmos de La Noche 负责。",
-      "AXIS takeover, music curation by Ritmos de La Noche": "AXIS 接管，音乐策划由 Ritmos de La Noche 负责"
+      "AXIS takeover, music curation by Ritmos de La Noche": "AXIS 接管，音乐策划由 Ritmos de La Noche 负责",
+      "Para Bar Oriente significa una noche activada con programación, producción y contenido": "对 Bar Oriente 而言，这是一晚由节目、制作与内容驱动的激活",
+      "sin costo extra para los involucrados": "不为相关方增加额外成本",
+      ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y las marcas involucradas ganan tráfico, usuarios y contenido, así como una experiencia inmersiva y diferente en la noche de evento.": "：AXIS 负责填满房间，带来阵容与数字艺术，相关品牌获得客流、用户和内容，并在活动当晚拥有一个不同的沉浸式体验。"
     }
   };
 
@@ -1288,6 +1294,23 @@
     var fixedCompact = fixMojibakeText(compact);
     var fixedNormalized = fixMojibakeText(normalized);
     var upper = normalized.toUpperCase();
+    var boHead = "Para Bar Oriente significa una noche activada con programaci\u00f3n, producci\u00f3n y contenido";
+    var boCost = "sin costo extra para los involucrados";
+    var boTail = ": nosotros llenamos el cuarto, traemos el line-up y el arte digital, y las marcas involucradas ganan tr\u00e1fico, usuarios y contenido, as\u00ed como una experiencia inmersiva y diferente en la noche de evento.";
+    var boHeadLoose = fixedNormalized.indexOf("Para Bar Oriente significa una noche activada con programaci") === 0 && fixedNormalized.indexOf("producci") > -1 && fixedNormalized.indexOf("contenido") > -1;
+    var boTailLoose = fixedNormalized.indexOf("nosotros llenamos el cuarto") > -1 && fixedNormalized.indexOf("marcas involucradas ganan") > -1 && fixedNormalized.indexOf("usuarios y contenido") > -1;
+    if (fixedNormalized === boHead || normalized === boHead || boHeadLoose) {
+      if (lang === "en") return "For Bar Oriente, this means one night activated with programming, production, and content";
+      if (lang === "zh") return "对 Bar Oriente 而言，这是一晚由节目、制作与内容驱动的激活";
+    }
+    if (fixedNormalized === boCost || normalized === boCost) {
+      if (lang === "en") return "at no extra cost for the involved parties";
+      if (lang === "zh") return "不为相关方增加额外成本";
+    }
+    if (fixedNormalized === boTail || normalized === boTail || boTailLoose) {
+      if (lang === "en") return ": we fill the room, bring the line-up and digital art, and the involved brands get traffic, users, and content, plus a different immersive experience on event night.";
+      if (lang === "zh") return "：AXIS 负责填满房间，带来阵容与数字艺术，相关品牌获得客流、用户和内容，并在活动当晚拥有一个不同的沉浸式体验。";
+    }
     if (upper === "EXPERIENCIAS INESPERADAS EN LUGARES INUSUALES") return "UNEXPECTED EXPERIENCES IN UNUSUAL PLACES";
     if (upper === "EXPERIENCIAS INESPERADAS EN LUGARES INUSUALES.") return "UNEXPECTED EXPERIENCES IN UNUSUAL PLACES.";
     var translated = dict[value] || dict[compact] || dict[normalized] || dict[fixedCompact] || dict[fixedNormalized];
