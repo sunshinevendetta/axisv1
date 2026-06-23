@@ -7,6 +7,8 @@ const sponsorLogos = [
   { src: "/logos/amaras.png", alt: "Amaras", title: "Amaras", href: "https://mezcalamaras.com/" },
   { src: "/logos/base.png", alt: "Base", title: "Base", href: "https://base.org/" },
   { src: "/logos/pizzadao.svg", alt: "PizzaDAO", title: "PizzaDAO", href: "https://pizzadao.org/" },
+  { src: "/logos/ens.png", alt: "ENS", title: "ENS", href: "https://ens.domains/" },
+  { src: "/logos/world-pizza-champions.png", alt: "World Pizza Champions", title: "World Pizza Champions", href: "https://worldpizzachampions.com/" },
   { src: "/logos/rootstock.png", alt: "Rootstock", title: "Rootstock", href: "https://rootstock.io/" },
   { src: "/logos/brave.png", alt: "Brave", title: "Brave", href: "https://brave.com/" },
   { src: "/logos/digital-spenders-club.svg", alt: "Digital Spenders Club", title: "Digital Spenders Club", href: "https://www.spenders.club/" },
