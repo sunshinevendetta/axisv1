@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { useSiteLanguage } from "@/components/site-language";
 import type { ArtistProfile } from "@/src/content/artists";
+import { getSiteCopy } from "@/src/lib/site-translations";
 
 type Props = {
   artists: ArtistProfile[];
@@ -11,42 +13,45 @@ type Props = {
 };
 
 export default function HomeArtistsSection({ artists, musicCount, visualCount, genreLabels }: Props) {
+  const { language } = useSiteLanguage();
+  const copy = getSiteCopy(language);
+
   return (
     <section id="artists" className="border-t border-white/6 bg-black py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-12 flex items-end justify-between">
           <div>
-            <div className="text-[9px] uppercase tracking-[0.44em] text-white/28">World Expansion</div>
+            <div className="text-[9px] uppercase tracking-[0.44em] text-white/28">{copy.artists.eyebrow}</div>
             <h2 className="mt-3 [font-family:var(--font-display)] text-[clamp(1.6rem,3.5vw,2.8rem)] leading-[0.88] tracking-[-0.05em] text-white">
-              Artists
+              {copy.artists.title}
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-6 tracking-wide text-white/42">
-              Artist index split across music and visual practices, sourced from the magazine archive and the broader AXIS orbit.
+              {copy.artists.intro}
             </p>
           </div>
           <Link
             href="/magazine/artists"
             className="text-[9px] uppercase tracking-[0.36em] text-white/28 transition-colors hover:text-white/60"
           >
-            all profiles ↗
+            {copy.artists.allProfiles}
           </Link>
         </div>
 
         <div className="mb-8 grid gap-px bg-white/6 sm:grid-cols-3">
           <div className="bg-black p-5 sm:p-6">
-            <div className="text-[8px] uppercase tracking-[0.34em] text-white/22">Music Artists</div>
+            <div className="text-[8px] uppercase tracking-[0.34em] text-white/22">{copy.artists.musicArtists}</div>
             <div className="mt-2 [font-family:var(--font-display)] text-2xl leading-none tracking-[-0.04em] text-white/88">
               {musicCount}
             </div>
           </div>
           <div className="bg-black p-5 sm:p-6">
-            <div className="text-[8px] uppercase tracking-[0.34em] text-white/22">Visual Artists</div>
+            <div className="text-[8px] uppercase tracking-[0.34em] text-white/22">{copy.artists.visualArtists}</div>
             <div className="mt-2 [font-family:var(--font-display)] text-2xl leading-none tracking-[-0.04em] text-white/88">
               {visualCount}
             </div>
           </div>
           <div className="bg-black p-5 sm:p-6">
-            <div className="text-[8px] uppercase tracking-[0.34em] text-white/22">Live Genres</div>
+            <div className="text-[8px] uppercase tracking-[0.34em] text-white/22">{copy.artists.liveGenres}</div>
             <div className="mt-3 flex flex-wrap gap-2">
               {genreLabels.map((genre) => (
                 <span
@@ -107,7 +112,7 @@ export default function HomeArtistsSection({ artists, musicCount, visualCount, g
 
         <div className="mt-8 border-t border-white/6 pt-6">
           <p className="text-[9px] uppercase tracking-[0.32em] text-white/18">
-            Music and visual profiles are indexed from real artist records only. No placeholder genres, no empty shells.
+            {copy.artists.hint}
           </p>
         </div>
       </div>

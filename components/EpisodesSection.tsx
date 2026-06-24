@@ -2,8 +2,13 @@
 
 import EpisodesCards from "./EpisodesCards";
 import PrismaticBurstBackground from "./backgrounds/EpisodesBackground";
+import { useSiteLanguage } from "@/components/site-language";
+import { getSiteCopy } from "@/src/lib/site-translations";
 
 export default function EpisodesSection() {
+  const { language } = useSiteLanguage();
+  const copy = getSiteCopy(language);
+
   return (
     <section id="episodes" className="relative isolate min-h-screen overflow-hidden bg-black">
       <PrismaticBurstBackground />
@@ -15,10 +20,10 @@ export default function EpisodesSection() {
             className="text-[clamp(1.6rem,4vw,3.25rem)] uppercase leading-[0.9] tracking-[0.00em] text-white"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Episodes
+            {copy.episodes.title}
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-white/64 sm:text-base">
-            Unexpected experiences. Unusual places. <br /> Get on the guestlist for the next one or relive the lastest.
+            {copy.episodes.intro} <br /> {copy.episodes.introBreak}
           </p>
         </div>
 

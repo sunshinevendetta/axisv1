@@ -11,6 +11,7 @@ import LogoArray from "@/components/Logos/LogoArray";
 import PageGradualBlur from "@/components/PageGradualBlur";
 import PillNav from "@/components/PillNav";
 import SubmitSection from "@/components/SubmitSection";
+import { useSiteLanguage } from "@/components/site-language";
 import HomeArtistsSection from "@/components/home/HomeArtistsSection";
 import HomeCollectSection from "@/components/home/HomeCollectSection";
 import HomeMagazineSection from "@/components/home/HomeMagazineSection";
@@ -18,6 +19,7 @@ import HomeMixtapesSection from "@/components/home/HomeMixtapesSection";
 import HomeSpacesSection from "@/components/home/HomeSpacesSection";
 import HomeStoreSection from "@/components/home/HomeStoreSection";
 import { homeNavItems } from "@/src/lib/navigation";
+import { getSiteCopy, type HomeNavKey } from "@/src/lib/site-translations";
 import type { ArtistProfile } from "@/src/content/artists";
 import type { ARAppDrop } from "@/src/lib/arapp-catalog";
 import type { Mixtape } from "@/components/magazine/mixtapes/types";
@@ -61,6 +63,12 @@ export default function HomePageClient({
 }: HomePageClientProps) {
   const [activeMixtape, setActiveMixtape] = useState<Mixtape | null>(null);
   const [playerPlaying, setPlayerPlaying] = useState(false);
+  const { language } = useSiteLanguage();
+  const copy = getSiteCopy(language);
+  const navItems = homeNavItems.map((item) => ({
+    ...item,
+    label: copy.nav[item.label as HomeNavKey] ?? item.label,
+  }));
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-black text-white">
@@ -70,7 +78,7 @@ export default function HomePageClient({
         <PillNav
           logo="/logo.png"
           logoAlt="axis logo"
-          items={homeNavItems}
+          items={navItems}
           activeHref="/#home"
           className="custom-nav"
           ease="power2.easeOut"
@@ -90,16 +98,16 @@ export default function HomePageClient({
           <div className="pointer-events-none relative z-20 mx-auto flex min-h-screen max-w-7xl items-end px-6 pb-24 pt-28 sm:pb-16 sm:pt-32">
             <div className="max-w-2xl overflow-hidden">
               <div className="text-[10px] uppercase tracking-[0.34em] text-white/42 sm:text-[11px]">
-                Unexpected Experiences in Unusual Places
+                {copy.home.heroEyebrow}
               </div>
               <h1 className="mt-5 text-[clamp(1.4rem,3.2vw,2.6rem)] leading-[0.86] tracking-[-0.06em] text-white">
-                WELCOME
+                {copy.home.heroTitle}
               </h1>
               <a
                 href="#episodes"
                 className="pointer-events-auto mt-8 inline-flex text-[11px] uppercase tracking-[0.32em] text-white/58 transition-colors duration-200 hover:text-white"
               >
-                explore ↓
+                {copy.home.heroCta}
               </a>
             </div>
           </div>
@@ -114,7 +122,7 @@ export default function HomePageClient({
           activeMixtapeId={activeMixtape?.id ?? null}
           isPlaying={playerPlaying}
         />
-        <HomeMagazineSection articles={articles} lang="en" />
+        <HomeMagazineSection articles={articles} lang={language} />
         <HomeArtistsSection
           artists={featuredArtists}
           musicCount={musicCount}
@@ -138,10 +146,10 @@ export default function HomePageClient({
         <section className="bg-black pb-20 pt-8 sm:pb-24">
           <div className="mx-auto max-w-7xl px-6 text-center">
             <h2 className="text-base leading-[0.94] tracking-[-0.05em] text-white sm:text-lg">
-              FRIENDS AND FAMILY
+              {copy.home.partnersTitle}
             </h2>
             <p className="mt-4 text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
-              Protocols, brands &amp; events we&apos;ve worked with
+              {copy.home.partnersBody}
             </p>
           </div>
           <div className="mt-10">

@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import SubmissionBackground from "@/components/backgrounds/SubmissionBackground";
+import { useSiteLanguage } from "@/components/site-language";
+import { getSiteCopy } from "@/src/lib/site-translations";
 
 type SubmissionVariant = "artist" | "dev";
 
@@ -12,51 +14,13 @@ interface SubmissionFormProps {
   variant?: SubmissionVariant;
 }
 
-const formContent: Record<
-  SubmissionVariant,
-  {
-    title: string;
-    intro: string[];
-    linkLabel: string;
-    linkHint?: { href: string; label: string };
-    submitLabel: string;
-    successMessage: string;
-  }
-> = {
-  artist: {
-    title: "Show us what you make",
-    intro: [
-      "Submit your art for consideration in our upcoming live exhibitions and events.",
-      "If selected, you will receive a complimentary artist membership, granting you entry to our events for 1 year, and exposure to our global community of art, music, and technology enthusiasts.",
-      "We are looking for innovative digital art that aligns with our themes of energy, technology, and culture.",
-      "Our team will review submissions and contact selected artists shortly.",
-      "Your information is kept confidential and used only for review and contact purposes.",
-    ],
-    linkLabel: "Artwork Link *",
-    linkHint: {
-      href: "https://base.app/invite/sunshinev/R80CCWVY",
-      label:
-        "WE ONLY ACCEPT PUBLISHED ARTWORKS - if your work is not yet live, please upload it to Base App as a post. Paste the link here or from the marketplace of your choice. Click here to see how.",
-    },
-    submitLabel: "Submit",
-    successMessage: "Thank you! Your submission has been received. Check your email for confirmation.",
-  },
-  dev: {
-    title: "Ship your build into \u00A9 AXIS",
-    intro: [
-      "This lane is for developers, founders, makers, and digital studios building apps, tools, products, or internet-native experiences.",
-      "If your project should be discovered by AXIS attendees, collaborators, and our broader ecosystem, send us the core link and context here.",
-      "We are looking for projects that feel culturally sharp, technically interesting, and ready to be activated with real users.",
-      "Our team reviews each submission for possible showcases, partnerships, community drops, and live ecosystem placements.",
-      "Your information is kept confidential and used only for review and contact purposes.",
-    ],
-    linkLabel: "Project / Product Link *",
-    submitLabel: "Send Project",
-    successMessage: "Thank you! Your project has been received. Check your email for confirmation.",
-  },
-};
+const ARTIST_LINK_HINT_HREF = "https://base.app/invite/sunshinev/R80CCWVY";
 
 export default function SubmissionForm({ variant = "artist" }: SubmissionFormProps) {
+  const { language } = useSiteLanguage();
+  const copy = getSiteCopy(language);
+  const formCopy = copy.submit.form;
+  const content = formCopy[variant];
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [contactMode, setContactMode] = useState<"phone" | "telegram">("phone");
@@ -74,7 +38,6 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
   const [walletStatus, setWalletStatus] = useState<"idle" | "valid" | "invalid" | "resolving">("idle");
   const [_resolvedAddress, setResolvedAddress] = useState<string | null>(null);
   const [walletError, setWalletError] = useState("");
-  const content = formContent[variant];
 
   const inputClassName =
     "w-full bg-[#0a0a0a] px-4 py-3 text-sm text-white placeholder:text-white/36 focus:outline-none focus:ring-1 focus:ring-white/24";
@@ -101,12 +64,12 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
       return true;
     }
     setWalletStatus("invalid");
-    setWalletError("Must be a valid EVM address (starts with 0x) or ENS name (.eth)");
+    setWalletError(formCopy.errors.invalidWalletHelper);
     setResolvedAddress(null);
     return false;
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData((current) => ({ ...current, [name]: value }));
     if (name === "wallet") validateWallet(value);
@@ -116,39 +79,39 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
     setRecaptchaToken(token);
   };
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setStatus("loading");
     setMessage("");
 
     if (!formData.name || !formData.email || !formData.artworkLink) {
       setStatus("error");
-      setMessage("Name, email, and " + (variant === "dev" ? "project link" : "artwork link") + " are required.");
+      setMessage(variant === "dev" ? formCopy.errors.requiredDev : formCopy.errors.requiredArtist);
       return;
     }
     if (contactMode === "phone" && !formData.phone) {
       setStatus("error");
-      setMessage("Please provide your phone number.");
+      setMessage(formCopy.errors.phoneRequired);
       return;
     }
     if (contactMode === "telegram" && !formData.telegram.trim()) {
       setStatus("error");
-      setMessage("Please provide your Telegram handle.");
+      setMessage(formCopy.errors.telegramRequired);
       return;
     }
     if (!validateEmail(formData.email)) {
       setStatus("error");
-      setMessage("Please enter a valid email address.");
+      setMessage(formCopy.errors.invalidEmail);
       return;
     }
     if (formData.wallet.trim() && walletStatus !== "valid") {
       setStatus("error");
-      setMessage("Please provide a valid wallet address or ENS name.");
+      setMessage(formCopy.errors.invalidWallet);
       return;
     }
     if (!recaptchaToken) {
       setStatus("error");
-      setMessage("Please complete the CAPTCHA.");
+      setMessage(formCopy.errors.captchaRequired);
       return;
     }
 
@@ -173,11 +136,11 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
       } else {
         const errorPayload = await response.json();
         setStatus("error");
-        setMessage(errorPayload.error || "Something went wrong. Please try again or contact support.");
+        setMessage(errorPayload.error || formCopy.errors.generic);
       }
     } catch {
       setStatus("error");
-      setMessage("Something went wrong. Please try again or contact support.");
+      setMessage(formCopy.errors.generic);
     }
   };
 
@@ -191,7 +154,9 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
       .phone-wrap .PhoneInputCountrySelectArrow { color: rgba(255,255,255,0.7); }
     `;
     document.head.appendChild(style);
-    return () => { document.head.removeChild(style); };
+    return () => {
+      document.head.removeChild(style);
+    };
   }, []);
 
   return (
@@ -199,7 +164,6 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
       <SubmissionBackground />
 
       <div className="relative z-10 mx-auto w-full max-w-xl bg-[rgba(8,8,8,0.92)] p-8 shadow-[0_34px_90px_rgba(0,0,0,0.46)] sm:p-10">
-
         <h2 className="mb-6 text-center [font-family:var(--font-display)] text-base leading-[0.96] tracking-[-0.05em] text-white sm:text-lg">
           {content.title}
         </h2>
@@ -211,9 +175,10 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          {/* 1. Name */}
           <div>
-            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">{variant === "dev" ? "Name / Team" : "Name / Alias"}</label>
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">
+              {variant === "dev" ? formCopy.labels.nameTeam : formCopy.labels.nameAlias}
+            </label>
             <input
               name="name"
               value={formData.name}
@@ -223,9 +188,10 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
             />
           </div>
 
-          {/* 2. Email */}
           <div>
-            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Email Address</label>
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">
+              {formCopy.labels.email}
+            </label>
             <input
               name="email"
               type="email"
@@ -236,17 +202,18 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
             />
           </div>
 
-          {/* 3. Link (artwork or project) */}
           <div>
-            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">{content.linkLabel.replace(" *", "")}</label>
-            {content.linkHint ? (
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">
+              {content.linkLabel}
+            </label>
+            {"linkHint" in content ? (
               <a
-                href={content.linkHint.href}
+                href={ARTIST_LINK_HINT_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mb-3 block text-[10px] uppercase tracking-[0.16em] text-white/42 transition-colors hover:text-white/72"
               >
-                {content.linkHint.label}
+                {content.linkHint}
               </a>
             ) : null}
             <input
@@ -258,9 +225,10 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
             />
           </div>
 
-          {/* 4. Contact — phone or telegram toggle */}
           <div>
-            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Contact Method</label>
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">
+              {formCopy.labels.contactMethod}
+            </label>
             <div className="mb-3 flex">
               <button
                 type="button"
@@ -271,7 +239,7 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
                     : "border-white/8 bg-transparent text-white/32 hover:border-white/16 hover:text-white/52"
                 }`}
               >
-                Phone
+                {formCopy.labels.phone}
               </button>
               <button
                 type="button"
@@ -282,7 +250,7 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
                     : "border-white/8 bg-transparent text-white/32 hover:border-white/16 hover:text-white/52"
                 }`}
               >
-                Telegram
+                {formCopy.labels.telegram}
               </button>
             </div>
             {contactMode === "phone" ? (
@@ -299,15 +267,16 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
                 name="telegram"
                 value={formData.telegram}
                 onChange={handleChange}
-                placeholder="@username or https://t.me/username"
+                placeholder={formCopy.placeholders.telegram}
                 className={inputClassName}
               />
             )}
           </div>
 
-          {/* 5. Optional — wallet */}
           <div>
-            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Wallet Address or ENS (.eth) <span className="normal-case tracking-normal text-white/28">(optional)</span></label>
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">
+              {formCopy.labels.wallet} <span className="normal-case tracking-normal text-white/28">({formCopy.labels.optional})</span>
+            </label>
             <input
               name="wallet"
               value={formData.wallet}
@@ -318,14 +287,15 @@ export default function SubmissionForm({ variant = "artist" }: SubmissionFormPro
             {walletError ? <p className="mt-1 text-xs text-white/44">{walletError}</p> : null}
           </div>
 
-          {/* 6. Optional — instagram */}
           <div>
-            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">Instagram <span className="normal-case tracking-normal text-white/28">(optional)</span></label>
+            <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-white/48">
+              {formCopy.labels.instagram} <span className="normal-case tracking-normal text-white/28">({formCopy.labels.optional})</span>
+            </label>
             <input
               name="instagram"
               value={formData.instagram}
               onChange={handleChange}
-              placeholder="@username or https://instagram.com/username"
+              placeholder={formCopy.placeholders.instagram}
               className={inputClassName}
             />
           </div>

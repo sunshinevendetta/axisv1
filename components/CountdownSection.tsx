@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useSiteLanguage } from "@/components/site-language";
+import { getSiteCopy } from "@/src/lib/site-translations";
 
 export type CountdownEpisode = {
   title: string;
@@ -46,6 +48,8 @@ function findCurrentEpisode(episodes: CountdownEpisode[]): CountdownEpisode | un
 }
 
 export default function CountdownSection({ episodes }: CountdownProps) {
+  const { language } = useSiteLanguage();
+  const copy = getSiteCopy(language);
   const [mounted, setMounted] = useState(false);
   const [current, setCurrent] = useState<CountdownEpisode | undefined>(() => findCurrentEpisode(episodes));
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
@@ -72,7 +76,7 @@ export default function CountdownSection({ episodes }: CountdownProps) {
     return (
       <section className="flex flex-col items-center justify-center bg-black px-6 py-24 text-center">
         <p className="text-[9px] uppercase tracking-[0.45em] text-white/32">
-          next episode loading
+          {copy.countdown.loading}
         </p>
       </section>
     );
@@ -81,7 +85,7 @@ export default function CountdownSection({ episodes }: CountdownProps) {
   return (
     <section className="flex flex-col items-center justify-center bg-black px-6 py-24 text-center">
       <p className="mb-4 text-[9px] uppercase tracking-[0.45em] text-white/32">
-        next episode
+        {copy.countdown.eyebrow}
       </p>
 
       <h2
@@ -98,10 +102,10 @@ export default function CountdownSection({ episodes }: CountdownProps) {
       <div className="mt-12 flex items-end gap-6 sm:gap-12">
         {(
           [
-            { value: timeLeft.days, label: "DAYS" },
-            { value: timeLeft.hours, label: "HRS" },
-            { value: timeLeft.minutes, label: "MIN" },
-            { value: timeLeft.seconds, label: "SEC" },
+            { value: timeLeft.days, label: copy.countdown.days },
+            { value: timeLeft.hours, label: copy.countdown.hours },
+            { value: timeLeft.minutes, label: copy.countdown.minutes },
+            { value: timeLeft.seconds, label: copy.countdown.seconds },
           ] as const
         ).map(({ value, label }) => (
           <div key={label} className="flex flex-col items-center gap-2">
