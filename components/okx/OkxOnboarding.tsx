@@ -616,6 +616,7 @@ export default function OkxOnboarding() {
         <div className="okx-model-shell okx-rise">
           <ModelViewer
             src="/logos/rsvp/okx.glb"
+            iosSrc="/logos/rsvp/okx.usdz"
             alt="OKX 3D logo"
             autoReveal
             className="okx-model"
