@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
-  FiCamera,
   FiCheck,
   FiHelpCircle,
   FiLoader,
@@ -222,17 +221,19 @@ const copy = {
     generating: "Generando",
     ready: "QR unico listo",
     showLive: "Muestra esta pantalla al staff. Cada QR se escanea una sola vez.",
-    screenshot: "Proteccion: QR dinamico. No compartas screenshot.",
+    screenshot: "Proteccion: el QR se oculta en screenshots. Manten presionado solo frente al staff.",
+    qrHold: "Manten presionado para mostrar QR",
+    qrHidden: "QR protegido",
     close: "Cerrar",
     tapHere: "Abrir",
     ar: "Abrir AR",
     arHint: "Tap aqui para abrir la AR, toma una foto, subela, por un shot",
     chatTitle: "AYUDA",
-    chatSub: "Hermes agent powered by NVIDIA Build para dudas de OKX.",
+    chatSub: "Hermes agent powered by NVIDIA, made by AXIS for OKX.",
     input: "Pregunta aqui",
     ask: "Enviar",
     quick: ["Que es OKX?", "Donde veo mi UID?", "Que screenshot subo?"],
-    fallback: "AYUDA esta lista. Si algo falla, ve directo con staff OKX.",
+    fallback: "Soy Petra. Si algo falla, ve directo con staff OKX y lo resolvemos ahi.",
     error: "Falta UID o screenshot para generar tu QR.",
     limit: "Cupo limitado: 500 bebidas. Maximo 3 por persona. Staff OKX valida en sitio.",
   },
@@ -252,17 +253,19 @@ const copy = {
     generating: "Generating",
     ready: "Unique QR ready",
     showLive: "Show this live screen to staff. Each QR scans once.",
-    screenshot: "Protection: dynamic QR. Do not share screenshots.",
+    screenshot: "Protection: the QR hides in screenshots. Hold only in front of staff.",
+    qrHold: "Hold to show QR",
+    qrHidden: "Protected QR",
     close: "Close",
     tapHere: "Open",
     ar: "Open AR",
     arHint: "Tap here to open AR, take a photo, post it for a shot",
     chatTitle: "AYUDA",
-    chatSub: "Hermes agent powered by NVIDIA Build for OKX questions.",
+    chatSub: "Hermes agent powered by NVIDIA, made by AXIS for OKX.",
     input: "Ask here",
     ask: "Send",
     quick: ["What is OKX?", "Where is my UID?", "Which screenshot?"],
-    fallback: "AYUDA is ready. If anything fails, go straight to OKX staff.",
+    fallback: "I am Petra. If anything fails, go straight to OKX staff and we will sort it there.",
     error: "UID or screenshot is required to generate your QR.",
     limit: "Limited: 500 drinks. Max 3 per person. OKX staff validates on-site.",
   },
@@ -283,12 +286,14 @@ const copy = {
     ready: "专属 QR 已生成",
     showLive: "向工作人员展示此页面。每个 QR 只能扫描一次。",
     screenshot: "保护：动态 QR。请勿分享截图。",
+    qrHold: "按住显示 QR",
+    qrHidden: "QR 已保护",
     close: "关闭",
     tapHere: "打开",
     ar: "打开 AR",
     arHint: "点这里打开 AR，拍照发布，换一杯 shot",
     chatTitle: "AYUDA",
-    chatSub: "Hermes agent powered by NVIDIA Build，回答 OKX 问题。",
+    chatSub: "Hermes agent powered by NVIDIA, made by AXIS for OKX.",
     input: "输入问题",
     ask: "发送",
     quick: ["OKX 是什么？", "UID 在哪里？", "上传什么截图？"],
@@ -313,12 +318,14 @@ const copy = {
     ready: "専用QR準備完了",
     showLive: "この画面をスタッフへ。QRは一度だけ有効。",
     screenshot: "保護：動的QR。スクショ共有しないで。",
+    qrHold: "長押しで QR 表示",
+    qrHidden: "保護された QR",
     close: "閉じる",
     tapHere: "開く",
     ar: "ARを開く",
     arHint: "ここをタップ、ARで撮影、投稿してshot",
     chatTitle: "AYUDA",
-    chatSub: "Hermes agent powered by NVIDIA Build がOKXを案内。",
+    chatSub: "Hermes agent powered by NVIDIA, made by AXIS for OKX.",
     input: "質問する",
     ask: "送信",
     quick: ["OKXとは？", "UIDはどこ？", "何をアップ？"],
@@ -343,12 +350,14 @@ const copy = {
     ready: "고유 QR 준비됨",
     showLive: "이 화면을 직원에게 보여주세요. QR은 1회만 스캔됩니다.",
     screenshot: "보호: 동적 QR. 스크린샷 공유 금지.",
+    qrHold: "누르고 있으면 QR 표시",
+    qrHidden: "보호된 QR",
     close: "닫기",
     tapHere: "열기",
     ar: "AR 열기",
     arHint: "여기를 눌러 AR 열고 사진 올리면 shot",
     chatTitle: "AYUDA",
-    chatSub: "Hermes agent powered by NVIDIA Build 가 OKX 질문을 도와요.",
+    chatSub: "Hermes agent powered by NVIDIA, made by AXIS for OKX.",
     input: "질문 입력",
     ask: "전송",
     quick: ["OKX가 뭐예요?", "UID는 어디?", "무슨 스샷?"],
@@ -373,12 +382,14 @@ const copy = {
     ready: "QR unique pret",
     showLive: "Montre cet ecran au staff. Chaque QR se scanne une fois.",
     screenshot: "Protection : QR dynamique. Ne partage pas de capture.",
+    qrHold: "Maintiens pour afficher le QR",
+    qrHidden: "QR protege",
     close: "Fermer",
     tapHere: "Ouvrir",
     ar: "Ouvrir AR",
     arHint: "Tape ici, ouvre AR, prends photo, poste pour un shot",
     chatTitle: "AYUDA",
-    chatSub: "Hermes agent powered by NVIDIA Build pour tes questions OKX.",
+    chatSub: "Hermes agent powered by NVIDIA, made by AXIS for OKX.",
     input: "Pose ta question",
     ask: "Envoyer",
     quick: ["C'est quoi OKX ?", "Ou est mon UID ?", "Quelle capture ?"],
@@ -389,12 +400,12 @@ const copy = {
 };
 
 const initialAssistant: Record<Lang, string> = {
-  es: "Soy AYUDA, agente Hermes de AXIS. Te ayudo con OKX, UID, pruebas y bebidas.",
-  en: "I am AYUDA, the AXIS Hermes agent. I can help with OKX, UID, proof, and drinks.",
-  zh: "我是 AXIS 的 Hermes agent AYUDA，可以帮你完成 OKX 饮品任务。",
-  ja: "AXIS Hermes agent の AYUDA です。OKXとドリンクを案内します。",
-  ko: "저는 AXIS Hermes agent AYUDA입니다. OKX 음료 미션을 도와드려요.",
-  fr: "Je suis AYUDA, agent Hermes AXIS. Je t'aide avec OKX et les verres.",
+  es: "Soy Petra, agente Hermes de AXIS. Te ayudo para obtener tus bebidas esta noche.",
+  en: "I am Petra, the AXIS Hermes agent. I help you get your drinks tonight.",
+  zh: "我是 Petra，AXIS 的 Hermes agent。今晚我帮你完成饮品任务。",
+  ja: "Petraです。AXIS Hermes agent として今夜のドリンクを案内します。",
+  ko: "저는 Petra, AXIS Hermes agent입니다. 오늘 밤 음료 미션을 도와드려요.",
+  fr: "Je suis Petra, agent Hermes AXIS. Je t'aide a obtenir tes verres ce soir.",
 };
 
 function formatChatText(text: string) {
@@ -463,13 +474,28 @@ export default function OkxOnboarding() {
   useEffect(() => {
     function protect() {
       document.documentElement.classList.add("okx-secure-blur");
-      window.setTimeout(() => document.documentElement.classList.remove("okx-secure-blur"), 900);
+      window.setTimeout(() => document.documentElement.classList.remove("okx-secure-blur"), 1400);
+    }
+
+    function protectKeys(event: KeyboardEvent) {
+      const key = event.key.toLowerCase();
+      if (
+        key === "printscreen" ||
+        (event.metaKey && event.shiftKey) ||
+        (event.ctrlKey && key === "p")
+      ) {
+        protect();
+      }
     }
 
     window.addEventListener("blur", protect);
+    window.addEventListener("pagehide", protect);
+    window.addEventListener("keydown", protectKeys);
     document.addEventListener("visibilitychange", protect);
     return () => {
       window.removeEventListener("blur", protect);
+      window.removeEventListener("pagehide", protect);
+      window.removeEventListener("keydown", protectKeys);
       document.removeEventListener("visibilitychange", protect);
     };
   }, []);
@@ -562,7 +588,7 @@ export default function OkxOnboarding() {
         ...current,
         { role: "assistant", content: data.message || t.fallback },
       ]);
-      console.info("OKX AYUDA chat", {
+      console.info("OKX Petra chat", {
         source: data.source,
         model: data.model,
         soulVersion: data.soulVersion,
@@ -620,13 +646,7 @@ export default function OkxOnboarding() {
             alt="OKX 3D logo"
             autoReveal
             className="okx-model"
-            arButtonLabel={t.ar}
-            arHintLabel={
-              <>
-                <FiCamera aria-hidden />
-                {t.arHint}
-              </>
-            }
+            arButtonLabel={t.arHint}
           />
           <span className="okx-model-note">OKX</span>
         </div>
@@ -701,7 +721,7 @@ export default function OkxOnboarding() {
               ))}
               {chatBusy ? (
                 <div className="okx-bubble assistant">
-                  <FiLoader aria-hidden className="okx-spin" /> AYUDA...
+                  <FiLoader aria-hidden className="okx-spin" /> Petra...
                 </div>
               ) : null}
             </div>
@@ -752,6 +772,10 @@ function MissionModal({
   onUpdateProof: (id: MissionId, patch: Partial<ProofState>) => void;
   onGenerate: (mission: Mission) => void;
 }) {
+  const [qrVisible, setQrVisible] = useState(false);
+  const hideQr = () => setQrVisible(false);
+  const showQr = () => setQrVisible(true);
+
   return (
     <div className="okx-mission-modal" role="dialog" aria-modal="true" aria-labelledby="mission-modal-title">
       <div className="okx-mission-panel">
@@ -804,7 +828,24 @@ function MissionModal({
         {proof.claim ? (
           <div className="okx-claim-card">
             <p className="okx-kicker">{t.ready}</p>
-            <img src={proof.claim.qrUrl} alt={t.ready} draggable={false} />
+            <div className={`okx-qr-wrap ${qrVisible ? "is-visible" : ""}`}>
+              <img src={proof.claim.qrUrl} alt={t.ready} draggable={false} />
+              <div className="okx-qr-mask" aria-hidden={qrVisible}>
+                <span>{t.qrHidden}</span>
+              </div>
+            </div>
+            <button
+              type="button"
+              className="okx-qr-reveal"
+              onPointerDown={showQr}
+              onPointerUp={hideQr}
+              onPointerCancel={hideQr}
+              onPointerLeave={hideQr}
+              onBlur={hideQr}
+              onContextMenu={(event) => event.preventDefault()}
+            >
+              {t.qrHold}
+            </button>
             <code>{proof.claim.claimId}</code>
             <p>{t.showLive}</p>
             <small>{t.screenshot}</small>
