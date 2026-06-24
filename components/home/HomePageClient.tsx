@@ -87,7 +87,7 @@ export default function HomePageClient({
           <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(0,0,0,0.62)_0%,rgba(0,0,0,0.14)_32%,rgba(0,0,0,0.08)_68%,rgba(0,0,0,0.84)_100%)]" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-64 bg-[linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,0.72)_60%,#000_100%)]" />
 
-          <div className="pointer-events-none relative z-20 mx-auto flex min-h-screen max-w-7xl items-end px-6 pb-12 pt-28 sm:pb-16 sm:pt-32">
+          <div className="pointer-events-none relative z-20 mx-auto flex min-h-screen max-w-7xl items-end px-6 pb-24 pt-28 sm:pb-16 sm:pt-32">
             <div className="max-w-2xl overflow-hidden">
               <div className="text-[10px] uppercase tracking-[0.34em] text-white/42 sm:text-[11px]">
                 Unexpected Experiences in Unusual Places

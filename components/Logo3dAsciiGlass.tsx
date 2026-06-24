@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import type { MutableRefObject, PointerEvent as ReactPointerEvent } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, MeshTransmissionMaterial, OrbitControls } from "@react-three/drei";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
@@ -80,11 +81,13 @@ function AsciiInjector({
   onLoaded,
   groupRef,
   controlsRef,
+  mobileRotationImpulseRef,
 }: {
   onEffect: (effect: AsciiEffect) => void;
   onLoaded: () => void;
   groupRef: React.RefObject<THREE.Group>;
   controlsRef: React.RefObject<OrbitControlsImpl | null>;
+  mobileRotationImpulseRef: MutableRefObject<number>;
 }) {
   const { gl, scene, camera, size } = useThree();
   const { width, height } = size;
@@ -135,6 +138,10 @@ function AsciiInjector({
     if (groupRef.current && autoRotate.current) {
       groupRef.current.rotation.y += delta * 0.55;
     }
+    if (groupRef.current && Math.abs(mobileRotationImpulseRef.current) > 0.0001) {
+      groupRef.current.rotation.y += mobileRotationImpulseRef.current;
+      mobileRotationImpulseRef.current *= 0.82;
+    }
     if (effectRef.current) {
       effectRef.current.render(scene, camera);
     }
@@ -176,24 +183,30 @@ function Scene({
   onLoaded,
   videoTexture,
   logoScale,
+  isCoarsePointer,
+  mobileRotationImpulseRef,
 }: {
   onEffect: (effect: AsciiEffect) => void;
   onLoaded: () => void;
   videoTexture: THREE.VideoTexture | null;
   logoScale: number;
+  isCoarsePointer: boolean;
+  mobileRotationImpulseRef: MutableRefObject<number>;
 }) {
   const groupRef = useRef<THREE.Group>(null!);
-  const controlsRef = useRef<OrbitControlsImpl>(null);
+  const controlsRef = useRef<OrbitControlsImpl | null>(null);
 
   return (
     <>
-      <OrbitControls
-        ref={controlsRef}
-        enablePan={false}
-        enableZoom={false}
-        minDistance={2}
-        maxDistance={12}
-      />
+      {!isCoarsePointer ? (
+        <OrbitControls
+          ref={controlsRef}
+          enablePan={false}
+          enableZoom={false}
+          minDistance={2}
+          maxDistance={12}
+        />
+      ) : null}
       <ambientLight intensity={5} />
       <directionalLight position={[4, 5, 6]} intensity={1.5} />
       {videoTexture ? <VideoBackground texture={videoTexture} /> : null}
@@ -203,6 +216,7 @@ function Scene({
         onLoaded={onLoaded}
         groupRef={groupRef}
         controlsRef={controlsRef}
+        mobileRotationImpulseRef={mobileRotationImpulseRef}
       />
     </>
   );
@@ -212,19 +226,35 @@ export default function Logo3dAsciiGlass() {
   const [modelLoaded, setModelLoaded] = useState(false);
   const [videoTexture, setVideoTexture] = useState<THREE.VideoTexture | null>(null);
   const [logoScale, setLogoScale] = useState(4.5);
+  const [isCoarsePointer, setIsCoarsePointer] = useState(false);
   const asciiContainerRef = useRef<HTMLDivElement>(null);
   const asciiEffectRef = useRef<AsciiEffect | null>(null);
+  const mobileRotationImpulseRef = useRef(0);
+  const mobileGestureRef = useRef<{
+    pointerId: number;
+    startX: number;
+    startY: number;
+    lastX: number;
+    mode: "pending" | "rotate" | "scroll";
+  } | null>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const coarsePointerQuery = window.matchMedia("(pointer: coarse), (max-width: 767px)");
     const updateScale = () => {
       setLogoScale(mediaQuery.matches ? 6.3 : 4.5);
     };
+    const updatePointerMode = () => {
+      setIsCoarsePointer(coarsePointerQuery.matches);
+    };
 
     updateScale();
+    updatePointerMode();
     mediaQuery.addEventListener("change", updateScale);
+    coarsePointerQuery.addEventListener("change", updatePointerMode);
     return () => {
       mediaQuery.removeEventListener("change", updateScale);
+      coarsePointerQuery.removeEventListener("change", updatePointerMode);
     };
   }, []);
 
@@ -245,6 +275,48 @@ export default function Logo3dAsciiGlass() {
     if (asciiContainerRef.current) {
       asciiContainerRef.current.appendChild(effect.domElement);
     }
+  };
+
+  const handleMobilePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!isCoarsePointer || event.pointerType === "mouse") return;
+    mobileGestureRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      lastX: event.clientX,
+      mode: "pending",
+    };
+  };
+
+  const handleMobilePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const gesture = mobileGestureRef.current;
+    if (!gesture || gesture.pointerId !== event.pointerId) return;
+
+    const dx = event.clientX - gesture.startX;
+    const dy = event.clientY - gesture.startY;
+
+    if (gesture.mode === "pending" && Math.max(Math.abs(dx), Math.abs(dy)) > 8) {
+      gesture.mode = Math.abs(dx) > Math.abs(dy) * 1.25 ? "rotate" : "scroll";
+      if (gesture.mode === "rotate") {
+        event.currentTarget.setPointerCapture(event.pointerId);
+      }
+    }
+
+    if (gesture.mode !== "rotate") return;
+
+    const step = event.clientX - gesture.lastX;
+    gesture.lastX = event.clientX;
+    mobileRotationImpulseRef.current += step * 0.006;
+    event.preventDefault();
+  };
+
+  const handleMobilePointerEnd = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const gesture = mobileGestureRef.current;
+    if (!gesture || gesture.pointerId !== event.pointerId) return;
+    if (gesture.mode === "rotate" && event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    mobileGestureRef.current = null;
   };
 
   return (
@@ -326,12 +398,17 @@ export default function Logo3dAsciiGlass() {
           transform: modelLoaded ? "scale(1)" : "scale(1.04)",
           transition: "opacity 700ms ease, transform 900ms cubic-bezier(0.22, 1, 0.36, 1)",
           zIndex: 3,
+          touchAction: isCoarsePointer ? "pan-y" : "auto",
         }}
+        onPointerDown={handleMobilePointerDown}
+        onPointerMove={handleMobilePointerMove}
+        onPointerUp={handleMobilePointerEnd}
+        onPointerCancel={handleMobilePointerEnd}
       >
         <Canvas
           camera={{ position: [0, 0, 6], fov: 55 }}
           gl={{ antialias: true, alpha: true }}
-          style={{ background: "transparent", touchAction: "pan-y" }}
+          style={{ background: "transparent", touchAction: isCoarsePointer ? "pan-y" : "auto" }}
           frameloop="always"
         >
           <Suspense fallback={null}>
@@ -340,6 +417,8 @@ export default function Logo3dAsciiGlass() {
               onLoaded={() => setModelLoaded(true)}
               videoTexture={videoTexture}
               logoScale={logoScale}
+              isCoarsePointer={isCoarsePointer}
+              mobileRotationImpulseRef={mobileRotationImpulseRef}
             />
           </Suspense>
         </Canvas>
