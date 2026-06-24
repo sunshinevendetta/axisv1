@@ -520,6 +520,58 @@
   pointer-events: none;
 }
 
+.okx-qr-wrap {
+  position: relative;
+  width: min(72vw, 280px);
+  overflow: hidden;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.okx-qr-wrap img {
+  display: block;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.okx-qr-wrap.is-visible img {
+  opacity: 1;
+}
+
+.okx-qr-mask {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: #050505;
+  font-family: "Bingo", sans-serif;
+  font-size: 18px;
+  line-height: 1;
+  text-transform: uppercase;
+  opacity: 1;
+  transition: opacity 120ms ease;
+}
+
+.okx-qr-wrap.is-visible .okx-qr-mask {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.okx-qr-reveal {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #050505;
+  font-family: "Bingo", sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  touch-action: manipulation;
+}
+
 .okx-claim-card code {
   padding: 8px 10px;
   border-radius: 999px;
@@ -549,7 +601,11 @@
 
 .okx-chat-panel {
   display: grid;
-  gap: 12px;
+  gap: 9px;
+  width: min(100%, 440px);
+  max-height: min(78vh, 620px);
+  padding: 14px;
+  border-radius: 22px;
 }
 
 .okx-chat-head {
@@ -563,25 +619,25 @@
 .okx-chat-intro {
   margin: 0;
   color: rgba(255, 255, 255, 0.68);
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 12px;
+  line-height: 1.32;
 }
 
 .okx-chat-log {
   display: grid;
-  gap: 8px;
-  max-height: 46vh;
+  gap: 7px;
+  max-height: 34vh;
   overflow: auto;
 }
 
 .okx-bubble {
   width: auto;
   max-width: 92%;
-  padding: 10px 12px;
+  padding: 8px 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  font-size: 13px;
-  line-height: 1.48;
+  border-radius: 14px;
+  font-size: 12px;
+  line-height: 1.4;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
@@ -617,17 +673,17 @@
 .okx-quick {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
 .okx-quick button {
-  min-height: 40px;
-  padding: 0 10px;
+  min-height: 34px;
+  padding: 0 9px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.055);
   color: rgba(255, 255, 255, 0.78);
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .okx-chat-form {
@@ -638,16 +694,27 @@
 
 .okx-chat-form button {
   width: auto;
-  min-width: 90px;
+  min-width: 78px;
+  min-height: 44px;
   margin: 0;
+}
+
+.okx-chat-form input {
+  min-height: 44px;
+  font-size: 14px;
 }
 
 .okx-spin {
   animation: okx-spin 800ms linear infinite;
 }
 
-.okx-secure-blur .okx-claim-card img {
-  filter: blur(18px);
+.okx-secure-blur .okx-qr-wrap img {
+  opacity: 0 !important;
+}
+
+.okx-secure-blur .okx-qr-mask {
+  opacity: 1 !important;
+  background: #fff;
 }
 
 .okx-lang-flags button:focus-visible,

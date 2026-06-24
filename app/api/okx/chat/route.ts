@@ -26,23 +26,25 @@ type ChatCompletionPayload = {
   error?: { message?: string };
 };
 
-type FallbackIntent = "uid" | "what" | "screenshot" | "outcomes" | "fund" | "ar" | "default";
+type FallbackIntent = "kyc" | "uid" | "what" | "screenshot" | "outcomes" | "fund" | "ar" | "default";
 
 const NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1";
 const NVIDIA_MODEL = "nvidia/llama-3.3-nemotron-super-49b-v1.5";
-const HERMES_AGENT_NAME = "AXIS OKX Ayuda Hermes";
+const HERMES_AGENT_NAME = "AXIS Petra Hermes";
 
 const fallbackAnswers: Record<SupportedLang, Record<FallbackIntent, string>> = {
   es: {
-    uid: "Tu UID esta en OKX app: abre Perfil o Account settings y busca UID. Si no aparece, completa identidad/KYC primero. Para la bebida, ensenalo al staff o pega el UID aqui.",
-    what: "OKX es una app de crypto. Para la mision de hoy: descarga OKX, crea cuenta, completa KYC y muestra tu UID al staff para validar tu bebida.",
-    screenshot: "Sube una captura donde se vea la prueba de la mision: cuenta verificada/UID para bebida 1, posicion en OKX Outcomes para bebida 2, o fondeo de 10 USD para bebida 3.",
-    outcomes: "En OKX app busca Outcomes desde el banner principal o Trade > DEX > Outcomes. Entra al partido, toma una posicion y guarda screenshot para el staff.",
-    fund: "Para la tercera bebida, fondea 10 USD en tu cuenta OKX si tu pais/metodo es elegible. Cuando se confirme, sube screenshot o muestralo al staff.",
-    ar: "Para AR, toca el boton AR del modelo. Si tu telefono no abre la camara, prueba Chrome en Android o Safari con soporte AR; si sigue bloqueado, pide ayuda al staff.",
-    default: "Hazlo en este orden: 1) cuenta + KYC, 2) muestra UID al staff, 3) Outcomes o fondeo si vas por mas bebidas. Si una pantalla no carga, ve con staff OKX.",
+    kyc: "Para KYC: abre OKX > Menu > Account settings > Identity verification. Elige cuenta individual, llena tus datos y sube ID vigente con buena luz; si pide selfie, hazla ahi mismo. No subas tu ID aqui: solo muestra al staff cuando quede listo.",
+    uid: "Va: abre OKX, entra a Perfil o Account settings y busca UID. Si no sale, termina KYC primero. Para tu bebida, ensenalo al staff o pegalo aqui.",
+    what: "OKX es una app de crypto. Esta noche solo necesitas lo basico: cuenta, KYC y UID visible para que staff valide tu bebida.",
+    screenshot: "Sube la captura que pruebe tu mision: cuenta verificada/UID para bebida 1, Outcomes para bebida 2, o fondeo de 10 USD para bebida 3.",
+    outcomes: "En OKX busca Outcomes desde el banner o Trade > DEX > Outcomes. Entra al partido, toma posicion y guarda captura para staff.",
+    fund: "Para la tercera bebida, fondea 10 USD si tu metodo/pais aplica. Cuando se confirme, sube captura o ensenala al staff.",
+    ar: "Para AR, toca el boton AR del modelo. Si no abre camara, prueba Chrome en Android o Safari en iPhone. Si se atora, staff te ayuda.",
+    default: "Va rapido: 1) cuenta + KYC, 2) muestra UID al staff, 3) Outcomes o fondeo si vas por mas bebidas. Si algo no carga, ve con staff OKX.",
   },
   en: {
+    kyc: "For KYC: open OKX > Menu > Account settings > Identity verification. Choose individual account, fill your details, upload a valid ID in good light, and do the selfie if asked. Do not upload your ID here; show staff once it is done.",
     uid: "Your UID is in the OKX app profile/account settings area. If you do not see it, finish identity verification first. For the drink, show it to OKX staff or paste it here.",
     what: "OKX is a crypto app. For tonight: download OKX, create an account, complete KYC, then show your UID to staff for drink validation.",
     screenshot: "Upload a screenshot proving the mission: verified account/UID for drink 1, OKX Outcomes position for drink 2, or 10 USD funding for drink 3.",
@@ -52,6 +54,7 @@ const fallbackAnswers: Record<SupportedLang, Record<FallbackIntent, string>> = {
     default: "Do it in this order: 1) account + KYC, 2) show UID to staff, 3) Outcomes or funding if you want more drinks. If a screen does not load, go to OKX staff.",
   },
   zh: {
+    kyc: "KYC 路径：打开 OKX > Menu > Account settings > Identity verification。选择个人账户，填写资料，上传清晰有效证件；如果要求自拍，就在 OKX app 内完成。不要把证件上传到这里，完成后给工作人员看。",
     uid: "UID 在 OKX app 的个人资料或账户设置里。如果看不到，请先完成身份验证。换饮品时，把 UID 给现场 OKX 工作人员看，或填在这里。",
     what: "OKX 是一款加密货币应用。今晚的任务是：下载 OKX、创建账户、完成身份验证，然后向工作人员出示 UID。",
     screenshot: "请上传能证明任务的截图：第 1 杯是已验证账户/UID，第 2 杯是 OKX Outcomes 参与截图，第 3 杯是 10 USD 入金截图。",
@@ -61,6 +64,7 @@ const fallbackAnswers: Record<SupportedLang, Record<FallbackIntent, string>> = {
     default: "按顺序完成：1）账户 + 身份验证，2）向工作人员展示 UID，3）参加 Outcomes 或入金。卡住就找 OKX 工作人员。",
   },
   ja: {
+    kyc: "KYC は OKX > Menu > Account settings > Identity verification。個人口座を選び、情報入力、有効なIDを明るい場所で撮影、必要ならセルフィー。IDはここに送らず、完了後スタッフへ。",
     uid: "UID は OKX app のプロフィールまたはアカウント設定にあります。表示されない場合は本人確認を完了してください。スタッフに見せるか、ここに入力してください。",
     what: "OKX は暗号資産アプリです。今夜は OKX をダウンロードし、アカウント作成、本人確認、UID提示でドリンク確認です。",
     screenshot: "ミッション証明のスクリーンショットをアップしてください：本人確認/UID、Outcomes参加、または10 USD入金。",
@@ -70,6 +74,7 @@ const fallbackAnswers: Record<SupportedLang, Record<FallbackIntent, string>> = {
     default: "順番は 1) アカウント + 本人確認、2) UID提示、3) Outcomes または入金。詰まったら OKX スタッフへ。",
   },
   ko: {
+    kyc: "KYC: OKX > Menu > Account settings > Identity verification. 개인 계정 선택, 정보 입력, 유효한 신분증을 밝게 촬영, 필요하면 셀피까지 진행하세요. 신분증은 여기 올리지 말고 완료 후 직원에게 보여주세요.",
     uid: "UID는 OKX 앱 프로필 또는 계정 설정에 있습니다. 보이지 않으면 먼저 본인 인증을 완료하세요. 직원에게 보여주거나 여기에 입력하세요.",
     what: "OKX는 crypto 앱입니다. 오늘은 OKX 설치, 계정 생성, KYC 완료, UID 제시로 음료를 확인합니다.",
     screenshot: "미션 증명 스크린샷을 올리세요: 인증 계정/UID, OKX Outcomes 참여, 또는 10 USD 충전 화면.",
@@ -79,6 +84,7 @@ const fallbackAnswers: Record<SupportedLang, Record<FallbackIntent, string>> = {
     default: "순서: 1) 계정 + KYC, 2) UID 직원 확인, 3) Outcomes 또는 충전. 막히면 OKX 직원에게 가세요.",
   },
   fr: {
+    kyc: "Pour le KYC : OKX > Menu > Account settings > Identity verification. Choisis compte individuel, remplis les infos, ajoute une piece d'identite valide bien lisible, puis selfie si demande. N'envoie pas ton ID ici; montre au staff une fois valide.",
     uid: "Ton UID est dans le profil ou les reglages du compte OKX. Si tu ne le vois pas, termine la verification. Montre-le au staff ou colle-le ici.",
     what: "OKX est une app crypto. Ce soir : telecharge OKX, cree ton compte, verifie ton identite, puis montre ton UID au staff.",
     screenshot: "Ajoute une capture qui prouve la mission : compte/UID verifie, position OKX Outcomes, ou depot de 10 USD.",
@@ -111,6 +117,7 @@ function normalizeIntentText(text: string) {
 
 function detectIntent(text: string): FallbackIntent {
   const normalized = normalizeIntentText(text);
+  if (/\b(kyc|identity verification|identidad|verificacion|verificar|verify|verification|id|ine|pasaporte|passport|selfie)\b/.test(normalized)) return "kyc";
   if (/\b(uid|id|perfil|profile|account settings|cuenta)\b/.test(normalized)) return "uid";
   if (/\b(screenshot|screen shot|captura|foto|proof|prueba|upload|subo|subir)\b/.test(normalized)) return "screenshot";
   if (/\b(outcomes|partido|match|predic|position|posicion|dex)\b/.test(normalized)) return "outcomes";
@@ -123,6 +130,10 @@ function detectIntent(text: string): FallbackIntent {
 function getFallbackAnswer(cleanMessages: CleanMessage[], lang: SupportedLang) {
   const lastUserMessage = cleanMessages.at(-1)?.content || "";
   return fallbackAnswers[lang][detectIntent(lastUserMessage)];
+}
+
+function shouldUseOfficialGuideAnswer(intent: FallbackIntent) {
+  return intent !== "default";
 }
 
 async function requestChatCompletion({
@@ -173,8 +184,10 @@ function getSystemPrompt(soul: string, lang: SupportedLang) {
     "Answer the newest attendee message specifically. Do not repeat a previous answer unless the newest message asks the same thing.",
     "If the newest message asks what OKX is, explain OKX in one short sentence first, then give the next event action.",
     "If the newest message asks about UID, answer only where UID is and what to show staff.",
+    "If the newest message asks about KYC or identity verification, give the exact OKX app path: Menu > Account settings > Identity verification, mention valid ID/selfie if needed, and tell them not to upload ID documents into this chat.",
     "If the newest message asks about screenshot/proof, answer only which screenshot is needed.",
     "Return only the helpful answer for the attendee. No preamble, no disclaimers unless needed by the soul.",
+    "Tone: natural, cool, event-floor Spanish/English. Do not sound like a corporate support bot.",
     "Do not wrap the answer in quotation marks.",
     "Use plain text or a tiny numbered list. No tables. Keep it under 80 words unless the user asks for detail.",
   ].join("\n\n");
@@ -194,7 +207,7 @@ function buildHermesUserPrompt(cleanMessages: CleanMessage[], lang: SupportedLan
     "Earlier attendee messages for context:",
     previous,
     "",
-    "Reply as AYUDA / Hermes now. Use only the AXIS / Bar Oriente OKX mission facts in the soul. Give the next useful action for the newest message.",
+    "Reply as Petra / Hermes now. Use only the AXIS / Bar Oriente OKX mission facts in the soul. Give the next useful action for the newest message.",
   ].join("\n");
 }
 
@@ -216,6 +229,15 @@ export async function POST(request: Request) {
       role: "user",
       content: String(message.content || "").slice(0, 900),
     }));
+  const intent = detectIntent(cleanMessages.at(-1)?.content || "");
+
+  if (shouldUseOfficialGuideAnswer(intent)) {
+    return NextResponse.json({
+      message: fallbackAnswers[lang][intent],
+      source: "official-okx-guide-hermes",
+      soulVersion: OKX_PETRA_SOUL_VERSION,
+    });
+  }
 
   const providerMessages = [
     { role: "system" as const, content: getSystemPrompt(okxPetraSoul, lang) },
@@ -231,7 +253,7 @@ export async function POST(request: Request) {
 
   if (nvidiaKey) {
     try {
-      console.info("OKX Ayuda Hermes NVIDIA request", {
+      console.info("OKX Petra Hermes NVIDIA request", {
         agent: HERMES_AGENT_NAME,
         source: "nvidia-build",
         model: nvidiaModel,
@@ -246,7 +268,7 @@ export async function POST(request: Request) {
         model: nvidiaModel,
         messages: providerMessages,
       });
-      console.info("OKX Ayuda Hermes NVIDIA success", {
+      console.info("OKX Petra Hermes NVIDIA success", {
         agent: HERMES_AGENT_NAME,
         source: "nvidia-build",
         model: nvidiaModel,
@@ -261,7 +283,7 @@ export async function POST(request: Request) {
         soulVersion: OKX_PETRA_SOUL_VERSION,
       });
     } catch (error) {
-      console.error("OKX Ayuda Hermes NVIDIA failed", {
+      console.error("OKX Petra Hermes NVIDIA failed", {
         agent: HERMES_AGENT_NAME,
         model: nvidiaModel,
         lang,
@@ -272,11 +294,11 @@ export async function POST(request: Request) {
   }
 
   const message = getFallbackAnswer(cleanMessages, lang);
-  console.warn("OKX Ayuda Hermes fallback", {
+  console.warn("OKX Petra Hermes fallback", {
     agent: HERMES_AGENT_NAME,
     lang,
     hasNvidiaKey: Boolean(nvidiaKey),
-    intent: detectIntent(cleanMessages.at(-1)?.content || ""),
+    intent,
     soulVersion: OKX_PETRA_SOUL_VERSION,
   });
   return NextResponse.json({
