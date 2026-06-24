@@ -127,6 +127,11 @@ function detectIntent(text: string): FallbackIntent {
   return "default";
 }
 
+function asksForDetail(text: string) {
+  const normalized = normalizeIntentText(text);
+  return /\b(como|donde|paso a paso|detalle|detallado|explica|explicame|mas info|no entiendo|que hago|how|where|step by step|details|explain)\b/.test(normalized);
+}
+
 function getFallbackAnswer(cleanMessages: CleanMessage[], lang: SupportedLang) {
   const lastUserMessage = [...cleanMessages].reverse().find((message) => message.role === "user")?.content || "";
   return fallbackAnswers[lang][detectIntent(lastUserMessage)];
@@ -192,11 +197,13 @@ async function requestChatCompletion({
   apiKey,
   baseUrl,
   model,
+  maxTokens,
   messages,
 }: {
   apiKey: string;
   baseUrl: string;
   model: string;
+  maxTokens: number;
   messages: Array<{ role: "system" | "user"; content: string }>;
 }) {
   const response = await fetch(`${baseUrl.replace(/\/$/, "")}/chat/completions`, {
@@ -210,7 +217,7 @@ async function requestChatCompletion({
       model,
       temperature: 0.35,
       top_p: 0.9,
-      max_tokens: 360,
+      max_tokens: maxTokens,
       stream: false,
       messages,
     }),
@@ -226,7 +233,7 @@ async function requestChatCompletion({
   return cleanModelText(content);
 }
 
-function getSystemPrompt(soul: string, lang: SupportedLang, intent: FallbackIntent) {
+function getSystemPrompt(soul: string, lang: SupportedLang, intent: FallbackIntent, detailed: boolean) {
   const guide = getIntentGuide(intent);
   return [
     soul,
@@ -234,6 +241,9 @@ function getSystemPrompt(soul: string, lang: SupportedLang, intent: FallbackInte
     `Soul version: ${OKX_PETRA_SOUL_VERSION}.`,
     `Current page language: ${lang}.`,
     guide ? `Relevant OKX guide context for this message:\n${guide}` : "",
+    detailed
+      ? "The attendee is asking for detail. Give a real answer with enough steps to complete the action. Use Markdown with short sections, bullets, or numbered steps. Include where to tap, what to expect, what screenshot to show, and what to do if the option does not appear."
+      : "The attendee is asking a quick question. Keep it direct, but still answer the specific question.",
     "Production guardrail: answer only from the soul and tonight's OKX drink mission context.",
     "Answer the newest attendee message specifically. Do not repeat a previous answer unless the newest message asks the same thing.",
     "If the newest message is a follow-up, use the previous assistant answer and explain the missing detail instead of repeating yourself.",
@@ -245,7 +255,9 @@ function getSystemPrompt(soul: string, lang: SupportedLang, intent: FallbackInte
     "Return only the helpful answer for the attendee. No preamble, no disclaimers unless needed by the soul.",
     "Tone: natural, cool, event-floor Spanish/English. Do not sound like a corporate support bot. In Spanish, sound like a real person in Mexico City helping at a party.",
     "Do not wrap the answer in quotation marks.",
-    "Use plain text or a tiny numbered list. No tables. Keep it under 95 words unless the user asks for detail.",
+    detailed
+      ? "No tables. Aim for 120-220 words only if that helps the attendee actually finish the flow."
+      : "No tables. Keep it under 80 words unless the user asks for more.",
   ].filter(Boolean).join("\n\n");
 }
 
@@ -285,12 +297,13 @@ export async function POST(request: Request) {
     .map((message) => ({
       role: message.role === "assistant" ? "assistant" : "user",
       content: String(message.content || "").slice(0, 900),
-    }));
+  }));
   const latestUserMessage = [...cleanMessages].reverse().find((message) => message.role === "user")?.content || "";
   const intent = detectIntent(latestUserMessage);
+  const detailed = asksForDetail(latestUserMessage);
 
   const providerMessages = [
-    { role: "system" as const, content: getSystemPrompt(okxPetraSoul, lang, intent) },
+    { role: "system" as const, content: getSystemPrompt(okxPetraSoul, lang, intent, detailed) },
     { role: "user" as const, content: buildHermesUserPrompt(cleanMessages, lang) },
   ];
 
@@ -312,11 +325,13 @@ export async function POST(request: Request) {
         soulChars: okxPetraSoul.length,
         transcriptMessages: cleanMessages.length,
         intent,
+        detailed,
       });
       const message = await requestChatCompletion({
         apiKey: nvidiaKey,
         baseUrl: nvidiaBaseUrl,
         model: nvidiaModel,
+        maxTokens: detailed ? 720 : 360,
         messages: providerMessages,
       });
       console.info("OKX Petra Hermes NVIDIA success", {

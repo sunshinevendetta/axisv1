@@ -1,6 +1,6 @@
 "use client";
 
-import type { ChangeEvent, FormEvent } from "react";
+import type { ChangeEvent, FormEvent, ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -409,27 +409,62 @@ const initialAssistant: Record<Lang, string> = {
   fr: "Je suis Petra, agent Hermes AXIS. Je t'aide a obtenir tes verres ce soir.",
 };
 
-function formatChatText(text: string) {
+function renderChatInline(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*|__[^_]+__|`[^`]+`)/g).filter(Boolean);
+
+  return parts.map((part, partIndex) => {
+    const bold = part.match(/^(\*\*|__)(.+)(\*\*|__)$/);
+    if (bold) return <strong key={`${part}-${partIndex}`}>{bold[2]}</strong>;
+
+    const code = part.match(/^`(.+)`$/);
+    if (code) return <code key={`${part}-${partIndex}`}>{code[1]}</code>;
+
+    return <span key={`${part}-${partIndex}`}>{part}</span>;
+  });
+}
+
+function formatChatText(text: string): ReactNode {
   const normalized = text.replace(/\n{3,}/g, "\n\n").trim();
   const lines = normalized.split("\n");
 
   return lines.map((line, lineIndex) => {
     const heading = line.match(/^#{1,3}\s+(.+)$/);
-    const content = heading ? heading[1] : line;
-    const parts = content.split(/(\*\*[^*]+\*\*|__[^_]+__)/g).filter(Boolean);
+    if (heading) {
+      return (
+        <div key={`${line}-${lineIndex}`} className="okx-chat-heading">
+          {renderChatInline(heading[1])}
+        </div>
+      );
+    }
+
+    if (!line.trim()) {
+      return <div key={`${line}-${lineIndex}`} className="okx-chat-spacer" />;
+    }
+
+    const bullet = line.match(/^\s*[-*]\s+(.+)$/);
+    if (bullet) {
+      return (
+        <div key={`${line}-${lineIndex}`} className="okx-chat-list-row">
+          <span aria-hidden>•</span>
+          <p>{renderChatInline(bullet[1])}</p>
+        </div>
+      );
+    }
+
+    const numbered = line.match(/^\s*(\d+)[.)]\s+(.+)$/);
+    if (numbered) {
+      return (
+        <div key={`${line}-${lineIndex}`} className="okx-chat-list-row numbered">
+          <span>{numbered[1]}</span>
+          <p>{renderChatInline(numbered[2])}</p>
+        </div>
+      );
+    }
 
     return (
-      <span key={`${line}-${lineIndex}`} className={heading ? "okx-chat-heading" : undefined}>
-        {parts.map((part, partIndex) => {
-          const bold = part.match(/^(\*\*|__)(.+)(\*\*|__)$/);
-          return bold ? (
-            <strong key={`${part}-${partIndex}`}>{bold[2]}</strong>
-          ) : (
-            <span key={`${part}-${partIndex}`}>{part}</span>
-          );
-        })}
-        {lineIndex < lines.length - 1 ? <br /> : null}
-      </span>
+      <p key={`${line}-${lineIndex}`} className="okx-chat-paragraph">
+        {renderChatInline(line)}
+      </p>
     );
   });
 }
