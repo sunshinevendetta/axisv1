@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
+  FiCamera,
   FiCheck,
   FiHelpCircle,
   FiLoader,
@@ -647,6 +648,12 @@ export default function OkxOnboarding() {
             autoReveal
             className="okx-model"
             arButtonLabel={t.arHint}
+            arHintLabel={
+              <>
+                <FiCamera aria-hidden />
+                {t.ar}
+              </>
+            }
           />
           <span className="okx-model-note">OKX</span>
         </div>
