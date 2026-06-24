@@ -1,7 +1,7 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ModelViewerElement = "model-viewer" as any;
@@ -9,10 +9,12 @@ const ModelViewerElement = "model-viewer" as any;
 
 type Props = {
   src: string;
+  iosSrc?: string;
   poster?: string;
   alt?: string;
   className?: string;
   arButtonLabel?: string;
+  arHintLabel?: ReactNode;
   /**
    * Reveal the model immediately and start auto-rotating without waiting for a
    * user interaction. Use for hero models that should spin on load. Defaults to
@@ -23,15 +25,21 @@ type Props = {
 
 export default function ModelViewer({
   src,
+  iosSrc,
   poster,
   alt = "3D collectible",
   className = "",
   arButtonLabel = "Tap me now",
+  arHintLabel,
   autoReveal = false,
 }: Props) {
   const [ready, setReady] = useState(false);
   const [error, setError] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  const activateAR = () => {
+    const element = ref.current as (HTMLElement & { activateAR?: () => Promise<void> | void }) | null;
+    void element?.activateAR?.();
+  };
 
   // Check if the GLB exists once the script is loaded
   useEffect(() => {
@@ -62,6 +70,7 @@ export default function ModelViewer({
       <ModelViewerElement
         ref={ref}
         src={src}
+        {...(iosSrc ? { "ios-src": iosSrc } : {})}
         poster={poster}
         alt={alt}
         camera-controls
@@ -86,6 +95,7 @@ export default function ModelViewer({
         <button
           slot="ar-button"
           type="button"
+          onClick={activateAR}
           className="absolute bottom-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/55 px-3.5 py-2 text-[10px] font-medium uppercase tracking-[0.22em] text-white backdrop-blur transition hover:bg-black/75"
         >
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -94,6 +104,15 @@ export default function ModelViewer({
           </svg>
           {arButtonLabel}
         </button>
+        {arHintLabel ? (
+          <button
+            type="button"
+            onClick={activateAR}
+            className="absolute left-3 top-3 z-10 inline-flex max-w-[calc(100%-24px)] items-center gap-1.5 rounded-full border border-white/20 bg-black/55 px-3.5 py-2 text-left text-[10px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur transition hover:bg-black/75"
+          >
+            {arHintLabel}
+          </button>
+        ) : null}
       </ModelViewerElement>
     </>
   );

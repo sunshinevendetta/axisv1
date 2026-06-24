@@ -1,6 +1,7 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { usePathname } from "next/navigation";
 import { type ReactNode, useEffect, useState } from "react";
 import { createConfig, http, WagmiProvider, type Config } from "wagmi";
 import { base, baseSepolia } from "wagmi/chains";
@@ -23,6 +24,8 @@ export function Providers({
 }) {
   const [queryClient] = useState(() => new QueryClient());
   const [config, setConfig] = useState<Config | null>(null);
+  const pathname = usePathname();
+  const showLanguageSwitch = !pathname?.startsWith("/okx");
 
   useEffect(() => {
     let mounted = true;
@@ -45,7 +48,7 @@ export function Providers({
       <QueryClientProvider client={queryClient}>
         <SiteLanguageProvider>
           {children}
-          <LanguageSwitch />
+          {showLanguageSwitch ? <LanguageSwitch /> : null}
         </SiteLanguageProvider>
       </QueryClientProvider>
     </WagmiProvider>
