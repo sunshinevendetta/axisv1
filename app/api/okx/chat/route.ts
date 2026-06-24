@@ -17,7 +17,7 @@ type ChatBody = {
 };
 
 type CleanMessage = {
-  role: "user";
+  role: "user" | "assistant";
   content: string;
 };
 
@@ -39,7 +39,7 @@ const fallbackAnswers: Record<SupportedLang, Record<FallbackIntent, string>> = {
     what: "OKX es una app de crypto. Esta noche solo necesitas lo basico: cuenta, KYC y UID visible para que staff valide tu bebida.",
     screenshot: "Sube la captura que pruebe tu mision: cuenta verificada/UID para bebida 1, Outcomes para bebida 2, o fondeo de 10 USD para bebida 3.",
     outcomes: "En OKX busca Outcomes desde el banner o Trade > DEX > Outcomes. Entra al partido, toma posicion y guarda captura para staff.",
-    fund: "Para la tercera bebida, fondea 10 USD si tu metodo/pais aplica. Cuando se confirme, sube captura o ensenala al staff.",
+    fund: "Va: en OKX abre Deposit desde home, o ve a Assets/Portfolio > Deposit. Si ya tienes crypto, elige Deposit crypto, moneda y red; manda desde tu otro wallet usando la direccion/QR. Si quieres comprar con MXN, prueba Buy > Buy crypto o Assets > Deposit. Cuando entren 10 USD, captura y staff valida.",
     ar: "Para AR, toca el boton AR del modelo. Si no abre camara, prueba Chrome en Android o Safari en iPhone. Si se atora, staff te ayuda.",
     default: "Va rapido: 1) cuenta + KYC, 2) muestra UID al staff, 3) Outcomes o fondeo si vas por mas bebidas. Si algo no carga, ve con staff OKX.",
   },
@@ -49,7 +49,7 @@ const fallbackAnswers: Record<SupportedLang, Record<FallbackIntent, string>> = {
     what: "OKX is a crypto app. For tonight: download OKX, create an account, complete KYC, then show your UID to staff for drink validation.",
     screenshot: "Upload a screenshot proving the mission: verified account/UID for drink 1, OKX Outcomes position for drink 2, or 10 USD funding for drink 3.",
     outcomes: "In the OKX app, open Outcomes from the homepage banner or Trade > DEX > Outcomes. Join the match, take a position, and save a screenshot for staff.",
-    fund: "For the third drink, fund 10 USD if your country and payment method are eligible. Once confirmed, upload or show the screenshot to staff.",
+    fund: "For the third drink: in OKX, tap Deposit on home, or go to Assets/Portfolio > Deposit. If you already have crypto, choose Deposit crypto, asset, and network, then send from your other wallet using the address/QR. If buying with local currency, try Buy > Buy crypto or Assets > Deposit. Once 10 USD lands, screenshot it for staff.",
     ar: "For AR, tap the AR button on the model. If the camera does not open, try Chrome on Android or Safari with AR support; if it still blocks, ask staff.",
     default: "Do it in this order: 1) account + KYC, 2) show UID to staff, 3) Outcomes or funding if you want more drinks. If a screen does not load, go to OKX staff.",
   },
@@ -128,12 +128,64 @@ function detectIntent(text: string): FallbackIntent {
 }
 
 function getFallbackAnswer(cleanMessages: CleanMessage[], lang: SupportedLang) {
-  const lastUserMessage = cleanMessages.at(-1)?.content || "";
+  const lastUserMessage = [...cleanMessages].reverse().find((message) => message.role === "user")?.content || "";
   return fallbackAnswers[lang][detectIntent(lastUserMessage)];
 }
 
-function shouldUseOfficialGuideAnswer(intent: FallbackIntent) {
-  return intent !== "default";
+function getIntentGuide(intent: FallbackIntent) {
+  if (intent === "default") return "";
+
+  const guides: Record<FallbackIntent, string> = {
+    kyc: [
+      "Official OKX identity verification facts:",
+      "- App path: OKX app > Menu > Account settings > Identity verification under Profile.",
+      "- User chooses individual verification, fills required info, uploads a clear valid ID, and completes selfie/liveness if requested.",
+      "- Never ask for ID documents in this chat. Tell them to complete ID steps only inside OKX.",
+    ].join("\n"),
+    uid: [
+      "Official OKX UID facts:",
+      "- App path: OKX app > Menu > User Center > Account settings.",
+      "- UID appears in the Profile/account area and can be copied.",
+      "- For tonight, the attendee shows the UID to OKX staff or pastes it into the page.",
+    ].join("\n"),
+    what: [
+      "OKX explanation for this event:",
+      "- OKX is the crypto app powering tonight's drink missions.",
+      "- Keep it event-focused: account, KYC, UID, Outcomes, funding, staff validation.",
+    ].join("\n"),
+    screenshot: [
+      "Proof screenshot rules:",
+      "- Drink 1 proof: verified OKX account or UID screen.",
+      "- Drink 2 proof: OKX Outcomes participation/position screen.",
+      "- Drink 3 proof: 10 USD funding/deposit/buy confirmation screen.",
+      "- Do not ask for passwords, full card numbers, private keys, seed phrases, or ID documents.",
+    ].join("\n"),
+    outcomes: [
+      "Official OKX Outcomes facts:",
+      "- App path: homepage banner or Trade > DEX > Outcomes.",
+      "- First-time users may need account initialization.",
+      "- User joins the match activation, takes a position, and saves proof.",
+      "- Do not tell the user what team/outcome to pick.",
+    ].join("\n"),
+    fund: [
+      "Official OKX funding/deposit facts:",
+      "- Crypto deposit app paths: tap Deposit from home, or go to Assets/Portfolio > Deposit > Deposit crypto.",
+      "- Then choose crypto asset and deposit network. The app generates deposit details/address/QR.",
+      "- The user sends funds from another wallet/exchange using the same asset and network.",
+      "- Mexico/LATAM cash-buy path: home Buy > Buy crypto, Assets > Deposit, or User Center > Buy, then Buy Crypto with local currency such as MXN when available.",
+      "- Availability depends on country, payment method, verification, limits, and OKX terms.",
+      "- For tonight, once about 10 USD is confirmed, they upload/show the funding screenshot to staff.",
+    ].join("\n"),
+    ar: [
+      "AR facts:",
+      "- The OKX logo has an AR button.",
+      "- Android should use Chrome/Scene Viewer; iPhone should use Safari/Quick Look.",
+      "- If the browser blocks camera/AR, ask staff for the shot flow.",
+    ].join("\n"),
+    default: "",
+  };
+
+  return guides[intent];
 }
 
 async function requestChatCompletion({
@@ -174,40 +226,45 @@ async function requestChatCompletion({
   return cleanModelText(content);
 }
 
-function getSystemPrompt(soul: string, lang: SupportedLang) {
+function getSystemPrompt(soul: string, lang: SupportedLang, intent: FallbackIntent) {
+  const guide = getIntentGuide(intent);
   return [
     soul,
     `Agent name: ${HERMES_AGENT_NAME}.`,
     `Soul version: ${OKX_PETRA_SOUL_VERSION}.`,
     `Current page language: ${lang}.`,
+    guide ? `Relevant OKX guide context for this message:\n${guide}` : "",
     "Production guardrail: answer only from the soul and tonight's OKX drink mission context.",
     "Answer the newest attendee message specifically. Do not repeat a previous answer unless the newest message asks the same thing.",
+    "If the newest message is a follow-up, use the previous assistant answer and explain the missing detail instead of repeating yourself.",
     "If the newest message asks what OKX is, explain OKX in one short sentence first, then give the next event action.",
     "If the newest message asks about UID, answer only where UID is and what to show staff.",
     "If the newest message asks about KYC or identity verification, give the exact OKX app path: Menu > Account settings > Identity verification, mention valid ID/selfie if needed, and tell them not to upload ID documents into this chat.",
+    "If the newest message asks how or where to fund, give the actual OKX tap path: Deposit from home, or Assets/Portfolio > Deposit. Mention Deposit crypto with same asset/network, or Buy > Buy crypto / Assets > Deposit for local currency when available.",
     "If the newest message asks about screenshot/proof, answer only which screenshot is needed.",
     "Return only the helpful answer for the attendee. No preamble, no disclaimers unless needed by the soul.",
-    "Tone: natural, cool, event-floor Spanish/English. Do not sound like a corporate support bot.",
+    "Tone: natural, cool, event-floor Spanish/English. Do not sound like a corporate support bot. In Spanish, sound like a real person in Mexico City helping at a party.",
     "Do not wrap the answer in quotation marks.",
-    "Use plain text or a tiny numbered list. No tables. Keep it under 80 words unless the user asks for detail.",
-  ].join("\n\n");
+    "Use plain text or a tiny numbered list. No tables. Keep it under 95 words unless the user asks for detail.",
+  ].filter(Boolean).join("\n\n");
 }
 
 function buildHermesUserPrompt(cleanMessages: CleanMessage[], lang: SupportedLang) {
-  const lastMessage = cleanMessages.at(-1)?.content || "What do I do?";
-  const previousMessages = cleanMessages.slice(0, -1);
-  const previous = previousMessages.length
-    ? previousMessages.map((message, index) => `${index + 1}. ${message.content}`).join("\n")
+  const newestUserMessage = [...cleanMessages].reverse().find((message) => message.role === "user")?.content || "What do I do?";
+  const transcript = cleanMessages.length
+    ? cleanMessages
+        .map((message) => `${message.role === "user" ? "Attendee" : "Petra"}: ${message.content}`)
+        .join("\n")
     : "none";
 
   return [
     `Current page language: ${lang}.`,
-    `Newest attendee message: ${lastMessage}`,
+    `Newest attendee message: ${newestUserMessage}`,
     "",
-    "Earlier attendee messages for context:",
-    previous,
+    "Conversation transcript, oldest to newest:",
+    transcript,
     "",
-    "Reply as Petra / Hermes now. Use only the AXIS / Bar Oriente OKX mission facts in the soul. Give the next useful action for the newest message.",
+    "Reply as Petra / Hermes now. Use the transcript, avoid repeating your previous answer, and give the next useful action for the newest attendee message.",
   ].join("\n");
 }
 
@@ -223,24 +280,17 @@ export async function POST(request: Request) {
       : "es";
   const messages = Array.isArray(body.messages) ? body.messages : [];
   const cleanMessages: CleanMessage[] = messages
-    .filter((message) => message.role === "user")
-    .slice(-6)
+    .filter((message) => message.role === "user" || message.role === "assistant")
+    .slice(-10)
     .map((message) => ({
-      role: "user",
+      role: message.role === "assistant" ? "assistant" : "user",
       content: String(message.content || "").slice(0, 900),
     }));
-  const intent = detectIntent(cleanMessages.at(-1)?.content || "");
-
-  if (shouldUseOfficialGuideAnswer(intent)) {
-    return NextResponse.json({
-      message: fallbackAnswers[lang][intent],
-      source: "official-okx-guide-hermes",
-      soulVersion: OKX_PETRA_SOUL_VERSION,
-    });
-  }
+  const latestUserMessage = [...cleanMessages].reverse().find((message) => message.role === "user")?.content || "";
+  const intent = detectIntent(latestUserMessage);
 
   const providerMessages = [
-    { role: "system" as const, content: getSystemPrompt(okxPetraSoul, lang) },
+    { role: "system" as const, content: getSystemPrompt(okxPetraSoul, lang, intent) },
     { role: "user" as const, content: buildHermesUserPrompt(cleanMessages, lang) },
   ];
 
@@ -260,7 +310,8 @@ export async function POST(request: Request) {
         lang,
         soulVersion: OKX_PETRA_SOUL_VERSION,
         soulChars: okxPetraSoul.length,
-        userMessages: cleanMessages.length,
+        transcriptMessages: cleanMessages.length,
+        intent,
       });
       const message = await requestChatCompletion({
         apiKey: nvidiaKey,
