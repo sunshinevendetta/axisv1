@@ -28,6 +28,10 @@ type Mission = {
   id: MissionId;
   drink: string;
   asset: string;
+  ctaUrl?: string;
+  ctaLabel?: Record<Lang, string>;
+  videoSrc?: string;
+  videoLabel?: Record<Lang, string>;
   title: Record<Lang, string>;
   visualTitle: Record<Lang, string>;
   action: Record<Lang, string>;
@@ -71,6 +75,15 @@ const missions: Mission[] = [
     id: "verify",
     drink: "01",
     asset: "/okx/drink-01.svg",
+    ctaUrl: "https://bit.ly/baroriente",
+    ctaLabel: {
+      es: "Tap here para abrir tu cuenta OKX",
+      en: "Tap here to open your OKX account",
+      zh: "Tap here to open your OKX account",
+      ja: "Tap here to open your OKX account",
+      ko: "Tap here to open your OKX account",
+      fr: "Tap here to open your OKX account",
+    },
     needsUid: true,
     title: {
       es: "1° drink",
@@ -105,8 +118,8 @@ const missions: Mission[] = [
       fr: "Entre ton UID ou ajoute une capture du compte verifie.",
     },
     steps: {
-      es: ["Abre OKX", "Crea tu cuenta", "Completa KYC", "Pega tu UID aqui"],
-      en: ["Open OKX", "Create account", "Complete KYC", "Paste your UID here"],
+      es: ["Tap here y abre tu cuenta", "Completa KYC", "Busca tu UID", "Pega tu UID aqui"],
+      en: ["Tap here and open your account", "Complete KYC", "Find your UID", "Paste your UID here"],
       zh: ["打开 OKX", "创建账户", "完成身份验证", "填写 UID"],
       ja: ["OKXを開く", "アカウント作成", "本人確認", "UID入力"],
       ko: ["OKX 열기", "계정 만들기", "KYC 완료", "UID 입력"],
@@ -117,6 +130,15 @@ const missions: Mission[] = [
     id: "outcomes",
     drink: "02",
     asset: "/okx/drink-02.svg",
+    videoSrc: "/okx/outcome.mp4",
+    videoLabel: {
+      es: "Guia rapida de OKX Outcomes",
+      en: "Quick OKX Outcomes guide",
+      zh: "Quick OKX Outcomes guide",
+      ja: "Quick OKX Outcomes guide",
+      ko: "Quick OKX Outcomes guide",
+      fr: "Quick OKX Outcomes guide",
+    },
     title: {
       es: "2° drink",
       en: "2nd drink",
@@ -838,6 +860,19 @@ function MissionModal({
             <li key={step}>{step}</li>
           ))}
         </ol>
+
+        {mission.ctaUrl && mission.ctaLabel ? (
+          <a className="okx-mission-link" href={mission.ctaUrl}>
+            {mission.ctaLabel[lang]}
+          </a>
+        ) : null}
+
+        {mission.videoSrc ? (
+          <div className="okx-mission-video">
+            {mission.videoLabel ? <p>{mission.videoLabel[lang]}</p> : null}
+            <video src={mission.videoSrc} controls playsInline preload="metadata" />
+          </div>
+        ) : null}
 
         <p className="okx-proof-intro">{mission.staff[lang]}</p>
 

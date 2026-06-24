@@ -143,12 +143,14 @@ function getIntentGuide(intent: FallbackIntent) {
   const guides: Record<FallbackIntent, string> = {
     kyc: [
       "Official OKX identity verification facts:",
+      "- Bar Oriente event signup link: https://bit.ly/baroriente.",
       "- App path: OKX app > Menu > Account settings > Identity verification under Profile.",
       "- User chooses individual verification, fills required info, uploads a clear valid ID, and completes selfie/liveness if requested.",
       "- Never ask for ID documents in this chat. Tell them to complete ID steps only inside OKX.",
     ].join("\n"),
     uid: [
       "Official OKX UID facts:",
+      "- If the attendee has not opened an OKX account yet, send them to https://bit.ly/baroriente first.",
       "- App path: OKX app > Menu > User Center > Account settings.",
       "- UID appears in the Profile/account area and can be copied.",
       "- For tonight, the attendee shows the UID to OKX staff or pastes it into the page.",
@@ -156,6 +158,7 @@ function getIntentGuide(intent: FallbackIntent) {
     what: [
       "OKX explanation for this event:",
       "- OKX is the crypto app powering tonight's drink missions.",
+      "- First drink starts at https://bit.ly/baroriente.",
       "- Keep it event-focused: account, KYC, UID, Outcomes, funding, staff validation.",
     ].join("\n"),
     screenshot: [
