@@ -77,12 +77,12 @@ const missions: Mission[] = [
     asset: "/okx/drink-01.svg",
     ctaUrl: "https://bit.ly/baroriente",
     ctaLabel: {
-      es: "Tap here para abrir tu cuenta OKX",
+      es: "Toca aquí para abrir tu cuenta OKX",
       en: "Tap here to open your OKX account",
-      zh: "Tap here to open your OKX account",
-      ja: "Tap here to open your OKX account",
-      ko: "Tap here to open your OKX account",
-      fr: "Tap here to open your OKX account",
+      zh: "点击这里打开你的 OKX 账户",
+      ja: "ここをタップしてOKXアカウントを開く",
+      ko: "여기를 눌러 OKX 계정 열기",
+      fr: "Appuie ici pour ouvrir ton compte OKX",
     },
     needsUid: true,
     title: {
@@ -118,7 +118,7 @@ const missions: Mission[] = [
       fr: "Entre ton UID ou ajoute une capture du compte verifie.",
     },
     steps: {
-      es: ["Tap here y abre tu cuenta", "Completa KYC", "Busca tu UID", "Pega tu UID aqui"],
+      es: ["Toca aquí y abre tu cuenta", "Completa KYC", "Busca tu UID", "Pega tu UID aquí"],
       en: ["Tap here and open your account", "Complete KYC", "Find your UID", "Paste your UID here"],
       zh: ["打开 OKX", "创建账户", "完成身份验证", "填写 UID"],
       ja: ["OKXを開く", "アカウント作成", "本人確認", "UID入力"],
