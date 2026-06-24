@@ -1,0 +1,9 @@
+<svg width="900" height="900" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="900" rx="140" fill="#080808"/>
+  <rect x="72" y="72" width="756" height="756" rx="118" stroke="white" stroke-opacity=".42" stroke-width="10"/>
+  <circle cx="450" cy="452" r="204" stroke="white" stroke-width="22"/>
+  <path d="M450 266C492 327 552 358 629 360C583 417 566 480 578 549C522 512 480 495 450 495C420 495 378 512 322 549C334 480 317 417 271 360C348 358 408 327 450 266Z" stroke="white" stroke-width="22" stroke-linejoin="round"/>
+  <path d="M278 452H622M450 252V652" stroke="white" stroke-opacity=".58" stroke-width="16" stroke-linecap="round"/>
+  <text x="450" y="194" text-anchor="middle" fill="white" fill-opacity=".82" font-family="Arial, sans-serif" font-size="54" font-weight="700">02</text>
+  <text x="450" y="770" text-anchor="middle" fill="white" fill-opacity=".58" font-family="Arial, sans-serif" font-size="34" font-weight="700">OUTCOMES</text>
+</svg>

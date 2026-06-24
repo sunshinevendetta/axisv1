@@ -12,6 +12,7 @@ type Props = {
   poster?: string;
   alt?: string;
   className?: string;
+  arButtonLabel?: string;
   /**
    * Reveal the model immediately and start auto-rotating without waiting for a
    * user interaction. Use for hero models that should spin on load. Defaults to
@@ -25,6 +26,7 @@ export default function ModelViewer({
   poster,
   alt = "3D collectible",
   className = "",
+  arButtonLabel = "Tap me now",
   autoReveal = false,
 }: Props) {
   const [ready, setReady] = useState(false);
@@ -90,7 +92,7 @@ export default function ModelViewer({
             <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
             <circle cx="12" cy="13" r="4" />
           </svg>
-          Tap me now
+          {arButtonLabel}
         </button>
       </ModelViewerElement>
     </>
