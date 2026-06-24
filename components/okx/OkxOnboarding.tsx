@@ -227,12 +227,12 @@ const copy = {
     tapHere: "Abrir",
     ar: "Abrir AR",
     arHint: "Tap aqui para abrir la AR, toma una foto, subela, por un shot",
-    chatTitle: "AXIS Petra Voss",
+    chatTitle: "AYUDA",
     chatSub: "Hermes agent powered by NVIDIA Build para dudas de OKX.",
     input: "Pregunta aqui",
     ask: "Enviar",
     quick: ["Que es OKX?", "Donde veo mi UID?", "Que screenshot subo?"],
-    fallback: "Petra esta lista. Si algo falla, ve directo con staff OKX.",
+    fallback: "AYUDA esta lista. Si algo falla, ve directo con staff OKX.",
     error: "Falta UID o screenshot para generar tu QR.",
     limit: "Cupo limitado: 500 bebidas. Maximo 3 por persona. Staff OKX valida en sitio.",
   },
@@ -257,12 +257,12 @@ const copy = {
     tapHere: "Open",
     ar: "Open AR",
     arHint: "Tap here to open AR, take a photo, post it for a shot",
-    chatTitle: "AXIS Petra Voss",
+    chatTitle: "AYUDA",
     chatSub: "Hermes agent powered by NVIDIA Build for OKX questions.",
     input: "Ask here",
     ask: "Send",
     quick: ["What is OKX?", "Where is my UID?", "Which screenshot?"],
-    fallback: "Petra is ready. If anything fails, go straight to OKX staff.",
+    fallback: "AYUDA is ready. If anything fails, go straight to OKX staff.",
     error: "UID or screenshot is required to generate your QR.",
     limit: "Limited: 500 drinks. Max 3 per person. OKX staff validates on-site.",
   },
@@ -287,12 +287,12 @@ const copy = {
     tapHere: "打开",
     ar: "打开 AR",
     arHint: "点这里打开 AR，拍照发布，换一杯 shot",
-    chatTitle: "AXIS Petra Voss",
+    chatTitle: "AYUDA",
     chatSub: "Hermes agent powered by NVIDIA Build，回答 OKX 问题。",
     input: "输入问题",
     ask: "发送",
     quick: ["OKX 是什么？", "UID 在哪里？", "上传什么截图？"],
-    fallback: "Petra 可以帮你。若失败，请找 OKX 工作人员。",
+    fallback: "AYUDA 可以帮你。若失败，请找 OKX 工作人员。",
     error: "需要 UID 或截图才能生成 QR。",
     limit: "限量 500 杯。每人最多 3 杯。现场由 OKX 工作人员验证。",
   },
@@ -317,12 +317,12 @@ const copy = {
     tapHere: "開く",
     ar: "ARを開く",
     arHint: "ここをタップ、ARで撮影、投稿してshot",
-    chatTitle: "AXIS Petra Voss",
+    chatTitle: "AYUDA",
     chatSub: "Hermes agent powered by NVIDIA Build がOKXを案内。",
     input: "質問する",
     ask: "送信",
     quick: ["OKXとは？", "UIDはどこ？", "何をアップ？"],
-    fallback: "Petraが案内します。失敗したらOKXスタッフへ。",
+    fallback: "AYUDAが案内します。失敗したらOKXスタッフへ。",
     error: "QR生成にはUIDまたはスクショが必要です。",
     limit: "500杯限定。1人最大3杯。OKXスタッフが現地確認。",
   },
@@ -347,12 +347,12 @@ const copy = {
     tapHere: "열기",
     ar: "AR 열기",
     arHint: "여기를 눌러 AR 열고 사진 올리면 shot",
-    chatTitle: "AXIS Petra Voss",
+    chatTitle: "AYUDA",
     chatSub: "Hermes agent powered by NVIDIA Build 가 OKX 질문을 도와요.",
     input: "질문 입력",
     ask: "전송",
     quick: ["OKX가 뭐예요?", "UID는 어디?", "무슨 스샷?"],
-    fallback: "Petra가 도와줄게요. 안 되면 OKX 직원에게 가세요.",
+    fallback: "AYUDA가 도와줄게요. 안 되면 OKX 직원에게 가세요.",
     error: "QR 생성을 위해 UID 또는 스크린샷이 필요합니다.",
     limit: "500잔 한정. 1인 최대 3잔. OKX 직원 현장 확인.",
   },
@@ -377,24 +377,24 @@ const copy = {
     tapHere: "Ouvrir",
     ar: "Ouvrir AR",
     arHint: "Tape ici, ouvre AR, prends photo, poste pour un shot",
-    chatTitle: "AXIS Petra Voss",
+    chatTitle: "AYUDA",
     chatSub: "Hermes agent powered by NVIDIA Build pour tes questions OKX.",
     input: "Pose ta question",
     ask: "Envoyer",
     quick: ["C'est quoi OKX ?", "Ou est mon UID ?", "Quelle capture ?"],
-    fallback: "Petra peut aider. Si ca bloque, va voir le staff OKX.",
+    fallback: "AYUDA peut aider. Si ca bloque, va voir le staff OKX.",
     error: "UID ou capture requis pour generer ton QR.",
     limit: "Limite : 500 verres. Max 3 par personne. Validation OKX sur place.",
   },
 };
 
 const initialAssistant: Record<Lang, string> = {
-  es: "Soy Petra Voss, agente Hermes de AXIS. Te ayudo con OKX, UID, pruebas y bebidas.",
-  en: "I am Petra Voss, the AXIS Hermes agent. I can help with OKX, UID, proof, and drinks.",
-  zh: "我是 AXIS 的 Hermes agent Petra Voss，可以帮你完成 OKX 饮品任务。",
-  ja: "AXIS Hermes agent の Petra Voss です。OKXとドリンクを案内します。",
-  ko: "저는 AXIS Hermes agent Petra Voss입니다. OKX 음료 미션을 도와드려요.",
-  fr: "Je suis Petra Voss, agent Hermes AXIS. Je t'aide avec OKX et les verres.",
+  es: "Soy AYUDA, agente Hermes de AXIS. Te ayudo con OKX, UID, pruebas y bebidas.",
+  en: "I am AYUDA, the AXIS Hermes agent. I can help with OKX, UID, proof, and drinks.",
+  zh: "我是 AXIS 的 Hermes agent AYUDA，可以帮你完成 OKX 饮品任务。",
+  ja: "AXIS Hermes agent の AYUDA です。OKXとドリンクを案内します。",
+  ko: "저는 AXIS Hermes agent AYUDA입니다. OKX 음료 미션을 도와드려요.",
+  fr: "Je suis AYUDA, agent Hermes AXIS. Je t'aide avec OKX et les verres.",
 };
 
 function formatChatText(text: string) {
@@ -562,7 +562,7 @@ export default function OkxOnboarding() {
         ...current,
         { role: "assistant", content: data.message || t.fallback },
       ]);
-      console.info("OKX Petra chat", {
+      console.info("OKX AYUDA chat", {
         source: data.source,
         model: data.model,
         soulVersion: data.soulVersion,
@@ -620,12 +620,14 @@ export default function OkxOnboarding() {
             autoReveal
             className="okx-model"
             arButtonLabel={t.ar}
+            arHintLabel={
+              <>
+                <FiCamera aria-hidden />
+                {t.arHint}
+              </>
+            }
           />
           <span className="okx-model-note">OKX</span>
-          <span className="okx-ar-hint">
-            <FiCamera aria-hidden />
-            {t.arHint}
-          </span>
         </div>
       </section>
 
@@ -672,7 +674,7 @@ export default function OkxOnboarding() {
 
       <button type="button" className="okx-petra-bubble" onClick={() => setChatOpen(true)}>
         <FiMessageCircle aria-hidden />
-        <span>Petra Voss</span>
+        <span>AYUDA</span>
       </button>
 
       {chatOpen ? (
@@ -698,7 +700,7 @@ export default function OkxOnboarding() {
               ))}
               {chatBusy ? (
                 <div className="okx-bubble assistant">
-                  <FiLoader aria-hidden className="okx-spin" /> Petra...
+                  <FiLoader aria-hidden className="okx-spin" /> AYUDA...
                 </div>
               ) : null}
             </div>

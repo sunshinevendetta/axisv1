@@ -179,8 +179,7 @@
   background: transparent !important;
 }
 
-.okx-model-note,
-.okx-ar-hint {
+.okx-model-note {
   position: absolute;
   display: inline-flex;
   align-items: center;
@@ -198,16 +197,6 @@
   padding: 7px 9px;
   font-family: "Bingo", sans-serif;
   text-transform: uppercase;
-}
-
-.okx-ar-hint {
-  top: 12px;
-  left: 12px;
-  right: 12px;
-  width: fit-content;
-  max-width: calc(100% - 24px);
-  gap: 6px;
-  padding: 7px 9px;
 }
 
 .okx-section-head {
