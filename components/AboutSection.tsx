@@ -1,8 +1,13 @@
 "use client";
 
+import { useSiteLanguage } from "@/components/site-language";
 import AboutBackground from "./backgrounds/AboutBackground";
+import { getSiteCopy } from "@/src/lib/site-translations";
 
 export default function AboutSection() {
+  const { language } = useSiteLanguage();
+  const copy = getSiteCopy(language);
+
   return (
     <section id="about" className="relative isolate min-h-screen overflow-hidden bg-black">
       <AboutBackground />
@@ -11,25 +16,13 @@ export default function AboutSection() {
       <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl items-center px-6 py-24 sm:py-32">
         <div className="max-w-4xl">
           <h2 className="text-lg leading-[0.94] tracking-[-0.05em] text-white sm:text-xl md:text-2xl">
-            ABOUT AXIS<span className="copy-mark">©</span>
+            {copy.about.title}<span className="copy-mark">©</span>
           </h2>
 
           <div className="mt-6 max-w-2xl space-y-3 text-xs leading-5 tracking-wide text-white/58 sm:text-sm sm:leading-6">
-            <p>
-              AXIS creates unexpected experiences in unusual places not designed to function as galleries.
-            </p>
-            <p>
-              Each edition can blend digital interventions, music, talks, and workshops, separately or all together,
-              plus we live-stream globally every event to connect physical and digital audiences.
-            </p>
-            <p>
-              We run monthly episodes mixing avant-garde digital culture, experimental setups, and direct engagement so
-              users can test out new apps, ideas and concepts.
-            </p>
-            <p>
-              We have open calls for artists, developers and curators every month, these are open to free
-              participation, and only the sharpest proposals make it.
-            </p>
+            {copy.about.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
         </div>
       </div>

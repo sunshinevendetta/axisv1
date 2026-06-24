@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { MagazineArticle } from "@/components/magazine/types";
+import { localizeMagazineArticle } from "@/src/lib/magazine-localization";
+import { getSiteCopy } from "@/src/lib/site-translations";
 import type { MagazineLang } from "@/src/types/magazine";
 
 type Props = {
@@ -10,8 +12,14 @@ type Props = {
   lang: MagazineLang;
 };
 
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("en-US", {
+function formatDate(dateStr: string, lang: MagazineLang) {
+  const localeMap: Partial<Record<MagazineLang, string>> = {
+    en: "en-US",
+    es: "es-MX",
+    zh: "zh-CN",
+  };
+
+  return new Date(dateStr).toLocaleDateString(localeMap[lang] ?? "en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
@@ -19,10 +27,18 @@ function formatDate(dateStr: string) {
 }
 
 export default function HomeMagazineSection({ articles, lang }: Props) {
-  // Auto-cycle through the 3 most recent articles
-  const featured = [...articles]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 6);
+  const copy = getSiteCopy(lang);
+  const localizedArticles = useMemo(
+    () => articles.map((article) => localizeMagazineArticle(article, lang)),
+    [articles, lang],
+  );
+  const featured = useMemo(
+    () =>
+      [...localizedArticles]
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .slice(0, 6),
+    [localizedArticles],
+  );
   const isRussian = lang === "ru";
   const isKorean = lang === "ko";
 
@@ -32,10 +48,14 @@ export default function HomeMagazineSection({ articles, lang }: Props) {
   const next = useCallback(() => setActive((i) => (i + 1) % featured.length), [featured.length]);
 
   useEffect(() => {
-    if (paused) return;
+    if (paused || featured.length === 0) return;
     const id = setInterval(next, 5000);
     return () => clearInterval(id);
-  }, [paused, next]);
+  }, [paused, next, featured.length]);
+
+  useEffect(() => {
+    setActive(0);
+  }, [lang]);
 
   const article = featured[active];
   if (!article) return null;
@@ -43,38 +63,32 @@ export default function HomeMagazineSection({ articles, lang }: Props) {
   return (
     <section id="magazine" className="border-t border-white/6 bg-black py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-6">
-
-        {/* Header */}
         <div className="mb-12 flex items-end justify-between">
           <div>
-            <div className="text-[9px] uppercase tracking-[0.44em] text-white/28">Hypermedia</div>
+            <div className="text-[9px] uppercase tracking-[0.44em] text-white/28">{copy.magazine.eyebrow}</div>
             <h2 className="mt-3 [font-family:var(--font-display)] text-[clamp(1.6rem,3.5vw,2.8rem)] leading-[0.88] tracking-[-0.05em] text-white">
-              Magazine
+              {copy.magazine.title}
             </h2>
           </div>
           <Link
             href="/magazine"
             className="text-[9px] uppercase tracking-[0.36em] text-white/28 transition-colors hover:text-white/60"
           >
-            read more ↗
+            {copy.magazine.readMore}
           </Link>
         </div>
 
-        {/* Two-col layout */}
         <div className="grid gap-10 lg:grid-cols-[1fr_340px]">
-
-          {/* Featured article — auto-cycling */}
           <article
             className="group relative cursor-pointer border border-white/8 p-8 transition-all duration-300 hover:border-white/16 hover:bg-white/[0.015] sm:p-10"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            {/* Progress bar */}
             {!paused && (
               <div className="absolute inset-x-0 top-0 h-px overflow-hidden">
                 <div
                   key={active}
-                  className="h-full bg-white/30 animate-[progress_5s_linear_forwards]"
+                  className="h-full animate-[progress_5s_linear_forwards] bg-white/30"
                   style={{ width: "100%", transformOrigin: "left" }}
                 />
               </div>
@@ -98,10 +112,10 @@ export default function HomeMagazineSection({ articles, lang }: Props) {
                   {article.category}
                 </span>
                 <span className="text-[9px] uppercase tracking-[0.28em] text-white/22">
-                  {formatDate(article.date)}
+                  {formatDate(article.date, lang)}
                 </span>
                 <span className="text-[9px] uppercase tracking-[0.28em] text-white/16">
-                  {article.readTime} read
+                  {article.readTime} {copy.magazine.readTimeSuffix}
                 </span>
               </div>
 
@@ -124,24 +138,25 @@ export default function HomeMagazineSection({ articles, lang }: Props) {
                 href={`/magazine/${article.slug}`}
                 className="text-[9px] uppercase tracking-[0.32em] text-white/30 transition-colors hover:text-white/60"
               >
-                Read →
+                {copy.magazine.read}
               </Link>
             </div>
 
-            {/* Dot navigation */}
             <div className="mt-8 flex items-center gap-2">
               {featured.map((_, i) => (
                 <button
                   key={i}
                   type="button"
-                  onClick={(e) => { e.stopPropagation(); setActive(i); }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActive(i);
+                  }}
                   className={`h-px transition-all duration-300 ${i === active ? "w-8 bg-white/50" : "w-3 bg-white/16 hover:bg-white/32"}`}
                 />
               ))}
             </div>
           </article>
 
-          {/* Side list — remaining articles */}
           <div className="flex flex-col divide-y divide-white/6">
             {featured.filter((_, i) => i !== active).slice(0, 4).map((art) => (
               <Link
@@ -162,7 +177,7 @@ export default function HomeMagazineSection({ articles, lang }: Props) {
                 ) : null}
                 <div className="flex min-w-0 flex-col gap-2">
                   <span className="text-[8px] uppercase tracking-[0.36em] text-white/22">
-                    {art.category} · {formatDate(art.date)}
+                    {art.category} · {formatDate(art.date, lang)}
                   </span>
                   <span className={`${isRussian ? "text-[0.7rem] sm:text-[0.78rem]" : "text-sm"} leading-5 tracking-wide text-white/60 transition-colors group-hover:text-white/88`}>
                     {art.title}
@@ -174,7 +189,6 @@ export default function HomeMagazineSection({ articles, lang }: Props) {
               </Link>
             ))}
           </div>
-
         </div>
       </div>
     </section>
