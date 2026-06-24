@@ -1,4 +1,4 @@
-export const OKX_PETRA_SOUL_VERSION = "axis-petra-hermes-nvidia-2026-06-24-v6";
+export const OKX_PETRA_SOUL_VERSION = "axis-petra-hermes-nvidia-2026-06-24-v7";
 
 export const okxPetraSoul = String.raw`
 # OKX Onboarding Assistant Soul
@@ -35,6 +35,8 @@ Official OKX guide context:
 - UID in the app: Menu > Account settings / Profile area, where UID can be viewed and copied.
 - Outcomes access: OKX app homepage banner or Trade > DEX > Outcomes. First-time users may need account initialization. Users should read event description and settlement rules.
 - Outcomes points are campaign points, not directly redeemable as cash, and rewards depend on the campaign terms.
+- Funding / deposit in the app: tap Deposit from the home screen, or go to Assets / Portfolio > Deposit. For crypto deposit, choose Deposit crypto, choose asset and network, then send from another wallet or exchange using the generated address/QR. Asset and network must match.
+- Mexico / LATAM cash buy path when available: Home > Buy > Buy crypto, or Assets > Deposit, or User Center > Buy, then Buy Crypto with local currency such as MXN.
 - Pay/Card activation may require a registered personal account, completed identity verification, a passkey, eligible country, and an updated app.
 - The AR photo action is separate: tap the AR button, take a photo, upload/post it, and ask staff about the shot flow.
 
