@@ -1,6 +1,8 @@
-import { readFile } from "node:fs/promises";
-import path from "node:path";
 import { NextResponse } from "next/server";
+import { OKX_PETRA_SOUL_VERSION, okxPetraSoul } from "./soul";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 type IncomingMessage = {
   role?: string;
@@ -8,7 +10,7 @@ type IncomingMessage = {
 };
 
 type ChatBody = {
-  lang?: "es" | "en";
+  lang?: "es" | "en" | "zh" | "ja" | "ko" | "fr";
   messages?: IncomingMessage[];
 };
 
@@ -27,15 +29,25 @@ const fallbackAnswers = {
     "Hazlo en este orden: 1) cuenta + KYC, 2) encuentra tu UID y muestralo al staff, 3) entra a Outcomes o fondea si vas por mas bebidas. Si una pantalla no carga, no te atores: ve con el staff de OKX.",
   en:
     "Do it in this order: 1) account + KYC, 2) find your UID and show staff, 3) enter Outcomes or fund if you want more drinks. If a screen does not load, do not get stuck: go to OKX staff.",
+  zh: "按这个顺序：1）创建 OKX 账户并完成身份验证，2）找到 UID，3）参加 Outcomes 或入金。卡住就找 OKX 工作人员。",
+  ja: "順番は、1）OKXアカウント作成と本人確認、2）UID確認、3）Outcomes参加または入金。困ったらOKXスタッフへ。",
+  ko: "순서: 1) OKX 계정 생성과 KYC, 2) UID 확인, 3) Outcomes 참여 또는 충전. 막히면 OKX 직원에게 가세요.",
+  fr: "Dans l'ordre : 1) cree ton compte OKX et verifie ton identite, 2) trouve ton UID, 3) fais Outcomes ou le depot. Si ca bloque, va voir le staff OKX.",
 };
 
 const NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1";
-const NVIDIA_MODEL = "nvidia/llama-3.1-nemotron-nano-8b-v1";
+const NVIDIA_MODEL = "nvidia/llama-3.3-nemotron-super-49b-v1.5";
+const HERMES_AGENT_NAME = "AXIS Petra Voss Hermes";
 
 function cleanModelText(text: string) {
-  return text
+  const cleaned = text
     .replace(/`/g, "")
     .replace(/\n{3,}/g, "\n\n")
+    .trim();
+
+  return cleaned
+    .replace(/^["“”]+/, "")
+    .replace(/["“”]+$/, "")
     .trim();
 }
 
@@ -77,20 +89,44 @@ async function requestChatCompletion({
   return cleanModelText(content);
 }
 
-function getSystemPrompt(soul: string, lang: "es" | "en") {
+function getSystemPrompt(soul: string, lang: NonNullable<ChatBody["lang"]>) {
   return [
     soul,
+    `Agent name: ${HERMES_AGENT_NAME}.`,
+    `Soul version: ${OKX_PETRA_SOUL_VERSION}.`,
     `Current page language: ${lang}.`,
-    "Answer in the current page language.",
-    "Return only the helpful answer for the attendee.",
-    "You may use simple markdown headings and bold for readability. Do not use code formatting or tables.",
-    "Use short plain paragraphs or numbered steps. Keep it under 220 words unless the user asks for detail.",
+    "Production guardrail: answer only from the soul and tonight's OKX drink mission context.",
+    "If the user asks a broad OKX question, immediately tie it back to the drink missions, UID, Outcomes, funding, QR, AR photo, or OKX staff validation.",
+    "Return only the helpful answer for the attendee. No preamble, no disclaimers unless needed by the soul.",
+    "Do not wrap the answer in quotation marks.",
+    "Use plain text or a tiny numbered list. No tables. Keep it under 90 words unless the user asks for detail.",
   ].join("\n\n");
+}
+
+function buildHermesUserPrompt(cleanMessages: CleanMessage[], lang: NonNullable<ChatBody["lang"]>) {
+  const recent = cleanMessages.length
+    ? cleanMessages.map((message, index) => `${index + 1}. ${message.content}`).join("\n")
+    : "1. What do I do?";
+
+  return [
+    `Current page language: ${lang}.`,
+    "Recent attendee messages:",
+    recent,
+    "",
+    "Reply as Petra Voss now. Use only the AXIS / Bar Oriente OKX mission facts in the soul. Give the next useful action.",
+  ].join("\n");
 }
 
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => ({}))) as ChatBody;
-  const lang = body.lang === "en" ? "en" : "es";
+  const lang: NonNullable<ChatBody["lang"]> =
+    body.lang === "en" ||
+    body.lang === "zh" ||
+    body.lang === "ja" ||
+    body.lang === "ko" ||
+    body.lang === "fr"
+      ? body.lang
+      : "es";
   const messages = Array.isArray(body.messages) ? body.messages : [];
   const cleanMessages: CleanMessage[] = messages
     .filter((message) => message.role === "user")
@@ -100,31 +136,70 @@ export async function POST(request: Request) {
       content: String(message.content || "").slice(0, 900),
     }));
 
-  const soul = await readFile(path.join(process.cwd(), "app/api/okx/chat/soul.md"), "utf8")
-    .catch(() => "");
-
   const providerMessages = [
-    { role: "system" as const, content: getSystemPrompt(soul, lang) },
-    ...cleanMessages,
+    { role: "system" as const, content: getSystemPrompt(okxPetraSoul, lang) },
+    { role: "user" as const, content: buildHermesUserPrompt(cleanMessages, lang) },
   ];
 
-  const nvidiaKey = process.env.NVIDIA_API_KEY?.trim();
+  const nvidiaKey =
+    process.env.NVIDIA_API_KEY?.trim() ||
+    process.env.NVIDIA_BUILD_API_KEY?.trim() ||
+    process.env.NVAPI_KEY?.trim();
   const nvidiaBaseUrl = process.env.NVIDIA_BASE_URL?.trim() || NVIDIA_BASE_URL;
   const nvidiaModel = process.env.NVIDIA_MODEL?.trim() || NVIDIA_MODEL;
 
   if (nvidiaKey) {
     try {
+      console.info("OKX Petra Hermes NVIDIA request", {
+        agent: HERMES_AGENT_NAME,
+        source: "nvidia-build",
+        model: nvidiaModel,
+        lang,
+        soulVersion: OKX_PETRA_SOUL_VERSION,
+        soulChars: okxPetraSoul.length,
+        userMessages: cleanMessages.length,
+      });
       const message = await requestChatCompletion({
         apiKey: nvidiaKey,
         baseUrl: nvidiaBaseUrl,
         model: nvidiaModel,
         messages: providerMessages,
       });
-      return NextResponse.json({ message, source: "nvidia", model: nvidiaModel });
-    } catch {
+      console.info("OKX Petra Hermes NVIDIA success", {
+        agent: HERMES_AGENT_NAME,
+        source: "nvidia-build",
+        model: nvidiaModel,
+        lang,
+        soulVersion: OKX_PETRA_SOUL_VERSION,
+        answerChars: message.length,
+      });
+      return NextResponse.json({
+        message,
+        source: "nvidia-build-hermes",
+        model: nvidiaModel,
+        soulVersion: OKX_PETRA_SOUL_VERSION,
+      });
+    } catch (error) {
+      console.error("OKX Petra Hermes NVIDIA failed", {
+        agent: HERMES_AGENT_NAME,
+        model: nvidiaModel,
+        lang,
+        soulVersion: OKX_PETRA_SOUL_VERSION,
+        error: error instanceof Error ? error.message : String(error),
+      });
       // Fall through to the local safety fallback.
     }
   }
 
-  return NextResponse.json({ message: fallbackAnswers[lang], source: "fallback" });
+  console.warn("OKX Petra Hermes fallback", {
+    agent: HERMES_AGENT_NAME,
+    lang,
+    hasNvidiaKey: Boolean(nvidiaKey),
+    soulVersion: OKX_PETRA_SOUL_VERSION,
+  });
+  return NextResponse.json({
+    message: fallbackAnswers[lang],
+    source: "fallback-hermes",
+    soulVersion: OKX_PETRA_SOUL_VERSION,
+  });
 }
