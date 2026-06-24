@@ -856,16 +856,18 @@ function MissionModal({
         </div>
 
         <ol className="okx-modal-steps">
-          {mission.steps[lang].map((step) => (
-            <li key={step}>{step}</li>
+          {mission.steps[lang].map((step, index) => (
+            <li key={step}>
+              {mission.ctaUrl && index === 0 ? (
+                <a className="okx-step-link" href={mission.ctaUrl}>
+                  {step}
+                </a>
+              ) : (
+                step
+              )}
+            </li>
           ))}
         </ol>
-
-        {mission.ctaUrl && mission.ctaLabel ? (
-          <a className="okx-mission-link" href={mission.ctaUrl}>
-            {mission.ctaLabel[lang]}
-          </a>
-        ) : null}
 
         {mission.videoSrc ? (
           <div className="okx-mission-video">
