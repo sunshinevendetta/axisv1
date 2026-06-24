@@ -837,7 +837,6 @@ function MissionModal({
   onGenerate: (mission: Mission) => void;
 }) {
   const [qrVisible, setQrVisible] = useState(false);
-  const [signupOpen, setSignupOpen] = useState(false);
   const hideQr = () => setQrVisible(false);
   const showQr = () => setQrVisible(true);
 
@@ -860,14 +859,7 @@ function MissionModal({
           {mission.steps[lang].map((step, index) => (
             <li key={step}>
               {mission.ctaUrl && index === 0 ? (
-                <a
-                  className="okx-step-link"
-                  href={mission.ctaUrl}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    setSignupOpen(true);
-                  }}
-                >
+                <a className="okx-step-link" href={mission.ctaUrl} target="_blank" rel="noopener noreferrer">
                   {step}
                 </a>
               ) : (
@@ -948,26 +940,6 @@ function MissionModal({
             {proof.status === "submitting" ? t.generating : t.generate}
           </button>
         )}
-
-        {signupOpen && mission.ctaUrl ? (
-          <div className="okx-signup-modal" role="dialog" aria-modal="true" aria-labelledby="okx-signup-title">
-            <div className="okx-signup-panel">
-              <button type="button" className="okx-close" onClick={() => setSignupOpen(false)} aria-label={t.close}>
-                <FiX aria-hidden />
-              </button>
-              <p className="okx-kicker">OKX / Bar Oriente</p>
-              <h3 id="okx-signup-title">Abre tu cuenta OKX</h3>
-              <p>
-                Este link abre el registro oficial de OKX para Bar Oriente. OKX no permite cargar el login dentro de
-                un frame, entonces continua en esta misma pestaña.
-              </p>
-              <code>{mission.ctaUrl}</code>
-              <a className="okx-signup-primary" href={mission.ctaUrl}>
-                Continuar en esta pestaña
-              </a>
-            </div>
-          </div>
-        ) : null}
       </div>
     </div>
   );
