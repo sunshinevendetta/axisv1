@@ -416,12 +416,136 @@
   font-size: 16px;
 }
 
+.okx-modal-steps li.okx-uid-guide-row {
+  counter-increment: none;
+  display: block;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.okx-modal-steps li.okx-uid-guide-row::before {
+  display: none;
+}
+
 .okx-step-link {
   color: #fff;
   font-weight: 760;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
+}
+
+.okx-uid-guide {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.okx-uid-guide > p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.okx-uid-guide-scroller {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
+}
+
+.okx-uid-guide-card {
+  display: grid;
+  flex: 0 0 138px;
+  gap: 8px;
+  min-height: 192px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.055);
+  color: #fff;
+  text-align: left;
+}
+
+.okx-uid-guide-card.is-featured {
+  border-color: rgba(255, 255, 255, 0.72);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.055)),
+    rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22), 0 0 22px rgba(255, 255, 255, 0.24);
+}
+
+.okx-uid-guide-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 12;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 11px;
+  background: #000;
+}
+
+.okx-uid-guide-card.is-featured img {
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.2);
+}
+
+.okx-uid-guide-card span {
+  display: grid;
+  gap: 2px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.okx-uid-guide-card strong {
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.okx-uid-guide-card.is-featured strong {
+  color: #c9ff4a;
+}
+
+.okx-guide-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  gap: 12px;
+  padding: 18px;
+  border: 0;
+  background: rgba(0, 0, 0, 0.84);
+  color: #fff;
+}
+
+.okx-guide-lightbox img {
+  display: block;
+  max-width: min(100%, 920px);
+  max-height: 82vh;
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+}
+
+.okx-guide-lightbox span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 12px;
 }
 
 .okx-mission-video {
@@ -801,6 +925,8 @@
 .okx-pass-token:focus-visible,
 .okx-close:focus-visible,
 .okx-primary:focus-visible,
+.okx-uid-guide-card:focus-visible,
+.okx-guide-lightbox:focus-visible,
 .okx-petra-bubble:focus-visible,
 .okx-quick button:focus-visible,
 .okx-chat-form input:focus-visible,

@@ -22,7 +22,7 @@ Core event facts:
 - Terms: official OKX terms and conditions, country eligibility, and activation availability apply.
 
 The three missions:
-1. First drink: tap the Bar Oriente signup link https://bit.ly/baroriente, create or access an OKX account, complete identity verification KYC, then show it to OKX staff. The attendee can enter their UID as text or upload a screenshot as proof.
+1. First drink: tap the Bar Oriente signup link https://bit.ly/baroriente, create or access an OKX account, complete identity verification KYC, then upload the OKX User Center > Profile screenshot where Profile, Security, Preferences, Account information, UID, and Identity verification are visible.
 2. Second drink: enter OKX Outcomes, join the football match activation, take a position on the result, then upload/show the Outcomes screenshot as proof.
 3. Third drink: fund the OKX account with 10 USD. If the promotion applies, OKX gives a 10 USD bonus. The attendee uploads/shows the funding screenshot as proof. Card/Pay availability depends on eligibility.
 
@@ -33,7 +33,7 @@ Official OKX guide context:
 - Do not ask the user to send ID documents, selfies, passwords, seed phrases, private keys, card numbers, or sensitive personal data in this chat. Tell them to complete those only inside the OKX app.
 - If KYC fails or gets stuck, tell them to check document clarity, country/region eligibility, app version, and then go to OKX staff for manual event guidance.
 - Verification often processes quickly, but further review can take up to 24 hours.
-- UID in the app: Menu > Account settings / Profile area, where UID can be viewed and copied.
+- UID in the app: User Center > Profile. For this page, the attendee must upload that exact screenshot where Profile, Security, Preferences, Account information, UID, and Identity verification are visible; pasted UID text or cropped/irrelevant screenshots are not accepted as proof.
 - Outcomes access: OKX app homepage banner or Trade > DEX > Outcomes. First-time users may need account initialization. Users should read event description and settlement rules.
 - Outcomes points are campaign points, not directly redeemable as cash, and rewards depend on the campaign terms.
 - Funding / deposit in the app: tap Deposit from the home screen, or go to Assets / Portfolio > Deposit. For crypto deposit, choose Deposit crypto, choose asset and network, then send from another wallet or exchange using the generated address/QR. Asset and network must match.

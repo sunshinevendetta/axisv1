@@ -40,5 +40,5 @@ export async function GET(
   claim.usedAt = new Date().toISOString();
   store?.set(claimId, claim);
 
-  return html("Drink approved", `<h1>Drink approved</h1><p>Mission: ${claim.missionId}</p><p>UID: ${claim.uid || "screenshot proof"}</p><code>${claim.claimId}</code>`);
+  return html("Drink approved", `<h1>Drink approved</h1><p>Mission: ${claim.missionId}</p><p>Proof: screenshot uploaded</p><code>${claim.claimId}</code>`);
 }

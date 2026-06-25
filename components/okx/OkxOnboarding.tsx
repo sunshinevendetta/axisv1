@@ -3,7 +3,7 @@
 import type { ChangeEvent, FormEvent, ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import {
   FiCamera,
   FiCheck,
@@ -30,14 +30,22 @@ type Mission = {
   asset: string;
   ctaUrl?: string;
   ctaLabel?: Record<Lang, string>;
+  uidDeeplink?: string;
   videoSrc?: string;
   videoLabel?: Record<Lang, string>;
+  uidGuide?: UidGuideItem[];
   title: Record<Lang, string>;
   visualTitle: Record<Lang, string>;
   action: Record<Lang, string>;
   staff: Record<Lang, string>;
   steps: Record<Lang, string[]>;
-  needsUid?: boolean;
+};
+
+type UidGuideItem = {
+  image: string;
+  featured?: boolean;
+  title: Record<Lang, string>;
+  alt: Record<Lang, string>;
 };
 
 type ChatMessage = {
@@ -53,7 +61,6 @@ type Claim = {
 };
 
 type ProofState = {
-  uid: string;
   proofName: string;
   proofDataUrl: string;
   status: "idle" | "submitting" | "ready" | "error";
@@ -70,12 +77,22 @@ const flags: Array<{ lang: Lang; label: string; flag: string }> = [
   { lang: "fr", label: "French", flag: "🇫🇷" },
 ];
 
+const guideStepLabel: Record<Lang, string> = {
+  es: "Paso",
+  en: "Step",
+  zh: "步骤",
+  ja: "ステップ",
+  ko: "단계",
+  fr: "Étape",
+};
+
 const missions: Mission[] = [
   {
     id: "verify",
     drink: "01",
     asset: "/okx/drink-01.svg",
     ctaUrl: "https://bit.ly/baroriente",
+    uidDeeplink: "okx://",
     ctaLabel: {
       es: "Toca aquí para abrir tu cuenta OKX",
       en: "Tap here to open your OKX account",
@@ -84,7 +101,6 @@ const missions: Mission[] = [
       ko: "여기를 눌러 OKX 계정 열기",
       fr: "Appuie ici pour ouvrir ton compte OKX",
     },
-    needsUid: true,
     title: {
       es: "1° drink",
       en: "1st drink",
@@ -110,21 +126,81 @@ const missions: Mission[] = [
       fr: "Ouvre OKX et commence",
     },
     staff: {
-      es: "Ingresa tu UID o sube screenshot de tu cuenta verificada.",
-      en: "Enter your UID or upload a screenshot of your verified account.",
-      zh: "输入 UID，或上传已验证账户截图。",
-      ja: "UIDを入力、または認証済み画面をアップ。",
-      ko: "UID 입력 또는 인증 화면 업로드.",
-      fr: "Entre ton UID ou ajoute une capture du compte verifie.",
+      es: "Sube screenshot de la pantalla User Center > Profile de OKX donde se vea tu UID.",
+      en: "Upload a screenshot of the OKX User Center > Profile screen where your UID is visible.",
+      zh: "上传一张完整 OKX 屏幕截图，必须能看到 UID。",
+      ja: "UIDが見えるOKXの全画面スクショをアップロードして。",
+      ko: "UID가 보이는 OKX 전체 화면 스크린샷을 업로드해 주세요.",
+      fr: "Ajoute une capture plein ecran OKX ou ton UID est visible.",
     },
     steps: {
-      es: ["Toca aquí y abre tu cuenta", "Completa KYC", "Busca tu UID", "Pega tu UID aquí"],
-      en: ["Tap here and open your account", "Complete KYC", "Find your UID", "Paste your UID here"],
-      zh: ["打开 OKX", "创建账户", "完成身份验证", "填写 UID"],
-      ja: ["OKXを開く", "アカウント作成", "本人確認", "UID入力"],
-      ko: ["OKX 열기", "계정 만들기", "KYC 완료", "UID 입력"],
-      fr: ["Ouvre OKX", "Cree le compte", "Complete KYC", "Entre ton UID"],
+      es: ["Toca aquí y abre tu cuenta", "Completa KYC", "Busca tu UID", "Sube screenshot de User Center > Profile"],
+      en: ["Tap here and open your account", "Complete KYC", "Find your UID", "Upload User Center > Profile screenshot"],
+      zh: ["打开 OKX", "创建账户", "找到 UID", "上传含 UID 的完整截图"],
+      ja: ["OKXを開く", "アカウント作成", "UIDを探す", "UID入り全画面スクショをアップ"],
+      ko: ["OKX 열기", "계정 만들기", "UID 찾기", "UID 포함 전체 스크린샷 업로드"],
+      fr: ["Ouvre OKX", "Cree le compte", "Trouve ton UID", "Ajoute capture complete avec UID"],
     },
+    uidGuide: [
+      {
+        image: "/okx/init.jpg",
+        title: {
+          es: "Abre el menú de perfil",
+          en: "Open the profile menu",
+          zh: "打开个人资料菜单",
+          ja: "プロフィールメニューを開く",
+          ko: "프로필 메뉴 열기",
+          fr: "Ouvre le menu profil",
+        },
+        alt: {
+          es: "Pantalla inicial de OKX señalando el menú de perfil",
+          en: "OKX home screen pointing to the profile menu",
+          zh: "OKX 首页，指向个人资料菜单",
+          ja: "プロフィールメニューを示すOKXホーム画面",
+          ko: "프로필 메뉴를 가리키는 OKX 홈 화면",
+          fr: "Ecran d'accueil OKX indiquant le menu profil",
+        },
+      },
+      {
+        image: "/okx/second.jpg",
+        title: {
+          es: "Entra a Account settings",
+          en: "Enter Account settings",
+          zh: "进入账户设置",
+          ja: "Account settingsへ進む",
+          ko: "Account settings로 이동",
+          fr: "Entre dans Account settings",
+        },
+        alt: {
+          es: "Pantalla de perfil de OKX señalando Account settings",
+          en: "OKX profile screen pointing to Account settings",
+          zh: "OKX 个人资料页，指向账户设置",
+          ja: "Account settingsを示すOKXプロフィール画面",
+          ko: "Account settings를 가리키는 OKX 프로필 화면",
+          fr: "Ecran profil OKX indiquant Account settings",
+        },
+      },
+      {
+        image: "/okx/exampleuid.jpg",
+        featured: true,
+        title: {
+          es: "Toma screenshot de esta pantalla mostrando TU PERFIL",
+          en: "Screenshot this exact screen showing YOUR PROFILE",
+          zh: "截取这个完整页面",
+          ja: "この画面をスクショ",
+          ko: "이 화면을 스크린샷",
+          fr: "Capture cet ecran exact",
+        },
+        alt: {
+          es: "Ejemplo de pantalla User Center Profile de OKX con UID e Identity verification visibles",
+          en: "Example OKX User Center Profile screen with UID and Identity verification visible",
+          zh: "OKX User Center Profile 示例页面，包含 UID 和 Identity verification",
+          ja: "UIDとIdentity verificationが見えるOKX User Center Profile画面の例",
+          ko: "UID와 Identity verification이 보이는 OKX User Center Profile 예시 화면",
+          fr: "Exemple d'ecran OKX User Center Profile avec UID et Identity verification visibles",
+        },
+      },
+    ],
   },
   {
     id: "outcomes",
@@ -236,11 +312,9 @@ const copy = {
     count: "Tus bebidas",
     missions: "MISIONES DE ESTA NOCHE",
     unlock: "Como desbloquear tus bebidas gratis esta noche",
-    uid: "UID OKX",
-    uidPlaceholder: "Pega tu UID",
-    proof: "Subir prueba",
-    proofHint: "Screenshot o foto. Despues Nvidia Build / OpenCV podra validarlo.",
-    generate: "Generar QR",
+    proof: "Subir screenshot",
+    proofHint: "Debe ser esa pantalla: User Center > Profile, con Profile, Security, Preferences, Account information, UID e Identity verification visibles.",
+    generate: "Generar QR drink",
     generating: "Generando",
     ready: "QR unico listo",
     showLive: "Muestra esta pantalla al staff. Cada QR se escanea una sola vez.",
@@ -257,7 +331,7 @@ const copy = {
     ask: "Enviar",
     quick: ["Que es OKX?", "Donde veo mi UID?", "Que screenshot subo?"],
     fallback: "Soy Petra. Si algo falla, ve directo con staff OKX y lo resolvemos ahi.",
-    error: "Falta UID o screenshot para generar tu QR.",
+    error: "Sube screenshot de User Center > Profile con Account information, UID e Identity verification visibles para generar tu QR.",
     limit: "Cupo limitado: 500 bebidas. Maximo 3 por persona. Staff OKX valida en sitio.",
   },
   en: {
@@ -268,11 +342,9 @@ const copy = {
     count: "Your drinks",
     missions: "TONIGHT'S MISSIONS",
     unlock: "How to unlock your free drinks tonight",
-    uid: "OKX UID",
-    uidPlaceholder: "Paste your UID",
-    proof: "Upload proof",
-    proofHint: "Screenshot or photo. NVIDIA Build / OpenCV can validate it next.",
-    generate: "Generate QR",
+    proof: "Upload screenshot",
+    proofHint: "It must be that screen: User Center > Profile, with Profile, Security, Preferences, Account information, UID, and Identity verification visible.",
+    generate: "Generate drink QR",
     generating: "Generating",
     ready: "Unique QR ready",
     showLive: "Show this live screen to staff. Each QR scans once.",
@@ -289,7 +361,7 @@ const copy = {
     ask: "Send",
     quick: ["What is OKX?", "Where is my UID?", "Which screenshot?"],
     fallback: "I am Petra. If anything fails, go straight to OKX staff and we will sort it there.",
-    error: "UID or screenshot is required to generate your QR.",
+    error: "Upload the User Center > Profile screenshot with Account information, UID, and Identity verification visible to generate your QR.",
     limit: "Limited: 500 drinks. Max 3 per person. OKX staff validates on-site.",
   },
   zh: {
@@ -300,11 +372,9 @@ const copy = {
     count: "你的饮品",
     missions: "今晚任务",
     unlock: "今晚如何解锁免费饮品",
-    uid: "OKX UID",
-    uidPlaceholder: "输入 UID",
-    proof: "上传证明",
-    proofHint: "截图或照片。之后可用 NVIDIA Build / OpenCV 验证。",
-    generate: "生成 QR",
+    proof: "上传截图",
+    proofHint: "必须是完整 OKX 屏幕截图，并且能看到你的 UID。",
+    generate: "生成饮品 QR",
     generating: "生成中",
     ready: "专属 QR 已生成",
     showLive: "向工作人员展示此页面。每个 QR 只能扫描一次。",
@@ -332,11 +402,9 @@ const copy = {
     count: "あなたのドリンク",
     missions: "今夜のミッション",
     unlock: "今夜の無料ドリンク解放方法",
-    uid: "OKX UID",
-    uidPlaceholder: "UIDを入力",
-    proof: "証明をアップ",
-    proofHint: "スクショまたは写真。NVIDIA Build / OpenCV 検証用。",
-    generate: "QR生成",
+    proof: "スクショをアップ",
+    proofHint: "OKXの全画面スクショで、UIDが見えている必要があります。",
+    generate: "ドリンクQR生成",
     generating: "生成中",
     ready: "専用QR準備完了",
     showLive: "この画面をスタッフへ。QRは一度だけ有効。",
@@ -364,11 +432,9 @@ const copy = {
     count: "내 음료",
     missions: "오늘 밤 미션",
     unlock: "오늘 무료 음료 받는 법",
-    uid: "OKX UID",
-    uidPlaceholder: "UID 입력",
-    proof: "증빙 업로드",
-    proofHint: "스크린샷 또는 사진. NVIDIA Build / OpenCV 검증용.",
-    generate: "QR 생성",
+    proof: "스크린샷 업로드",
+    proofHint: "OKX 전체 화면 스크린샷이어야 하며 UID가 보여야 합니다.",
+    generate: "드링크 QR 생성",
     generating: "생성 중",
     ready: "고유 QR 준비됨",
     showLive: "이 화면을 직원에게 보여주세요. QR은 1회만 스캔됩니다.",
@@ -396,11 +462,9 @@ const copy = {
     count: "Tes verres",
     missions: "MISSIONS DE CE SOIR",
     unlock: "Comment debloquer tes verres gratuits ce soir",
-    uid: "UID OKX",
-    uidPlaceholder: "Colle ton UID",
-    proof: "Ajouter preuve",
-    proofHint: "Capture ou photo. NVIDIA Build / OpenCV pourra valider.",
-    generate: "Generer QR",
+    proof: "Ajouter capture",
+    proofHint: "La capture doit montrer tout l'ecran OKX avec ton UID visible.",
+    generate: "Generer QR drink",
     generating: "Generation",
     ready: "QR unique pret",
     showLive: "Montre cet ecran au staff. Chaque QR se scanne une fois.",
@@ -493,10 +557,42 @@ function formatChatText(text: string): ReactNode {
 
 function makeProofState(): Record<MissionId, ProofState> {
   return {
-    verify: { uid: "", proofName: "", proofDataUrl: "", status: "idle", error: "", claim: null },
-    outcomes: { uid: "", proofName: "", proofDataUrl: "", status: "idle", error: "", claim: null },
-    fund: { uid: "", proofName: "", proofDataUrl: "", status: "idle", error: "", claim: null },
+    verify: { proofName: "", proofDataUrl: "", status: "idle", error: "", claim: null },
+    outcomes: { proofName: "", proofDataUrl: "", status: "idle", error: "", claim: null },
+    fund: { proofName: "", proofDataUrl: "", status: "idle", error: "", claim: null },
   };
+}
+
+function readImageFile(file: File) {
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(typeof reader.result === "string" ? reader.result : "");
+    reader.onerror = () => reject(new Error("Could not read image"));
+    reader.readAsDataURL(file);
+  });
+}
+
+function loadProofImage(dataUrl: string) {
+  return new Promise<HTMLImageElement>((resolve, reject) => {
+    const image = new window.Image();
+    image.onload = () => resolve(image);
+    image.onerror = () => reject(new Error("Could not load image"));
+    image.src = dataUrl;
+  });
+}
+
+async function prepareProofImage(file: File) {
+  const dataUrl = await readImageFile(file);
+  const image = await loadProofImage(dataUrl);
+  const maxSide = 2000;
+  const scale = Math.min(1, maxSide / Math.max(image.naturalWidth, image.naturalHeight));
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
+  canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
+  const context = canvas.getContext("2d");
+  if (!context) return dataUrl;
+  context.drawImage(image, 0, 0, canvas.width, canvas.height);
+  return canvas.toDataURL("image/jpeg", 0.86);
 }
 
 export default function OkxOnboarding() {
@@ -573,24 +669,27 @@ export default function OkxOnboarding() {
     setProofs((current) => ({ ...current, [id]: { ...current[id], ...patch } }));
   }
 
-  function handleProofFile(id: MissionId, event: ChangeEvent<HTMLInputElement>) {
+  async function handleProofFile(id: MissionId, event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = () => {
+    try {
+      const proofDataUrl = await prepareProofImage(file);
       updateProof(id, {
         proofName: file.name,
-        proofDataUrl: typeof reader.result === "string" ? reader.result : "",
+        proofDataUrl,
         error: "",
       });
-    };
-    reader.readAsDataURL(file);
+    } catch (error) {
+      updateProof(id, {
+        error: error instanceof Error ? error.message : t.error,
+      });
+    }
   }
 
   async function generateClaim(mission: Mission) {
     const proof = proofs[mission.id];
-    const hasProof = proof.uid.trim() || proof.proofDataUrl;
+    const hasProof = Boolean(proof.proofDataUrl);
     if (!hasProof) {
       updateProof(mission.id, { error: t.error });
       return;
@@ -604,9 +703,9 @@ export default function OkxOnboarding() {
         body: JSON.stringify({
           lang,
           missionId: mission.id,
-          uid: proof.uid.trim(),
           proofName: proof.proofName,
           hasProofImage: Boolean(proof.proofDataUrl),
+          proofImageDataUrl: proof.proofDataUrl,
         }),
       });
       const data = (await response.json().catch(() => ({}))) as Claim & { error?: string };
@@ -837,6 +936,7 @@ function MissionModal({
   onGenerate: (mission: Mission) => void;
 }) {
   const [qrVisible, setQrVisible] = useState(false);
+  const [activeGuide, setActiveGuide] = useState<UidGuideItem | null>(null);
   const hideQr = () => setQrVisible(false);
   const showQr = () => setQrVisible(true);
 
@@ -857,15 +957,46 @@ function MissionModal({
 
         <ol className="okx-modal-steps">
           {mission.steps[lang].map((step, index) => (
-            <li key={step}>
-              {mission.ctaUrl && index === 0 ? (
-                <a className="okx-step-link" href={mission.ctaUrl} target="_blank" rel="noopener noreferrer">
-                  {step}
-                </a>
-              ) : (
-                step
-              )}
-            </li>
+            <Fragment key={`${mission.id}-${index}`}>
+              <li>
+                {mission.ctaUrl && index === 0 ? (
+                  <a className="okx-step-link" href={mission.ctaUrl} target="_blank" rel="noopener noreferrer">
+                    {step}
+                  </a>
+                ) : mission.uidDeeplink && index === 2 ? (
+                  <a className="okx-step-link" href={mission.uidDeeplink}>
+                    {step}
+                  </a>
+                ) : (
+                  step
+                )}
+              </li>
+              {mission.uidGuide && index === 2 ? (
+                <li className="okx-uid-guide-row">
+                  <div className="okx-uid-guide" aria-label={mission.steps[lang][2]}>
+                    <div className="okx-uid-guide-scroller">
+                      {mission.uidGuide.map((item, guideIndex) => (
+                        <button
+                          key={item.image}
+                          type="button"
+                          className={`okx-uid-guide-card ${item.featured ? "is-featured" : ""}`}
+                          onClick={() => setActiveGuide(item)}
+                          aria-label={`${guideStepLabel[lang]} ${guideIndex + 1}: ${item.title[lang]}`}
+                        >
+                          <img src={item.image} alt={item.alt[lang]} loading="lazy" />
+                          <span>
+                            <strong>
+                              {guideStepLabel[lang]} {guideIndex + 1}
+                            </strong>
+                            {item.title[lang]}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </li>
+              ) : null}
+            </Fragment>
           ))}
         </ol>
 
@@ -877,17 +1008,6 @@ function MissionModal({
         ) : null}
 
         <p className="okx-proof-intro">{mission.staff[lang]}</p>
-
-        {mission.needsUid ? (
-          <label className="okx-field">
-            <span>{t.uid}</span>
-            <input
-              value={proof.uid}
-              onChange={(event) => onUpdateProof(mission.id, { uid: event.target.value, error: "" })}
-              placeholder={t.uidPlaceholder}
-            />
-          </label>
-        ) : null}
 
         <label className="okx-upload">
           <FiUpload aria-hidden />
@@ -941,6 +1061,15 @@ function MissionModal({
           </button>
         )}
       </div>
+
+      {activeGuide ? (
+        <button type="button" className="okx-guide-lightbox" onClick={() => setActiveGuide(null)} aria-label={t.close}>
+          <img src={activeGuide.image} alt={activeGuide.alt[lang]} />
+          <span>
+            {activeGuide.title[lang]} <FiX aria-hidden />
+          </span>
+        </button>
+      ) : null}
     </div>
   );
 }
