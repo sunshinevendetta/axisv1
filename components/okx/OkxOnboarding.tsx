@@ -569,6 +569,7 @@ function makeProofState(): Record<MissionId, ProofState> {
 
 const participantStorageKey = "axis-okx-participant-id-v2";
 const claimsStorageKey = "axis-okx-claims-v2-live";
+const resetSeenStorageKey = "axis-okx-reset-seen-v1";
 
 function makeParticipantId() {
   return `AXIS-OKX-${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
@@ -587,19 +588,6 @@ function readStoredClaims() {
 function writeStoredClaim(missionId: MissionId, claim: Claim) {
   const current = readStoredClaims();
   window.localStorage.setItem(claimsStorageKey, JSON.stringify({ ...current, [missionId]: claim }));
-}
-
-function removeStoredClaim(missionId: MissionId) {
-  const current = readStoredClaims();
-  delete current[missionId];
-  window.localStorage.setItem(claimsStorageKey, JSON.stringify(current));
-}
-
-function clearStoredOkxSession() {
-  for (const storage of [window.localStorage, window.sessionStorage]) {
-    const keys = Array.from({ length: storage.length }, (_, index) => storage.key(index)).filter(Boolean) as string[];
-    keys.filter((key) => key.toLowerCase().includes("okx")).forEach((key) => storage.removeItem(key));
-  }
 }
 
 function ensureParticipantId(current: string) {
@@ -670,19 +658,6 @@ export default function OkxOnboarding() {
   const active = activeMission ? missions.find((mission) => mission.id === activeMission) || null : null;
 
   useEffect(() => {
-    const url = new URL(window.location.href);
-    if (url.searchParams.get("resetOkx") === "1") {
-      clearStoredOkxSession();
-      setProofs(makeProofState());
-      setParticipantId("");
-      setActiveMission(null);
-      setChatOpen(false);
-      setChatInput("");
-      setMessages([{ role: "assistant", content: initialAssistant[lang] }]);
-      url.searchParams.delete("resetOkx");
-      window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
-    }
-
     let storedParticipantId = window.localStorage.getItem(participantStorageKey);
     if (!storedParticipantId) {
       storedParticipantId = makeParticipantId();
@@ -702,6 +677,44 @@ export default function OkxOnboarding() {
       return next;
     });
   }, []);
+
+  useEffect(() => {
+    if (!participantId) return;
+    let cancelled = false;
+
+    async function refreshParticipantStatus() {
+      try {
+        const response = await fetch(`/api/okx/participant/${encodeURIComponent(participantId)}/status`, {
+          cache: "no-store",
+        });
+        const data = (await response.json().catch(() => ({}))) as { resetAt?: string | null };
+        if (!data.resetAt) return;
+
+        const seenResetAt = window.localStorage.getItem(resetSeenStorageKey);
+        if (seenResetAt === data.resetAt) return;
+
+        window.localStorage.setItem(resetSeenStorageKey, data.resetAt);
+        window.localStorage.removeItem(claimsStorageKey);
+        const nextParticipantId = makeParticipantId();
+        window.localStorage.setItem(participantStorageKey, nextParticipantId);
+
+        if (!cancelled) {
+          setParticipantId(nextParticipantId);
+          setProofs(makeProofState());
+          setActiveMission(null);
+        }
+      } catch {
+        // Supervisor reset sync is best-effort; never reset public state on network errors.
+      }
+    }
+
+    void refreshParticipantStatus();
+    const interval = window.setInterval(refreshParticipantStatus, 2500);
+    return () => {
+      cancelled = true;
+      window.clearInterval(interval);
+    };
+  }, [participantId]);
 
   useEffect(() => {
     setMessages([{ role: "assistant", content: initialAssistant[lang] }]);
@@ -1071,10 +1084,7 @@ function MissionModal({
         const response = await fetch(`/api/okx/claim/${encodeURIComponent(proof.claim!.claimId)}/status`, {
           cache: "no-store",
         });
-        if (!cancelled && response.status === 404) {
-          onUpdateProof(mission.id, { status: "idle", claim: null });
-          removeStoredClaim(mission.id);
-          hideQr();
+        if (response.status === 404) {
           return;
         }
         const data = (await response.json().catch(() => ({}))) as { usedAt?: string | null };
