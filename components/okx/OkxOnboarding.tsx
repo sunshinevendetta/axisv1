@@ -92,7 +92,7 @@ const missions: Mission[] = [
   {
     id: "verify",
     drink: "01",
-    asset: "/okx/drink-01.svg",
+    asset: "/okx/drink-01.webp",
     ctaUrl: "https://bit.ly/baroriente",
     uidDeeplink: "okx://",
     ctaLabel: {
@@ -207,7 +207,7 @@ const missions: Mission[] = [
   {
     id: "outcomes",
     drink: "02",
-    asset: "/okx/drink-02.svg",
+    asset: "/okx/drink-02.webp",
     videoSrc: "/okx/outcome.mp4",
     videoLabel: {
       es: "Guia rapida de OKX Outcomes",
@@ -261,7 +261,7 @@ const missions: Mission[] = [
   {
     id: "fund",
     drink: "03",
-    asset: "/okx/drink-03.svg",
+    asset: "/okx/drink-03.webp",
     title: {
       es: "3rd drink",
       en: "3rd drink",
@@ -618,7 +618,7 @@ function loadProofImage(dataUrl: string) {
 async function prepareProofImage(file: File) {
   const dataUrl = await readImageFile(file);
   const image = await loadProofImage(dataUrl);
-  const maxSide = 2000;
+  const maxSide = 1600;
   const scale = Math.min(1, maxSide / Math.max(image.naturalWidth, image.naturalHeight));
   const canvas = document.createElement("canvas");
   canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
@@ -626,7 +626,11 @@ async function prepareProofImage(file: File) {
   const context = canvas.getContext("2d");
   if (!context) return dataUrl;
   context.drawImage(image, 0, 0, canvas.width, canvas.height);
-  return canvas.toDataURL("image/jpeg", 0.86);
+  return canvas.toDataURL("image/jpeg", 0.82);
+}
+
+function isSubmitting(proof: ProofState) {
+  return proof.status === "submitting";
 }
 
 export default function OkxOnboarding() {
@@ -754,12 +758,21 @@ export default function OkxOnboarding() {
     }
 
     updateProof(mission.id, { status: "submitting", error: "" });
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 90000);
     try {
       const currentParticipantId = ensureParticipantId(participantId);
       if (currentParticipantId !== participantId) setParticipantId(currentParticipantId);
+      console.info("OKX claim upload starting", {
+        missionId: mission.id,
+        participantId: currentParticipantId,
+        proofName: proof.proofName,
+        proofBytes: proof.proofDataUrl.length,
+      });
       const response = await fetch("/api/okx/claim", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        signal: controller.signal,
         body: JSON.stringify({
           lang,
           missionId: mission.id,
@@ -771,13 +784,26 @@ export default function OkxOnboarding() {
       });
       const data = (await response.json().catch(() => ({}))) as Claim & { error?: string };
       if (!response.ok || !data.claimId) throw new Error(data.error || "Could not create QR");
+      console.info("OKX claim upload complete", {
+        missionId: mission.id,
+        claimId: data.claimId,
+        duplicate: Boolean(data.duplicate),
+      });
       updateProof(mission.id, { status: "ready", claim: data, error: "" });
       writeStoredClaim(mission.id, data);
     } catch (error) {
+      console.error("OKX claim upload failed", error);
       updateProof(mission.id, {
         status: "error",
-        error: error instanceof Error ? error.message : t.error,
+        error:
+          error instanceof DOMException && error.name === "AbortError"
+            ? "La validacion tardo demasiado. Intenta otra vez o pide ayuda al staff OKX."
+            : error instanceof Error
+              ? error.message
+              : t.error,
       });
+    } finally {
+      window.clearTimeout(timeout);
     }
   }
 
@@ -999,6 +1025,7 @@ function MissionModal({
 }) {
   const [qrVisible, setQrVisible] = useState(false);
   const [activeGuide, setActiveGuide] = useState<UidGuideItem | null>(null);
+  const busy = isSubmitting(proof);
   const hideQr = () => setQrVisible(false);
   const showQr = () => setQrVisible(true);
 
@@ -1112,15 +1139,29 @@ function MissionModal({
             <small>{t.screenshot}</small>
           </div>
         ) : (
-          <button
-            type="button"
-            className="okx-primary"
-            onClick={() => onGenerate(mission)}
-            disabled={proof.status === "submitting"}
-          >
-            {proof.status === "submitting" ? <FiLoader aria-hidden className="okx-spin" /> : <FiCheck aria-hidden />}
-            {proof.status === "submitting" ? t.generating : t.generate}
-          </button>
+          <>
+            {busy ? (
+              <div className="okx-submit-progress" role="status" aria-live="polite">
+                <span>
+                  {lang === "es"
+                    ? "Validando screenshot y enviando prueba a OKX..."
+                    : "Validating screenshot and sending proof to OKX..."}
+                </span>
+                <div aria-hidden>
+                  <i />
+                </div>
+              </div>
+            ) : null}
+            <button
+              type="button"
+              className="okx-primary"
+              onClick={() => onGenerate(mission)}
+              disabled={busy}
+            >
+              {busy ? <FiLoader aria-hidden className="okx-spin" /> : <FiCheck aria-hidden />}
+              {busy ? t.generating : t.generate}
+            </button>
+          </>
         )}
       </div>
 
