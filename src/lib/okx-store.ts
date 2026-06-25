@@ -22,6 +22,8 @@ declare global {
   var okxParticipantMissionClaims: Map<string, string> | undefined;
   var okxDrinkSequence: number | undefined;
   var okxManualDeliveredAdjustment: number | undefined;
+  var okxParticipantResets: Map<string, string> | undefined;
+  var okxGlobalResetAt: string | undefined;
 }
 
 export function getClaimStore() {
@@ -34,10 +36,20 @@ export function getParticipantMissionStore() {
   return globalThis.okxParticipantMissionClaims;
 }
 
+export function getParticipantResetStore() {
+  if (!globalThis.okxParticipantResets) globalThis.okxParticipantResets = new Map<string, string>();
+  return globalThis.okxParticipantResets;
+}
+
 export function allocateDrinkId() {
   const nextId = globalThis.okxDrinkSequence ?? 0;
   globalThis.okxDrinkSequence = nextId + 1;
   return nextId;
+}
+
+export function saveClaim(claim: StoredClaim) {
+  getClaimStore().set(claim.claimId, claim);
+  getParticipantMissionStore().set(`${claim.participantId}::${claim.missionId}`, claim.claimId);
 }
 
 export function redeemClaim(claimId: string): OkxRedeemResult {
@@ -47,7 +59,7 @@ export function redeemClaim(claimId: string): OkxRedeemResult {
   if (claim.usedAt) return { ok: false, claim, status: "already-used" };
 
   claim.usedAt = new Date().toISOString();
-  store.set(claimId, claim);
+  saveClaim(claim);
   return { ok: true, claim, status: "redeemed" };
 }
 
@@ -98,9 +110,32 @@ export function setManualDelivered(totalDelivered: number) {
   return getOkxStats();
 }
 
+export function getParticipantReset(participantId: string) {
+  return getParticipantResetStore().get(participantId) || globalThis.okxGlobalResetAt || null;
+}
+
+export function resetOkxParticipant(participantId: string) {
+  const claims = getClaimStore();
+  const participantClaims = getParticipantMissionStore();
+  for (const claim of Array.from(claims.values())) {
+    if (claim.participantId !== participantId) continue;
+    claims.delete(claim.claimId);
+    participantClaims.delete(`${claim.participantId}::${claim.missionId}`);
+  }
+  getParticipantResetStore().set(participantId, new Date().toISOString());
+  return getOkxStats();
+}
+
 export function resetOkxStores() {
+  const participantIds = new Set(Array.from(getClaimStore().values()).map((claim) => claim.participantId));
   globalThis.okxClaims = new Map<string, StoredClaim>();
   globalThis.okxParticipantMissionClaims = new Map<string, string>();
   globalThis.okxDrinkSequence = 0;
   globalThis.okxManualDeliveredAdjustment = 0;
+  const resetAt = new Date().toISOString();
+  globalThis.okxGlobalResetAt = resetAt;
+  const resetStore = getParticipantResetStore();
+  for (const participantId of [...Array.from(resetStore.keys()), ...Array.from(participantIds)]) {
+    resetStore.set(participantId, resetAt);
+  }
 }

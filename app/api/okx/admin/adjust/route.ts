@@ -10,6 +10,10 @@ type AdjustBody = {
 };
 
 export async function POST(request: Request) {
+  if (request.headers.get("x-okx-supervisor") !== "sv") {
+    return NextResponse.json({ ok: false, error: "Supervisor only." }, { status: 403 });
+  }
+
   const body = (await request.json().catch(() => ({}))) as AdjustBody;
 
   if (typeof body.delivered === "number" && Number.isFinite(body.delivered)) {

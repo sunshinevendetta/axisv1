@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { redeemClaim } from "@/src/lib/okx-store";
+import { redeemClaim, saveClaim, type StoredClaim } from "@/src/lib/okx-store";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -20,6 +20,10 @@ function parseScan(body: RedeemBody) {
     return {
       claimId: claimId ? decodeURIComponent(claimId) : "",
       scanned: Boolean(claimId && parts[0] === "api" && parts[1] === "okx" && parts[2] === "redeem"),
+      participantId: url.searchParams.get("p") || "",
+      missionId: url.searchParams.get("m") || "",
+      drinkId: Number(url.searchParams.get("d")),
+      uidText: url.searchParams.get("u") || "",
     };
   } catch {
     return { claimId: "", scanned: false };
@@ -28,13 +32,31 @@ function parseScan(body: RedeemBody) {
 
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => ({}))) as RedeemBody;
-  const { claimId, scanned } = parseScan(body);
+  const { claimId, scanned, participantId, missionId, drinkId, uidText } = parseScan(body);
 
   if (!claimId || !scanned) {
     return NextResponse.json({ ok: false, status: "scan-required" }, { status: 400 });
   }
 
-  const result = redeemClaim(claimId);
+  let result = redeemClaim(claimId);
+  if (result.status === "not-found" && participantId && missionId && Number.isFinite(drinkId)) {
+    const fallbackClaim: StoredClaim = {
+      claimId,
+      missionId,
+      participantId,
+      uid: uidText || "",
+      proofName: "qr-scan",
+      hasProofImage: true,
+      uidText: uidText || "",
+      ocrProvider: "qr-metadata",
+      drinkId,
+      emailedAt: "",
+      createdAt: new Date().toISOString(),
+      usedAt: null,
+    };
+    saveClaim(fallbackClaim);
+    result = redeemClaim(claimId);
+  }
   const statusCode =
     result.ok ? 200 :
     result.status === "not-found" ? 404 :

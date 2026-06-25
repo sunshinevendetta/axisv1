@@ -543,6 +543,19 @@ function getProofReplyTo() {
   return process.env.OKX_PROOF_REPLY_TO || "infoaxishow@gmail.com";
 }
 
+function makeRedeemUrl(origin: string, claim: Pick<StoredClaim, "claimId" | "participantId" | "missionId" | "drinkId" | "uidText">) {
+  const url = new URL(`/api/okx/redeem/${encodeURIComponent(claim.claimId)}`, origin);
+  url.searchParams.set("p", claim.participantId);
+  url.searchParams.set("m", claim.missionId);
+  url.searchParams.set("d", String(claim.drinkId));
+  if (claim.uidText) url.searchParams.set("u", claim.uidText);
+  return url.toString();
+}
+
+function makeQrUrl(redeemUrl: string) {
+  return `https://api.qrserver.com/v1/create-qr-code/?size=420x420&margin=16&data=${encodeURIComponent(redeemUrl)}`;
+}
+
 function makeProofEmailContent({
   claim,
   redeemUrl,
@@ -785,8 +798,8 @@ export async function POST(request: Request) {
   if (existingClaim) {
     log("duplicate claim returned", { claimId: existingClaim.claimId, missionId, participantId });
     const origin = new URL(request.url).origin;
-    const redeemUrl = `${origin}/api/okx/redeem/${encodeURIComponent(existingClaim.claimId)}`;
-    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=420x420&margin=16&data=${encodeURIComponent(redeemUrl)}`;
+    const redeemUrl = makeRedeemUrl(origin, existingClaim);
+    const qrUrl = makeQrUrl(redeemUrl);
     let emailSent = false;
     let emailError = "";
     let emailDelivery: ProofEmailDelivery | null = null;
@@ -856,8 +869,6 @@ export async function POST(request: Request) {
 
   const claimId = `OKX-${missionId.toUpperCase()}-${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
   const origin = new URL(request.url).origin;
-  const redeemUrl = `${origin}/api/okx/redeem/${encodeURIComponent(claimId)}`;
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=420x420&margin=16&data=${encodeURIComponent(redeemUrl)}`;
   const drinkId = allocateDrinkId();
 
   const claim: StoredClaim = {
@@ -874,6 +885,8 @@ export async function POST(request: Request) {
     createdAt: new Date().toISOString(),
     usedAt: null,
   };
+  const redeemUrl = makeRedeemUrl(origin, claim);
+  const qrUrl = makeQrUrl(redeemUrl);
 
   let emailSent = false;
   let emailError = "";
