@@ -5,37 +5,33 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 type RedeemBody = {
-  claimId?: string;
   url?: string;
 };
 
 function parseScan(body: RedeemBody) {
   const rawUrl = typeof body.url === "string" ? body.url.trim() : "";
-  if (rawUrl) {
-    try {
-      const url = new URL(rawUrl);
-      const parts = url.pathname.split("/").filter(Boolean);
-      const redeemIndex = parts.findIndex((part) => part === "redeem");
-      const claimId = redeemIndex >= 0 ? parts[redeemIndex + 1] : "";
-      return {
-        claimId: claimId ? decodeURIComponent(claimId) : "",
-      };
-    } catch {
-      return { claimId: rawUrl };
-    }
-  }
+  if (!rawUrl) return { claimId: "", scanned: false };
 
-  return {
-    claimId: typeof body.claimId === "string" ? body.claimId.trim() : "",
-  };
+  try {
+    const url = new URL(rawUrl);
+    const parts = url.pathname.split("/").filter(Boolean);
+    const redeemIndex = parts.findIndex((part) => part === "redeem");
+    const claimId = redeemIndex >= 0 ? parts[redeemIndex + 1] : "";
+    return {
+      claimId: claimId ? decodeURIComponent(claimId) : "",
+      scanned: Boolean(claimId && parts[0] === "api" && parts[1] === "okx" && parts[2] === "redeem"),
+    };
+  } catch {
+    return { claimId: "", scanned: false };
+  }
 }
 
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => ({}))) as RedeemBody;
-  const { claimId } = parseScan(body);
+  const { claimId, scanned } = parseScan(body);
 
-  if (!claimId) {
-    return NextResponse.json({ ok: false, status: "missing-claim" }, { status: 400 });
+  if (!claimId || !scanned) {
+    return NextResponse.json({ ok: false, status: "scan-required" }, { status: 400 });
   }
 
   const result = redeemClaim(claimId);

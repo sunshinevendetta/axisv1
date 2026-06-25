@@ -64,7 +64,17 @@ function resultCopy(result: RedeemResult | null) {
   if (result.ok) return `Approved drink #${result.claim?.drinkId ?? "?"} (${result.claim?.missionId ?? "mission"})`;
   if (result.status === "already-used") return `Already used: drink #${result.claim?.drinkId ?? "?"}`;
   if (result.status === "not-found") return "QR not found in this runtime.";
+  if (result.status === "scan-required") return "Scan the real QR URL to redeem.";
   return result.status;
+}
+
+function clearOkxLocalState() {
+  [
+    "axis-okx-participant-id-v2",
+    "axis-okx-claims-v2-live",
+    "axis-okx-participant-id",
+    "axis-okx-claims-v1",
+  ].forEach((key) => window.localStorage.removeItem(key));
 }
 
 export default function OkxAdminPanel() {
@@ -163,8 +173,9 @@ export default function OkxAdminPanel() {
   }
 
   async function resetCounters() {
-    if (!window.confirm("Reset all OKX test claims and counters in this runtime?")) return;
+    if (!window.confirm("Reset all OKX users, claims, drink counters, and this device's OKX session?")) return;
     await fetch("/api/okx/admin/reset", { method: "POST" });
+    clearOkxLocalState();
     setResult(null);
     setManualScan("");
     await refreshStats();
@@ -192,7 +203,7 @@ export default function OkxAdminPanel() {
             className="inline-flex h-11 w-full items-center justify-center gap-2 border border-white/16 bg-white/[0.03] px-4 text-sm text-white/80 sm:w-auto"
           >
             <FiRotateCcw aria-hidden />
-            Reset test
+            Reset all users
           </button>
         </header>
 

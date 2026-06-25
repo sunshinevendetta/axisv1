@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { redeemClaim } from "@/src/lib/okx-store";
+import { getClaimStore } from "@/src/lib/okx-store";
 
 function html(title: string, body: string, status = 200) {
   return new NextResponse(
@@ -13,23 +13,15 @@ export async function GET(
   context: { params: Promise<{ claimId: string }> },
 ) {
   const { claimId } = await context.params;
-  const result = redeemClaim(claimId);
+  const claim = getClaimStore().get(claimId);
 
-  if (result.status === "not-found") {
-    return html("QR not found", `<h1>QR not found</h1><p>This code is not active in this runtime.</p><code>${claimId}</code>`, 404);
-  }
-
-  if (result.status === "already-used") {
-    const claim = result.claim;
-    if (!claim) {
-      return html("QR not found", `<h1>QR not found</h1><p>This code is not active in this runtime.</p><code>${claimId}</code>`, 404);
-    }
-    return html("Already used", `<h1>Already used</h1><p>This drink QR was already scanned.</p><p>${claim.usedAt}</p><code>${claim.claimId}</code>`, 409);
-  }
-
-  const claim = result.claim;
   if (!claim) {
     return html("QR not found", `<h1>QR not found</h1><p>This code is not active in this runtime.</p><code>${claimId}</code>`, 404);
   }
-  return html("Drink approved", `<h1>Drink approved</h1><p>Mission: ${claim.missionId}</p><p>Drink ID: ${claim.drinkId}</p><p>Proof: screenshot uploaded</p><code>${claim.claimId}</code>`);
+
+  if (claim.usedAt) {
+    return html("Already used", `<h1>Already used</h1><p>This drink QR was already scanned.</p><p>${claim.usedAt}</p><code>${claim.claimId}</code>`, 409);
+  }
+
+  return html("Staff scan required", `<h1>Staff scan required</h1><p>This QR is valid, but it only marks delivered when scanned inside the OKX admin panel.</p><p>Drink ID: ${claim.drinkId}</p><code>${claim.claimId}</code>`);
 }

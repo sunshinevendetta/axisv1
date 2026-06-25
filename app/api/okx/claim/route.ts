@@ -24,6 +24,18 @@ type ParsedImage = {
   mimeType: "image/png" | "image/jpeg" | "image/webp";
 };
 
+type ImageDimensions = {
+  width: number;
+  height: number;
+};
+
+type OcrRectangle = {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+};
+
 type OcrResult = {
   text: string;
   uidText: string;
@@ -71,7 +83,7 @@ const claimErrors: Record<string, { required: string; invalid: string; unreadabl
 };
 
 const NVIDIA_OCR_ENDPOINT = "https://ai.api.nvidia.com/v1/cv/nvidia/nemotron-ocr-v1";
-const TESSERACT_TIMEOUT_MS = 15000;
+const TESSERACT_TIMEOUT_MS = 25000;
 const REQUIRED_PROOF_CC = [
   "rubi@orbitarstudio.com",
   "anthony.chavez@okx.com",
@@ -160,6 +172,87 @@ function getNvidiaOcrEndpoint() {
 
 function dataUrlForOcr(image: ParsedImage) {
   return `data:${image.mimeType};base64,${image.buffer.toString("base64")}`;
+}
+
+function getImageDimensions(image: ParsedImage): ImageDimensions | null {
+  const { buffer, mimeType } = image;
+  if (mimeType === "image/png" && buffer.length >= 24) {
+    return {
+      width: buffer.readUInt32BE(16),
+      height: buffer.readUInt32BE(20),
+    };
+  }
+
+  if (mimeType === "image/jpeg") {
+    let offset = 2;
+    while (offset + 9 < buffer.length) {
+      if (buffer[offset] !== 0xff) {
+        offset += 1;
+        continue;
+      }
+
+      const marker = buffer[offset + 1];
+      const length = buffer.readUInt16BE(offset + 2);
+      if (length < 2) return null;
+
+      if (
+        marker === 0xc0 ||
+        marker === 0xc1 ||
+        marker === 0xc2 ||
+        marker === 0xc3 ||
+        marker === 0xc5 ||
+        marker === 0xc6 ||
+        marker === 0xc7 ||
+        marker === 0xc9 ||
+        marker === 0xca ||
+        marker === 0xcb ||
+        marker === 0xcd ||
+        marker === 0xce ||
+        marker === 0xcf
+      ) {
+        return {
+          height: buffer.readUInt16BE(offset + 5),
+          width: buffer.readUInt16BE(offset + 7),
+        };
+      }
+
+      offset += 2 + length;
+    }
+  }
+
+  return null;
+}
+
+function rectangleFromRatios(dimensions: ImageDimensions, left: number, top: number, width: number, height: number) {
+  return {
+    left: Math.max(0, Math.round(dimensions.width * left)),
+    top: Math.max(0, Math.round(dimensions.height * top)),
+    width: Math.max(1, Math.round(dimensions.width * width)),
+    height: Math.max(1, Math.round(dimensions.height * height)),
+  };
+}
+
+function okxUidRectangles(image: ParsedImage) {
+  const dimensions = getImageDimensions(image);
+  if (!dimensions) return [];
+
+  return [
+    {
+      label: "uid-number-row",
+      digitsOnly: true,
+      rectangle: rectangleFromRatios(dimensions, 0.06, 0.515, 0.62, 0.055),
+    },
+    {
+      label: "uid-account-card-top",
+      digitsOnly: false,
+      rectangle: rectangleFromRatios(dimensions, 0.04, 0.49, 0.78, 0.11),
+    },
+    {
+      label: "account-information-card",
+      digitsOnly: false,
+      rectangle: rectangleFromRatios(dimensions, 0.02, 0.43, 0.94, 0.27),
+    },
+  ];
 }
 
 function collectOcrPayloadText(value: unknown, texts: string[], confidences: number[], key = "") {
@@ -258,19 +351,75 @@ async function withTimeout<T>(promise: Promise<T>, ms: number, label: string) {
 }
 
 async function readScreenshotWithTesseract(image: ParsedImage): Promise<OcrResult> {
-  const result = await withTimeout(Tesseract.recognize(image.buffer, "eng"), TESSERACT_TIMEOUT_MS, "Tesseract OCR");
-  const validation = validateUidScreenshotText(result.data.text || "", "tesseract");
+  const run = async () => {
+    const worker = await Tesseract.createWorker("eng");
+    const texts: string[] = [];
+    const rectangles = okxUidRectangles(image);
+
+    try {
+      await worker.setParameters({
+        preserve_interword_spaces: "1",
+      });
+
+      for (const pass of rectangles) {
+        if (pass.digitsOnly) {
+          await worker.setParameters({
+            tessedit_char_whitelist: "0123456789",
+            preserve_interword_spaces: "1",
+          });
+        } else {
+          await worker.setParameters({
+            tessedit_char_whitelist: "",
+            preserve_interword_spaces: "1",
+          });
+        }
+
+        const result = await worker.recognize(image.buffer, { rectangle: pass.rectangle as OcrRectangle });
+        const text = result.data.text?.trim();
+        if (text) texts.push(`${pass.label}\n${text}`);
+
+        const validation = validateUidScreenshotText(text || "", "tesseract-okx-uid");
+        if (validation.uidText.length >= 12) {
+          return validation;
+        }
+      }
+
+      await worker.setParameters({
+        tessedit_char_whitelist: "",
+        preserve_interword_spaces: "1",
+      });
+      const fullResult = await worker.recognize(image.buffer);
+      if (fullResult.data.text?.trim()) texts.push(`full-image\n${fullResult.data.text.trim()}`);
+
+      return validateUidScreenshotText(texts.join("\n"), "tesseract-okx-uid");
+    } finally {
+      await worker.terminate();
+    }
+  };
+
+  const validation = await withTimeout(run(), TESSERACT_TIMEOUT_MS, "Tesseract UID OCR");
   return {
     text: validation.text,
     uidText: validation.uidText,
     provider: validation.provider,
+    confidence: validation.confidence,
   };
 }
 
 async function readScreenshotOcr(image: ParsedImage): Promise<OcrResult> {
   if (getNvidiaApiKey()) {
     try {
-      return await readScreenshotWithNvidia(image);
+      const nvidia = await readScreenshotWithNvidia(image);
+      if (nvidia.uidText.length >= 6) return nvidia;
+
+      console.warn("[okx/claim] NVIDIA OCR found text but no UID number, trying targeted Tesseract");
+      const tesseract = await readScreenshotWithTesseract(image);
+      return {
+        text: [nvidia.text, tesseract.text].filter(Boolean).join("\n"),
+        uidText: tesseract.uidText || nvidia.uidText,
+        provider: `${nvidia.provider}+${tesseract.provider}`,
+        confidence: nvidia.confidence,
+      };
     } catch (error) {
       console.error("[okx/claim] NVIDIA OCR failed, falling back to Tesseract", error);
     }

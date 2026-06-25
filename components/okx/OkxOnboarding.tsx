@@ -589,6 +589,21 @@ function writeStoredClaim(missionId: MissionId, claim: Claim) {
   window.localStorage.setItem(claimsStorageKey, JSON.stringify({ ...current, [missionId]: claim }));
 }
 
+function removeStoredClaim(missionId: MissionId) {
+  const current = readStoredClaims();
+  delete current[missionId];
+  window.localStorage.setItem(claimsStorageKey, JSON.stringify(current));
+}
+
+function clearStoredOkxSession() {
+  [
+    participantStorageKey,
+    claimsStorageKey,
+    "axis-okx-participant-id",
+    "axis-okx-claims-v1",
+  ].forEach((key) => window.localStorage.removeItem(key));
+}
+
 function ensureParticipantId(current: string) {
   if (current) return current;
   let storedParticipantId = window.localStorage.getItem(participantStorageKey);
@@ -657,6 +672,13 @@ export default function OkxOnboarding() {
   const active = activeMission ? missions.find((mission) => mission.id === activeMission) || null : null;
 
   useEffect(() => {
+    const url = new URL(window.location.href);
+    if (url.searchParams.get("resetOkx") === "1") {
+      clearStoredOkxSession();
+      url.searchParams.delete("resetOkx");
+      window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    }
+
     let storedParticipantId = window.localStorage.getItem(participantStorageKey);
     if (!storedParticipantId) {
       storedParticipantId = makeParticipantId();
@@ -1045,6 +1067,12 @@ function MissionModal({
         const response = await fetch(`/api/okx/claim/${encodeURIComponent(proof.claim!.claimId)}/status`, {
           cache: "no-store",
         });
+        if (!cancelled && response.status === 404) {
+          onUpdateProof(mission.id, { status: "idle", claim: null });
+          removeStoredClaim(mission.id);
+          hideQr();
+          return;
+        }
         const data = (await response.json().catch(() => ({}))) as { usedAt?: string | null };
         if (!cancelled && data.usedAt) {
           const nextClaim = { ...proof.claim!, usedAt: data.usedAt };
