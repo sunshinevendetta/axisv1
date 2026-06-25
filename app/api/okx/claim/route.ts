@@ -433,7 +433,7 @@ async function readScreenshotOcr(image: ParsedImage): Promise<OcrResult> {
   if (getNvidiaApiKey()) {
     try {
       const nvidia = await readScreenshotWithNvidia(image);
-      if (nvidia.uidText.length >= 6) return nvidia;
+      if (hasUidEvidence(nvidia.text, nvidia.uidText)) return nvidia;
 
       console.warn("[okx/claim] NVIDIA OCR found text but no UID number, trying targeted Tesseract");
       const tesseract = await readScreenshotWithTesseract(image);
@@ -556,14 +556,13 @@ function makeProofEmailContent({
   const safeClaim = escapeHtml(claim.claimId);
   const safeParticipant = escapeHtml(claim.participantId);
   const safeDrinkId = escapeHtml(String(claim.drinkId));
-  const safeUid = escapeHtml(claim.uidText || "Not extracted");
   const safeProvider = escapeHtml(claim.ocrProvider || "none");
   const safeProof = escapeHtml(claim.proofName || "screenshot");
   const safeRedeem = escapeHtml(redeemUrl);
   const safeOcr = escapeHtml(ocrText || "No OCR text extracted");
 
   return {
-    subject: `OKX UID ${claim.uidText || "not-found"} / drink #${claim.drinkId} / ${claim.claimId}`,
+    subject: `OKX proof ${claim.participantId} / drink #${claim.drinkId} / ${claim.claimId}`,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:680px;margin:0 auto;padding:20px;background:#050505;color:#fff;">
         <h2 style="margin:0 0 14px;">OKX mission proof received</h2>
@@ -571,7 +570,6 @@ function makeProofEmailContent({
         <p><strong>Mission:</strong> ${safeMission}</p>
         <p><strong>Drink ID:</strong> ${safeDrinkId}</p>
         <p><strong>QR claim code:</strong> ${safeClaim}</p>
-        <p><strong>Extracted UID:</strong> ${safeUid}</p>
         <p><strong>OCR provider:</strong> ${safeProvider}</p>
         <p><strong>Proof file:</strong> ${safeProof}</p>
         <p><strong>Redeem URL:</strong> <a href="${safeRedeem}" style="color:#c9ff4a;">${safeRedeem}</a></p>
@@ -585,7 +583,6 @@ function makeProofEmailContent({
       `Mission: ${claim.missionId}`,
       `Drink ID: ${claim.drinkId}`,
       `QR claim code: ${claim.claimId}`,
-      `Extracted UID: ${claim.uidText || "Not extracted"}`,
       `OCR provider: ${claim.ocrProvider || "none"}`,
       `Proof file: ${claim.proofName || "screenshot"}`,
       `Redeem URL: ${redeemUrl}`,
