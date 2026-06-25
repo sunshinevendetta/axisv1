@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import Tesseract from "tesseract.js";
+import {
+  allocateDrinkId,
+  getClaimStore,
+  getParticipantMissionStore,
+  type StoredClaim,
+} from "@/src/lib/okx-store";
 
 export const runtime = "nodejs";
 
@@ -11,20 +17,6 @@ type ClaimBody = {
   hasProofImage?: boolean;
   proofImageDataUrl?: string;
   lang?: string;
-};
-
-type StoredClaim = {
-  claimId: string;
-  missionId: string;
-  participantId: string;
-  uid: string;
-  proofName: string;
-  hasProofImage: boolean;
-  uidText: string;
-  ocrProvider: string;
-  emailedAt: string;
-  createdAt: string;
-  usedAt: string | null;
 };
 
 type ParsedImage = {
@@ -42,21 +34,6 @@ type OcrResult = {
 type UidValidation = OcrResult & {
   ok: boolean;
 };
-
-declare global {
-  var okxClaims: Map<string, StoredClaim> | undefined;
-  var okxParticipantMissionClaims: Map<string, string> | undefined;
-}
-
-function getClaimStore() {
-  if (!globalThis.okxClaims) globalThis.okxClaims = new Map<string, StoredClaim>();
-  return globalThis.okxClaims;
-}
-
-function getParticipantMissionStore() {
-  if (!globalThis.okxParticipantMissionClaims) globalThis.okxParticipantMissionClaims = new Map<string, string>();
-  return globalThis.okxParticipantMissionClaims;
-}
 
 function escapeHtml(value: string) {
   return value
@@ -528,6 +505,7 @@ export async function POST(request: Request) {
       claimId: existingClaim.claimId,
       missionId,
       participantId,
+      drinkId: existingClaim.drinkId,
       redeemUrl,
       qrUrl,
       duplicate: true,
@@ -566,6 +544,12 @@ export async function POST(request: Request) {
   const origin = new URL(request.url).origin;
   const redeemUrl = `${origin}/api/okx/redeem/${encodeURIComponent(claimId)}`;
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=420x420&margin=16&data=${encodeURIComponent(redeemUrl)}`;
+  const drinkId = allocateDrinkId();
+
+  if (drinkId === null) {
+    log("validation failed: drink capacity exhausted");
+    return NextResponse.json({ error: "OKX drink capacity is full. Ask staff for help." }, { status: 409 });
+  }
 
   const claim: StoredClaim = {
     claimId,
@@ -576,6 +560,7 @@ export async function POST(request: Request) {
     hasProofImage,
     uidText,
     ocrProvider,
+    drinkId,
     emailedAt: "",
     createdAt: new Date().toISOString(),
     usedAt: null,
@@ -602,6 +587,7 @@ export async function POST(request: Request) {
     claimId,
     missionId,
     participantId,
+    drinkId,
     redeemUrl,
     qrUrl,
     emailSent,

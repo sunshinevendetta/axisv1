@@ -58,6 +58,8 @@ type Claim = {
   redeemUrl: string;
   qrUrl: string;
   missionId: MissionId;
+  drinkId?: number;
+  usedAt?: string | null;
   participantId?: string;
   duplicate?: boolean;
 };
@@ -565,8 +567,8 @@ function makeProofState(): Record<MissionId, ProofState> {
   };
 }
 
-const participantStorageKey = "axis-okx-participant-id";
-const claimsStorageKey = "axis-okx-claims-v1";
+const participantStorageKey = "axis-okx-participant-id-v2";
+const claimsStorageKey = "axis-okx-claims-v2-live";
 
 function makeParticipantId() {
   return `AXIS-OKX-${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
@@ -1026,8 +1028,73 @@ function MissionModal({
   const [qrVisible, setQrVisible] = useState(false);
   const [activeGuide, setActiveGuide] = useState<UidGuideItem | null>(null);
   const busy = isSubmitting(proof);
-  const hideQr = () => setQrVisible(false);
-  const showQr = () => setQrVisible(true);
+  const redeemed = Boolean(proof.claim?.usedAt);
+  const hideQr = () => {
+    setQrVisible(false);
+  };
+  const showQr = () => {
+    setQrVisible(true);
+  };
+
+  useEffect(() => {
+    if (!proof.claim?.claimId || proof.claim.usedAt) return;
+    let cancelled = false;
+
+    async function refreshClaimStatus() {
+      try {
+        const response = await fetch(`/api/okx/claim/${encodeURIComponent(proof.claim!.claimId)}/status`, {
+          cache: "no-store",
+        });
+        const data = (await response.json().catch(() => ({}))) as { usedAt?: string | null };
+        if (!cancelled && data.usedAt) {
+          const nextClaim = { ...proof.claim!, usedAt: data.usedAt };
+          onUpdateProof(mission.id, { claim: nextClaim });
+          writeStoredClaim(mission.id, nextClaim);
+          hideQr();
+        }
+      } catch {
+        // The QR can still be redeemed through the scan route; status polling is best-effort UI sync.
+      }
+    }
+
+    void refreshClaimStatus();
+    const interval = window.setInterval(refreshClaimStatus, 2000);
+    return () => {
+      cancelled = true;
+      window.clearInterval(interval);
+    };
+  }, [mission.id, onUpdateProof, proof.claim]);
+
+  useEffect(() => {
+    if (!qrVisible) return;
+
+    function hideOnCaptureKey(event: KeyboardEvent) {
+      const key = event.key.toLowerCase();
+      if (
+        key === "printscreen" ||
+        (event.metaKey && event.shiftKey) ||
+        (event.ctrlKey && key === "p") ||
+        (event.ctrlKey && event.shiftKey)
+      ) {
+        hideQr();
+      }
+    }
+
+    function hideOnPageSignal() {
+      hideQr();
+    }
+
+    window.addEventListener("blur", hideOnPageSignal);
+    window.addEventListener("pagehide", hideOnPageSignal);
+    window.addEventListener("keydown", hideOnCaptureKey);
+    document.addEventListener("visibilitychange", hideOnPageSignal);
+    return () => {
+      window.removeEventListener("blur", hideOnPageSignal);
+      window.removeEventListener("pagehide", hideOnPageSignal);
+      window.removeEventListener("keydown", hideOnCaptureKey);
+      document.removeEventListener("visibilitychange", hideOnPageSignal);
+    };
+  }, [qrVisible]);
 
   return (
     <div className="okx-mission-modal" role="dialog" aria-modal="true" aria-labelledby="mission-modal-title">
@@ -1116,27 +1183,42 @@ function MissionModal({
         {proof.claim ? (
           <div className="okx-claim-card">
             <p className="okx-kicker">{t.ready}</p>
-            <div className={`okx-qr-wrap ${qrVisible ? "is-visible" : ""}`}>
-              <img src={proof.claim.qrUrl} alt={t.ready} draggable={false} />
-              <div className="okx-qr-mask" aria-hidden={qrVisible}>
-                <span>{t.qrHidden}</span>
+            {redeemed ? (
+              <div className="okx-redeemed">
+                <FiCheck aria-hidden />
+                <span>Drink delivered</span>
               </div>
-            </div>
-            <button
-              type="button"
-              className="okx-qr-reveal"
-              onPointerDown={showQr}
-              onPointerUp={hideQr}
-              onPointerCancel={hideQr}
-              onPointerLeave={hideQr}
-              onBlur={hideQr}
-              onContextMenu={(event) => event.preventDefault()}
-            >
-              {t.qrHold}
-            </button>
+            ) : (
+              <>
+                <div className={`okx-qr-wrap ${qrVisible ? "is-visible" : ""}`}>
+                  <img src={proof.claim.qrUrl} alt={t.ready} draggable={false} />
+                  <div className="okx-qr-mask" aria-hidden={qrVisible}>
+                    <span>{t.qrHidden}</span>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className="okx-qr-reveal"
+                  onPointerDown={showQr}
+                  onPointerUp={hideQr}
+                  onPointerCancel={hideQr}
+                  onPointerLeave={hideQr}
+                  onBlur={hideQr}
+                  onContextMenu={(event) => event.preventDefault()}
+                >
+                  {t.qrHold}
+                </button>
+              </>
+            )}
             <code>{proof.claim.claimId}</code>
-            <p>{t.showLive}</p>
-            <small>{t.screenshot}</small>
+            {redeemed ? (
+              <small>{proof.claim.usedAt ? new Date(proof.claim.usedAt).toLocaleTimeString() : ""}</small>
+            ) : (
+              <>
+                <p>{t.showLive}</p>
+                <small>{t.screenshot}</small>
+              </>
+            )}
           </div>
         ) : (
           <>

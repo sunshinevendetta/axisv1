@@ -750,6 +750,21 @@
   touch-action: manipulation;
 }
 
+.okx-redeemed {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: min(72vw, 280px);
+  min-height: 72px;
+  border: 1px solid rgba(201, 255, 74, 0.35);
+  background: rgba(201, 255, 74, 0.12);
+  color: #c9ff4a;
+  font-family: "Bingo", sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
 .okx-claim-card code {
   padding: 8px 10px;
   border-radius: 999px;
