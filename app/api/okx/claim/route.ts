@@ -21,9 +21,26 @@ type StoredClaim = {
   proofName: string;
   hasProofImage: boolean;
   uidText: string;
+  ocrProvider: string;
   emailedAt: string;
   createdAt: string;
   usedAt: string | null;
+};
+
+type ParsedImage = {
+  buffer: Buffer;
+  mimeType: "image/png" | "image/jpeg" | "image/webp";
+};
+
+type OcrResult = {
+  text: string;
+  uidText: string;
+  provider: string;
+  confidence?: number;
+};
+
+type UidValidation = OcrResult & {
+  ok: boolean;
 };
 
 declare global {
@@ -53,17 +70,20 @@ function escapeHtml(value: string) {
 const claimErrors: Record<string, { required: string; invalid: string; unreadable: string; tooLarge: string }> = {
   es: {
     required: "Sube screenshot de pantalla completa de OKX donde se vea tu UID.",
-    invalid: "No pudimos validar ese screenshot. Debe ser la pantalla User Center > Profile de OKX, con Profile, Security, Preferences, Account information, UID e Identity verification visibles.",
+    invalid: "No encontramos UID en ese screenshot. Sube una captura donde se vea el texto UID o tu numero UID.",
     unreadable: "No pudimos leer el screenshot. Sube una imagen mas clara donde se vea tu UID.",
     tooLarge: "El screenshot pesa demasiado. Sube una captura mas ligera donde se vea tu UID.",
   },
   en: {
     required: "Upload a full-screen OKX screenshot where your UID is visible.",
-    invalid: "We could not validate that screenshot. It must be the OKX User Center > Profile screen with Profile, Security, Preferences, Account information, UID, and Identity verification visible.",
+    invalid: "We could not find UID in that screenshot. Upload a screenshot where the UID label or your UID number is visible.",
     unreadable: "We could not read the screenshot. Upload a clearer image where your UID is visible.",
     tooLarge: "The screenshot is too large. Upload a lighter screenshot where your UID is visible.",
   },
 };
+
+const NVIDIA_OCR_ENDPOINT = "https://ai.api.nvidia.com/v1/cv/nvidia/nemotron-ocr-v1";
+const TESSERACT_TIMEOUT_MS = 15000;
 
 function getClaimErrors(lang?: string) {
   return claimErrors[lang || ""] || claimErrors.en;
@@ -71,12 +91,13 @@ function getClaimErrors(lang?: string) {
 
 function parseImageDataUrl(dataUrl: unknown) {
   if (typeof dataUrl !== "string") return null;
-  const match = dataUrl.match(/^data:image\/(?:png|jpe?g|webp);base64,([A-Za-z0-9+/=]+)$/);
+  const match = dataUrl.match(/^data:(image\/(?:png|jpe?g|webp));base64,([A-Za-z0-9+/=]+)$/);
   if (!match) return null;
-  if (match[1].length > 7_500_000) return "too-large";
-  const buffer = Buffer.from(match[1], "base64");
+  if (match[2].length > 7_500_000) return "too-large";
+  const buffer = Buffer.from(match[2], "base64");
   if (buffer.length < 8_000) return null;
-  return buffer;
+  const mimeType = match[1] === "image/jpg" ? "image/jpeg" : match[1];
+  return { buffer, mimeType: mimeType as ParsedImage["mimeType"] };
 }
 
 function normalizeOcrText(text: string) {
@@ -91,45 +112,162 @@ function normalizeOcrText(text: string) {
 function extractUidText(text: string) {
   const normalized = normalizeOcrText(text);
   const uidNearLabel = normalized.match(/\bU\s*(?:I\s*)?D\b\s+([0-9\s]{6,32})/);
-  const candidate = uidNearLabel?.[1]?.replace(/\s+/g, "") || normalized.match(/\b\d{6,24}\b/)?.[0] || "";
+  const candidate =
+    uidNearLabel?.[1]?.replace(/\s+/g, "") ||
+    normalized.match(/\b\d[\d\s]{5,31}\d\b/)?.[0]?.replace(/\s+/g, "") ||
+    "";
   return candidate.slice(0, 32);
 }
 
-function validateUidScreenshotText(text: string) {
+function hasUidEvidence(text: string, uidText: string) {
   const normalized = normalizeOcrText(text);
   const hasUidLabel = /\bU\s*(?:I\s*)?D\b/.test(normalized);
-  const hasIdentityVerification = /\bIDENTITY\b/.test(normalized) && /\bVERIFICATION\b/.test(normalized);
-  const hasAccountInformation = /\bACCOUNT\b/.test(normalized) && /\bINFORMATION\b/.test(normalized);
-  const hasUserCenter = /\bUSER\s+CENTER\b/.test(normalized);
-  const hasProfileTab = /\bPROFILE\b/.test(normalized);
-  const hasSecurityTab = /\bSECURITY\b/.test(normalized);
-  const hasPreferencesTab = /\bPREFERENCES\b/.test(normalized);
+  return hasUidLabel || uidText.length >= 6;
+}
 
+function validateUidScreenshotText(text: string, provider: string, confidence?: number): UidValidation {
+  const uidText = extractUidText(text);
   return {
-    ok:
-      hasUidLabel &&
-      hasIdentityVerification &&
-      hasAccountInformation &&
-      hasUserCenter &&
-      hasProfileTab &&
-      hasSecurityTab &&
-      hasPreferencesTab,
-    text: normalized.slice(0, 1200),
-    uidText: extractUidText(text),
+    ok: hasUidEvidence(text, uidText),
+    text: normalizeOcrText(text).slice(0, 1200),
+    uidText,
+    provider,
+    confidence,
   };
 }
 
-async function validateUidScreenshot(image: Buffer) {
-  const result = await Tesseract.recognize(image, "eng");
-  return validateUidScreenshotText(result.data.text || "");
+function getNvidiaApiKey() {
+  return (
+    process.env.NVIDIA_API_KEY?.trim() ||
+    process.env.NVIDIA_BUILD_API_KEY?.trim() ||
+    process.env.NVAPI_KEY?.trim() ||
+    ""
+  );
 }
 
-async function readScreenshotOcr(image: Buffer) {
-  const result = await Tesseract.recognize(image, "eng");
-  const text = result.data.text || "";
+function getNvidiaOcrEndpoint() {
+  return process.env.NVIDIA_OCR_ENDPOINT?.trim() || NVIDIA_OCR_ENDPOINT;
+}
+
+function dataUrlForOcr(image: ParsedImage) {
+  return `data:${image.mimeType};base64,${image.buffer.toString("base64")}`;
+}
+
+function parseNvidiaOcrPayload(payload: unknown): { text: string; confidence?: number } {
+  if (!payload || typeof payload !== "object" || !("data" in payload)) {
+    return { text: "" };
+  }
+
+  const data = (payload as { data?: unknown }).data;
+  if (!Array.isArray(data)) return { text: "" };
+
+  const texts: string[] = [];
+  const confidences: number[] = [];
+
+  for (const item of data) {
+    if (!item || typeof item !== "object") continue;
+    const detections = (item as { text_detections?: unknown }).text_detections;
+    if (!Array.isArray(detections)) continue;
+
+    for (const detection of detections) {
+      if (!detection || typeof detection !== "object") continue;
+      const prediction = (detection as { text_prediction?: unknown }).text_prediction;
+      if (!prediction || typeof prediction !== "object") continue;
+      const text = (prediction as { text?: unknown }).text;
+      const confidence = (prediction as { confidence?: unknown }).confidence;
+      if (typeof text === "string" && text.trim()) texts.push(text.trim());
+      if (typeof confidence === "number" && Number.isFinite(confidence)) confidences.push(confidence);
+    }
+  }
+
   return {
-    text: normalizeOcrText(text).slice(0, 1200),
-    uidText: extractUidText(text),
+    text: texts.join("\n"),
+    confidence: confidences.length
+      ? confidences.reduce((sum, confidence) => sum + confidence, 0) / confidences.length
+      : undefined,
+  };
+}
+
+async function readScreenshotWithNvidia(image: ParsedImage): Promise<OcrResult> {
+  const apiKey = getNvidiaApiKey();
+  if (!apiKey) throw new Error("Missing NVIDIA_API_KEY");
+  if (image.mimeType === "image/webp") {
+    throw new Error("NVIDIA OCR supports PNG/JPEG inputs; falling back for WebP");
+  }
+
+  const response = await fetch(getNvidiaOcrEndpoint(), {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${apiKey}`,
+      "content-type": "application/json",
+    },
+    signal: AbortSignal.timeout(Number(process.env.NVIDIA_OCR_TIMEOUT_MS) || 12000),
+    body: JSON.stringify({
+      input: [{ type: "image_url", url: dataUrlForOcr(image) }],
+      merge_levels: ["word"],
+    }),
+  });
+
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const detail = JSON.stringify(payload).slice(0, 500);
+    throw new Error(`NVIDIA OCR failed with ${response.status}: ${detail}`);
+  }
+
+  const parsed = parseNvidiaOcrPayload(payload);
+  if (!parsed.text.trim()) throw new Error("NVIDIA OCR returned no text");
+
+  const validation = validateUidScreenshotText(parsed.text, "nvidia-nemotron-ocr", parsed.confidence);
+  return {
+    text: validation.text,
+    uidText: validation.uidText,
+    provider: validation.provider,
+    confidence: validation.confidence,
+  };
+}
+
+async function withTimeout<T>(promise: Promise<T>, ms: number, label: string) {
+  let timeout: NodeJS.Timeout | null = null;
+  try {
+    return await Promise.race([
+      promise,
+      new Promise<T>((_, reject) => {
+        timeout = setTimeout(() => reject(new Error(`${label} timed out`)), ms);
+      }),
+    ]);
+  } finally {
+    if (timeout) clearTimeout(timeout);
+  }
+}
+
+async function readScreenshotWithTesseract(image: ParsedImage): Promise<OcrResult> {
+  const result = await withTimeout(Tesseract.recognize(image.buffer, "eng"), TESSERACT_TIMEOUT_MS, "Tesseract OCR");
+  const validation = validateUidScreenshotText(result.data.text || "", "tesseract");
+  return {
+    text: validation.text,
+    uidText: validation.uidText,
+    provider: validation.provider,
+  };
+}
+
+async function readScreenshotOcr(image: ParsedImage): Promise<OcrResult> {
+  if (getNvidiaApiKey()) {
+    try {
+      return await readScreenshotWithNvidia(image);
+    } catch (error) {
+      console.error("[okx/claim] NVIDIA OCR failed, falling back to Tesseract", error);
+    }
+  }
+
+  return readScreenshotWithTesseract(image);
+}
+
+async function validateUidScreenshot(image: ParsedImage): Promise<UidValidation> {
+  const ocr = await readScreenshotOcr(image);
+  return {
+    ...ocr,
+    ok: hasUidEvidence(ocr.text, ocr.uidText),
   };
 }
 
@@ -163,6 +301,24 @@ function imageExtension(proofName: string) {
   return match[1] === "jpeg" ? "jpg" : match[1];
 }
 
+function getProofEmailRecipients() {
+  const fromEnv = process.env.OKX_PROOF_RECIPIENTS?.split(",").map((email) => email.trim()).filter(Boolean);
+  return fromEnv?.length
+    ? fromEnv
+    : ["anthony.chavez@okx.com", "Karina.caudillo@okx.com", "rubi@orbitarstudio.com"];
+}
+
+function getProofEmailCopy() {
+  return process.env.OKX_PROOF_CC || "axishow@gmail.com";
+}
+
+function getProofSender() {
+  return {
+    name: process.env.OKX_PROOF_SENDER_NAME || "AXIS OKX",
+    email: process.env.OKX_PROOF_SENDER_EMAIL || "axishow@gmail.com",
+  };
+}
+
 function makeProofEmailContent({
   claim,
   redeemUrl,
@@ -176,6 +332,7 @@ function makeProofEmailContent({
   const safeClaim = escapeHtml(claim.claimId);
   const safeParticipant = escapeHtml(claim.participantId);
   const safeUid = escapeHtml(claim.uidText || "Not extracted");
+  const safeProvider = escapeHtml(claim.ocrProvider || "none");
   const safeProof = escapeHtml(claim.proofName || "screenshot");
   const safeRedeem = escapeHtml(redeemUrl);
   const safeOcr = escapeHtml(ocrText || "No OCR text extracted");
@@ -189,6 +346,7 @@ function makeProofEmailContent({
         <p><strong>Mission:</strong> ${safeMission}</p>
         <p><strong>QR claim code:</strong> ${safeClaim}</p>
         <p><strong>Extracted UID:</strong> ${safeUid}</p>
+        <p><strong>OCR provider:</strong> ${safeProvider}</p>
         <p><strong>Proof file:</strong> ${safeProof}</p>
         <p><strong>Redeem URL:</strong> <a href="${safeRedeem}" style="color:#c9ff4a;">${safeRedeem}</a></p>
         <h3 style="margin-top:20px;">OCR text</h3>
@@ -201,6 +359,7 @@ function makeProofEmailContent({
       `Mission: ${claim.missionId}`,
       `QR claim code: ${claim.claimId}`,
       `Extracted UID: ${claim.uidText || "Not extracted"}`,
+      `OCR provider: ${claim.ocrProvider || "none"}`,
       `Proof file: ${claim.proofName || "screenshot"}`,
       `Redeem URL: ${redeemUrl}`,
       "",
@@ -227,6 +386,8 @@ async function sendProofEmailWithBrevoApi({
   if (!apiKey) throw new Error("Missing BREVO_API_KEY");
 
   const email = makeProofEmailContent({ claim, redeemUrl, ocrText });
+  const sender = getProofSender();
+  const cc = getProofEmailCopy();
   const response = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: {
@@ -237,10 +398,11 @@ async function sendProofEmailWithBrevoApi({
     signal: (AbortSignal as typeof AbortSignal & { timeout?: (ms: number) => AbortSignal }).timeout?.(20000),
     body: JSON.stringify({
       sender: {
-        name: "AXIS OKX",
-        email: process.env.CUSTOM_FROM || "rsvp@axis.show",
+        name: sender.name,
+        email: sender.email,
       },
       to: recipients.map((emailAddress) => ({ email: emailAddress })),
+      cc: cc ? [{ email: cc }] : undefined,
       subject: email.subject,
       htmlContent: email.html,
       textContent: email.text,
@@ -270,7 +432,7 @@ async function sendProofEmail({
   image: Buffer;
   ocrText: string;
 }) {
-  const recipients = ["anthony.chavez@okx.com", "Karina.caudillo@okx.com", "rubi@orbitarstudio.com"];
+  const recipients = getProofEmailRecipients();
 
   if (getBrevoApiKey()) {
     await sendProofEmailWithBrevoApi({ claim, redeemUrl, image, ocrText, recipients });
@@ -279,9 +441,11 @@ async function sendProofEmail({
 
   const transporter = makeTransporter();
   const email = makeProofEmailContent({ claim, redeemUrl, ocrText });
+  const sender = getProofSender();
   await transporter.sendMail({
-    from: `"AXIS OKX" <${process.env.CUSTOM_FROM || "rsvp@axis.show"}>`,
+    from: `"${sender.name}" <${sender.email}>`,
     to: recipients,
+    cc: getProofEmailCopy(),
     subject: email.subject,
     html: email.html,
     text: email.text,
@@ -310,6 +474,7 @@ export async function POST(request: Request) {
     brevoApiKeyPresent: Boolean(getBrevoApiKey()),
     brevoSmtpUserPresent: Boolean(process.env.BREVO_SMTP_USER),
     brevoSmtpPassPresent: Boolean(process.env.BREVO_SMTP_PASS),
+    nvidiaOcrKeyPresent: Boolean(getNvidiaApiKey()),
   });
 
   const body = (await request.json().catch(() => ({}))) as ClaimBody;
@@ -326,7 +491,7 @@ export async function POST(request: Request) {
     participantId,
     proofName,
     hasProofImage,
-    imageBytes: Buffer.isBuffer(image) ? image.length : image,
+    imageBytes: image && image !== "too-large" ? image.buffer.length : image,
   });
 
   if (!missionId || !participantId || !hasProofImage || !image) {
@@ -360,19 +525,26 @@ export async function POST(request: Request) {
 
   let uidText = "";
   let ocrText = "";
+  let ocrProvider = "none";
   if (missionId === "verify") {
     try {
       log("ocr validation started");
       const validation = await validateUidScreenshot(image);
       if (!validation.ok) {
-        log("ocr validation rejected", { ocrText: validation.text });
+        log("ocr validation rejected", { ocrProvider: validation.provider, ocrText: validation.text });
         return NextResponse.json({ error: errors.invalid }, { status: 422 });
       }
       uidText = validation.uidText;
       ocrText = validation.text;
-      log("ocr validation passed", { uidText, ocrLength: ocrText.length });
-    } catch {
-      log("ocr validation unreadable");
+      ocrProvider = validation.provider;
+      log("ocr validation passed", {
+        uidText,
+        ocrProvider,
+        ocrConfidence: validation.confidence,
+        ocrLength: ocrText.length,
+      });
+    } catch (error) {
+      log("ocr validation unreadable", error instanceof Error ? error.message : String(error));
       return NextResponse.json({ error: errors.unreadable }, { status: 422 });
     }
   } else {
@@ -381,10 +553,12 @@ export async function POST(request: Request) {
       const ocr = await readScreenshotOcr(image);
       uidText = ocr.uidText;
       ocrText = ocr.text;
-      log("ocr read complete", { uidText, ocrLength: ocrText.length });
+      ocrProvider = ocr.provider;
+      log("ocr read complete", { uidText, ocrProvider, ocrLength: ocrText.length });
     } catch {
       uidText = "";
       ocrText = "";
+      ocrProvider = "none";
       log("ocr read skipped after failure");
     }
   }
@@ -402,6 +576,7 @@ export async function POST(request: Request) {
     proofName,
     hasProofImage,
     uidText,
+    ocrProvider,
     emailedAt: "",
     createdAt: new Date().toISOString(),
     usedAt: null,
@@ -409,7 +584,7 @@ export async function POST(request: Request) {
 
   try {
     log("proof email sending", { method: getBrevoApiKey() ? "brevo-api" : "brevo-smtp" });
-    await sendProofEmail({ claim, redeemUrl, image, ocrText });
+    await sendProofEmail({ claim, redeemUrl, image: image.buffer, ocrText });
     log("proof email sent");
   } catch (error) {
     console.error("[okx/claim] proof email failed", error);

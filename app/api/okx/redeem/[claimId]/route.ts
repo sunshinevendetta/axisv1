@@ -8,6 +8,7 @@ type StoredClaim = {
   proofName: string;
   hasProofImage: boolean;
   uidText: string;
+  ocrProvider: string;
   emailedAt: string;
   createdAt: string;
   usedAt: string | null;
