@@ -1,22 +1,5 @@
 import { NextResponse } from "next/server";
-
-type StoredClaim = {
-  claimId: string;
-  missionId: string;
-  participantId: string;
-  uid: string;
-  proofName: string;
-  hasProofImage: boolean;
-  uidText: string;
-  ocrProvider: string;
-  emailedAt: string;
-  createdAt: string;
-  usedAt: string | null;
-};
-
-declare global {
-  var okxClaims: Map<string, StoredClaim> | undefined;
-}
+import { redeemClaim } from "@/src/lib/okx-store";
 
 function html(title: string, body: string, status = 200) {
   return new NextResponse(
@@ -30,19 +13,23 @@ export async function GET(
   context: { params: Promise<{ claimId: string }> },
 ) {
   const { claimId } = await context.params;
-  const store = globalThis.okxClaims;
-  const claim = store?.get(claimId);
+  const result = redeemClaim(claimId);
 
-  if (!claim) {
+  if (result.status === "not-found") {
     return html("QR not found", `<h1>QR not found</h1><p>This code is not active in this runtime.</p><code>${claimId}</code>`, 404);
   }
 
-  if (claim.usedAt) {
+  if (result.status === "already-used") {
+    const claim = result.claim;
+    if (!claim) {
+      return html("QR not found", `<h1>QR not found</h1><p>This code is not active in this runtime.</p><code>${claimId}</code>`, 404);
+    }
     return html("Already used", `<h1>Already used</h1><p>This drink QR was already scanned.</p><p>${claim.usedAt}</p><code>${claim.claimId}</code>`, 409);
   }
 
-  claim.usedAt = new Date().toISOString();
-  store?.set(claimId, claim);
-
-  return html("Drink approved", `<h1>Drink approved</h1><p>Mission: ${claim.missionId}</p><p>Proof: screenshot uploaded</p><code>${claim.claimId}</code>`);
+  const claim = result.claim;
+  if (!claim) {
+    return html("QR not found", `<h1>QR not found</h1><p>This code is not active in this runtime.</p><code>${claimId}</code>`, 404);
+  }
+  return html("Drink approved", `<h1>Drink approved</h1><p>Mission: ${claim.missionId}</p><p>Drink ID: ${claim.drinkId}</p><p>Proof: screenshot uploaded</p><code>${claim.claimId}</code>`);
 }
