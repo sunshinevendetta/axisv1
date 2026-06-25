@@ -312,7 +312,7 @@ function getProofEmailCopy() {
   const fromEnv = process.env.OKX_PROOF_CC?.split(",").map((email) => email.trim()).filter(Boolean);
   const cc = fromEnv?.length
     ? fromEnv
-    : ["rubi@orbitarstudio.com", "anthony.chavez@okx.com", "Karina.caudillo@okx.com", "axishow@gmail.com"];
+    : ["rubi@orbitarstudio.com", "anthony.chavez@okx.com", "Karina.caudillo@okx.com", "infoaxishow@gmail.com"];
   return cc;
 }
 
@@ -324,7 +324,7 @@ function getProofSender() {
 }
 
 function getProofReplyTo() {
-  return process.env.OKX_PROOF_REPLY_TO || "axishow@gmail.com";
+  return process.env.OKX_PROOF_REPLY_TO || "infoaxishow@gmail.com";
 }
 
 function makeProofEmailContent({
@@ -559,19 +559,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: errors.unreadable }, { status: 422 });
     }
   } else {
-    try {
-      log("ocr read started");
-      const ocr = await readScreenshotOcr(image);
-      uidText = ocr.uidText;
-      ocrText = ocr.text;
-      ocrProvider = ocr.provider;
-      log("ocr read complete", { uidText, ocrProvider, ocrLength: ocrText.length });
-    } catch {
-      uidText = "";
-      ocrText = "";
-      ocrProvider = "none";
-      log("ocr read skipped after failure");
-    }
+    log("ocr skipped for non-UID mission", { missionId });
   }
 
   const claimId = `OKX-${missionId.toUpperCase()}-${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
