@@ -14,7 +14,7 @@ Core event facts:
 - Terms: official OKX terms and conditions, country eligibility, and activation availability apply.
 
 The three missions:
-1. First drink: download the OKX app, create or access an account, complete identity verification KYC, then show it to OKX staff. The attendee can enter their UID as text or upload a screenshot as proof.
+1. First drink: download the OKX app, create or access an account, complete identity verification KYC, then upload the OKX User Center > Profile screenshot where Profile, Security, Preferences, Account information, UID, and Identity verification are visible.
 2. Second drink: enter OKX Outcomes, join the football match activation, take a position on the result, then upload/show the Outcomes screenshot as proof.
 3. Third drink: fund the OKX account with 10 USD. If the promotion applies, OKX gives a 10 USD bonus. The attendee uploads/shows the funding screenshot as proof. Card/Pay availability depends on eligibility.
 
@@ -22,7 +22,7 @@ Official OKX guide context:
 - KYC in the app: Menu > Account settings > Identity verification.
 - KYC may require personal info, valid ID documents, selfie, and sometimes proof of address. Tell users to use clear, valid documents.
 - Verification often processes quickly, but further review can take up to 24 hours.
-- UID in the app: Menu > Account settings / Profile area, where UID can be viewed and copied.
+- UID in the app: User Center > Profile. For this page, the attendee must upload that exact screenshot where Profile, Security, Preferences, Account information, UID, and Identity verification are visible; pasted UID text or cropped/irrelevant screenshots are not accepted as proof.
 - Outcomes access: OKX app homepage banner or Trade > DEX > Outcomes. First-time users may need account initialization. Users should read event description and settlement rules.
 - Outcomes points are campaign points, not directly redeemable as cash, and rewards depend on the campaign terms.
 - Pay/Card activation may require a registered personal account, completed identity verification, a passkey, eligible country, and an updated app.

@@ -35,9 +35,9 @@ const HERMES_AGENT_NAME = "AXIS Petra Hermes";
 const fallbackAnswers: Record<SupportedLang, Record<FallbackIntent, string>> = {
   es: {
     kyc: "Para KYC: abre OKX > Menu > Account settings > Identity verification. Elige cuenta individual, llena tus datos y sube ID vigente con buena luz; si pide selfie, hazla ahi mismo. No subas tu ID aqui: solo muestra al staff cuando quede listo.",
-    uid: "Va: abre OKX, entra a Perfil o Account settings y busca UID. Si no sale, termina KYC primero. Para tu bebida, ensenalo al staff o pegalo aqui.",
+    uid: "Va: abre OKX, entra a User Center > Profile. El screenshot debe mostrar Profile, Security, Preferences, Account information, UID e Identity verification. Sube esa pantalla para la bebida.",
     what: "OKX es una app de crypto. Esta noche solo necesitas lo basico: cuenta, KYC y UID visible para que staff valide tu bebida.",
-    screenshot: "Sube la captura que pruebe tu mision: cuenta verificada/UID para bebida 1, Outcomes para bebida 2, o fondeo de 10 USD para bebida 3.",
+    screenshot: "Para bebida 1 sube screenshot de User Center > Profile: debe verse Profile, Security, Preferences, Account information, UID e Identity verification. Para bebida 2, Outcomes. Para bebida 3, fondeo de 10 USD.",
     outcomes: "En OKX busca Outcomes desde el banner o Trade > DEX > Outcomes. Entra al partido, toma posicion y guarda captura para staff.",
     fund: "Va: en OKX abre Deposit desde home, o ve a Assets/Portfolio > Deposit. Si ya tienes crypto, elige Deposit crypto, moneda y red; manda desde tu otro wallet usando la direccion/QR. Si quieres comprar con MXN, prueba Buy > Buy crypto o Assets > Deposit. Cuando entren 10 USD, captura y staff valida.",
     ar: "Para AR, toca el boton AR del modelo. Si no abre camara, prueba Chrome en Android o Safari en iPhone. Si se atora, staff te ayuda.",
@@ -45,9 +45,9 @@ const fallbackAnswers: Record<SupportedLang, Record<FallbackIntent, string>> = {
   },
   en: {
     kyc: "For KYC: open OKX > Menu > Account settings > Identity verification. Choose individual account, fill your details, upload a valid ID in good light, and do the selfie if asked. Do not upload your ID here; show staff once it is done.",
-    uid: "Your UID is in the OKX app profile/account settings area. If you do not see it, finish identity verification first. For the drink, show it to OKX staff or paste it here.",
+    uid: "Open OKX User Center > Profile. The screenshot must show Profile, Security, Preferences, Account information, UID, and Identity verification. Upload that screen for the drink.",
     what: "OKX is a crypto app. For tonight: download OKX, create an account, complete KYC, then show your UID to staff for drink validation.",
-    screenshot: "Upload a screenshot proving the mission: verified account/UID for drink 1, OKX Outcomes position for drink 2, or 10 USD funding for drink 3.",
+    screenshot: "For drink 1 upload the User Center > Profile screenshot: Profile, Security, Preferences, Account information, UID, and Identity verification must be visible. For drink 2, OKX Outcomes. For drink 3, 10 USD funding.",
     outcomes: "In the OKX app, open Outcomes from the homepage banner or Trade > DEX > Outcomes. Join the match, take a position, and save a screenshot for staff.",
     fund: "For the third drink: in OKX, tap Deposit on home, or go to Assets/Portfolio > Deposit. If you already have crypto, choose Deposit crypto, asset, and network, then send from your other wallet using the address/QR. If buying with local currency, try Buy > Buy crypto or Assets > Deposit. Once 10 USD lands, screenshot it for staff.",
     ar: "For AR, tap the AR button on the model. If the camera does not open, try Chrome on Android or Safari with AR support; if it still blocks, ask staff.",
@@ -55,7 +55,7 @@ const fallbackAnswers: Record<SupportedLang, Record<FallbackIntent, string>> = {
   },
   zh: {
     kyc: "KYC 路径：打开 OKX > Menu > Account settings > Identity verification。选择个人账户，填写资料，上传清晰有效证件；如果要求自拍，就在 OKX app 内完成。不要把证件上传到这里，完成后给工作人员看。",
-    uid: "UID 在 OKX app 的个人资料或账户设置里。如果看不到，请先完成身份验证。换饮品时，把 UID 给现场 OKX 工作人员看，或填在这里。",
+    uid: "UID 在 OKX app 的个人资料或账户设置里。如果看不到，请先完成身份验证。换饮品时，请上传能看到 UID 的截图。",
     what: "OKX 是一款加密货币应用。今晚的任务是：下载 OKX、创建账户、完成身份验证，然后向工作人员出示 UID。",
     screenshot: "请上传能证明任务的截图：第 1 杯是已验证账户/UID，第 2 杯是 OKX Outcomes 参与截图，第 3 杯是 10 USD 入金截图。",
     outcomes: "在 OKX app 首页横幅或 Trade > DEX > Outcomes 进入活动，选择比赛并参与，然后保存截图给工作人员。",
@@ -65,7 +65,7 @@ const fallbackAnswers: Record<SupportedLang, Record<FallbackIntent, string>> = {
   },
   ja: {
     kyc: "KYC は OKX > Menu > Account settings > Identity verification。個人口座を選び、情報入力、有効なIDを明るい場所で撮影、必要ならセルフィー。IDはここに送らず、完了後スタッフへ。",
-    uid: "UID は OKX app のプロフィールまたはアカウント設定にあります。表示されない場合は本人確認を完了してください。スタッフに見せるか、ここに入力してください。",
+    uid: "UID は OKX app のプロフィールまたはアカウント設定にあります。表示されない場合は本人確認を完了してください。ドリンク用にはUIDが見えるスクショをアップしてください。",
     what: "OKX は暗号資産アプリです。今夜は OKX をダウンロードし、アカウント作成、本人確認、UID提示でドリンク確認です。",
     screenshot: "ミッション証明のスクリーンショットをアップしてください：本人確認/UID、Outcomes参加、または10 USD入金。",
     outcomes: "OKX app のホームバナー、または Trade > DEX > Outcomes から入り、試合に参加してスクリーンショットを保存してください。",
@@ -75,7 +75,7 @@ const fallbackAnswers: Record<SupportedLang, Record<FallbackIntent, string>> = {
   },
   ko: {
     kyc: "KYC: OKX > Menu > Account settings > Identity verification. 개인 계정 선택, 정보 입력, 유효한 신분증을 밝게 촬영, 필요하면 셀피까지 진행하세요. 신분증은 여기 올리지 말고 완료 후 직원에게 보여주세요.",
-    uid: "UID는 OKX 앱 프로필 또는 계정 설정에 있습니다. 보이지 않으면 먼저 본인 인증을 완료하세요. 직원에게 보여주거나 여기에 입력하세요.",
+    uid: "UID는 OKX 앱 프로필 또는 계정 설정에 있습니다. 보이지 않으면 먼저 본인 인증을 완료하세요. 음료를 받으려면 UID가 보이는 스크린샷을 업로드하세요.",
     what: "OKX는 crypto 앱입니다. 오늘은 OKX 설치, 계정 생성, KYC 완료, UID 제시로 음료를 확인합니다.",
     screenshot: "미션 증명 스크린샷을 올리세요: 인증 계정/UID, OKX Outcomes 참여, 또는 10 USD 충전 화면.",
     outcomes: "OKX 앱 홈 배너 또는 Trade > DEX > Outcomes 에서 참여하고, 포지션을 잡은 뒤 스크린샷을 저장하세요.",
@@ -85,7 +85,7 @@ const fallbackAnswers: Record<SupportedLang, Record<FallbackIntent, string>> = {
   },
   fr: {
     kyc: "Pour le KYC : OKX > Menu > Account settings > Identity verification. Choisis compte individuel, remplis les infos, ajoute une piece d'identite valide bien lisible, puis selfie si demande. N'envoie pas ton ID ici; montre au staff une fois valide.",
-    uid: "Ton UID est dans le profil ou les reglages du compte OKX. Si tu ne le vois pas, termine la verification. Montre-le au staff ou colle-le ici.",
+    uid: "Ton UID est dans le profil ou les reglages du compte OKX. Si tu ne le vois pas, termine la verification. Pour le verre, ajoute une capture ou ton UID est visible.",
     what: "OKX est une app crypto. Ce soir : telecharge OKX, cree ton compte, verifie ton identite, puis montre ton UID au staff.",
     screenshot: "Ajoute une capture qui prouve la mission : compte/UID verifie, position OKX Outcomes, ou depot de 10 USD.",
     outcomes: "Dans OKX, ouvre Outcomes depuis la banniere ou Trade > DEX > Outcomes. Prends position sur le match et garde une capture.",
@@ -153,7 +153,7 @@ function getIntentGuide(intent: FallbackIntent) {
       "- If the attendee has not opened an OKX account yet, send them to https://bit.ly/baroriente first.",
       "- App path: OKX app > Menu > User Center > Account settings.",
       "- UID appears in the Profile/account area and can be copied.",
-      "- For tonight, the attendee shows the UID to OKX staff or pastes it into the page.",
+      "- For tonight, the attendee must upload the OKX User Center > Profile screenshot with Profile, Security, Preferences, Account information, UID, and Identity verification visible.",
     ].join("\n"),
     what: [
       "OKX explanation for this event:",
@@ -163,7 +163,7 @@ function getIntentGuide(intent: FallbackIntent) {
     ].join("\n"),
     screenshot: [
       "Proof screenshot rules:",
-      "- Drink 1 proof: verified OKX account or UID screen.",
+      "- Drink 1 proof: OKX User Center > Profile screenshot with Profile, Security, Preferences, Account information, UID, and Identity verification visible.",
       "- Drink 2 proof: OKX Outcomes participation/position screen.",
       "- Drink 3 proof: 10 USD funding/deposit/buy confirmation screen.",
       "- Do not ask for passwords, full card numbers, private keys, seed phrases, or ID documents.",
