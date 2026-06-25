@@ -320,7 +320,7 @@ const copy = {
     proofHint: "Debe ser esa pantalla: User Center > Profile, con Profile, Security, Preferences, Account information, UID e Identity verification visibles.",
     generate: "Generar QR drink",
     generating: "Generando",
-    ready: "QR unico listo",
+    ready: "QR LISTO",
     showLive: "Muestra esta pantalla al staff. Cada QR se escanea una sola vez.",
     screenshot: "Proteccion: el QR se oculta en screenshots. Manten presionado solo frente al staff.",
     qrHold: "Manten presionado para mostrar QR",
@@ -350,7 +350,7 @@ const copy = {
     proofHint: "It must be that screen: User Center > Profile, with Profile, Security, Preferences, Account information, UID, and Identity verification visible.",
     generate: "Generate drink QR",
     generating: "Generating",
-    ready: "Unique QR ready",
+    ready: "QR LISTO",
     showLive: "Show this live screen to staff. Each QR scans once.",
     screenshot: "Protection: the QR hides in screenshots. Hold only in front of staff.",
     qrHold: "Hold to show QR",
@@ -380,7 +380,7 @@ const copy = {
     proofHint: "必须是完整 OKX 屏幕截图，并且能看到你的 UID。",
     generate: "生成饮品 QR",
     generating: "生成中",
-    ready: "专属 QR 已生成",
+    ready: "QR LISTO",
     showLive: "向工作人员展示此页面。每个 QR 只能扫描一次。",
     screenshot: "保护：动态 QR。请勿分享截图。",
     qrHold: "按住显示 QR",
@@ -410,7 +410,7 @@ const copy = {
     proofHint: "OKXの全画面スクショで、UIDが見えている必要があります。",
     generate: "ドリンクQR生成",
     generating: "生成中",
-    ready: "専用QR準備完了",
+    ready: "QR LISTO",
     showLive: "この画面をスタッフへ。QRは一度だけ有効。",
     screenshot: "保護：動的QR。スクショ共有しないで。",
     qrHold: "長押しで QR 表示",
@@ -440,7 +440,7 @@ const copy = {
     proofHint: "OKX 전체 화면 스크린샷이어야 하며 UID가 보여야 합니다.",
     generate: "드링크 QR 생성",
     generating: "생성 중",
-    ready: "고유 QR 준비됨",
+    ready: "QR LISTO",
     showLive: "이 화면을 직원에게 보여주세요. QR은 1회만 스캔됩니다.",
     screenshot: "보호: 동적 QR. 스크린샷 공유 금지.",
     qrHold: "누르고 있으면 QR 표시",
@@ -470,7 +470,7 @@ const copy = {
     proofHint: "La capture doit montrer tout l'ecran OKX avec ton UID visible.",
     generate: "Generer QR drink",
     generating: "Generation",
-    ready: "QR unique pret",
+    ready: "QR LISTO",
     showLive: "Montre cet ecran au staff. Chaque QR se scanne une fois.",
     screenshot: "Protection : QR dynamique. Ne partage pas de capture.",
     qrHold: "Maintiens pour afficher le QR",
@@ -596,12 +596,10 @@ function removeStoredClaim(missionId: MissionId) {
 }
 
 function clearStoredOkxSession() {
-  [
-    participantStorageKey,
-    claimsStorageKey,
-    "axis-okx-participant-id",
-    "axis-okx-claims-v1",
-  ].forEach((key) => window.localStorage.removeItem(key));
+  for (const storage of [window.localStorage, window.sessionStorage]) {
+    const keys = Array.from({ length: storage.length }, (_, index) => storage.key(index)).filter(Boolean) as string[];
+    keys.filter((key) => key.toLowerCase().includes("okx")).forEach((key) => storage.removeItem(key));
+  }
 }
 
 function ensureParticipantId(current: string) {
@@ -635,7 +633,7 @@ function loadProofImage(dataUrl: string) {
 async function prepareProofImage(file: File) {
   const dataUrl = await readImageFile(file);
   const image = await loadProofImage(dataUrl);
-  const maxSide = 1600;
+  const maxSide = 2200;
   const scale = Math.min(1, maxSide / Math.max(image.naturalWidth, image.naturalHeight));
   const canvas = document.createElement("canvas");
   canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
@@ -643,7 +641,7 @@ async function prepareProofImage(file: File) {
   const context = canvas.getContext("2d");
   if (!context) return dataUrl;
   context.drawImage(image, 0, 0, canvas.width, canvas.height);
-  return canvas.toDataURL("image/jpeg", 0.82);
+  return canvas.toDataURL("image/jpeg", 0.92);
 }
 
 function isSubmitting(proof: ProofState) {
@@ -675,6 +673,12 @@ export default function OkxOnboarding() {
     const url = new URL(window.location.href);
     if (url.searchParams.get("resetOkx") === "1") {
       clearStoredOkxSession();
+      setProofs(makeProofState());
+      setParticipantId("");
+      setActiveMission(null);
+      setChatOpen(false);
+      setChatInput("");
+      setMessages([{ role: "assistant", content: initialAssistant[lang] }]);
       url.searchParams.delete("resetOkx");
       window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
     }
