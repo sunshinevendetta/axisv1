@@ -21,6 +21,7 @@ declare global {
   var okxClaims: Map<string, StoredClaim> | undefined;
   var okxParticipantMissionClaims: Map<string, string> | undefined;
   var okxDrinkSequence: number | undefined;
+  var okxManualDeliveredAdjustment: number | undefined;
 }
 
 export function getClaimStore() {
@@ -52,7 +53,9 @@ export function redeemClaim(claimId: string): OkxRedeemResult {
 
 export function getOkxStats() {
   const claims = Array.from(getClaimStore().values()).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
-  const delivered = claims.filter((claim) => claim.usedAt).length;
+  const scannedDelivered = claims.filter((claim) => claim.usedAt).length;
+  const manualDeliveredAdjustment = globalThis.okxManualDeliveredAdjustment ?? 0;
+  const delivered = Math.max(0, scannedDelivered + manualDeliveredAdjustment);
   const allocated = claims.length;
 
   return {
@@ -61,6 +64,8 @@ export function getOkxStats() {
     totalCapacity: 0,
     allocated,
     delivered,
+    scannedDelivered,
+    manualDeliveredAdjustment,
     officialDelivered: 0,
     fallbackDelivered: 0,
     officialLeft: 0,
@@ -80,8 +85,22 @@ export function getOkxStats() {
   };
 }
 
+export function adjustManualDelivered(delta: number) {
+  const stats = getOkxStats();
+  const nextDelivered = Math.max(0, stats.delivered + delta);
+  globalThis.okxManualDeliveredAdjustment = nextDelivered - stats.scannedDelivered;
+  return getOkxStats();
+}
+
+export function setManualDelivered(totalDelivered: number) {
+  const stats = getOkxStats();
+  globalThis.okxManualDeliveredAdjustment = Math.max(0, totalDelivered) - stats.scannedDelivered;
+  return getOkxStats();
+}
+
 export function resetOkxStores() {
   globalThis.okxClaims = new Map<string, StoredClaim>();
   globalThis.okxParticipantMissionClaims = new Map<string, string>();
   globalThis.okxDrinkSequence = 0;
+  globalThis.okxManualDeliveredAdjustment = 0;
 }
