@@ -6,6 +6,8 @@ import { FiCamera, FiCheck, FiRefreshCw, FiRotateCcw, FiSend, FiX } from "react-
 type OkxStats = {
   allocated: number;
   delivered: number;
+  scannedDelivered?: number;
+  manualDeliveredAdjustment?: number;
   nextDrinkId: number;
   recentClaims: Array<{
     claimId: string;
@@ -39,6 +41,8 @@ type BarcodeDetectorCtor = new (options?: { formats?: string[] }) => {
 const emptyStats: OkxStats = {
   allocated: 0,
   delivered: 0,
+  scannedDelivered: 0,
+  manualDeliveredAdjustment: 0,
   nextDrinkId: 0,
   recentClaims: [],
 };
@@ -59,7 +63,11 @@ function clearOkxLocalState() {
   }
 }
 
-export default function OkxAdminPanel() {
+type OkxAdminPanelProps = {
+  superAdmin?: boolean;
+};
+
+export default function OkxAdminPanel({ superAdmin = false }: OkxAdminPanelProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const scanningRef = useRef(false);
@@ -70,6 +78,7 @@ export default function OkxAdminPanel() {
   const [lastScan, setLastScan] = useState("");
   const [result, setResult] = useState<RedeemResult | null>(null);
   const [busy, setBusy] = useState(false);
+  const [manualDelivered, setManualDelivered] = useState("");
 
   async function refreshStats() {
     const response = await fetch("/api/okx/admin/status", { cache: "no-store" });
@@ -163,6 +172,17 @@ export default function OkxAdminPanel() {
     await refreshStats();
   }
 
+  async function adjustDelivered(payload: { delta?: number; delivered?: number }) {
+    const response = await fetch("/api/okx/admin/adjust", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = (await response.json().catch(() => null)) as { stats?: OkxStats } | null;
+    if (data?.stats) setStats(data.stats);
+    else await refreshStats();
+  }
+
   const metrics = [
     ["Scans", stats.delivered, "delivered count"],
     ["Ready QRs", Math.max(0, stats.allocated - stats.delivered), "not scanned yet"],
@@ -178,15 +198,51 @@ export default function OkxAdminPanel() {
             <p className="text-xs uppercase tracking-[0.28em] text-[#c9ff4a]">AXIS / OKX</p>
             <h1 className="mt-1 text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">Drink admin</h1>
           </div>
-          <button
-            type="button"
-            onClick={() => void resetCounters()}
-            className="inline-flex h-11 w-full items-center justify-center gap-2 border border-white/16 bg-white/[0.03] px-4 text-sm text-white/80 sm:w-auto"
-          >
-            <FiRotateCcw aria-hidden />
-            Reset all users
-          </button>
+          {superAdmin ? (
+            <button
+              type="button"
+              onClick={() => void resetCounters()}
+              className="inline-flex h-11 w-full items-center justify-center gap-2 border border-white/16 bg-white/[0.03] px-4 text-sm text-white/80 sm:w-auto"
+            >
+              <FiRotateCcw aria-hidden />
+              Reset all users
+            </button>
+          ) : null}
         </header>
+
+        {superAdmin ? (
+          <section className="grid gap-3 border border-[#c9ff4a]/30 bg-[#c9ff4a]/[0.05] p-3 sm:grid-cols-[1fr_auto] sm:items-end sm:p-4">
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-[#c9ff4a]">Supervisor</p>
+              <p className="mt-1 text-sm text-white/60">Manual delivered count: scanned {stats.scannedDelivered ?? 0}, adjustment {stats.manualDeliveredAdjustment ?? 0}</p>
+            </div>
+            <div className="grid gap-2 sm:grid-cols-[auto_auto_minmax(120px,1fr)_auto]">
+              <button type="button" onClick={() => void adjustDelivered({ delta: -1 })} className="h-11 border border-white/16 px-4 text-sm text-white/80">
+                -1
+              </button>
+              <button type="button" onClick={() => void adjustDelivered({ delta: 1 })} className="h-11 border border-white/16 px-4 text-sm text-white/80">
+                +1
+              </button>
+              <input
+                value={manualDelivered}
+                onChange={(event) => setManualDelivered(event.target.value)}
+                inputMode="numeric"
+                placeholder="Set count"
+                className="h-11 min-w-0 border border-white/12 bg-black px-3 text-sm text-white outline-none placeholder:text-white/35"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  const value = Number(manualDelivered);
+                  if (Number.isFinite(value)) void adjustDelivered({ delivered: value });
+                }}
+                className="h-11 bg-[#c9ff4a] px-4 text-sm font-medium text-black"
+              >
+                Set
+              </button>
+            </div>
+          </section>
+        ) : null}
 
         <section className="grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3">
           {metrics.map(([label, value, sub]) => (
