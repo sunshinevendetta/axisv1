@@ -1,9 +1,36 @@
 <svg width="900" height="900" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="900" height="900" rx="140" fill="#080808"/>
-  <rect x="72" y="72" width="756" height="756" rx="118" stroke="white" stroke-opacity=".42" stroke-width="10"/>
-  <path d="M293 284H607L568 636H332L293 284Z" stroke="white" stroke-width="22" stroke-linejoin="round"/>
-  <path d="M344 374H556M344 456H556M344 538H494" stroke="white" stroke-width="22" stroke-linecap="round"/>
-  <path d="M340 682H560" stroke="white" stroke-opacity=".7" stroke-width="18" stroke-linecap="round"/>
-  <text x="450" y="194" text-anchor="middle" fill="white" fill-opacity=".82" font-family="Arial, sans-serif" font-size="54" font-weight="700">01</text>
-  <text x="450" y="770" text-anchor="middle" fill="white" fill-opacity=".58" font-family="Arial, sans-serif" font-size="34" font-weight="700">ACCOUNT + ID</text>
+  <rect width="900" height="900" fill="#fff"/>
+  <defs>
+    <linearGradient id="glass" x1="272" y1="72" x2="650" y2="808" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1f1207"/>
+      <stop offset=".22" stop-color="#f39a19"/>
+      <stop offset=".38" stop-color="#0a0806"/>
+      <stop offset=".68" stop-color="#030303"/>
+      <stop offset="1" stop-color="#121212"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="335" y1="130" x2="470" y2="770" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".95"/>
+      <stop offset=".28" stop-color="#fff" stop-opacity=".18"/>
+      <stop offset=".7" stop-color="#fff" stop-opacity=".05"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="drop" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 0) rotate(90) scale(9 5)">
+      <stop stop-color="#fff" stop-opacity=".8"/>
+      <stop offset=".45" stop-color="#d9d9d9" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".18"/>
+    </radialGradient>
+  </defs>
+  <path d="M376 72h148l20 45-18 60v115c0 58 47 91 72 144 29 63 43 144 43 247 0 89-46 146-191 146s-191-57-191-146c0-103 14-184 43-247 25-53 72-86 72-144V177l-18-60 20-45Z" fill="url(#glass)"/>
+  <path d="M371 72h158l14 33c-33 17-138 18-186 0l14-33Z" fill="#0a0a0a"/>
+  <path d="M366 102h168v30c-36 19-132 19-168 0v-30Z" fill="#050505"/>
+  <path d="M318 476h264c23 0 42 19 42 42v154H276V518c0-23 19-42 42-42Z" fill="#030303"/>
+  <path d="M392 142c-4 118 5 164-40 237-46 74-56 201-52 315" stroke="url(#shine)" stroke-width="31" stroke-linecap="round" opacity=".72"/>
+  <path d="M536 146c-20 110 7 183 43 248 39 70 49 174 42 286" stroke="#fff" stroke-opacity=".26" stroke-width="22" stroke-linecap="round"/>
+  <path d="M305 778c49 28 240 28 290 0" stroke="#000" stroke-opacity=".75" stroke-width="16" stroke-linecap="round"/>
+  <g opacity=".75">
+    <circle cx="334" cy="190" r="9" fill="url(#drop)"/><circle cx="498" cy="166" r="7" fill="url(#drop)"/><circle cx="560" cy="235" r="10" fill="url(#drop)"/>
+    <circle cx="373" cy="295" r="8" fill="url(#drop)"/><circle cx="520" cy="331" r="6" fill="url(#drop)"/><circle cx="304" cy="430" r="10" fill="url(#drop)"/>
+    <circle cx="595" cy="475" r="8" fill="url(#drop)"/><circle cx="348" cy="566" r="6" fill="url(#drop)"/><circle cx="548" cy="622" r="9" fill="url(#drop)"/>
+    <circle cx="419" cy="712" r="7" fill="url(#drop)"/><circle cx="591" cy="742" r="6" fill="url(#drop)"/>
+  </g>
 </svg>
