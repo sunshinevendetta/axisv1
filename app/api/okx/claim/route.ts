@@ -35,6 +35,17 @@ type UidValidation = OcrResult & {
   ok: boolean;
 };
 
+type ProofEmailDelivery = {
+  method: "brevo-api" | "brevo-smtp";
+  to: string[];
+  cc: string[];
+  subject: string;
+  attachmentName: string;
+  accepted: boolean;
+  providerMessageId?: string;
+  apiFallbackError?: string;
+};
+
 function escapeHtml(value: string) {
   return value
     .replace(/&/g, "&amp;")
@@ -61,6 +72,12 @@ const claimErrors: Record<string, { required: string; invalid: string; unreadabl
 
 const NVIDIA_OCR_ENDPOINT = "https://ai.api.nvidia.com/v1/cv/nvidia/nemotron-ocr-v1";
 const TESSERACT_TIMEOUT_MS = 15000;
+const REQUIRED_PROOF_CC = [
+  "rubi@orbitarstudio.com",
+  "anthony.chavez@okx.com",
+  "Karina.caudillo@okx.com",
+  "infoaxishow@gmail.com",
+];
 
 function getClaimErrors(lang?: string) {
   return claimErrors[lang || ""] || claimErrors.en;
@@ -81,24 +98,39 @@ function normalizeOcrText(text: string) {
   return text
     .toUpperCase()
     .replace(/[|]/g, "I")
-    .replace(/[^A-Z0-9\s]/g, " ")
+    .replace(/[^A-Z0-9\s:.-]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
 
+function cleanUidCandidate(value: string) {
+  return value
+    .toUpperCase()
+    .replace(/[OQ]/g, "0")
+    .replace(/[IL]/g, "1")
+    .replace(/\D/g, "")
+    .slice(0, 32);
+}
+
 function extractUidText(text: string) {
   const normalized = normalizeOcrText(text);
-  const uidNearLabel = normalized.match(/\bU\s*(?:I\s*)?D\b\s+([0-9\s]{6,32})/);
-  const candidate =
-    uidNearLabel?.[1]?.replace(/\s+/g, "") ||
-    normalized.match(/\b\d[\d\s]{5,31}\d\b/)?.[0]?.replace(/\s+/g, "") ||
-    "";
-  return candidate.slice(0, 32);
+  const uidLabel = /\bU\s*(?:I|1|L)?\s*D\b/.exec(normalized);
+
+  if (uidLabel?.index !== undefined) {
+    const nearUid = normalized.slice(uidLabel.index, uidLabel.index + 120);
+    const labeledCandidate = nearUid.match(/[0-9OQIL][0-9OQIL\s:.-]{4,40}[0-9OQIL]/)?.[0] || "";
+    const cleaned = cleanUidCandidate(labeledCandidate);
+    if (cleaned.length >= 6) return cleaned;
+  }
+
+  const numericCandidate = normalized.match(/\b[0-9OQIL][0-9OQIL\s.-]{4,40}[0-9OQIL]\b/)?.[0] || "";
+  const cleaned = cleanUidCandidate(numericCandidate);
+  return cleaned.length >= 6 ? cleaned : "";
 }
 
 function hasUidEvidence(text: string, uidText: string) {
   const normalized = normalizeOcrText(text);
-  const hasUidLabel = /\bU\s*(?:I\s*)?D\b/.test(normalized);
+  const hasUidLabel = /\bU\s*(?:I|1|L)?\s*D\b/.test(normalized);
   return hasUidLabel || uidText.length >= 6;
 }
 
@@ -130,35 +162,42 @@ function dataUrlForOcr(image: ParsedImage) {
   return `data:${image.mimeType};base64,${image.buffer.toString("base64")}`;
 }
 
-function parseNvidiaOcrPayload(payload: unknown): { text: string; confidence?: number } {
-  if (!payload || typeof payload !== "object" || !("data" in payload)) {
-    return { text: "" };
+function collectOcrPayloadText(value: unknown, texts: string[], confidences: number[], key = "") {
+  if (typeof value === "string") {
+    const normalizedKey = key.toLowerCase();
+    if (
+      ["text", "content", "raw_text", "recognized_text", "markdown", "transcript"].includes(normalizedKey) ||
+      normalizedKey.endsWith("_text")
+    ) {
+      const trimmed = value.trim();
+      if (trimmed) texts.push(trimmed);
+    }
+    return;
   }
 
-  const data = (payload as { data?: unknown }).data;
-  if (!Array.isArray(data)) return { text: "" };
+  if (typeof value === "number" && key.toLowerCase().includes("confidence") && Number.isFinite(value)) {
+    confidences.push(value);
+    return;
+  }
 
+  if (Array.isArray(value)) {
+    for (const item of value) collectOcrPayloadText(item, texts, confidences, key);
+    return;
+  }
+
+  if (!value || typeof value !== "object") return;
+  for (const [childKey, childValue] of Object.entries(value)) {
+    collectOcrPayloadText(childValue, texts, confidences, childKey);
+  }
+}
+
+function parseNvidiaOcrPayload(payload: unknown): { text: string; confidence?: number } {
   const texts: string[] = [];
   const confidences: number[] = [];
-
-  for (const item of data) {
-    if (!item || typeof item !== "object") continue;
-    const detections = (item as { text_detections?: unknown }).text_detections;
-    if (!Array.isArray(detections)) continue;
-
-    for (const detection of detections) {
-      if (!detection || typeof detection !== "object") continue;
-      const prediction = (detection as { text_prediction?: unknown }).text_prediction;
-      if (!prediction || typeof prediction !== "object") continue;
-      const text = (prediction as { text?: unknown }).text;
-      const confidence = (prediction as { confidence?: unknown }).confidence;
-      if (typeof text === "string" && text.trim()) texts.push(text.trim());
-      if (typeof confidence === "number" && Number.isFinite(confidence)) confidences.push(confidence);
-    }
-  }
+  collectOcrPayloadText(payload, texts, confidences);
 
   return {
-    text: texts.join("\n"),
+    text: Array.from(new Set(texts)).join("\n"),
     confidence: confidences.length
       ? confidences.reduce((sum, confidence) => sum + confidence, 0) / confidences.length
       : undefined,
@@ -272,25 +311,53 @@ function getBrevoApiKey() {
   return process.env.BREVO_API_KEY || process.env.SENDINBLUE_API_KEY || "";
 }
 
-function imageExtension(proofName: string) {
-  const match = proofName.toLowerCase().match(/\.(png|jpe?g|webp)$/);
-  if (!match) return "jpg";
-  return match[1] === "jpeg" ? "jpg" : match[1];
+function imageExtensionFromMime(mimeType: ParsedImage["mimeType"]) {
+  if (mimeType === "image/png") return "png";
+  if (mimeType === "image/webp") return "webp";
+  return "jpg";
+}
+
+function imageContentType(extension: string) {
+  return `image/${extension === "jpg" ? "jpeg" : extension}`;
+}
+
+function proofAttachmentName(claim: StoredClaim, extension: string) {
+  return `okx-${claim.participantId}-${claim.missionId}-${claim.claimId}.${extension}`;
+}
+
+function uniqueEmails(emails: string[]) {
+  const seen = new Set<string>();
+  const unique: string[] = [];
+  for (const email of emails) {
+    const normalized = email.trim();
+    const key = normalized.toLowerCase();
+    if (!normalized || seen.has(key)) continue;
+    seen.add(key);
+    unique.push(normalized);
+  }
+  return unique;
+}
+
+function emailList(value: string | undefined) {
+  return value?.split(",").map((email) => email.trim()).filter(Boolean) || [];
 }
 
 function getProofEmailRecipients() {
-  const fromEnv = process.env.OKX_PROOF_TO?.split(",").map((email) => email.trim()).filter(Boolean);
-  return fromEnv?.length
-    ? fromEnv
-    : [process.env.ADMIN_EMAIL || "hello@axis.show"];
+  const fromEnv = uniqueEmails(emailList(process.env.OKX_PROOF_TO));
+  if (fromEnv.length) return fromEnv;
+
+  const adminEmail = process.env.ADMIN_EMAIL?.trim();
+  if (adminEmail && !REQUIRED_PROOF_CC.some((email) => email.toLowerCase() === adminEmail.toLowerCase())) {
+    return [adminEmail];
+  }
+
+  return ["hello@axis.show"];
 }
 
-function getProofEmailCopy() {
-  const fromEnv = process.env.OKX_PROOF_CC?.split(",").map((email) => email.trim()).filter(Boolean);
-  const cc = fromEnv?.length
-    ? fromEnv
-    : ["rubi@orbitarstudio.com", "anthony.chavez@okx.com", "Karina.caudillo@okx.com", "infoaxishow@gmail.com"];
-  return cc;
+function getProofEmailCopy(recipients: string[]) {
+  const recipientSet = new Set(recipients.map((email) => email.toLowerCase()));
+  return uniqueEmails([...emailList(process.env.OKX_PROOF_CC), ...REQUIRED_PROOF_CC])
+    .filter((email) => !recipientSet.has(email.toLowerCase()));
 }
 
 function getProofSender() {
@@ -316,6 +383,7 @@ function makeProofEmailContent({
   const safeMission = escapeHtml(claim.missionId);
   const safeClaim = escapeHtml(claim.claimId);
   const safeParticipant = escapeHtml(claim.participantId);
+  const safeDrinkId = escapeHtml(String(claim.drinkId));
   const safeUid = escapeHtml(claim.uidText || "Not extracted");
   const safeProvider = escapeHtml(claim.ocrProvider || "none");
   const safeProof = escapeHtml(claim.proofName || "screenshot");
@@ -323,12 +391,13 @@ function makeProofEmailContent({
   const safeOcr = escapeHtml(ocrText || "No OCR text extracted");
 
   return {
-    subject: `OKX mission proof: ${claim.missionId} / ${claim.claimId}`,
+    subject: `OKX UID ${claim.uidText || "not-found"} / drink #${claim.drinkId} / ${claim.claimId}`,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:680px;margin:0 auto;padding:20px;background:#050505;color:#fff;">
         <h2 style="margin:0 0 14px;">OKX mission proof received</h2>
         <p><strong>Participant:</strong> ${safeParticipant}</p>
         <p><strong>Mission:</strong> ${safeMission}</p>
+        <p><strong>Drink ID:</strong> ${safeDrinkId}</p>
         <p><strong>QR claim code:</strong> ${safeClaim}</p>
         <p><strong>Extracted UID:</strong> ${safeUid}</p>
         <p><strong>OCR provider:</strong> ${safeProvider}</p>
@@ -342,6 +411,7 @@ function makeProofEmailContent({
       "OKX mission proof received",
       `Participant: ${claim.participantId}`,
       `Mission: ${claim.missionId}`,
+      `Drink ID: ${claim.drinkId}`,
       `QR claim code: ${claim.claimId}`,
       `Extracted UID: ${claim.uidText || "Not extracted"}`,
       `OCR provider: ${claim.ocrProvider || "none"}`,
@@ -358,22 +428,26 @@ async function sendProofEmailWithBrevoApi({
   claim,
   redeemUrl,
   image,
+  imageMimeType,
   ocrText,
   recipients,
 }: {
   claim: StoredClaim;
   redeemUrl: string;
   image: Buffer;
+  imageMimeType: ParsedImage["mimeType"];
   ocrText: string;
   recipients: string[];
-}) {
+}): Promise<ProofEmailDelivery> {
   const apiKey = getBrevoApiKey();
   if (!apiKey) throw new Error("Missing BREVO_API_KEY");
 
   const email = makeProofEmailContent({ claim, redeemUrl, ocrText });
   const sender = getProofSender();
-  const cc = getProofEmailCopy();
+  const cc = getProofEmailCopy(recipients);
   const replyTo = getProofReplyTo();
+  const extension = imageExtensionFromMime(imageMimeType);
+  const attachmentName = proofAttachmentName(claim, extension);
   const response = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: {
@@ -395,67 +469,110 @@ async function sendProofEmailWithBrevoApi({
       textContent: email.text,
       attachment: [
         {
-          name: `okx-${claim.participantId}-${claim.missionId}-${claim.claimId}.${imageExtension(claim.proofName)}`,
+          name: attachmentName,
           content: image.toString("base64"),
         },
       ],
     }),
   });
 
+  const responseText = await response.text().catch(() => "");
   if (!response.ok) {
-    const detail = await response.text().catch(() => "");
+    const detail = responseText;
     throw new Error(`Brevo API failed with ${response.status}: ${detail.slice(0, 500)}`);
   }
+
+  const payload: { messageId?: string } = responseText
+    ? await Promise.resolve().then(() => JSON.parse(responseText) as { messageId?: string }).catch(() => ({}))
+    : {};
+  return {
+    method: "brevo-api",
+    to: recipients,
+    cc,
+    subject: email.subject,
+    attachmentName,
+    accepted: true,
+    providerMessageId: payload.messageId,
+  };
 }
 
 async function sendProofEmail({
   claim,
   redeemUrl,
   image,
+  imageMimeType,
   ocrText,
 }: {
   claim: StoredClaim;
   redeemUrl: string;
   image: Buffer;
+  imageMimeType: ParsedImage["mimeType"];
   ocrText: string;
-}) {
+}): Promise<ProofEmailDelivery> {
   const recipients = getProofEmailRecipients();
+  let apiFallbackError = "";
 
   if (getBrevoApiKey()) {
-    await sendProofEmailWithBrevoApi({ claim, redeemUrl, image, ocrText, recipients });
-    return;
+    try {
+      return await sendProofEmailWithBrevoApi({ claim, redeemUrl, image, imageMimeType, ocrText, recipients });
+    } catch (error) {
+      apiFallbackError = error instanceof Error ? error.message : String(error);
+      console.error("[okx/claim] Brevo API proof email failed, falling back to SMTP", error);
+      if (!process.env.BREVO_SMTP_PASS) throw error;
+    }
   }
 
   const transporter = makeTransporter();
   const email = makeProofEmailContent({ claim, redeemUrl, ocrText });
   const sender = getProofSender();
-  await transporter.sendMail({
+  const extension = imageExtensionFromMime(imageMimeType);
+  const attachmentName = proofAttachmentName(claim, extension);
+  const cc = getProofEmailCopy(recipients);
+  const result = await transporter.sendMail({
     from: `"${sender.name}" <${sender.email}>`,
     to: recipients,
-    cc: getProofEmailCopy(),
+    cc,
     replyTo: getProofReplyTo(),
     subject: email.subject,
     html: email.html,
     text: email.text,
     attachments: [
       {
-        filename: `okx-${claim.participantId}-${claim.missionId}-${claim.claimId}.${imageExtension(claim.proofName)}`,
+        filename: attachmentName,
         content: image,
+        contentType: imageContentType(extension),
       },
     ],
   });
+
+  return {
+    method: "brevo-smtp",
+    to: recipients,
+    cc,
+    subject: email.subject,
+    attachmentName,
+    accepted: Boolean(result.accepted?.length),
+    providerMessageId: result.messageId,
+    apiFallbackError: apiFallbackError || undefined,
+  };
 }
 
 export async function POST(request: Request) {
   const startedAt = Date.now();
+  const debugEnabled = new URL(request.url).searchParams.get("debug") === "1";
+  const debugEvents: Array<{ at: string; message: string; extra?: unknown }> = [];
   const log = (message: string, extra?: unknown) => {
     const elapsed = `${Date.now() - startedAt}ms`;
+    debugEvents.push({ at: elapsed, message, extra });
     if (extra !== undefined) {
       console.log(`[okx/claim ${elapsed}] ${message}`, extra);
     } else {
       console.log(`[okx/claim ${elapsed}] ${message}`);
     }
   };
+  const debugMeta = (extra: Record<string, unknown> = {}) => (
+    debugEnabled ? { debug: { events: debugEvents, ...extra } } : {}
+  );
 
   log("request received", {
     contentType: request.headers.get("content-type"),
@@ -484,12 +601,12 @@ export async function POST(request: Request) {
 
   if (!missionId || !participantId || !hasProofImage || !image) {
     log("validation failed: missing proof fields");
-    return NextResponse.json({ error: errors.required }, { status: 400 });
+    return NextResponse.json({ error: errors.required, ...debugMeta() }, { status: 400 });
   }
 
   if (image === "too-large") {
     log("validation failed: image too large");
-    return NextResponse.json({ error: errors.tooLarge }, { status: 400 });
+    return NextResponse.json({ error: errors.tooLarge, ...debugMeta() }, { status: 400 });
   }
 
   const participantMissionKey = `${participantId}::${missionId}`;
@@ -501,6 +618,30 @@ export async function POST(request: Request) {
     const origin = new URL(request.url).origin;
     const redeemUrl = `${origin}/api/okx/redeem/${encodeURIComponent(existingClaim.claimId)}`;
     const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=420x420&margin=16&data=${encodeURIComponent(redeemUrl)}`;
+    let emailSent = false;
+    let emailError = "";
+    let emailDelivery: ProofEmailDelivery | null = null;
+
+    try {
+      const emailClaim = { ...existingClaim, proofName: proofName || existingClaim.proofName };
+      log("duplicate proof email resend", { method: getBrevoApiKey() ? "brevo-api" : "brevo-smtp" });
+      emailDelivery = await sendProofEmail({
+        claim: emailClaim,
+        redeemUrl,
+        image: image.buffer,
+        imageMimeType: image.mimeType,
+        ocrText: existingClaim.uidText || "Duplicate claim email resend; OCR text is not stored for this claim.",
+      });
+      emailSent = true;
+      existingClaim.emailedAt = new Date().toISOString();
+      existingClaim.proofName = emailClaim.proofName;
+      getClaimStore().set(existingClaim.claimId, existingClaim);
+      log("duplicate proof email sent", emailDelivery);
+    } catch (error) {
+      emailError = error instanceof Error ? error.message : String(error);
+      console.error("[okx/claim] duplicate proof email resend failed", error);
+    }
+
     return NextResponse.json({
       claimId: existingClaim.claimId,
       missionId,
@@ -509,6 +650,10 @@ export async function POST(request: Request) {
       redeemUrl,
       qrUrl,
       duplicate: true,
+      emailSent,
+      emailError: emailSent ? undefined : emailError.slice(0, 300),
+      uidText: existingClaim.uidText,
+      ...debugMeta({ emailDelivery }),
     });
   }
 
@@ -521,7 +666,7 @@ export async function POST(request: Request) {
       const validation = await validateUidScreenshot(image);
       if (!validation.ok) {
         log("ocr validation rejected", { ocrProvider: validation.provider, ocrText: validation.text });
-        return NextResponse.json({ error: errors.invalid }, { status: 422 });
+        return NextResponse.json({ error: errors.invalid, ...debugMeta({ ocr: validation }) }, { status: 422 });
       }
       uidText = validation.uidText;
       ocrText = validation.text;
@@ -534,7 +679,7 @@ export async function POST(request: Request) {
       });
     } catch (error) {
       log("ocr validation unreadable", error instanceof Error ? error.message : String(error));
-      return NextResponse.json({ error: errors.unreadable }, { status: 422 });
+      return NextResponse.json({ error: errors.unreadable, ...debugMeta() }, { status: 422 });
     }
   } else {
     log("ocr skipped for non-UID mission", { missionId });
@@ -548,14 +693,14 @@ export async function POST(request: Request) {
 
   if (drinkId === null) {
     log("validation failed: drink capacity exhausted");
-    return NextResponse.json({ error: "OKX drink capacity is full. Ask staff for help." }, { status: 409 });
+    return NextResponse.json({ error: "OKX drink capacity is full. Ask staff for help.", ...debugMeta() }, { status: 409 });
   }
 
   const claim: StoredClaim = {
     claimId,
     missionId,
     participantId,
-    uid: "",
+    uid: uidText,
     proofName,
     hasProofImage,
     uidText,
@@ -568,11 +713,12 @@ export async function POST(request: Request) {
 
   let emailSent = false;
   let emailError = "";
+  let emailDelivery: ProofEmailDelivery | null = null;
   try {
     log("proof email sending", { method: getBrevoApiKey() ? "brevo-api" : "brevo-smtp" });
-    await sendProofEmail({ claim, redeemUrl, image: image.buffer, ocrText });
+    emailDelivery = await sendProofEmail({ claim, redeemUrl, image: image.buffer, imageMimeType: image.mimeType, ocrText });
     emailSent = true;
-    log("proof email sent");
+    log("proof email sent", emailDelivery);
   } catch (error) {
     emailError = error instanceof Error ? error.message : String(error);
     console.error("[okx/claim] proof email failed; claim will still be created", error);
@@ -592,5 +738,8 @@ export async function POST(request: Request) {
     qrUrl,
     emailSent,
     emailError: emailSent ? undefined : emailError.slice(0, 300),
+    uidText,
+    ocrProvider,
+    ...debugMeta({ emailDelivery, ocr: { uidText, ocrProvider, ocrText } }),
   });
 }

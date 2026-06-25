@@ -170,58 +170,73 @@ export default function OkxAdminPanel() {
     await refreshStats();
   }
 
+  const metrics = [
+    ["Delivered", stats.delivered, `${stats.totalLeft} left total`],
+    ["Official", stats.officialDelivered, `${stats.officialLeft}/${stats.officialLimit} left`],
+    ["Fallback", stats.fallbackDelivered, `${stats.fallbackLeft}/${stats.fallbackReserve} left`],
+    ["Allocated", stats.allocated, `next ID ${stats.nextDrinkId}`],
+  ];
+  const resultTone = result?.ok ? "approved" : result ? "blocked" : "idle";
+
   return (
-    <main className="min-h-screen bg-[#050505] px-5 py-6 text-white sm:px-8">
-      <div className="mx-auto flex max-w-5xl flex-col gap-5">
-        <header className="flex flex-wrap items-center justify-between gap-3 border-b border-white/12 pb-4">
-          <div>
+    <main className="min-h-screen bg-[#050505] px-3 py-3 text-white sm:px-6 sm:py-6">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 sm:gap-5">
+        <header className="flex flex-col gap-3 border-b border-white/12 pb-3 sm:flex-row sm:items-center sm:justify-between sm:pb-4">
+          <div className="min-w-0">
             <p className="text-xs uppercase tracking-[0.28em] text-[#c9ff4a]">AXIS / OKX</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-[-0.04em]">Drink admin</h1>
+            <h1 className="mt-1 text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">Drink admin</h1>
           </div>
           <button
             type="button"
             onClick={() => void resetCounters()}
-            className="inline-flex h-11 items-center gap-2 border border-white/16 px-4 text-sm text-white/80"
+            className="inline-flex h-11 w-full items-center justify-center gap-2 border border-white/16 bg-white/[0.03] px-4 text-sm text-white/80 sm:w-auto"
           >
             <FiRotateCcw aria-hidden />
             Reset test
           </button>
         </header>
 
-        <section className="grid gap-3 sm:grid-cols-4">
-          {[
-            ["Delivered", stats.delivered, `${stats.totalLeft} left total`],
-            ["Official", stats.officialDelivered, `${stats.officialLeft}/${stats.officialLimit} left`],
-            ["Fallback", stats.fallbackDelivered, `${stats.fallbackLeft}/${stats.fallbackReserve} left`],
-            ["Allocated", stats.allocated, `next ID ${stats.nextDrinkId}`],
-          ].map(([label, value, sub]) => (
-            <div key={label} className="border border-white/12 bg-white/[0.04] p-4">
-              <p className="text-xs uppercase tracking-[0.22em] text-white/45">{label}</p>
-              <strong className="mt-2 block text-4xl tracking-[-0.05em]">{value}</strong>
-              <span className="mt-1 block text-sm text-white/55">{sub}</span>
+        <section className="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
+          {metrics.map(([label, value, sub]) => (
+            <div key={label} className="min-h-[112px] border border-white/12 bg-white/[0.045] p-3 sm:p-4">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/45 sm:text-xs">{label}</p>
+              <strong className="mt-2 block text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">{value}</strong>
+              <span className="mt-1 block text-xs text-white/58 sm:text-sm">{sub}</span>
             </div>
           ))}
         </section>
 
-        <section className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="border border-white/12 bg-white/[0.04] p-4">
-            <div className="mb-3 flex items-center justify-between gap-3">
-              <h2 className="text-lg font-medium">Scan QR</h2>
+        <section className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
+          <div className="border border-white/12 bg-white/[0.045] p-3 sm:p-4">
+            <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center justify-between gap-3 sm:block">
+                <h2 className="text-lg font-medium">Scan QR</h2>
+                <span className={`rounded-full px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] sm:hidden ${scanActive ? "bg-[#c9ff4a] text-black" : "bg-white/10 text-white/65"}`}>
+                  {scanActive ? "Live" : "Off"}
+                </span>
+              </div>
               <button
                 type="button"
                 onClick={scanActive ? stopCamera : () => void startCamera()}
-                className="inline-flex h-10 items-center gap-2 bg-white px-4 text-sm text-black"
+                className="inline-flex h-12 w-full items-center justify-center gap-2 bg-white px-4 text-sm font-medium text-black sm:h-10 sm:w-auto"
               >
                 {scanActive ? <FiX aria-hidden /> : <FiCamera aria-hidden />}
                 {scanActive ? "Stop" : "Camera"}
               </button>
             </div>
 
-            <video ref={videoRef} className="aspect-video w-full bg-black object-cover" muted playsInline />
+            <div className="relative overflow-hidden border border-white/10 bg-black">
+              <video ref={videoRef} className="aspect-[4/5] w-full object-cover sm:aspect-video" muted playsInline />
+              {!scanActive ? (
+                <div className="absolute inset-0 grid place-items-center bg-black/70 px-4 text-center text-sm text-white/58">
+                  Camera is off
+                </div>
+              ) : null}
+            </div>
             {scanError ? <p className="mt-3 text-sm text-[#ff6262]">{scanError}</p> : null}
 
             <form
-              className="mt-4 flex gap-2"
+              className="mt-3 grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]"
               onSubmit={(event) => {
                 event.preventDefault();
                 void redeem(manualScan);
@@ -231,48 +246,59 @@ export default function OkxAdminPanel() {
                 value={manualScan}
                 onChange={(event) => setManualScan(event.target.value)}
                 placeholder="Paste scanned QR URL"
-                className="min-w-0 flex-1 border border-white/12 bg-black px-3 text-sm text-white outline-none"
+                className="h-12 min-w-0 border border-white/12 bg-black px-3 text-sm text-white outline-none placeholder:text-white/35"
               />
-              <button type="submit" className="inline-flex h-11 items-center gap-2 bg-[#c9ff4a] px-4 text-sm text-black">
+              <button type="submit" className="inline-flex h-12 items-center justify-center gap-2 bg-[#c9ff4a] px-4 text-sm font-medium text-black">
                 <FiSend aria-hidden />
                 Redeem
               </button>
             </form>
           </div>
 
-          <div className={`border p-5 ${result?.ok ? "border-[#c9ff4a]" : result ? "border-[#ff6262]" : "border-white/12"} bg-white/[0.04]`}>
-            <div className="flex items-center gap-3">
-              <span className={`grid h-11 w-11 place-items-center rounded-full ${result?.ok ? "bg-[#c9ff4a] text-black" : "bg-white/10 text-white"}`}>
+          <div className={`border p-4 sm:p-5 ${resultTone === "approved" ? "border-[#c9ff4a]" : resultTone === "blocked" ? "border-[#ff6262]" : "border-white/12"} bg-white/[0.045]`}>
+            <div className="flex items-start gap-3">
+              <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-full ${result?.ok ? "bg-[#c9ff4a] text-black" : "bg-white/10 text-white"}`}>
                 {result?.ok ? <FiCheck aria-hidden /> : <FiRefreshCw aria-hidden />}
               </span>
-              <div>
+              <div className="min-w-0">
                 <p className="text-xs uppercase tracking-[0.22em] text-white/45">Last scan</p>
-                <h2 className="text-xl font-medium">{resultCopy(result) || "Waiting for QR"}</h2>
+                <h2 className="mt-1 text-2xl font-semibold leading-tight tracking-[-0.03em] sm:text-3xl">{resultCopy(result) || "Waiting for QR"}</h2>
               </div>
             </div>
             {result?.claim ? (
-              <dl className="mt-5 grid gap-2 text-sm text-white/70">
-                <div className="flex justify-between gap-3"><dt>Claim</dt><dd className="font-mono">{result.claim.claimId}</dd></div>
-                <div className="flex justify-between gap-3"><dt>Mission</dt><dd>{result.claim.missionId}</dd></div>
-                <div className="flex justify-between gap-3"><dt>Drink ID</dt><dd>{result.claim.drinkId}</dd></div>
-                <div className="flex justify-between gap-3"><dt>UID</dt><dd>{result.claim.uidText || "n/a"}</dd></div>
+              <dl className="mt-5 grid gap-2 text-sm text-white/72">
+                <div className="grid grid-cols-[72px_minmax(0,1fr)] gap-3"><dt>Claim</dt><dd className="break-all font-mono text-white/90">{result.claim.claimId}</dd></div>
+                <div className="grid grid-cols-[72px_minmax(0,1fr)] gap-3"><dt>Mission</dt><dd>{result.claim.missionId}</dd></div>
+                <div className="grid grid-cols-[72px_minmax(0,1fr)] gap-3"><dt>Drink ID</dt><dd>{result.claim.drinkId}</dd></div>
+                <div className="grid grid-cols-[72px_minmax(0,1fr)] gap-3"><dt>UID</dt><dd className="break-words">{result.claim.uidText || "n/a"}</dd></div>
               </dl>
             ) : null}
           </div>
         </section>
 
-        <section className="border border-white/12 bg-white/[0.04]">
-          <div className="grid grid-cols-[0.7fr_1fr_0.8fr_0.8fr] border-b border-white/12 px-3 py-2 text-xs uppercase tracking-[0.18em] text-white/40">
+        <section className="border border-white/12 bg-white/[0.045]">
+          <div className="flex items-center justify-between border-b border-white/12 px-3 py-3 sm:px-4">
+            <h2 className="text-sm font-medium uppercase tracking-[0.18em] text-white/55">Recent claims</h2>
+            <span className="text-xs text-white/40">{stats.recentClaims.length}</span>
+          </div>
+          <div className="hidden grid-cols-[0.7fr_1fr_0.8fr_0.8fr] border-b border-white/12 px-4 py-2 text-xs uppercase tracking-[0.18em] text-white/40 sm:grid">
             <span>ID</span><span>Mission</span><span>Status</span><span>Pool</span>
           </div>
-          {stats.recentClaims.map((claim) => (
-            <div key={claim.claimId} className="grid grid-cols-[0.7fr_1fr_0.8fr_0.8fr] border-b border-white/[0.08] px-3 py-2 text-sm text-white/72 last:border-b-0">
-              <span className="font-mono">{claim.drinkId}</span>
-              <span>{claim.missionId}</span>
-              <span>{claim.usedAt ? "delivered" : "ready"}</span>
-              <span>{claim.official ? "official" : "fallback"}</span>
+          {stats.recentClaims.length ? stats.recentClaims.map((claim) => (
+            <div key={claim.claimId} className="border-b border-white/[0.08] px-3 py-3 text-sm text-white/72 last:border-b-0 sm:grid sm:grid-cols-[0.7fr_1fr_0.8fr_0.8fr] sm:px-4 sm:py-2">
+              <div className="flex items-start justify-between gap-3 sm:block">
+                <span className="font-mono text-lg text-white sm:text-sm">{claim.drinkId}</span>
+                <span className={`rounded-full px-2 py-1 text-[11px] uppercase tracking-[0.16em] sm:hidden ${claim.usedAt ? "bg-[#c9ff4a] text-black" : "bg-white/10 text-white/72"}`}>
+                  {claim.usedAt ? "delivered" : "ready"}
+                </span>
+              </div>
+              <span className="mt-1 block text-white/84 sm:mt-0">{claim.missionId}</span>
+              <span className="hidden sm:block">{claim.usedAt ? "delivered" : "ready"}</span>
+              <span className="mt-1 block text-xs uppercase tracking-[0.14em] text-white/42 sm:mt-0 sm:text-sm sm:normal-case sm:tracking-normal sm:text-white/72">{claim.official ? "official" : "fallback"}</span>
             </div>
-          ))}
+          )) : (
+            <p className="px-3 py-6 text-sm text-white/45 sm:px-4">No claims yet.</p>
+          )}
         </section>
       </div>
     </main>
