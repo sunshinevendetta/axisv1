@@ -247,10 +247,10 @@
 }
 
 .okx-pass-token img {
-  width: 82px;
-  height: 82px;
+  width: 96px;
+  height: 96px;
   object-fit: contain;
-  opacity: 0.82;
+  opacity: 0.92;
 }
 
 .okx-pass-token span {
@@ -284,10 +284,6 @@
 .okx-pass-token.is-done {
   background: rgba(255, 255, 255, 0.9);
   color: #050505;
-}
-
-.okx-pass-token.is-done img {
-  filter: invert(1);
 }
 
 .okx-clarity {
@@ -650,6 +646,32 @@
   opacity: 0.55;
 }
 
+.okx-submit-progress {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.okx-submit-progress > div {
+  position: relative;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.okx-submit-progress i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 42%;
+  border-radius: inherit;
+  background: #fff;
+  animation: okx-progress-run 1.15s ease-in-out infinite;
+}
+
 .okx-error {
   margin: 10px 0 0;
   color: #fff;
@@ -952,6 +974,16 @@
 
   42% {
     opacity: 1;
+  }
+}
+
+@keyframes okx-progress-run {
+  0% {
+    transform: translateX(-110%);
+  }
+
+  100% {
+    transform: translateX(240%);
   }
 }
 
