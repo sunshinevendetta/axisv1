@@ -247,8 +247,9 @@
 }
 
 .okx-pass-token img {
-  width: 64px;
-  height: auto;
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
   opacity: 0.82;
 }
 
@@ -363,6 +364,7 @@
 .okx-modal-hero img {
   width: 86px;
   height: 86px;
+  object-fit: contain;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.04);
@@ -973,7 +975,8 @@
   }
 
   .okx-pass-token img {
-    width: 86px;
+    width: 96px;
+    height: 96px;
   }
 
   .okx-mission-modal,
