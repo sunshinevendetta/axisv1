@@ -302,21 +302,29 @@ function imageExtension(proofName: string) {
 }
 
 function getProofEmailRecipients() {
-  const fromEnv = process.env.OKX_PROOF_RECIPIENTS?.split(",").map((email) => email.trim()).filter(Boolean);
+  const fromEnv = process.env.OKX_PROOF_TO?.split(",").map((email) => email.trim()).filter(Boolean);
   return fromEnv?.length
     ? fromEnv
-    : ["anthony.chavez@okx.com", "Karina.caudillo@okx.com", "rubi@orbitarstudio.com"];
+    : [process.env.ADMIN_EMAIL || "hello@axis.show"];
 }
 
 function getProofEmailCopy() {
-  return process.env.OKX_PROOF_CC || "axishow@gmail.com";
+  const fromEnv = process.env.OKX_PROOF_CC?.split(",").map((email) => email.trim()).filter(Boolean);
+  const cc = fromEnv?.length
+    ? fromEnv
+    : ["rubi@orbitarstudio.com", "anthony.chavez@okx.com", "Karina.caudillo@okx.com", "axishow@gmail.com"];
+  return cc;
 }
 
 function getProofSender() {
   return {
     name: process.env.OKX_PROOF_SENDER_NAME || "AXIS OKX",
-    email: process.env.OKX_PROOF_SENDER_EMAIL || "axishow@gmail.com",
+    email: process.env.OKX_PROOF_SENDER_EMAIL || process.env.CUSTOM_FROM || "rsvp@axis.show",
   };
+}
+
+function getProofReplyTo() {
+  return process.env.OKX_PROOF_REPLY_TO || "axishow@gmail.com";
 }
 
 function makeProofEmailContent({
@@ -388,6 +396,7 @@ async function sendProofEmailWithBrevoApi({
   const email = makeProofEmailContent({ claim, redeemUrl, ocrText });
   const sender = getProofSender();
   const cc = getProofEmailCopy();
+  const replyTo = getProofReplyTo();
   const response = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: {
@@ -402,7 +411,8 @@ async function sendProofEmailWithBrevoApi({
         email: sender.email,
       },
       to: recipients.map((emailAddress) => ({ email: emailAddress })),
-      cc: cc ? [{ email: cc }] : undefined,
+      cc: cc.map((emailAddress) => ({ email: emailAddress })),
+      replyTo: replyTo ? { email: replyTo, name: "AXIS" } : undefined,
       subject: email.subject,
       htmlContent: email.html,
       textContent: email.text,
@@ -446,6 +456,7 @@ async function sendProofEmail({
     from: `"${sender.name}" <${sender.email}>`,
     to: recipients,
     cc: getProofEmailCopy(),
+    replyTo: getProofReplyTo(),
     subject: email.subject,
     html: email.html,
     text: email.text,
@@ -582,19 +593,30 @@ export async function POST(request: Request) {
     usedAt: null,
   };
 
+  let emailSent = false;
+  let emailError = "";
   try {
     log("proof email sending", { method: getBrevoApiKey() ? "brevo-api" : "brevo-smtp" });
     await sendProofEmail({ claim, redeemUrl, image: image.buffer, ocrText });
+    emailSent = true;
     log("proof email sent");
   } catch (error) {
-    console.error("[okx/claim] proof email failed", error);
-    return NextResponse.json({ error: "Could not send proof email. Try again with staff." }, { status: 502 });
+    emailError = error instanceof Error ? error.message : String(error);
+    console.error("[okx/claim] proof email failed; claim will still be created", error);
   }
 
-  claim.emailedAt = new Date().toISOString();
+  claim.emailedAt = emailSent ? new Date().toISOString() : "";
   getClaimStore().set(claimId, claim);
   participantStore.set(participantMissionKey, claimId);
 
-  log("claim created", { claimId, missionId, participantId, uidText });
-  return NextResponse.json({ claimId, missionId, participantId, redeemUrl, qrUrl });
+  log("claim created", { claimId, missionId, participantId, uidText, emailSent, emailError });
+  return NextResponse.json({
+    claimId,
+    missionId,
+    participantId,
+    redeemUrl,
+    qrUrl,
+    emailSent,
+    emailError: emailSent ? undefined : emailError.slice(0, 300),
+  });
 }
