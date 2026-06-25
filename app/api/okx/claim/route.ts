@@ -124,19 +124,29 @@ function cleanUidCandidate(value: string) {
     .slice(0, 32);
 }
 
+function findLikelyUidNumber(text: string) {
+  const candidates = Array.from(text.matchAll(/[0-9OQIL][0-9OQIL\s:.-]{4,40}[0-9OQIL]/g))
+    .map((match) => cleanUidCandidate(match[0]))
+    .filter((candidate) => candidate.length >= 6);
+
+  const preferred = candidates
+    .filter((candidate) => candidate.length >= 12 && candidate.length <= 22)
+    .sort((a, b) => b.length - a.length)[0];
+
+  return preferred || candidates.sort((a, b) => b.length - a.length)[0] || "";
+}
+
 function extractUidText(text: string) {
   const normalized = normalizeOcrText(text);
   const uidLabel = /\bU\s*(?:I|1|L)?\s*D\b/.exec(normalized);
 
   if (uidLabel?.index !== undefined) {
-    const nearUid = normalized.slice(uidLabel.index, uidLabel.index + 120);
-    const labeledCandidate = nearUid.match(/[0-9OQIL][0-9OQIL\s:.-]{4,40}[0-9OQIL]/)?.[0] || "";
-    const cleaned = cleanUidCandidate(labeledCandidate);
+    const nearUid = normalized.slice(uidLabel.index, uidLabel.index + 180);
+    const cleaned = findLikelyUidNumber(nearUid);
     if (cleaned.length >= 6) return cleaned;
   }
 
-  const numericCandidate = normalized.match(/\b[0-9OQIL][0-9OQIL\s.-]{4,40}[0-9OQIL]\b/)?.[0] || "";
-  const cleaned = cleanUidCandidate(numericCandidate);
+  const cleaned = findLikelyUidNumber(normalized);
   return cleaned.length >= 6 ? cleaned : "";
 }
 
@@ -238,14 +248,24 @@ function okxUidRectangles(image: ParsedImage) {
 
   return [
     {
-      label: "uid-number-row",
+      label: "uid-number-row-tight",
       digitsOnly: true,
-      rectangle: rectangleFromRatios(dimensions, 0.06, 0.515, 0.62, 0.055),
+      rectangle: rectangleFromRatios(dimensions, 0.06, 0.525, 0.72, 0.055),
+    },
+    {
+      label: "uid-number-row-wide",
+      digitsOnly: true,
+      rectangle: rectangleFromRatios(dimensions, 0.04, 0.50, 0.86, 0.09),
+    },
+    {
+      label: "uid-label-and-number",
+      digitsOnly: false,
+      rectangle: rectangleFromRatios(dimensions, 0.04, 0.485, 0.9, 0.13),
     },
     {
       label: "uid-account-card-top",
       digitsOnly: false,
-      rectangle: rectangleFromRatios(dimensions, 0.04, 0.49, 0.78, 0.11),
+      rectangle: rectangleFromRatios(dimensions, 0.035, 0.47, 0.86, 0.16),
     },
     {
       label: "account-information-card",
@@ -366,11 +386,13 @@ async function readScreenshotWithTesseract(image: ParsedImage): Promise<OcrResul
           await worker.setParameters({
             tessedit_char_whitelist: "0123456789",
             preserve_interword_spaces: "1",
+            tessedit_pageseg_mode: Tesseract.PSM.SINGLE_LINE,
           });
         } else {
           await worker.setParameters({
             tessedit_char_whitelist: "",
             preserve_interword_spaces: "1",
+            tessedit_pageseg_mode: Tesseract.PSM.SINGLE_BLOCK,
           });
         }
 
@@ -387,6 +409,7 @@ async function readScreenshotWithTesseract(image: ParsedImage): Promise<OcrResul
       await worker.setParameters({
         tessedit_char_whitelist: "",
         preserve_interword_spaces: "1",
+        tessedit_pageseg_mode: Tesseract.PSM.SINGLE_BLOCK,
       });
       const fullResult = await worker.recognize(image.buffer);
       if (fullResult.data.text?.trim()) texts.push(`full-image\n${fullResult.data.text.trim()}`);
@@ -839,11 +862,6 @@ export async function POST(request: Request) {
   const redeemUrl = `${origin}/api/okx/redeem/${encodeURIComponent(claimId)}`;
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=420x420&margin=16&data=${encodeURIComponent(redeemUrl)}`;
   const drinkId = allocateDrinkId();
-
-  if (drinkId === null) {
-    log("validation failed: drink capacity exhausted");
-    return NextResponse.json({ error: "OKX drink capacity is full. Ask staff for help.", ...debugMeta() }, { status: 409 });
-  }
 
   const claim: StoredClaim = {
     claimId,

@@ -4,16 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { FiCamera, FiCheck, FiRefreshCw, FiRotateCcw, FiSend, FiX } from "react-icons/fi";
 
 type OkxStats = {
-  officialLimit: number;
-  fallbackReserve: number;
-  totalCapacity: number;
   allocated: number;
   delivered: number;
-  officialDelivered: number;
-  fallbackDelivered: number;
-  officialLeft: number;
-  fallbackLeft: number;
-  totalLeft: number;
   nextDrinkId: number;
   recentClaims: Array<{
     claimId: string;
@@ -45,16 +37,8 @@ type BarcodeDetectorCtor = new (options?: { formats?: string[] }) => {
 };
 
 const emptyStats: OkxStats = {
-  officialLimit: 500,
-  fallbackReserve: 150,
-  totalCapacity: 650,
   allocated: 0,
   delivered: 0,
-  officialDelivered: 0,
-  fallbackDelivered: 0,
-  officialLeft: 500,
-  fallbackLeft: 150,
-  totalLeft: 650,
   nextDrinkId: 0,
   recentClaims: [],
 };
@@ -69,12 +53,10 @@ function resultCopy(result: RedeemResult | null) {
 }
 
 function clearOkxLocalState() {
-  [
-    "axis-okx-participant-id-v2",
-    "axis-okx-claims-v2-live",
-    "axis-okx-participant-id",
-    "axis-okx-claims-v1",
-  ].forEach((key) => window.localStorage.removeItem(key));
+  for (const storage of [window.localStorage, window.sessionStorage]) {
+    const keys = Array.from({ length: storage.length }, (_, index) => storage.key(index)).filter(Boolean) as string[];
+    keys.filter((key) => key.toLowerCase().includes("okx")).forEach((key) => storage.removeItem(key));
+  }
 }
 
 export default function OkxAdminPanel() {
@@ -182,10 +164,9 @@ export default function OkxAdminPanel() {
   }
 
   const metrics = [
-    ["Delivered", stats.delivered, `${stats.totalLeft} left total`],
-    ["Official", stats.officialDelivered, `${stats.officialLeft}/${stats.officialLimit} left`],
-    ["Fallback", stats.fallbackDelivered, `${stats.fallbackLeft}/${stats.fallbackReserve} left`],
-    ["Allocated", stats.allocated, `next ID ${stats.nextDrinkId}`],
+    ["Scans", stats.delivered, "delivered count"],
+    ["Ready QRs", Math.max(0, stats.allocated - stats.delivered), "not scanned yet"],
+    ["Issued", stats.allocated, `next ID ${stats.nextDrinkId}`],
   ];
   const resultTone = result?.ok ? "approved" : result ? "blocked" : "idle";
 
@@ -207,7 +188,7 @@ export default function OkxAdminPanel() {
           </button>
         </header>
 
-        <section className="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
+        <section className="grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3">
           {metrics.map(([label, value, sub]) => (
             <div key={label} className="min-h-[112px] border border-white/12 bg-white/[0.045] p-3 sm:p-4">
               <p className="text-[10px] uppercase tracking-[0.2em] text-white/45 sm:text-xs">{label}</p>
@@ -292,11 +273,11 @@ export default function OkxAdminPanel() {
             <h2 className="text-sm font-medium uppercase tracking-[0.18em] text-white/55">Recent claims</h2>
             <span className="text-xs text-white/40">{stats.recentClaims.length}</span>
           </div>
-          <div className="hidden grid-cols-[0.7fr_1fr_0.8fr_0.8fr] border-b border-white/12 px-4 py-2 text-xs uppercase tracking-[0.18em] text-white/40 sm:grid">
-            <span>ID</span><span>Mission</span><span>Status</span><span>Pool</span>
+          <div className="hidden grid-cols-[0.7fr_1fr_0.8fr_1fr] border-b border-white/12 px-4 py-2 text-xs uppercase tracking-[0.18em] text-white/40 sm:grid">
+            <span>ID</span><span>Mission</span><span>Status</span><span>UID</span>
           </div>
           {stats.recentClaims.length ? stats.recentClaims.map((claim) => (
-            <div key={claim.claimId} className="border-b border-white/[0.08] px-3 py-3 text-sm text-white/72 last:border-b-0 sm:grid sm:grid-cols-[0.7fr_1fr_0.8fr_0.8fr] sm:px-4 sm:py-2">
+            <div key={claim.claimId} className="border-b border-white/[0.08] px-3 py-3 text-sm text-white/72 last:border-b-0 sm:grid sm:grid-cols-[0.7fr_1fr_0.8fr_1fr] sm:px-4 sm:py-2">
               <div className="flex items-start justify-between gap-3 sm:block">
                 <span className="font-mono text-lg text-white sm:text-sm">{claim.drinkId}</span>
                 <span className={`rounded-full px-2 py-1 text-[11px] uppercase tracking-[0.16em] sm:hidden ${claim.usedAt ? "bg-[#c9ff4a] text-black" : "bg-white/10 text-white/72"}`}>
@@ -305,7 +286,7 @@ export default function OkxAdminPanel() {
               </div>
               <span className="mt-1 block text-white/84 sm:mt-0">{claim.missionId}</span>
               <span className="hidden sm:block">{claim.usedAt ? "delivered" : "ready"}</span>
-              <span className="mt-1 block text-xs uppercase tracking-[0.14em] text-white/42 sm:mt-0 sm:text-sm sm:normal-case sm:tracking-normal sm:text-white/72">{claim.official ? "official" : "fallback"}</span>
+              <span className="mt-1 block break-all font-mono text-xs text-white/42 sm:mt-0 sm:text-sm sm:text-white/72">{claim.uidText || "n/a"}</span>
             </div>
           )) : (
             <p className="px-3 py-6 text-sm text-white/45 sm:px-4">No claims yet.</p>
