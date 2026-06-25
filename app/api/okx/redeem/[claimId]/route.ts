@@ -3,9 +3,12 @@ import { NextResponse } from "next/server";
 type StoredClaim = {
   claimId: string;
   missionId: string;
+  participantId: string;
   uid: string;
   proofName: string;
   hasProofImage: boolean;
+  uidText: string;
+  emailedAt: string;
   createdAt: string;
   usedAt: string | null;
 };
