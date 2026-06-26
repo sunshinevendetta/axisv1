@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import {
-  FiCamera,
   FiCheck,
   FiHelpCircle,
   FiLoader,
@@ -22,7 +21,7 @@ import "./okx.css";
 gsap.registerPlugin(useGSAP);
 
 type Lang = "es" | "en" | "zh" | "ja" | "ko" | "fr";
-type MissionId = "verify" | "outcomes" | "fund";
+type MissionId = "verify" | "outcomes" | "ar";
 
 type Mission = {
   id: MissionId;
@@ -39,6 +38,8 @@ type Mission = {
   action: Record<Lang, string>;
   staff: Record<Lang, string>;
   steps: Record<Lang, string[]>;
+  proofHint?: Record<Lang, string>;
+  socialCaption?: Record<Lang, string>;
 };
 
 type UidGuideItem = {
@@ -88,6 +89,15 @@ const guideStepLabel: Record<Lang, string> = {
   ja: "ステップ",
   ko: "단계",
   fr: "Étape",
+};
+
+const outcomesProofHint: Record<Lang, string> = {
+  es: "Sube screenshot donde se vea tu posicion o participacion en OKX Outcomes.",
+  en: "Upload a screenshot showing your OKX Outcomes position or participation.",
+  zh: "Upload a screenshot showing your OKX Outcomes position or participation.",
+  ja: "Upload a screenshot showing your OKX Outcomes position or participation.",
+  ko: "Upload a screenshot showing your OKX Outcomes position or participation.",
+  fr: "Upload a screenshot showing your OKX Outcomes position or participation.",
 };
 
 const missions: Mission[] = [
@@ -261,7 +271,7 @@ const missions: Mission[] = [
     },
   },
   {
-    id: "fund",
+    id: "ar",
     drink: "03",
     asset: "/okx/drink-03.webp",
     title: {
@@ -273,36 +283,52 @@ const missions: Mission[] = [
       fr: "3rd drink",
     },
     visualTitle: {
-      es: "Fondea 10 USD",
-      en: "Fund 10 USD",
-      zh: "Fund 10 USD",
-      ja: "Fund 10 USD",
-      ko: "Fund 10 USD",
-      fr: "Fund 10 USD",
+      es: "Postea AR",
+      en: "Post AR",
+      zh: "Post AR",
+      ja: "Post AR",
+      ko: "Post AR",
+      fr: "Post AR",
     },
     action: {
-      es: "Recibe 10 USD extras. Duplicamos tu lana",
-      en: "Get 10 USD extra. We double your money",
-      zh: "Get 10 USD extra. We double your money",
-      ja: "Get 10 USD extra. We double your money",
-      ko: "Get 10 USD extra. We double your money",
-      fr: "Get 10 USD extra. We double your money",
+      es: "Toma foto con la AR y comparte el momento",
+      en: "Take an AR photo and share the moment",
+      zh: "Take an AR photo and share the moment",
+      ja: "Take an AR photo and share the moment",
+      ko: "Take an AR photo and share the moment",
+      fr: "Take an AR photo and share the moment",
     },
     staff: {
-      es: "Sube screenshot de tu fondeo OKX de 10 USD.",
-      en: "Upload a screenshot of your 10 USD OKX funding.",
-      zh: "Upload a screenshot of your 10 USD OKX funding.",
-      ja: "Upload a screenshot of your 10 USD OKX funding.",
-      ko: "Upload a screenshot of your 10 USD OKX funding.",
-      fr: "Upload a screenshot of your 10 USD OKX funding.",
+      es: "Sube screenshot de tu post con la foto AR del evento mencionando @okx, @okxlatam y @axishow.",
+      en: "Upload a screenshot of your event AR photo post mentioning @okx, @okxlatam, and @axishow.",
+      zh: "Upload a screenshot of your event AR photo post mentioning @okx, @okxlatam, and @axishow.",
+      ja: "Upload a screenshot of your event AR photo post mentioning @okx, @okxlatam, and @axishow.",
+      ko: "Upload a screenshot of your event AR photo post mentioning @okx, @okxlatam, and @axishow.",
+      fr: "Upload a screenshot of your event AR photo post mentioning @okx, @okxlatam, and @axishow.",
     },
     steps: {
-      es: ["Fondea 10 USD", "Espera confirmacion", "Sube screenshot", "Muestra tu QR"],
-      en: ["Fund 10 USD", "Wait for confirmation", "Upload screenshot", "Show your QR"],
-      zh: ["Fund 10 USD", "Wait for confirmation", "Upload screenshot", "Show your QR"],
-      ja: ["Fund 10 USD", "Wait for confirmation", "Upload screenshot", "Show your QR"],
-      ko: ["Fund 10 USD", "Wait for confirmation", "Upload screenshot", "Show your QR"],
-      fr: ["Fund 10 USD", "Wait for confirmation", "Upload screenshot", "Show your QR"],
+      es: ["Abre la AR desde el boton del modelo OKX", "Toma foto en el evento", "Postea en socials con @okx @okxlatam @axishow", "Sube screenshot de tu post"],
+      en: ["Open AR from the OKX model button", "Take a photo at the event", "Post on socials with @okx @okxlatam @axishow", "Upload a screenshot of your post"],
+      zh: ["Open AR from the OKX model button", "Take a photo at the event", "Post on socials with @okx @okxlatam @axishow", "Upload a screenshot of your post"],
+      ja: ["Open AR from the OKX model button", "Take a photo at the event", "Post on socials with @okx @okxlatam @axishow", "Upload a screenshot of your post"],
+      ko: ["Open AR from the OKX model button", "Take a photo at the event", "Post on socials with @okx @okxlatam @axishow", "Upload a screenshot of your post"],
+      fr: ["Open AR from the OKX model button", "Take a photo at the event", "Post on socials with @okx @okxlatam @axishow", "Upload a screenshot of your post"],
+    },
+    proofHint: {
+      es: "El screenshot debe mostrar tu post publico con la foto AR y menciones a @okx, @okxlatam y @axishow.",
+      en: "The screenshot must show your public AR photo post with @okx, @okxlatam, and @axishow mentioned.",
+      zh: "The screenshot must show your public AR photo post with @okx, @okxlatam, and @axishow mentioned.",
+      ja: "The screenshot must show your public AR photo post with @okx, @okxlatam, and @axishow mentioned.",
+      ko: "The screenshot must show your public AR photo post with @okx, @okxlatam, and @axishow mentioned.",
+      fr: "The screenshot must show your public AR photo post with @okx, @okxlatam, and @axishow mentioned.",
+    },
+    socialCaption: {
+      es: "experimentando the new money app en cdmx @okx @okxlatam @axishow",
+      en: "experimentando the new money app en cdmx @okx @okxlatam @axishow",
+      zh: "experimentando the new money app en cdmx @okx @okxlatam @axishow",
+      ja: "experimentando the new money app en cdmx @okx @okxlatam @axishow",
+      ko: "experimentando the new money app en cdmx @okx @okxlatam @axishow",
+      fr: "experimentando the new money app en cdmx @okx @okxlatam @axishow",
     },
   },
 ];
@@ -333,7 +359,7 @@ const copy = {
     chatSub: "Hermes agent powered by NVIDIA, made by AXIS for OKX.",
     input: "Pregunta aqui",
     ask: "Enviar",
-    quick: ["Que es OKX?", "Donde veo mi UID?", "Que screenshot subo?", "Como fondeo?", "Como uso OKX Card?", "Como hago trading?"],
+    quick: ["Que es OKX?", "Donde veo mi UID?", "Que screenshot subo?", "Como hago el post AR?", "Como uso OKX Card?", "Como hago trading?"],
     fallback: "Soy Petra. Si algo falla, ve directo con staff OKX y lo resolvemos ahi.",
     error: "Sube screenshot de User Center > Profile con Account information, UID e Identity verification visibles para generar tu QR.",
     limit: "Cupo limitado: 500 bebidas. Maximo 3 por persona. Staff OKX valida en sitio.",
@@ -363,7 +389,7 @@ const copy = {
     chatSub: "Hermes agent powered by NVIDIA, made by AXIS for OKX.",
     input: "Ask here",
     ask: "Send",
-    quick: ["What is OKX?", "Where is my UID?", "Which screenshot?", "How do I fund?", "How do I use OKX Card?", "How do I trade?"],
+    quick: ["What is OKX?", "Where is my UID?", "Which screenshot?", "How do I post AR?", "How do I use OKX Card?", "How do I trade?"],
     fallback: "I am Petra. If anything fails, go straight to OKX staff and we will sort it there.",
     error: "Upload the User Center > Profile screenshot with Account information, UID, and Identity verification visible to generate your QR.",
     limit: "Limited: 500 drinks. Max 3 per person. OKX staff validates on-site.",
@@ -563,7 +589,7 @@ function makeProofState(): Record<MissionId, ProofState> {
   return {
     verify: { proofName: "", proofDataUrl: "", status: "idle", error: "", claim: null },
     outcomes: { proofName: "", proofDataUrl: "", status: "idle", error: "", claim: null },
-    fund: { proofName: "", proofDataUrl: "", status: "idle", error: "", claim: null },
+    ar: { proofName: "", proofDataUrl: "", status: "idle", error: "", claim: null },
   };
 }
 
@@ -932,13 +958,7 @@ export default function OkxOnboarding() {
             alt="OKX 3D logo"
             autoReveal
             className="okx-model"
-            arButtonLabel={t.arHint}
-            arHintLabel={
-              <>
-                <FiCamera aria-hidden />
-                {t.ar}
-              </>
-            }
+            arButtonLabel={t.ar}
           />
           <span className="okx-model-note">OKX</span>
         </div>
@@ -1198,6 +1218,13 @@ function MissionModal({
           ))}
         </ol>
 
+        {mission.socialCaption ? (
+          <div className="okx-social-caption">
+            <span>Copy</span>
+            <p>{mission.socialCaption[lang]}</p>
+          </div>
+        ) : null}
+
         {mission.videoSrc ? (
           <div className="okx-mission-video">
             {mission.videoLabel ? <p>{mission.videoLabel[lang]}</p> : null}
@@ -1212,7 +1239,7 @@ function MissionModal({
           <span>{proof.proofName || t.proof}</span>
           <input type="file" accept="image/*" onChange={(event) => onProofFile(mission.id, event)} />
         </label>
-        <p className="okx-upload-hint">{t.proofHint}</p>
+        <p className="okx-upload-hint">{mission.proofHint?.[lang] || (mission.id === "outcomes" ? outcomesProofHint[lang] : t.proofHint)}</p>
 
         {proof.proofDataUrl ? (
           <div className="okx-proof-preview">

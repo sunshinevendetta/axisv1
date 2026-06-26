@@ -414,6 +414,30 @@
   font-size: 16px;
 }
 
+.okx-social-caption {
+  display: grid;
+  gap: 8px;
+  margin: -2px 0 16px;
+  padding: 12px 14px;
+  border: 1px solid rgba(201, 255, 74, 0.28);
+  border-radius: 16px;
+  background: rgba(201, 255, 74, 0.08);
+}
+
+.okx-social-caption span {
+  color: #c9ff4a;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.okx-social-caption p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
 .okx-modal-steps li.okx-uid-guide-row {
   counter-increment: none;
   display: block;
