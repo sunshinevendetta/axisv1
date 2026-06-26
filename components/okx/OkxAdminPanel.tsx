@@ -1,7 +1,9 @@
 "use client";
 
+import type { ChangeEvent } from "react";
 import { useEffect, useRef, useState } from "react";
-import { FiCamera, FiCheck, FiRefreshCw, FiRotateCcw, FiSend, FiX } from "react-icons/fi";
+import jsQR from "jsqr";
+import { FiCamera, FiCheck, FiImage, FiRefreshCw, FiRotateCcw, FiSend, FiX } from "react-icons/fi";
 
 type OkxStats = {
   allocated: number;
@@ -37,6 +39,8 @@ type RedeemResult = {
 type BarcodeDetectorCtor = new (options?: { formats?: string[] }) => {
   detect(source: HTMLVideoElement): Promise<Array<{ rawValue: string }>>;
 };
+
+type BarcodeDetectorInstance = InstanceType<BarcodeDetectorCtor>;
 
 const emptyStats: OkxStats = {
   allocated: 0,
@@ -118,6 +122,56 @@ function removeParticipantFromStats(stats: OkxStats, participantId: string) {
   };
 }
 
+function decodeQrFromVideo(video: HTMLVideoElement, canvas: HTMLCanvasElement) {
+  const sourceWidth = video.videoWidth;
+  const sourceHeight = video.videoHeight;
+  if (!sourceWidth || !sourceHeight) return "";
+
+  const maxSide = 900;
+  const scale = Math.min(1, maxSide / Math.max(sourceWidth, sourceHeight));
+  canvas.width = Math.max(1, Math.round(sourceWidth * scale));
+  canvas.height = Math.max(1, Math.round(sourceHeight * scale));
+
+  const context = canvas.getContext("2d", { willReadFrequently: true });
+  if (!context) return "";
+
+  context.drawImage(video, 0, 0, canvas.width, canvas.height);
+  const image = context.getImageData(0, 0, canvas.width, canvas.height);
+  const code = jsQR(image.data, image.width, image.height, { inversionAttempts: "attemptBoth" });
+  return code?.data || "";
+}
+
+function loadImageFile(file: File) {
+  return new Promise<HTMLImageElement>((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+    image.onload = () => {
+      URL.revokeObjectURL(url);
+      resolve(image);
+    };
+    image.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("Could not read QR image."));
+    };
+    image.src = url;
+  });
+}
+
+function decodeQrFromImage(image: HTMLImageElement, canvas: HTMLCanvasElement) {
+  const maxSide = 1400;
+  const scale = Math.min(1, maxSide / Math.max(image.naturalWidth, image.naturalHeight));
+  canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
+  canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
+
+  const context = canvas.getContext("2d", { willReadFrequently: true });
+  if (!context) return "";
+
+  context.drawImage(image, 0, 0, canvas.width, canvas.height);
+  const data = context.getImageData(0, 0, canvas.width, canvas.height);
+  const code = jsQR(data.data, data.width, data.height, { inversionAttempts: "attemptBoth" });
+  return code?.data || "";
+}
+
 type OkxAdminPanelProps = {
   superAdmin?: boolean;
 };
@@ -125,6 +179,8 @@ type OkxAdminPanelProps = {
 export default function OkxAdminPanel({ superAdmin = false }: OkxAdminPanelProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const scanFileRef = useRef<HTMLInputElement>(null);
   const scanningRef = useRef(false);
   const [stats, setStats] = useState<OkxStats>(emptyStats);
   const [manualScan, setManualScan] = useState("");
@@ -187,9 +243,8 @@ export default function OkxAdminPanel({ superAdmin = false }: OkxAdminPanelProps
 
   async function startCamera() {
     setScanError("");
-    const detectorCtor = (window as unknown as { BarcodeDetector?: BarcodeDetectorCtor }).BarcodeDetector;
-    if (!detectorCtor) {
-      setScanError("Camera QR scan is not supported here. Paste the QR URL manually.");
+    if (!navigator.mediaDevices?.getUserMedia) {
+      setScanError("Camera is not available in this browser. Paste the QR URL manually.");
       return;
     }
 
@@ -200,29 +255,45 @@ export default function OkxAdminPanel({ superAdmin = false }: OkxAdminPanelProps
       });
       streamRef.current = stream;
       if (videoRef.current) {
+        videoRef.current.setAttribute("playsinline", "true");
+        videoRef.current.muted = true;
         videoRef.current.srcObject = stream;
         await videoRef.current.play();
       }
 
-      const detector = new detectorCtor({ formats: ["qr_code"] });
+      const detectorCtor = (window as unknown as { BarcodeDetector?: BarcodeDetectorCtor }).BarcodeDetector;
+      let detector: BarcodeDetectorInstance | null = null;
+      try {
+        detector = detectorCtor ? new detectorCtor({ formats: ["qr_code"] }) : null;
+      } catch {
+        detector = null;
+      }
+
       scanningRef.current = true;
       setScanActive(true);
 
       const scan = async () => {
         if (!videoRef.current || !scanningRef.current) return;
         try {
-          const codes = await detector.detect(videoRef.current);
-          const rawValue = codes[0]?.rawValue;
+          let rawValue = "";
+          if (detector) {
+            const codes = await detector.detect(videoRef.current);
+            rawValue = codes[0]?.rawValue || "";
+          }
+          if (!rawValue) {
+            if (!canvasRef.current) canvasRef.current = document.createElement("canvas");
+            rawValue = decodeQrFromVideo(videoRef.current, canvasRef.current);
+          }
           if (rawValue) await redeem(rawValue);
         } catch {
           // Keep scanning; individual frame failures are normal in low light.
         }
-        if (scanningRef.current) window.setTimeout(scan, 450);
+        if (scanningRef.current) window.setTimeout(scan, detector ? 450 : 250);
       };
 
       void scan();
     } catch (error) {
-      setScanError(error instanceof Error ? error.message : "Could not start camera.");
+      setScanError(error instanceof Error ? error.message : "Could not start camera. Allow camera access and try again.");
       setScanActive(false);
     }
   }
@@ -232,6 +303,26 @@ export default function OkxAdminPanel({ superAdmin = false }: OkxAdminPanelProps
     streamRef.current?.getTracks().forEach((track) => track.stop());
     streamRef.current = null;
     setScanActive(false);
+  }
+
+  async function handleScanImage(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file || busy) return;
+
+    setScanError("");
+    try {
+      const image = await loadImageFile(file);
+      if (!canvasRef.current) canvasRef.current = document.createElement("canvas");
+      const rawValue = decodeQrFromImage(image, canvasRef.current);
+      if (!rawValue) {
+        setScanError("No QR found in that image. Try a closer, brighter photo.");
+        return;
+      }
+      await redeem(rawValue);
+    } catch (error) {
+      setScanError(error instanceof Error ? error.message : "Could not scan that image.");
+    }
   }
 
   async function resetAllUsers() {
@@ -394,14 +485,32 @@ export default function OkxAdminPanel({ superAdmin = false }: OkxAdminPanelProps
                   {scanActive ? "Live" : "Off"}
                 </span>
               </div>
-              <button
-                type="button"
-                onClick={scanActive ? stopCamera : () => void startCamera()}
-                className="inline-flex h-12 w-full items-center justify-center gap-2 bg-white px-4 text-sm font-medium text-black sm:h-10 sm:w-auto"
-              >
-                {scanActive ? <FiX aria-hidden /> : <FiCamera aria-hidden />}
-                {scanActive ? "Stop" : "Camera"}
-              </button>
+              <div className="grid gap-2 sm:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={scanActive ? stopCamera : () => void startCamera()}
+                  className="inline-flex h-12 w-full items-center justify-center gap-2 bg-white px-4 text-sm font-medium text-black sm:h-10 sm:w-auto"
+                >
+                  {scanActive ? <FiX aria-hidden /> : <FiCamera aria-hidden />}
+                  {scanActive ? "Stop" : "Camera"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scanFileRef.current?.click()}
+                  className="inline-flex h-12 w-full items-center justify-center gap-2 border border-white/16 bg-white/[0.03] px-4 text-sm font-medium text-white sm:h-10 sm:w-auto"
+                >
+                  <FiImage aria-hidden />
+                  Scan photo
+                </button>
+                <input
+                  ref={scanFileRef}
+                  type="file"
+                  accept="image/*"
+                  capture="environment"
+                  className="hidden"
+                  onChange={(event) => void handleScanImage(event)}
+                />
+              </div>
             </div>
 
             <div className="relative overflow-hidden border border-white/10 bg-black">

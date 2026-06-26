@@ -44,6 +44,7 @@
     "gsap": "^3.13.0",
     "hydra-synth": "^1.4.0",
     "jsmediatags": "^3.9.7",
+    "jsqr": "^1.4.0",
     "leaflet": "^1.9.4",
     "lit": "3.3.2",
     "lit-element": "4.2.2",
