@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trading Arena by OKX · Bar Oriente</title>
+  <style>
+    :root { --ink:#fff; --muted:rgba(255,255,255,.64); --black:#000; --line:rgba(255,255,255,.22); --fill:rgba(255,255,255,.06); }
+    * { box-sizing:border-box; }
+    html, body { margin:0; min-height:100%; background:var(--black); color:var(--ink); font-family:Arial, Helvetica, sans-serif; }
+    .deck { min-height:100vh; background:#000; }
+    .slide { min-height:100vh; padding:58px 18px 60px; border-bottom:1px solid var(--line); display:flex; align-items:center; position:relative; overflow:hidden; isolation:isolate; }
+    .slide::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 82% 12%, rgba(255,255,255,.13), transparent 28%), linear-gradient(145deg, rgba(255,255,255,.1), transparent 48%); z-index:-3; }
+    .slide::after { content:""; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size:38px 38px; z-index:-2; }
+    .codefield { position:absolute; inset:0; overflow:hidden; z-index:-1; opacity:.25; font-family:Consolas, "Courier New", monospace; pointer-events:none; }
+    .code-token { position:absolute; color:#fff; font-size:10px; white-space:nowrap; opacity:0; text-shadow:0 0 18px rgba(255,255,255,.5); }
+    .inner { position:relative; z-index:1; width:100%; }
+    .logos { display:flex; gap:16px; align-items:center; margin-bottom:22px; filter:grayscale(1); }
+    .logos img { max-height:34px; max-width:42%; width:auto; }
+    .kicker { display:inline-flex; gap:9px; align-items:center; border:1px solid var(--line); border-radius:999px; padding:7px 10px; color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.12em; font-weight:900; }
+    .kicker .num { display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; background:#fff; color:#000; letter-spacing:0; }
+    h1, h2 { margin:16px 0 0; line-height:.92; letter-spacing:0; text-transform:uppercase; font-weight:900; }
+    h1 { font-size:clamp(48px, 17vw, 88px); }
+    h2 { font-size:clamp(38px, 13vw, 70px); }
+    p { color:var(--muted); line-height:1.5; font-size:16px; margin:16px 0 0; }
+    .lead { color:var(--ink); font-size:21px; line-height:1.18; font-weight:900; }
+    .accent { color:#fff; text-shadow:0 0 24px rgba(255,255,255,.36); }
+    .media { margin-top:22px; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:#050505; position:relative; }
+    .media img { display:block; width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.18); }
+    .market-canvas { display:block; width:100%; height:100%; background:#02040a; }
+    .bracket-media { background:#000; }
+    .bracket-media object { display:block; width:100%; height:100%; padding:8px; }
+    .venue-img { aspect-ratio:4/3; }
+    .chart-img { aspect-ratio:16/10; }
+    .cards, .flow, .split, .kpi { display:grid; gap:10px; margin-top:22px; }
+    .card, .step, .option, .kpi div { border:1px solid var(--line); background:var(--fill); border-radius:8px; padding:16px; backdrop-filter:blur(10px); }
+    .card b, .step b, .option h3 { color:var(--ink); text-transform:uppercase; font-size:19px; margin:0; display:block; }
+    .card span, .step span { color:var(--muted); display:block; margin-top:8px; line-height:1.42; font-size:14px; }
+    .kpi { grid-template-columns:1fr 1fr; }
+    .kpi b { display:block; color:var(--ink); font-size:30px; }
+    .kpi span { color:var(--muted); font-size:13px; }
+    .schedule { display:grid; gap:8px; margin-top:22px; }
+    .slot { border-bottom:1px solid var(--line); padding:13px 0; }
+    .time { color:#fff; font-size:24px; font-weight:900; font-family:Consolas, "Courier New", monospace; }
+    .slot b { display:block; margin-top:4px; text-transform:uppercase; font-size:17px; }
+    .slot span { display:block; color:var(--muted); margin-top:5px; line-height:1.4; font-size:14px; }
+    .num { color:#fff; font-weight:900; font-size:18px; font-family:Consolas, "Courier New", monospace; }
+    .option h3 { font-size:23px; }
+    .option ul { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:9px; color:var(--muted); line-height:1.42; font-size:14px; }
+    .option li::before { content:"/"; color:#fff; margin-right:8px; font-weight:900; }
+    .note { font-size:12px; color:rgba(255,255,255,.48); }
+    .system-orbit { position:relative; min-height:520px; margin-top:22px; border:1px solid var(--line); border-radius:8px; background:rgba(255,255,255,.035); overflow:hidden; }
+    .hub { position:absolute; left:50%; top:50%; transform:translate(-50%, -50%); width:142px; height:142px; border-radius:50%; border:1px solid #fff; display:grid; place-items:center; text-align:center; font-weight:900; background:#000; }
+    .node { position:absolute; left:var(--x); top:var(--y); transform:translate(-50%, -50%); width:112px; border:1px solid var(--line); background:#050505; border-radius:8px; padding:9px; text-align:center; font-size:10px; text-transform:uppercase; font-weight:900; }
+    .node small { display:block; color:var(--muted); font-weight:700; margin-top:4px; text-transform:none; }
+    [data-anim] { will-change:transform, opacity; }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide"><div class="codefield" data-codefield></div><div class="inner"><div class="logos" data-anim><img src="/tradingtournament/axis-logo.png" alt="AXIS"><img src="/tradingtournament/bar-oriente.svg" alt="Bar Oriente"></div><span class="kicker" data-anim><span class="num">01</span><span>Propuesta</span></span><h1 data-anim>Trading Arena <span class="accent">by OKX</span></h1><p class="lead" data-anim>El torneo de trading más intenso jamás realizado en LATAM.</p><p data-anim><strong>Dos categorías:</strong> Human Traders y AI Agents.</p><p data-anim><strong>Objetivo:</strong> transformar a Bar Oriente en el punto de encuentro donde trading, tecnología, competencia, cultura y comunidad convergen en una experiencia en vivo.</p><div class="media chart-img" data-anim><canvas class="market-canvas" data-market-canvas aria-label="BTC-USDT live candlestick chart"></canvas></div></div></section>
+    <section class="slide"><div class="codefield" data-codefield></div><div class="inner"><span class="kicker" data-anim><span class="num">02</span><span>Concepto</span></span><h2 data-anim>Concepto</h2><p class="lead" data-anim>Trading Arena es una competencia de trading en vivo donde solo importa una cosa: El mayor profit gana.</p><p data-anim>Todos compiten bajo las mismas reglas, el mismo mercado y el mismo límite de tiempo.</p><p data-anim>Durante cuatro horas, Bar Oriente se transforma en una arena donde 250 traders, builders, AI agents y espectadores siguen cada operación en pantallas gigantes, leaderboards en vivo y un sistema clasificatorio de eliminación directa por liquidación.</p><div class="kpi" data-anim><div><b>250</b><span>asistentes objetivo</span></div><div><b>4-9</b><span>horario torneo</span></div><div><b>2</b><span>categorias</span></div><div><b>DJs</b><span>after-party</span></div></div><div class="media venue-img" data-anim><img src="/tradingtournament/baroriente.jpg" alt="Bar Oriente"></div></div></section>
+    <section class="slide"><div class="codefield" data-codefield></div><div class="inner"><span class="kicker" data-anim><span class="num">03</span><span>Categorias</span></span><h2 data-anim>Dos categorias</h2><p data-anim>Los participantes eligen categoria al registrarse. Recomendado: entorno demo, sandbox o reglas controladas.</p><div class="cards" data-anim><div class="card"><b>Traders humanos</b><span>Estrategia manual, rondas cortas y leaderboard en vivo.</span></div><div class="card"><b>AI Agents</b><span>Agentes, modelos o senales automatizadas bajo reglas claras.</span></div><div class="card"><b>Final showcase</b><span>Premiacion, fotos, contenido y menciones de marcas.</span></div></div><div class="media chart-img bracket-media" data-anim><object data="/tradingtournament/bracket.svg" type="image/svg+xml" aria-label="Categorias Human Traders y AI Agents"></object></div></div></section>
+    <section class="slide"><div class="codefield" data-codefield></div><div class="inner"><span class="kicker" data-anim><span class="num">04</span><span>Agenda</span></span><h2 data-anim>4 PM + After</h2><div class="schedule" data-anim><div class="slot"><div class="time">16:00</div><b>Registro</b><span>Check-in, categoria, food y drinks.</span></div><div class="slot"><div class="time">16:15</div><b>Reglas</b><span>Brief de herramientas, limites y premios.</span></div><div class="slot"><div class="time">16:30</div><b>Inicio torneo</b><span>Human traders y AI trading en paralelo.</span></div><div class="slot"><div class="time">20:30</div><b>Awards</b><span>Leaderboard, premiacion y contenido.</span></div><div class="slot"><div class="time">21:00</div><b>Transicion a After Party</b><span>Los asistentes pueden quedarse en el Cuarto Rosa o el salon de Karaoke haciendo networking mientras el DJ inicia abajo para comenzar el after party y permitir el acceso al publico general.</span></div><div class="slot"><div class="time">22:00</div><b>Afterparty</b><span>Acceso a publico general, clientes de Bar Oriente junto a los asistentes que han decidido quedarse a disfrutar el cierre.</span></div></div></div></section>
+    <section class="slide"><div class="codefield" data-codefield></div><div class="inner"><span class="kicker" data-anim><span class="num">05</span><span>Sede</span></span><h2 data-anim>Sede + servicio</h2><div class="flow" data-anim><div class="step"><div class="num">01</div><b>Cuarto Rosa</b><span>Talks, demos, pantallas y presentaciones durante el evento.</span></div><div class="step"><div class="num">02</div><b>Karaoke rooms</b><span>Rooms superiores para networking y actividades especiales.</span></div><div class="step"><div class="num">03</div><b>Bar</b><span>Bebidas incluidas o patrocinadas por marcas aliadas.</span></div><div class="step"><div class="num">04</div><b>Food</b><span>Comida ligera incluida o por sponsor/proveedor.</span></div><div class="step"><div class="num">05</div><b>DJs</b><span>Booking para extender a after-party.</span></div></div></div></section>
+    <section class="slide"><div class="codefield" data-codefield></div><div class="inner"><span class="kicker" data-anim><span class="num">06</span><span>Cotizacion</span></span><h2 data-anim>Dos opciones</h2><div class="split" data-anim><div class="option"><h3>Todo incluido</h3><ul><li>Sede 4 PM - 9 PM.</li><li>Bebidas incluidas segun paquete.</li><li>Comida o snacks incluidos.</li><li>Staff, acceso y seguridad.</li><li>Continuidad a noche con DJs.</li></ul></div><div class="option"><h3>Sede + sponsors</h3><ul><li>Bar Oriente da sede y operacion base.</li><li>AXIS trae marcas para drinks y food.</li><li>Presencia de sponsors en pantallas y contenido.</li><li>Menor costo fijo y mas aliados.</li><li>Flujo hacia consumo nocturno.</li></ul></div></div><p class="note" data-anim>Montos sujetos a disponibilidad, consumo minimo, menu, barra y requerimientos tecnicos.</p></div></section>
+    <section class="slide"><div class="codefield" data-codefield></div><div class="inner"><span class="kicker" data-anim><span class="num">07</span><span>System design</span></span><h2 data-anim>Marcas pagan la experiencia</h2><div class="system-orbit" data-anim><div class="hub">AXIS<br>TOURNAMENT</div><div class="node" style="--x:50%;--y:12%;">Venue<small>Bar Oriente</small></div><div class="node" style="--x:84%;--y:31%;">Drinks<small>Sponsor</small></div><div class="node" style="--x:84%;--y:70%;">Food<small>Package</small></div><div class="node" style="--x:50%;--y:88%;">DJs<small>After</small></div><div class="node" style="--x:16%;--y:70%;">AI Trading<small>Agents</small></div><div class="node" style="--x:16%;--y:31%;">Human<small>Manual</small></div></div></div></section>
+    <section class="slide"><div class="codefield" data-codefield></div><div class="inner"><span class="kicker" data-anim><span class="num">08</span><span>Siguiente paso</span></span><h2 data-anim>Confirmar miercoles</h2><p class="lead" data-anim>Necesitamos disponibilidad, capacidad, paquete all-in y ruta con sponsors.</p><p data-anim>AXIS arma convocatoria, reglas, visuales, sponsors, registro y programacion musical.</p><p class="note" data-anim>Comunicacion como competencia educativa/de entretenimiento; no se prometen rendimientos ni recomendaciones de inversion.</p><div class="media venue-img" data-anim><img src="/tradingtournament/baroriente.jpg" alt="Bar Oriente"></div></div></section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+  <script>
+    (function () {
+      const snippets = ["agent.run()", "rules=16:15", "start=16:30", "awards=20:30", "cuartoRosa=demos", "karaoke=networking"];
+      document.querySelectorAll("[data-codefield]").forEach((field, f) => {
+        for (let i = 0; i < 22; i += 1) {
+          const token = document.createElement("span");
+          token.className = "code-token";
+          token.textContent = snippets[(i + f) % snippets.length];
+          token.style.left = (Math.random() * 88) + "%";
+          token.style.top = (Math.random() * 100) + "%";
+          field.appendChild(token);
+        }
+      });
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (window.gsap && !reduceMotion) {
+        gsap.defaults({ ease: "power3.out", duration: .8 });
+        gsap.to(".hub", { scale: 1.04, duration: 1.8, yoyo: true, repeat: -1, ease: "sine.inOut" });
+        gsap.to(".node", { y: -7, duration: 2.4, stagger: { each: .16, from: "center" }, yoyo: true, repeat: -1, ease: "sine.inOut" });
+        const deck = document.querySelector(".deck");
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            gsap.fromTo(entry.target.querySelectorAll("[data-anim]"), { autoAlpha: 0, y: 30, scale: .985 }, { autoAlpha: 1, y: 0, scale: 1, stagger: .075, overwrite: "auto" });
+          });
+        }, { root: deck, threshold: .4 });
+        document.querySelectorAll(".slide").forEach((slide) => observer.observe(slide));
+        gsap.utils.toArray(".code-token").forEach((token, i) => {
+          gsap.fromTo(token, { y: 70, autoAlpha: 0 }, { y: -110, autoAlpha: .74, duration: 5 + (i % 5), repeat: -1, delay: (i % 9) * .24, ease: "none" });
+        });
+      }
+      const animateBracketObjects = () => {
+        document.querySelectorAll(".bracket-media object").forEach((object) => {
+          const run = () => {
+            if (object.dataset.bracketAnimated === "true") return;
+            const doc = object.contentDocument;
+            if (!doc) return;
+            object.dataset.bracketAnimated = "true";
+            const lines = Array.from(doc.querySelectorAll(".line"));
+            const scan = doc.querySelector(".scan");
+            const cards = Array.from(doc.querySelectorAll(".category-card"));
+            const agentHalos = Array.from(doc.querySelectorAll(".agent-halo"));
+            const agentDots = Array.from(doc.querySelectorAll(".agent-dot"));
+            if (window.gsap && !reduceMotion) {
+              gsap.to(cards, { autoAlpha: .88, duration: .9, stagger: { each: .08, from: "center" }, repeat: -1, yoyo: true, ease: "sine.inOut" });
+              gsap.fromTo(agentHalos, { attr: { r: 11 }, autoAlpha: .14 }, { attr: { r: 20 }, autoAlpha: .58, duration: .62, stagger: { each: .12, from: "random" }, repeat: -1, yoyo: true, ease: "power2.inOut" });
+              gsap.fromTo(agentDots, { attr: { r: 7.5 }, autoAlpha: .82 }, { attr: { r: 9 }, autoAlpha: 1, duration: .62, stagger: { each: .12, from: "random" }, repeat: -1, yoyo: true, ease: "power2.inOut" });
+              if (scan) gsap.fromTo(scan, { x: -260, autoAlpha: 0 }, { x: 260, autoAlpha: .55, duration: 1.45, repeat: -1, ease: "none" });
+            }
+            if (window.anime && !reduceMotion && lines.length) {
+              anime({ targets: lines, strokeDashoffset: [0, -72], opacity: [.35, 1], duration: 820, delay: anime.stagger(90), easing: "linear", loop: true });
+            }
+          };
+          object.addEventListener("load", run, { once: true });
+          run();
+        });
+      };
+      animateBracketObjects();
+      const fallbackCandles = () => {
+        const rows = [];
+        let close = 59800;
+        for (let i = 0; i < 96; i += 1) {
+          const wave = Math.sin(i * .46) * 18 + Math.cos(i * .19) * 27;
+          const o = close;
+          const c = o + wave + ((i % 7) - 3) * 4;
+          const h = Math.max(o, c) + 18 + (i % 5) * 5;
+          const l = Math.min(o, c) - 16 - (i % 4) * 4;
+          rows.push({ t: Date.now() - (96 - i) * 60000, o, h, l, c, v: 1 + (i % 9) * .35 });
+          close = c;
+        }
+        return rows;
+      };
+      const drawMarket = (canvas, candles, scroll, pulse) => {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = Math.max(1, Math.floor(rect.width * dpr));
+        const h = Math.max(1, Math.floor(rect.height * dpr));
+        if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const width = rect.width, height = rect.height;
+        ctx.clearRect(0, 0, width, height);
+        const bg = ctx.createLinearGradient(0, 0, width, height);
+        bg.addColorStop(0, "#02040a"); bg.addColorStop(.55, "#07101b"); bg.addColorStop(1, "#010205");
+        ctx.fillStyle = bg; ctx.fillRect(0, 0, width, height);
+        const pad = { x: 22, y: 22, b: 46 };
+        const chartH = height - pad.y - pad.b, chartW = width - pad.x * 2;
+        const now = performance.now();
+        const sweep = pad.x + ((now / 760) % 1) * chartW;
+        const sweepGradient = ctx.createLinearGradient(sweep - 60, 0, sweep + 60, 0);
+        sweepGradient.addColorStop(0, "rgba(0,255,149,0)");
+        sweepGradient.addColorStop(.5, "rgba(0,255,149,.18)");
+        sweepGradient.addColorStop(1, "rgba(255,49,88,0)");
+        ctx.fillStyle = sweepGradient; ctx.fillRect(Math.max(pad.x, sweep - 60), pad.y, 120, chartH);
+        ctx.globalAlpha = .42; ctx.fillStyle = "rgba(255,255,255,.05)";
+        for (let y = pad.y + 2; y < height - pad.b; y += 8) ctx.fillRect(pad.x, y, chartW, 1);
+        ctx.globalAlpha = 1;
+        ctx.strokeStyle = "rgba(125, 247, 255, .14)"; ctx.lineWidth = 1;
+        for (let i = 0; i < 6; i += 1) { const y = pad.y + chartH * (i / 5); ctx.beginPath(); ctx.moveTo(pad.x, y); ctx.lineTo(width - pad.x, y); ctx.stroke(); }
+        const visible = candles.slice(-54);
+        const max = Math.max(...visible.map((c) => c.h)), min = Math.min(...visible.map((c) => c.l)), range = Math.max(1, max - min);
+        const step = chartW / Math.max(1, visible.length - 1), bodyW = Math.max(3, step * .58);
+        const yFor = (price) => pad.y + (max - price) / range * chartH;
+        const maxV = Math.max(...visible.map((c) => c.v), 1);
+        visible.forEach((c, i) => {
+          const x = pad.x + (i - scroll) * step, up = c.c >= c.o, color = up ? "#00ff95" : "#ff3158";
+          if (x < pad.x - step || x > width - pad.x + step) return;
+          const isLive = i === visible.length - 1;
+          const wickTop = yFor(c.h), wickBottom = yFor(c.l), openY = yFor(c.o), closeY = yFor(c.c);
+          const bodyTop = Math.min(openY, closeY), bodyH = Math.max(2, Math.abs(closeY - openY));
+          if (isLive) {
+            ctx.globalCompositeOperation = "lighter";
+            ctx.fillStyle = up ? `rgba(0,255,149,${.07 + pulse * .2})` : `rgba(255,49,88,${.07 + pulse * .2})`;
+            ctx.beginPath(); ctx.arc(x, closeY, 18 + pulse * 34, 0, Math.PI * 2); ctx.fill();
+            ctx.globalCompositeOperation = "source-over";
+          }
+          ctx.strokeStyle = color; ctx.shadowColor = up ? "rgba(0,255,149,.48)" : "rgba(255,49,88,.44)"; ctx.shadowBlur = isLive ? 16 + pulse * 16 : 8; ctx.lineWidth = isLive ? 2 : 1.3;
+          ctx.beginPath(); ctx.moveTo(x, wickTop); ctx.lineTo(x, wickBottom); ctx.stroke();
+          ctx.fillStyle = color; ctx.fillRect(x - bodyW / 2, bodyTop, bodyW, bodyH);
+          if (isLive) { ctx.strokeStyle = "#ffffff"; ctx.lineWidth = 1; ctx.strokeRect(x - bodyW / 2 - 1, bodyTop - 1, bodyW + 2, bodyH + 2); }
+          ctx.shadowBlur = 0;
+          const volH = (c.v / maxV) * 32; ctx.fillStyle = up ? "rgba(0,255,149,.26)" : "rgba(255,49,88,.24)"; ctx.fillRect(x - bodyW / 2, height - 22 - volH, bodyW, volH);
+        });
+        const last = visible[visible.length - 1];
+        if (last) {
+          const y = yFor(last.c);
+          ctx.setLineDash([8, 8]);
+          ctx.strokeStyle = last.c >= last.o ? "rgba(0,255,149,.64)" : "rgba(255,49,88,.64)";
+          ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(pad.x, y); ctx.lineTo(width - pad.x, y); ctx.stroke(); ctx.setLineDash([]);
+        }
+      };
+      const startMarketCanvases = async () => {
+        const canvases = Array.from(document.querySelectorAll("[data-market-canvas]"));
+        if (!canvases.length) return;
+        let candles = fallbackCandles();
+        let liveCandles = candles.map((c) => ({ ...c }));
+        let seeded = false;
+        let tradeQueue = [];
+        let lastTradeTs = 0;
+        let lastImpulse = performance.now();
+        let lastTick = performance.now();
+        let lastPrint = performance.now();
+        const tickEvery = 80;
+        const printEvery = 1350;
+        const marketTick = () => {
+          const last = liveCandles[liveCandles.length - 1];
+          if (!last) return;
+          if (!tradeQueue.length) return;
+          const batchSize = Math.max(1, Math.ceil(tradeQueue.length / 5));
+          const prints = tradeQueue.splice(0, batchSize);
+          lastImpulse = performance.now();
+          prints.forEach((trade) => {
+            last.c = trade.px;
+            last.h = Math.max(last.h, trade.px);
+            last.l = Math.min(last.l, trade.px);
+            last.v += Math.max(.01, trade.sz);
+          });
+        };
+        const printCandle = () => {
+          const last = liveCandles[liveCandles.length - 1];
+          if (!last) return;
+          const o = last.c;
+          liveCandles.push({
+            t: Date.now(),
+            o,
+            h: o,
+            l: o,
+            c: o,
+            v: 0,
+          });
+          if (liveCandles.length > 120) liveCandles = liveCandles.slice(-120);
+        };
+        const load = async () => {
+          try {
+            const response = await fetch("/api/tradingtournament/candles", { cache: "no-store" });
+            if (!response.ok) throw new Error("bad response");
+            const payload = await response.json();
+            if (Array.isArray(payload.candles) && payload.candles.length > 20) {
+              candles = payload.candles;
+              if (!seeded) {
+                liveCandles = candles.map((c) => ({ ...c }));
+                seeded = true;
+              }
+            }
+            if (Array.isArray(payload.trades) && payload.trades.length) {
+              const incoming = payload.trades.filter((trade) => trade.t > lastTradeTs);
+              if (incoming.length) {
+                lastTradeTs = incoming[incoming.length - 1].t;
+                tradeQueue.push(...incoming);
+                if (tradeQueue.length > 240) tradeQueue = tradeQueue.slice(-240);
+              }
+            }
+          } catch {
+            if (!seeded) {
+              candles = fallbackCandles();
+              liveCandles = candles.map((c) => ({ ...c }));
+              seeded = true;
+            }
+          }
+        };
+        await load();
+        const render = () => {
+          const now = performance.now();
+          if (now - lastTick > tickEvery) {
+            marketTick();
+            lastTick = now;
+          }
+          if (now - lastPrint > printEvery) {
+            printCandle();
+            lastPrint = now;
+          }
+          const scroll = Math.min(1, (now - lastPrint) / printEvery);
+          const pulse = Math.max(0, 1 - (now - lastImpulse) / 520);
+          canvases.forEach((canvas) => drawMarket(canvas, liveCandles, scroll, pulse));
+        };
+        if (window.gsap) {
+          gsap.ticker.add(render);
+        } else {
+          const frame = () => { render(); requestAnimationFrame(frame); };
+          requestAnimationFrame(frame);
+        }
+        setInterval(async () => { await load(); }, 2200);
+      };
+      startMarketCanvases();
+    })();
+  </script>
+</body>
+</html>
