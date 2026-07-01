@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Two tournament categories: Human Traders and AI Agents">
+  <style>
+    .line {
+      fill: none;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 10 14;
+    }
+    .scan,
+    .category-card {
+      will-change: transform, opacity;
+      transform-origin: center;
+    }
+    .agent-core,
+    .agent-halo {
+      filter: url(#redGlow);
+    }
+  </style>
+
+  <rect width="1200" height="800" fill="#000"/>
+  <g opacity=".32" stroke="#fff" stroke-width="1">
+    <path d="M0 120H1200M0 240H1200M0 360H1200M0 480H1200M0 600H1200M0 720H1200"/>
+    <path d="M120 0V800M240 0V800M360 0V800M480 0V800M600 0V800M720 0V800M840 0V800M960 0V800M1080 0V800"/>
+  </g>
+  <rect class="scan" x="470" y="0" width="260" height="800" fill="#f6d878" opacity=".16"/>
+
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="redGlow">
+      <feGaussianBlur stdDeviation="9" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="900" text-anchor="middle">
+    <rect x="70" y="56" width="405" height="76" rx="8" fill="#070707" stroke="#d7a83f" stroke-width="3"/>
+    <rect x="725" y="56" width="405" height="76" rx="8" fill="#070707" stroke="#d7a83f" stroke-width="3"/>
+    <text x="272" y="94" fill="#d7a83f" font-size="18">CATEGORIA</text>
+    <text x="272" y="118" fill="#fff" font-size="32">HUMAN TRADERS</text>
+    <text x="927" y="94" fill="#d7a83f" font-size="18">CATEGORIA</text>
+    <text x="927" y="118" fill="#fff" font-size="32">AI AGENTS</text>
+  </g>
+
+  <g class="human-lines" stroke="#d7a83f" color="#d7a83f" filter="url(#glow)">
+    <path class="line" d="M250 224H390V304H488"/>
+    <path class="line" d="M250 344H390V304"/>
+    <path class="line" d="M250 504H390V584H488"/>
+    <path class="line" d="M250 624H390V584"/>
+    <path class="line" d="M488 304H545V400"/>
+    <path class="line" d="M488 584H545V400"/>
+  </g>
+  <g class="agent-lines" stroke="#d7a83f" color="#d7a83f" filter="url(#glow)">
+    <path class="line" d="M950 224H810V304H712"/>
+    <path class="line" d="M950 344H810V304"/>
+    <path class="line" d="M950 504H810V584H712"/>
+    <path class="line" d="M950 624H810V584"/>
+    <path class="line" d="M712 304H655V400"/>
+    <path class="line" d="M712 584H655V400"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="900" text-anchor="middle">
+    <g fill="#070707" stroke="#fff" stroke-width="3">
+      <rect x="82" y="190" width="168" height="68" rx="8"/>
+      <rect x="82" y="310" width="168" height="68" rx="8"/>
+      <rect x="82" y="470" width="168" height="68" rx="8"/>
+      <rect x="82" y="590" width="168" height="68" rx="8"/>
+      <rect x="950" y="190" width="168" height="68" rx="8"/>
+      <rect x="950" y="310" width="168" height="68" rx="8"/>
+      <rect x="950" y="470" width="168" height="68" rx="8"/>
+      <rect x="950" y="590" width="168" height="68" rx="8"/>
+    </g>
+    <g fill="#fff" stroke-linecap="round" stroke-linejoin="round">
+      <g class="category-card human-card" transform="translate(166 224)">
+        <circle cx="0" cy="-13" r="10"/>
+        <path d="M-31 20C-25 4 -12 -2 0 -2S25 4 31 20Z"/>
+        <path d="M-28 27H28" stroke="#d7a83f" stroke-width="4"/>
+      </g>
+      <g class="category-card human-card" transform="translate(166 344)">
+        <circle cx="0" cy="-13" r="10"/>
+        <path d="M-31 20C-25 4 -12 -2 0 -2S25 4 31 20Z"/>
+        <path d="M-28 27H28" stroke="#d7a83f" stroke-width="4"/>
+      </g>
+      <g class="category-card human-card" transform="translate(166 504)">
+        <circle cx="0" cy="-13" r="10"/>
+        <path d="M-31 20C-25 4 -12 -2 0 -2S25 4 31 20Z"/>
+        <path d="M-28 27H28" stroke="#d7a83f" stroke-width="4"/>
+      </g>
+      <g class="category-card human-card" transform="translate(166 624)">
+        <circle cx="0" cy="-13" r="10"/>
+        <path d="M-31 20C-25 4 -12 -2 0 -2S25 4 31 20Z"/>
+        <path d="M-28 27H28" stroke="#d7a83f" stroke-width="4"/>
+      </g>
+      <g class="category-card agent-card" transform="translate(1034 224)" fill="none" stroke="#fff" stroke-width="4">
+        <rect x="-22" y="-22" width="44" height="44" rx="7"/>
+        <path d="M-36 -12H-22M-36 0H-22M-36 12H-22M22 -12H36M22 0H36M22 12H36M-12 -36V-22M0 -36V-22M12 -36V-22M-12 22V36M0 22V36M12 22V36"/>
+        <g class="agent-core">
+          <circle class="agent-halo" cx="0" cy="0" r="16" fill="#ff233f" opacity=".18" stroke="none"/>
+          <circle class="agent-dot" cx="0" cy="0" r="8" fill="#ff233f" stroke="none"/>
+        </g>
+      </g>
+      <g class="category-card agent-card" transform="translate(1034 344)" fill="none" stroke="#fff" stroke-width="4">
+        <rect x="-22" y="-22" width="44" height="44" rx="7"/>
+        <path d="M-36 -12H-22M-36 0H-22M-36 12H-22M22 -12H36M22 0H36M22 12H36M-12 -36V-22M0 -36V-22M12 -36V-22M-12 22V36M0 22V36M12 22V36"/>
+        <g class="agent-core">
+          <circle class="agent-halo" cx="0" cy="0" r="16" fill="#ff233f" opacity=".18" stroke="none"/>
+          <circle class="agent-dot" cx="0" cy="0" r="8" fill="#ff233f" stroke="none"/>
+        </g>
+      </g>
+      <g class="category-card agent-card" transform="translate(1034 504)" fill="none" stroke="#fff" stroke-width="4">
+        <rect x="-22" y="-22" width="44" height="44" rx="7"/>
+        <path d="M-36 -12H-22M-36 0H-22M-36 12H-22M22 -12H36M22 0H36M22 12H36M-12 -36V-22M0 -36V-22M12 -36V-22M-12 22V36M0 22V36M12 22V36"/>
+        <g class="agent-core">
+          <circle class="agent-halo" cx="0" cy="0" r="16" fill="#ff233f" opacity=".18" stroke="none"/>
+          <circle class="agent-dot" cx="0" cy="0" r="8" fill="#ff233f" stroke="none"/>
+        </g>
+      </g>
+      <g class="category-card agent-card" transform="translate(1034 624)" fill="none" stroke="#fff" stroke-width="4">
+        <rect x="-22" y="-22" width="44" height="44" rx="7"/>
+        <path d="M-36 -12H-22M-36 0H-22M-36 12H-22M22 -12H36M22 0H36M22 12H36M-12 -36V-22M0 -36V-22M12 -36V-22M-12 22V36M0 22V36M12 22V36"/>
+        <g class="agent-core">
+          <circle class="agent-halo" cx="0" cy="0" r="16" fill="#ff233f" opacity=".18" stroke="none"/>
+          <circle class="agent-dot" cx="0" cy="0" r="8" fill="#ff233f" stroke="none"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <g class="center-panel" font-family="Arial, Helvetica, sans-serif" font-weight="900" text-anchor="middle">
+    <path d="M600 280L718 400L600 520L482 400Z" fill="#080808" stroke="#fff" stroke-width="4"/>
+    <text x="600" y="370" fill="#fff" font-size="40">2 CATEGORIAS</text>
+    <text x="600" y="430" fill="#f6d878" font-size="25">PROFIT WINS</text>
+    <text x="600" y="464" fill="#aaa" font-size="18">ELIMINACION POR LIQUIDACION</text>
+  </g>
+
+</svg>
