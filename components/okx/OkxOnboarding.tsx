@@ -362,7 +362,7 @@ const copy = {
     quick: ["Que es OKX?", "Donde veo mi UID?", "Que screenshot subo?", "Como hago el post AR?", "Como uso OKX Card?", "Como hago trading?"],
     fallback: "Soy Petra. Si algo falla, ve directo con staff OKX y lo resolvemos ahi.",
     error: "Sube screenshot de User Center > Profile con Account information, UID e Identity verification visibles para generar tu QR.",
-    limit: "Cupo limitado: 500 bebidas. Maximo 3 por persona. Staff OKX valida en sitio.",
+    limit: "Cupo limitado: 100 bebidas. Maximo 3 por persona. Staff OKX valida en sitio.",
   },
   en: {
     language: "Language",
@@ -392,7 +392,7 @@ const copy = {
     quick: ["What is OKX?", "Where is my UID?", "Which screenshot?", "How do I post AR?", "How do I use OKX Card?", "How do I trade?"],
     fallback: "I am Petra. If anything fails, go straight to OKX staff and we will sort it there.",
     error: "Upload the User Center > Profile screenshot with Account information, UID, and Identity verification visible to generate your QR.",
-    limit: "Limited: 500 drinks. Max 3 per person. OKX staff validates on-site.",
+    limit: "Limited: 100 drinks. Max 3 per person. OKX staff validates on-site.",
   },
   zh: {
     language: "语言",
@@ -422,7 +422,7 @@ const copy = {
     quick: ["OKX 是什么？", "UID 在哪里？", "上传什么截图？", "怎么入金？", "怎么用 OKX Card？", "怎么交易？"],
     fallback: "AYUDA 可以帮你。若失败，请找 OKX 工作人员。",
     error: "需要 UID 或截图才能生成 QR。",
-    limit: "限量 500 杯。每人最多 3 杯。现场由 OKX 工作人员验证。",
+    limit: "限量 100 杯。每人最多 3 杯。现场由 OKX 工作人员验证。",
   },
   ja: {
     language: "言語",
@@ -452,7 +452,7 @@ const copy = {
     quick: ["OKXとは？", "UIDはどこ？", "何をアップ？", "入金方法は？", "OKX Cardの使い方", "取引方法は？"],
     fallback: "AYUDAが案内します。失敗したらOKXスタッフへ。",
     error: "QR生成にはUIDまたはスクショが必要です。",
-    limit: "500杯限定。1人最大3杯。OKXスタッフが現地確認。",
+    limit: "100杯限定。1人最大3杯。OKXスタッフが現地確認。",
   },
   ko: {
     language: "언어",
@@ -482,7 +482,7 @@ const copy = {
     quick: ["OKX가 뭐예요?", "UID는 어디?", "무슨 스샷?", "입금은 어떻게?", "OKX Card 사용법", "거래는 어떻게?"],
     fallback: "AYUDA가 도와줄게요. 안 되면 OKX 직원에게 가세요.",
     error: "QR 생성을 위해 UID 또는 스크린샷이 필요합니다.",
-    limit: "500잔 한정. 1인 최대 3잔. OKX 직원 현장 확인.",
+    limit: "100잔 한정. 1인 최대 3잔. OKX 직원 현장 확인.",
   },
   fr: {
     language: "Langue",
@@ -512,7 +512,7 @@ const copy = {
     quick: ["C'est quoi OKX ?", "Ou est mon UID ?", "Quelle capture ?", "Comment deposer ?", "Comment utiliser OKX Card ?", "Comment trader ?"],
     fallback: "AYUDA peut aider. Si ca bloque, va voir le staff OKX.",
     error: "UID ou capture requis pour generer ton QR.",
-    limit: "Limite : 500 verres. Max 3 par personne. Validation OKX sur place.",
+    limit: "Limite : 100 verres. Max 3 par personne. Validation OKX sur place.",
   },
 };
 
