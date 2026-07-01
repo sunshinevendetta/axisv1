@@ -16,7 +16,7 @@ Core event facts:
 - Venue: Bar Oriente, Mexico City.
 - Date: June 25, 2026.
 - Offer: Drinks powered by OKX.
-- Availability: up to 500 drinks during the night.
+- Availability: up to 100 drinks during the night.
 - Maximum: 3 free drinks per person.
 - Validation: all drinks are validated by OKX staff on-site.
 - Terms: official OKX terms and conditions, country eligibility, and activation availability apply.
