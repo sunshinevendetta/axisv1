@@ -122,7 +122,7 @@ export default function HomePageClient({
           activeMixtapeId={activeMixtape?.id ?? null}
           isPlaying={playerPlaying}
         />
-        <HomeMagazineSection articles={articles} lang={language} />
+        <HomeMagazineSection articles={articles} lang={language === "zh-Hant" ? "zh" : language} />
         <HomeArtistsSection
           artists={featuredArtists}
           musicCount={musicCount}
