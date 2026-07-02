@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import { useSiteLanguage } from "@/components/site-language";
 import { makeT } from "./content";
 import ArenaScene from "./ArenaScene";
+import TickerTape from "./TickerTape";
 import Slide01Hero from "./Slide01Hero";
 import Slide02Concept from "./Slide02Concept";
 import Slide03Categories from "./Slide03Categories";
@@ -79,6 +80,8 @@ export default function ArenaDeck2026() {
           <Slide key={i} t={t} language={language} index={i + 1} />
         ))}
       </main>
+
+      <TickerTape />
     </div>
   );
 }

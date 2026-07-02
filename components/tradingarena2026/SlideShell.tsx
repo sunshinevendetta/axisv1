@@ -25,16 +25,16 @@ export default function SlideShell({
       id={id}
       data-arena-slide={num}
       className={clsx(
-        "arena-grid-bg relative flex min-h-screen w-full flex-col justify-center overflow-hidden",
+        "arena-scrim relative flex min-h-screen w-full flex-col justify-center overflow-hidden",
         "px-6 py-24 sm:px-12 lg:px-24",
         className,
       )}
     >
-      <header className="pointer-events-none absolute left-6 top-8 flex items-baseline gap-4 sm:left-12 lg:left-24">
-        <span className="arena-num text-5xl font-black sm:text-6xl" aria-hidden>
+      <header className="pointer-events-none absolute left-6 top-8 flex items-baseline gap-3 sm:left-12 lg:left-24">
+        <span className="arena-num text-xl font-black sm:text-2xl" aria-hidden>
           {num}
         </span>
-        <span className="text-[0.7rem] font-semibold uppercase tracking-[0.42em] text-[var(--arena-steel)]">
+        <span className="text-[0.62rem] font-semibold uppercase tracking-[0.42em] text-[var(--arena-steel)]">
           {kicker}
         </span>
       </header>
