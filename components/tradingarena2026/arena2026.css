@@ -74,19 +74,59 @@
   letter-spacing: -0.04em;
 }
 
-/* Faint architectural grid behind slides. */
-.arena-grid-bg {
-  background-image:
-    linear-gradient(rgba(244, 245, 247, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244, 245, 247, 0.045) 1px, transparent 1px);
-  background-size: 96px 96px;
-  mask-image: radial-gradient(ellipse 90% 80% at 50% 45%, #000 30%, transparent 100%);
+/* Readability scrim: darkens the 3D scene behind each slide's text column
+   so copy always sits on near-black. */
+.arena-scrim::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 75% 65% at 50% 48%,
+    rgba(5, 5, 5, 0.82),
+    rgba(5, 5, 5, 0.38) 62%,
+    transparent 100%
+  );
 }
 
-/* The single red accent — liquidation only. */
+/* Market semantics: white/silver carries long/up, red carries short/down/
+   liquidation. Red is data, never decoration — no green, no gold. */
 .arena-liquidation {
   color: var(--arena-red);
   text-shadow: 0 0 24px rgba(255, 43, 63, 0.45);
+}
+
+.arena-down {
+  color: var(--arena-red);
+}
+
+.arena-up {
+  color: var(--arena-white);
+}
+
+/* Bottom ticker-tape HUD. */
+.arena-ticker {
+  border-top: 1px solid var(--arena-line);
+  background: rgba(5, 5, 5, 0.82);
+  backdrop-filter: blur(10px);
+  font-variant-numeric: tabular-nums;
+}
+
+.arena-ticker-track {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .arena-ticker-track {
+    animation: arena-ticker 48s linear infinite;
+  }
+}
+
+@keyframes arena-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .arena2026 ::selection {
