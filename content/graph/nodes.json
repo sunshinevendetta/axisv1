@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generatedAt": "2026-05-11T07:31:23.619Z",
+  "generatedAt": "2026-07-02T06:42:56.916Z",
   "site": {
     "primaryDomain": "axis.show",
     "canonicalDomain": "axis.show",
@@ -80,7 +80,7 @@
         "model": "/assets/3d/episode1/ep1.glb"
       },
       "attributes": {
-        "status": "open",
+        "status": "locked",
         "season": 1,
         "year": 2025,
         "startsAt": "2025-12-20T19:00:00-06:00",
@@ -152,7 +152,7 @@
         "model": "/assets/3d/episode2/ep2.glb"
       },
       "attributes": {
-        "status": "open",
+        "status": "locked",
         "season": 1,
         "year": 2025,
         "startsAt": "2025-12-27T20:00:00-06:00",
@@ -221,7 +221,7 @@
         "model": "/assets/3d/episode3/ep3.glb"
       },
       "attributes": {
-        "status": "open",
+        "status": "locked",
         "season": 1,
         "year": 2026,
         "startsAt": "2026-02-28T20:00:00-06:00",
@@ -291,7 +291,7 @@
         "model": "/assets/3d/episode4/ep4.glb"
       },
       "attributes": {
-        "status": "open",
+        "status": "locked",
         "season": 1,
         "year": 2026,
         "startsAt": "2026-03-21T18:00:00.000-06:00",
@@ -347,8 +347,8 @@
       "type": "episode",
       "slug": "episode-5",
       "title": "PIZZA DAO PARTY",
-      "summary": "Details unlock closer to the event release.",
-      "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+      "summary": "Archive: Global Pizza Party x AXIS. Bitcoin Pizza Day celebrated in 500+ cities with pizza, DJs, livestream, onchain + AI programming, and a curated art gallery in CDMX.",
+      "description": "On May 22, 2010, two pizzas changed everything. Laszlo Hanyecz paid 10,000 BTC to Jeremy Sturdivant for two pizzas — the first real-world Bitcoin transaction and the spark of a global movement. Now PizzaDAO invites you to the Global Pizza Party, a worldwide celebration of Bitcoin Pizza Day in 500+ cities, taken to another level from AXIS. Free pizza, global crypto community, builders and curious minds, top national and international DJs, real-time livestream, an onchain and AI program, and a curated art gallery.",
       "surfaces": {
         "canonical": "/arapp/collect/episode-5",
         "web": [
@@ -369,11 +369,27 @@
         "year": 2026,
         "startsAt": "2026-05-22T20:00:00-06:00",
         "timezone": "America/Mexico_City",
-        "venueName": "TBD",
-        "city": "Mexico City",
-        "tags": [],
+        "venueName": "Studio Berlin, CDMX",
+        "city": "Ciudad de México",
+        "tags": [
+          "PizzaDAO",
+          "Bitcoin Pizza Day",
+          "onchain",
+          "AI",
+          "music",
+          "art",
+          "CDMX"
+        ],
         "music": [],
-        "allies": []
+        "allies": [
+          "PizzaDAO",
+          "ENS",
+          "World Pizza Champions",
+          "Brave",
+          "@studioberlin__",
+          "@11oncepizza",
+          "Digital Spenders Club"
+        ]
       },
       "actions": {
         "primary": {
@@ -394,9 +410,9 @@
       "id": "episode:episode-6",
       "type": "episode",
       "slug": "episode-6",
-      "title": "AXIS 6",
-      "summary": "Details unlock closer to the event release.",
-      "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+      "title": "AXIS x RITMOS DE LA NOCHE [BAR ORIENTE TAKEOVER]",
+      "summary": "AXIS x Ritmos de la Noche takes over Cuarto Rosa at Bar Oriente with dub techno, deep, organic house, downtempo, live visuals, and OKX-powered drinks.",
+      "description": "AXIS x Ritmos de la Noche presents a Cuarto Rosa takeover at Bar Oriente. The night is built around shadow, cinematic atmosphere, dub techno, deep, organic house, downtempo, and live visual art by AXIS.",
       "surfaces": {
         "canonical": "/arapp/collect/episode-6",
         "web": [
@@ -407,21 +423,38 @@
         ]
       },
       "media": {
-        "cover": "/soon.jpg",
-        "image": "/soon.jpg",
+        "cover": "/ep6.webp",
+        "image": "/ep6.webp",
         "model": "/models/logo.glb"
       },
       "attributes": {
-        "status": "locked",
+        "status": "open",
         "season": 1,
         "year": 2026,
-        "startsAt": "2026-06-01T20:00:00-06:00",
+        "startsAt": "2026-06-25T22:00:00-06:00",
         "timezone": "America/Mexico_City",
-        "venueName": "TBD",
-        "city": "Mexico City",
-        "tags": [],
-        "music": [],
-        "allies": []
+        "venueName": "Bar Oriente",
+        "city": "Ciudad de Mexico",
+        "tags": [
+          "music",
+          "visual art",
+          "dub techno",
+          "deep house",
+          "downtempo",
+          "CDMX"
+        ],
+        "music": [
+          "V3SNA",
+          "MALU GO",
+          "WESTWICK",
+          "WOLFF"
+        ],
+        "allies": [
+          "Ritmos de la Noche",
+          "OKX",
+          "Casa Blanca",
+          "Bar Oriente"
+        ]
       },
       "actions": {
         "primary": {
@@ -434,7 +467,12 @@
         "membership": [
           "membership:axis"
         ],
-        "artists": [],
+        "artists": [
+          "artist:v3sna",
+          "artist:malu-go",
+          "artist:westwick",
+          "artist:wolff"
+        ],
         "related": []
       }
     },
@@ -443,8 +481,8 @@
       "type": "episode",
       "slug": "episode-7",
       "title": "AXIS 7",
-      "summary": "Details unlock closer to the event release.",
-      "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+      "summary": "AXIS Episode 7 lands at Bar Oriente on August 5. Full program details unlock closer to release.",
+      "description": "AXIS Episode 7 is scheduled for August 5, 2026 at Bar Oriente in Ciudad de Mexico. Full lineup, programming, and access details will unlock closer to the event release.",
       "surfaces": {
         "canonical": "/arapp/collect/episode-7",
         "web": [
@@ -460,14 +498,19 @@
         "model": "/models/logo.glb"
       },
       "attributes": {
-        "status": "locked",
+        "status": "open",
         "season": 1,
         "year": 2026,
-        "startsAt": "2026-07-01T20:00:00-06:00",
+        "startsAt": "2026-08-05T20:00:00-06:00",
         "timezone": "America/Mexico_City",
-        "venueName": "TBD",
-        "city": "Mexico City",
-        "tags": [],
+        "venueName": "Bar Oriente",
+        "city": "Ciudad de Mexico",
+        "tags": [
+          "music",
+          "visual art",
+          "CDMX",
+          "Bar Oriente"
+        ],
         "music": [],
         "allies": []
       },
@@ -491,8 +534,8 @@
       "type": "episode",
       "slug": "episode-8",
       "title": "AXIS 8",
-      "summary": "Details unlock closer to the event release.",
-      "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+      "summary": "AXIS Episode 8 is scheduled for October 28. Full program details unlock closer to release.",
+      "description": "AXIS Episode 8 is scheduled for October 28, 2026. Full venue, lineup, programming, and access details will unlock closer to the event release.",
       "surfaces": {
         "canonical": "/arapp/collect/episode-8",
         "web": [
@@ -508,10 +551,10 @@
         "model": "/models/logo.glb"
       },
       "attributes": {
-        "status": "locked",
+        "status": "open",
         "season": 1,
         "year": 2026,
-        "startsAt": "2026-07-01T20:00:00-06:00",
+        "startsAt": "2026-10-28T20:00:00-06:00",
         "timezone": "America/Mexico_City",
         "venueName": "TBD",
         "city": "Mexico City",
@@ -539,8 +582,8 @@
       "type": "episode",
       "slug": "episode-9",
       "title": "AXIS 9",
-      "summary": "Details unlock closer to the event release.",
-      "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+      "summary": "AXIS Episode 9 is scheduled for November 25. Full program details unlock closer to release.",
+      "description": "AXIS Episode 9 is scheduled for November 25, 2026. Full venue, lineup, programming, and access details will unlock closer to the event release.",
       "surfaces": {
         "canonical": "/arapp/collect/episode-9",
         "web": [
@@ -556,10 +599,10 @@
         "model": "/models/logo.glb"
       },
       "attributes": {
-        "status": "locked",
+        "status": "open",
         "season": 1,
         "year": 2026,
-        "startsAt": "2026-08-01T20:00:00-06:00",
+        "startsAt": "2026-11-25T20:00:00-06:00",
         "timezone": "America/Mexico_City",
         "venueName": "TBD",
         "city": "Mexico City",
@@ -587,8 +630,8 @@
       "type": "episode",
       "slug": "episode-10",
       "title": "AXIS 10",
-      "summary": "Details unlock closer to the event release.",
-      "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+      "summary": "Tentative AXIS Episode 10 slot during Art Basel Miami Beach. Final details pending confirmation.",
+      "description": "AXIS Episode 10 is tentatively scheduled for December 4, 2026 during Art Basel Miami Beach. Final date, venue, lineup, programming, and access details are pending confirmation.",
       "surfaces": {
         "canonical": "/arapp/collect/episode-10",
         "web": [
@@ -604,14 +647,20 @@
         "model": "/models/logo.glb"
       },
       "attributes": {
-        "status": "locked",
+        "status": "open",
         "season": 1,
         "year": 2026,
-        "startsAt": "2026-09-01T20:00:00-06:00",
-        "timezone": "America/Mexico_City",
-        "venueName": "TBD",
-        "city": "Mexico City",
-        "tags": [],
+        "startsAt": "2026-12-04T20:00:00-05:00",
+        "timezone": "America/New_York",
+        "venueName": "Art Basel Miami Beach",
+        "city": "Miami Beach",
+        "tags": [
+          "Art Basel",
+          "Miami",
+          "Miami Beach",
+          "art",
+          "music"
+        ],
         "music": [],
         "allies": []
       },
@@ -635,8 +684,8 @@
       "type": "episode",
       "slug": "episode-11",
       "title": "AXIS 11",
-      "summary": "Details unlock closer to the event release.",
-      "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+      "summary": "Tentative AXIS Episode 11 slot during Art Basel Miami Beach. Final details pending confirmation.",
+      "description": "AXIS Episode 11 is tentatively scheduled for December 5, 2026 during Art Basel Miami Beach. Final date, venue, lineup, programming, and access details are pending confirmation.",
       "surfaces": {
         "canonical": "/arapp/collect/episode-11",
         "web": [
@@ -652,14 +701,20 @@
         "model": "/models/logo.glb"
       },
       "attributes": {
-        "status": "locked",
+        "status": "open",
         "season": 1,
         "year": 2026,
-        "startsAt": "2026-10-01T20:00:00-06:00",
-        "timezone": "America/Mexico_City",
-        "venueName": "TBD",
-        "city": "Mexico City",
-        "tags": [],
+        "startsAt": "2026-12-05T20:00:00-05:00",
+        "timezone": "America/New_York",
+        "venueName": "Art Basel Miami Beach",
+        "city": "Miami Beach",
+        "tags": [
+          "Art Basel",
+          "Miami",
+          "Miami Beach",
+          "art",
+          "music"
+        ],
         "music": [],
         "allies": []
       },
@@ -683,8 +738,8 @@
       "type": "episode",
       "slug": "episode-12",
       "title": "AXIS 12",
-      "summary": "Details unlock closer to the event release.",
-      "description": "This episode slot is reserved in the season architecture so the UI, metadata, and contract sync pipeline can already address it by slug and ID.",
+      "summary": "Tentative AXIS Episode 12 slot during Art Basel Miami Beach. Final details pending confirmation.",
+      "description": "AXIS Episode 12 is tentatively scheduled for December 6, 2026 during Art Basel Miami Beach. Final date, venue, lineup, programming, and access details are pending confirmation.",
       "surfaces": {
         "canonical": "/arapp/collect/episode-12",
         "web": [
@@ -700,14 +755,20 @@
         "model": "/models/logo.glb"
       },
       "attributes": {
-        "status": "locked",
+        "status": "open",
         "season": 1,
         "year": 2026,
-        "startsAt": "2026-11-01T20:00:00-06:00",
-        "timezone": "America/Mexico_City",
-        "venueName": "TBD",
-        "city": "Mexico City",
-        "tags": [],
+        "startsAt": "2026-12-06T20:00:00-05:00",
+        "timezone": "America/New_York",
+        "venueName": "Art Basel Miami Beach",
+        "city": "Miami Beach",
+        "tags": [
+          "Art Basel",
+          "Miami",
+          "Miami Beach",
+          "art",
+          "music"
+        ],
         "music": [],
         "allies": []
       },
@@ -12410,4 +12471,3 @@
     }
   }
 }
-
