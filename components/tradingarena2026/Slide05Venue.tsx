@@ -57,7 +57,7 @@ function FacilityGlyph({ kind, large }: { kind: GlyphKind; large?: boolean }) {
 }
 
 /* Asymmetric editorial grid on lg (3 columns):
-   01 Cuarto Rosa is the 2x2 feature; 02/03 stack beside it; 04 + 05 close
+   01 Main room is the 2x2 feature; 02/03 stack beside it; 04 + 05 close
    the composition on the last row. Reveal directions oppose across the seam. */
 const CARDS: ReadonlyArray<{
   num: string;
