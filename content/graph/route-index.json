@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generatedAt": "2026-05-11T07:31:23.619Z",
+  "generatedAt": "2026-07-02T06:42:56.916Z",
   "routes": {
     "/membership": "membership:axis",
     "/members": "membership:axis",
