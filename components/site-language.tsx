@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
-export type SiteLanguage = "zh" | "en" | "es";
+export type SiteLanguage = "zh" | "zh-Hant" | "en" | "es";
 
 const STORAGE_KEY = "axis:site-language";
 
@@ -13,7 +13,7 @@ const SiteLanguageContext = createContext<{
 } | null>(null);
 
 function normalizeLanguage(value: string | null, fallback: SiteLanguage = "en"): SiteLanguage {
-  return value === "zh" || value === "es" || value === "en" ? value : fallback;
+  return value === "zh" || value === "zh-Hant" || value === "es" || value === "en" ? value : fallback;
 }
 
 function readStoredLanguage(fallback: SiteLanguage): SiteLanguage {
@@ -67,7 +67,8 @@ export function LanguageSwitch() {
     flag: string;
     label: string;
   }> = [
-    { code: "zh", flag: "/flags/cn.svg", label: "Chinese" },
+    { code: "zh", flag: "/flags/cn.svg", label: "Chinese (Simplified)" },
+    { code: "zh-Hant", flag: "/flags/tw.svg", label: "Chinese (Traditional)" },
     { code: "en", flag: "/flags/us.svg", label: "English" },
     { code: "es", flag: "/flags/mx.svg", label: "Spanish" },
   ];
