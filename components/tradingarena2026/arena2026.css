@@ -1,0 +1,95 @@
+/* Trading Arena 2026 — monochrome / chrome / 3D futuristic design system.
+   Structural palette is strictly black/white/grey. The ONLY permitted color
+   is var(--arena-red), reserved for the liquidation / knockout beat. */
+
+.arena2026 {
+  --arena-black: #050505;
+  --arena-ink: #0c0c0c;
+  --arena-steel: #6b6f76;
+  --arena-silver: #c8ccd2;
+  --arena-white: #f4f5f7;
+  --arena-red: #ff2b3f;
+  --arena-line: rgba(244, 245, 247, 0.14);
+
+  background: var(--arena-black);
+  color: var(--arena-white);
+  font-feature-settings: "ss01" on, "cv01" on;
+}
+
+/* Liquid-chrome headline treatment: gradient-on-mono with a specular sweep. */
+.arena-chrome {
+  background-image: linear-gradient(
+    115deg,
+    #3c4047 0%,
+    #f7f8fa 18%,
+    #9aa0a8 34%,
+    #ffffff 50%,
+    #5c6068 66%,
+    #e9ebee 82%,
+    #43474e 100%
+  );
+  background-size: 220% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .arena-chrome--live {
+    animation: arena-sheen 7s linear infinite;
+  }
+}
+
+@keyframes arena-sheen {
+  from { background-position: 0% center; }
+  to { background-position: -220% center; }
+}
+
+/* Hairline metallic edge for cards and panels. */
+.arena-panel {
+  position: relative;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.012) 42%, rgba(0, 0, 0, 0.35));
+  border: 1px solid var(--arena-line);
+  backdrop-filter: blur(10px);
+}
+
+.arena-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.22), transparent 28%, transparent 72%, rgba(255, 255, 255, 0.1));
+  opacity: 0.35;
+  mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+/* Engraved slide number. */
+.arena-num {
+  font-variant-numeric: tabular-nums;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(244, 245, 247, 0.22);
+  letter-spacing: -0.04em;
+}
+
+/* Faint architectural grid behind slides. */
+.arena-grid-bg {
+  background-image:
+    linear-gradient(rgba(244, 245, 247, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 245, 247, 0.045) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 45%, #000 30%, transparent 100%);
+}
+
+/* The single red accent — liquidation only. */
+.arena-liquidation {
+  color: var(--arena-red);
+  text-shadow: 0 0 24px rgba(255, 43, 63, 0.45);
+}
+
+.arena2026 ::selection {
+  background: rgba(244, 245, 247, 0.9);
+  color: #050505;
+}
