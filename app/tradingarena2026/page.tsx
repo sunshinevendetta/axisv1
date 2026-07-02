@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import ArenaDeck2026 from "@/components/tradingarena2026/ArenaDeck2026";
 
 const DESCRIPTION =
-  "Trading Arena en Bar Oriente: el torneo de trading mas intenso jamas realizado en LATAM, " +
+  "Trading Arena 2026: el torneo de trading mas intenso jamas realizado en LATAM, " +
   "con Human Traders, AI Agents, mercados en movimiento y leaderboards en vivo.";
 
 export const metadata: Metadata = {
-  title: "Trading Arena 2026 · Bar Oriente",
+  title: "Trading Arena 2026 · Venue Proposal",
   description: DESCRIPTION,
   keywords: [
     "AXIS",
-    "Bar Oriente",
+    "venue proposal",
     "trading arena",
     "AI trading",
     "traders humanos",
@@ -19,17 +19,17 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/tradingarena2026" },
   openGraph: {
-    title: "Trading Arena 2026 · Bar Oriente",
+    title: "Trading Arena 2026 · Venue Proposal",
     description: DESCRIPTION,
     url: "https://axis.show/tradingarena2026",
     type: "website",
-    images: ["/tradingarena/baroriente.jpg"],
+    images: ["/tradingarena/axis-logo.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trading Arena 2026 · Bar Oriente",
+    title: "Trading Arena 2026 · Venue Proposal",
     description: DESCRIPTION,
-    images: ["/tradingarena/baroriente.jpg"],
+    images: ["/tradingarena/axis-logo.png"],
   },
 };
 
