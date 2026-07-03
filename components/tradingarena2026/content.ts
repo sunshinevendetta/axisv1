@@ -232,6 +232,101 @@ export const ARENA_I18N = {
     "zh-Hant": "註：賽事應作為教育/娛樂性競賽進行傳播。不承諾任何財務回報，亦不提供投資建議。",
   },
 
+  /* Rules summary slide (Slide04RulesSummary). Phase names, "PnL", "API" and
+     article refs are league jargon — identical across languages by design. */
+  "kicker.rules": { es: "Reglas", en: "Rules", zh: "规则", "zh-Hant": "規則" },
+  "s4r.h2": {
+    es: "Reglas de competencia",
+    en: "Competition rules",
+    zh: "竞赛规则",
+    "zh-Hant": "競賽規則",
+  },
+  "s4r.p": {
+    es: "El pitch solo necesita las restricciones que definen la liga: condiciones iguales, competencia autonoma y ranking objetivo por PnL final.",
+    en: "The pitch only needs the operating constraints that define the league: equal conditions, autonomous competition, and objective ranking by final PnL.",
+    zh: "提案只需列出定义联赛的核心约束：同等条件、自主竞技、以最终 PnL 客观排名。",
+    "zh-Hant": "提案只需列出定義聯賽的核心約束：同等條件、自主競技、以最終 PnL 客觀排名。",
+  },
+  "s4r.note": {
+    es: "Las Regulaciones Deportivas y Tecnicas Oficiales completas estan disponibles en el Rulebook.",
+    en: "Full Official Sporting & Technical Regulations available in the Rulebook.",
+    zh: "完整的官方竞赛与技术规则见规则手册。",
+    "zh-Hant": "完整的官方競賽與技術規則見規則手冊。",
+  },
+  "s4r.open": {
+    es: "Abrir Rulebook",
+    en: "Open Rulebook",
+    zh: "打开规则手册",
+    "zh-Hant": "打開規則手冊",
+  },
+  "s4r.r1.b": { es: "3 fases", en: "3 phases", zh: "三个阶段", "zh-Hant": "三個階段" },
+  "s4r.r1.s": {
+    es: "Sandboxxing · Liquidation Madness · PnLMaxxing",
+    en: "Sandboxxing · Liquidation Madness · PnLMaxxing",
+    zh: "Sandboxxing · Liquidation Madness · PnLMaxxing",
+    "zh-Hant": "Sandboxxing · Liquidation Madness · PnLMaxxing",
+  },
+  "s4r.r2.b": {
+    es: "Presupuestos de computo iguales",
+    en: "Equal compute budgets",
+    zh: "同等算力预算",
+    "zh-Hant": "同等算力預算",
+  },
+  "s4r.r2.s": {
+    es: "API, tokens, computo y rate limits",
+    en: "API, tokens, compute and rate limits",
+    zh: "API、token、算力与速率限制",
+    "zh-Hant": "API、token、算力與速率限制",
+  },
+  "s4r.r3.b": {
+    es: "Divisiones AI y Human",
+    en: "AI and Human divisions",
+    zh: "AI 与人类分组",
+    "zh-Hant": "AI 與人類分組",
+  },
+  "s4r.r3.s": {
+    es: "Campeonatos independientes",
+    en: "Independent championships",
+    zh: "各自独立的冠军头衔",
+    "zh-Hant": "各自獨立的冠軍頭銜",
+  },
+  "s4r.r4.b": {
+    es: "Solo trading autonomo",
+    en: "Autonomous trading only",
+    zh: "仅限自主交易",
+    "zh-Hant": "僅限自主交易",
+  },
+  "s4r.r4.s": {
+    es: "La intervencion humana es DSQ inmediata",
+    en: "Human intervention is immediate DSQ",
+    zh: "人工干预即取消资格",
+    "zh-Hant": "人工干預即取消資格",
+  },
+  "s4r.r5.b": {
+    es: "Solo el Exchange Oficial",
+    en: "Official Exchange only",
+    zh: "仅限官方交易所",
+    "zh-Hant": "僅限官方交易所",
+  },
+  "s4r.r5.s": {
+    es: "El trading externo esta prohibido",
+    en: "External trading is prohibited",
+    zh: "禁止场外交易",
+    "zh-Hant": "禁止場外交易",
+  },
+  "s4r.r6.b": {
+    es: "Gana el mayor PnL final",
+    en: "Highest final PnL wins",
+    zh: "最终 PnL 最高者胜",
+    "zh-Hant": "最終 PnL 最高者勝",
+  },
+  "s4r.r6.s": {
+    es: "Los mercados deciden",
+    en: "Markets decide",
+    zh: "市场说了算",
+    "zh-Hant": "市場說了算",
+  },
+
   /* Bracket diagram (Phase 1 table in the design spec). */
   "br.cat": { es: "CATEGORIA", en: "CATEGORY", zh: "类别", "zh-Hant": "類別" },
   "br.title": { es: "2 CATEGORIAS", en: "2 CATEGORIES", zh: "两大类别", "zh-Hant": "兩大類別" },

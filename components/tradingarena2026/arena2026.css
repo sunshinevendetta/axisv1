@@ -134,34 +134,45 @@
   color: #050505;
 }
 
+/* Fixed corner chip → /tradingarena2026/rules. Quiet by design: the deck
+   sells, the chip signposts. */
 .arena-rules-button {
   position: fixed;
   top: max(0.7rem, env(safe-area-inset-top));
   right: 0.75rem;
   z-index: 50;
   display: inline-flex;
-  min-height: 2.1rem;
   align-items: center;
-  gap: 0.4rem;
-  border: 1px solid rgba(244, 245, 247, 0.32);
-  border-radius: 5px;
-  background: rgba(5, 5, 5, 0.78);
-  padding: 0 0.62rem;
-  color: var(--arena-white);
-  box-shadow: 0 0 32px rgba(0, 0, 0, 0.32);
+  border: 1px solid rgba(244, 245, 247, 0.26);
+  border-radius: 4px;
+  background: rgba(5, 5, 5, 0.72);
+  padding: 0.42rem 0.6rem;
+  color: var(--arena-silver);
   backdrop-filter: blur(12px);
-  font-size: 0.56rem;
+  font-size: 0.55rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.22em;
   line-height: 1;
   text-transform: uppercase;
   text-decoration: none;
   transition:
+    color 160ms ease,
     background 160ms ease,
-    border-color 160ms ease,
-    transform 160ms ease;
+    border-color 160ms ease;
 }
 
+.arena-rules-button:hover {
+  border-color: rgba(244, 245, 247, 0.6);
+  background: rgba(20, 20, 21, 0.92);
+  color: var(--arena-white);
+}
+
+.arena-rules-button:focus-visible {
+  outline: 2px solid var(--arena-white);
+  outline-offset: 3px;
+}
+
+/* Inline rulebook link on the rules summary slide. */
 .arena-rulebook-inline-link {
   border: 1px solid rgba(244, 245, 247, 0.36);
   border-radius: 6px;
@@ -186,46 +197,156 @@
   transform: translateY(-1px);
 }
 
-.arena-rules-summary-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
+.arena-rulebook-inline-link:focus-visible {
+  outline: 2px solid var(--arena-white);
+  outline-offset: 3px;
 }
 
-.arena-rules-summary-card {
-  min-height: 8.5rem;
+/* ------------------------------------------------------------------ */
+/* Rules summary term sheet (deck slide). Six governing constraints as  */
+/* numbered rows with article cross-refs that deep-link into the        */
+/* rulebook. Reads like an official document, not a card grid.          */
+/* ------------------------------------------------------------------ */
+
+.tal-sheet {
   border-radius: 8px;
-  padding: 1rem;
+  overflow: hidden;
 }
 
-.arena-rules-summary-card span {
-  display: block;
+.tal-sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--arena-line);
+  padding: 0.8rem 1.1rem;
   color: var(--arena-steel);
-  font-variant-numeric: tabular-nums;
-  font-size: 0.68rem;
-  font-weight: 900;
-  letter-spacing: 0.22em;
-}
-
-.arena-rules-summary-card strong {
-  display: block;
-  margin-top: 2rem;
-  max-width: 12rem;
-  color: var(--arena-white);
-  font-size: clamp(1rem, 2vw, 1.45rem);
-  font-weight: 950;
-  letter-spacing: 0;
-  line-height: 1.05;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
 }
 
-.arena-rulebook-page {
-  min-height: 100vh;
-  overflow-x: hidden;
-  padding: 0.9rem clamp(0.9rem, 3vw, 3rem) 3rem;
+.tal-sheet-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.arena-rulebook-page-bg {
+.tal-sheet-rows li + li {
+  border-top: 1px solid var(--arena-line);
+}
+
+.tal-sheet-row {
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1.1rem;
+  text-decoration: none;
+  transition: background 160ms ease;
+}
+
+.tal-sheet-row:hover {
+  background: rgba(244, 245, 247, 0.06);
+}
+
+.tal-sheet-row:focus-visible {
+  outline: 2px solid var(--arena-white);
+  outline-offset: -2px;
+}
+
+.tal-sheet-num {
+  font-variant-numeric: tabular-nums;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(244, 245, 247, 0.3);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.tal-sheet-copy {
+  min-width: 0;
+}
+
+.tal-sheet-copy strong {
+  display: block;
+  color: var(--arena-white);
+  font-size: 0.92rem;
+  font-weight: 900;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.tal-sheet-copy small {
+  display: block;
+  margin-top: 0.22rem;
+  color: var(--arena-steel);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.tal-sheet-ref {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--arena-steel);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  white-space: nowrap;
+  transition: color 160ms ease;
+}
+
+.tal-sheet-ref svg {
+  height: 0.75rem;
+  width: 0.75rem;
+  transition: transform 200ms ease;
+}
+
+.tal-sheet-row:hover .tal-sheet-ref {
+  color: var(--arena-white);
+}
+
+.tal-sheet-row:hover .tal-sheet-ref svg {
+  transform: translate(1px, -1px);
+}
+
+@media (max-width: 700px) {
+  .tal-sheet-row {
+    grid-template-columns: 2rem minmax(0, 1fr);
+  }
+
+  .tal-sheet-ref {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Rulebook page — a continuous official regulations reader.            */
+/* Sticky contents rail + statute-spine document: engraved article      */
+/* numbers form a gutter the body text hangs from.                      */
+/* ------------------------------------------------------------------ */
+
+html:has(.tal-page) {
+  scroll-padding-top: 4.75rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.tal-page) {
+    scroll-behavior: smooth;
+  }
+}
+
+.tal-page {
+  min-height: 100vh;
+  overflow-x: clip;
+  padding: 0 clamp(1rem, 3vw, 3rem) 4.5rem;
+}
+
+.tal-page-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
@@ -233,442 +354,96 @@
   background:
     linear-gradient(rgba(244, 245, 247, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(244, 245, 247, 0.035) 1px, transparent 1px),
-    radial-gradient(circle at 72% 8%, rgba(244, 245, 247, 0.12), transparent 34%),
+    radial-gradient(circle at 72% 8%, rgba(244, 245, 247, 0.1), transparent 34%),
     var(--arena-black);
   background-size: 44px 44px, 44px 44px, auto, auto;
 }
 
-.arena-rulebook-hero,
-.arena-rulebook-layout {
+.tal-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  height: 2px;
+  background: rgba(244, 245, 247, 0.08);
+}
+
+.tal-progress span {
+  display: block;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--arena-steel), var(--arena-white));
+}
+
+.tal-hero,
+.tal-layout,
+.tal-mobilebar {
   position: relative;
   z-index: 1;
 }
 
-.arena-rulebook-hero {
-  max-width: 68rem;
+.tal-hero {
+  max-width: 76rem;
   margin: 0 auto;
-  padding: 1.3rem 0 1rem;
+  padding: 1.4rem 0 2rem;
 }
 
-.arena-rulebook-back {
+.tal-hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tal-back {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   border: 1px solid var(--arena-line);
   border-radius: 6px;
   background: rgba(5, 5, 5, 0.68);
-  padding: 0.7rem 0.85rem;
+  padding: 0.6rem 0.8rem;
   color: var(--arena-silver);
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   font-weight: 850;
   letter-spacing: 0.14em;
   line-height: 1;
   text-decoration: none;
   text-transform: uppercase;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease;
 }
 
-.arena-rulebook-back:hover {
+.tal-back:hover {
   border-color: rgba(244, 245, 247, 0.5);
   color: var(--arena-white);
 }
 
-.arena-rulebook-hero h1 {
-  margin-top: 1.1rem;
-  max-width: 34rem;
-  font-size: clamp(1.25rem, 2.8vw, 2rem);
-  font-weight: 950;
-  letter-spacing: 0;
-  line-height: 1.02;
-  text-transform: uppercase;
-}
-
-.arena-rulebook-hero > p {
-  margin-top: 0.85rem;
-  max-width: 38rem;
-  color: var(--arena-silver);
-  font-size: clamp(0.86rem, 1.2vw, 1rem);
-  line-height: 1.55;
-}
-
-.arena-rulebook-facts {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.55rem;
-  margin-top: 1.15rem;
-}
-
-.arena-rulebook-fact.card-spotlight,
-.arena-rulebook-article.card-spotlight,
-.arena-rulebook-article-detail.card-spotlight {
-  border-color: var(--arena-line);
-  border-radius: 8px;
-  background:
-    linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015)),
-    rgba(5, 5, 5, 0.72);
-}
-
-.arena-rulebook-fact.card-spotlight {
-  min-height: 4.6rem;
-  padding: 0.8rem;
-}
-
-.arena-rulebook-fact span,
-.arena-rulebook-index-card span,
-.arena-rulebook-sidebar nav button span,
-.arena-rulebook-section-header span,
-.arena-rulebook-article header span {
-  display: block;
-  color: var(--arena-steel);
-  font-size: 0.62rem;
-  font-weight: 850;
-  letter-spacing: 0.18em;
-  line-height: 1.3;
-  text-transform: uppercase;
-}
-
-.arena-rulebook-fact strong {
-  display: block;
-  margin-top: 0.7rem;
-  color: var(--arena-white);
-  font-size: 0.82rem;
-  font-weight: 950;
-  line-height: 1.05;
-  text-transform: uppercase;
-  overflow-wrap: anywhere;
-}
-
-.arena-rulebook-layout {
-  display: grid;
-  grid-template-columns: minmax(13rem, 15rem) minmax(0, 1fr);
-  gap: 1rem;
-  max-width: 68rem;
-  margin: 0 auto;
-}
-
-.arena-rulebook-sidebar {
-  align-self: start;
-  position: sticky;
-  top: 1rem;
-  display: flex;
-  max-height: calc(100vh - 2rem);
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.arena-rulebook-index-card {
-  border: 1px solid var(--arena-line);
-  border-radius: 8px;
-  background: rgba(5, 5, 5, 0.76);
-  padding: 0.85rem;
-}
-
-.arena-rulebook-index-card strong {
-  display: block;
-  margin-top: 0.35rem;
-  color: var(--arena-white);
-  font-size: 1.8rem;
-  font-weight: 950;
-  line-height: 0.9;
-}
-
-.arena-rulebook-index-card small {
-  display: block;
-  margin-top: 0.35rem;
-  color: var(--arena-steel);
-  font-size: 0.72rem;
-  font-weight: 700;
-}
-
-.arena-rulebook-sidebar nav {
-  display: flex;
-  min-height: 0;
-  flex-direction: column;
-  gap: 0.5rem;
-  overflow: auto;
-  padding-right: 0.25rem;
-}
-
-.arena-rulebook-sidebar nav button {
-  width: 100%;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  background: rgba(244, 245, 247, 0.035);
-  padding: 0.65rem;
-  text-align: left;
-  min-width: 0;
-  transition:
-    background 160ms ease,
-    border-color 160ms ease;
-}
-
-.arena-rulebook-sidebar nav button:hover,
-.arena-rulebook-sidebar nav button.is-active {
-  border-color: rgba(244, 245, 247, 0.3);
-  background: rgba(244, 245, 247, 0.08);
-}
-
-.arena-rulebook-sidebar nav button strong {
-  display: block;
-  margin-top: 0.25rem;
-  color: var(--arena-white);
-  font-size: 0.76rem;
-  font-weight: 850;
-  letter-spacing: 0;
-  line-height: 1.15;
-  overflow-wrap: anywhere;
-}
-
-.arena-rulebook-sidebar nav button small {
-  display: block;
-  margin-top: 0.45rem;
-  color: var(--arena-steel);
-  font-size: 0.68rem;
-  font-weight: 700;
-}
-
-.arena-rulebook-section {
-  min-width: 0;
-}
-
-.arena-rulebook-section-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
-  border-bottom: 1px solid var(--arena-line);
-  padding: 0.25rem 0 0.75rem;
-}
-
-.arena-rulebook-section-header h2 {
-  margin-top: 0.25rem;
-  color: var(--arena-white);
-  font-size: clamp(1rem, 1.8vw, 1.45rem);
-  font-weight: 950;
-  letter-spacing: 0;
-  line-height: 1.05;
-  text-transform: uppercase;
-  overflow-wrap: anywhere;
-}
-
-.arena-rulebook-section-header p {
-  margin-top: 0.35rem;
-  max-width: 28rem;
-  color: var(--arena-steel);
-  font-size: 0.74rem;
-  line-height: 1.35;
-}
-
-.arena-rulebook-section-header > strong {
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(244, 245, 247, 0.32);
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 950;
-  line-height: 0.8;
-}
-
-.arena-rulebook-reader {
-  display: grid;
-  grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
-  gap: 0.75rem;
-  padding-top: 0.9rem;
-}
-
-.arena-rulebook-article-list {
-  display: flex;
-  max-height: min(66vh, 42rem);
-  min-width: 0;
-  flex-direction: column;
-  gap: 0.45rem;
-  overflow: auto;
-  padding-right: 0.2rem;
-}
-
-.arena-rulebook-article-list button {
-  width: 100%;
-  min-width: 0;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  background: rgba(244, 245, 247, 0.035);
-  padding: 0.7rem;
-  color: var(--arena-white);
-  text-align: left;
-  transition:
-    background 160ms ease,
-    border-color 160ms ease;
-}
-
-.arena-rulebook-article-list button:hover,
-.arena-rulebook-article-list button.is-active {
-  border-color: rgba(244, 245, 247, 0.32);
-  background: rgba(244, 245, 247, 0.08);
-}
-
-.arena-rulebook-article-list button span,
-.arena-rulebook-article-detail header span {
-  display: block;
-  color: var(--arena-steel);
-  font-size: 0.58rem;
-  font-weight: 850;
-  letter-spacing: 0.16em;
-  line-height: 1.3;
-  text-transform: uppercase;
-}
-
-.arena-rulebook-article-list button strong {
-  display: block;
-  margin-top: 0.28rem;
-  color: var(--arena-white);
-  font-size: 0.82rem;
-  font-weight: 900;
-  letter-spacing: 0;
-  line-height: 1.15;
-  overflow-wrap: anywhere;
-}
-
-.arena-rulebook-article-list button small {
-  display: block;
-  margin-top: 0.35rem;
-  color: var(--arena-steel);
-  font-size: 0.68rem;
-  line-height: 1.35;
-  overflow-wrap: anywhere;
-}
-
-.arena-rulebook-article-detail.card-spotlight {
-  min-width: 0;
-  padding: 0;
-}
-
-.arena-rulebook-article-detail article {
-  min-width: 0;
-  padding: 1rem;
-}
-
-.arena-rulebook-article-detail header {
-  min-width: 0;
-  border-bottom: 1px solid var(--arena-line);
-  padding-bottom: 0.85rem;
-}
-
-.arena-rulebook-article-detail header svg {
-  margin-top: 0.5rem;
-  color: var(--arena-steel);
-}
-
-.arena-rulebook-article-detail h3 {
-  margin-top: 0.45rem;
-  max-width: 34rem;
-  color: var(--arena-white);
-  font-size: clamp(1rem, 1.8vw, 1.35rem);
-  font-weight: 950;
-  letter-spacing: 0;
-  line-height: 1.08;
-  text-transform: uppercase;
-  overflow-wrap: anywhere;
-}
-
-.arena-rulebook-copy {
-  min-width: 0;
-  padding-top: 0.85rem;
-}
-
-.arena-rulebook-copy p {
-  color: rgba(244, 245, 247, 0.82);
-  font-size: 0.86rem;
-  line-height: 1.58;
-  overflow-wrap: anywhere;
-}
-
-.arena-rulebook-copy p + p,
-.arena-rulebook-copy p + ul,
-.arena-rulebook-copy ul + p,
-.arena-rulebook-copy .arena-rulebook-table-wrap {
-  margin-top: 0.7rem;
-}
-
-.arena-rulebook-copy ul {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.4rem 0.85rem;
-  padding: 0;
-  list-style: none;
-}
-
-.arena-rulebook-copy li {
-  position: relative;
-  padding-left: 0.9rem;
-  color: var(--arena-silver);
-  font-size: 0.82rem;
-  line-height: 1.42;
-  overflow-wrap: anywhere;
-}
-
-.arena-rulebook-copy li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.58em;
-  height: 0.28rem;
-  width: 0.28rem;
-  border: 1px solid var(--arena-silver);
-  transform: rotate(45deg);
-}
-
-.arena-rules-button:hover {
-  border-color: rgba(244, 245, 247, 0.72);
-  background: rgba(20, 20, 21, 0.92);
-  transform: translateY(-1px);
-}
-
-.arena-rules-button:focus-visible,
-.arena-rules-close:focus-visible,
-.arena-rules-dialog:focus-visible {
+.tal-back:focus-visible,
+.tal-anchor:focus-visible,
+.tal-search input:focus-visible,
+.tal-search button:focus-visible,
+.tal-toc-nav a:focus-visible,
+.tal-mobilebar button:focus-visible,
+.tal-toc-panel-head button:focus-visible,
+.tal-empty button:focus-visible {
   outline: 2px solid var(--arena-white);
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
-.arena-rules-button svg,
-.arena-rules-close svg {
-  height: 1rem;
-  width: 1rem;
-  flex: 0 0 auto;
+.tal-version {
+  color: var(--arena-steel);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
 }
 
-.arena-rules-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 80;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background:
-    radial-gradient(circle at 50% 12%, rgba(244, 245, 247, 0.1), transparent 34%),
-    rgba(0, 0, 0, 0.82);
-  padding: 1rem;
-  backdrop-filter: blur(16px);
-}
-
-.arena-rules-dialog {
-  display: flex;
-  max-height: min(86vh, 54rem);
-  width: min(68rem, 100%);
-  flex-direction: column;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 26px 100px rgba(0, 0, 0, 0.66);
-}
-
-.arena-rules-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  border-bottom: 1px solid var(--arena-line);
-  padding: 1.1rem;
-}
-
-.arena-rules-kicker {
+.tal-kicker {
   display: block;
+  margin-top: 1.4rem;
   color: var(--arena-steel);
   font-size: 0.62rem;
   font-weight: 800;
@@ -677,307 +452,656 @@
   text-transform: uppercase;
 }
 
-.arena-rules-header h2 {
-  margin-top: 0.25rem;
-  color: var(--arena-white);
-  font-size: clamp(1.1rem, 3vw, 2rem);
-  font-weight: 900;
+.tal-hero h1 {
+  margin-top: 0.5rem;
+  font-size: clamp(1.5rem, 3.4vw, 2.6rem);
+  font-weight: 950;
   letter-spacing: 0;
-  line-height: 1;
+  line-height: 1.02;
   text-transform: uppercase;
 }
 
-.arena-rules-header p {
-  margin-top: 0.45rem;
+.tal-hero > p {
+  margin-top: 0.85rem;
+  max-width: 40rem;
+  color: var(--arena-silver);
+  font-size: clamp(0.86rem, 1.2vw, 0.98rem);
+  line-height: 1.6;
+}
+
+.tal-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  margin-top: 1.1rem;
+  border-top: 1px solid var(--arena-line);
+  padding-top: 0.8rem;
   color: var(--arena-steel);
-  font-size: 0.72rem;
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.tal-layout {
+  display: grid;
+  grid-template-columns: minmax(15rem, 18rem) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  max-width: 76rem;
+  margin: 0 auto;
+}
+
+/* --- Contents rail ------------------------------------------------- */
+
+.tal-toc {
+  position: sticky;
+  top: 1.25rem;
+  align-self: start;
+  display: flex;
+  max-height: calc(100vh - 2.5rem);
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.tal-search {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.tal-search > svg {
+  position: absolute;
+  left: 0.7rem;
+  top: 50%;
+  height: 0.85rem;
+  width: 0.85rem;
+  transform: translateY(-50%);
+  color: var(--arena-steel);
+  pointer-events: none;
+}
+
+.tal-search input {
+  width: 100%;
+  border: 1px solid var(--arena-line);
+  border-radius: 6px;
+  background: rgba(5, 5, 5, 0.7);
+  padding: 0.62rem 2.1rem 0.62rem 2.1rem;
+  color: var(--arena-white);
+  font-size: 0.8rem;
+  line-height: 1.2;
+  transition: border-color 160ms ease;
+}
+
+.tal-search input::placeholder {
+  color: var(--arena-steel);
+}
+
+.tal-search input:hover,
+.tal-search input:focus {
+  border-color: rgba(244, 245, 247, 0.4);
+}
+
+.tal-search input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.tal-search button {
+  position: absolute;
+  right: 0.35rem;
+  top: 50%;
+  display: inline-flex;
+  height: 1.6rem;
+  width: 1.6rem;
+  transform: translateY(-50%);
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: var(--arena-steel);
+  transition: color 160ms ease;
+}
+
+.tal-search button:hover {
+  color: var(--arena-white);
+}
+
+.tal-search-count {
+  color: var(--arena-steel);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.tal-toc-nav {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(244, 245, 247, 0.18) transparent;
+}
+
+.tal-toc-part {
+  padding: 0.75rem 0 0.2rem;
+}
+
+.tal-toc-part + .tal-toc-part {
+  border-top: 1px solid rgba(244, 245, 247, 0.07);
+}
+
+.tal-toc-part > a {
+  display: block;
+  padding: 0.2rem 0.5rem 0.45rem;
+  text-decoration: none;
+}
+
+.tal-toc-part > a span {
+  display: block;
+  color: var(--arena-steel);
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  transition: color 160ms ease;
+}
+
+.tal-toc-part > a strong {
+  display: block;
+  margin-top: 0.18rem;
+  color: var(--arena-silver);
+  font-size: 0.78rem;
+  font-weight: 850;
   line-height: 1.2;
   text-transform: uppercase;
+  transition: color 160ms ease;
 }
 
-.arena-rules-close {
-  display: inline-flex;
-  height: 2.25rem;
-  width: 2.25rem;
+.tal-toc-part > a:hover span,
+.tal-toc-part > a:hover strong,
+.tal-toc-part > a.is-active strong {
+  color: var(--arena-white);
+}
+
+.tal-toc-article {
+  display: flex;
+  gap: 0.55rem;
+  border-left: 1px solid var(--arena-line);
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  color: var(--arena-steel);
+  font-size: 0.76rem;
+  line-height: 1.3;
+  text-decoration: none;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.tal-toc-article span {
   flex: 0 0 auto;
+  font-size: 0.62rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
+.tal-toc-article:hover {
+  border-left-color: rgba(244, 245, 247, 0.45);
+  color: var(--arena-silver);
+}
+
+.tal-toc-article.is-active {
+  border-left-color: var(--arena-white);
+  background: rgba(244, 245, 247, 0.06);
+  color: var(--arena-white);
+}
+
+/* --- Document ------------------------------------------------------ */
+
+.tal-doc {
+  min-width: 0;
+  max-width: 46rem;
+}
+
+.tal-part {
+  padding-top: 2.6rem;
+}
+
+.tal-part:first-child {
+  padding-top: 0.4rem;
+}
+
+.tal-part-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 1.1rem;
+  border-bottom: 1px solid var(--arena-line);
+  padding-bottom: 0.85rem;
+}
+
+.tal-part-head span {
+  color: var(--arena-steel);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.tal-part-head h2 {
+  color: var(--arena-white);
+  font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.tal-article {
+  padding-top: 1.9rem;
+  scroll-margin-top: 4.75rem;
+}
+
+.tal-article + .tal-article {
+  margin-top: 1.9rem;
+  border-top: 1px solid rgba(244, 245, 247, 0.07);
+}
+
+.tal-article-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+}
+
+/* Engraved article number — the statute spine. */
+.tal-art-num {
+  flex: 0 0 3.4rem;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(244, 245, 247, 0.3);
+  font-size: 1.55rem;
+  font-weight: 950;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.tal-article-head h3 {
+  min-width: 0;
+  color: var(--arena-white);
+  font-size: clamp(0.98rem, 1.6vw, 1.15rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.tal-copied {
+  margin-left: auto;
+  color: var(--arena-steel);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.tal-anchor {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  margin-left: auto;
+  color: var(--arena-steel);
+  opacity: 0;
+  transition:
+    opacity 160ms ease,
+    color 160ms ease;
+}
+
+/* When the "Copied" chip is present it owns the auto margin. */
+.tal-copied + .tal-anchor {
+  margin-left: 0.6rem;
+}
+
+.tal-anchor svg {
+  height: 0.85rem;
+  width: 0.85rem;
+}
+
+.tal-article:hover .tal-anchor,
+.tal-anchor:focus-visible {
+  opacity: 1;
+}
+
+.tal-anchor:hover {
+  color: var(--arena-white);
+}
+
+/* Body hangs from the number gutter — the document's signature rhythm. */
+.tal-article-body {
+  margin-top: 0.75rem;
+  padding-left: 4.3rem;
+}
+
+.tal-article--solo .tal-article-body {
+  padding-left: 0;
+}
+
+.tal-article-body p {
+  color: rgba(244, 245, 247, 0.85);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.tal-article-body p + p,
+.tal-article-body p + ul,
+.tal-article-body ul + p,
+.tal-article-body .tal-table-wrap + p {
+  margin-top: 0.7rem;
+}
+
+.tal-article-body p strong {
+  color: var(--arena-white);
+  font-weight: 800;
+}
+
+.tal-article-body ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin: 0.85rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tal-article-body li {
+  position: relative;
+  padding-left: 1.05rem;
+  color: var(--arena-silver);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.tal-article-body li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  height: 0.3rem;
+  width: 0.3rem;
+  border: 1px solid var(--arena-silver);
+  transform: rotate(45deg);
+}
+
+.tal-deflist {
+  display: flex;
+  flex-direction: column;
+  margin: 0.9rem 0 0.4rem;
+}
+
+.tal-deflist-row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 11rem) minmax(0, 1fr);
+  gap: 0.25rem 1.4rem;
+  border-top: 1px solid rgba(244, 245, 247, 0.07);
+  padding: 0.55rem 0;
+}
+
+.tal-deflist-row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.tal-deflist dt {
+  color: var(--arena-white);
+  font-size: 0.84rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.tal-deflist dd {
+  margin: 0;
+  color: var(--arena-silver);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.tal-table-wrap {
+  margin: 1rem 0 0.4rem;
+  overflow-x: auto;
+  border: 1px solid var(--arena-line);
+  border-radius: 6px;
+}
+
+.tal-table-wrap table {
+  width: 100%;
+  min-width: 26rem;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+.tal-table-wrap th,
+.tal-table-wrap td {
+  border-bottom: 1px solid var(--arena-line);
+  padding: 0.7rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tal-table-wrap th {
+  background: rgba(244, 245, 247, 0.08);
+  color: var(--arena-white);
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.tal-table-wrap td {
+  color: var(--arena-silver);
+}
+
+.tal-table-wrap tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Disqualification severity is data — the deck's red, never decoration. */
+.tal-dsq {
+  color: var(--arena-red);
+}
+
+.tal-page mark {
+  background: rgba(244, 245, 247, 0.24);
+  color: var(--arena-white);
+  padding: 0 0.08em;
+  border-radius: 2px;
+}
+
+.tal-empty {
+  border: 1px solid var(--arena-line);
+  border-radius: 8px;
+  background: rgba(5, 5, 5, 0.7);
+  margin-top: 1rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.tal-empty p {
+  color: var(--arena-silver);
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.tal-empty strong {
+  color: var(--arena-white);
+}
+
+.tal-empty button {
+  margin-top: 1rem;
+  border: 1px solid rgba(244, 245, 247, 0.36);
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  color: var(--arena-white);
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.tal-empty button:hover {
+  border-color: rgba(244, 245, 247, 0.74);
+  background: rgba(244, 245, 247, 0.1);
+}
+
+/* --- Mobile contents ------------------------------------------------ */
+
+.tal-mobilebar {
+  display: none;
+}
+
+.tal-toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  background: rgba(0, 0, 0, 0.86);
+  padding: max(0.9rem, env(safe-area-inset-top)) 0.9rem 0.9rem;
+  backdrop-filter: blur(14px);
+}
+
+.tal-toc-panel {
+  display: flex;
+  width: min(30rem, 100%);
+  margin: 0 auto;
+  min-height: 0;
+  flex-direction: column;
+  gap: 0.7rem;
+  border: 1px solid var(--arena-line);
+  border-radius: 8px;
+  background: rgba(8, 8, 9, 0.96);
+  padding: 1rem;
+}
+
+.tal-toc-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tal-toc-panel-head strong {
+  color: var(--arena-white);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.tal-toc-panel-head button {
+  display: inline-flex;
+  height: 2.1rem;
+  width: 2.1rem;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--arena-line);
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.04);
   color: var(--arena-white);
   transition:
     background 160ms ease,
     border-color 160ms ease;
 }
 
-.arena-rules-close:hover {
+.tal-toc-panel-head button:hover {
   border-color: rgba(244, 245, 247, 0.58);
   background: rgba(255, 255, 255, 0.09);
 }
 
-.arena-rules-scroll {
-  overflow: auto;
-  padding: clamp(1rem, 2.2vw, 1.8rem);
+.tal-toc-panel .tal-toc-nav {
+  flex: 1 1 auto;
 }
 
-.arena-rulebook {
-  max-width: 52rem;
-  margin: 0 auto;
-  color: rgba(244, 245, 247, 0.9);
-  font-size: 0.92rem;
-  line-height: 1.7;
-}
+@media (max-width: 1023px) {
+  .tal-layout {
+    grid-template-columns: 1fr;
+  }
 
-.arena-rulebook h3,
-.arena-rulebook h4,
-.arena-rulebook h5,
-.arena-rulebook p,
-.arena-rulebook ul,
-.arena-rulebook table {
-  letter-spacing: 0;
-}
+  .tal-toc {
+    display: none;
+  }
 
-.arena-rulebook h3 {
-  margin: 2rem 0 0.85rem;
-  color: var(--arena-white);
-  font-size: clamp(1.35rem, 3vw, 2.35rem);
-  font-weight: 950;
-  line-height: 0.96;
-  text-transform: uppercase;
-}
+  .tal-mobilebar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0 calc(-1 * clamp(1rem, 3vw, 3rem));
+    border-bottom: 1px solid var(--arena-line);
+    background: rgba(5, 5, 5, 0.88);
+    padding: 0.55rem clamp(1rem, 3vw, 3rem);
+    backdrop-filter: blur(12px);
+  }
 
-.arena-rulebook h3:first-child {
-  margin-top: 0;
-}
+  .tal-mobilebar button {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.45rem;
+    border: 1px solid rgba(244, 245, 247, 0.32);
+    border-radius: 6px;
+    padding: 0.5rem 0.7rem;
+    color: var(--arena-white);
+    font-size: 0.62rem;
+    font-weight: 850;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
 
-.arena-rulebook h4 {
-  margin: 1.45rem 0 0.45rem;
-  color: var(--arena-white);
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  font-weight: 900;
-  line-height: 1.1;
-  text-transform: uppercase;
-}
+  .tal-mobilebar button svg {
+    height: 0.85rem;
+    width: 0.85rem;
+  }
 
-.arena-rulebook h5 {
-  margin: 0.35rem 0 1.2rem;
-  color: var(--arena-steel);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  line-height: 1.35;
-  text-transform: uppercase;
-}
+  .tal-mobilebar-pos {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--arena-steel);
+      font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
 
-.arena-rulebook p {
-  margin: 0.55rem 0;
-  color: rgba(244, 245, 247, 0.82);
-}
+  .tal-article {
+    scroll-margin-top: 4rem;
+  }
 
-.arena-rulebook p strong {
-  color: var(--arena-white);
-  font-weight: 850;
-}
+  .tal-article-body {
+    padding-left: 0;
+  }
 
-.arena-rulebook ul {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.45rem 1rem;
-  margin: 0.85rem 0 1.05rem;
-  padding: 0;
-  list-style: none;
-}
+  .tal-art-num {
+    flex-basis: auto;
+  }
 
-.arena-rulebook li {
-  position: relative;
-  padding-left: 1rem;
-  color: var(--arena-silver);
-  font-size: 0.86rem;
-  line-height: 1.45;
-}
-
-.arena-rulebook li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.62em;
-  height: 0.32rem;
-  width: 0.32rem;
-  border: 1px solid var(--arena-silver);
-  transform: rotate(45deg);
-}
-
-.arena-rulebook hr {
-  margin: 1.4rem 0;
-  border: 0;
-  border-top: 1px solid var(--arena-line);
-}
-
-.arena-rulebook-table-wrap {
-  margin: 1rem 0 1.25rem;
-  overflow-x: auto;
-  border: 1px solid var(--arena-line);
-  border-radius: 6px;
-}
-
-.arena-rulebook table,
-.arena-rulebook-copy table {
-  width: 100%;
-  min-width: 34rem;
-  border-collapse: collapse;
-  font-size: 0.84rem;
-}
-
-.arena-rulebook th,
-.arena-rulebook td,
-.arena-rulebook-copy th,
-.arena-rulebook-copy td {
-  border-bottom: 1px solid var(--arena-line);
-  padding: 0.75rem 0.85rem;
-  text-align: left;
-  vertical-align: top;
-}
-
-.arena-rulebook th,
-.arena-rulebook-copy th {
-  background: rgba(244, 245, 247, 0.08);
-  color: var(--arena-white);
-  font-size: 0.68rem;
-  font-weight: 900;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.arena-rulebook td,
-.arena-rulebook-copy td {
-  color: var(--arena-silver);
-}
-
-.arena-rulebook tr:last-child td,
-.arena-rulebook-copy tr:last-child td {
-  border-bottom: 0;
+  .tal-doc {
+    max-width: none;
+  }
 }
 
 @media (max-width: 640px) {
-  .arena-rules-button {
-    min-height: 2rem;
-    padding-inline: 0.55rem;
-    font-size: 0.52rem;
-    letter-spacing: 0.1em;
-  }
-
-  .arena-rules-overlay {
-    align-items: stretch;
-    padding: 0.7rem;
-  }
-
-  .arena-rules-dialog {
-    max-height: calc(100vh - 1.4rem);
-  }
-
-  .arena-rules-header {
-    padding: 0.9rem;
-  }
-
-  .arena-rules-scroll {
-    padding: 0.9rem;
-  }
-
-  .arena-rulebook {
-    font-size: 0.84rem;
-  }
-
-  .arena-rulebook ul {
+  .tal-deflist-row {
     grid-template-columns: 1fr;
-  }
-
-  .arena-rulebook h3 {
-    font-size: 1.35rem;
-  }
-
-  .arena-rulebook table,
-  .arena-rulebook-copy table {
-    min-width: 26rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .arena-rulebook-facts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .arena-rulebook-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .arena-rulebook-sidebar {
-    position: static;
-    max-height: none;
-  }
-
-  .arena-rulebook-sidebar nav {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-height: none;
-    overflow: visible;
-    padding-right: 0;
-  }
-
-  .arena-rulebook-reader {
-    grid-template-columns: 1fr;
-  }
-
-  .arena-rulebook-article-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-height: none;
-    overflow: visible;
-    padding-right: 0;
-  }
-}
-
-@media (max-width: 700px) {
-  .arena-rules-summary-grid,
-  .arena-rulebook-facts,
-  .arena-rulebook-sidebar nav,
-  .arena-rulebook-copy ul {
-    grid-template-columns: 1fr;
-  }
-
-  .arena-rules-summary-card {
-    min-height: 6.75rem;
-  }
-
-  .arena-rules-summary-card strong {
-    margin-top: 1.35rem;
-  }
-
-  .arena-rulebook-page {
-    padding-inline: 0.85rem;
-  }
-
-  .arena-rulebook-hero h1 {
-    font-size: clamp(1.15rem, 7vw, 1.75rem);
-  }
-
-  .arena-rulebook-section-header {
-    align-items: flex-start;
-  }
-
-  .arena-rulebook-section-header > strong {
-    font-size: 3rem;
-  }
-
-  .arena-rulebook-article-list,
-  .arena-rulebook-article-detail article {
-    padding: 0.85rem;
-  }
-
-  .arena-rulebook-article-list {
-    grid-template-columns: 1fr;
-    padding: 0;
+    gap: 0.15rem;
   }
 }

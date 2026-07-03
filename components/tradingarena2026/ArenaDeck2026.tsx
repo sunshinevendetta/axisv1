@@ -17,7 +17,7 @@ import Slide05Venue from "./Slide05Venue";
 import Slide06Options from "./Slide06Options";
 import Slide07System from "./Slide07System";
 import Slide08Close from "./Slide08Close";
-import RulesDialog from "./RulesDialog";
+import RulebookLink from "./RulebookLink";
 import "./arena2026.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -84,7 +84,7 @@ export default function ArenaDeck2026() {
         ))}
       </main>
 
-      <RulesDialog />
+      <RulebookLink />
       <TickerTape />
     </div>
   );
