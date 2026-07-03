@@ -133,3 +133,189 @@
   background: rgba(244, 245, 247, 0.9);
   color: #050505;
 }
+
+.arena-rules-button {
+  position: fixed;
+  top: max(1rem, env(safe-area-inset-top));
+  right: 1rem;
+  z-index: 50;
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid rgba(244, 245, 247, 0.32);
+  border-radius: 6px;
+  background: rgba(5, 5, 5, 0.78);
+  padding: 0 0.85rem;
+  color: var(--arena-white);
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(12px);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.arena-rules-button:hover {
+  border-color: rgba(244, 245, 247, 0.72);
+  background: rgba(20, 20, 21, 0.92);
+  transform: translateY(-1px);
+}
+
+.arena-rules-button:focus-visible,
+.arena-rules-close:focus-visible,
+.arena-rules-dialog:focus-visible {
+  outline: 2px solid var(--arena-white);
+  outline-offset: 3px;
+}
+
+.arena-rules-button svg,
+.arena-rules-close svg {
+  height: 1rem;
+  width: 1rem;
+  flex: 0 0 auto;
+}
+
+.arena-rules-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(244, 245, 247, 0.1), transparent 34%),
+    rgba(0, 0, 0, 0.82);
+  padding: 1rem;
+  backdrop-filter: blur(16px);
+}
+
+.arena-rules-dialog {
+  display: flex;
+  max-height: min(82vh, 52rem);
+  width: min(58rem, 100%);
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 26px 100px rgba(0, 0, 0, 0.66);
+}
+
+.arena-rules-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--arena-line);
+  padding: 1.1rem;
+}
+
+.arena-rules-kicker {
+  display: block;
+  color: var(--arena-steel);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.arena-rules-header h2 {
+  margin-top: 0.25rem;
+  color: var(--arena-white);
+  font-size: clamp(1.1rem, 3vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.arena-rules-close {
+  display: inline-flex;
+  height: 2.25rem;
+  width: 2.25rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--arena-line);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--arena-white);
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.arena-rules-close:hover {
+  border-color: rgba(244, 245, 247, 0.58);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.arena-rules-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  border-bottom: 1px solid var(--arena-line);
+  background: var(--arena-line);
+}
+
+.arena-rules-highlights p {
+  min-height: 4.25rem;
+  background: rgba(5, 5, 5, 0.72);
+  padding: 0.85rem;
+  color: var(--arena-silver);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.arena-rules-document {
+  overflow: auto;
+  padding: 1.1rem;
+  color: rgba(244, 245, 247, 0.9);
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 0.78rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 640px) {
+  .arena-rules-button {
+    min-height: 2.5rem;
+    padding-inline: 0.72rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+  }
+
+  .arena-rules-overlay {
+    align-items: stretch;
+    padding: 0.7rem;
+  }
+
+  .arena-rules-dialog {
+    max-height: calc(100vh - 1.4rem);
+  }
+
+  .arena-rules-header {
+    padding: 0.9rem;
+  }
+
+  .arena-rules-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .arena-rules-highlights p {
+    min-height: auto;
+    padding: 0.75rem 0.9rem;
+    font-size: 0.72rem;
+  }
+
+  .arena-rules-document {
+    padding: 0.9rem;
+    font-size: 0.72rem;
+  }
+}
