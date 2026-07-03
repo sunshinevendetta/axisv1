@@ -197,8 +197,8 @@
 
 .arena-rules-dialog {
   display: flex;
-  max-height: min(82vh, 52rem);
-  width: min(58rem, 100%);
+  max-height: min(86vh, 54rem);
+  width: min(68rem, 100%);
   flex-direction: column;
   overflow: hidden;
   border-radius: 8px;
@@ -234,6 +234,16 @@
   text-transform: uppercase;
 }
 
+.arena-rules-header p {
+  margin-top: 0.45rem;
+  color: var(--arena-steel);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
 .arena-rules-close {
   display: inline-flex;
   height: 2.25rem;
@@ -255,32 +265,141 @@
   background: rgba(255, 255, 255, 0.09);
 }
 
-.arena-rules-highlights {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
-  border-bottom: 1px solid var(--arena-line);
-  background: var(--arena-line);
+.arena-rules-scroll {
+  overflow: auto;
+  padding: clamp(1rem, 2.2vw, 1.8rem);
 }
 
-.arena-rules-highlights p {
-  min-height: 4.25rem;
-  background: rgba(5, 5, 5, 0.72);
-  padding: 0.85rem;
+.arena-rulebook {
+  max-width: 52rem;
+  margin: 0 auto;
+  color: rgba(244, 245, 247, 0.9);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.arena-rulebook h3,
+.arena-rulebook h4,
+.arena-rulebook h5,
+.arena-rulebook p,
+.arena-rulebook ul,
+.arena-rulebook table {
+  letter-spacing: 0;
+}
+
+.arena-rulebook h3 {
+  margin: 2rem 0 0.85rem;
+  color: var(--arena-white);
+  font-size: clamp(1.35rem, 3vw, 2.35rem);
+  font-weight: 950;
+  line-height: 0.96;
+  text-transform: uppercase;
+}
+
+.arena-rulebook h3:first-child {
+  margin-top: 0;
+}
+
+.arena-rulebook h4 {
+  margin: 1.45rem 0 0.45rem;
+  color: var(--arena-white);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.arena-rulebook h5 {
+  margin: 0.35rem 0 1.2rem;
+  color: var(--arena-steel);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.arena-rulebook p {
+  margin: 0.55rem 0;
+  color: rgba(244, 245, 247, 0.82);
+}
+
+.arena-rulebook p strong {
+  color: var(--arena-white);
+  font-weight: 850;
+}
+
+.arena-rulebook ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem 1rem;
+  margin: 0.85rem 0 1.05rem;
+  padding: 0;
+  list-style: none;
+}
+
+.arena-rulebook li {
+  position: relative;
+  padding-left: 1rem;
   color: var(--arena-silver);
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.86rem;
   line-height: 1.45;
 }
 
-.arena-rules-document {
-  overflow: auto;
-  padding: 1.1rem;
-  color: rgba(244, 245, 247, 0.9);
-  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
-  font-size: 0.78rem;
-  line-height: 1.65;
-  white-space: pre-wrap;
+.arena-rulebook li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  height: 0.32rem;
+  width: 0.32rem;
+  border: 1px solid var(--arena-silver);
+  transform: rotate(45deg);
+}
+
+.arena-rulebook hr {
+  margin: 1.4rem 0;
+  border: 0;
+  border-top: 1px solid var(--arena-line);
+}
+
+.arena-rulebook-table-wrap {
+  margin: 1rem 0 1.25rem;
+  overflow-x: auto;
+  border: 1px solid var(--arena-line);
+  border-radius: 6px;
+}
+
+.arena-rulebook table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+}
+
+.arena-rulebook th,
+.arena-rulebook td {
+  border-bottom: 1px solid var(--arena-line);
+  padding: 0.75rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.arena-rulebook th {
+  background: rgba(244, 245, 247, 0.08);
+  color: var(--arena-white);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.arena-rulebook td {
+  color: var(--arena-silver);
+}
+
+.arena-rulebook tr:last-child td {
+  border-bottom: 0;
 }
 
 @media (max-width: 640px) {
@@ -304,18 +423,23 @@
     padding: 0.9rem;
   }
 
-  .arena-rules-highlights {
+  .arena-rules-scroll {
+    padding: 0.9rem;
+  }
+
+  .arena-rulebook {
+    font-size: 0.84rem;
+  }
+
+  .arena-rulebook ul {
     grid-template-columns: 1fr;
   }
 
-  .arena-rules-highlights p {
-    min-height: auto;
-    padding: 0.75rem 0.9rem;
-    font-size: 0.72rem;
+  .arena-rulebook h3 {
+    font-size: 1.35rem;
   }
 
-  .arena-rules-document {
-    padding: 0.9rem;
-    font-size: 0.72rem;
+  .arena-rulebook table {
+    min-width: 30rem;
   }
 }
