@@ -293,9 +293,20 @@ function RuleBlock({ block }: { block: RulebookBlock }) {
 export default function RulebookPageContent() {
   const sections = useMemo(() => parseSections(TAL_RULEBOOK), []);
   const [activeSectionId, setActiveSectionId] = useState(sections[0]?.id ?? "");
+  const [activeArticleId, setActiveArticleId] = useState(
+    sections[0]?.articles[0]?.id ?? "",
+  );
   const activeSection =
     sections.find((section) => section.id === activeSectionId) ?? sections[0];
+  const activeArticle =
+    activeSection?.articles.find((article) => article.id === activeArticleId) ??
+    activeSection?.articles[0];
   const articleCount = sections.reduce((sum, section) => sum + section.articles.length, 0);
+
+  const selectSection = (section: RulebookSection) => {
+    setActiveSectionId(section.id);
+    setActiveArticleId(section.articles[0]?.id ?? "");
+  };
 
   return (
     <main className="arena2026 arena-rulebook-page">
@@ -341,7 +352,7 @@ export default function RulebookPageContent() {
                 key={section.id}
                 type="button"
                 className={section.id === activeSection?.id ? "is-active" : undefined}
-                onClick={() => setActiveSectionId(section.id)}
+                onClick={() => selectSection(section)}
               >
                 <span>{section.label}</span>
                 <strong>{section.title}</strong>
@@ -357,35 +368,54 @@ export default function RulebookPageContent() {
               <div>
                 <span>{activeSection.label}</span>
                 <h2>{activeSection.title}</h2>
+                <p>Select an article to read the regulation without leaving this section.</p>
               </div>
               <strong>{String(activeSection.articles.length).padStart(2, "0")}</strong>
             </div>
 
-            <div className="arena-rulebook-articles">
-              {activeSection.articles.map((article) => (
+            <div className="arena-rulebook-reader">
+              <div className="arena-rulebook-article-list" aria-label="Articles">
+                {activeSection.articles.map((article) => (
+                  <button
+                    key={article.id}
+                    type="button"
+                    className={article.id === activeArticle?.id ? "is-active" : undefined}
+                    onClick={() => setActiveArticleId(article.id)}
+                  >
+                    <span>
+                      {article.number ? `Article ${article.number}` : activeSection.label}
+                    </span>
+                    <strong>{article.title}</strong>
+                    <small>{preview(article)}</small>
+                  </button>
+                ))}
+              </div>
+
+              {activeArticle ? (
                 <SpotlightCard
-                  key={article.id}
-                  className="arena-rulebook-article"
+                  key={activeArticle.id}
+                  className="arena-rulebook-article-detail"
                   spotlightColor="rgba(244, 245, 247, 0.12)"
                 >
                   <article>
                     <header>
                       <span>
-                        {article.number ? `Article ${article.number}` : activeSection.label}
+                        {activeArticle.number
+                          ? `Article ${activeArticle.number}`
+                          : activeSection.label}
                       </span>
                       <FiChevronRight aria-hidden="true" />
-                      <h3>{article.title}</h3>
-                      <p>{preview(article)}</p>
+                      <h3>{activeArticle.title}</h3>
                     </header>
 
                     <div className="arena-rulebook-copy">
-                      {article.blocks.map((block) => (
+                      {activeArticle.blocks.map((block) => (
                         <RuleBlock key={block.id} block={block} />
                       ))}
                     </div>
                   </article>
                 </SpotlightCard>
-              ))}
+              ) : null}
             </div>
           </section>
         ) : null}
