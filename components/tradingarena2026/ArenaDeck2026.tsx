@@ -11,6 +11,7 @@ import TickerTape from "./TickerTape";
 import Slide01Hero from "./Slide01Hero";
 import Slide02Concept from "./Slide02Concept";
 import Slide03Categories from "./Slide03Categories";
+import Slide04RulesSummary from "./Slide04RulesSummary";
 import Slide04Agenda from "./Slide04Agenda";
 import Slide05Venue from "./Slide05Venue";
 import Slide06Options from "./Slide06Options";
@@ -25,6 +26,7 @@ const SLIDES = [
   Slide01Hero,
   Slide02Concept,
   Slide03Categories,
+  Slide04RulesSummary,
   Slide04Agenda,
   Slide05Venue,
   Slide06Options,

@@ -155,10 +155,391 @@
   letter-spacing: 0.18em;
   line-height: 1;
   text-transform: uppercase;
+  text-decoration: none;
   transition:
     background 160ms ease,
     border-color 160ms ease,
     transform 160ms ease;
+}
+
+.arena-rulebook-inline-link {
+  border: 1px solid rgba(244, 245, 247, 0.36);
+  border-radius: 6px;
+  background: rgba(244, 245, 247, 0.06);
+  padding: 0.85rem 1rem;
+  color: var(--arena-white);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.arena-rulebook-inline-link:hover {
+  border-color: rgba(244, 245, 247, 0.74);
+  background: rgba(244, 245, 247, 0.1);
+  transform: translateY(-1px);
+}
+
+.arena-rules-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.arena-rules-summary-card {
+  min-height: 8.5rem;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.arena-rules-summary-card span {
+  display: block;
+  color: var(--arena-steel);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+}
+
+.arena-rules-summary-card strong {
+  display: block;
+  margin-top: 2rem;
+  max-width: 12rem;
+  color: var(--arena-white);
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.arena-rulebook-page {
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 1.1rem clamp(1rem, 4vw, 4rem) 4rem;
+}
+
+.arena-rulebook-page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(244, 245, 247, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 245, 247, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 72% 8%, rgba(244, 245, 247, 0.12), transparent 34%),
+    var(--arena-black);
+  background-size: 44px 44px, 44px 44px, auto, auto;
+}
+
+.arena-rulebook-hero,
+.arena-rulebook-layout {
+  position: relative;
+  z-index: 1;
+}
+
+.arena-rulebook-hero {
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: 2rem 0 1.5rem;
+}
+
+.arena-rulebook-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid var(--arena-line);
+  border-radius: 6px;
+  background: rgba(5, 5, 5, 0.68);
+  padding: 0.7rem 0.85rem;
+  color: var(--arena-silver);
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.arena-rulebook-back:hover {
+  border-color: rgba(244, 245, 247, 0.5);
+  color: var(--arena-white);
+}
+
+.arena-rulebook-hero h1 {
+  margin-top: 2rem;
+  max-width: 62rem;
+  font-size: clamp(2.4rem, 7vw, 6.5rem);
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.arena-rulebook-hero > p {
+  margin-top: 1.25rem;
+  max-width: 44rem;
+  color: var(--arena-silver);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.arena-rulebook-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.arena-rulebook-fact.card-spotlight,
+.arena-rulebook-article.card-spotlight {
+  border-color: var(--arena-line);
+  border-radius: 8px;
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015)),
+    rgba(5, 5, 5, 0.72);
+}
+
+.arena-rulebook-fact.card-spotlight {
+  min-height: 6rem;
+  padding: 1rem;
+}
+
+.arena-rulebook-fact span,
+.arena-rulebook-index-card span,
+.arena-rulebook-sidebar nav button span,
+.arena-rulebook-section-header span,
+.arena-rulebook-article header span {
+  display: block;
+  color: var(--arena-steel);
+  font-size: 0.62rem;
+  font-weight: 850;
+  letter-spacing: 0.18em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.arena-rulebook-fact strong {
+  display: block;
+  margin-top: 1.2rem;
+  color: var(--arena-white);
+  font-size: 1rem;
+  font-weight: 950;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.arena-rulebook-layout {
+  display: grid;
+  grid-template-columns: minmax(15rem, 18rem) minmax(0, 1fr);
+  gap: 1rem;
+  max-width: 74rem;
+  margin: 0 auto;
+}
+
+.arena-rulebook-sidebar {
+  align-self: start;
+  position: sticky;
+  top: 1rem;
+  display: flex;
+  max-height: calc(100vh - 2rem);
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.arena-rulebook-index-card {
+  border: 1px solid var(--arena-line);
+  border-radius: 8px;
+  background: rgba(5, 5, 5, 0.76);
+  padding: 1rem;
+}
+
+.arena-rulebook-index-card strong {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--arena-white);
+  font-size: 2.6rem;
+  font-weight: 950;
+  line-height: 0.9;
+}
+
+.arena-rulebook-index-card small {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--arena-steel);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.arena-rulebook-sidebar nav {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: auto;
+  padding-right: 0.25rem;
+}
+
+.arena-rulebook-sidebar nav button {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: rgba(244, 245, 247, 0.035);
+  padding: 0.8rem;
+  text-align: left;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.arena-rulebook-sidebar nav button:hover,
+.arena-rulebook-sidebar nav button.is-active {
+  border-color: rgba(244, 245, 247, 0.3);
+  background: rgba(244, 245, 247, 0.08);
+}
+
+.arena-rulebook-sidebar nav button strong {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--arena-white);
+  font-size: 0.86rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+.arena-rulebook-sidebar nav button small {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--arena-steel);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.arena-rulebook-section {
+  min-width: 0;
+}
+
+.arena-rulebook-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--arena-line);
+  padding: 0.35rem 0 1rem;
+}
+
+.arena-rulebook-section-header h2 {
+  margin-top: 0.3rem;
+  color: var(--arena-white);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.arena-rulebook-section-header > strong {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(244, 245, 247, 0.32);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 950;
+  line-height: 0.8;
+}
+
+.arena-rulebook-articles {
+  display: grid;
+  gap: 0.85rem;
+  padding-top: 1rem;
+}
+
+.arena-rulebook-article.card-spotlight {
+  padding: 0;
+}
+
+.arena-rulebook-article article {
+  display: grid;
+  grid-template-columns: minmax(12rem, 18rem) minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.arena-rulebook-article header {
+  min-width: 0;
+}
+
+.arena-rulebook-article header svg {
+  margin-top: 0.8rem;
+  color: var(--arena-steel);
+}
+
+.arena-rulebook-article h3 {
+  margin-top: 0.65rem;
+  color: var(--arena-white);
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 1.02;
+  text-transform: uppercase;
+}
+
+.arena-rulebook-article header p {
+  margin-top: 0.75rem;
+  color: var(--arena-steel);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.arena-rulebook-copy {
+  min-width: 0;
+  border-left: 1px solid var(--arena-line);
+  padding-left: 1rem;
+}
+
+.arena-rulebook-copy p {
+  color: rgba(244, 245, 247, 0.82);
+  font-size: 0.88rem;
+  line-height: 1.62;
+}
+
+.arena-rulebook-copy p + p,
+.arena-rulebook-copy p + ul,
+.arena-rulebook-copy ul + p,
+.arena-rulebook-copy .arena-rulebook-table-wrap {
+  margin-top: 0.7rem;
+}
+
+.arena-rulebook-copy ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem 0.85rem;
+  padding: 0;
+  list-style: none;
+}
+
+.arena-rulebook-copy li {
+  position: relative;
+  padding-left: 0.9rem;
+  color: var(--arena-silver);
+  font-size: 0.82rem;
+  line-height: 1.42;
+}
+
+.arena-rulebook-copy li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.58em;
+  height: 0.28rem;
+  width: 0.28rem;
+  border: 1px solid var(--arena-silver);
+  transform: rotate(45deg);
 }
 
 .arena-rules-button:hover {
@@ -370,7 +751,8 @@
   border-radius: 6px;
 }
 
-.arena-rulebook table {
+.arena-rulebook table,
+.arena-rulebook-copy table {
   width: 100%;
   min-width: 34rem;
   border-collapse: collapse;
@@ -378,14 +760,17 @@
 }
 
 .arena-rulebook th,
-.arena-rulebook td {
+.arena-rulebook td,
+.arena-rulebook-copy th,
+.arena-rulebook-copy td {
   border-bottom: 1px solid var(--arena-line);
   padding: 0.75rem 0.85rem;
   text-align: left;
   vertical-align: top;
 }
 
-.arena-rulebook th {
+.arena-rulebook th,
+.arena-rulebook-copy th {
   background: rgba(244, 245, 247, 0.08);
   color: var(--arena-white);
   font-size: 0.68rem;
@@ -394,11 +779,13 @@
   text-transform: uppercase;
 }
 
-.arena-rulebook td {
+.arena-rulebook td,
+.arena-rulebook-copy td {
   color: var(--arena-silver);
 }
 
-.arena-rulebook tr:last-child td {
+.arena-rulebook tr:last-child td,
+.arena-rulebook-copy tr:last-child td {
   border-bottom: 0;
 }
 
@@ -439,7 +826,79 @@
     font-size: 1.35rem;
   }
 
-  .arena-rulebook table {
+  .arena-rulebook table,
+  .arena-rulebook-copy table {
     min-width: 30rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .arena-rulebook-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .arena-rulebook-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .arena-rulebook-sidebar {
+    position: static;
+    max-height: none;
+  }
+
+  .arena-rulebook-sidebar nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .arena-rulebook-article article {
+    grid-template-columns: 1fr;
+  }
+
+  .arena-rulebook-copy {
+    border-left: 0;
+    border-top: 1px solid var(--arena-line);
+    padding-left: 0;
+    padding-top: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .arena-rules-summary-grid,
+  .arena-rulebook-facts,
+  .arena-rulebook-sidebar nav,
+  .arena-rulebook-copy ul {
+    grid-template-columns: 1fr;
+  }
+
+  .arena-rules-summary-card {
+    min-height: 6.75rem;
+  }
+
+  .arena-rules-summary-card strong {
+    margin-top: 1.35rem;
+  }
+
+  .arena-rulebook-page {
+    padding-inline: 0.85rem;
+  }
+
+  .arena-rulebook-hero h1 {
+    font-size: clamp(2.15rem, 15vw, 4rem);
+  }
+
+  .arena-rulebook-section-header {
+    align-items: flex-start;
+  }
+
+  .arena-rulebook-section-header > strong {
+    font-size: 3rem;
+  }
+
+  .arena-rulebook-article article {
+    padding: 0.85rem;
   }
 }
