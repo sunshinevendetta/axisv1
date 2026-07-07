@@ -26,10 +26,10 @@ export default function LegalDisclosurePage() {
           Legal Disclosure
         </p>
         <h1 className="mt-5 text-4xl uppercase leading-none tracking-[0.02em] text-white sm:text-6xl">
-          {legalEntities.primary}
+          {legalEntities.brand}
         </h1>
         <p className="mt-6 max-w-2xl text-base leading-7 text-white/58 sm:text-lg sm:leading-8">
-          Entity disclosure and general disclaimer for AXIS, AXIS CORP, and AXIS SHOW LLC.
+          Entity disclosure, privacy notice, and general disclaimer for AXIS SHOW, operated by AXIS CORP.
         </p>
 
         <div className="mt-16 space-y-12">
