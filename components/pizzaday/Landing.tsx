@@ -343,7 +343,7 @@ export function Landing({
           }}
         >
           <p style={{ margin: "0 0 8px" }}>
-            Copyright {new Date().getFullYear()} {legalEntities.primary}. All rights reserved.
+            © {new Date().getFullYear()} {legalEntities.brand}. Operated by {legalEntities.operator}. All rights reserved.
           </p>
           {footerLegalLines.map((line) => (
             <p key={line} style={{ margin: "0 0 8px" }}>

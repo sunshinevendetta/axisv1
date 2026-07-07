@@ -1,4 +1,4 @@
-import { cookieStorage, createConfig, createStorage, http } from "wagmi";
+import { createConfig, http } from "wagmi";
 import { base } from "wagmi/chains";
 import { baseAccount, coinbaseWallet, injected, walletConnect } from "@/src/lib/wagmi-connectors";
 import { BASE_BUILDER_DATA_SUFFIX } from "@/src/lib/base-app";
@@ -40,7 +40,6 @@ export function getConfig() {
           ]
         : []),
     ],
-    storage: createStorage({ storage: cookieStorage }),
     ssr: true,
     transports: {
       [base.id]: http(),

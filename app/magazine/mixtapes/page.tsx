@@ -223,7 +223,7 @@ export default function MixtapesPage() {
             </Link>
             <div className="max-w-3xl space-y-2 text-left md:text-right">
               <p className="text-[7px] uppercase tracking-[0.32em] text-white/16">
-                Copyright {new Date().getFullYear()} {legalEntities.primary}. All rights reserved.
+                © {new Date().getFullYear()} {legalEntities.brand}. Operated by {legalEntities.operator}. All rights reserved.
               </p>
               {footerLegalLines.map((line) => (
                 <p key={line} className="text-[7px] uppercase leading-4 tracking-[0.2em] text-white/12">
