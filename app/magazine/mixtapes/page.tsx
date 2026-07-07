@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import PillNav from "@/components/PillNav";
 import { DEFAULT_HYDRA_CONTROLS, HYDRA_CONTROL_GROUPS } from "@/components/magazine/mixtapes/HydraBackground";
 import { magazineNavItems } from "@/src/lib/navigation";
+import { footerLegalLines, legalEntities } from "@/src/lib/legal-disclosure";
 import type { Mixtape } from "@/src/types/mixtape";
 import rawData from "@/content/mixtapes.json";
 import { useAllMetadata } from "@/components/magazine/mixtapes/hooks/useAllMetadata";
@@ -213,16 +214,29 @@ export default function MixtapesPage() {
 
         {/* Footer strip */}
         <div className="border-t border-white/[0.06] px-4 py-5 sm:px-6">
-          <div className="mx-auto flex max-w-7xl items-center justify-between">
+          <div className="mx-auto flex max-w-7xl flex-col gap-5 md:flex-row md:items-start md:justify-between">
             <Link
               href="/magazine"
               className="text-[8px] uppercase tracking-[0.36em] text-white/20 transition-colors hover:text-white/48"
             >
               ← Back to Magazine
             </Link>
-            <p className="text-[7px] uppercase tracking-[0.32em] text-white/12">
-              AXIS<span className="copy-mark">©</span> {new Date().getFullYear()} · AXIS Labs
-            </p>
+            <div className="max-w-3xl space-y-2 text-left md:text-right">
+              <p className="text-[7px] uppercase tracking-[0.32em] text-white/16">
+                Copyright {new Date().getFullYear()} {legalEntities.primary}. All rights reserved.
+              </p>
+              {footerLegalLines.map((line) => (
+                <p key={line} className="text-[7px] uppercase leading-4 tracking-[0.2em] text-white/12">
+                  {line}
+                </p>
+              ))}
+              <Link
+                href="/legal-disclosure"
+                className="inline-block text-[7px] uppercase tracking-[0.32em] text-white/20 transition-colors hover:text-white/48"
+              >
+                Legal Disclosure
+              </Link>
+            </div>
           </div>
         </div>
 

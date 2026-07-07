@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { footerLegalLines, legalEntities } from "@/src/lib/legal-disclosure";
 import { DATA, type FeedItem } from "./data";
 import { Brackets, Glitch, LiveTicker, Medal, Reticle, SectionHead } from "./Hud";
 
@@ -328,6 +329,31 @@ export function Landing({
             </div>
           </div>
         ))}
+        <div
+          style={{
+            gridColumn: "1 / -1",
+            borderTop: "1px solid var(--pdq-line)",
+            color: "var(--pdq-ink-4)",
+            fontFamily: "var(--pdq-mono)",
+            fontSize: 10,
+            lineHeight: 1.8,
+            marginTop: 20,
+            paddingTop: 24,
+            textTransform: "uppercase",
+          }}
+        >
+          <p style={{ margin: "0 0 8px" }}>
+            Copyright {new Date().getFullYear()} {legalEntities.primary}. All rights reserved.
+          </p>
+          {footerLegalLines.map((line) => (
+            <p key={line} style={{ margin: "0 0 8px" }}>
+              {line}
+            </p>
+          ))}
+          <a href="/legal-disclosure" style={{ color: "var(--pdq-ink-2)", textDecoration: "none" }}>
+            Legal Disclosure
+          </a>
+        </div>
       </footer>
     </div>
   );
