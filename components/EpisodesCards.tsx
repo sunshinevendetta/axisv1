@@ -162,7 +162,14 @@ export default function EpisodesCards(props: EpisodesCardsProps) {
     image: ep.image,
     title: ep.title,
     subtitle: ep.subtitle,
-    handle: ep.status === "locked" ? copy.episodes.lockedHandle : ep.status === "archived" ? copy.episodes.archivedHandle : "",
+    handle:
+      ep.status === "paused"
+        ? copy.episodes.pausedHandle
+        : ep.status === "locked"
+          ? copy.episodes.lockedHandle
+          : ep.status === "archived"
+            ? copy.episodes.archivedHandle
+            : "",
     borderColor: ep.status === "open" ? "#ffffff" : ep.status === "archived" ? "#777777" : "#333333",
     gradient:
       ep.status === "open"
@@ -177,7 +184,7 @@ export default function EpisodesCards(props: EpisodesCardsProps) {
 
   const handleCardClick = (index: number) => {
     const ep = episodes[index];
-    if (ep.status !== "locked") setOpenId(ep.id);
+    if (ep.status !== "locked" && ep.status !== "paused") setOpenId(ep.id);
   };
 
   if (openId !== null) {
@@ -258,6 +265,10 @@ export default function EpisodesCards(props: EpisodesCardsProps) {
               ) : ep.status === "archived" ? (
                 <p className="text-[10px] uppercase tracking-[0.3em] text-white/32">
                   {copy.episodes.archived}
+                </p>
+              ) : ep.status === "paused" ? (
+                <p className="text-[10px] uppercase tracking-[0.3em] text-white/32">
+                  {copy.episodes.paused}
                 </p>
               ) : (
                 <p className="text-[10px] uppercase tracking-[0.3em] text-white/32">

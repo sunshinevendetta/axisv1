@@ -1,7 +1,7 @@
 import rawEpisodeCatalog from "@/content/episodes.json";
 import type { EpisodeAsset } from "@/src/types/episode";
 
-export type EpisodeStatus = "open" | "locked" | "archived";
+export type EpisodeStatus = "open" | "paused" | "locked" | "archived";
 
 export type EpisodeMeta = {
   es?: string;

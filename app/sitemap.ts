@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const episodeRoutes: MetadataRoute.Sitemap = episodeCatalog.map((episode) => ({
     url: `${siteUrl}/arapp/collect/${episode.slug}`,
-    lastModified: new Date(episode.startsAt),
+    lastModified: episode.startsAt ? new Date(episode.startsAt) : new Date(),
     changeFrequency: "monthly",
     priority: 0.7,
   }));

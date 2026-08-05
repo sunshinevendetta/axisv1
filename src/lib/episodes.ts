@@ -58,6 +58,10 @@ function formatEpisodeDateLabel(isoDate: string) {
 }
 
 function formatEpisodeSubtitle(episode: EpisodeCatalogEntry) {
+  if (episode.status === "paused") {
+    return "TBA";
+  }
+
   if (episode.status === "locked") {
     return String(episode.year);
   }
@@ -66,7 +70,7 @@ function formatEpisodeSubtitle(episode: EpisodeCatalogEntry) {
     return "archive";
   }
 
-  return formatEpisodeDate(episode.startsAt);
+  return episode.startsAt ? formatEpisodeDate(episode.startsAt) : "TBA";
 }
 
 export function getEpisodeCatalog() {
@@ -80,7 +84,11 @@ export function getEpisodeBySlug(slug: string) {
 export function getUpcomingEpisodes(): EpisodeCatalogEntry[] {
   const now = Date.now();
   return episodeCatalog
-    .filter((ep) => new Date(ep.startsAt).getTime() > now)
+    .filter(
+      (ep) =>
+        ep.status === "open" &&
+        new Date(ep.startsAt).getTime() > now,
+    )
     .sort((a, b) => new Date(a.startsAt).getTime() - new Date(b.startsAt).getTime());
 }
 
@@ -108,7 +116,14 @@ export function toEpisodeCard(episode: EpisodeCatalogEntry): EpisodeCard {
     description: episode.description,
     startsAt: episode.startsAt,
     timezone: episode.timezone,
-    handle: episode.status === "locked" ? "locked" : episode.status === "archived" ? "archive" : "",
+    handle:
+      episode.status === "paused"
+        ? "paused"
+        : episode.status === "locked"
+          ? "locked"
+          : episode.status === "archived"
+            ? "archive"
+            : "",
     lumaEvent: episode.lumaEventId,
     lumaUrl: episode.lumaUrl,
     registryEventId: episode.registryEventId,
@@ -140,7 +155,14 @@ export function getEpisodeCardsFromCatalog(catalog: EpisodeCatalogEntry[]) {
 }
 
 export function buildEpisodeTraits(episode: EpisodeCatalogEntry): EpisodeTrait[] {
-  const dateValue = episode.status === "locked" ? String(episode.year) : formatEpisodeDateLabel(episode.startsAt);
+  const dateValue =
+    episode.status === "paused"
+      ? "TBA"
+      : episode.status === "locked"
+        ? String(episode.year)
+        : episode.startsAt
+          ? formatEpisodeDateLabel(episode.startsAt)
+          : "TBA";
 
   return [
     { trait_type: "Event", value: episode.title },
