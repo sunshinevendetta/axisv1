@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generatedAt": "2026-07-02T06:42:56.916Z",
+  "generatedAt": "2026-08-05T09:08:33.963Z",
   "site": {
     "primaryDomain": "axis.show",
     "canonicalDomain": "axis.show",
@@ -112,7 +112,7 @@
       },
       "actions": {
         "primary": {
-          "label": "Collect Episode",
+          "label": "View Episode",
           "type": "collect",
           "target": "/arapp/collect/episode-1"
         }
@@ -181,7 +181,7 @@
       },
       "actions": {
         "primary": {
-          "label": "Collect Episode",
+          "label": "View Episode",
           "type": "collect",
           "target": "/arapp/collect/episode-2"
         }
@@ -252,7 +252,7 @@
       },
       "actions": {
         "primary": {
-          "label": "Collect Episode",
+          "label": "View Episode",
           "type": "collect",
           "target": "/arapp/collect/episode-3"
         }
@@ -323,7 +323,7 @@
       },
       "actions": {
         "primary": {
-          "label": "Collect Episode",
+          "label": "View Episode",
           "type": "collect",
           "target": "/arapp/collect/episode-4"
         }
@@ -393,7 +393,7 @@
       },
       "actions": {
         "primary": {
-          "label": "Collect Episode",
+          "label": "View Episode",
           "type": "collect",
           "target": "/arapp/collect/episode-5"
         }
@@ -481,8 +481,8 @@
       "type": "episode",
       "slug": "episode-7",
       "title": "AXIS 7",
-      "summary": "AXIS Episode 7 lands at Bar Oriente on August 5. Full program details unlock closer to release.",
-      "description": "AXIS Episode 7 is scheduled for August 5, 2026 at Bar Oriente in Ciudad de Mexico. Full lineup, programming, and access details will unlock closer to the event release.",
+      "summary": "AXIS Episode 7: Future Renaissance arrives October 28—a one-night convergence of art, technology, music, and culture for AXIS Tech Week Mexico Edition.",
+      "description": "Future Renaissance is a one-night AXIS Tech Week Mexico Edition experience where art, technology, music, and culture converge inside a pop-up digital gallery that transforms in real time. The evening features interactive installations, AI image and video systems, Web3 activations, agentic-world experiences, projected artworks, digital collectibles, cocktails, exclusive access moments, international music artists, and a global livestream. The venue will be announced soon.",
       "surfaces": {
         "canonical": "/arapp/collect/episode-7",
         "web": [
@@ -493,23 +493,25 @@
         ]
       },
       "media": {
-        "cover": "/soon.jpg",
-        "image": "/soon.jpg",
+        "cover": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/lo/3fd9faae-033b-4770-b68f-0537c4fbcd45.png",
+        "image": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/lo/3fd9faae-033b-4770-b68f-0537c4fbcd45.png",
         "model": "/models/logo.glb"
       },
       "attributes": {
         "status": "open",
         "season": 1,
         "year": 2026,
-        "startsAt": "2026-08-05T20:00:00-06:00",
+        "startsAt": "2026-10-28T18:00:00-06:00",
         "timezone": "America/Mexico_City",
-        "venueName": "Bar Oriente",
-        "city": "Ciudad de Mexico",
+        "venueName": "To be announced",
+        "city": "Mexico City",
         "tags": [
           "music",
-          "visual art",
-          "CDMX",
-          "Bar Oriente"
+          "digital art",
+          "AI",
+          "Web3",
+          "AXIS Tech Week",
+          "CDMX"
         ],
         "music": [],
         "allies": []
@@ -534,8 +536,8 @@
       "type": "episode",
       "slug": "episode-8",
       "title": "AXIS 8",
-      "summary": "AXIS Episode 8 is scheduled for October 28. Full program details unlock closer to release.",
-      "description": "AXIS Episode 8 is scheduled for October 28, 2026. Full venue, lineup, programming, and access details will unlock closer to the event release.",
+      "summary": "AXIS Episode 8 is paused while its date is being confirmed.",
+      "description": "AXIS Episode 8 does not have a confirmed date yet. Venue, lineup, programming, and access details will be announced after the schedule is confirmed.",
       "surfaces": {
         "canonical": "/arapp/collect/episode-8",
         "web": [
@@ -551,10 +553,9 @@
         "model": "/models/logo.glb"
       },
       "attributes": {
-        "status": "open",
+        "status": "paused",
         "season": 1,
         "year": 2026,
-        "startsAt": "2026-10-28T20:00:00-06:00",
         "timezone": "America/Mexico_City",
         "venueName": "TBD",
         "city": "Mexico City",
@@ -564,7 +565,7 @@
       },
       "actions": {
         "primary": {
-          "label": "Collect Episode",
+          "label": "View Episode",
           "type": "collect",
           "target": "/arapp/collect/episode-8"
         }
@@ -582,8 +583,8 @@
       "type": "episode",
       "slug": "episode-9",
       "title": "AXIS 9",
-      "summary": "AXIS Episode 9 is scheduled for November 25. Full program details unlock closer to release.",
-      "description": "AXIS Episode 9 is scheduled for November 25, 2026. Full venue, lineup, programming, and access details will unlock closer to the event release.",
+      "summary": "AXIS Episode 9 is paused while its date is being confirmed.",
+      "description": "AXIS Episode 9 does not have a confirmed date yet. Venue, lineup, programming, and access details will be announced after the schedule is confirmed.",
       "surfaces": {
         "canonical": "/arapp/collect/episode-9",
         "web": [
@@ -599,10 +600,9 @@
         "model": "/models/logo.glb"
       },
       "attributes": {
-        "status": "open",
+        "status": "paused",
         "season": 1,
         "year": 2026,
-        "startsAt": "2026-11-25T20:00:00-06:00",
         "timezone": "America/Mexico_City",
         "venueName": "TBD",
         "city": "Mexico City",
@@ -612,7 +612,7 @@
       },
       "actions": {
         "primary": {
-          "label": "Collect Episode",
+          "label": "View Episode",
           "type": "collect",
           "target": "/arapp/collect/episode-9"
         }
@@ -630,8 +630,8 @@
       "type": "episode",
       "slug": "episode-10",
       "title": "AXIS 10",
-      "summary": "Tentative AXIS Episode 10 slot during Art Basel Miami Beach. Final details pending confirmation.",
-      "description": "AXIS Episode 10 is tentatively scheduled for December 4, 2026 during Art Basel Miami Beach. Final date, venue, lineup, programming, and access details are pending confirmation.",
+      "summary": "AXIS Episode 10 is paused while its date is being confirmed.",
+      "description": "AXIS Episode 10 does not have a confirmed date yet. Final date, venue, lineup, programming, and access details are pending confirmation.",
       "surfaces": {
         "canonical": "/arapp/collect/episode-10",
         "web": [
@@ -647,10 +647,9 @@
         "model": "/models/logo.glb"
       },
       "attributes": {
-        "status": "open",
+        "status": "paused",
         "season": 1,
         "year": 2026,
-        "startsAt": "2026-12-04T20:00:00-05:00",
         "timezone": "America/New_York",
         "venueName": "Art Basel Miami Beach",
         "city": "Miami Beach",
@@ -666,7 +665,7 @@
       },
       "actions": {
         "primary": {
-          "label": "Collect Episode",
+          "label": "View Episode",
           "type": "collect",
           "target": "/arapp/collect/episode-10"
         }
@@ -684,8 +683,8 @@
       "type": "episode",
       "slug": "episode-11",
       "title": "AXIS 11",
-      "summary": "Tentative AXIS Episode 11 slot during Art Basel Miami Beach. Final details pending confirmation.",
-      "description": "AXIS Episode 11 is tentatively scheduled for December 5, 2026 during Art Basel Miami Beach. Final date, venue, lineup, programming, and access details are pending confirmation.",
+      "summary": "AXIS Episode 11 is paused while its date is being confirmed.",
+      "description": "AXIS Episode 11 does not have a confirmed date yet. Final date, venue, lineup, programming, and access details are pending confirmation.",
       "surfaces": {
         "canonical": "/arapp/collect/episode-11",
         "web": [
@@ -701,10 +700,9 @@
         "model": "/models/logo.glb"
       },
       "attributes": {
-        "status": "open",
+        "status": "paused",
         "season": 1,
         "year": 2026,
-        "startsAt": "2026-12-05T20:00:00-05:00",
         "timezone": "America/New_York",
         "venueName": "Art Basel Miami Beach",
         "city": "Miami Beach",
@@ -720,7 +718,7 @@
       },
       "actions": {
         "primary": {
-          "label": "Collect Episode",
+          "label": "View Episode",
           "type": "collect",
           "target": "/arapp/collect/episode-11"
         }
@@ -738,8 +736,8 @@
       "type": "episode",
       "slug": "episode-12",
       "title": "AXIS 12",
-      "summary": "Tentative AXIS Episode 12 slot during Art Basel Miami Beach. Final details pending confirmation.",
-      "description": "AXIS Episode 12 is tentatively scheduled for December 6, 2026 during Art Basel Miami Beach. Final date, venue, lineup, programming, and access details are pending confirmation.",
+      "summary": "AXIS Episode 12 is paused while its date is being confirmed.",
+      "description": "AXIS Episode 12 does not have a confirmed date yet. Final date, venue, lineup, programming, and access details are pending confirmation.",
       "surfaces": {
         "canonical": "/arapp/collect/episode-12",
         "web": [
@@ -755,10 +753,9 @@
         "model": "/models/logo.glb"
       },
       "attributes": {
-        "status": "open",
+        "status": "paused",
         "season": 1,
         "year": 2026,
-        "startsAt": "2026-12-06T20:00:00-05:00",
         "timezone": "America/New_York",
         "venueName": "Art Basel Miami Beach",
         "city": "Miami Beach",
@@ -774,7 +771,7 @@
       },
       "actions": {
         "primary": {
-          "label": "Collect Episode",
+          "label": "View Episode",
           "type": "collect",
           "target": "/arapp/collect/episode-12"
         }

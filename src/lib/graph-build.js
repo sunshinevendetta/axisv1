@@ -116,7 +116,7 @@ function buildEpisodeNode(episode) {
       status: episode.status,
       season: episode.season,
       year: episode.year,
-      startsAt: episode.startsAt,
+      startsAt: episode.startsAt || undefined,
       timezone: episode.timezone,
       venueName: episode.venueName,
       city: episode.city,
@@ -125,7 +125,11 @@ function buildEpisodeNode(episode) {
       allies: episode.meta?.allies ?? [],
     },
     actions: {
-      primary: { label: "Collect Episode", type: "collect", target: canonical },
+      primary: {
+        label: episode.status === "open" ? "Collect Episode" : "View Episode",
+        type: "collect",
+        target: canonical,
+      },
     },
     relations: {
       membership: ["membership:axis"],
