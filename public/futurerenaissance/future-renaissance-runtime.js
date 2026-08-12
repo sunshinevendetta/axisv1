@@ -19,6 +19,83 @@
   var touchStartX = 0;
   var touchStartY = 0;
   var wheelLocked = false;
+  var artistModal = document.getElementById("artist-modal");
+  var artistModalPanel = artistModal && artistModal.querySelector(".artist-modal-panel");
+  var artistModalTimeline = null;
+  var activeArtistTrigger = null;
+
+  function modalIsOpen() {
+    return Boolean(artistModal && artistModal.classList.contains("is-open"));
+  }
+
+  function populateArtistModal(artist) {
+    document.getElementById("artist-modal-kind").textContent = artist.kind;
+    document.getElementById("artist-modal-name").textContent = artist.name;
+    document.getElementById("artist-modal-discipline").textContent = artist.discipline;
+    document.getElementById("artist-modal-bio").textContent = artist.bio;
+    document.getElementById("artist-modal-identity").textContent = artist.identity;
+    document.getElementById("artist-modal-link-label").textContent = artist.linkLabel + " · " + artist.handle;
+    document.getElementById("artist-modal-link").href = artist.href;
+  }
+
+  function openArtistModal(id, trigger) {
+    var artist = window.FUTURE_RENAISSANCE_ARTISTS && window.FUTURE_RENAISSANCE_ARTISTS[id];
+    if (!artistModal || !artistModalPanel || !artist) return;
+    populateArtistModal(artist);
+    activeArtistTrigger = trigger;
+    artistModal.setAttribute("aria-hidden", "false");
+    artistModal.classList.add("is-open");
+    document.body.classList.add("artist-modal-open");
+    artistModal.querySelector(".artist-modal-close").focus();
+    if (artistModalTimeline) artistModalTimeline.kill();
+    if (reducedMotion.matches) {
+      gsap.set([artistModal, artistModalPanel], { clearProps: "all" });
+      return;
+    }
+    artistModalTimeline = gsap.timeline();
+    artistModalTimeline
+      .fromTo(artistModal, { opacity: 0 }, { opacity: 1, duration: .28, ease: "power2.out" }, 0)
+      .fromTo(artistModalPanel, { opacity: 0, y: 32, scale: .975, filter: "blur(12px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: .62, ease: "power3.out" }, .04)
+      .fromTo(artistModal.querySelector(".artist-modal-medal img"), { opacity: 0, scale: .72, rotation: -3 }, { opacity: 1, scale: 1, rotation: 0, duration: .7, ease: "power3.out" }, .16)
+      .fromTo(artistModal.querySelectorAll(".artist-modal-copy > *"), { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .42, stagger: .055, ease: "power2.out" }, .2);
+  }
+
+  function closeArtistModal() {
+    if (!artistModal || !artistModalPanel || !modalIsOpen()) return;
+    if (artistModalTimeline) artistModalTimeline.kill();
+    function finish() {
+      artistModal.classList.remove("is-open");
+      artistModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("artist-modal-open");
+      var animatedModalElements = [artistModal, artistModalPanel, artistModal.querySelector(".artist-modal-medal img")]
+        .concat(Array.prototype.slice.call(artistModal.querySelectorAll(".artist-modal-copy > *")));
+      gsap.set(animatedModalElements, { clearProps: "all" });
+      if (activeArtistTrigger) activeArtistTrigger.focus();
+      activeArtistTrigger = null;
+    }
+    if (reducedMotion.matches) {
+      finish();
+      return;
+    }
+    artistModalTimeline = gsap.timeline({ onComplete: finish });
+    artistModalTimeline
+      .to(artistModalPanel, { opacity: 0, y: 22, scale: .985, duration: .24, ease: "power2.in" }, 0)
+      .to(artistModal, { opacity: 0, duration: .24, ease: "power2.in" }, .06);
+  }
+
+  function trapModalFocus(event) {
+    var focusable = Array.prototype.slice.call(artistModal.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])'));
+    if (!focusable.length) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
 
   function parentUrl() {
     try {
@@ -336,6 +413,24 @@
 
   buildLeaderboard();
   buildDots();
+  document.querySelectorAll("[data-artist-id]").forEach(function (button) {
+    button.addEventListener("click", function () { openArtistModal(button.dataset.artistId, button); });
+  });
+  if (artistModal) {
+    artistModal.querySelectorAll("[data-artist-modal-close]").forEach(function (button) {
+      button.addEventListener("click", closeArtistModal);
+    });
+    artistModal.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        closeArtistModal();
+      } else if (event.key === "Tab") {
+        event.stopPropagation();
+        trapModalFocus(event);
+      }
+    });
+  }
   allSlides.forEach(function (slide) { slide.classList.remove("is-active"); });
   if (slides[0]) slides[0].classList.add("is-active");
   updateChrome();
@@ -347,12 +442,24 @@
   prevButton.addEventListener("click", previous);
   nextButton.addEventListener("click", next);
   document.addEventListener("keydown", function (event) {
+    if (modalIsOpen()) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeArtistModal();
+      } else if (event.key === "Tab") {
+        trapModalFocus(event);
+      } else if (["ArrowRight", "ArrowLeft", "PageDown", "PageUp", " ", "Home", "End"].indexOf(event.key) !== -1) {
+        event.preventDefault();
+      }
+      return;
+    }
     if (["ArrowRight", "PageDown", " "].indexOf(event.key) !== -1) { event.preventDefault(); next(); }
     if (["ArrowLeft", "PageUp"].indexOf(event.key) !== -1) { event.preventDefault(); previous(); }
     if (event.key === "Home") go(0);
     if (event.key === "End") go(slides.length - 1);
   });
   viewport.addEventListener("wheel", function (event) {
+    if (modalIsOpen()) return;
     if (wheelLocked || Math.abs(event.deltaY) < 18) return;
     wheelLocked = true;
     event.deltaY > 0 ? next() : previous();
@@ -363,6 +470,7 @@
     touchStartY = event.touches[0].clientY;
   }, { passive: true });
   viewport.addEventListener("touchend", function (event) {
+    if (modalIsOpen()) return;
     var dx = event.changedTouches[0].clientX - touchStartX;
     var dy = event.changedTouches[0].clientY - touchStartY;
     if (Math.max(Math.abs(dx), Math.abs(dy)) < 44) return;
