@@ -64,8 +64,22 @@
     '</li>';
   }
 
+  function artistButton(id) {
+    var artist = window.FUTURE_RENAISSANCE_ARTISTS[id];
+    return '<button class="artist-button" type="button" data-artist-id="' + id + '" aria-haspopup="dialog">' +
+      '<span>' + artist.name + '</span><i aria-hidden="true">+</i>' +
+    '</button>';
+  }
+
+  function artistLineup(labelKey, label, ids) {
+    return '<div class="artist-lineup"><span class="lineup-label" data-i18n="' + labelKey + '">' + label + '</span>' +
+      '<div class="lineup-buttons">' + ids.map(artistButton).join("") + '</div></div>';
+  }
+
   var roles = ["ARTIST", "CREATOR", "AGENT", "PARTNER", "PRESS", "OPERATOR", "GUEST", "COLLECTOR"];
   var missions = ["CONNECT", "CHECK-IN", "CREATE", "INTERVENE", "VOTE", "COLLECT", "STREAM", "COMPLETE"];
+  var musicArtists = ["saturna", "isaac-olmos", "lulu", "malu-go"];
+  var digitalArtists = ["alexa-carlota", "arvakerm", "fabiola-larios", "jazmineci"];
 
   var slides = [
     '<section class="fr-slide fr-cover is-active" data-slide-id="cover" data-scene="cover" data-label="Cover">' +
@@ -110,7 +124,10 @@
         '<div class="event-node n7" data-i18n="program.livestream">LIVESTREAM</div>' +
         orbitalSvg("event-orbit") +
       '</div>' +
-      '<div class="lineup-rail" data-reveal><span data-i18n="event.musicCuration">MUSIC CURATION / RITMOS DE LA NOCHE</span><b>SATURNA</b><b>ISAAC OLMOS</b><b>LULÚ</b><b>MALU GO</b></div>' +
+      '<div class="artist-lineups" data-reveal>' +
+        artistLineup("event.musicCuration", "MUSIC CURATION / RITMOS DE LA NOCHE", musicArtists) +
+        artistLineup("event.digitalLineup", "DIGITAL ARTIST LINEUP", digitalArtists) +
+      '</div>' +
     '</section>',
 
     '<section class="fr-slide fr-audience" data-slide-id="audience" data-scene="badges" data-label="The audience">' +
@@ -256,6 +273,22 @@
     '</section>'
   ];
 
+  var artistModal = '<div class="artist-modal" id="artist-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="artist-modal-name" aria-describedby="artist-modal-bio">' +
+    '<div class="artist-modal-backdrop" data-artist-modal-close></div>' +
+    '<article class="artist-modal-panel" tabindex="-1">' +
+      '<button class="artist-modal-close" type="button" data-artist-modal-close aria-label="Close artist profile"><span aria-hidden="true">×</span></button>' +
+      '<div class="artist-modal-medal" aria-hidden="true"><img src="' + root + '/badges/roles/artist.svg" alt=""></div>' +
+      '<div class="artist-modal-copy">' +
+        '<span class="artist-modal-kind" id="artist-modal-kind">ARTIST</span>' +
+        '<h2 id="artist-modal-name">ARTIST</h2>' +
+        '<p class="artist-modal-discipline" id="artist-modal-discipline"></p>' +
+        '<p class="artist-modal-bio" id="artist-modal-bio"></p>' +
+        '<div class="artist-modal-meta"><span data-i18n="artist.identity">IDENTITY / INDEX</span><strong id="artist-modal-identity"></strong></div>' +
+        '<a class="artist-modal-link" id="artist-modal-link" href="#" target="_blank" rel="noopener noreferrer"><span id="artist-modal-link-label">VIEW ARTIST</span><i aria-hidden="true">↗</i></a>' +
+      '</div>' +
+    '</article>' +
+  '</div>';
+
   var stage = document.getElementById("stage");
-  if (stage) stage.innerHTML = slides.join("");
+  if (stage) stage.innerHTML = slides.join("") + artistModal;
 })();

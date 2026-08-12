@@ -289,6 +289,11 @@
     }
   };
 
+  TEXT.es["event.digitalLineup"] = "ARTISTAS DIGITALES";
+  TEXT.es["artist.identity"] = "IDENTIDAD / \u00cdNDICE";
+  TEXT.zh["event.digitalLineup"] = "\u6570\u5b57\u827a\u672f\u5bb6\u9635\u5bb9";
+  TEXT.zh["artist.identity"] = "\u8eab\u4efd / \u7d22\u5f15";
+
   function normalize(value) {
     var lang = String(value || "").toLowerCase();
     if (lang.indexOf("zh") === 0) return "zh";
