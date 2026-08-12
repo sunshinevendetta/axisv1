@@ -64,7 +64,7 @@ export default function FutureRenaissanceDeck() {
             width: "100%",
             height: "100%",
             border: "none",
-            background: "#000",
+            background: "#041B33",
           }}
         />
       </div>
@@ -81,7 +81,7 @@ export default function FutureRenaissanceDeck() {
             width: "100%",
             height: "100%",
             border: "none",
-            background: "#000",
+            background: "#041B33",
           }}
         />
       </div>

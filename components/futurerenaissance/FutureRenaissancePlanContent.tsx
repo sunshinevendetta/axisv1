@@ -7,13 +7,13 @@ const EVENT_JSON_LD = {
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   maximumAttendeeCapacity: 120,
   description:
-    "Future Renaissance is an AXIS event at Owl Condesa combining music, digital art, beer and canapés, partner activations, content capture, and post-event reporting.",
+    "Future Renaissance is an AXIS Tech Week Mexico Edition flagship event combining art, music, technology, culture, hospitality, missions, and live media.",
   location: {
     "@type": "Place",
     name: "Owl Condesa",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Ciudad de México",
+      addressLocality: "Mexico City",
       addressCountry: "MX",
     },
   },
@@ -28,17 +28,7 @@ const EVENT_JSON_LD = {
     name: "AXIS",
     url: "https://axis.show",
   },
-  sponsor: {
-    "@type": "Organization",
-    name: "PARTNER BRAND",
-  },
-  image: "https://axis.show/futurerenaissance/og.png",
-  offers: {
-    "@type": "Offer",
-    price: "2500",
-    priceCurrency: "USD",
-    url: "https://axis.show/futurerenaissance",
-  },
+  image: "https://axis.show/futurerenaissance/poster-horizontal.png",
 };
 
 export default function FutureRenaissancePlanContent() {
@@ -65,40 +55,58 @@ export default function FutureRenaissancePlanContent() {
 
       <article
         className="future-a11y-content"
-        aria-label="Future Renaissance partner proposal"
+        aria-label="Future Renaissance sponsor presentation"
       >
         <header>
-          <p>AXIS · Ciudad de México</p>
+          <p>AXIS · Tech Week Mexico Edition</p>
           <h1>Future Renaissance</h1>
-          <p>October 28, 2026 · Owl Condesa · Capacity: 120 pax</p>
-          <p>Partner placeholder: PARTNER BRAND · Investment: 2.5K USD</p>
+          <p>October 28, 2026 · Owl Condesa · Mexico City</p>
         </header>
 
-        <section aria-labelledby="future-concept">
-          <h2 id="future-concept">The concept</h2>
-          <p>Unexpected experiences in unusual places.</p>
+        <section aria-labelledby="future-event">
+          <h2 id="future-event">The event</h2>
           <p>
-            AXIS combines a live event, art, music, partner onboarding, measurable
-            reward mechanics, media capture, and cultural documentation in one
-            night at Owl Condesa.
+            Future Renaissance is an AXIS Tech Week Mexico Edition flagship event
+            in Mexico City in October 2026. The event is designed for 120 attendees.
+          </p>
+          <p>
+            The program brings together art, music, technology, culture,
+            hospitality, missions, livestreaming, and media documentation.
           </p>
         </section>
 
-        <section aria-labelledby="future-hospitality">
-          <h2 id="future-hospitality">Guest hospitality</h2>
+        <section aria-labelledby="future-sponsor-system">
+          <h2 id="future-sponsor-system">Sponsor activation system</h2>
           <p>
-            The guest experience includes beer and canapés for up to 120 attendees.
-            Partner actions, redemptions, media, and attendance are documented in
-            the post-event report.
+            The sponsor system is designed around one required sponsor action per
+            attendee: 120 attendees and 120 required [brand] actions.
+          </p>
+          <p>
+            Event Partner investment is $2,500 USD for a complete 120-person
+            activation including mission design, rewards, validation, staff
+            execution, product integration, media capture, live measurement, and
+            post-event reporting.
           </p>
         </section>
 
-        <section aria-labelledby="future-deliverables">
-          <h2 id="future-deliverables">Included deliverables</h2>
+        <section aria-labelledby="future-presenting-product">
+          <h2 id="future-presenting-product">Exclusive Presenting Product</h2>
           <p>
-            Music programming, digital art, projection mapping, LED integration,
-            staff-guided activation, photography, video, an aftermovie, testimonial
-            capture, social content, redemption tracking, and a written report.
+            The single Exclusive Presenting Product position is $3,500 USD. It
+            includes everything in Event Partner plus a signature product
+            experience, category exclusivity, priority integration, dedicated
+            product media, 30-day continuation, one additional smaller AXIS
+            activation, and extended performance reporting.
+          </p>
+        </section>
+
+        <section aria-labelledby="future-measurement">
+          <h2 id="future-measurement">Measurement and proof</h2>
+          <p>
+            AXIS reports attendance, mission completion rate, qualified actions,
+            stage conversion, and reward redemption. CPQA, CPA, CAC, ROI, LTV:CAC,
+            and NPV are calculated after the event from verified results when
+            sponsor-side economic data supports them.
           </p>
         </section>
       </article>
