@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "Bingo";
+  src: url("/fonts/BINGO.woff2") format("woff2"), url("/fonts/BINGO.TTF") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bingo";
+  src: url("/fonts/BINGO-ITALIC.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --midnight: #041B33;
   --cobalt: #0E3B68;
@@ -8,8 +24,8 @@
   --line: rgba(241, 226, 200, 0.22);
   --line-strong: rgba(212, 170, 103, 0.62);
   --display: "Bodoni 72", Didot, "GFS Didot", Georgia, serif;
-  --mono: "Connect Mono Flat", "Noto Sans Mono", Consolas, monospace;
-  --sans: Inter, "Helvetica Neue", Arial, sans-serif;
+  --mono: "Bingo", sans-serif;
+  --sans: "Bingo", sans-serif;
   --stage-w: 1920px;
   --stage-h: 1080px;
 }
