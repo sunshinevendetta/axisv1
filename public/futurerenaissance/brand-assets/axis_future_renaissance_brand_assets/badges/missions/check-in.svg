@@ -1,0 +1,17 @@
+
+  <svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="bg" cx="50%" cy="36%" r="78%">
+        <stop offset="0%" stop-color="#123F70"/>
+        <stop offset="100%" stop-color="#041B33"/>
+      </radialGradient>
+      <filter id="soft"><feGaussianBlur stdDeviation="1.2"/></filter>
+    </defs>
+    <circle cx="512" cy="512" r="476" fill="url(#bg)" stroke="#D4AA67" stroke-width="22"/>
+    <circle cx="512" cy="512" r="420" fill="none" stroke="#D4AA67" stroke-opacity="0.45" stroke-width="3" stroke-dasharray="4 18"/>
+    <circle cx="512" cy="375" r="176" fill="#D4AA67" fill-opacity="0.10" stroke="#D4AA67" stroke-width="5"/>
+    <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" fill="#F1E2C8" transform="translate(398 223) scale(0.59375)"/>
+    <polygon points="512,615 514.3334523779156,627.6665476220844 527,630 514.3334523779156,632.3334523779156 512,645 509.6665476220844,632.3334523779156 497,630 509.6665476220844,627.6665476220844" fill="#D4AA67"/>
+    <text x="512" y="742" text-anchor="middle" fill="#F1E2C8" font-family="Noto Sans Mono" font-size="62" font-weight="600" letter-spacing="7">CHECK-IN</text>
+    <text x="512" y="820" text-anchor="middle" fill="#D4AA67" font-family="Inter" font-size="28" letter-spacing="5">AXIS</text>
+  </svg>

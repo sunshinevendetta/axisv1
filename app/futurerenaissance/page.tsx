@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import FutureRenaissanceDeck from "@/components/futurerenaissance/FutureRenaissanceDeck";
 import FutureRenaissancePlanContent from "@/components/futurerenaissance/FutureRenaissancePlanContent";
 
-const title = "Future Renaissance · AXIS Proposal";
+const title = "Future Renaissance · AXIS Sponsor Presentation";
 const description =
-  "Future Renaissance at Owl Condesa on October 28, 2026: a 120-person AXIS event proposal with music, digital art, beer and canapés, measurable partner activations, and post-event media.";
+  "Private AXIS sponsor presentation for Future Renaissance at Owl Condesa in Mexico City on October 28, 2026.";
 
 export const metadata: Metadata = {
   title,
@@ -18,6 +18,17 @@ export const metadata: Metadata = {
     "partner proposal",
   ],
   alternates: { canonical: "/futurerenaissance" },
+  robots: {
+    index: false,
+    follow: false,
+    noarchive: true,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
   openGraph: {
     title,
     description,
@@ -26,10 +37,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://axis.show/futurerenaissance/og.png",
-        width: 1728,
-        height: 912,
-        alt: "Future Renaissance at Owl Condesa, October 28, 2026, 120 pax",
+        url: "https://axis.show/futurerenaissance/poster-horizontal.png",
+        width: 1396,
+        height: 1125,
+        alt: "Official Future Renaissance campaign poster",
       },
     ],
   },
@@ -37,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["https://axis.show/futurerenaissance/og.png"],
+    images: ["https://axis.show/futurerenaissance/poster-horizontal.png"],
   },
 };
 
