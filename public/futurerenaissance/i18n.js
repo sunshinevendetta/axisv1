@@ -347,7 +347,7 @@
   }
 
   var style = document.createElement("style");
-  style.textContent = "#fr-language{position:fixed;z-index:110;top:12px;right:12px;display:flex;padding:3px;border:1px solid rgba(241,226,200,.25);background:rgba(4,27,51,.78);backdrop-filter:blur(10px)}#fr-language button{height:28px;min-width:35px;padding:0 8px;border:0;background:transparent;color:#7F9676;font:600 10px/1 Consolas,monospace;cursor:pointer}#fr-language button[aria-pressed=true]{background:#D4AA67;color:#041B33}";
+  style.textContent = "#fr-language{position:fixed;z-index:110;top:12px;right:12px;display:flex;padding:3px;border:1px solid rgba(241,226,200,.25);background:rgba(4,27,51,.78);backdrop-filter:blur(10px)}#fr-language button{height:28px;min-width:35px;padding:0 8px;border:0;background:transparent;color:#7F9676;font:600 10px/1 Bingo,sans-serif;cursor:pointer}#fr-language button[aria-pressed=true]{background:#D4AA67;color:#041B33}";
   document.head.appendChild(style);
   injectControl();
   translate(parentLanguage() || normalize(document.documentElement.lang) || "en");
