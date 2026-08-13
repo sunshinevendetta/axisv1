@@ -23,9 +23,16 @@
   var artistModalPanel = artistModal && artistModal.querySelector(".artist-modal-panel");
   var artistModalTimeline = null;
   var activeArtistTrigger = null;
+  var conceptModal = document.getElementById("concept-modal");
+  var conceptModalPanel = conceptModal && conceptModal.querySelector(".concept-modal-panel");
+  var conceptModalTimeline = null;
+  var activeConceptTrigger = null;
 
   function modalIsOpen() {
-    return Boolean(artistModal && artistModal.classList.contains("is-open"));
+    return Boolean(
+      (artistModal && artistModal.classList.contains("is-open")) ||
+      (conceptModal && conceptModal.classList.contains("is-open"))
+    );
   }
 
   function populateArtistModal(artist) {
@@ -61,7 +68,7 @@
   }
 
   function closeArtistModal() {
-    if (!artistModal || !artistModalPanel || !modalIsOpen()) return;
+    if (!artistModal || !artistModalPanel || !artistModal.classList.contains("is-open")) return;
     if (artistModalTimeline) artistModalTimeline.kill();
     function finish() {
       artistModal.classList.remove("is-open");
@@ -83,8 +90,8 @@
       .to(artistModal, { opacity: 0, duration: .24, ease: "power2.in" }, .06);
   }
 
-  function trapModalFocus(event) {
-    var focusable = Array.prototype.slice.call(artistModal.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])'));
+  function trapModalFocus(modal, event) {
+    var focusable = Array.prototype.slice.call(modal.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])'));
     if (!focusable.length) return;
     var first = focusable[0];
     var last = focusable[focusable.length - 1];
@@ -95,6 +102,66 @@
       event.preventDefault();
       first.focus();
     }
+  }
+
+  function populateConceptModal(concept) {
+    document.getElementById("concept-modal-code").textContent = concept.code;
+    document.getElementById("concept-modal-title").textContent = concept.title;
+    document.getElementById("concept-modal-summary").textContent = concept.summary;
+    document.getElementById("concept-modal-index").textContent = concept.code.split("/")[0].trim();
+    var list = document.getElementById("concept-modal-details");
+    list.innerHTML = "";
+    concept.details.forEach(function (detail, index) {
+      var item = document.createElement("li");
+      item.dataset.index = String(index + 1).padStart(2, "0");
+      item.textContent = detail;
+      list.appendChild(item);
+    });
+  }
+
+  function openConceptModal(id, trigger) {
+    var concept = window.FUTURE_RENAISSANCE_CONCEPTS && window.FUTURE_RENAISSANCE_CONCEPTS[id];
+    if (!conceptModal || !conceptModalPanel || !concept) return;
+    populateConceptModal(concept);
+    activeConceptTrigger = trigger;
+    conceptModal.setAttribute("aria-hidden", "false");
+    conceptModal.classList.add("is-open");
+    document.body.classList.add("concept-modal-open");
+    conceptModal.querySelector(".concept-modal-close").focus();
+    if (conceptModalTimeline) conceptModalTimeline.kill();
+    if (reducedMotion.matches) {
+      gsap.set([conceptModal, conceptModalPanel], { clearProps: "all" });
+      return;
+    }
+    conceptModalTimeline = gsap.timeline();
+    conceptModalTimeline
+      .fromTo(conceptModal, { autoAlpha: 0 }, { autoAlpha: 1, duration: .26, ease: "power2.out" }, 0)
+      .fromTo(conceptModalPanel, { autoAlpha: 0, y: 34, scale: .97, filter: "blur(14px)" }, { autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", duration: .62, ease: "power3.out" }, .03)
+      .fromTo(conceptModal.querySelector(".concept-modal-orbit"), { autoAlpha: 0, scale: .78, rotation: -3 }, { autoAlpha: 1, scale: 1, rotation: 0, duration: .68, ease: "power3.out" }, .14)
+      .fromTo(conceptModal.querySelectorAll(".concept-modal-copy > *"), { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: .4, stagger: .05, ease: "power2.out" }, .2);
+  }
+
+  function closeConceptModal() {
+    if (!conceptModal || !conceptModalPanel || !conceptModal.classList.contains("is-open")) return;
+    if (conceptModalTimeline) conceptModalTimeline.kill();
+    function finish() {
+      conceptModal.classList.remove("is-open");
+      conceptModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("concept-modal-open");
+      var animated = [conceptModal, conceptModalPanel, conceptModal.querySelector(".concept-modal-orbit")]
+        .concat(Array.prototype.slice.call(conceptModal.querySelectorAll(".concept-modal-copy > *")));
+      gsap.set(animated, { clearProps: "all" });
+      if (activeConceptTrigger) activeConceptTrigger.focus();
+      activeConceptTrigger = null;
+    }
+    if (reducedMotion.matches) {
+      finish();
+      return;
+    }
+    conceptModalTimeline = gsap.timeline({ onComplete: finish });
+    conceptModalTimeline
+      .to(conceptModalPanel, { autoAlpha: 0, y: 24, scale: .985, duration: .23, ease: "power2.in" }, 0)
+      .to(conceptModal, { autoAlpha: 0, duration: .23, ease: "power2.in" }, .05);
   }
 
   function parentUrl() {
@@ -275,7 +342,7 @@
 
   function animateProductFunction(slide) {
     var tl = animateOrbitSystem(slide);
-    if (!reducedMotion.matches) tl.fromTo(slide.querySelectorAll(".function-word"), { opacity: 0, scale: .65 }, { opacity: 1, scale: 1, duration: .45, stagger: .055, ease: "power3.out" }, .5);
+    if (!reducedMotion.matches) tl.fromTo(slide.querySelectorAll(".function-planet"), { opacity: 0, scale: .65 }, { opacity: 1, scale: 1, duration: .45, stagger: .075, ease: "power3.out" }, .5);
     return tl;
   }
 
@@ -349,6 +416,15 @@
     return tl;
   }
 
+  function animateStructured(slide) {
+    var tl = revealBase(slide);
+    if (reducedMotion.matches) return tl;
+    var targets = slide.querySelectorAll(".format-group, .format-item, .system-cycle-node, .phase-card, .component-row, .component-call, .reward-step, .deliverable-item, .budget-cell, .budget-explain, .offer-item");
+    tl.fromTo(targets, { autoAlpha: 0, y: 18, scale: .975 }, { autoAlpha: 1, y: 0, scale: 1, duration: .38, stagger: .025, ease: "power2.out" }, .2);
+    addOrbitLoops(slide);
+    return tl;
+  }
+
   var scenes = {
     cover: animateCover,
     "orbit-system": animateOrbitSystem,
@@ -364,6 +440,7 @@
     "signature-product": animateSignatureProduct,
     continuation: animateContinuation,
     closing: animateClosing,
+    structured: animateStructured,
   };
 
   function enterSlide(slide) {
@@ -416,6 +493,9 @@
   document.querySelectorAll("[data-artist-id]").forEach(function (button) {
     button.addEventListener("click", function () { openArtistModal(button.dataset.artistId, button); });
   });
+  document.querySelectorAll("[data-concept-id]").forEach(function (button) {
+    button.addEventListener("click", function () { openConceptModal(button.dataset.conceptId, button); });
+  });
   if (artistModal) {
     artistModal.querySelectorAll("[data-artist-modal-close]").forEach(function (button) {
       button.addEventListener("click", closeArtistModal);
@@ -427,7 +507,22 @@
         closeArtistModal();
       } else if (event.key === "Tab") {
         event.stopPropagation();
-        trapModalFocus(event);
+        trapModalFocus(artistModal, event);
+      }
+    });
+  }
+  if (conceptModal) {
+    conceptModal.querySelectorAll("[data-concept-modal-close]").forEach(function (button) {
+      button.addEventListener("click", closeConceptModal);
+    });
+    conceptModal.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        closeConceptModal();
+      } else if (event.key === "Tab") {
+        event.stopPropagation();
+        trapModalFocus(conceptModal, event);
       }
     });
   }
@@ -445,9 +540,11 @@
     if (modalIsOpen()) {
       if (event.key === "Escape") {
         event.preventDefault();
-        closeArtistModal();
+        if (conceptModal && conceptModal.classList.contains("is-open")) closeConceptModal();
+        else closeArtistModal();
       } else if (event.key === "Tab") {
-        trapModalFocus(event);
+        if (conceptModal && conceptModal.classList.contains("is-open")) trapModalFocus(conceptModal, event);
+        else trapModalFocus(artistModal, event);
       } else if (["ArrowRight", "ArrowLeft", "PageDown", "PageUp", " ", "Home", "End"].indexOf(event.key) !== -1) {
         event.preventDefault();
       }

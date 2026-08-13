@@ -25,7 +25,9 @@ export function Providers({
   const [queryClient] = useState(() => new QueryClient());
   const [config, setConfig] = useState<Config | null>(null);
   const pathname = usePathname();
-  const showLanguageSwitch = !pathname?.startsWith("/okx");
+  const isFutureRenaissance = pathname?.startsWith("/futurerenaissance") ?? false;
+  const showLanguageSwitch =
+    !pathname?.startsWith("/okx") && !isFutureRenaissance;
 
   useEffect(() => {
     let mounted = true;
@@ -46,7 +48,7 @@ export function Providers({
   return (
     <WagmiProvider config={config ?? safeConfig}>
       <QueryClientProvider client={queryClient}>
-        <SiteLanguageProvider>
+        <SiteLanguageProvider restoreStoredLanguage={!isFutureRenaissance}>
           {children}
           {showLanguageSwitch ? <LanguageSwitch /> : null}
         </SiteLanguageProvider>
