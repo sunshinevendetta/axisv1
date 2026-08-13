@@ -6,6 +6,7 @@ import { createContext, useContext, useEffect, useMemo, useState, type ReactNode
 export type SiteLanguage = "zh" | "zh-Hant" | "en" | "es";
 
 const STORAGE_KEY = "axis:site-language";
+const DEFAULT_LANGUAGE: SiteLanguage = "en";
 
 const SiteLanguageContext = createContext<{
   language: SiteLanguage;
@@ -21,16 +22,22 @@ function readStoredLanguage(fallback: SiteLanguage): SiteLanguage {
   return normalizeLanguage(window.localStorage.getItem(STORAGE_KEY), fallback);
 }
 
-export function SiteLanguageProvider({ children }: { children: ReactNode }) {
-  const defaultLanguage: SiteLanguage = "en";
-  const [language, setLanguageState] = useState<SiteLanguage>("en");
+export function SiteLanguageProvider({
+  children,
+  restoreStoredLanguage = true,
+}: {
+  children: ReactNode;
+  restoreStoredLanguage?: boolean;
+}) {
+  const [language, setLanguageState] = useState<SiteLanguage>(DEFAULT_LANGUAGE);
 
   useEffect(() => {
-    const stored = readStoredLanguage(defaultLanguage);
-    const next = stored;
+    const next = restoreStoredLanguage
+      ? readStoredLanguage(DEFAULT_LANGUAGE)
+      : DEFAULT_LANGUAGE;
     setLanguageState(next);
     document.documentElement.lang = next;
-  }, [defaultLanguage]);
+  }, [restoreStoredLanguage]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
