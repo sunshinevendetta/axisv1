@@ -1,0 +1,17 @@
+
+  <svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="bg" cx="50%" cy="36%" r="78%">
+        <stop offset="0%" stop-color="#123F70"/>
+        <stop offset="100%" stop-color="#041B33"/>
+      </radialGradient>
+      <filter id="soft"><feGaussianBlur stdDeviation="1.2"/></filter>
+    </defs>
+    <circle cx="512" cy="512" r="476" fill="url(#bg)" stroke="#D4AA67" stroke-width="22"/>
+    <circle cx="512" cy="512" r="420" fill="none" stroke="#D4AA67" stroke-opacity="0.45" stroke-width="3" stroke-dasharray="4 18"/>
+    <circle cx="512" cy="375" r="176" fill="#D4AA67" fill-opacity="0.10" stroke="#D4AA67" stroke-width="5"/>
+    <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" fill="#F1E2C8" transform="translate(379 223) scale(0.59375)"/>
+    <polygon points="512,615 514.3334523779156,627.6665476220844 527,630 514.3334523779156,632.3334523779156 512,645 509.6665476220844,632.3334523779156 497,630 509.6665476220844,627.6665476220844" fill="#D4AA67"/>
+    <text x="512" y="742" text-anchor="middle" fill="#F1E2C8" font-family="Noto Sans Mono" font-size="62" font-weight="600" letter-spacing="7">VOTE</text>
+    <text x="512" y="820" text-anchor="middle" fill="#D4AA67" font-family="Inter" font-size="28" letter-spacing="5">AXIS</text>
+  </svg>
