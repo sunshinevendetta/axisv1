@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { brandLogoAttachment, brandLogoSrc, inlineImageAttachment } from "@/src/lib/brand-email";
+import {
+  brandLogoAttachment,
+  brandLogoSrc,
+  clubMexaPosterAttachment,
+} from "@/src/lib/brand-email";
 
 const FLYER_CID = "clubmexa-flyer";
 
@@ -189,7 +193,7 @@ export async function POST(req: NextRequest) {
       html: confirmationHtml,
       attachments: [
         brandLogoAttachment(),
-        inlineImageAttachment("clubmexa/poster.jpg", FLYER_CID),
+        clubMexaPosterAttachment(FLYER_CID),
       ],
     });
     log("attendee confirmation sent", {

@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/magazine/artists",
     "/magazine/mixtapes",
     "/magazine/markets",
+    "/tradingarena",
     "/docs",
     "/docs/diagrams",
     "/arapp",

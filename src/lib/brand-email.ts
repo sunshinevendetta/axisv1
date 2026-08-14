@@ -26,18 +26,17 @@ export function brandLogoSrc(): string {
   return `cid:${LOGO_CID}`;
 }
 
-/**
- * Inline attachment for an arbitrary image under /public, referenced by `cid`.
- * Use the returned `cid` as the <img src> (e.g. `cid:clubmexa-poster`).
- */
-export function inlineImageAttachment(publicRelPath: string, cid: string) {
-  const filePath = path.join(process.cwd(), "public", ...publicRelPath.split("/"));
-  const ext = path.extname(publicRelPath).toLowerCase().replace(".", "") || "png";
-  const contentType = ext === "jpg" ? "image/jpeg" : `image/${ext}`;
+export function clubMexaPosterAttachment(cid: string) {
+  const filePath = path.join(
+    process.cwd(),
+    "public",
+    "clubmexa",
+    "poster.jpg",
+  );
   return {
-    filename: path.basename(publicRelPath),
+    filename: "poster.jpg",
     content: fs.readFileSync(filePath),
-    contentType,
+    contentType: "image/jpeg",
     cid,
     contentDisposition: "inline" as const,
   };
