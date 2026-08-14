@@ -1,0 +1,51 @@
+{
+  "brand": "AXIS",
+  "event": "Tech Week Mexico Edition",
+  "theme": "Future Renaissance",
+  "date": "October 2026",
+  "site": "axis.show",
+  "palette": {
+    "midnight": "#041B33",
+    "cobalt": "#0E3B68",
+    "glass": "#315F97",
+    "sky": "#7EA7D8",
+    "gold": "#D4AA67",
+    "ivory": "#F1E2C8",
+    "patina": "#7F9676",
+    "bronze": "#8D6845",
+    "paper": "#F7F4EE",
+    "white": "#FFFFFF",
+    "black": "#000000"
+  },
+  "typography": {
+    "display": "Didot-style high-contrast serif",
+    "displayProduction": "GFS Didot",
+    "system": "Connect Mono Flat",
+    "systemFallback": "Noto Sans Mono",
+    "utility": "Inter"
+  },
+  "logo": {
+    "clearSpace": "One node diameter on every side",
+    "minDigitalPx": 24,
+    "minPrintMm": 12
+  },
+  "visualRatio": {
+    "humanAndArchitecture": 60,
+    "abstraction": 25,
+    "codeAndGeometry": 15
+  },
+  "colorRatio": {
+    "midnight": 40,
+    "cobalt": 20,
+    "ivory": 15,
+    "gold": 10,
+    "glass": 10,
+    "patina": 5
+  },
+  "coreMessages": [
+    "Culture becomes a live system.",
+    "Art is the interface.",
+    "Complete the missions. Change the room.",
+    "Human direction. Machine extension. Public transformation."
+  ]
+}
