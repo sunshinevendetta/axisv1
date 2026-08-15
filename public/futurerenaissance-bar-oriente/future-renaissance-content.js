@@ -26,6 +26,52 @@
     return '<span class="gold-star ' + (className || "") + '" aria-hidden="true">✦</span>';
   }
 
+  // Line-drawn pictograms. One vocabulary across the deck: 24x24 grid, 1.6 stroke,
+  // round joins. Every system item, cycle step and venue zone is read as a mark
+  // first and a label second.
+  var GLYPHS = {
+    gallery: '<rect x="3" y="4.5" width="18" height="15" rx="1"/><path d="m3.6 16 4.7-4 3.6 2.8 3.4-2.6L20.4 16"/><circle cx="8.6" cy="9" r="1.3"/>',
+    disc: '<circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="2.2"/><path d="M14.6 6.2A6.4 6.4 0 0 1 17.8 9.4M9.4 17.8a6.4 6.4 0 0 1-3.2-3.2"/>',
+    projector: '<rect x="2.6" y="7" width="12.4" height="10" rx="1"/><path d="m15 12 6-3.6v7.2z"/>',
+    screen: '<rect x="2.6" y="4.4" width="18.8" height="12.4" rx="1"/><path d="M9 20.2h6M12 16.8v3.4"/>',
+    broadcast: '<circle cx="12" cy="12" r="2.1"/><path d="M8.2 8.2a5.4 5.4 0 0 0 0 7.6M15.8 15.8a5.4 5.4 0 0 0 0-7.6M5.4 5.4a9.4 9.4 0 0 0 0 13.2M18.6 18.6a9.4 9.4 0 0 0 0-13.2"/>',
+    camera: '<path d="M3 8.4h3.4l1.5-2.3h8.2l1.5 2.3H21v10.2H3z"/><circle cx="12" cy="13.2" r="3.4"/>',
+    film: '<rect x="2.8" y="5" width="18.4" height="14" rx="1"/><path d="M7.6 5v14M16.4 5v14M2.8 12h18.4"/>',
+    quote: '<path d="M20.4 15.6a2 2 0 0 1-2 2H8.2L4 21V6.4a2 2 0 0 1 2-2h12.4a2 2 0 0 1 2 2z"/><path d="M8.6 10.8h3M8.6 13.8h6.4"/>',
+    cube: '<path d="m12 3 8 4.4v9.2L12 21l-8-4.4V7.4z"/><path d="m4 7.4 8 4.3 8-4.3M12 11.7V21"/>',
+    passport: '<rect x="4.6" y="3" width="14.8" height="18" rx="1.4"/><circle cx="12" cy="10" r="2.6"/><path d="M8.4 16.6h7.2"/>',
+    nfc: '<path d="M6.6 4.6A9.6 9.6 0 0 1 6.6 19.4M10.4 7.4a5.6 5.6 0 0 1 0 9.2M14.2 10a2.2 2.2 0 0 1 0 4"/>',
+    phone: '<rect x="6.6" y="2.6" width="10.8" height="18.8" rx="1.8"/><path d="M10.6 5.6h2.8M12 18.2h.01"/>',
+    staff: '<circle cx="9.2" cy="7.6" r="3.4"/><path d="M3.4 20a5.8 5.8 0 0 1 11.6 0"/><path d="m15.6 12.4 1.9 1.9 3.4-3.8"/>',
+    drink: '<path d="M4.4 4.6h15.2L12 13.2z"/><path d="M12 13.2V20M8.4 20h7.2"/>',
+    guests: '<circle cx="9" cy="8" r="3.2"/><path d="M3.4 19.4a5.6 5.6 0 0 1 11.2 0"/><path d="M16.4 5.2a3.2 3.2 0 0 1 0 5.6M17.6 14.6a5.6 5.6 0 0 1 3 4.8"/>',
+    spark: '<path d="M12 2.6v18.8M2.6 12h18.8M5.4 5.4l13.2 13.2M18.6 5.4 5.4 18.6"/>',
+    code: '<path d="m8.6 8.4-4.4 3.6 4.4 3.6M15.4 8.4l4.4 3.6-4.4 3.6M13.4 4.6l-2.8 14.8"/>',
+    grid: '<rect x="3.4" y="3.4" width="7" height="7" rx="1"/><rect x="13.6" y="3.4" width="7" height="7" rx="1"/><rect x="3.4" y="13.6" width="7" height="7" rx="1"/><path d="M17.1 13.9v6.2M14 17h6.2"/>',
+    author: '<path d="M4 20.2 4.9 16 15.6 5.3a1.9 1.9 0 0 1 2.7 0l.4.4a1.9 1.9 0 0 1 0 2.7L8.2 19.3z"/><path d="M14.2 6.8l3 3"/>',
+    layers: '<path d="m12 3.2 8.6 4.5-8.6 4.5-8.6-4.5z"/><path d="m3.4 12.4 8.6 4.5 8.6-4.5M3.4 16.8 12 21.3l8.6-4.5"/>',
+    arrive: '<path d="M14 3.4h4.2a1.8 1.8 0 0 1 1.8 1.8v13.6a1.8 1.8 0 0 1-1.8 1.8H14"/><path d="m9.4 16 4-4-4-4M13.4 12H3.6"/>',
+    target: '<circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="1"/>',
+    check: '<circle cx="12" cy="12" r="8.6"/><path d="m8.2 12.2 2.6 2.6 5-5.4"/>',
+    shield: '<path d="M12 3.2 5 6v5.6c0 4 2.9 7.5 7 9.2 4.1-1.7 7-5.2 7-9.2V6z"/><path d="m9.1 12 2 2 3.8-4.2"/>',
+    chart: '<path d="M4 20h16"/><rect x="5.6" y="12.4" width="3.4" height="6"/><rect x="10.8" y="8.4" width="3.4" height="10"/><rect x="16" y="4.8" width="3.4" height="13.6"/>',
+    list: '<path d="M9 6.6h11M9 12h11M9 17.4h11"/><path d="M4.6 6.6h.01M4.6 12h.01M4.6 17.4h.01"/>',
+    file: '<path d="M14 3.2H6.8A1.8 1.8 0 0 0 5 5v14a1.8 1.8 0 0 0 1.8 1.8h10.4A1.8 1.8 0 0 0 19 19V8.2z"/><path d="M14 3.2V8.2h5M8.6 13h6.8M8.6 16.6h4.6"/>',
+    door: '<path d="M4.6 20.4h14.8"/><path d="M7.4 20.4V4.6l8.4-1.4v18.2"/><circle cx="13.4" cy="12.2" r=".9"/>',
+    sound: '<path d="M4 9.6h3l4.4-3.8v12.4L7 14.4H4z"/><path d="M15 9.6a3.6 3.6 0 0 1 0 4.8M17.8 7a7.2 7.2 0 0 1 0 10"/>',
+    wave: '<path d="M2.8 12h2.6l1.8-5.4 2.6 11L12.6 6l2 8.4 1.6-2.4h5"/>',
+    power: '<path d="M13.6 2.6 5.4 13.4h6l-1 8 8.2-10.8h-6z"/>',
+    globe: '<circle cx="12" cy="12" r="8.6"/><path d="M3.4 12h17.2M12 3.4a13 13 0 0 1 0 17.2 13 13 0 0 1 0-17.2"/>',
+    lock: '<rect x="4.6" y="10.4" width="14.8" height="10" rx="1.4"/><path d="M8.2 10.4V7.6a3.8 3.8 0 0 1 7.6 0v2.8"/>',
+    star: '<path d="m12 3.4 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.9l6.1-.9z"/>',
+  };
+
+  function glyph(name, className) {
+    var body = GLYPHS[name] || GLYPHS.spark;
+    return '<svg class="fr-glyph ' + (className || "") + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+      'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + body + '</svg>';
+  }
+
   function orbitalSvg(className) {
     return '<svg class="orbital-svg ' + (className || "") + '" viewBox="0 0 800 800" aria-hidden="true">' +
       '<circle class="orbit-line orbit-line-a" cx="400" cy="400" r="310"></circle>' +
@@ -48,18 +94,26 @@
     return '<button class="' + className + ' concept-trigger" type="button" data-concept-id="' + id + '" aria-label="Open details about ' + (label || id) + '">' + content + '</button>';
   }
 
-  function systemItem(className, item, index) {
-    return conceptNode(className, item[0], '<i>' + String(index + 1).padStart(2, "0") + '</i><span><b>' + item[1] + '</b><small>' + item[2] + '</small></span>', item[1]);
+  function systemItem(className, item) {
+    return conceptNode(className, item[0], '<i>' + glyph(item[3]) + '</i><span><b>' + item[1] + '</b><small>' + item[2] + '</small></span>', item[1]);
   }
 
   function formatGroup(group) {
     return '<section class="format-group fg-' + group.key + '"><h3>' + group.letter + '. ' + group.title + '</h3><div>' +
-      group.items.map(function (item, index) { return systemItem("format-item", item, index); }).join("") +
+      group.items.map(function (item) { return systemItem("format-item", item); }).join("") +
     '</div></section>';
   }
 
   function cycleNode(item, index) {
-    return conceptNode("system-cycle-node scn-" + (index + 1), item[0], '<i>' + String(index + 1).padStart(2, "0") + '</i><b>' + item[1] + '</b>', item[1]);
+    return conceptNode("system-cycle-node scn-" + (index + 1), item[0],
+      '<span class="scn-disc"><i>' + String(index + 1).padStart(2, "0") + '</i>' + glyph(item[2]) + '</span><b>' + item[1] + '</b>',
+      item[1]);
+  }
+
+  function rewardStep(position, id, index, mark, label, description) {
+    return conceptNode("reward-step " + position, id,
+      '<span class="scn-disc"><i>' + index + '</i>' + glyph(mark) + '</span><b>' + label + '</b>',
+      description);
   }
 
   function deliverableButton(item) {
@@ -108,50 +162,50 @@
 
   var formatGroups = [
     { key: "a", letter: "A", title: "CULTURE", items: [
-      ["format-gallery", "ART GALLERY", "Digital works presented inside the event environment."],
-      ["format-djs", "DJ SETS", "Warm-up and closing music programming across the night."],
-      ["format-mapping", "VIDEO MAPPING", "Projected visuals authored for " + event.venue + "."],
+      ["format-gallery", "ART GALLERY", "Digital works presented inside the event environment.", "gallery"],
+      ["format-djs", "DJ SETS", "Warm-up and closing music programming.", "disc"],
+      ["format-mapping", "VIDEO MAPPING", "Projected visuals authored for " + event.venue + ".", "projector"],
     ] },
     { key: "b", letter: "B", title: "ON-SITE MEDIA", items: [
-      ["format-screens", "VENUE SCREENS", "Venue-provided display infrastructure carries the visual system."],
-      ["format-stream", "LIVE RECORDING", "Live or recorded capture produced on site."],
-      ["format-photo", "PHOTOGRAPHY", "Event archive, environment and post-event video."],
+      ["format-screens", "VENUE SCREENS", "Venue display infrastructure carries the visual system.", "screen"],
+      ["format-stream", "LIVE RECORDING", "Live or recorded capture produced on site.", "broadcast"],
+      ["format-photo", "PHOTOGRAPHY", "Event archive, environment and post-event video.", "camera"],
     ] },
     { key: "c", letter: "C", title: "CONTENT PRODUCTION", items: [
-      ["format-aftermovie", "AFTERMOVIE", "Edited recap material from the night."],
-      ["format-testimonials", "TESTIMONIAL CAPTURE", "Guest and artist quotes when available."],
-      ["format-collectibles", "POST-EVENT COLLECTIBLES", "Selected moments can become digital assets."],
+      ["format-aftermovie", "AFTERMOVIE", "Edited recap material from the night.", "film"],
+      ["format-testimonials", "TESTIMONIAL CAPTURE", "Guest and artist quotes when available.", "quote"],
+      ["format-collectibles", "POST-EVENT COLLECTIBLES", "Selected moments become digital assets.", "cube"],
     ] },
     { key: "d", letter: "D", title: "ACCESS SYSTEM", items: [
-      ["format-passport", "ACTIVITY PASSPORT", "A readable guest state opens the interaction path."],
-      ["format-nfc", "AXIS NFC / QR", "Fast entry into any activity on the floor."],
-      ["format-onboarding", "ONBOARDING SCREENS", "Clear instructions before any action begins."],
+      ["format-passport", "ACTIVITY PASSPORT", "A readable guest state opens the interaction path.", "passport"],
+      ["format-nfc", "AXIS NFC / QR", "Fast entry into any activity on the floor.", "nfc"],
+      ["format-onboarding", "ONBOARDING SCREENS", "Clear instructions before any action begins.", "phone"],
     ] },
     { key: "e", letter: "E", title: "EVENT FLOW", items: [
-      ["format-staff", "STAFF-GUIDED FLOW", "Staff supports actions, validation and exceptions."],
-      ["format-hospitality", "COMPLIMENTARY HOSPITALITY", "AXIS funds a complimentary drink allocation for the night."],
-      ["format-guestlist", "EXPECTED AUDIENCE", event.attendees + " expected Future Renaissance guests, alongside venue clientele."],
+      ["format-staff", "STAFF-GUIDED FLOW", "Staff supports actions, validation and exceptions.", "staff"],
+      ["format-hospitality", "COMPLIMENTARY HOSPITALITY", "AXIS funds the drink allocation for the night.", "drink"],
+      ["format-guestlist", "EXPECTED AUDIENCE", event.attendees + " Future Renaissance guests, plus venue clientele.", "guests"],
     ] },
     { key: "f", letter: "F", title: "AI + CODE", items: [
-      ["format-claude", "CLAUDE ACTIVITY", "Guests discover Claude, activate access and interact live."],
-      ["format-live-coding", "LIVE CODING", "Code becomes sound and image in real time."],
-      ["format-activations", "TECH WEEK MICRO-ACTIVATIONS", "Small partner experiences distributed through the night."],
+      ["format-claude", "CLAUDE ACTIVITY", "Guests discover Claude, activate access and interact live.", "spark"],
+      ["format-live-coding", "LIVE CODING", "Code becomes sound and image in real time.", "code"],
+      ["format-activations", "TECH WEEK MICRO-ACTIVATIONS", "Small partner experiences through the night.", "grid"],
     ] },
   ];
 
   var systemCycle = [
-    ["system-produce", "AXIS PRODUCES THE FORMAT"],
-    ["system-build", "AXIS BUILDS THE ACTIVITY LAYER"],
-    ["system-arrive", "GUESTS ARRIVE ON SITE"],
-    ["system-enter", "GUESTS TAP NFC / QR"],
-    ["system-mission", "AN ACTIVITY STARTS"],
-    ["system-action", "GUEST COMPLETES THE ACTION"],
-    ["system-validate", "STAFF / SYSTEM VALIDATES"],
-    ["system-reward", "DRINK / REWARD UNLOCKS"],
-    ["system-score", "SCORE + TIER UPDATE"],
-    ["system-leaderboard", "LEADERBOARD REFLECTS IT"],
-    ["system-capture", "AXIS CAPTURES THE EXPERIENCE"],
-    ["system-report", "THE NIGHT IS DOCUMENTED"],
+    ["system-produce", "AXIS PRODUCES THE FORMAT", "author"],
+    ["system-build", "AXIS BUILDS THE ACTIVITY LAYER", "layers"],
+    ["system-arrive", "GUESTS ARRIVE ON SITE", "arrive"],
+    ["system-enter", "GUESTS TAP NFC / QR", "nfc"],
+    ["system-mission", "AN ACTIVITY STARTS", "target"],
+    ["system-action", "GUEST COMPLETES THE ACTION", "check"],
+    ["system-validate", "STAFF / SYSTEM VALIDATES", "shield"],
+    ["system-reward", "DRINK / REWARD UNLOCKS", "drink"],
+    ["system-score", "SCORE + TIER UPDATE", "chart"],
+    ["system-leaderboard", "LEADERBOARD REFLECTS IT", "list"],
+    ["system-capture", "AXIS CAPTURES THE EXPERIENCE", "camera"],
+    ["system-report", "THE NIGHT IS DOCUMENTED", "file"],
   ];
 
   var mediaDeliverables = [
@@ -184,20 +238,22 @@
   ];
 
   var venueZones = [
-    ["zone-entry", "ENTRY"], ["zone-checkin", "CHECK-IN / DISCOVERY"], ["zone-social", "SOCIAL / HOSPITALITY"],
-    ["zone-digital-art", "DIGITAL ART"], ["zone-warmup", "WARM-UP DJ"], ["zone-claude", "CLAUDE ACTIVITY"],
-    ["zone-claude-access", "CLAUDE ACCESS + CREDITS"], ["zone-activations", "TECH WEEK MICRO-ACTIVITIES"],
-    ["zone-visuals", "LIVE VISUALS"], ["zone-live-coding", "LIVE CODING"], ["zone-closing", "CLOSING DJ"],
-    ["zone-media", "MEDIA"], ["zone-venue-clients", "VENUE CLIENT FLOW"],
+    ["zone-entry", "ENTRY", "door"], ["zone-checkin", "CHECK-IN / DISCOVERY", "passport"],
+    ["zone-social", "SOCIAL / HOSPITALITY", "drink"], ["zone-digital-art", "DIGITAL ART", "gallery"],
+    ["zone-warmup", "WARM-UP DJ", "disc"], ["zone-claude", "CLAUDE ACTIVITY", "spark"],
+    ["zone-claude-access", "CLAUDE ACCESS + CREDITS", "lock"], ["zone-activations", "TECH WEEK MICRO-ACTIVITIES", "grid"],
+    ["zone-visuals", "LIVE VISUALS", "projector"], ["zone-live-coding", "LIVE CODING", "code"],
+    ["zone-closing", "CLOSING DJ", "disc"], ["zone-media", "MEDIA", "camera"],
+    ["zone-venue-clients", "VENUE CLIENT FLOW", "guests"],
   ];
 
   var venueRequirements = [
-    ["req-screens", "SCREENS / DISPLAYS", "Venue-provided display infrastructure required."],
-    ["req-inputs", "SCREEN INPUTS", "Access to inputs and routing for an AXIS workstation."],
-    ["req-internet", "INTERNET", "Reliable connection; wired production line preferred."],
-    ["req-audio", "AUDIO + DJ", "Audio and DJ infrastructure where available."],
-    ["req-power", "POWER + ACCESS", "Technical access, load-in and a venue technical contact."],
-    ["req-bar", "BAR + SECURITY", "Bar operation, staffing, security and capacity management."],
+    ["req-screens", "SCREENS / DISPLAYS", "Venue-provided display infrastructure required.", "screen"],
+    ["req-inputs", "SCREEN INPUTS", "Access to inputs and routing for an AXIS workstation.", "projector"],
+    ["req-internet", "INTERNET", "Reliable connection; wired production line preferred.", "globe"],
+    ["req-audio", "AUDIO + DJ", "Audio and DJ infrastructure where available.", "sound"],
+    ["req-power", "POWER + ACCESS", "Technical access, load-in and a venue technical contact.", "power"],
+    ["req-bar", "BAR + SECURITY", "Bar operation, staffing, security and capacity.", "shield"],
   ];
 
   var slides = [
@@ -290,26 +346,20 @@
 
     '<section class="fr-slide fr-components" data-slide-id="missions" data-scene="structured" data-label="Experience components">' +
       frameTop("07", "experience-components") +
-      '<div class="components-copy"><span class="eyebrow" data-reveal>EXPERIENCE COMPONENTS</span><h2 data-reveal>THE FORMAT STARTS WITH THE GUEST.</h2><p data-reveal>Every activity is distributed across four concrete blocks. Nothing exists as isolated logo placement.</p>' +
-        '<div class="components-table" data-reveal><span>EXPERIENCE COMPONENTS</span>' +
-          conceptNode("component-row", "component-rewards", '<i>01</i><b>REWARDS</b><small>GUEST BENEFIT</small>', "rewards") +
-          conceptNode("component-row", "component-operations", '<i>02</i><b>OPERATIONS</b><small>ON-SITE EXECUTION</small>', "operations") +
-          conceptNode("component-row", "component-capture", '<i>03</i><b>CAPTURE</b><small>MEDIA PRODUCTION</small>', "capture") +
-          conceptNode("component-row", "component-integration", '<i>04</i><b>INTEGRATION</b><small>VISUAL + TECHNICAL</small>', "integration") +
-        '</div>' +
+      '<div class="components-copy"><span class="eyebrow" data-reveal>EXPERIENCE COMPONENTS</span><h2 data-reveal>THE FORMAT STARTS WITH THE GUEST.</h2><p data-reveal>Every activity is distributed across four blocks. Nothing exists as isolated logo placement.</p>' +
+        '<div class="components-activities" data-reveal><span>ACTIVITY TYPES ON THE FLOOR</span><div>' + missions.map(function (name) {
+          var slug = name.toLowerCase();
+          return conceptNode("mission-badge", "mission-" + slug, '<img loading="lazy" src="' + root + '/badges/missions/' + slug + '.svg" alt="' + name + ' activity badge"><span>' + name + '</span>', name.toLowerCase() + " activity");
+        }).join("") + '</div></div>' +
       '</div>' +
       '<div class="components-diagram" data-crystallize>' +
         '<div class="components-donut"><i></i><div><b>TOTAL</b><span>EXPERIENCE<br>SYSTEM</span><p>Activity, action, validation, reward, media and documentation operate as one whole.</p></div></div>' +
-        conceptNode("component-call cc1", "component-rewards", '<i>01</i><b>REWARDS</b><strong>GUEST VALUE</strong><p>Benefits unlock through participation, not through purchase.</p>', "rewards") +
-        conceptNode("component-call cc2", "component-operations", '<i>02</i><b>OPERATIONS</b><strong>ON-SITE FLOW</strong><p>Staff guidance, access, validation, exceptions and redemption.</p>', "operations") +
-        conceptNode("component-call cc3", "component-capture", '<i>03</i><b>CAPTURE</b><strong>MEDIA PRODUCTION</strong><p>Photography, video, environment and testimonials.</p>', "capture") +
-        conceptNode("component-call cc4", "component-integration", '<i>04</i><b>INTEGRATION</b><strong>VISUAL SYSTEMS</strong><p>Venue screens, mapping, onboarding and activity states.</p>', "integration") +
-        '<div class="components-mission-row">' + missions.map(function (name, index) {
-          var slug = name.toLowerCase();
-          return conceptNode("mission-badge", "mission-" + slug, '<img loading="lazy" src="' + root + '/badges/missions/' + slug + '.svg" alt="' + name + ' activity badge"><span>' + name + '</span>', name.toLowerCase() + " activity");
-        }).join("") + '</div>' +
-        '<div class="components-takeaway">' + axisMark("ivory") + '<p>Guests experience the function.<br>The room produces the evidence.</p></div>' +
+        conceptNode("component-call cc1", "component-rewards", '<i>' + glyph("star") + '01</i><b>REWARDS</b><strong>GUEST VALUE</strong><p>Benefits unlock through participation, not through purchase.</p>', "rewards") +
+        conceptNode("component-call cc2", "component-operations", '<i>' + glyph("staff") + '02</i><b>OPERATIONS</b><strong>ON-SITE FLOW</strong><p>Staff guidance, access, validation and redemption.</p>', "operations") +
+        conceptNode("component-call cc3", "component-capture", '<i>' + glyph("camera") + '03</i><b>CAPTURE</b><strong>MEDIA PRODUCTION</strong><p>Photography, video, environment and testimonials.</p>', "capture") +
+        conceptNode("component-call cc4", "component-integration", '<i>' + glyph("screen") + '04</i><b>INTEGRATION</b><strong>VISUAL SYSTEMS</strong><p>Venue screens, mapping, onboarding and activity states.</p>', "integration") +
       '</div>' +
+      '<div class="components-takeaway" data-reveal>' + axisMark("ivory") + '<p>Guests experience the function.<br>The room produces the evidence.</p></div>' +
     '</section>',
 
     '<section class="fr-slide fr-reward-flow" data-slide-id="brand-function" data-scene="structured" data-label="Claude to screen">' +
@@ -321,14 +371,14 @@
       '</div>' +
       '<div class="reward-cycle" data-crystallize>' +
         '<div class="reward-cycle-hub">' + axisMark("gold") + '<b>LIVE</b><p>Guest intent becomes code, and code becomes the room.</p></div>' +
-        conceptNode("reward-step rs1", "flow-guest", '<i>01</i><b>GUEST</b>', "guest input") +
-        conceptNode("reward-step rs2", "flow-claude", '<i>02</i><b>CLAUDE</b>', "Claude") +
-        conceptNode("reward-step rs3", "flow-claude-code", '<i>03</i><b>CLAUDE CODE</b>', "Claude Code") +
-        conceptNode("reward-step rs4", "flow-code", '<i>04</i><b>CODE</b>', "code generation") +
-        conceptNode("reward-step rs5", "flow-rules", '<i>05</i><b>FR VISUAL RULES</b>', "Future Renaissance visual rules") +
-        conceptNode("reward-step rs6", "flow-render", '<i>06</i><b>RENDER</b>', "render") +
-        conceptNode("reward-step rs7", "flow-screens", '<i>07</i><b>VENUE SCREENS</b>', "venue screens") +
-        conceptNode("reward-step rs8", "flow-fallback", '<i>08</i><b>SAFE FALLBACK</b>', "safe fallback") +
+        rewardStep("rs1", "flow-guest", "01", "guests", "GUEST", "guest input") +
+        rewardStep("rs2", "flow-claude", "02", "spark", "CLAUDE", "Claude") +
+        rewardStep("rs3", "flow-claude-code", "03", "code", "CLAUDE CODE", "Claude Code") +
+        rewardStep("rs4", "flow-code", "04", "file", "CODE", "code generation") +
+        rewardStep("rs5", "flow-rules", "05", "grid", "FR VISUAL RULES", "Future Renaissance visual rules") +
+        rewardStep("rs6", "flow-render", "06", "projector", "RENDER", "render") +
+        rewardStep("rs7", "flow-screens", "07", "screen", "VENUE SCREENS", "venue screens") +
+        rewardStep("rs8", "flow-fallback", "08", "shield", "SAFE FALLBACK", "safe fallback") +
       '</div>' +
       '<div class="reward-memory" data-reveal><span>VISUAL CONTROL</span><p>Guest prompts never produce arbitrary output. Every live result is constrained by the Future Renaissance visual language before it reaches a screen.</p><div><i>UNCONTROLLED PROMPT</i><b>RANDOM STYLE</b><strong>VS</strong><i>CONSTRAINED SYSTEM</i><b>STILL FUTURE RENAISSANCE</b></div></div>' +
     '</section>',
@@ -400,7 +450,9 @@
       '<div class="signature-stage" data-crystallize>' + orbitalSvg("signature-orbit") +
         '<div class="venue-core"><b>' + event.venue.toUpperCase() + '</b><span>' + event.city.toUpperCase() + '</span><small>' + event.displayDate.toUpperCase() + '</small></div>' +
         '<div class="venue-zones">' + venueZones.map(function (zone, index) {
-          return conceptNode("venue-zone vz-" + (index + 1), zone[0], '<i>' + String(index + 1).padStart(2, "0") + '</i><span>' + zone[1] + '</span>', zone[1].toLowerCase());
+          return conceptNode("venue-zone vz-" + (index + 1), zone[0],
+            '<i>' + glyph(zone[2]) + '</i><span><em>' + String(index + 1).padStart(2, "0") + '</em>' + zone[1] + '</span>',
+            zone[1].toLowerCase());
         }).join("") + '</div>' +
       '</div>' +
       '<p class="signature-note" data-reveal data-i18n="venue.note">Future Renaissance guests and existing venue clientele can occupy the same environment where agreed. This is an event layer inside the venue, not a closed bubble.</p>' +
@@ -417,7 +469,7 @@
         conceptNode("time-state ts4", "time-continuation", '<span data-i18n="continuation.proof">REQUIRED</span><b>SCREENS</b><small data-i18n="continuation.screens">VENUE-PROVIDED DISPLAY INFRASTRUCTURE REQUIRED</small>', "screen requirement") +
       '</div>' +
       '<div class="venue-requirements" data-reveal><span>VENUE PROVIDES</span><div>' + venueRequirements.map(function (req) {
-        return conceptNode("requirement-item", req[0], '<b>' + req[1] + '</b><small>' + req[2] + '</small>', req[1].toLowerCase());
+        return conceptNode("requirement-item", req[0], '<i>' + glyph(req[3]) + '</i><span><b>' + req[1] + '</b><small>' + req[2] + '</small></span>', req[1].toLowerCase());
       }).join("") + '</div></div>' +
     '</section>',
 
@@ -430,8 +482,8 @@
           conceptNode("close-offer is-presenting", "official-status", '<span data-i18n="close.official">FIRST OFFICIAL ANTHROPIC CLAUDE AI COMMUNITY PARTY</span><strong>' + event.attendees + ' EXPECTED GUESTS</strong>', "official Claude community party") +
           conceptNode("close-offer", "close-hospitality", '<span data-i18n="close.hospitality">COMPLIMENTARY HOSPITALITY</span><strong data-i18n="close.hospitalityValue">FUNDED BY AXIS</strong>', "complimentary hospitality funded by AXIS") +
         '</div>' +
-        '<div class="allocation" data-reveal>' + event.allocation.map(function (entry) {
-          return conceptNode("allocation-item", entry.id, '<b>' + entry.title + '</b>', entry.title.toLowerCase());
+        '<div class="allocation" data-reveal><span class="allocation-label">WHERE AXIS INVESTS</span>' + event.allocation.map(function (entry) {
+          return conceptNode("allocation-item", entry.id, '<b>' + entry.title + '</b><small>' + entry.note + '</small>', entry.title.toLowerCase());
         }).join("") + '</div>' +
         '<div class="close-event" data-reveal><b>' + event.displayDate.toUpperCase() + '</b><span>' + event.venue.toUpperCase() + ' · ' + event.city.toUpperCase() + '</span><strong>FUTURE RENAISSANCE</strong><a href="https://axis.show" target="_blank" rel="noopener noreferrer">AXIS.SHOW</a></div>' +
       '</div>' + star("close-star") +

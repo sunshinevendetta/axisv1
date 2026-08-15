@@ -778,3 +778,586 @@ body.fr-vertical .offer-budget { grid-template-columns: repeat(2, 1fr); }
 body.fr-vertical .fr-close .allocation { grid-template-columns: repeat(2, 1fr); }
 body.fr-vertical .components-mission-row { grid-template-columns: repeat(4, 1fr); }
 body.fr-vertical .offer-proof { grid-template-columns: repeat(3, 1fr); }
+
+/* ============================================================
+   COMPOSITION PASS - pictogram system, ring geometry, type floor.
+   Every system list, cycle step and venue zone reads as a mark
+   first and a label second. Nothing sits on top of anything else.
+   ============================================================ */
+
+/* --- Pictograms --- */
+.fr-glyph { display: block; width: 20px; height: 20px; flex: none; color: inherit; }
+
+/* --- Top frame: keep the coordinate clear of the language control --- */
+.fr-frame-top { right: 210px; }
+.fr-lockup { flex: none; }
+
+/* ------------------------------------------------------------
+   05 - EVENT FORMAT. Six layers around an open centre.
+   ------------------------------------------------------------ */
+.event-format-map { top: 262px; gap: 168px 205px; }
+.format-hub { width: 132px; height: 132px; }
+.format-hub .axis-mark { width: 42px; height: 33px; }
+.format-hub span { margin-top: 8px; font-size: 8px; letter-spacing: .14em; }
+.format-group { padding: 20px 24px 18px; }
+.format-group h3 { margin-bottom: 6px; font-size: 11px; }
+.format-item { grid-template-columns: 42px 1fr; gap: 15px; padding: 9px 34px 9px 0; }
+.format-item > i { width: 40px; height: 40px; border-radius: 11px; border-color: rgba(212,170,103,.3); color: var(--solar-gold); background: rgba(49,95,151,.14); transition: background .18s ease, border-color .18s ease; }
+.format-item > i .fr-glyph { width: 21px; height: 21px; }
+.format-item b { font-size: 13px; letter-spacing: .06em; }
+.format-item small { margin-top: 5px; color: rgba(241,226,200,.68); font-size: 10.5px; line-height: 1.4; letter-spacing: .01em; }
+.format-item:hover > i, .format-item:focus-visible > i { border-color: var(--solar-gold); background: rgba(212,170,103,.16); }
+.format-item::after { width: 17px; height: 17px; right: 6px; font-size: 10px; }
+
+/* ------------------------------------------------------------
+   06 - HOW IT WORKS. Twelve steps on one true circle.
+   ------------------------------------------------------------ */
+.system-cycle { left: 561px; top: 140px; width: 820px; height: 820px; }
+.system-cycle-rings { display: none; }
+.system-cycle::before, .system-cycle::after { content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); border-radius: 50%; pointer-events: none; }
+.system-cycle::before { width: 100%; height: 100%; border: 1px solid rgba(212,170,103,.26); }
+.system-cycle::after { width: 68%; height: 68%; border: 1px dashed rgba(241,226,200,.15); }
+.system-cycle-hub { width: 264px; height: 264px; }
+
+.system-cycle-node { width: 148px; min-height: 0; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.system-cycle-node > b { margin-top: 0; font: 600 10.5px/1.32 var(--mono); letter-spacing: .07em; }
+.system-cycle-node::after { right: 26px; top: 0; width: 20px; height: 20px; font-size: 12px; }
+
+.scn-disc { position: relative; width: 76px; height: 76px; display: grid; place-items: center; border: 1px solid rgba(212,170,103,.34); border-radius: 50%; background: radial-gradient(circle at 50% 26%, rgba(49,95,151,.34), rgba(4,27,51,.97)); color: var(--solar-gold); box-shadow: 0 16px 34px rgba(1,13,27,.42); transition: border-color .2s ease, box-shadow .2s ease; }
+.scn-disc .fr-glyph { width: 29px; height: 29px; }
+.scn-disc > i { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); padding: 2px 7px; background: var(--midnight); color: var(--patina); font: 600 8.5px/1 var(--mono); font-style: normal; letter-spacing: .12em; }
+.system-cycle-node:hover .scn-disc, .system-cycle-node:focus-visible .scn-disc,
+.reward-step:hover .scn-disc, .reward-step:focus-visible .scn-disc { border-color: var(--solar-gold); box-shadow: 0 0 34px rgba(212,170,103,.28); }
+
+.scn-1  { left: 50%;   top: 0; }
+.scn-2  { left: 75%;   top: 6.7%; }
+.scn-3  { left: 93.3%; top: 25%; }
+.scn-4  { left: 100%;  top: 50%; }
+.scn-5  { left: 93.3%; top: 75%; }
+.scn-6  { left: 75%;   top: 93.3%; }
+.scn-7  { left: 50%;   top: 100%; }
+.scn-8  { left: 25%;   top: 93.3%; }
+.scn-9  { left: 6.7%;  top: 75%; }
+.scn-10 { left: 0;     top: 50%; }
+.scn-11 { left: 6.7%;  top: 25%; }
+.scn-12 { left: 25%;   top: 6.7%; }
+
+.system-phase { width: 356px; }
+.phase-a { top: 196px; }
+.phase-card > p { font-size: 13.5px; }
+
+/* ------------------------------------------------------------
+   07 - EXPERIENCE COMPONENTS. Activity marks carry the left column.
+   ------------------------------------------------------------ */
+.components-copy { width: 620px; }
+.components-copy > p { margin-top: 22px; font-size: 17px; max-width: 560px; }
+.components-activities { margin-top: 42px; }
+.components-activities > span { display: block; margin-bottom: 16px; color: var(--solar-gold); font: 600 10px/1 var(--mono); letter-spacing: .16em; }
+.components-activities > div { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.components-activities .mission-badge { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 15px 6px 13px; border: 1px solid var(--line); background: rgba(4,27,51,.5); color: var(--ivory); transition: border-color .18s ease, background .18s ease; }
+.components-activities .mission-badge img { width: 46px; height: 46px; opacity: .92; }
+.components-activities .mission-badge span { margin-top: 0; font: 600 10px/1 var(--mono); letter-spacing: .09em; }
+.components-activities .mission-badge:hover, .components-activities .mission-badge:focus-visible { border-color: var(--solar-gold); background: rgba(49,95,151,.24); }
+.components-activities .mission-badge:hover img { transform: none; }
+.components-activities .mission-badge::after { width: 16px; height: 16px; right: 6px; top: 6px; font-size: 10px; opacity: .55; }
+
+.components-diagram { top: 118px; height: 810px; }
+.component-call { width: 310px; min-height: 168px; padding: 20px 44px 18px 20px; }
+.component-call > i { display: flex; align-items: center; gap: 9px; font-size: 10px; letter-spacing: .1em; }
+.component-call > i .fr-glyph { width: 17px; height: 17px; color: var(--patina); }
+.component-call > p { font-size: 12.5px; line-height: 1.4; }
+.components-takeaway { position: absolute; left: 70px; right: 55px; bottom: 42px; z-index: 6; }
+.components-donut { background: conic-gradient(from -45deg, var(--glass) 0 25%, var(--solar-gold) 25% 50%, var(--patina) 50% 75%, rgba(241,226,200,.78) 75% 100%); }
+
+/* ------------------------------------------------------------
+   08 - CLAUDE TO SCREEN. Heading, panel and ring stop colliding.
+   ------------------------------------------------------------ */
+.reward-heading { width: 430px; }
+.reward-heading h2 { font-size: 44px; }
+.reward-compare { top: 392px; width: 392px; gap: 16px; }
+.reward-compare > div { background: rgba(4,27,51,.9); }
+.reward-compare li { font-size: 12.5px; }
+.reward-cycle { left: 540px; top: 130px; width: 760px; height: 760px; }
+.reward-cycle::before { inset: 122px; }
+.reward-step { width: 140px; height: auto; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 11px; border: 0; border-radius: 0; background: transparent; }
+.reward-step > b { margin-top: 0; font: 600 10px/1.3 var(--mono); letter-spacing: .08em; }
+.reward-step .scn-disc { width: 70px; height: 70px; }
+.reward-step .scn-disc .fr-glyph { width: 27px; height: 27px; }
+.reward-step::after { right: 24px; top: 0; width: 19px; height: 19px; font-size: 11px; }
+.rs1 { left: 50%;   top: 0; }
+.rs2 { left: 85.4%; top: 14.6%; }
+.rs3 { left: 100%;  top: 50%; }
+.rs4 { left: 85.4%; top: 85.4%; }
+.rs5 { left: 50%;   top: 100%; }
+.rs6 { left: 14.6%; top: 85.4%; }
+.rs7 { left: 0;     top: 50%; }
+.rs8 { left: 14.6%; top: 14.6%; }
+
+/* ------------------------------------------------------------
+   10 - MEASUREMENT. Two columns on one baseline.
+   ------------------------------------------------------------ */
+.deliverables-heading { width: 780px; }
+.deliverables-heading p { max-width: 700px; }
+.media-included { top: 404px; }
+.report-included { top: 404px; padding: 28px; }
+.deliverable-item { min-height: 62px; font-size: 12.5px; }
+.media-included > div { gap: 10px; }
+.report-included .deliverable-item { min-height: 66px; }
+.deliverables-note { bottom: 68px; font-size: 12.5px; }
+.deliverables-note b { font-size: 10px; }
+
+/* ------------------------------------------------------------
+   11 - ACTIVITY LAYER. Readable cells, one line per category.
+   ------------------------------------------------------------ */
+.offer-card { top: 248px; bottom: auto; padding: 22px; }
+.offer-card > p { margin-top: 18px; font-size: 14.5px; line-height: 1.48; }
+.offer-enforce { margin-top: 15px; font: 600 10px/1.45 var(--mono); letter-spacing: .09em; padding: 12px; }
+.offer-budget { margin-top: 15px; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+.offer-budget > span { margin-bottom: 1px; font-size: 10px; }
+.offer-budget .budget-cell { min-height: 74px; padding: 12px 32px 12px 13px; }
+.offer-budget .budget-cell > b { font: 600 10px/1.25 var(--mono); letter-spacing: .1em; }
+.offer-budget .budget-cell > small { margin-top: 7px; font: 500 9.5px/1.38 var(--mono); }
+.offer-proof { margin-top: 13px; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+.offer-proof span { display: grid; place-items: center; min-height: 40px; padding: 10px; color: var(--ivory); font: 600 10.5px/1 var(--mono); letter-spacing: .1em; white-space: nowrap; }
+.offer-inventory { top: 200px; }
+.offer-inventory > div { gap: 0 30px; }
+.offer-item { min-height: 66px; }
+.offer-item > span { font-size: 12px; line-height: 1.35; letter-spacing: .03em; }
+.offer-item::after { top: 25px; }
+.offer-cycle { bottom: 62px; font-size: 11px; letter-spacing: .13em; }
+
+/* ------------------------------------------------------------
+   13 - VENUE. Thirteen zones on one ellipse, none over the core.
+   ------------------------------------------------------------ */
+.venue-zone { width: 178px; display: grid; grid-template-columns: 30px 1fr; align-items: center; gap: 11px; padding: 10px 11px; transform: translate(-50%,-50%); background: rgba(4,27,51,.82); }
+.venue-zone > i { color: var(--solar-gold); }
+.venue-zone > i .fr-glyph { width: 19px; height: 19px; }
+.venue-zone > span { margin-top: 0; font: 600 9px/1.25 var(--mono); letter-spacing: .07em; }
+.venue-zone > span em { display: block; margin-bottom: 3px; color: var(--patina); font: 600 8px/1 var(--mono); font-style: normal; letter-spacing: .14em; }
+.venue-zone::after { display: none; }
+.venue-zone:hover, .venue-zone:focus-visible { border-color: var(--solar-gold); background: rgba(4,27,51,.94); }
+.vz-1  { left: 50%;   top: 12.5%; }
+.vz-2  { left: 67.9%; top: 16.8%; }
+.vz-3  { left: 81.7%; top: 28.7%; }
+.vz-4  { left: 88.2%; top: 45.5%; }
+.vz-5  { left: 86%;   top: 63.3%; }
+.vz-6  { left: 75.5%; top: 78.1%; }
+.vz-7  { left: 59.2%; top: 86.4%; }
+.vz-8  { left: 40.8%; top: 86.4%; }
+.vz-9  { left: 24.5%; top: 78.1%; }
+.vz-10 { left: 14%;   top: 63.3%; }
+.vz-11 { left: 11.8%; top: 45.5%; }
+.vz-12 { left: 18.3%; top: 28.7%; }
+.vz-13 { left: 32.1%; top: 16.8%; }
+.venue-core { width: 274px; height: 274px; background: rgba(4,27,51,.94); box-shadow: 0 0 0 16px rgba(4,27,51,.08); }
+.venue-core b { font-size: 30px; }
+.venue-core span { font-size: 10px; }
+.venue-core small { font-size: 9px; }
+.fr-signature .fr-lockup { color: var(--midnight); }
+.fr-signature .fr-lockup i { background: var(--midnight); }
+
+/* ------------------------------------------------------------
+   14 - PRODUCTION. Cards stay inside the frame.
+   ------------------------------------------------------------ */
+.time-state { width: 272px; padding: 18px 42px 18px 18px; }
+.time-state b { font-size: 23px; letter-spacing: -.01em; }
+.time-state small { margin-top: 10px; font-size: 10px; line-height: 1.5; }
+.venue-requirements > span { margin-bottom: 12px; font-size: 10px; }
+.venue-requirements > div { gap: 10px; }
+.requirement-item { display: grid; grid-template-columns: 32px 1fr; align-items: start; gap: 12px; min-height: 82px; padding: 14px 28px 14px 13px; }
+.requirement-item > i { color: var(--solar-gold); }
+.requirement-item > i .fr-glyph { width: 20px; height: 20px; }
+.requirement-item > span > b { display: block; color: var(--solar-gold); font: 600 10.5px/1.2 var(--mono); letter-spacing: .08em; }
+.requirement-item > span > small { display: block; margin-top: 7px; color: rgba(241,226,200,.68); font: 500 9.5px/1.45 var(--mono); }
+.requirement-item::after { width: 16px; height: 16px; right: 7px; top: 7px; font-size: 10px; }
+
+/* ------------------------------------------------------------
+   Inverted scenes - ink on cream needs ink-coloured type.
+   ------------------------------------------------------------ */
+.fr-event .program-slot { border-color: rgba(4,27,51,.26); color: var(--midnight); }
+.fr-event .program-slot > b { color: var(--midnight); }
+.fr-event .program-slot > small { color: rgba(4,27,51,.6); }
+.fr-event .program-slot > i { color: var(--cobalt); }
+.fr-event .program-lineup .lineup-label, .fr-event .artist-lineup .lineup-label { color: var(--cobalt); }
+.event-operating-map { top: 420px; height: 440px; }
+
+/* ------------------------------------------------------------
+   02 - THE IDEA. The plate shows the artwork whole.
+   ------------------------------------------------------------ */
+.idea-visual { top: 268px; height: 462px; }
+.idea-visual > img { object-position: center; }
+.idea-star { top: 520px; }
+
+/* ------------------------------------------------------------
+   12 - CLAUDE. Affordances readable on ivory.
+   ------------------------------------------------------------ */
+.claude-slide .claude-marker > span { font-size: 9.5px; }
+.claude-slide .concept-trigger::after { background: rgba(21,21,20,.05); border-color: rgba(21,21,20,.28); color: var(--claude-clay); }
+
+/* ------------------------------------------------------------
+   15 - CLOSE. The poster fills its own frame.
+   ------------------------------------------------------------ */
+.close-poster { align-self: center; aspect-ratio: 1402 / 1122; }
+.close-poster img { object-fit: cover; }
+.close-offer { min-height: 158px; }
+.close-event { padding-top: 26px; border-top: 1px solid var(--line); }
+.allocation-label { grid-column: 1 / -1; margin-bottom: 4px; color: var(--solar-gold); font: 600 10px/1 var(--mono); letter-spacing: .16em; }
+.fr-close .allocation { margin-top: 26px; gap: 10px; }
+.fr-close .allocation-item { min-height: 116px; display: flex; flex-direction: column; justify-content: center; padding: 15px 34px 15px 15px; }
+.fr-close .allocation b { font-size: 10px; line-height: 1.35; }
+.fr-close .allocation small { margin-top: 9px; color: rgba(241,226,200,.62); font: 500 9.5px/1.45 var(--mono); letter-spacing: .01em; }
+
+/* ------------------------------------------------------------
+   Vertical deck - the same pass, portrait geometry.
+   ------------------------------------------------------------ */
+body.fr-vertical .fr-frame-top { right: 38px; }
+body.fr-vertical .format-item > i { width: 48px; height: 48px; border-radius: 13px; }
+body.fr-vertical .format-item > i .fr-glyph { width: 26px; height: 26px; }
+body.fr-vertical .system-cycle::before, body.fr-vertical .system-cycle::after { display: none; }
+body.fr-vertical .system-cycle-node { width: 190px; }
+body.fr-vertical .system-cycle-node > b { font-size: 15px; }
+body.fr-vertical .scn-disc { width: 96px; height: 96px; }
+body.fr-vertical .scn-disc .fr-glyph { width: 38px; height: 38px; }
+body.fr-vertical .scn-disc > i { font-size: 12px; }
+body.fr-vertical .reward-step { width: 176px; }
+body.fr-vertical .reward-step > b { font-size: 14px; }
+body.fr-vertical .reward-step .scn-disc { width: 92px; height: 92px; }
+body.fr-vertical .reward-step .scn-disc .fr-glyph { width: 36px; height: 36px; }
+body.fr-vertical .components-activities > div { grid-template-columns: repeat(4, 1fr); }
+body.fr-vertical .components-activities .mission-badge img { width: 60px; height: 60px; }
+body.fr-vertical .components-activities .mission-badge span { font-size: 14px; }
+body.fr-vertical .components-activities > span { font-size: 15px; }
+body.fr-vertical .venue-zone { width: 250px; grid-template-columns: 34px 1fr; }
+body.fr-vertical .venue-zone > i .fr-glyph { width: 24px; height: 24px; }
+body.fr-vertical .venue-zone > span { font-size: 13px; }
+body.fr-vertical .venue-zone > span em { font-size: 11px; }
+body.fr-vertical .requirement-item { grid-template-columns: 38px 1fr; min-height: 104px; }
+body.fr-vertical .requirement-item > i .fr-glyph { width: 26px; height: 26px; }
+body.fr-vertical .requirement-item > span > b { font-size: 15px; }
+body.fr-vertical .requirement-item > span > small { font-size: 13px; }
+body.fr-vertical .offer-proof span { font-size: 14px; white-space: normal; }
+body.fr-vertical .offer-budget { grid-template-columns: repeat(2, 1fr); }
+body.fr-vertical .close-poster { aspect-ratio: auto; align-self: auto; }
+
+/* --- Vertical deck: ring geometry and type sized for portrait --- */
+body.fr-vertical .system-cycle { left: 130px; right: 130px; top: 400px; width: auto; height: 820px; }
+body.fr-vertical .system-cycle::before, body.fr-vertical .system-cycle::after { display: block; }
+body.fr-vertical .system-cycle-node { width: 170px; min-height: 0; padding: 0; }
+body.fr-vertical .system-cycle-node::after { right: 32px; }
+body.fr-vertical .reward-step { width: 172px; height: auto; padding: 0; }
+body.fr-vertical .reward-step::after { right: 32px; }
+body.fr-vertical .venue-zone { width: 230px; }
+body.fr-vertical .time-state { width: 340px; padding: 20px 48px 20px 20px; }
+body.fr-vertical .time-state b { font-size: 27px; }
+body.fr-vertical .time-state small { font-size: 14px; line-height: 1.5; }
+body.fr-vertical .offer-budget .budget-cell { min-height: 118px; padding: 18px 40px 18px 18px; }
+body.fr-vertical .offer-budget .budget-cell > b { font-size: 17px; }
+body.fr-vertical .offer-budget .budget-cell > small { margin-top: 10px; font-size: 15px; }
+body.fr-vertical .offer-proof { grid-template-columns: repeat(2, 1fr); }
+body.fr-vertical .offer-proof span { min-height: 62px; font-size: 15px; letter-spacing: .09em; }
+body.fr-vertical .offer-item > span { font-size: 17px; }
+body.fr-vertical .format-item b { font-size: 22px; }
+body.fr-vertical .format-item small { font-size: 16px; }
+body.fr-vertical .deliverable-item { font-size: 18px; }
+body.fr-vertical .deliverables-note { font-size: 17px; }
+body.fr-vertical .deliverables-note b { font-size: 15px; }
+body.fr-vertical .component-call > i { font-size: 14px; }
+body.fr-vertical .component-call > i .fr-glyph { width: 22px; height: 22px; }
+body.fr-vertical .component-call > p { font-size: 19px; }
+body.fr-vertical .phase-card > p { font-size: 21px; }
+body.fr-vertical .allocation-label { font-size: 15px; }
+body.fr-vertical .fr-close .allocation-item { min-height: 0; padding: 16px 34px 16px 16px; }
+body.fr-vertical .fr-close .allocation b { font-size: 15px; }
+body.fr-vertical .fr-close .allocation small { font-size: 13px; }
+body.fr-vertical .claude-slide .claude-marker > span { font-size: 15px; }
+body.fr-vertical .venue-requirements > span { font-size: 15px; }
+body.fr-vertical .components-activities > div { gap: 16px; }
+body.fr-vertical .components-diagram { top: 880px; height: 1200px; }
+body.fr-vertical .components-donut { width: 460px; height: 460px; }
+body.fr-vertical .components-donut > i { inset: 80px; }
+body.fr-vertical .component-call { width: 268px; min-height: 0; padding: 18px 40px 16px 18px; }
+body.fr-vertical .component-call > b { font-size: 25px; }
+body.fr-vertical .component-call > strong { font-size: 12px; }
+body.fr-vertical .component-call > p { font-size: 16px; line-height: 1.4; }
+body.fr-vertical .components-takeaway { left: 50px; right: 50px; bottom: 60px; }
+
+/* ============================================================
+   PORTRAIT DECK - readable on a phone.
+   The 1080x2280 stage renders at roughly 0.36x on a handset, so
+   every value here is ~2.7x its on-screen size. Nothing below
+   24px on this stage; body copy sits at 38-42px.
+   ============================================================ */
+
+/* --- Type scale --- */
+body.fr-vertical p { font-size: 40px; line-height: 1.5; }
+body.fr-vertical .eyebrow { font-size: 30px; letter-spacing: .2em; }
+body.fr-vertical h2 { font-size: 76px; }
+
+body.fr-vertical .format-group h3 { font-size: 30px; }
+body.fr-vertical .format-item b { font-size: 34px; }
+body.fr-vertical .format-item small { font-size: 27px; line-height: 1.45; }
+body.fr-vertical .format-hub span { font-size: 22px; }
+
+body.fr-vertical .system-cycle-node > b { font-size: 27px; }
+body.fr-vertical .scn-disc > i { font-size: 22px; padding: 3px 10px; }
+body.fr-vertical .system-cycle-hub b { font-size: 34px; }
+body.fr-vertical .system-cycle-hub p { font-size: 30px; }
+body.fr-vertical .phase-card > i { font-size: 60px; }
+body.fr-vertical .phase-card > b { font-size: 30px; }
+body.fr-vertical .phase-card > p { font-size: 34px; }
+
+body.fr-vertical .components-activities > span { font-size: 28px; }
+body.fr-vertical .components-activities .mission-badge span { font-size: 24px; }
+body.fr-vertical .components-donut b { font-size: 76px; }
+body.fr-vertical .components-donut span { font-size: 24px; }
+body.fr-vertical .components-donut p { font-size: 27px; }
+body.fr-vertical .component-call > i { font-size: 24px; }
+body.fr-vertical .component-call > b { font-size: 40px; }
+body.fr-vertical .component-call > strong { font-size: 22px; }
+body.fr-vertical .component-call > p { font-size: 27px; line-height: 1.42; }
+body.fr-vertical .components-takeaway p { font-size: 32px; }
+
+body.fr-vertical .reward-compare > div > span { font-size: 26px; }
+body.fr-vertical .reward-compare li { font-size: 30px; }
+body.fr-vertical .reward-step > b { font-size: 26px; }
+body.fr-vertical .reward-cycle-hub > b { font-size: 32px; }
+body.fr-vertical .reward-cycle-hub > p { font-size: 28px; }
+body.fr-vertical .reward-memory > span { font-size: 26px; }
+body.fr-vertical .reward-memory > p { font-size: 34px; }
+body.fr-vertical .reward-memory i { font-size: 21px; }
+body.fr-vertical .reward-memory b { font-size: 34px; }
+body.fr-vertical .reward-memory strong { width: 68px; height: 68px; font-size: 22px; }
+
+body.fr-vertical .media-included h3, body.fr-vertical .report-included h3,
+body.fr-vertical .offer-inventory h3 { font-size: 28px; }
+body.fr-vertical .deliverable-item { font-size: 29px; min-height: 92px; }
+body.fr-vertical .report-included .deliverable-item { min-height: 96px; }
+body.fr-vertical .deliverables-note { font-size: 28px; }
+body.fr-vertical .deliverables-note b { font-size: 24px; }
+
+body.fr-vertical .offer-card-head span { font-size: 24px; }
+body.fr-vertical .offer-card-head small { font-size: 22px; }
+body.fr-vertical .offer-status > span { font-size: 22px; }
+body.fr-vertical .offer-status > b { font-size: 28px; line-height: 1.3; }
+body.fr-vertical .offer-card > p { font-size: 34px; }
+body.fr-vertical .offer-enforce { font-size: 25px; line-height: 1.5; }
+body.fr-vertical .offer-budget > span { font-size: 26px; }
+body.fr-vertical .offer-budget .budget-cell > b { font-size: 27px; }
+body.fr-vertical .offer-budget .budget-cell > small { font-size: 24px; line-height: 1.4; }
+body.fr-vertical .offer-proof span { font-size: 26px; letter-spacing: .07em; }
+body.fr-vertical .offer-item > span { font-size: 30px; }
+body.fr-vertical .offer-cycle { font-size: 26px; }
+
+body.fr-vertical .venue-zone > span { font-size: 24px; }
+body.fr-vertical .venue-zone > span em { font-size: 20px; }
+body.fr-vertical .venue-core b { font-size: 46px; }
+body.fr-vertical .venue-core span { font-size: 24px; }
+body.fr-vertical .venue-core small { font-size: 21px; }
+body.fr-vertical .signature-note { font-size: 32px; }
+
+body.fr-vertical .time-state span { font-size: 24px; }
+body.fr-vertical .time-state b { font-size: 42px; }
+body.fr-vertical .time-state small { font-size: 24px; line-height: 1.5; }
+body.fr-vertical .venue-requirements > span { font-size: 26px; }
+body.fr-vertical .requirement-item > span > b { font-size: 27px; }
+body.fr-vertical .requirement-item > span > small { font-size: 23px; line-height: 1.45; }
+
+body.fr-vertical .allocation-label { font-size: 26px; }
+body.fr-vertical .fr-close .allocation b { font-size: 26px; }
+body.fr-vertical .fr-close .allocation small { font-size: 22px; line-height: 1.4; }
+body.fr-vertical .close-offers span { font-size: 26px; }
+body.fr-vertical .close-event b, body.fr-vertical .close-event span { font-size: 26px; }
+body.fr-vertical .close-event a { font-size: 30px; }
+body.fr-vertical .claude-slide .claude-marker > span { font-size: 26px; }
+body.fr-vertical .claude-slide .claude-meta { font-size: 28px; }
+body.fr-vertical .claude-slide .claude-flagship { font-size: 26px; }
+body.fr-vertical .cover-status { font-size: 28px; }
+body.fr-vertical .cover-flagship { font-size: 24px; }
+body.fr-vertical .event-status { font-size: 26px; }
+body.fr-vertical .program-slot > b { font-size: 26px; }
+body.fr-vertical .program-slot > small { font-size: 21px; }
+body.fr-vertical .program-slot > i { font-size: 32px; }
+body.fr-vertical .lineup-label { font-size: 26px; }
+body.fr-vertical .role-badge .role-caption { font-size: 26px; }
+body.fr-vertical .idea-triptych span { font-size: 32px; }
+
+/* --- Blocks resized to hold the larger type --- */
+body.fr-vertical .format-item { grid-template-columns: 74px 1fr; gap: 22px; padding: 16px 44px 16px 0; }
+body.fr-vertical .format-item > i { width: 68px; height: 68px; border-radius: 18px; }
+body.fr-vertical .format-item > i .fr-glyph { width: 36px; height: 36px; }
+body.fr-vertical .format-item::after { width: 30px; height: 30px; right: 8px; font-size: 18px; }
+
+body.fr-vertical .components-activities .mission-badge { padding: 22px 8px 18px; gap: 14px; }
+body.fr-vertical .components-activities .mission-badge img { width: 76px; height: 76px; }
+body.fr-vertical .components-activities .mission-badge::after { width: 26px; height: 26px; font-size: 15px; }
+
+body.fr-vertical .venue-zone { width: 276px; grid-template-columns: 42px 1fr; gap: 14px; padding: 14px 15px; }
+body.fr-vertical .venue-zone > i .fr-glyph { width: 30px; height: 30px; }
+
+body.fr-vertical .requirement-item { grid-template-columns: 50px 1fr; gap: 16px; min-height: 150px; padding: 20px 40px 20px 18px; }
+body.fr-vertical .requirement-item > i .fr-glyph { width: 34px; height: 34px; }
+body.fr-vertical .requirement-item::after { width: 26px; height: 26px; font-size: 15px; }
+
+body.fr-vertical .offer-item { min-height: 110px; grid-template-columns: 40px 1fr; padding: 16px 50px 16px 0; }
+body.fr-vertical .offer-item::after { width: 26px; height: 26px; top: 42px; font-size: 15px; }
+body.fr-vertical .offer-item > i { font-size: 26px; }
+body.fr-vertical .offer-inventory > div { grid-template-columns: 1fr; gap: 0; }
+body.fr-vertical .offer-budget { grid-template-columns: repeat(3, 1fr); }
+body.fr-vertical .offer-budget .budget-cell { min-height: 150px; padding: 20px 44px 20px 18px; }
+body.fr-vertical .offer-budget .budget-cell::after { width: 26px; height: 26px; font-size: 15px; }
+body.fr-vertical .offer-proof { grid-template-columns: repeat(3, 1fr); }
+body.fr-vertical .offer-proof span { min-height: 78px; white-space: normal; }
+
+body.fr-vertical .deliverable-item { padding: 16px 64px 16px 22px; }
+body.fr-vertical .deliverable-item > i { right: 22px; font-size: 28px; }
+body.fr-vertical .time-state { width: 400px; padding: 24px 56px 24px 24px; }
+body.fr-vertical .time-state::after { width: 30px; height: 30px; font-size: 18px; }
+body.fr-vertical .fr-close .allocation-item { min-height: 0; padding: 22px 50px 22px 20px; }
+body.fr-vertical .claude-slide .claude-marker { padding: 22px 18px; }
+body.fr-vertical .concept-trigger::after { width: 32px; height: 32px; font-size: 20px; }
+
+/* --- Portrait geometry: blocks that were colliding --- */
+body.fr-vertical .role-orbit { top: 920px; height: 1240px; }
+body.fr-vertical .role-orbit-lines { left: 90px; top: 170px; width: 900px; height: 900px; }
+body.fr-vertical .signature-stage { top: 700px; height: 1300px; }
+body.fr-vertical .temporal-system { top: 620px; height: 1150px; }
+body.fr-vertical .offer-card { top: 330px; }
+body.fr-vertical .offer-inventory { top: 1560px; }
+body.fr-vertical .offer-cycle { bottom: 48px; }
+body.fr-vertical .media-included { top: 560px; }
+body.fr-vertical .report-included { top: 1180px; }
+
+/* --- Portrait: stacking that holds at the new type size --- */
+body.fr-vertical .offer-inventory > div { grid-template-columns: 1fr 1fr; gap: 0 34px; }
+body.fr-vertical .offer-item { min-height: 96px; }
+body.fr-vertical .offer-item::after { top: 35px; }
+
+body.fr-vertical .audience-copy p { font-size: 36px; }
+body.fr-vertical .role-orbit { top: 1120px; height: 1080px; }
+body.fr-vertical .role-orbit-lines { left: 140px; top: 90px; width: 800px; height: 800px; }
+body.fr-vertical .role-orbit > .role-badge { width: 168px; height: 188px; }
+
+body.fr-vertical .system-phase { left: 50px; right: 50px; width: auto; }
+body.fr-vertical .phase-card { min-height: 0; padding: 26px 60px 26px 26px; }
+body.fr-vertical .phase-a { top: 1276px; bottom: auto; }
+body.fr-vertical .phase-b { top: 1608px; bottom: auto; }
+body.fr-vertical .phase-c { top: 1940px; bottom: auto; }
+
+body.fr-vertical .reward-cycle { left: 150px; top: 1030px; width: 780px; height: 780px; }
+body.fr-vertical .reward-memory { bottom: 56px; }
+
+body.fr-vertical .temporal-system { top: 600px; height: 1020px; }
+body.fr-vertical .temporal-orbit { left: 40px; top: 120px; width: 900px; height: 900px; }
+
+/* --- Portrait slide 11: the densest screen, compressed to fit --- */
+body.fr-vertical .offer-card { top: 320px; padding: 24px; min-height: 0; }
+body.fr-vertical .offer-card-head { grid-template-columns: 1fr 300px; gap: 16px; }
+body.fr-vertical .offer-card-head > div { padding: 16px; }
+body.fr-vertical .offer-card-head b { font-size: 40px; }
+body.fr-vertical .offer-card > p { margin-top: 18px; font-size: 30px; line-height: 1.45; }
+body.fr-vertical .offer-enforce { margin-top: 16px; padding: 14px; font-size: 23px; line-height: 1.45; }
+body.fr-vertical .offer-budget { margin-top: 16px; gap: 8px; }
+body.fr-vertical .offer-budget .budget-cell { min-height: 108px; padding: 14px 40px 14px 14px; }
+body.fr-vertical .offer-budget .budget-cell > b { font-size: 23px; }
+body.fr-vertical .offer-budget .budget-cell > small { margin-top: 7px; font-size: 20px; line-height: 1.35; }
+body.fr-vertical .offer-proof { margin-top: 14px; gap: 8px; }
+body.fr-vertical .offer-proof span { min-height: 62px; padding: 10px 8px; font-size: 21px; }
+body.fr-vertical .offer-inventory > div { gap: 0 26px; }
+body.fr-vertical .offer-item { min-height: 74px; padding: 12px 44px 12px 0; grid-template-columns: 34px 1fr; }
+body.fr-vertical .offer-item > span { font-size: 25px; line-height: 1.3; }
+body.fr-vertical .offer-item::after { top: 24px; width: 24px; height: 24px; font-size: 14px; }
+body.fr-vertical .offer-cycle { display: none; }
+body.fr-vertical .fr-close .allocation small { display: none; }
+body.fr-vertical .fr-close .allocation-item { padding: 20px 46px 20px 20px; }
+
+/* --- Portrait: slide 11 carries the list, slide 15 carries the notes --- */
+body.fr-vertical .offer-budget .budget-cell > small { display: none; }
+body.fr-vertical .offer-budget .budget-cell { min-height: 74px; display: flex; align-items: center; padding: 14px 40px 14px 14px; }
+body.fr-vertical .offer-budget .budget-cell > b { font-size: 22px; line-height: 1.3; }
+body.fr-vertical .offer-card-head { grid-template-columns: 1fr 320px; }
+body.fr-vertical .offer-card > p { font-size: 28px; }
+body.fr-vertical .offer-enforce { font-size: 21px; }
+body.fr-vertical .offer-inventory { top: 1700px; }
+body.fr-vertical .offer-item { min-height: 58px; padding: 9px 40px 9px 0; }
+body.fr-vertical .offer-item > span { font-size: 24px; line-height: 1.25; }
+body.fr-vertical .offer-item::after { top: 16px; }
+body.fr-vertical .fr-close .allocation small { display: block; }
+body.fr-vertical .role-orbit { top: 1480px; height: 780px; }
+body.fr-vertical .role-orbit-lines { left: 165px; top: 0; width: 720px; height: 720px; }
+body.fr-vertical .role-orbit > .role-badge { width: 150px; height: 168px; }
+body.fr-vertical .role-orbit-core { width: 210px; height: 210px; }
+body.fr-vertical .reward-cycle { top: 990px; height: 740px; width: 740px; left: 170px; }
+body.fr-vertical .offer-inventory { top: 1600px; }
+body.fr-vertical .offer-inventory h3 { margin-bottom: 10px; }
+body.fr-vertical .offer-item { min-height: 52px; padding: 8px 40px 8px 0; }
+body.fr-vertical .offer-item::after { top: 13px; }
+body.fr-vertical .offer-inventory { top: 1568px; }
+body.fr-vertical .offer-card-head > .offer-status > b { font-size: 26px; line-height: 1.3; letter-spacing: .05em; }
+body.fr-vertical .offer-card-head > .offer-status > span { font-size: 21px; }
+
+/* --- Portrait slide 05: the map becomes a scannable index --- */
+/* Notes live in the concept modal and on the landscape deck; on a phone the
+   six layers read as icon + name so nothing is cramped or clipped. */
+body.fr-vertical .format-item small { display: none; }
+body.fr-vertical .format-item { grid-template-columns: 64px 1fr; gap: 20px; padding: 15px 56px 15px 0; }
+body.fr-vertical .format-item > i { width: 60px; height: 60px; border-radius: 16px; }
+body.fr-vertical .format-item > i .fr-glyph { width: 32px; height: 32px; }
+body.fr-vertical .format-item b { font-size: 30px; line-height: 1.25; }
+body.fr-vertical .event-format-map { top: 430px; bottom: 70px; gap: 24px; }
+body.fr-vertical .format-group { padding: 24px 22px 20px; }
+body.fr-vertical .format-group h3 { margin-bottom: 10px; }
+
+/* --- Portrait slide 13: a ring of thirteen cannot hold on a phone.
+   The venue reads as a core with a two-column zone index beneath it. --- */
+body.fr-vertical .signature-stage { left: 46px; right: 46px; top: 620px; bottom: 250px; width: auto; height: auto; display: flex; flex-direction: column; align-items: center; gap: 38px; }
+body.fr-vertical .signature-orbit { left: 50%; top: -40px; width: 560px; height: 560px; transform: translateX(-50%); opacity: .5; }
+body.fr-vertical .venue-core { position: static; transform: none; width: 300px; height: 300px; flex: none; }
+body.fr-vertical .venue-zones { position: static; inset: auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+body.fr-vertical .venue-zone { position: static; transform: none; width: auto; min-height: 92px; grid-template-columns: 44px 1fr; }
+body.fr-vertical .venue-zone > span { font-size: 23px; }
+body.fr-vertical .signature-note { bottom: 90px; }
+body.fr-vertical .time-state b { font-size: 37px; }
+body.fr-vertical .format-item { padding-right: 64px; }
+
+/* --- Portrait slide 08: ring sits between the two panels --- */
+body.fr-vertical .reward-compare { top: 330px; }
+body.fr-vertical .reward-compare li { font-size: 27px; padding: 9px 0 9px 34px; }
+body.fr-vertical .reward-cycle { left: 210px; top: 1000px; width: 660px; height: 660px; }
+body.fr-vertical .reward-cycle::before { inset: 130px; }
+body.fr-vertical .reward-cycle-hub { width: 330px; height: 330px; padding: 30px; }
+body.fr-vertical .reward-cycle-hub > p { font-size: 26px; line-height: 1.35; }
+body.fr-vertical .reward-cycle-hub > b { font-size: 30px; }
+body.fr-vertical .reward-step { width: 160px; }
+body.fr-vertical .reward-step .scn-disc { width: 84px; height: 84px; }
+body.fr-vertical .reward-step .scn-disc .fr-glyph { width: 34px; height: 34px; }
+body.fr-vertical .reward-step > b { font-size: 24px; }
+body.fr-vertical .reward-compare { top: 400px; }
+body.fr-vertical .reward-compare li { font-size: 26px; padding: 8px 0 8px 32px; }
+body.fr-vertical .reward-cycle { left: 220px; top: 990px; width: 640px; height: 640px; }
+body.fr-vertical .reward-cycle::before { inset: 126px; }
+body.fr-vertical .reward-cycle-hub { width: 316px; height: 316px; }
+
+/* --- Ring nodes centre on their point, not below it ---
+   GSAP rewrites `transform` when it animates these nodes and drops the
+   percentage Y offset, which dropped every node half its own height. The
+   standalone `translate` property is not touched by the tween. */
+.system-cycle-node, .reward-step, .role-orbit > .role-badge, .venue-zone {
+  transform: none;
+  translate: -50% -50%;
+}
+body.fr-vertical .venue-zone { translate: none; }
+
+/* GSAP owns `transform` (and clears `translate`) on the nodes it tweens, so
+   the ones it animates centre on their ring point with fixed box + margins
+   instead. .venue-zone is not animated and keeps its transform. */
+.system-cycle-node, .reward-step, .role-orbit > .role-badge { transform: none; translate: none; }
+.venue-zone { transform: none; translate: none; margin-left: -89px; margin-top: -36px; height: 72px; }
+.system-cycle-node { height: 124px; margin-left: -74px; margin-top: -62px; justify-content: flex-start; }
+.reward-step { height: 112px; margin-left: -70px; margin-top: -56px; justify-content: flex-start; }
+.role-orbit > .role-badge { margin-left: -85px; margin-top: -95px; }
+
+body.fr-vertical .system-cycle-node { height: 184px; margin-left: -85px; margin-top: -92px; }
+body.fr-vertical .reward-step { height: 164px; margin-left: -80px; margin-top: -82px; }
+body.fr-vertical .role-orbit > .role-badge { margin-left: -75px; margin-top: -84px; }
+body.fr-vertical .venue-zone { margin: 0; height: auto; }
+body.fr-vertical .signature-stage { bottom: 300px; }
