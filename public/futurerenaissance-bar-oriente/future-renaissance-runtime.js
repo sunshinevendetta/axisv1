@@ -41,8 +41,10 @@
     document.getElementById("artist-modal-discipline").textContent = artist.discipline;
     document.getElementById("artist-modal-bio").textContent = artist.bio;
     document.getElementById("artist-modal-identity").textContent = artist.identity;
-    document.getElementById("artist-modal-link-label").textContent = artist.linkLabel + " · " + artist.handle;
-    document.getElementById("artist-modal-link").href = artist.href;
+    var link = document.getElementById("artist-modal-link");
+    document.getElementById("artist-modal-link-label").textContent = artist.linkLabel + (artist.handle ? " · " + artist.handle : "");
+    link.href = artist.href || "#";
+    link.hidden = !artist.href;
   }
 
   function openArtistModal(id, trigger) {

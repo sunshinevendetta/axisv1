@@ -78,14 +78,26 @@ export default function FutureRenaissancePlanContent() {
         </section>
 
         <section aria-labelledby="future-music">
-          <h2 id="future-music">Music program</h2>
+          <h2 id="future-music">Music programming</h2>
           <p>
-            The night moves through three stages: a warm-up DJ for arrival and room
-            activation, a live coding performance in which music is created,
-            sequenced and modified through code in real time, and a closing DJ that
-            takes the room into its final club state.
+            Main room line up: Algorithmic Live Coding Music Creation, with three
+            artists creating music with code in real time, curated by Claude and
+            AXIS, followed by a closing DJ and support DJ playing UK techno and
+            techno.
           </p>
-          <p>Performing artists are not yet assigned.</p>
+          <p>Cuarto Rosa line up: a special activity by Suno.</p>
+        </section>
+
+        <section aria-labelledby="future-digital-artists">
+          <h2 id="future-digital-artists">Digital artist line up</h2>
+          <p>Verse Works, Pixelord and The Public.</p>
+          <p>
+            The public is billed as part of the line up because the room makes the
+            work. Everyone attending receives a free month of the Claude Pro plan
+            plus a fixed 50 USD in API credits, and any guest who brings photos or
+            video, or simply interacts with the application, alters the visual
+            experience running in real time on the main LED wall.
+          </p>
         </section>
 
         <section aria-labelledby="future-claude">

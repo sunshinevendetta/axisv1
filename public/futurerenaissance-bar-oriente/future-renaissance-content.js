@@ -2,7 +2,6 @@
   "use strict";
 
   var event = window.FUTURE_RENAISSANCE;
-  var program = window.FUTURE_RENAISSANCE_PROGRAM;
   var root = "/futurerenaissance-bar-oriente/brand-assets/axis_future_renaissance_brand_assets";
   var claudeRoot = "/futurerenaissance-bar-oriente/brand-assets/anthropic";
   var orientation = document.documentElement.dataset.orientation || "horizontal";
@@ -136,18 +135,26 @@
       '<div class="lineup-buttons">' + ids.map(artistButton).join("") + '</div></div>';
   }
 
-  function programSlot(key) {
-    var slot = program[key];
-    return conceptNode("program-slot ps-" + slot.slot, "program-" + key,
-      '<i>' + slot.slot + '</i><b>' + slot.label + '</b><small>' + slot.arc + '</small>',
-      slot.label);
+  function programRoom(labelKey, label, entries) {
+    return '<div class="program-room">' +
+      '<b data-i18n="' + labelKey + '">' + label + '</b>' +
+      '<p>' + entries.map(function (entry) {
+        return '<span data-i18n="' + entry[0] + '">' + entry[1] + '</span>';
+      }).join('<i aria-hidden="true">|</i>') + '</p>' +
+    '</div>';
   }
 
   function programLineup() {
     return '<div class="program-lineup" data-reveal>' +
-      '<span class="lineup-label" data-i18n="event.musicProgram">MUSIC PROGRAM</span>' +
-      '<div class="program-slots">' +
-        program.order.map(programSlot).join('<i class="program-arrow" aria-hidden="true">→</i>') +
+      '<span class="lineup-label" data-i18n="event.musicProgram">MUSIC PROGRAMMING</span>' +
+      '<div class="program-board">' +
+        programRoom("event.mainRoom", "MAIN ROOM LINE UP", [
+          ["event.mainRoomLive", "Algorithmic Live Coding Music Creation — 3 artists creating music with code in real time, curated by Claude &amp; AXIS"],
+          ["event.mainRoomClosing", "Closing DJ + Support DJ — UK Techno / Techno"],
+        ]) +
+        programRoom("event.cuartoRosa", "CUARTO ROSA LINE UP", [
+          ["event.cuartoRosaActivity", "Special Activity by Suno"],
+        ]) +
       '</div>' +
     '</div>';
   }
@@ -158,7 +165,7 @@
 
   var roles = ["ARTIST", "CREATOR", "AGENT", "PARTNER", "PRESS", "OPERATOR", "GUEST", "COLLECTOR"];
   var missions = ["CONNECT", "CHECK-IN", "CREATE", "INTERVENE", "VOTE", "COLLECT", "STREAM", "COMPLETE"];
-  var digitalArtists = ["alexa-carlota", "arvakerm", "fabiola-larios", "jazmineci"];
+  var digitalArtists = ["verse-works", "pixelord", "the-public"];
 
   var formatGroups = [
     { key: "a", letter: "A", title: "CULTURE", items: [
@@ -305,7 +312,7 @@
       '</div>' +
       '<div class="artist-lineups" data-reveal>' +
         programLineup() +
-        artistLineup("event.digitalLineup", "DIGITAL ARTIST LINEUP", digitalArtists) +
+        artistLineup("event.digitalLineup", "DIGITAL ARTIST LINE UP", digitalArtists) +
       '</div>' +
     '</section>',
 

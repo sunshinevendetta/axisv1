@@ -32,8 +32,13 @@
       "event.kicker": "EL EVENTO",
       "event.attendees": "INVITADOS ESPERADOS",
       "event.status": "PRIMERA FIESTA OFICIAL DE LA COMUNIDAD ANTHROPIC CLAUDE AI · MEXICO TECH WEEK 2026",
-      "event.musicProgram": "PROGRAMA MUSICAL",
-      "event.digitalLineup": "ARTISTAS DIGITALES",
+      "event.musicProgram": "PROGRAMACIÓN MUSICAL",
+      "event.mainRoom": "LINE UP SALÓN PRINCIPAL",
+      "event.mainRoomLive": "Creación musical algorítmica en live coding — 3 artistas creando música con código en tiempo real, con curaduría de Claude y AXIS",
+      "event.mainRoomClosing": "DJ de cierre + DJ de apoyo — UK Techno / Techno",
+      "event.cuartoRosa": "LINE UP CUARTO ROSA",
+      "event.cuartoRosaActivity": "Actividad especial de Suno",
+      "event.digitalLineup": "LINE UP DE ARTISTAS DIGITALES",
       "program.art": "ARTE",
       "program.music": "MÚSICA",
       "program.technology": "TECNOLOGÍA",
@@ -107,7 +112,12 @@
       "event.kicker": "活动",
       "event.attendees": "预计宾客",
       "event.status": "首个官方 ANTHROPIC CLAUDE AI 社区派对 · 墨西哥科技周 2026",
-      "event.musicProgram": "音乐节目",
+      "event.musicProgram": "音乐编排",
+      "event.mainRoom": "主厅阵容",
+      "event.mainRoomLive": "算法实时编码音乐创作 — 3 位艺术家以代码实时创作音乐，由 Claude 与 AXIS 策划",
+      "event.mainRoomClosing": "闭场 DJ + 助阵 DJ — 英式铁克诺 / 铁克诺",
+      "event.cuartoRosa": "CUARTO ROSA 阵容",
+      "event.cuartoRosaActivity": "Suno 特别活动",
       "event.digitalLineup": "数字艺术家阵容",
       "program.art": "艺术",
       "program.music": "音乐",
@@ -157,7 +167,7 @@
     },
   };
 
-  TEXT.es["event.digitalLineup"] = "ARTISTAS DIGITALES";
+  TEXT.es["event.digitalLineup"] = "LINE UP DE ARTISTAS DIGITALES";
   TEXT.es["artist.identity"] = "IDENTIDAD / \u00cdNDICE";
   TEXT.zh["event.digitalLineup"] = "\u6570\u5b57\u827a\u672f\u5bb6\u9635\u5bb9";
   TEXT.zh["artist.identity"] = "\u8eab\u4efd / \u7d22\u5f15";
