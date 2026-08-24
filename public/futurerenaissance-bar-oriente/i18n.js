@@ -20,24 +20,31 @@
       "nav.claude": "CLAUDE",
       "nav.venue": "EL VENUE",
       "nav.production": "PRODUCCIÓN",
-      "cover.status": "PRIMERA FIESTA OFICIAL DE LA COMUNIDAD ANTHROPIC CLAUDE AI",
-      "cover.flagship": "UN EVENTO INSIGNIA DE FUTURE RENAISSANCE IMPULSADO POR AXIS",
+      "cover.poweredBy": "PRESENTADO POR: AXIS",
       "idea.kicker": "LA IDEA",
       "idea.title": "FUTURE RENAISSANCE ES UN SISTEMA VIVO.",
-      "idea.human": "Dirección humana.",
-      "idea.machine": "Extensión de la máquina.",
-      "idea.public": "Transformación pública.",
-      "idea.copy": "El Renacimiento conectó arte, ciencia, arquitectura y conocimiento público. Future Renaissance escenifica su convergencia contemporánea a través de artistas, máquinas e invitados participantes.",
-      "idea.code": "Arte, música, tecnología, cultura, IA, código, comunidad, interacción, hospitalidad y medios operan como un solo entorno.",
+      "idea.human": "Con dirección humana.",
+      "idea.machine": "Extensión inmersiva.",
+      "idea.public": "Transformando la interacción del público.",
+      "idea.copy": "Future Renaissance se inspira en la conexión del arte en el presente a través de la tecnología.",
+      "idea.code": "Arte, música, tecnología, cultura, AI, código, comunidad, interacción operan como un solo entorno.",
       "event.kicker": "EL EVENTO",
       "event.attendees": "INVITADOS ESPERADOS",
       "event.status": "PRIMERA FIESTA OFICIAL DE LA COMUNIDAD ANTHROPIC CLAUDE AI · MEXICO TECH WEEK 2026",
-      "event.musicProgram": "PROGRAMACIÓN MUSICAL",
-      "event.mainRoom": "LINE UP SALÓN PRINCIPAL",
-      "event.mainRoomLive": "Creación musical algorítmica en live coding — 3 artistas creando música con código en tiempo real, con curaduría de Claude y AXIS",
-      "event.mainRoomClosing": "DJ de cierre + DJ de apoyo — UK Techno / Techno",
-      "event.cuartoRosa": "LINE UP CUARTO ROSA",
-      "event.cuartoRosaActivity": "Actividad especial de Suno",
+      "event.mainRoom": "SALÓN PRINCIPAL",
+      "event.cuartoRosa": "CUARTO ROSA",
+      "event.mainRoomCount": "2 SETS",
+      "event.cuartoRosaCount": "1 ACTIVIDAD",
+      "event.digitalCount": "3 NOMBRES",
+      "event.arcCreation": "CREACIÓN",
+      "event.arcClub": "CLUB",
+      "event.arcAllNight": "TODA LA NOCHE",
+      "event.liveCodingName": "LIVE CODING ALGORÍTMICO",
+      "event.liveCodingNote": "3 artistas",
+      "event.closingName": "DJ DE CIERRE + DJ DE APOYO",
+      "event.closingNote": "UK techno hacia techno",
+      "event.sunoName": "MÚSICA GENERATIVA",
+      "event.sunoNote": "Generative Music On Site en el segundo salón",
       "event.digitalLineup": "LINE UP DE ARTISTAS DIGITALES",
       "program.art": "ARTE",
       "program.music": "MÚSICA",
@@ -50,7 +57,7 @@
       "audience.title": "INVITADOS ESPERADOS.",
       "audience.copy": "Artistas, músicos, builders, fundadores, coleccionistas, curadores, creadores, medios, operadores e invitados culturales seleccionados.",
       "audience.openCopy": "Esta es la audiencia esperada de Future Renaissance, no el aforo total del venue. Donde se acuerde operativamente, el venue puede seguir recibiendo a su clientela habitual, y esos invitados pueden descubrir y participar en actividades seleccionadas.",
-      "audience.accessState": "ROL / ACCESO / AUTORIDAD",
+      "audience.accessState": "AUDIENCIA OBJETIVO",
       "leaderboard.kicker": "TABLERO EN VIVO",
       "leaderboard.title": "LA PARTICIPACIÓN SE VUELVE VISIBLE.",
       "leaderboard.rank": "POSICIÓN",
@@ -83,7 +90,6 @@
       "close.official": "PRIMERA FIESTA OFICIAL DE LA COMUNIDAD ANTHROPIC CLAUDE AI",
       "close.hospitality": "HOSPITALIDAD DE CORTESÍA",
       "close.hospitalityValue": "FINANCIADA POR AXIS",
-      "artist.identity": "IDENTIDAD / ÍNDICE",
     },
     zh: {
       "brand.techWeek": "墨西哥科技周特别版",
@@ -100,8 +106,7 @@
       "nav.claude": "CLAUDE",
       "nav.venue": "场地",
       "nav.production": "制作",
-      "cover.status": "首个官方 ANTHROPIC CLAUDE AI 社区派对",
-      "cover.flagship": "由 AXIS 呈现的 FUTURE RENAISSANCE 旗舰活动",
+      "cover.poweredBy": "呈现方：AXIS",
       "idea.kicker": "理念",
       "idea.title": "FUTURE RENAISSANCE 是一个活的系统。",
       "idea.human": "人类的方向。",
@@ -116,8 +121,19 @@
       "event.mainRoom": "主厅阵容",
       "event.mainRoomLive": "算法实时编码音乐创作 — 3 位艺术家以代码实时创作音乐，由 Claude 与 AXIS 策划",
       "event.mainRoomClosing": "闭场 DJ + 助阵 DJ — 英式铁克诺 / 铁克诺",
-      "event.cuartoRosa": "CUARTO ROSA 阵容",
-      "event.cuartoRosaActivity": "Suno 特别活动",
+      "event.cuartoRosa": "CUARTO ROSA",
+      "event.mainRoomCount": "2 组",
+      "event.cuartoRosaCount": "1 项活动",
+      "event.digitalCount": "3 位",
+      "event.arcCreation": "创作",
+      "event.arcClub": "俱乐部",
+      "event.arcAllNight": "全场",
+      "event.liveCodingName": "算法现场编程",
+      "event.liveCodingNote": "3 位艺术家",
+      "event.closingName": "收场 DJ + 支援 DJ",
+      "event.closingNote": "从 UK techno 进入 techno",
+      "event.sunoName": "生成式音乐",
+      "event.sunoNote": "Generative Music On Site，于第二个房间呈现",
       "event.digitalLineup": "数字艺术家阵容",
       "program.art": "艺术",
       "program.music": "音乐",
@@ -130,7 +146,7 @@
       "audience.title": "预计宾客。",
       "audience.copy": "艺术家、音乐人、开发者、创始人、收藏家、策展人、创作者、媒体、运营者与受邀的文化嘉宾。",
       "audience.openCopy": "这是 Future Renaissance 的预计观众人数，而非场地的绝对容量。在双方同意的运营范围内，场地可以继续接待其常客，这些客人也可以发现并参与部分活动。",
-      "audience.accessState": "角色 / 访问 / 权限",
+      "audience.accessState": "目标受众",
       "leaderboard.kicker": "实时排行榜",
       "leaderboard.title": "参与变得可见。",
       "leaderboard.rank": "排名",
@@ -163,14 +179,11 @@
       "close.official": "首个官方 ANTHROPIC CLAUDE AI 社区派对",
       "close.hospitality": "免费款待",
       "close.hospitalityValue": "由 AXIS 提供",
-      "artist.identity": "身份 / 索引",
     },
   };
 
-  TEXT.es["event.digitalLineup"] = "LINE UP DE ARTISTAS DIGITALES";
-  TEXT.es["artist.identity"] = "IDENTIDAD / \u00cdNDICE";
-  TEXT.zh["event.digitalLineup"] = "\u6570\u5b57\u827a\u672f\u5bb6\u9635\u5bb9";
-  TEXT.zh["artist.identity"] = "\u8eab\u4efd / \u7d22\u5f15";
+  TEXT.es["event.digitalLineup"] = "ARTE DIGITAL";
+  TEXT.zh["event.digitalLineup"] = "数字艺术";
 
   function normalize(value) {
     var lang = String(value || "").toLowerCase();
@@ -189,6 +202,7 @@
 
   var originals = new WeakMap();
   var activeLanguage = "en";
+  window.__futureRenaissanceGetLanguage = function () { return activeLanguage; };
 
   function translate(language) {
     var lang = normalize(language) || "en";
@@ -203,6 +217,7 @@
     document.querySelectorAll("#fr-language button").forEach(function (button) {
       button.setAttribute("aria-pressed", button.dataset.lang === lang ? "true" : "false");
     });
+    window.dispatchEvent(new CustomEvent("axis:languagechange", { detail: { language: lang } }));
   }
 
   function injectControl() {

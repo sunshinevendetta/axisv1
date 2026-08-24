@@ -70,6 +70,7 @@
     return '<svg class="fr-glyph ' + (className || "") + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
       'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + body + '</svg>';
   }
+  window.__futureRenaissanceGlyph = glyph;
 
   function orbitalSvg(className) {
     return '<svg class="orbital-svg ' + (className || "") + '" viewBox="0 0 800 800" aria-hidden="true">' +
@@ -94,7 +95,9 @@
   }
 
   function systemItem(className, item) {
-    return conceptNode(className, item[0], '<i>' + glyph(item[3]) + '</i><span><b>' + item[1] + '</b><small>' + item[2] + '</small></span>', item[1]);
+    var body = '<i>' + glyph(item[3]) + '</i><span><b>' + item[1] + '</b><small>' + item[2] + '</small></span>';
+    if (!item[0]) return '<div class="' + className + ' format-item-static">' + body + '</div>';
+    return conceptNode(className, item[0], body, item[1]);
   }
 
   function formatGroup(group) {
@@ -123,39 +126,72 @@
     return conceptNode("offer-item", item[0], '<i>✦</i><span>' + item[1] + '</span>', item[1]);
   }
 
-  function artistButton(id) {
-    var artist = window.FUTURE_RENAISSANCE_ARTISTS[id];
-    return '<button class="artist-button" type="button" data-artist-id="' + id + '" aria-haspopup="dialog">' +
-      '<span>' + artist.name + '</span><i aria-hidden="true">+</i>' +
+  // The line up reads as one table with one grammar: every cell is
+  // tag / name / one line of detail, and every cell opens a detail panel.
+  // Music slots resolve to concept detail, names resolve to artist profiles.
+  function lineupCell(kind, id, tagKey, tag, nameKey, name, noteKey, note) {
+    var attr = kind === "artist"
+      ? 'data-artist-id="' + id + '" aria-haspopup="dialog"'
+      : 'data-concept-id="' + id + '"';
+    var i18n = function (key) { return key ? ' data-i18n="' + key + '"' : ""; };
+    return '<button class="lineup-cell lineup-cell-' + kind + '" type="button" ' + attr +
+      ' aria-label="Open details about ' + name + '">' +
+      '<span class="lineup-cell-tag"' + i18n(tagKey) + '>' + tag + '</span>' +
+      '<b' + i18n(nameKey) + '>' + name + '</b>' +
+      '<small' + i18n(noteKey) + '>' + note + '</small>' +
     '</button>';
   }
 
-  function artistLineup(labelKey, label, ids) {
-    return '<div class="artist-lineup"><span class="lineup-label" data-i18n="' + labelKey + '">' + label + '</span>' +
-      '<div class="lineup-buttons">' + ids.map(artistButton).join("") + '</div></div>';
+  function artistCell(id) {
+    var artist = window.FUTURE_RENAISSANCE_ARTISTS[id];
+    return lineupCell("artist", id, "", artist.tag, "", artist.name, "", artist.role);
   }
 
-  function programRoom(labelKey, label, entries) {
-    return '<div class="program-room">' +
-      '<b data-i18n="' + labelKey + '">' + label + '</b>' +
-      '<p>' + entries.map(function (entry) {
-        return '<span data-i18n="' + entry[0] + '">' + entry[1] + '</span>';
-      }).join('<i aria-hidden="true">|</i>') + '</p>' +
+  function lineupRow(labelKey, label, countKey, count, cells) {
+    return '<section class="lineup-row">' +
+      '<div class="lineup-row-label">' +
+        '<b data-i18n="' + labelKey + '">' + label + '</b>' +
+        '<small data-i18n="' + countKey + '">' + count + '</small>' +
+      '</div>' +
+      '<div class="lineup-cells">' + cells.join("") + '</div>' +
+    '</section>';
+  }
+
+  // The two room line ups read on the orbit field itself, each latched to a
+  // gold node, so the programme sits where the night is drawn rather than in
+  // a caption underneath it.
+  function hudPanel(position, labelKey, label, countKey, count, cells) {
+    return '<div class="event-hud event-hud-' + position + '" data-reveal>' +
+      '<div class="event-hud-head">' +
+        '<b data-i18n="' + labelKey + '">' + label + '</b>' +
+        '<small data-i18n="' + countKey + '">' + count + '</small>' +
+      '</div>' + cells.join("") +
     '</div>';
   }
 
-  function programLineup() {
-    return '<div class="program-lineup" data-reveal>' +
-      '<span class="lineup-label" data-i18n="event.musicProgram">MUSIC PROGRAMMING</span>' +
-      '<div class="program-board">' +
-        programRoom("event.mainRoom", "MAIN ROOM LINE UP", [
-          ["event.mainRoomLive", "Algorithmic Live Coding Music Creation — 3 artists creating music with code in real time, curated by Claude &amp; AXIS"],
-          ["event.mainRoomClosing", "Closing DJ + Support DJ — UK Techno / Techno"],
-        ]) +
-        programRoom("event.cuartoRosa", "CUARTO ROSA LINE UP", [
-          ["event.cuartoRosaActivity", "Special Activity by Suno"],
-        ]) +
-      '</div>' +
+  function roomHuds() {
+    return hudPanel("main", "event.mainRoom", "MAIN ROOM", "event.mainRoomCount", "2 SETS", [
+      lineupCell("slot", "program-liveCoding",
+        "event.arcCreation", "CREATION",
+        "event.liveCodingName", "ALGORITHMIC LIVE CODING",
+        "event.liveCodingNote", "3 artists"),
+      lineupCell("slot", "program-closing",
+        "event.arcClub", "CLUB",
+        "event.closingName", "CLOSING DJ + SUPPORT DJ",
+        "event.closingNote", "UK techno into techno"),
+    ]) +
+    hudPanel("rosa", "event.cuartoRosa", "CUARTO ROSA", "event.cuartoRosaCount", "1 ACTIVITY", [
+      lineupCell("slot", "program-cuarto-rosa",
+        "event.arcAllNight", "ALL NIGHT",
+        "event.sunoName", "GENERATIVE MUSIC",
+        "event.sunoNote", "Generative Music On Site in the second room"),
+    ]);
+  }
+
+  function lineupTable() {
+    return '<div class="lineup-table" data-reveal>' +
+      lineupRow("event.digitalLineup", "DIGITAL ART", "event.digitalCount", "3 NAMES",
+        digitalArtists.map(artistCell)) +
     '</div>';
   }
 
@@ -163,25 +199,25 @@
     return conceptNode("budget-cell", entry.id, '<b>' + entry.title + '</b><small>' + entry.note + '</small>', entry.title.toLowerCase() + " investment");
   }
 
-  var roles = ["ARTIST", "CREATOR", "AGENT", "PARTNER", "PRESS", "OPERATOR", "GUEST", "COLLECTOR"];
+  var roles = ["ARTIST", "CREATOR", "AGENT", "PARTNER", "BUILDER", "GUEST", "COLLECTOR"];
   var missions = ["CONNECT", "CHECK-IN", "CREATE", "INTERVENE", "VOTE", "COLLECT", "STREAM", "COMPLETE"];
   var digitalArtists = ["verse-works", "pixelord", "the-public"];
 
   var formatGroups = [
     { key: "a", letter: "A", title: "CULTURE", items: [
-      ["format-gallery", "ART GALLERY", "Digital works presented inside the event environment.", "gallery"],
-      ["format-djs", "DJ SETS", "Warm-up and closing music programming.", "disc"],
-      ["format-mapping", "VIDEO MAPPING", "Projected visuals authored for " + event.venue + ".", "projector"],
+      [null, "ART GALLERY", "Digital works presented inside the event environment.", "gallery"],
+      [null, "DJ SETS", "Warm-up and closing music programming.", "disc"],
+      [null, "VIDEO MAPPING", "Projected visuals authored for " + event.venue + ".", "projector"],
     ] },
     { key: "b", letter: "B", title: "ON-SITE MEDIA", items: [
-      ["format-screens", "VENUE SCREENS", "Venue display infrastructure carries the visual system.", "screen"],
-      ["format-stream", "LIVE RECORDING", "Live or recorded capture produced on site.", "broadcast"],
-      ["format-photo", "PHOTOGRAPHY", "Event archive, environment and post-event video.", "camera"],
+      [null, "VENUE SCREENS", "Venue display infrastructure carries the visual system.", "screen"],
+      [null, "LIVE RECORDING", "Live or recorded capture produced on site.", "broadcast"],
+      [null, "PHOTOGRAPHY", "Event archive, environment and post-event video.", "camera"],
     ] },
     { key: "c", letter: "C", title: "CONTENT PRODUCTION", items: [
-      ["format-aftermovie", "AFTERMOVIE", "Edited recap material from the night.", "film"],
-      ["format-testimonials", "TESTIMONIAL CAPTURE", "Guest and artist quotes when available.", "quote"],
-      ["format-collectibles", "POST-EVENT COLLECTIBLES", "Selected moments become digital assets.", "cube"],
+      [null, "AFTERMOVIE", "Edited recap material from the night.", "film"],
+      [null, "TESTIMONIAL CAPTURE", "Guest and artist quotes when available.", "quote"],
+      ["format-collectibles", "POST-EVENT COLLECTIBLES", "Digital collectibles serve as proof of participation in the event.", "cube"],
     ] },
     { key: "d", letter: "D", title: "ACCESS SYSTEM", items: [
       ["format-passport", "ACTIVITY PASSPORT", "A readable guest state opens the interaction path.", "passport"],
@@ -191,12 +227,12 @@
     { key: "e", letter: "E", title: "EVENT FLOW", items: [
       ["format-staff", "STAFF-GUIDED FLOW", "Staff supports actions, validation and exceptions.", "staff"],
       ["format-hospitality", "COMPLIMENTARY HOSPITALITY", "AXIS funds the drink allocation for the night.", "drink"],
-      ["format-guestlist", "EXPECTED AUDIENCE", event.attendees + " Future Renaissance guests, plus venue clientele.", "guests"],
+      [null, "EXPECTED AUDIENCE", event.attendees + " Future Renaissance guests, plus venue clientele.", "guests"],
     ] },
     { key: "f", letter: "F", title: "AI + CODE", items: [
       ["format-claude", "CLAUDE ACTIVITY", "Guests discover Claude, activate access and interact live.", "spark"],
       ["format-live-coding", "LIVE CODING", "Code becomes sound and image in real time.", "code"],
-      ["format-activations", "TECH WEEK MICRO-ACTIVATIONS", "Small partner experiences through the night.", "grid"],
+      [null, "OFFICIAL TECH WEEK MEXICO SIDE EVENT", "Future Renaissance is an official side event of Mexico Tech Week.", "grid"],
     ] },
   ];
 
@@ -270,26 +306,28 @@
         axisMark("ivory") +
         '<span class="eyebrow" data-i18n="brand.techWeek">TECH WEEK MEXICO EDITION</span>' +
         '<h1>Future <em>Renaissance</em></h1>' +
-        '<p class="cover-status" data-i18n="cover.status">FIRST OFFICIAL ANTHROPIC CLAUDE AI COMMUNITY PARTY</p>' +
-        '<p>' + event.displayDate.toUpperCase() + '<br>' + event.venue.toUpperCase() + ' · ' + event.city.toUpperCase() + '</p>' +
-        '<p class="cover-flagship" data-i18n="cover.flagship">A FUTURE RENAISSANCE FLAGSHIP POWERED BY AXIS</p>' +
-        '<div class="cover-axis">AXIS.SHOW</div>' +
+        '<p>' + event.displayDate.toUpperCase() + '<br>' + event.city.toUpperCase() + '</p>' +
+        '<div class="cover-axis" data-i18n="cover.poweredBy">POWERED BY: AXIS</div>' +
       '</div>' +
       orbitalSvg("cover-orbit") + star("cover-star") +
     '</section>',
 
-    '<section class="fr-slide fr-idea" data-slide-id="idea" data-scene="orbit-system" data-label="The idea">' +
+    '<section class="fr-slide fr-idea" data-slide-id="idea" data-scene="idea-frost" data-label="The idea">' +
       frameTop("02", "idea") +
       '<div class="fr-reading fr-reading-left">' +
         '<span class="eyebrow" data-reveal data-i18n="idea.kicker">THE IDEA</span>' +
         '<h2 data-reveal data-i18n="idea.title">THE FUTURE RENAISSANCE IS A LIVE SYSTEM.</h2>' +
         '<div class="idea-triptych" data-reveal><span data-i18n="idea.human">Human direction.</span><span data-i18n="idea.machine">Machine extension.</span><span data-i18n="idea.public">Public transformation.</span></div>' +
         '<p data-reveal data-i18n="idea.copy">The Renaissance connected art, science, architecture and public knowledge. Future Renaissance stages their contemporary convergence through artists, machines and participating guests.</p>' +
-        '<p data-reveal data-i18n="idea.code">Art, music, technology, culture, AI, code, community, interaction, hospitality and media operate as one environment.</p>' +
       '</div>' +
-      '<div class="idea-visual" data-crystallize>' +
-        '<img loading="lazy" src="' + root + '/social/stream-cover.png" alt="Future Renaissance classical figure and orbital architecture">' +
-        '<div class="dither-screen" aria-hidden="true"></div>' + orbitalSvg("idea-orbit") +
+      '<div class="idea-visual">' +
+        '<div class="idea-plate">' +
+          '<img src="/bgfr.png" alt="Winged classical figure among clouds and streams of binary code">' +
+          '<div class="dither-screen" aria-hidden="true"></div>' + orbitalSvg("idea-orbit") +
+          '<i class="idea-frost" aria-hidden="true"></i>' +
+          '<canvas class="idea-decode" aria-hidden="true"></canvas>' +
+        '</div>' +
+        '<blockquote class="idea-engraved"><p data-i18n="idea.code">Art, music, technology, culture, AI, code, community, interaction, hospitality and media operate as one environment.</p></blockquote>' +
       '</div>' + star("idea-star") +
     '</section>',
 
@@ -304,29 +342,23 @@
       '</div>' +
       '<div class="event-operating-map" data-reveal>' +
         conceptNode("event-core", "venue", '<strong>' + event.attendees + '</strong><span data-i18n="event.attendees">EXPECTED GUESTS</span>', event.venue + " and the event format") +
-        '<div class="event-node n1" data-i18n="program.art">ART</div><div class="event-node n2" data-i18n="program.music">MUSIC</div>' +
-        '<div class="event-node n3" data-i18n="program.technology">TECHNOLOGY</div><div class="event-node n4" data-i18n="program.culture">CULTURE</div>' +
-        '<div class="event-node n5" data-i18n="program.hospitality">HOSPITALITY</div><div class="event-node n6" data-i18n="program.missions">ACTIVITIES</div>' +
-        '<div class="event-node n7" data-i18n="program.claude">CLAUDE</div>' +
         orbitalSvg("event-orbit") +
       '</div>' +
-      '<div class="artist-lineups" data-reveal>' +
-        programLineup() +
-        artistLineup("event.digitalLineup", "DIGITAL ARTIST LINE UP", digitalArtists) +
-      '</div>' +
+      roomHuds() +
+      lineupTable() +
     '</section>',
 
     '<section class="fr-slide fr-audience" data-slide-id="audience" data-scene="badges" data-label="The audience">' +
       frameTop("04", "audience") +
       '<div class="audience-copy">' +
         '<span class="eyebrow" data-reveal data-i18n="audience.kicker">THE AUDIENCE</span>' +
-        '<h2 data-reveal><strong>' + event.attendees + '</strong> <span data-i18n="audience.title">EXPECTED GUESTS.</span></h2>' +
+        '<h2 data-reveal data-i18n="audience.title">EXPECTED GUESTS.</h2>' +
         '<p data-reveal data-i18n="audience.copy">Artists, musicians, builders, founders, collectors, curators, creators, media, operators and selected cultural guests.</p>' +
         '<p data-reveal data-i18n="audience.openCopy">This is the expected Future Renaissance audience, not the absolute venue population. Where operationally agreed, the venue can continue receiving its regular clientele, and those guests can discover and participate in selected activities.</p>' +
       '</div>' +
       '<div class="role-orbit" aria-label="Future Renaissance audience roles">' + orbitalSvg("role-orbit-lines") +
         roles.map(function (role, index) { return roleBadge(role, "role-pos-" + (index + 1)); }).join("") +
-        '<div class="role-orbit-core" data-crystallize>' + axisMark("gold") + '<span data-i18n="audience.accessState">ROLE / ACCESS / AUTHORITY</span></div>' +
+        '<div class="role-orbit-core" data-crystallize>' + axisMark("gold") + '<span data-i18n="audience.accessState">TARGET AUDIENCE</span></div>' +
       '</div>' + star("audience-star") +
     '</section>',
 
@@ -334,7 +366,7 @@
       frameTop("05", "event-format") +
       '<div class="format-titlebar"><div><span class="eyebrow" data-reveal>EVENT FORMAT</span><h2 data-reveal>ONE ROOM. SIX OPERATING LAYERS.</h2></div><p data-reveal>Future Renaissance puts culture, media capture, access, hospitality, AI and code into one authored environment.</p></div>' +
       '<div class="event-format-map" data-crystallize>' +
-        '<div class="format-hub" aria-hidden="true">' + axisMark("gold") + '<span>FUTURE<br>RENAISSANCE</span></div>' +
+        '<div class="format-hub" aria-hidden="true">' + axisMark("gold") + '</div>' +
         formatGroups.map(formatGroup).join("") +
       '</div>' +
     '</section>',
@@ -501,14 +533,18 @@
     '<div class="artist-modal-backdrop" data-artist-modal-close></div>' +
     '<article class="artist-modal-panel" tabindex="-1">' +
       '<button class="artist-modal-close" type="button" data-artist-modal-close aria-label="Close artist profile"><span aria-hidden="true">×</span></button>' +
-      '<div class="artist-modal-medal" aria-hidden="true"><img src="' + root + '/badges/roles/artist.svg" alt=""></div>' +
+      '<div class="artist-modal-plate" aria-hidden="true">' + orbitalSvg("artist-modal-rings") +
+        '<span class="artist-modal-monogram" id="artist-modal-monogram">AX</span>' +
+        '<span class="artist-modal-tag" id="artist-modal-tag"></span>' + star("artist-modal-star") +
+      '</div>' +
       '<div class="artist-modal-copy">' +
         '<span class="artist-modal-kind" id="artist-modal-kind">ARTIST</span>' +
         '<h2 id="artist-modal-name">ARTIST</h2>' +
         '<p class="artist-modal-discipline" id="artist-modal-discipline"></p>' +
         '<p class="artist-modal-bio" id="artist-modal-bio"></p>' +
-        '<div class="artist-modal-meta"><span data-i18n="artist.identity">IDENTITY / INDEX</span><strong id="artist-modal-identity"></strong></div>' +
+        '<dl class="artist-modal-facts" id="artist-modal-facts"></dl>' +
         '<a class="artist-modal-link" id="artist-modal-link" href="#" target="_blank" rel="noopener noreferrer"><span id="artist-modal-link-label">VIEW ARTIST</span><i aria-hidden="true">↗</i></a>' +
+        '<span class="artist-modal-foot">AXIS · FUTURE RENAISSANCE · LINE UP</span>' +
       '</div>' +
     '</article>' +
   '</div>';
@@ -523,7 +559,6 @@
         '<h2 id="concept-modal-title">CONCEPT</h2>' +
         '<p id="concept-modal-summary"></p>' +
         '<ol id="concept-modal-details"></ol>' +
-        '<span class="concept-modal-foot">AXIS · FUTURE RENAISSANCE · SYSTEM DETAIL</span>' +
       '</div>' +
     '</article>' +
   '</div>';

@@ -23,10 +23,12 @@
   var artistModalPanel = artistModal && artistModal.querySelector(".artist-modal-panel");
   var artistModalTimeline = null;
   var activeArtistTrigger = null;
+  var activeArtistId = null;
   var conceptModal = document.getElementById("concept-modal");
   var conceptModalPanel = conceptModal && conceptModal.querySelector(".concept-modal-panel");
   var conceptModalTimeline = null;
   var activeConceptTrigger = null;
+  var activeConceptId = null;
 
   function modalIsOpen() {
     return Boolean(
@@ -35,16 +37,71 @@
     );
   }
 
-  function populateArtistModal(artist) {
+  // Artist copy is written per language in the data file rather than through
+  // data-i18n, because a profile is a paragraph, not a label.
+  function currentLanguage() {
+    var get = window.__futureRenaissanceGetLanguage;
+    return (typeof get === "function" && get()) || "en";
+  }
+
+  function localizedArtist(artist) {
+    var overrides = artist[currentLanguage()];
+    if (!overrides) return artist;
+    var merged = {};
+    Object.keys(artist).forEach(function (key) { merged[key] = artist[key]; });
+    Object.keys(overrides).forEach(function (key) { merged[key] = overrides[key]; });
+    return merged;
+  }
+
+  function renderArtistMonogram(el, artist) {
+    var media = artist.monogramMedia;
+    if (media && media.type === "svg") {
+      el.innerHTML = media.markup;
+    } else if (media && media.type === "image") {
+      el.innerHTML = '<img src="' + media.src + '" alt="' + (media.alt || artist.name) + '">';
+    } else {
+      el.textContent = artist.monogram || artist.name.slice(0, 2).toUpperCase();
+    }
+  }
+
+  function populateArtistModal(source) {
+    var artist = localizedArtist(source);
     document.getElementById("artist-modal-kind").textContent = artist.kind;
     document.getElementById("artist-modal-name").textContent = artist.name;
+    renderArtistMonogram(document.getElementById("artist-modal-monogram"), artist);
+    document.getElementById("artist-modal-tag").textContent = artist.tag || artist.kind;
     document.getElementById("artist-modal-discipline").textContent = artist.discipline;
     document.getElementById("artist-modal-bio").textContent = artist.bio;
-    document.getElementById("artist-modal-identity").textContent = artist.identity;
+    var facts = document.getElementById("artist-modal-facts");
+    facts.innerHTML = "";
+    (artist.facts || []).forEach(function (fact) {
+      var term = document.createElement("dt");
+      term.textContent = fact[0];
+      var value = document.createElement("dd");
+      value.textContent = fact[1];
+      facts.appendChild(term);
+      facts.appendChild(value);
+    });
     var link = document.getElementById("artist-modal-link");
     document.getElementById("artist-modal-link-label").textContent = artist.linkLabel + (artist.handle ? " · " + artist.handle : "");
     link.href = artist.href || "#";
     link.hidden = !artist.href;
+  }
+
+  // The line up cells carry the same per-language copy as the profiles.
+  function refreshArtistLanguage() {
+    document.querySelectorAll("[data-artist-id]").forEach(function (cell) {
+      var source = window.FUTURE_RENAISSANCE_ARTISTS && window.FUTURE_RENAISSANCE_ARTISTS[cell.dataset.artistId];
+      if (!source) return;
+      var artist = localizedArtist(source);
+      var tag = cell.querySelector(".lineup-cell-tag");
+      var role = cell.querySelector("small");
+      if (tag) tag.textContent = artist.tag;
+      if (role) role.textContent = artist.role;
+    });
+    if (activeArtistId && window.FUTURE_RENAISSANCE_ARTISTS[activeArtistId]) {
+      populateArtistModal(window.FUTURE_RENAISSANCE_ARTISTS[activeArtistId]);
+    }
   }
 
   function openArtistModal(id, trigger) {
@@ -52,6 +109,7 @@
     if (!artistModal || !artistModalPanel || !artist) return;
     populateArtistModal(artist);
     activeArtistTrigger = trigger;
+    activeArtistId = id;
     artistModal.setAttribute("aria-hidden", "false");
     artistModal.classList.add("is-open");
     document.body.classList.add("artist-modal-open");
@@ -65,7 +123,7 @@
     artistModalTimeline
       .fromTo(artistModal, { opacity: 0 }, { opacity: 1, duration: .28, ease: "power2.out" }, 0)
       .fromTo(artistModalPanel, { opacity: 0, y: 32, scale: .975, filter: "blur(12px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: .62, ease: "power3.out" }, .04)
-      .fromTo(artistModal.querySelector(".artist-modal-medal img"), { opacity: 0, scale: .72, rotation: -3 }, { opacity: 1, scale: 1, rotation: 0, duration: .7, ease: "power3.out" }, .16)
+      .fromTo(artistModal.querySelector(".artist-modal-monogram"), { opacity: 0, scale: .72, rotation: -3 }, { opacity: 1, scale: 1, rotation: 0, duration: .7, ease: "power3.out" }, .16)
       .fromTo(artistModal.querySelectorAll(".artist-modal-copy > *"), { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .42, stagger: .055, ease: "power2.out" }, .2);
   }
 
@@ -76,11 +134,12 @@
       artistModal.classList.remove("is-open");
       artistModal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("artist-modal-open");
-      var animatedModalElements = [artistModal, artistModalPanel, artistModal.querySelector(".artist-modal-medal img")]
+      var animatedModalElements = [artistModal, artistModalPanel, artistModal.querySelector(".artist-modal-monogram")]
         .concat(Array.prototype.slice.call(artistModal.querySelectorAll(".artist-modal-copy > *")));
       gsap.set(animatedModalElements, { clearProps: "all" });
       if (activeArtistTrigger) activeArtistTrigger.focus();
       activeArtistTrigger = null;
+      activeArtistId = null;
     }
     if (reducedMotion.matches) {
       finish();
@@ -106,11 +165,36 @@
     }
   }
 
-  function populateConceptModal(concept) {
+  // Concept detail copy is written per language in the concepts data file
+  // rather than through data-i18n, because it is paragraph-length sales copy.
+  function localizedConcept(id) {
+    var concept = window.FUTURE_RENAISSANCE_CONCEPTS && window.FUTURE_RENAISSANCE_CONCEPTS[id];
+    if (!concept) return null;
+    var table = window.FUTURE_RENAISSANCE_CONCEPT_I18N && window.FUTURE_RENAISSANCE_CONCEPT_I18N[currentLanguage()];
+    var overrides = table && table[id];
+    if (!overrides) return concept;
+    var merged = {};
+    Object.keys(concept).forEach(function (key) { merged[key] = concept[key]; });
+    Object.keys(overrides).forEach(function (key) { merged[key] = overrides[key]; });
+    return merged;
+  }
+
+  function refreshConceptLanguage() {
+    if (!activeConceptId) return;
+    var concept = localizedConcept(activeConceptId);
+    if (concept) populateConceptModal(concept, activeConceptId);
+  }
+
+  function conceptGlyph(id) {
+    var name = (window.FUTURE_RENAISSANCE_CONCEPT_ICONS && window.FUTURE_RENAISSANCE_CONCEPT_ICONS[id]) || "spark";
+    return typeof window.__futureRenaissanceGlyph === "function" ? window.__futureRenaissanceGlyph(name) : "";
+  }
+
+  function populateConceptModal(concept, id) {
     document.getElementById("concept-modal-code").textContent = concept.code;
     document.getElementById("concept-modal-title").textContent = concept.title;
     document.getElementById("concept-modal-summary").textContent = concept.summary;
-    document.getElementById("concept-modal-index").textContent = concept.code.split("/")[0].trim();
+    document.getElementById("concept-modal-index").innerHTML = conceptGlyph(id);
     var list = document.getElementById("concept-modal-details");
     list.innerHTML = "";
     concept.details.forEach(function (detail, index) {
@@ -122,10 +206,11 @@
   }
 
   function openConceptModal(id, trigger) {
-    var concept = window.FUTURE_RENAISSANCE_CONCEPTS && window.FUTURE_RENAISSANCE_CONCEPTS[id];
+    var concept = localizedConcept(id);
     if (!conceptModal || !conceptModalPanel || !concept) return;
-    populateConceptModal(concept);
+    populateConceptModal(concept, id);
     activeConceptTrigger = trigger;
+    activeConceptId = id;
     conceptModal.setAttribute("aria-hidden", "false");
     conceptModal.classList.add("is-open");
     document.body.classList.add("concept-modal-open");
@@ -174,10 +259,11 @@
   }
 
   function selectSlides() {
-    var view = parentUrl().searchParams.get("view") || "extended";
+    var view = parentUrl().searchParams.get("view") || "intro";
     var ids = null;
     if (view === "short") ids = ["cover", "audience", "brand-function", "presenting", "close"];
     if (view === "sheet") ids = ["close"];
+    if (view === "intro") ids = ["cover", "idea", "event", "audience", "program", "roles"];
     allSlides.forEach(function (slide) {
       var visible = !ids || ids.indexOf(slide.dataset.slideId) !== -1;
       slide.classList.toggle("is-view-hidden", !visible);
@@ -295,6 +381,173 @@
       tl.fromTo(slide.querySelectorAll(".orbit-line"), { strokeDashoffset: 180, opacity: 0 }, { strokeDashoffset: 0, opacity: 1, duration: 1.8, stagger: .08 }, .15);
     }
     addOrbitLoops(slide);
+    return tl;
+  }
+
+  /* --- ASCII decode plate: the artwork arrives encrypted and resolves downward --- */
+  var ASCII_RAMP = " .:-=+*x#%@";
+  var ASCII_CIPHER = "0123456789ABCDEF/\|<>*+=-:.";
+
+  function asciiFont(cellHeight) {
+    return Math.round(cellHeight * .82) + 'px "Bingo", sans-serif';
+  }
+
+  function asciiGrid(w, h, cellHint) {
+    var cols = Math.max(28, Math.round(w / (cellHint || (w >= 900 ? 12 : 11))) || 28);
+    var cellW = w / cols;
+    var rows = Math.max(18, Math.round(h / (cellW * 1.42)) || 18);
+    return { cols: cols, rows: rows, cellW: cellW, cellH: h / rows };
+  }
+
+  function renderAsciiPlate(w, h, grid, luminanceAt) {
+    var plate = document.createElement("canvas");
+    plate.width = w;
+    plate.height = h;
+    var pctx = plate.getContext("2d");
+    pctx.fillStyle = "rgba(4,27,51,.94)";
+    pctx.fillRect(0, 0, w, h);
+    pctx.textAlign = "center";
+    pctx.textBaseline = "middle";
+    pctx.font = asciiFont(grid.cellH);
+    for (var r = 0; r < grid.rows; r++) {
+      for (var c = 0; c < grid.cols; c++) {
+        var lum = luminanceAt(c, r);
+        var glyph = ASCII_RAMP.charAt(Math.min(ASCII_RAMP.length - 1, Math.floor(lum * ASCII_RAMP.length)));
+        if (glyph === " ") continue;
+        pctx.fillStyle = lum > .62
+          ? "rgba(212,170,103," + (.5 + lum * .5).toFixed(3) + ")"
+          : "rgba(241,226,200," + (.26 + lum * .62).toFixed(3) + ")";
+        pctx.fillText(glyph, (c + .5) * grid.cellW, (r + .5) * grid.cellH);
+      }
+    }
+    return plate;
+  }
+
+  function cacheAscii(host, plate, grid, w, h, key) {
+    var model = { plate: plate, cols: grid.cols, rows: grid.rows, cellW: grid.cellW, cellH: grid.cellH, w: w, h: h, key: key };
+    host.__ascii = model;
+    return model;
+  }
+
+  function buildAsciiModel(host, img, w, h, cellHint) {
+    if (!w || !h || !img || !img.naturalWidth) return null;
+    var key = img.currentSrc;
+    var cached = host.__ascii;
+    if (cached && cached.w === w && cached.h === h && cached.key === key) return cached;
+
+    var grid = asciiGrid(w, h, cellHint);
+    var sampler = document.createElement("canvas");
+    sampler.width = grid.cols;
+    sampler.height = grid.rows;
+    var sctx = sampler.getContext("2d");
+    sctx.fillStyle = "#041B33";
+    sctx.fillRect(0, 0, grid.cols, grid.rows);
+    var fit = Math.max(grid.cols / img.naturalWidth, grid.rows / img.naturalHeight);
+    var fw = img.naturalWidth * fit, fh = img.naturalHeight * fit;
+    sctx.drawImage(img, (grid.cols - fw) / 2, (grid.rows - fh) / 2, fw, fh);
+    var px;
+    try { px = sctx.getImageData(0, 0, grid.cols, grid.rows).data; } catch (error) { return null; }
+
+    return cacheAscii(host, renderAsciiPlate(w, h, grid, function (c, r) {
+      var i = (r * grid.cols + c) * 4;
+      return (px[i] * .299 + px[i + 1] * .587 + px[i + 2] * .114) / 255;
+    }), grid, w, h, key);
+  }
+
+  /* Synthetic field for when the artwork has not decoded yet. The curtain must
+     always play its full sweep, never blink out because an image was slow. */
+  function buildAsciiField(host, w, h, cellHint) {
+    var cached = host.__ascii;
+    if (cached && cached.w === w && cached.h === h && cached.key === "field") return cached;
+    var grid = asciiGrid(w, h, cellHint);
+    return cacheAscii(host, renderAsciiPlate(w, h, grid, function (c, r) {
+      var nx = c / grid.cols - .5, ny = r / grid.rows - .5;
+      var glow = Math.max(0, 1 - Math.sqrt(nx * nx + ny * ny) * 1.7);
+      var weave = (Math.sin(c * .7 + r * .21) + Math.cos(r * .53 - c * .12)) * .18;
+      return Math.max(0, Math.min(1, glow * .8 + weave + Math.random() * .22));
+    }), grid, w, h, "field");
+  }
+
+  function paintDecode(ctx, model, progress) {
+    if (!model || !isFinite(model.cellH) || !model.w || !model.h) return;
+    var bandHeight = model.cellH * 3.2;
+    var frontier = progress * (model.h + bandHeight) - bandHeight + bandHeight;
+    ctx.clearRect(0, 0, model.w, model.h);
+    if (frontier < model.h) {
+      ctx.drawImage(model.plate, 0, frontier, model.w, model.h - frontier, 0, frontier, model.w, model.h - frontier);
+    }
+    if (frontier <= 0 || frontier > model.h + bandHeight) return;
+
+    ctx.save();
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = asciiFont(model.cellH);
+    var first = Math.max(0, Math.floor((frontier - bandHeight) / model.cellH));
+    var last = Math.min(model.rows - 1, Math.ceil(frontier / model.cellH));
+    for (var r = first; r <= last; r++) {
+      for (var c = 0; c < model.cols; c++) {
+        if (Math.random() > .78) continue;
+        ctx.fillStyle = "rgba(212,170,103," + (.3 + Math.random() * .55).toFixed(3) + ")";
+        ctx.fillText(ASCII_CIPHER.charAt((Math.random() * ASCII_CIPHER.length) | 0), (c + .5) * model.cellW, (r + .5) * model.cellH);
+      }
+    }
+    ctx.restore();
+
+    var glow = ctx.createLinearGradient(0, frontier - model.cellH * 4, 0, frontier);
+    glow.addColorStop(0, "rgba(212,170,103,0)");
+    glow.addColorStop(1, "rgba(212,170,103,.42)");
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, frontier - model.cellH * 4, model.w, model.cellH * 4);
+    ctx.fillStyle = "rgba(241,226,200,.82)";
+    ctx.fillRect(0, frontier - 1, model.w, 1.6);
+  }
+
+  function animateIdeaFrost(slide) {
+    var tl = animateOrbitSystem(slide);
+    var visual = slide.querySelector(".idea-visual");
+    var plateEl = slide.querySelector(".idea-plate");
+    var img = slide.querySelector(".idea-plate > img");
+    var canvas = slide.querySelector(".idea-decode");
+    var frost = slide.querySelector(".idea-frost");
+    var quote = slide.querySelector(".idea-engraved");
+    var line = quote && quote.querySelector("p");
+    if (reducedMotion.matches) {
+      gsap.set([visual, img, quote, line], { clearProps: "all" });
+      gsap.set([frost, canvas], { opacity: 0 });
+      return tl;
+    }
+
+    gsap.set(visual, { autoAlpha: 0 });
+    gsap.set(img, { filter: "blur(15px) saturate(.3) brightness(1.14) contrast(.88)", scale: 1.05 });
+    gsap.set(frost, { opacity: 1, clipPath: "inset(0% 0% 0% 0%)" });
+    gsap.set(quote, { autoAlpha: 0 });
+    gsap.set(line, { letterSpacing: ".3em", filter: "blur(8px)" });
+    tl.to(visual, { autoAlpha: 1, duration: .55, ease: "power2.out" }, 0)
+      .to(img, { filter: "blur(0px) saturate(1) brightness(1) contrast(1)", scale: 1, duration: 2.2, ease: "power2.inOut" }, .15)
+      .to(frost, { clipPath: "inset(0% 0% 100% 0%)", duration: 2, ease: "power2.inOut" }, .2)
+      .to(frost, { opacity: 0, duration: .4, ease: "power1.out" }, 1.9)
+      .to(quote, { autoAlpha: 1, duration: .5, ease: "power2.out" }, 1.35)
+      .to(line, { letterSpacing: ".004em", filter: "blur(0px)", duration: 1.25, ease: "power3.out" }, 1.35);
+
+    var model = buildAsciiModel(plateEl, img, plateEl.clientWidth, plateEl.clientHeight);
+    if (model && canvas) {
+      canvas.width = model.w;
+      canvas.height = model.h;
+      gsap.set(canvas, { opacity: 1 });
+      var ctx = canvas.getContext("2d");
+      var scan = { progress: 0 };
+      paintDecode(ctx, model, 0);
+      tl.to(scan, {
+        progress: 1,
+        duration: 2.15,
+        ease: "power2.inOut",
+        onUpdate: function () { paintDecode(ctx, model, scan.progress); },
+        onComplete: function () { ctx.clearRect(0, 0, model.w, model.h); },
+      }, .15);
+    } else if (canvas) {
+      gsap.set(canvas, { opacity: 0 });
+      if (img && !img.complete) img.addEventListener("load", function () { buildAsciiModel(plateEl, img, plateEl.clientWidth, plateEl.clientHeight); }, { once: true });
+    }
     return tl;
   }
 
@@ -430,6 +683,7 @@
   var scenes = {
     cover: animateCover,
     "orbit-system": animateOrbitSystem,
+    "idea-frost": animateIdeaFrost,
     "event-map": animateEventMap,
     badges: animateBadges,
     program: animateProgram,
@@ -495,6 +749,9 @@
   document.querySelectorAll("[data-artist-id]").forEach(function (button) {
     button.addEventListener("click", function () { openArtistModal(button.dataset.artistId, button); });
   });
+  refreshArtistLanguage();
+  window.addEventListener("axis:languagechange", refreshArtistLanguage);
+  window.addEventListener("axis:languagechange", refreshConceptLanguage);
   document.querySelectorAll("[data-concept-id]").forEach(function (button) {
     button.addEventListener("click", function () { openConceptModal(button.dataset.conceptId, button); });
   });
@@ -530,11 +787,95 @@
   }
   allSlides.forEach(function (slide) { slide.classList.remove("is-active"); });
   if (slides[0]) slides[0].classList.add("is-active");
+  /* --- Opening curtain: the deck arrives encrypted and decodes once the
+     visitor has chosen a language in the host page. --- */
+  var curtain = null, curtainCtx = null, curtainModel = null, curtainSpent = false;
+
+  function curtainSource() {
+    return document.querySelector(".fr-cover .cover-poster img");
+  }
+
+  function buildCurtain() {
+    if (curtainSpent) return;
+    if (!window.innerWidth || !window.innerHeight) return;
+    if (!curtain) {
+      curtain = document.createElement("canvas");
+      curtain.id = "fr-curtain";
+      curtain.setAttribute("aria-hidden", "true");
+      document.body.appendChild(curtain);
+      curtainCtx = curtain.getContext("2d");
+    }
+    var w = window.innerWidth, h = window.innerHeight;
+    curtain.width = w;
+    curtain.height = h;
+    var source = curtainSource();
+    var hint = w >= 900 ? 13 : 10;
+    curtainModel = (source && buildAsciiModel(curtain, source, w, h, hint)) || buildAsciiField(curtain, w, h, hint);
+    paintDecode(curtainCtx, curtainModel, 0);
+  }
+
+  function dropCurtain() {
+    if (curtain) curtain.remove();
+    curtain = null;
+    curtainCtx = null;
+    curtainModel = null;
+  }
+
+  function revealCurtain() {
+    if (curtainSpent) return;
+    curtainSpent = true;
+    if (!curtain || !curtainModel || reducedMotion.matches) {
+      dropCurtain();
+      enterSlide(slides[currentIndex]);
+      return;
+    }
+    var scan = { progress: 0 };
+    var ctx = curtainCtx, model = curtainModel;
+    gsap.to(scan, {
+      progress: 1,
+      duration: 2.6,
+      ease: "power2.inOut",
+      onUpdate: function () { paintDecode(ctx, model, scan.progress); },
+      onComplete: dropCurtain,
+    });
+    // The deck itself thaws as the frontier passes, the way the idea plate does.
+    gsap.set(stage, { filter: "blur(16px) saturate(.3) brightness(1.12) contrast(.88)" });
+    gsap.to(stage, {
+      filter: "blur(0px) saturate(1) brightness(1) contrast(1)",
+      duration: 2.4,
+      ease: "power2.inOut",
+      onComplete: function () { stage.style.filter = ""; },
+    });
+    gsap.delayedCall(.15, function () { enterSlide(slides[currentIndex]); });
+  }
+
   updateChrome();
   fit();
-  enterSlide(slides[0]);
 
-  window.addEventListener("resize", fit);
+  var embedded = !!(window.parent && window.parent !== window);
+  if (embedded) {
+    var source = curtainSource();
+    if (source && !(source.complete && source.naturalWidth)) {
+      source.addEventListener("load", buildCurtain, { once: true });
+      source.addEventListener("error", buildCurtain, { once: true });
+    }
+    buildCurtain();
+    /* Only strand-proofing: a host that never speaks up gets the reveal anyway.
+       A host that claims the gate cancels it, so the sweep waits for the visitor
+       however long they take to choose. */
+    var failsafe = window.setTimeout(revealCurtain, 9000);
+    window.addEventListener("message", function (event) {
+      if (event.origin !== window.location.origin) return;
+      var type = (event.data || {}).type;
+      if (type === "axis:gate") window.clearTimeout(failsafe);
+      else if (type === "axis:reveal") revealCurtain();
+    });
+  } else {
+    curtainSpent = true;
+    enterSlide(slides[0]);
+  }
+
+  window.addEventListener("resize", function () { fit(); if (!curtainSpent) buildCurtain(); });
   reducedMotion.addEventListener("change", function () { enterSlide(slides[currentIndex]); });
   prevButton.addEventListener("click", previous);
   nextButton.addEventListener("click", next);
