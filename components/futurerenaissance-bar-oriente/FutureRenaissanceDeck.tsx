@@ -46,7 +46,13 @@ const LANGUAGES: Array<{
 
 export default function FutureRenaissanceDeck() {
   const { language, setLanguage } = useSiteLanguage();
-  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  /* The gate is the first screen: it opens on load and only a choice closes it. */
+  const [isGateOpen, setIsGateOpen] = useState(true);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(true);
+  /* Keeps the floating trigger out of frame while the deck decodes itself. */
+  const [isRevealing, setIsRevealing] = useState(false);
+  const revealPendingRef = useRef(false);
+  const gateOpenRef = useRef(true);
   const languageRootRef = useRef<HTMLDivElement>(null);
   const languageTriggerRef = useRef<HTMLButtonElement>(null);
   const languageModalRef = useRef<HTMLDivElement>(null);
@@ -75,9 +81,49 @@ export default function FutureRenaissanceDeck() {
       });
   }, [language]);
 
+  const revealDeck = useCallback(() => {
+    if (typeof window === "undefined") return;
+    const frames = document.querySelectorAll<HTMLIFrameElement>(
+      'iframe[data-future-renaissance-deck="true"]',
+    );
+    if (frames.length === 0) {
+      revealPendingRef.current = true;
+      return;
+    }
+    frames.forEach((iframe) => {
+      iframe.contentWindow?.postMessage({ type: "axis:reveal" }, window.location.origin);
+    });
+  }, []);
+
+  /* Tells the deck to hold its curtain: the visitor, not a timeout, ends it. */
+  const claimGate = useCallback(() => {
+    if (typeof window === "undefined" || !gateOpenRef.current) return;
+    document
+      .querySelectorAll<HTMLIFrameElement>('iframe[data-future-renaissance-deck="true"]')
+      .forEach((iframe) => {
+        iframe.contentWindow?.postMessage({ type: "axis:gate" }, window.location.origin);
+      });
+  }, []);
+
+  const handleDeckLoad = useCallback(() => {
+    syncDeckLanguage();
+    claimGate();
+    if (revealPendingRef.current) revealDeck();
+  }, [claimGate, revealDeck, syncDeckLanguage]);
+
+  useEffect(() => {
+    claimGate();
+  }, [claimGate]);
+
   useEffect(() => {
     syncDeckLanguage();
   }, [syncDeckLanguage]);
+
+  useEffect(() => {
+    if (!isRevealing) return;
+    const timer = window.setTimeout(() => setIsRevealing(false), 2900);
+    return () => window.clearTimeout(timer);
+  }, [isRevealing]);
 
   useGSAP(
     () => {
@@ -161,12 +207,19 @@ export default function FutureRenaissanceDeck() {
   const selectLanguage = (nextLanguage: SiteLanguage) => {
     setLanguage(nextLanguage);
     setIsLanguageOpen(false);
+    if (isGateOpen) {
+      gateOpenRef.current = false;
+      setIsGateOpen(false);
+      setIsRevealing(true);
+      revealPendingRef.current = true;
+      revealDeck();
+    }
   };
 
   const handleLanguageKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Escape") {
       event.preventDefault();
-      setIsLanguageOpen(false);
+      if (!isGateOpen) setIsLanguageOpen(false);
       return;
     }
 
@@ -234,6 +287,11 @@ export default function FutureRenaissanceDeck() {
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
           transition: color 180ms ease, border-color 180ms ease;
+        }
+
+        /* The class sets an explicit display, which would otherwise beat [hidden]. */
+        .future-language-trigger[hidden] {
+          display: none;
         }
 
         .future-language-trigger::before,
@@ -592,7 +650,7 @@ export default function FutureRenaissanceDeck() {
           data-future-renaissance-deck="true"
           src="/futurerenaissance-bar-oriente/axis-horizontal.html"
           title="Future Renaissance proposal, desktop deck"
-          onLoad={syncDeckLanguage}
+          onLoad={handleDeckLoad}
           style={{
             position: "fixed",
             inset: 0,
@@ -609,7 +667,7 @@ export default function FutureRenaissanceDeck() {
           data-future-renaissance-deck="true"
           src="/futurerenaissance-bar-oriente/axis-vertical.html"
           title="Future Renaissance proposal, mobile deck"
-          onLoad={syncDeckLanguage}
+          onLoad={handleDeckLoad}
           style={{
             position: "fixed",
             inset: 0,
@@ -625,6 +683,7 @@ export default function FutureRenaissanceDeck() {
         <button
           ref={languageTriggerRef}
           className="future-language-trigger"
+          hidden={isGateOpen || isRevealing}
           type="button"
           aria-label={`Change language. Current language: ${activeLanguage.name}`}
           aria-haspopup="dialog"
@@ -644,6 +703,7 @@ export default function FutureRenaissanceDeck() {
           className="future-language-modal"
           aria-hidden={!isLanguageOpen}
           onMouseDown={(event) => {
+            if (isGateOpen) return;
             if (event.target === event.currentTarget) setIsLanguageOpen(false);
           }}
         >
@@ -657,21 +717,25 @@ export default function FutureRenaissanceDeck() {
             aria-describedby="future-language-description"
             onKeyDown={handleLanguageKeyDown}
           >
-            <button
-              className="future-language-close"
-              type="button"
-              aria-label="Close language selection"
-              onClick={() => setIsLanguageOpen(false)}
-            >
-              +
-            </button>
+            {isGateOpen ? null : (
+              <button
+                className="future-language-close"
+                type="button"
+                aria-label="Close language selection"
+                onClick={() => setIsLanguageOpen(false)}
+              >
+                +
+              </button>
+            )}
 
             <p className="future-language-kicker">AXIS · Future Renaissance</p>
             <h2 id="future-language-title" className="future-language-title">
               Select <span>language</span>
             </h2>
             <p id="future-language-description" className="future-language-intro">
-              Choose the language for this presentation.
+              {isGateOpen
+                ? "Choose a language to decode the presentation."
+                : "Choose the language for this presentation."}
             </p>
 
             <div className="future-language-options">

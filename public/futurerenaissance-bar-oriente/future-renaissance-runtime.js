@@ -259,7 +259,7 @@
   }
 
   function selectSlides() {
-    var view = parentUrl().searchParams.get("view") || "intro";
+    var view = parentUrl().searchParams.get("view") || "extended";
     var ids = null;
     if (view === "short") ids = ["cover", "audience", "brand-function", "presenting", "close"];
     if (view === "sheet") ids = ["close"];

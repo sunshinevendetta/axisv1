@@ -29,7 +29,7 @@ export default function LegalDisclosurePage() {
           {legalEntities.brand}
         </h1>
         <p className="mt-6 max-w-2xl text-base leading-7 text-white/58 sm:text-lg sm:leading-8">
-          Entity disclosure, privacy notice, and general disclaimer for AXIS SHOW, operated by AXIS CORP.
+          Privacy notice and general disclaimer for AXIS.
         </p>
 
         <div className="mt-16 space-y-12">

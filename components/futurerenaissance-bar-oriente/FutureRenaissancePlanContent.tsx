@@ -54,8 +54,8 @@ export default function FutureRenaissancePlanContent() {
           <p>AXIS · Tech Week Mexico Edition</p>
           <h1>Future Renaissance</h1>
           <p>First Official Anthropic Claude AI Community Party</p>
-          <p>October 28, 2026 · Bar Oriente · Mexico City</p>
-          <p>A Future Renaissance flagship powered by AXIS</p>
+          <p>October 28, 2026 · Mexico City</p>
+          <p>Powered by: https://axis.show</p>
         </header>
 
         <section aria-labelledby="future-event">
@@ -89,8 +89,24 @@ export default function FutureRenaissancePlanContent() {
         </section>
 
         <section aria-labelledby="future-digital-artists">
-          <h2 id="future-digital-artists">Digital artist line up</h2>
+          <h2 id="future-digital-artists">Digital art line up</h2>
           <p>Verse Works, Pixelord and The Public.</p>
+          <p>
+            Verse is a London platform for generative and digital art, founded in
+            2022 to give work made with code the curatorial treatment a gallery
+            gives a painting. Its programme has presented artists including Zancan
+            and Mark Titchner, and it has run live minting at Frieze. A Verse
+            generative work reads a hash when it is collected and draws itself from
+            that seed, so no two outputs are the same.
+          </p>
+          <p>
+            Pixelord is Alexey Devyanin, a producer and co-founder of Hyperboloid
+            Records. Across records such as Places, Human.exe and Hypnorave he moves
+            between IDM, breakbeat, bass and glitch, and his recent work releases
+            sound and 3D visuals together onchain. He has also written music for
+            audiovisual installations, including one at the Polytechnic Museum in
+            Moscow.
+          </p>
           <p>
             The public is billed as part of the line up because the room makes the
             work. Everyone attending receives a free month of the Claude Pro plan
