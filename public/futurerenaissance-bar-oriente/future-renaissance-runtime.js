@@ -348,16 +348,17 @@
     return tl;
   }
 
+  // Never yoyo back through rest: a one-directional drift always reads as
+  // alive, where a wobble that returns to zero every few seconds reads as
+  // "stopped" the moment the eye stops tracking it.
   function addOrbitLoops(slide) {
     if (reducedMotion.matches) return;
     slide.querySelectorAll("[data-orbit-loop], .orbital-svg").forEach(function (element, index) {
       activeLoops.push(gsap.to(element, {
-        rotation: index % 2 ? -2.5 : 2.5,
-        x: index % 2 ? -5 : 5,
-        duration: 7 + index * .8,
+        rotation: index % 2 ? "-=360" : "+=360",
+        duration: 110 + index * 22,
         repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
+        ease: "none",
         transformOrigin: "50% 50%",
       }));
     });
