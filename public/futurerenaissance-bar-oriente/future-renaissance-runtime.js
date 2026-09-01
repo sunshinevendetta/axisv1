@@ -258,6 +258,12 @@
     return new URL(window.location.href);
   }
 
+  // Authored but held out of the run. The slides stay in the deck source with
+  // their markup, concepts and translations intact; removing an id from here
+  // puts one back (its frame coordinate then needs a pass, since the numbers
+  // are authored for the twelve slides that actually run).
+  var HELD_BACK = ["missions", "leaderboard", "measurement", "event-partner-operates", "signature", "continuation"];
+
   function selectSlides() {
     var view = parentUrl().searchParams.get("view") || "extended";
     var ids = null;
@@ -265,7 +271,8 @@
     if (view === "sheet") ids = ["close"];
     if (view === "intro") ids = ["cover", "idea", "event", "audience", "program", "roles"];
     allSlides.forEach(function (slide) {
-      var visible = !ids || ids.indexOf(slide.dataset.slideId) !== -1;
+      var visible = (!ids || ids.indexOf(slide.dataset.slideId) !== -1) &&
+        HELD_BACK.indexOf(slide.dataset.slideId) === -1;
       slide.classList.toggle("is-view-hidden", !visible);
       slide.setAttribute("aria-hidden", visible ? "false" : "true");
     });
@@ -338,13 +345,16 @@
     if (reducedMotion.matches) {
       gsap.set(reveal, { clearProps: "all", opacity: 1 });
       gsap.set(crystal, { clearProps: "all", opacity: 1 });
-      return gsap.timeline();
+      var still = gsap.timeline();
+      decodePanels(slide, still);
+      return still;
     }
     gsap.set(reveal, { opacity: 0, y: 28 });
     gsap.set(crystal, { opacity: 0, scale: .985, filter: "blur(12px)" });
     var tl = gsap.timeline();
     tl.to(crystal, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.7, ease: "power3.out" }, 0)
       .to(reveal, { opacity: 1, y: 0, duration: .75, stagger: .07, ease: "power3.out" }, .2);
+    decodePanels(slide, tl);
     return tl;
   }
 
@@ -501,6 +511,54 @@
     ctx.fillRect(0, frontier - model.cellH * 4, model.w, model.cellH * 4);
     ctx.fillStyle = "rgba(241,226,200,.82)";
     ctx.fillRect(0, frontier - 1, model.w, 1.6);
+  }
+
+  /* --- Decode reveal, reusable ---------------------------------------
+     The cover and the idea plate arrive as ciphered ASCII and resolve
+     downward. Any panel marked data-decode now does the same, on the same
+     ramp, cipher and frontier, so the deck reads as one coded surface
+     rather than one slide with an effect on it. A panel holding an image
+     decodes from that image; everything else decodes from a synthetic
+     field. -------------------------------------------------------------- */
+  function decodeInto(el, tl, at, duration) {
+    var w = el.clientWidth, h = el.clientHeight;
+    if (!w || !h) return;
+    if (getComputedStyle(el).position === "static") el.style.position = "relative";
+    var canvas = el.__decodeCanvas;
+    if (!canvas || canvas.parentNode !== el) {
+      canvas = document.createElement("canvas");
+      canvas.className = "fr-decode";
+      canvas.setAttribute("aria-hidden", "true");
+      el.appendChild(canvas);
+      el.__decodeCanvas = canvas;
+    }
+    canvas.width = w;
+    canvas.height = h;
+    var hint = Math.max(7, Math.min(13, w / 38));
+    var img = el.querySelector("img");
+    var model = (img && img.naturalWidth && buildAsciiModel(canvas, img, w, h, hint)) || buildAsciiField(canvas, w, h, hint);
+    if (!model) return;
+    var ctx = canvas.getContext("2d");
+    var scan = { progress: 0 };
+    canvas.style.opacity = "1";
+    paintDecode(ctx, model, 0);
+    tl.to(scan, {
+      progress: 1,
+      duration: duration || 1.05,
+      ease: "power2.inOut",
+      onUpdate: function () { paintDecode(ctx, model, scan.progress); },
+      onComplete: function () { ctx.clearRect(0, 0, model.w, model.h); canvas.style.opacity = "0"; },
+    }, at);
+  }
+
+  function decodePanels(slide, tl) {
+    var panels = slide.querySelectorAll("[data-decode]");
+    if (!panels.length) return;
+    if (reducedMotion.matches) {
+      slide.querySelectorAll(".fr-decode").forEach(function (canvas) { canvas.style.opacity = "0"; });
+      return;
+    }
+    panels.forEach(function (el, index) { decodeInto(el, tl, .08 + index * .11); });
   }
 
   function animateIdeaFrost(slide) {
@@ -672,10 +730,65 @@
     return tl;
   }
 
+  /* --- The Claude slide does not decode, it answers -------------------
+     Everywhere else the deck resolves out of cipher. Here the line arrives
+     the way a response does: word after word, with a caret running ahead
+     of it, and the community mark wiping up underneath. Same idea as the
+     ASCII plate, different voice. --------------------------------------- */
+  function streamWords(el) {
+    var text = (el.textContent || "").trim();
+    if (!text) return null;
+    var words = text.split(/s+/);
+    var frag = document.createDocumentFragment();
+    var spans = [];
+    words.forEach(function (word, index) {
+      var span = document.createElement("span");
+      span.className = "fr-word";
+      span.textContent = word;
+      frag.appendChild(span);
+      spans.push(span);
+      if (index < words.length - 1) frag.appendChild(document.createTextNode(" "));
+    });
+    var caret = document.createElement("i");
+    caret.className = "fr-caret";
+    caret.setAttribute("aria-hidden", "true");
+    frag.appendChild(caret);
+    el.textContent = "";
+    el.appendChild(frag);
+    return { spans: spans, caret: caret };
+  }
+
+  function animateClaudeStream(slide) {
+    var tl = revealBase(slide);
+    if (reducedMotion.matches) return tl;
+
+    var line = slide.querySelector(".claude-copy h2");
+    var stream = line && streamWords(line);
+    if (stream) {
+      gsap.set(stream.spans, { opacity: 0, filter: "blur(7px)" });
+      gsap.set(stream.caret, { autoAlpha: 1 });
+      var runtimeOfLine = stream.spans.length * .052;
+      tl.to(stream.spans, { opacity: 1, filter: "blur(0px)", duration: .3, stagger: .052, ease: "power2.out" }, .22)
+        .to(stream.caret, { autoAlpha: 0, duration: .45, ease: "power1.out" }, .22 + runtimeOfLine + .45);
+    }
+
+    var badge = slide.querySelector(".cc-badge");
+    if (badge) {
+      tl.fromTo(badge,
+        { clipPath: "inset(100% 0% 0% 0%)", scale: .95, opacity: .2 },
+        { clipPath: "inset(0% 0% 0% 0%)", scale: 1, opacity: 1, duration: 1.15, ease: "power3.out" }, .3);
+    }
+
+    tl.fromTo(slide.querySelectorAll(".claude-marker"),
+      { autoAlpha: 0, y: 16 },
+      { autoAlpha: 1, y: 0, duration: .4, stagger: .07, ease: "power2.out" }, .95);
+    return tl;
+  }
+
   function animateStructured(slide) {
     var tl = revealBase(slide);
     if (reducedMotion.matches) return tl;
-    var targets = slide.querySelectorAll(".format-group, .format-item, .system-cycle-node, .phase-card, .component-row, .component-call, .reward-step, .deliverable-item, .budget-cell, .budget-explain, .offer-item");
+    var targets = slide.querySelectorAll(".format-group:not([data-decode]), .format-item, .system-cycle-node, .phase-card:not([data-decode]), .component-row, .component-call, .reward-step, .deliverable-item, .budget-cell, .budget-explain, .offer-item");
     tl.fromTo(targets, { autoAlpha: 0, y: 18, scale: .975 }, { autoAlpha: 1, y: 0, scale: 1, duration: .38, stagger: .025, ease: "power2.out" }, .2);
     addOrbitLoops(slide);
     return tl;
@@ -694,6 +807,7 @@
     measurement: animateMeasurement,
     "partner-system": animatePartnerSystem,
     "presenting-product": animatePresentingProduct,
+    "claude-stream": animateClaudeStream,
     "signature-product": animateSignatureProduct,
     continuation: animateContinuation,
     closing: animateClosing,

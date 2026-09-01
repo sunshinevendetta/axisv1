@@ -1,12 +1,13 @@
 const EVENT_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "MusicEvent",
-  name: "Future Renaissance · First Official Anthropic Claude AI Community Party",
-  startDate: "2026-10-28T22:00:00-06:00",
+  name: "Mexico City | Claude for Music · Future Renaissance",
+  startDate: "2026-10-28T18:00:00-06:00",
+  endDate: "2026-10-29T03:00:00-06:00",
   eventStatus: "https://schema.org/EventScheduled",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   description:
-    "Future Renaissance is an AXIS Tech Week Mexico Edition flagship event combining art, music, technology, culture, AI, code, community, hospitality, interactive activities and live media. It hosts the first official Anthropic Claude AI community party.",
+    "A Claude community event at Bar Oriente, Mexico City: a seated, hands-on Claude workshop for the music industry from 18:00 to 21:00 with 200 attendees, followed from 22:00 by Future Renaissance, an AXIS Tech Week Mexico Edition event combining art, music, technology, culture, AI, code, community, hospitality, interactive activities and live media, for 250 further guests.",
   location: {
     "@type": "Place",
     name: "Bar Oriente",
@@ -53,7 +54,9 @@ export default function FutureRenaissancePlanContent() {
         <header>
           <p>AXIS · Tech Week Mexico Edition</p>
           <h1>Future Renaissance</h1>
-          <p>First Official Anthropic Claude AI Community Party</p>
+          <p>Claude community event · Mexico City | Claude for Music</p>
+          <p>Organized by Claude community ambassadors · Produced by AXIS</p>
+          <p>Host venue: Bar Oriente</p>
           <p>October 28, 2026 · Mexico City</p>
           <p>Powered by: https://axis.show</p>
         </header>
@@ -61,9 +64,12 @@ export default function FutureRenaissancePlanContent() {
         <section aria-labelledby="future-event">
           <h2 id="future-event">The event</h2>
           <p>
-            Future Renaissance is an AXIS Tech Week Mexico Edition flagship event
-            in Mexico City on October 28, 2026, hosted at Bar Oriente. Roughly 250
-            Future Renaissance guests are expected.
+            The night runs in two halves at Bar Oriente, the host venue, in Mexico
+            City on October 28, 2026. From 18:00 to 21:00 it is a seated Claude
+            community workshop for 200 attendees from the music industry. From
+            22:00 it becomes Future Renaissance, an AXIS Tech Week Mexico Edition
+            event, with 250 further guests arriving on top of the workshop
+            attendees who stay on.
           </p>
           <p>
             The program brings together art, music, technology, culture, AI, code,
@@ -71,9 +77,15 @@ export default function FutureRenaissancePlanContent() {
             authored environment.
           </p>
           <p>
-            The expected attendance figure describes the Future Renaissance
-            audience, not the absolute capacity of the venue. Where operationally
-            agreed, the venue can continue receiving its regular clientele.
+            The workshop is seated and chairs are provided for every attendee. The
+            venue opens a little earlier than usual so the room, the seating and
+            the screen routing are ready before 18:00, and the Claude team has
+            access to the venue screen to run their presentation. AXIS buys soft
+            drinks from the venue bar for the workshop room, and the bar stays open
+            and sells to guests throughout. Registration runs on Luma through the
+            organizers with prior approval, as a single list; event communications
+            are issued by the organizers. Where operationally agreed, the venue can
+            continue receiving its regular clientele.
           </p>
         </section>
 
@@ -109,24 +121,26 @@ export default function FutureRenaissancePlanContent() {
           </p>
           <p>
             The public is billed as part of the line up because the room makes the
-            work. Everyone attending receives a free month of the Claude Pro plan
-            plus a fixed 50 USD in API credits, and any guest who brings photos or
-            video, or simply interacts with the application, alters the visual
-            experience running in real time on the main LED wall.
+            work. Any guest who brings photos or video, or simply interacts with
+            the application, alters the visual experience running in real time on
+            the main LED wall.
           </p>
         </section>
 
         <section aria-labelledby="future-claude">
           <h2 id="future-claude">Claude activity layer</h2>
           <p>
-            Future Renaissance hosts the first official Anthropic Claude AI
-            community party. Claude operates as an activity layer inside the event
-            rather than as branding or a sponsor booth.
+            The evening opens with a Claude community workshop for the music
+            industry, organized by Claude community ambassadors and produced by
+            AXIS. Producers, artists, labels, managers and studios work hands-on
+            with Claude for three seated hours, led from the venue screen. Claude
+            operates as an activity layer inside the event rather than as branding
+            or a booth.
           </p>
           <p>
-            Participating guests receive complimentary Claude access and Claude
-            credits as part of the official activity. Exact entitlement parameters
-            are confirmed with Anthropic before the event.
+            Workshop attendees are set up with Claude access and Claude credits as
+            part of the session. Exact entitlement parameters are confirmed by the
+            organizers before the event.
           </p>
           <p>
             Guests bring creative intent, Claude interprets that intent and assists

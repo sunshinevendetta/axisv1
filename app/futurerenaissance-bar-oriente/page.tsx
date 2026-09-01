@@ -9,16 +9,17 @@ import FutureRenaissancePlanContent from "@/components/futurerenaissance-bar-ori
    from it anyway. */
 export const dynamic = "force-dynamic";
 
-const title = "Future Renaissance · Official Claude AI Community Party · Bar Oriente";
+const title = "Future Renaissance · Claude Community Workshop · Bar Oriente";
 const description =
-  "Future Renaissance presents the first official Anthropic Claude AI community party at Bar Oriente, Mexico City, during Mexico Tech Week on October 28, 2026, with 250 expected guests. A Future Renaissance flagship powered by AXIS.";
+  "A Claude community event at Bar Oriente, Mexico City, during Mexico Tech Week on October 28, 2026: a seated, hands-on Claude workshop for the music industry from 18:00 to 21:00 for 200 attendees, followed from 22:00 by Future Renaissance for 250 more guests. Host venue: Bar Oriente. Produced by AXIS.";
 
 export const metadata: Metadata = {
   title,
   description,
   keywords: [
     "Future Renaissance",
-    "Anthropic Claude AI community party",
+    "Claude community event",
+    "Claude workshop for the music industry",
     "Mexico Tech Week 2026",
     "Bar Oriente",
     "AXIS",

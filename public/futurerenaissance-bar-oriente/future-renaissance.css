@@ -808,8 +808,8 @@ body.fr-vertical .offer-heading{left:50px;top:165px}.fr-vertical .offer-heading 
 .requirement-item > small { display: block; margin-top: 6px; color: rgba(241,226,200,.66); font: 500 8px/1.3 var(--mono); }
 
 /* ============================================================
-   SCOPED: CLAUDE BY ANTHROPIC - the single Claude-branded slide.
-   Official Anthropic colors, applied only inside .claude-slide.
+   SCOPED: THE CLAUDE COMMUNITY EVENT - the single community-branded
+   slide. Community event colors, applied only inside .claude-slide.
    ============================================================ */
 .claude-slide {
   --claude-clay: #D97757;
@@ -820,16 +820,12 @@ body.fr-vertical .offer-heading{left:50px;top:165px}.fr-vertical .offer-heading 
 }
 .claude-slide .claude-frame-top { border-bottom: 1px solid rgba(21,21,20,.14); }
 .claude-slide .fr-coordinate { color: rgba(21,21,20,.55); }
-.claude-slide .claude-mark { height: 22px; width: auto; }
 .claude-slide .claude-body { position: absolute; inset: 96px 72px 64px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr auto; gap: 32px 48px; }
 .claude-slide .claude-copy { display: flex; flex-direction: column; justify-content: center; }
 .claude-slide .eyebrow { color: var(--claude-clay); font: 600 10px/1 var(--mono); letter-spacing: .18em; }
 .claude-slide h2 { margin: 18px 0 0; max-width: 15ch; color: var(--claude-slate); font: 400 62px/1.02 var(--display); letter-spacing: -.01em; }
 .claude-slide .claude-meta { margin-top: 24px; color: rgba(21,21,20,.72); font: 600 11px/1.7 var(--mono); letter-spacing: .1em; }
-.claude-slide .claude-flagship { margin-top: 14px; color: var(--claude-clay); font: 600 10px/1.4 var(--mono); letter-spacing: .12em; }
 .claude-slide .claude-object { position: relative; display: flex; align-items: center; justify-content: center; }
-.claude-slide .claude-spark { position: absolute; width: 320px; height: auto; opacity: .16; }
-.claude-slide .claude-wordmark { position: relative; width: min(74%, 460px); height: auto; }
 .claude-slide .claude-markers { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
 .claude-slide .claude-marker { padding: 14px 12px; border: 1px solid rgba(21,21,20,.16); background: transparent; color: var(--claude-slate); text-align: left; }
 .claude-slide .claude-marker > span { font: 600 8px/1.35 var(--mono); letter-spacing: .08em; }
@@ -1233,7 +1229,6 @@ body.fr-vertical .close-event b, body.fr-vertical .close-event span { font-size:
 body.fr-vertical .close-event a { font-size: 30px; }
 body.fr-vertical .claude-slide .claude-marker > span { font-size: 26px; }
 body.fr-vertical .claude-slide .claude-meta { font-size: 28px; }
-body.fr-vertical .claude-slide .claude-flagship { font-size: 26px; }
 body.fr-vertical .cover-status { font-size: 28px; }
 body.fr-vertical .cover-flagship { font-size: 24px; }
 body.fr-vertical .event-status { font-size: 26px; }
@@ -1420,3 +1415,230 @@ body.fr-vertical .reward-step { height: 164px; margin-left: -80px; margin-top: -
 body.fr-vertical .role-orbit > .role-badge { margin-left: -75px; margin-top: -84px; }
 body.fr-vertical .venue-zone { margin: 0; height: auto; }
 body.fr-vertical .signature-stage { bottom: 300px; }
+
+/* ============================================================
+   04 THE WORKSHOP
+   Two populations, one clock. The left column argues the format,
+   the right column states the two numbers the venue has to plan
+   for, and the strip along the bottom is the operational ask.
+   ============================================================ */
+.fr-workshop { background: linear-gradient(160deg, var(--midnight) 0 58%, #06223f 100%); }
+.workshop-heading { position: absolute; z-index: 4; left: 60px; top: 148px; width: 700px; }
+.workshop-heading h2 { font-size: 68px; }
+.workshop-heading p { margin-top: 28px; max-width: 620px; font-size: 19px; }
+.workshop-phases { position: absolute; z-index: 4; left: 812px; right: 60px; top: 148px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.workshop-phase { position: relative; padding: 26px 26px 24px; border: 1px solid var(--line); background: rgba(49,95,151,.14); color: var(--ivory); text-align: left; }
+.workshop-phase::before { content: ""; position: absolute; left: 0; top: -1px; width: 64px; height: 2px; background: var(--solar-gold); }
+.workshop-phase > span { display: block; color: var(--patina); font: 600 10px/1 var(--mono); letter-spacing: .2em; }
+.workshop-phase > strong { display: block; margin: 14px 0 2px; color: var(--solar-gold); font: 500 96px/.82 var(--display); letter-spacing: -.03em; }
+.workshop-phase > b { display: block; margin-top: 14px; color: var(--ivory); font: 600 12px/1 var(--mono); letter-spacing: .14em; }
+.workshop-phase > small { display: block; margin-top: 10px; color: rgba(241,226,200,.68); font: 500 11px/1.5 var(--mono); }
+.workshop-phase:hover, .workshop-phase:focus-visible { background: rgba(49,95,151,.24); outline: none; }
+.workshop-clock { position: absolute; z-index: 4; left: 812px; right: 60px; top: 470px; }
+.workshop-clock-label { display: block; margin-bottom: 11px; color: var(--solar-gold); font: 600 10px/1 var(--mono); letter-spacing: .16em; }
+.workshop-clock > div { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line-strong); }
+.workshop-step { position: relative; padding: 16px 26px 18px 14px; border: 0; border-left: 1px solid var(--line); background: transparent; color: var(--ivory); text-align: left; }
+.workshop-step:first-child { border-left: 0; padding-left: 0; }
+.workshop-step > em { display: block; color: var(--solar-gold); font: 500 24px/1 var(--display); font-style: normal; letter-spacing: -.01em; }
+.workshop-step > b { display: block; margin-top: 10px; font: 600 9.5px/1.2 var(--mono); letter-spacing: .1em; }
+.workshop-step > small { display: block; margin-top: 8px; color: rgba(241,226,200,.6); font: 500 9px/1.45 var(--mono); }
+.workshop-step::after { width: 18px; height: 18px; right: 6px; top: 12px; font-size: 11px; }
+.workshop-asks { position: absolute; z-index: 4; left: 60px; right: 60px; bottom: 46px; }
+.workshop-asks > span { display: block; margin-bottom: 11px; color: var(--solar-gold); font: 600 10px/1 var(--mono); letter-spacing: .16em; }
+.workshop-asks > div { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; }
+.workshop-ask { position: relative; display: grid; grid-template-columns: 30px 1fr; align-items: start; gap: 12px; min-height: 84px; padding: 14px 30px 14px 13px; border: 1px solid var(--line); background: rgba(4,27,51,.5); color: var(--ivory); text-align: left; }
+.workshop-ask > i { color: var(--solar-gold); }
+.workshop-ask > i .fr-glyph { width: 20px; height: 20px; }
+.workshop-ask > span > b { display: block; color: var(--solar-gold); font: 600 10px/1.2 var(--mono); letter-spacing: .08em; }
+.workshop-ask > span > small { display: block; margin-top: 7px; color: rgba(241,226,200,.66); font: 500 9.5px/1.45 var(--mono); }
+.workshop-ask::after { width: 16px; height: 16px; right: 7px; top: 7px; font-size: 10px; }
+.workshop-ask:hover, .workshop-ask:focus-visible { background: rgba(49,95,151,.2); outline: none; }
+
+/* The event core now carries both populations: the seated room, then the night. */
+.event-core { width: 268px; height: 268px; }
+.event-core strong { font-size: 74px; }
+.event-core span { margin-top: 12px; font-size: 11px; letter-spacing: .16em; }
+.event-core em { display: block; margin-top: 13px; padding-top: 13px; border-top: 1px solid rgba(241,226,200,.26); color: var(--ivory); font: 500 44px/.85 var(--display); font-style: normal; }
+.event-core small { display: block; margin-top: 8px; color: var(--patina); font: 600 9px/1 var(--mono); letter-spacing: .16em; }
+
+/* --- Vertical orientation --- */
+body.fr-vertical .workshop-heading { left: 60px; right: 60px; top: 210px; width: auto; }
+body.fr-vertical .workshop-heading h2 { font-size: 84px; }
+body.fr-vertical .workshop-heading p { max-width: none; font-size: 30px; }
+body.fr-vertical .workshop-phases { left: 60px; right: 60px; top: 700px; gap: 22px; }
+body.fr-vertical .workshop-phase { padding: 32px; }
+body.fr-vertical .workshop-phase > span { font-size: 18px; }
+body.fr-vertical .workshop-phase > strong { font-size: 128px; }
+body.fr-vertical .workshop-phase > b { font-size: 21px; }
+body.fr-vertical .workshop-phase > small { font-size: 18px; }
+body.fr-vertical .workshop-clock { left: 60px; right: 60px; top: 1130px; }
+body.fr-vertical .workshop-clock-label { font-size: 18px; }
+body.fr-vertical .workshop-clock > div { grid-template-columns: repeat(2, 1fr); }
+body.fr-vertical .workshop-step { padding: 22px 40px 22px 20px; border-left: 0; border-bottom: 1px solid var(--line); }
+body.fr-vertical .workshop-step:first-child { padding-left: 20px; }
+body.fr-vertical .workshop-step > em { font-size: 38px; }
+body.fr-vertical .workshop-step > b { font-size: 17px; }
+body.fr-vertical .workshop-step > small { font-size: 15px; }
+body.fr-vertical .workshop-asks { left: 60px; right: 60px; bottom: 80px; }
+body.fr-vertical .workshop-asks > span { font-size: 18px; }
+body.fr-vertical .workshop-asks > div { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+body.fr-vertical .workshop-ask { grid-template-columns: 44px 1fr; gap: 16px; min-height: 140px; padding: 22px 44px 22px 20px; }
+body.fr-vertical .workshop-ask > i .fr-glyph { width: 30px; height: 30px; }
+body.fr-vertical .workshop-ask > span > b { font-size: 20px; }
+body.fr-vertical .workshop-ask > span > small { font-size: 17px; }
+body.fr-vertical .event-core { width: 420px; height: 420px; }
+body.fr-vertical .event-core strong { font-size: 118px; }
+body.fr-vertical .event-core span { font-size: 19px; }
+body.fr-vertical .event-core em { font-size: 70px; }
+body.fr-vertical .event-core small { font-size: 16px; }
+
+/* ============================================================
+   THE CLAUDE COMMUNITY EVENT MARK
+   Community event branding, on its own ground. It is never set in
+   a shared lockup with the AXIS mark or with the venue mark, which
+   is why this slide carries no AXIS mark at all.
+   ============================================================ */
+.cc-badge { width: min(78%, 430px); aspect-ratio: 1; display: block; box-shadow: 0 24px 70px rgba(21,21,20,.18); }
+.cc-badge svg { display: block; width: 100%; height: 100%; }
+.cc-arc-text { font: 600 30px/1 var(--mono); letter-spacing: .12em; }
+.cc-badge-city { font: 400 62px/1 var(--display); letter-spacing: -.01em; }
+.cc-badge-kind { font: 600 30px/1 var(--mono); letter-spacing: .16em; }
+.claude-slide .claude-community-label { color: var(--claude-clay); font: 600 12px/1 var(--mono); letter-spacing: .2em; }
+.claude-slide .claude-organizers { margin-top: 16px; color: var(--claude-clay); font: 600 10px/1.4 var(--mono); letter-spacing: .12em; }
+.claude-slide .claude-host { margin-top: 10px; color: rgba(21,21,20,.62); font: 600 10px/1.4 var(--mono); letter-spacing: .12em; }
+body.fr-vertical .cc-badge { width: min(80%, 620px); }
+body.fr-vertical .claude-slide .claude-community-label { font-size: 22px; }
+body.fr-vertical .claude-slide .claude-organizers { font-size: 19px; }
+body.fr-vertical .claude-slide .claude-host { font-size: 19px; }
+
+/* --- 04 recomposed: two columns, bigger type ---------------------
+   The first pass packed five clock steps and eight ask cards into
+   9px type. Narrative reads down the left column, the numbers and
+   the ask hold the right, and nothing is under 11px. */
+.workshop-heading { left: 60px; top: 150px; width: 740px; }
+.workshop-heading h2 { font-size: 74px; }
+.workshop-heading p { margin-top: 30px; max-width: 700px; font-size: 21px; line-height: 1.6; }
+
+.workshop-phases { left: 860px; right: 60px; top: 150px; gap: 18px; }
+.workshop-phase { padding: 32px 30px 30px; }
+.workshop-phase > span { font-size: 12px; letter-spacing: .18em; }
+.workshop-phase > strong { margin: 18px 0 4px; font-size: 112px; }
+.workshop-phase > b { margin-top: 18px; font-size: 14px; }
+.workshop-phase > small { margin-top: 12px; font-size: 12.5px; line-height: 1.55; }
+.workshop-clock { left: 60px; right: auto; width: 740px; top: 596px; }
+.workshop-clock-label { margin-bottom: 14px; font-size: 11px; }
+.workshop-clock > div { grid-template-columns: 1fr; }
+.workshop-step { display: grid; grid-template-columns: 168px 1fr; grid-template-rows: auto auto; column-gap: 22px; padding: 20px 44px 20px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+.workshop-step:first-child { padding-left: 0; }
+.workshop-step > em { grid-column: 1; grid-row: 1 / 3; align-self: center; font-size: 34px; }
+.workshop-step > b { grid-column: 2; grid-row: 1; margin-top: 0; font-size: 13px; letter-spacing: .12em; }
+.workshop-step > small { grid-column: 2; grid-row: 2; margin-top: 9px; font-size: 12px; line-height: 1.5; }
+.workshop-step::after { top: 50%; margin-top: -11px; right: 8px; width: 22px; height: 22px; font-size: 13px; }
+
+.workshop-asks { left: 860px; right: 60px; top: 596px; bottom: 52px; }
+.workshop-asks > span { margin-bottom: 14px; font-size: 11px; }
+.workshop-asks > div { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.workshop-ask { grid-template-columns: 34px 1fr; gap: 15px; min-height: 0; padding: 22px 34px 22px 18px; }
+.workshop-ask > i .fr-glyph { width: 26px; height: 26px; }
+.workshop-ask > span > b { font-size: 12.5px; line-height: 1.3; }
+.workshop-ask > span > small { margin-top: 10px; font-size: 12px; line-height: 1.5; }
+.workshop-ask::after { width: 20px; height: 20px; right: 9px; top: 9px; font-size: 12px; }
+
+/* --- 04 recomposed, vertical --- */
+body.fr-vertical .workshop-heading { left: 60px; right: 60px; top: 210px; width: auto; }
+body.fr-vertical .workshop-heading p { max-width: none; font-size: 30px; }
+body.fr-vertical .workshop-phases { left: 60px; right: 60px; top: 770px; }
+body.fr-vertical .workshop-clock { left: 60px; right: 60px; width: auto; top: 1140px; }
+body.fr-vertical .workshop-clock-label { font-size: 19px; }
+body.fr-vertical .workshop-clock > div { grid-template-columns: 1fr; }
+body.fr-vertical .workshop-step { grid-template-columns: 280px 1fr; column-gap: 34px; padding: 30px 70px 30px 0; }
+body.fr-vertical .workshop-step > em { font-size: 56px; }
+body.fr-vertical .workshop-step > b { font-size: 22px; }
+body.fr-vertical .workshop-step > small { font-size: 19px; }
+body.fr-vertical .workshop-step::after { width: 34px; height: 34px; margin-top: -17px; font-size: 19px; }
+body.fr-vertical .workshop-asks { left: 60px; right: 60px; top: 1570px; bottom: 90px; }
+body.fr-vertical .workshop-asks > span { font-size: 19px; }
+body.fr-vertical .workshop-asks > div { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+body.fr-vertical .workshop-ask { grid-template-columns: 52px 1fr; gap: 20px; padding: 30px 56px 30px 26px; }
+body.fr-vertical .workshop-ask > i .fr-glyph { width: 36px; height: 36px; }
+body.fr-vertical .workshop-ask > span > b { font-size: 23px; }
+body.fr-vertical .workshop-ask > span > small { font-size: 19px; }
+
+/* --- 04 final pass: four clock beats, and the ask fills its column --- */
+.workshop-asks > div { height: calc(100% - 25px); grid-auto-rows: 1fr; }
+body.fr-vertical .workshop-clock { top: 1120px; }
+body.fr-vertical .workshop-asks { top: 1660px; bottom: 70px; }
+body.fr-vertical .workshop-asks > div { height: calc(100% - 33px); }
+
+/* ============================================================
+   09 / 10 - the offer, split in two
+   The argument and the investment hold one page; the inventory
+   of what AXIS actually runs holds the next. Same card grammar,
+   twice the room.
+   ============================================================ */
+.fr-offer .offer-card { left: 70px; right: 70px; width: auto; top: 258px; bottom: 62px; padding: 30px;
+  display: grid; grid-template-columns: 1fr 1.08fr; grid-template-rows: auto auto 1fr auto; column-gap: 32px; }
+.fr-offer .offer-card-head { grid-column: 1; grid-row: 1; }
+.fr-offer .offer-card > p { grid-column: 1; grid-row: 2; margin-top: 22px; font-size: 17px; line-height: 1.58; }
+.fr-offer .offer-enforce { grid-column: 1; grid-row: 3; align-self: start; margin-top: 20px; padding: 15px; font: 600 11px/1.5 var(--mono); letter-spacing: .1em; }
+.fr-offer .offer-budget { grid-column: 2; grid-row: 1 / 4; margin-top: 0; align-content: start; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.fr-offer .offer-budget > span { margin-bottom: 2px; font-size: 10.5px; }
+.fr-offer .offer-budget .budget-cell { min-height: 118px; padding: 16px 36px 16px 16px; }
+.fr-offer .offer-budget .budget-cell > b { font: 600 11.5px/1.3 var(--mono); letter-spacing: .09em; }
+.fr-offer .offer-budget .budget-cell > small { margin-top: 9px; font: 500 10.5px/1.45 var(--mono); }
+.fr-offer .offer-proof { grid-column: 1 / -1; grid-row: 4; margin-top: 22px; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+.fr-offer .offer-proof span { min-height: 46px; font-size: 10.5px; }
+
+/* 10 - what AXIS operates: the inventory gets the whole page */
+.fr-operates { background: linear-gradient(135deg, var(--midnight), var(--cobalt)); }
+.operates-heading { position: absolute; z-index: 4; left: 70px; top: 132px; width: 900px; }
+.operates-heading h2 { font-size: 62px; }
+.operates-heading p { margin-top: 22px; max-width: 760px; font-size: 18px; line-height: 1.55; }
+.fr-operates .offer-inventory { left: 70px; right: 70px; top: 382px; bottom: 128px; width: auto; }
+.fr-operates .offer-inventory > div { height: 100%; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 0 44px; }
+.fr-operates .offer-item { min-height: 0; padding: 12px 40px 12px 0; }
+.fr-operates .offer-item > span { font-size: 13px; line-height: 1.35; letter-spacing: .035em; }
+.fr-operates .offer-item::after { top: 50%; margin-top: -10px; width: 20px; height: 20px; font-size: 12px; }
+.fr-operates .offer-cycle { left: 70px; right: 70px; width: auto; bottom: 50px; font-size: 12px; letter-spacing: .14em; }
+
+/* --- the split, vertical: both pages fall back to a single column --- */
+body.fr-vertical .fr-offer .offer-card { display: block; left: 50px; right: 50px; width: auto; top: 320px; bottom: auto; padding: 28px; }
+body.fr-vertical .fr-offer .offer-card > p { margin-top: 20px; }
+body.fr-vertical .fr-offer .offer-enforce { margin-top: 18px; }
+body.fr-vertical .fr-offer .offer-budget { margin-top: 18px; grid-template-columns: repeat(2, 1fr); }
+body.fr-vertical .fr-offer .offer-proof { margin-top: 18px; grid-template-columns: repeat(2, 1fr); }
+body.fr-vertical .operates-heading { left: 50px; right: 50px; top: 210px; width: auto; }
+body.fr-vertical .operates-heading h2 { font-size: 76px; }
+body.fr-vertical .operates-heading p { max-width: none; font-size: 28px; }
+body.fr-vertical .fr-operates .offer-inventory { left: 50px; right: 50px; top: 700px; bottom: 110px; width: auto; }
+body.fr-vertical .fr-operates .offer-inventory > div { grid-template-columns: repeat(2, 1fr); gap: 0 34px; }
+body.fr-vertical .fr-operates .offer-item { padding: 14px 44px 14px 0; }
+body.fr-vertical .fr-operates .offer-item > span { font-size: 22px; line-height: 1.3; }
+body.fr-vertical .fr-operates .offer-item::after { width: 26px; height: 26px; margin-top: -13px; font-size: 15px; }
+
+/* --- Claude slide: the six markers were transparent on an off-white ground,
+   so they read as text, not as buttons. They get the same grammar the rest of
+   the deck gives a panel: a tinted surface, a clay spine, and a badge that
+   inverts on hover. --- */
+.claude-slide .claude-marker { position: relative; padding: 18px 42px 18px 16px;
+  border: 1px solid rgba(217,119,87,.34); background: rgba(217,119,87,.08);
+  transition: background .2s ease, border-color .2s ease; }
+.claude-slide .claude-marker::before { content: ""; position: absolute; left: -1px; top: -1px; bottom: -1px; width: 2px; background: var(--claude-clay); }
+.claude-slide .claude-marker > span { font: 600 10px/1.4 var(--mono); letter-spacing: .09em; }
+.claude-slide .claude-marker::after { border-color: rgba(217,119,87,.5); background: var(--claude-ivory); color: var(--claude-clay); }
+.claude-slide .claude-marker:hover, .claude-slide .claude-marker:focus-visible { background: rgba(217,119,87,.18); border-color: var(--claude-clay); outline: none; }
+.claude-slide .claude-marker:focus-visible { box-shadow: inset 0 0 0 2px var(--claude-clay); }
+.claude-slide .claude-marker:hover::after, .claude-slide .claude-marker:focus-visible::after { background: var(--claude-clay); border-color: var(--claude-clay); color: var(--claude-ivory); }
+body.fr-vertical .claude-slide .claude-marker { padding: 26px 58px 26px 24px; }
+body.fr-vertical .claude-slide .claude-marker::before { width: 3px; }
+
+/* --- The decode plate ------------------------------------------------
+   Sits over its panel while the cipher resolves downward, then clears
+   itself. Purely decorative, never in the way of a click. */
+.fr-decode { position: absolute; inset: 0; z-index: 14; width: 100%; height: 100%; pointer-events: none; }
+
+/* --- The streamed line on the Claude slide --------------------------- */
+.fr-word { display: inline-block; will-change: opacity, filter; }
+.fr-caret { display: inline-block; width: .075em; height: .74em; margin-left: .12em; background: var(--claude-clay); font-style: normal; animation: fr-caret-blink 1.05s steps(1, end) infinite; }
+@keyframes fr-caret-blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .fr-caret { animation: none; } }

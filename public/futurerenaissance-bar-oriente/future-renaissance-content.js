@@ -3,7 +3,6 @@
 
   var event = window.FUTURE_RENAISSANCE;
   var root = "/futurerenaissance-bar-oriente/brand-assets/axis_future_renaissance_brand_assets";
-  var claudeRoot = "/futurerenaissance-bar-oriente/brand-assets/anthropic";
   var orientation = document.documentElement.dataset.orientation || "horizontal";
   var poster = orientation === "vertical"
     ? "/futurerenaissance-bar-oriente/poster-vertical.png"
@@ -17,7 +16,7 @@
     return '<header class="fr-frame-top" data-reveal>' +
       '<div class="fr-lockup">' + axisMark(tone || "ivory") +
       '<span>AXIS</span><i></i><span data-i18n="brand.techWeek">TECH WEEK MEXICO EDITION</span></div>' +
-      '<div class="fr-coordinate"><span>' + number + ' / 15</span><span data-i18n="nav.' + label + '">' + label.replace(/-/g, " ") + '</span></div>' +
+      '<div class="fr-coordinate"><span>' + number + ' / 11</span><span data-i18n="nav.' + label + '">' + label.replace(/-/g, " ") + '</span></div>' +
     '</header>';
   }
 
@@ -72,6 +71,28 @@
   }
   window.__futureRenaissanceGlyph = glyph;
 
+  // The Claude community event mark for this workshop, as it is registered on
+  // Luma. It is community branding, so it stands alone on its own ground: it is
+  // never set beside the AXIS mark or the venue's in a shared lockup.
+  function communityBadge() {
+    return '<div class="cc-badge">' +
+      '<svg viewBox="0 0 400 400" role="img" aria-label="Claude Community Mexico City Workshop">' +
+        '<rect width="400" height="400" fill="#D97757"></rect>' +
+        '<defs><path id="cc-arc" d="M 52 200 A 148 148 0 0 1 348 200" fill="none"></path></defs>' +
+        '<text class="cc-arc-text" fill="#FAF9F5"><textPath href="#cc-arc" startOffset="50%" text-anchor="middle">CLAUDE COMMUNITY</textPath></text>' +
+        '<g fill="#151514">' +
+          '<path d="M150 100 240 86 240 104 150 118 Z"></path>' +
+          '<rect x="150" y="100" width="9" height="66"></rect>' +
+          '<rect x="231" y="86" width="9" height="72"></rect>' +
+          '<ellipse cx="137" cy="170" rx="21" ry="15.5" transform="rotate(-17 137 170)" fill="#FAF9F5" stroke="#151514" stroke-width="9"></ellipse>' +
+          '<ellipse cx="218" cy="162" rx="21" ry="15.5" transform="rotate(-17 218 162)" fill="#FAF9F5" stroke="#151514" stroke-width="9"></ellipse>' +
+        '</g>' +
+        '<text class="cc-badge-city" x="200" y="268" text-anchor="middle" fill="#151514">México City</text>' +
+        '<text class="cc-badge-kind" x="200" y="318" text-anchor="middle" fill="#FAF9F5">WORKSHOP</text>' +
+      '</svg>' +
+    '</div>';
+  }
+
   function orbitalSvg(className) {
     return '<svg class="orbital-svg ' + (className || "") + '" viewBox="0 0 800 800" aria-hidden="true">' +
       '<circle class="orbit-line orbit-line-a" cx="400" cy="400" r="310"></circle>' +
@@ -101,7 +122,7 @@
   }
 
   function formatGroup(group) {
-    return '<section class="format-group fg-' + group.key + '"><h3>' + group.letter + '. ' + group.title + '</h3><div>' +
+    return '<section class="format-group fg-' + group.key + '" data-decode><h3>' + group.letter + '. ' + group.title + '</h3><div>' +
       group.items.map(function (item) { return systemItem("format-item", item); }).join("") +
     '</div></section>';
   }
@@ -195,6 +216,18 @@
     '</div>';
   }
 
+  function clockStep(item, index) {
+    return conceptNode("workshop-step ws-" + (index + 1), item[0],
+      '<em>' + item[1] + '</em><b>' + item[2] + '</b><small>' + item[3] + '</small>',
+      item[2].toLowerCase());
+  }
+
+  function askItem(item) {
+    return conceptNode("workshop-ask", item[0],
+      '<i>' + glyph(item[3]) + '</i><span><b>' + item[1] + '</b><small>' + item[2] + '</small></span>',
+      item[1].toLowerCase());
+  }
+
   function allocationCell(entry) {
     return conceptNode("budget-cell", entry.id, '<b>' + entry.title + '</b><small>' + entry.note + '</small>', entry.title.toLowerCase() + " investment");
   }
@@ -227,7 +260,7 @@
     { key: "e", letter: "E", title: "EVENT FLOW", items: [
       ["format-staff", "STAFF-GUIDED FLOW", "Staff supports actions, validation and exceptions.", "staff"],
       ["format-hospitality", "COMPLIMENTARY HOSPITALITY", "AXIS funds the drink allocation for the night.", "drink"],
-      [null, "EXPECTED AUDIENCE", event.attendees + " Future Renaissance guests, plus venue clientele.", "guests"],
+      [null, "EXPECTED AUDIENCE", event.workshopCapacity + " seated for the workshop, then " + event.afterPartyGuests + " more for the night.", "guests"],
     ] },
     { key: "f", letter: "F", title: "AI + CODE", items: [
       ["format-claude", "CLAUDE ACTIVITY", "Guests discover Claude, activate access and interact live.", "spark"],
@@ -290,6 +323,24 @@
     ["zone-venue-clients", "VENUE CLIENT FLOW", "guests"],
   ];
 
+  // 18:00 to 21:00 seated, then the room resets and the night opens. The clock
+  // is the spine of the ask: everything the venue has to do hangs off a time.
+  var workshopClock = [
+    ["ask-early", "17:00", "EARLY OPEN", "Doors to us before the doors to the room.", "door"],
+    ["workshop-doors", "18:00", "CHECK-IN", "One approval-based list, run by the organizers.", "passport"],
+    ["workshop-reset", "21:00", "ROOM RESETS", "Seated workshop out, open floor in.", "arrive"],
+    ["workshop-afterparty", "22:00", "THE NIGHT OPENS", "Doors again for 250 more.", "disc"],
+  ];
+
+  var workshopAsks = [
+    ["ask-early", "EARLY OPENING", "Open a little earlier than usual.", "door"],
+    ["ask-seating", "SEATED FOR 200", "A chair for every attendee.", "guests"],
+    ["ask-screen", "SCREEN ACCESS", "The Claude team runs its presentation from the venue screen.", "screen"],
+    ["ask-softdrinks", "SOFT DRINKS", "We buy them from the bar for the room.", "drink"],
+    ["ask-bar", "BAR STAYS OPEN", "It keeps selling to guests all night.", "shield"],
+    ["ask-registration", "ONE GUEST LIST", "Approval-based, run by the organizers.", "list"],
+  ];
+
   var venueRequirements = [
     ["req-screens", "SCREENS / DISPLAYS", "Venue-provided display infrastructure required.", "screen"],
     ["req-inputs", "SCREEN INPUTS", "Access to inputs and routing for an AXIS workstation.", "projector"],
@@ -338,18 +389,49 @@
         '<span class="eyebrow" data-reveal data-i18n="event.kicker">THE EVENT</span>' +
         '<h2 data-reveal>' + event.displayDate.toUpperCase() + '</h2>' +
         '<p class="venue-lock" data-reveal>' + event.venue.toUpperCase() + '<br>' + event.city.toUpperCase() + '</p>' +
-        '<p class="event-status" data-reveal data-i18n="event.status">FIRST OFFICIAL ANTHROPIC CLAUDE AI COMMUNITY PARTY · MEXICO TECH WEEK 2026</p>' +
+        '<p class="event-status" data-reveal data-i18n="event.status">CLAUDE COMMUNITY EVENT · MEXICO TECH WEEK 2026 · HOST VENUE: ' + event.venue.toUpperCase() + '</p>' +
       '</div>' +
       '<div class="event-operating-map" data-reveal>' +
-        conceptNode("event-core", "venue", '<strong>' + event.attendees + '</strong><span data-i18n="event.attendees">EXPECTED GUESTS</span>', event.venue + " and the event format") +
+        conceptNode("event-core", "venue", '<strong>' + event.workshopCapacity + '</strong><span data-i18n="event.seatedWorkshop">SEATED WORKSHOP</span><em>+' + event.afterPartyGuests + '</em><small data-i18n="event.afterParty">AFTER PARTY</small>', event.venue + " and the event format") +
         orbitalSvg("event-orbit") +
       '</div>' +
       roomHuds() +
       lineupTable() +
     '</section>',
 
+    // 04. The workshop is the half of the night the venue has to plan around:
+    // three seated hours for 200 before the room resets and the night opens.
+    '<section class="fr-slide fr-workshop" data-slide-id="workshop" data-scene="structured" data-label="The workshop">' +
+      frameTop("04", "workshop") +
+      '<div class="workshop-heading" data-decode>' +
+        '<span class="eyebrow" data-reveal data-i18n="workshop.kicker">CLAUDE COMMUNITY EVENT</span>' +
+        '<h2 data-reveal data-i18n="workshop.title">A HANDS-ON WORKSHOP FOR THE MUSIC INDUSTRY.</h2>' +
+        '<p data-reveal data-i18n="workshop.copy">Three seated hours built for people who work in music. Producers, artists, labels, managers and studios work hands-on with Claude, led from the screen at the front of the room. When it closes, the room becomes the night.</p>' +
+      '</div>' +
+      '<div class="workshop-phases" data-decode>' +
+        conceptNode("workshop-phase", "workshop-session",
+          '<span>' + event.workshopStart + ' → ' + event.workshopEnd + '</span><strong>' + event.workshopCapacity + '</strong>' +
+          '<b data-i18n="workshop.phaseSeated">SEATED WORKSHOP</b>' +
+          '<small data-i18n="workshop.phaseSeatedNote">A chair for every attendee, and the venue screen carrying the session.</small>',
+          "the seated workshop") +
+        conceptNode("workshop-phase", "workshop-afterparty",
+          '<span>' + event.afterPartyStart + ' → LATE</span><strong>+' + event.afterPartyGuests + '</strong>' +
+          '<b data-i18n="workshop.phaseNight">AFTER PARTY</b>' +
+          '<small data-i18n="workshop.phaseNightNote">Doors open again at 22:00 for 250 further guests, on top of the attendees who stay on.</small>',
+          "the after party") +
+      '</div>' +
+      '<div class="workshop-clock" data-decode>' +
+        '<span class="workshop-clock-label" data-i18n="workshop.runOfShow">RUN OF SHOW</span>' +
+        '<div>' + workshopClock.map(clockStep).join("") + '</div>' +
+      '</div>' +
+      '<div class="workshop-asks" data-decode>' +
+        '<span data-i18n="workshop.asksLabel">WHAT THE WORKSHOP NEEDS FROM THE VENUE</span>' +
+        '<div>' + workshopAsks.map(askItem).join("") + '</div>' +
+      '</div>' +
+    '</section>',
+
     '<section class="fr-slide fr-audience" data-slide-id="audience" data-scene="badges" data-label="The audience">' +
-      frameTop("04", "audience") +
+      frameTop("05", "audience") +
       '<div class="audience-copy">' +
         '<span class="eyebrow" data-reveal data-i18n="audience.kicker">THE AUDIENCE</span>' +
         '<h2 data-reveal data-i18n="audience.title">EXPECTED GUESTS.</h2>' +
@@ -363,28 +445,28 @@
     '</section>',
 
     '<section class="fr-slide fr-format" data-slide-id="program" data-scene="structured" data-label="Event format">' +
-      frameTop("05", "event-format") +
+      frameTop("06", "event-format") +
       '<div class="format-titlebar"><div><span class="eyebrow" data-reveal>EVENT FORMAT</span><h2 data-reveal>ONE ROOM. SIX OPERATING LAYERS.</h2></div><p data-reveal>Future Renaissance puts culture, media capture, access, hospitality, AI and code into one authored environment.</p></div>' +
-      '<div class="event-format-map" data-crystallize>' +
+      '<div class="event-format-map">' +
         '<div class="format-hub" aria-hidden="true">' + axisMark("gold") + '</div>' +
         formatGroups.map(formatGroup).join("") +
       '</div>' +
     '</section>',
 
     '<section class="fr-slide fr-system-flow" data-slide-id="roles" data-scene="structured" data-label="How it works">' +
-      frameTop("06", "how-it-works") +
+      frameTop("07", "how-it-works") +
       '<div class="system-flow-heading"><span class="eyebrow" data-reveal>SYSTEM DESIGN</span><h2 data-reveal>HOW IT WORKS.</h2></div>' +
       '<div class="system-cycle" data-crystallize>' + orbitalSvg("system-cycle-rings") +
-        '<div class="system-cycle-hub">' + axisMark("gold") + '<b>AXIS</b><p>From format and guest entry to reward, capture and documentation.</p></div>' +
+        '<div class="system-cycle-hub">' + axisMark("gold") + '<b>AXIS</b></div>' +
         systemCycle.map(cycleNode).join("") +
       '</div>' +
-      '<div class="system-phase phase-a">' + conceptNode("phase-card", "phase-produce", '<i>A</i><b>FUND + PRODUCE</b><p>AXIS authors the format, activities, validation and reward layer before doors open.</p>', "fund and produce") + '</div>' +
-      '<div class="system-phase phase-b">' + conceptNode("phase-card", "phase-live", '<i>B</i><b>ON-SITE FLOW</b><p>Guests enter, act, validate, unlock rewards and advance through the live participation system.</p>', "on-site flow") + '</div>' +
-      '<div class="system-phase phase-c">' + conceptNode("phase-card", "phase-report", '<i>C</i><b>CAPTURE + DOCUMENT</b><p>AXIS documents the night and delivers participation and media evidence.</p>', "capture and document") + '</div>' +
+      '<div class="system-phase phase-a" data-decode>' + conceptNode("phase-card", "phase-produce", '<i>A</i><b>FUND + PRODUCE</b><p>AXIS authors the format, activities, validation and reward layer before doors open.</p>', "fund and produce") + '</div>' +
+      '<div class="system-phase phase-b" data-decode>' + conceptNode("phase-card", "phase-live", '<i>B</i><b>ON-SITE FLOW</b><p>Guests enter, act, validate, unlock rewards and advance through the live participation system.</p>', "on-site flow") + '</div>' +
+      '<div class="system-phase phase-c" data-decode>' + conceptNode("phase-card", "phase-report", '<i>C</i><b>CAPTURE + DOCUMENT</b><p>AXIS documents the night and delivers participation and media evidence.</p>', "capture and document") + '</div>' +
     '</section>',
 
     '<section class="fr-slide fr-components" data-slide-id="missions" data-scene="structured" data-label="Experience components">' +
-      frameTop("07", "experience-components") +
+      frameTop("08", "experience-components") +
       '<div class="components-copy"><span class="eyebrow" data-reveal>EXPERIENCE COMPONENTS</span><h2 data-reveal>THE FORMAT STARTS WITH THE GUEST.</h2><p data-reveal>Every activity is distributed across four blocks. Nothing exists as isolated logo placement.</p>' +
         '<div class="components-activities" data-reveal><span>ACTIVITY TYPES ON THE FLOOR</span><div>' + missions.map(function (name) {
           var slug = name.toLowerCase();
@@ -404,9 +486,9 @@
     '<section class="fr-slide fr-reward-flow" data-slide-id="brand-function" data-scene="structured" data-label="Claude to screen">' +
       frameTop("08", "claude-to-screen") +
       '<div class="reward-heading"><span class="eyebrow" data-reveal>SYSTEM DESIGN</span><h2 data-reveal>CODE BECOMES SOUND. CODE BECOMES IMAGE.</h2></div>' +
-      '<div class="reward-compare" data-reveal>' +
-        '<div class="giveaway-card"><span>WHAT CLAUDE DOES</span><ul><li>Interprets guest intent</li><li>Assists the coding process</li><li>Generates and modifies code</li><li>Works inside controlled limits</li><li>Operates live in the room</li></ul></div>' +
-        '<div class="axis-system-card"><span>WHAT THE RUNTIME DOES</span><ul><li>Executes the controlled code</li><li>Applies Future Renaissance visual rules</li><li>Renders the final output</li><li>Routes to venue screens</li><li>Holds a fallback scene</li></ul></div>' +
+      '<div class="reward-compare">' +
+        '<div class="giveaway-card" data-decode><span>WHAT CLAUDE DOES</span><ul><li>Interprets guest intent</li><li>Assists the coding process</li><li>Generates and modifies code</li><li>Works inside controlled limits</li><li>Operates live in the room</li></ul></div>' +
+        '<div class="axis-system-card" data-decode><span>WHAT THE RUNTIME DOES</span><ul><li>Executes the controlled code</li><li>Applies Future Renaissance visual rules</li><li>Renders the final output</li><li>Routes to venue screens</li><li>Holds a fallback scene</li></ul></div>' +
       '</div>' +
       '<div class="reward-cycle" data-crystallize>' +
         '<div class="reward-cycle-hub">' + axisMark("gold") + '<b>LIVE</b><p>Guest intent becomes code, and code becomes the room.</p></div>' +
@@ -419,11 +501,11 @@
         rewardStep("rs7", "flow-screens", "07", "screen", "VENUE SCREENS", "venue screens") +
         rewardStep("rs8", "flow-fallback", "08", "shield", "SAFE FALLBACK", "safe fallback") +
       '</div>' +
-      '<div class="reward-memory" data-reveal><span>VISUAL CONTROL</span><p>Guest prompts never produce arbitrary output. Every live result is constrained by the Future Renaissance visual language before it reaches a screen.</p><div><i>UNCONTROLLED PROMPT</i><b>RANDOM STYLE</b><strong>VS</strong><i>CONSTRAINED SYSTEM</i><b>STILL FUTURE RENAISSANCE</b></div></div>' +
+      '<div class="reward-memory" data-decode><span>VISUAL CONTROL</span><p>Guest prompts never produce arbitrary output. Every live result is constrained by the Future Renaissance visual language before it reaches a screen.</p><div><i>UNCONTROLLED PROMPT</i><b>RANDOM STYLE</b><strong>VS</strong><i>CONSTRAINED SYSTEM</i><b>STILL FUTURE RENAISSANCE</b></div></div>' +
     '</section>',
 
     '<section class="fr-slide fr-leaderboard" data-slide-id="leaderboard" data-scene="leaderboard" data-label="Live leaderboard">' +
-      frameTop("09", "leaderboard") +
+      frameTop("10", "leaderboard") +
       '<div class="leaderboard-heading"><div><span class="eyebrow" data-reveal data-i18n="leaderboard.kicker">LIVE LEADERBOARD</span><h2 data-reveal data-i18n="leaderboard.title">PARTICIPATION BECOMES VISIBLE.</h2></div></div>' +
       '<div class="leaderboard-shell" data-crystallize>' +
         '<div class="leaderboard-head"><span data-i18n="leaderboard.rank">RANK</span><span data-i18n="leaderboard.participant">PARTICIPANT</span><span data-i18n="leaderboard.role">ROLE</span><span data-i18n="leaderboard.missions">ACTIVITIES</span><span data-i18n="leaderboard.action">ACTION</span><span data-i18n="leaderboard.score">SCORE</span><span data-i18n="leaderboard.reward">REWARD</span></div>' +
@@ -433,7 +515,7 @@
     '</section>',
 
     '<section class="fr-slide fr-deliverables" data-slide-id="measurement" data-scene="structured" data-label="Measurement">' +
-      frameTop("10", "measurement") +
+      frameTop("11", "measurement") +
       '<div class="deliverables-heading"><span class="eyebrow" data-reveal>MEASUREMENT + MEDIA</span><h2 data-reveal>AXIS OPERATES A MEASURED EVENT.</h2><p data-reveal>Production assets and verified operational records are separated, so the night can be understood as both cultural output and system performance.</p></div>' +
       '<div class="media-included" data-reveal><h3>MEDIA PRODUCTION INCLUDED</h3><div>' + mediaDeliverables.map(deliverableButton).join("") + '</div></div>' +
       '<div class="report-included" data-crystallize><h3>POST-EVENT DELIVERY</h3><div>' + reportDeliverables.map(deliverableButton).join("") + '</div></div>' +
@@ -441,41 +523,50 @@
     '</section>',
 
     '<section class="fr-slide fr-offer" data-slide-id="event-partner" data-scene="structured" data-label="Tech Week activity layer">' +
-      frameTop("11", "activity-layer") +
+      frameTop("09", "activity-layer") +
       '<div class="offer-heading"><span class="eyebrow" data-reveal>WHAT AXIS BRINGS</span><h2 data-reveal>TECH WEEK ACTIVITY LAYER.</h2></div>' +
-      '<div class="offer-card" data-crystallize>' +
-        '<div class="offer-card-head"><div><span>FUTURE RENAISSANCE</span><b>1 NIGHT</b><small>' + event.displayDate.toUpperCase() + ' · ' + event.venue.toUpperCase() + '</small></div>' + conceptNode("offer-status", "official-status", '<span>FIRST OFFICIAL</span><b>ANTHROPIC CLAUDE AI COMMUNITY PARTY</b>', "official Claude community party status") + '</div>' +
-        '<p>Additional Tech Week and technology partners participate through small, distributed, digital-first activities integrated into Future Renaissance. Claude holds flagship status; the other partners operate at a smaller scale.</p>' +
+      '<div class="offer-card" data-decode>' +
+        '<div class="offer-card-head"><div><span>FUTURE RENAISSANCE</span><b>1 NIGHT</b><small>' + event.displayDate.toUpperCase() + ' · ' + event.venue.toUpperCase() + '</small></div>' + conceptNode("offer-status", "community-status", '<span>CLAUDE COMMUNITY EVENT</span><b>MEXICO CITY | CLAUDE FOR MUSIC</b>', "Claude community event status") + '</div>' +
+        '<p>The night opens with a Claude community workshop for the music industry, then runs as Future Renaissance. Additional Tech Week and technology partners take part through small, distributed, digital-first activities integrated into the event.</p>' +
         '<div class="offer-enforce">SMALL · DISTRIBUTED · INTERACTIVE · INTEGRATED. NOT A CONFERENCE HALL, AN EXPO OR A BOOTH FARM.</div>' +
         '<div class="offer-budget"><span>WHERE AXIS INVESTS</span>' +
           event.allocation.map(allocationCell).join("") +
         '</div>' +
         '<div class="offer-proof"><span>AI INFRASTRUCTURE</span><span>DEVELOPER PRODUCTS</span><span>ONCHAIN + PAYMENTS</span><span>DIGITAL ART</span><span>HARDWARE</span><span>CONSUMER TECH</span></div>' +
       '</div>' +
-      '<div class="offer-inventory" data-reveal><h3>AXIS OPERATES</h3><div>' + offerItems.map(offerItem).join("") + '</div></div>' +
+    '</section>',
+
+    // The offer used to be one slide carrying both the argument and the whole
+    // inventory. The inventory is its own page now, so both can breathe.
+    '<section class="fr-slide fr-operates" data-slide-id="event-partner-operates" data-scene="structured" data-label="What AXIS operates">' +
+      frameTop("10", "axis-operates") +
+      '<div class="operates-heading">' +
+        '<span class="eyebrow" data-reveal>WHAT AXIS BRINGS</span>' +
+        '<h2 data-reveal>AXIS OPERATES.</h2>' +
+        '<p data-reveal>Everything below is authored, funded or run by AXIS. The venue provides the room, the bar and the screens.</p>' +
+      '</div>' +
+      '<div class="offer-inventory" data-reveal><div>' + offerItems.map(offerItem).join("") + '</div></div>' +
       '<div class="offer-cycle" data-reveal><span>DISCOVER</span><i>→</i><span>PARTICIPATE</span><i>→</i><span>VALIDATE</span><i>→</i><span>DRINK / REWARD</span><i>→</i><span>DOCUMENT</span></div>' +
     '</section>',
 
-    '<section class="fr-slide fr-presenting claude-slide" data-slide-id="presenting" data-scene="presenting-product" data-label="Claude by Anthropic">' +
+    '<section class="fr-slide fr-presenting claude-slide" data-slide-id="presenting" data-scene="claude-stream" data-label="Claude community event">' +
       '<header class="fr-frame-top claude-frame-top" data-reveal>' +
-        '<div class="fr-lockup"><img class="claude-mark" src="' + claudeRoot + '/claude-logo-slate.svg" alt="Claude"></div>' +
-        '<div class="fr-coordinate"><span>12 / 15</span><span data-i18n="nav.claude">CLAUDE</span></div>' +
+        '<div class="fr-lockup"><span class="claude-community-label">CLAUDE COMMUNITY EVENTS</span></div>' +
+        '<div class="fr-coordinate"><span>10 / 11</span><span data-i18n="nav.claude">CLAUDE</span></div>' +
       '</header>' +
       '<div class="claude-body">' +
         '<div class="claude-copy">' +
-          '<span class="eyebrow" data-reveal data-i18n="claude.kicker">CLAUDE BY ANTHROPIC</span>' +
-          '<h2 data-reveal data-i18n="claude.title">FIRST OFFICIAL ANTHROPIC CLAUDE AI COMMUNITY PARTY.</h2>' +
-          '<p class="claude-meta" data-reveal>MEXICO TECH WEEK 2026 · ' + event.city.toUpperCase() + '<br>' + event.attendees + ' EXPECTED FUTURE RENAISSANCE GUESTS</p>' +
-          '<p class="claude-flagship" data-reveal data-i18n="claude.flagship">A FUTURE RENAISSANCE FLAGSHIP POWERED BY AXIS</p>' +
+          '<span class="eyebrow" data-reveal data-i18n="claude.kicker">MEXICO CITY | CLAUDE FOR MUSIC</span>' +
+          '<h2 data-reveal data-i18n="claude.title">A CLAUDE COMMUNITY WORKSHOP FOR THE MUSIC INDUSTRY.</h2>' +
+          '<p class="claude-meta" data-reveal>MEXICO TECH WEEK 2026 · ' + event.city.toUpperCase() + '<br>' + event.workshopCapacity + ' SEATED ATTENDEES · ' + event.workshopStart + ' → ' + event.workshopEnd + '</p>' +
+          '<p class="claude-organizers" data-reveal data-i18n="claude.organizers">A COMMUNITY EVENT ORGANIZED BY CLAUDE COMMUNITY AMBASSADORS</p>' +
+          '<p class="claude-host" data-reveal data-i18n="claude.host">HOST VENUE: ' + event.venue.toUpperCase() + '</p>' +
         '</div>' +
-        '<div class="claude-object" data-crystallize>' +
-          '<img class="claude-spark" src="' + claudeRoot + '/claude-spark-clay.svg" alt="" aria-hidden="true">' +
-          '<img class="claude-wordmark" src="' + claudeRoot + '/claude-logo-slate.svg" alt="Claude by Anthropic">' +
-        '</div>' +
+        '<div class="claude-object" data-crystallize>' + communityBadge() + '</div>' +
         '<div class="claude-markers" data-reveal>' +
-          conceptNode("claude-marker", "claude-access", '<span>COMPLIMENTARY CLAUDE ACCESS</span>', "complimentary Claude access") +
+          conceptNode("claude-marker", "claude-access", '<span>CLAUDE ACCESS FOR ATTENDEES</span>', "Claude access for attendees") +
           conceptNode("claude-marker", "claude-credits", '<span>CLAUDE CREDITS</span>', "Claude credits") +
-          conceptNode("claude-marker", "claude-ai", '<span>CLAUDE AI</span>', "Claude AI") +
+          conceptNode("claude-marker", "claude-ai", '<span>HANDS-ON SESSION</span>', "the hands-on session") +
           conceptNode("claude-marker", "claude-code", '<span>CLAUDE CODE</span>', "Claude Code") +
           conceptNode("claude-marker", "claude-live-creation", '<span>LIVE CREATION</span>', "live creation") +
           conceptNode("claude-marker", "claude-community", '<span>COMMUNITY INTERACTION</span>', "community interaction") +
@@ -484,7 +575,7 @@
     '</section>',
 
     '<section class="fr-slide fr-signature" data-slide-id="signature" data-scene="signature-product" data-label="Future Renaissance at the venue">' +
-      frameTop("13", "venue") +
+      frameTop("14", "venue") +
       '<div class="signature-heading"><span class="eyebrow" data-reveal data-i18n="venue.kicker">VENUE INTEGRATION</span><h2 data-reveal>FUTURE RENAISSANCE<br>AT ' + event.venue.toUpperCase() + '.</h2><p data-reveal data-i18n="venue.definition">A proposed experience flow across the night. Zones are conceptual until the venue technical inventory is confirmed.</p></div>' +
       '<div class="signature-stage" data-crystallize>' + orbitalSvg("signature-orbit") +
         '<div class="venue-core"><b>' + event.venue.toUpperCase() + '</b><span>' + event.city.toUpperCase() + '</span><small>' + event.displayDate.toUpperCase() + '</small></div>' +
@@ -498,7 +589,7 @@
     '</section>',
 
     '<section class="fr-slide fr-continuation" data-slide-id="continuation" data-scene="continuation" data-label="Production and requirements">' +
-      frameTop("14", "production") +
+      frameTop("15", "production") +
       '<div class="continuation-heading"><span class="eyebrow" data-reveal data-i18n="continuation.kicker">BEFORE / LIVE / AFTER</span><h2 data-reveal data-i18n="continuation.title">WHAT AXIS OPERATES. WHAT THE VENUE PROVIDES.</h2></div>' +
       '<div class="temporal-system" data-crystallize>' + orbitalSvg("temporal-orbit") +
         '<div class="time-core"><b>FUTURE<br>RENAISSANCE</b><span>' + event.displayDate.toUpperCase() + '</span></div>' +
@@ -513,12 +604,12 @@
     '</section>',
 
     '<section class="fr-slide fr-close" data-slide-id="close" data-scene="closing" data-label="Close">' +
-      '<div class="close-poster" data-crystallize><img loading="lazy" src="' + poster + '" alt="Official Future Renaissance poster"></div>' +
-      '<div class="close-panel">' +
+      '<div class="close-poster" data-decode><img loading="lazy" src="' + poster + '" alt="Official Future Renaissance poster"></div>' +
+      '<div class="close-panel" data-decode>' +
         '<div class="close-lockup" data-reveal>' + axisMark("gold") + '<div><span>AXIS</span><small data-i18n="brand.techWeek">TECH WEEK MEXICO EDITION</small></div></div>' +
         '<span class="eyebrow" data-reveal data-i18n="close.kicker">FUTURE RENAISSANCE AT ' + event.venue.toUpperCase() + '</span>' +
         '<div class="close-offers" data-reveal>' +
-          conceptNode("close-offer is-presenting", "official-status", '<span data-i18n="close.official">FIRST OFFICIAL ANTHROPIC CLAUDE AI COMMUNITY PARTY</span><strong>' + event.attendees + ' EXPECTED GUESTS</strong>', "official Claude community party") +
+          conceptNode("close-offer is-presenting", "community-status", '<span data-i18n="close.official">CLAUDE COMMUNITY WORKSHOP, THEN THE NIGHT</span><strong>' + event.workshopCapacity + ' + ' + event.afterPartyGuests + '</strong>', "the Claude community event") +
           conceptNode("close-offer", "close-hospitality", '<span data-i18n="close.hospitality">COMPLIMENTARY HOSPITALITY</span><strong data-i18n="close.hospitalityValue">FUNDED BY AXIS</strong>', "complimentary hospitality funded by AXIS") +
         '</div>' +
         '<div class="allocation" data-reveal><span class="allocation-label">WHERE AXIS INVESTS</span>' + event.allocation.map(function (entry) {

@@ -12,9 +12,9 @@
     CONCEPT_I18N[lang][id] = { title: title, summary: summary, details: details };
   }
 
-  add("venue", "03 / VENUE", "Bar Oriente", "The venue is the physical operating layer where culture, hospitality, activities, media and AI interaction meet.", [
+  add("venue", "03 / VENUE", "Bar Oriente", "The host venue: the physical operating layer where culture, hospitality, activities, media and AI interaction meet.", [
     "October 28, 2026 · Mexico City",
-    "250 expected Future Renaissance guests",
+    "200 seated for the workshop, then 250 more for the night",
     "Venue screens, live program and hospitality operate together",
     "Existing venue clientele can remain and participate where agreed",
     "AXIS staff connect participation, validation and documentation on site",
@@ -60,26 +60,26 @@
 
   Object.keys(roles).forEach(function (role) {
     var copy = roles[role];
-    add("role-" + role, "04 / " + role.toUpperCase(), role.toUpperCase(), copy[0], copy.slice(1));
+    add("role-" + role, "05 / " + role.toUpperCase(), role.toUpperCase(), copy[0], copy.slice(1));
   });
 
-  add("program-system", "05 / PROGRAM", "One authored environment", "The program is an interconnected system rather than a sequence of unrelated attractions.", ["Art establishes the premise", "Music controls energy", "Live systems make participation visible", "Hospitality, missions, sponsor function and media reinforce one another"]);
-  add("program-art", "05 / ART", "Art", "Digital works and gallery moments establish the visual language of the night.", ["Curated digital artists", "Works integrated into venue screens", "Cultural context for every interaction"]);
-  add("program-music", "05 / MUSIC", "Music", "Warm-up, live coding and closing sets give the night its musical arc.", ["Warm-up DJ", "Live Coding", "Closing DJ"]);
-  add("program-live", "05 / LIVE SYSTEMS", "Live systems", "Venue screens, mapping and live data states let the room respond to participation.", ["Venue-provided screens", "Video mapping", "Mission and reward states", "Livestream-ready visual moments"]);
-  add("program-hospitality", "05 / HOSPITALITY", "Hospitality", "Beer and canapés support the pace of the night and can enter a validated reward flow.", ["Guest care", "Timed service moments", "Potential sponsor-linked serve", "Staff-assisted redemption"]);
-  add("program-brand", "05 / PARTNERS", "Defined partner function", "Each Tech Week partner performs one useful role instead of appearing as decorative logo inventory.", ["One activity", "One interaction", "One reward or consequence", "One measurable result"]);
-  add("program-missions", "05 / MISSIONS", "Mission system", "Missions convert attendance into directed participation without interrupting the cultural program.", ["Clear trigger", "Simple action", "Visible consequence", "Reward and proof"]);
-  add("program-stream", "05 / LIVESTREAM", "Livestream and media", "Selected moments extend beyond the room while the event remains the primary experience.", ["Livestream integration where relevant", "Photography", "Video", "Post-event documentation"]);
+  add("program-system", "06 / PROGRAM", "One authored environment", "The program is an interconnected system rather than a sequence of unrelated attractions.", ["Art establishes the premise", "Music controls energy", "Live systems make participation visible", "Hospitality, missions, sponsor function and media reinforce one another"]);
+  add("program-art", "06 / ART", "Art", "Digital works and gallery moments establish the visual language of the night.", ["Curated digital artists", "Works integrated into venue screens", "Cultural context for every interaction"]);
+  add("program-music", "06 / MUSIC", "Music", "Warm-up, live coding and closing sets give the night its musical arc.", ["Warm-up DJ", "Live Coding", "Closing DJ"]);
+  add("program-live", "06 / LIVE SYSTEMS", "Live systems", "Venue screens, mapping and live data states let the room respond to participation.", ["Venue-provided screens", "Video mapping", "Mission and reward states", "Livestream-ready visual moments"]);
+  add("program-hospitality", "06 / HOSPITALITY", "Hospitality", "Beer and canapés support the pace of the night and can enter a validated reward flow.", ["Guest care", "Timed service moments", "Potential sponsor-linked serve", "Staff-assisted redemption"]);
+  add("program-brand", "06 / PARTNERS", "Defined partner function", "Each Tech Week partner performs one useful role instead of appearing as decorative logo inventory.", ["One activity", "One interaction", "One reward or consequence", "One measurable result"]);
+  add("program-missions", "06 / MISSIONS", "Mission system", "Missions convert attendance into directed participation without interrupting the cultural program.", ["Clear trigger", "Simple action", "Visible consequence", "Reward and proof"]);
+  add("program-stream", "06 / LIVESTREAM", "Livestream and media", "Selected moments extend beyond the room while the event remains the primary experience.", ["Livestream integration where relevant", "Photography", "Video", "Post-event documentation"]);
 
-  add("dynamic-register", "06 / 01", "Register", "A guest enters through an AXIS QR, NFC or staff-assisted check-in and receives a readable state.", ["Consent and identity state", "Role or access assignment", "Mission passport opens", "No score without an action"]);
-  add("dynamic-act", "06 / 02", "Act", "The guest completes a visible action connected to the program or sponsor function.", ["Attend", "Create", "Vote", "Use, taste, collect or share"]);
-  add("dynamic-verify", "06 / 03", "Verify", "AXIS staff or the interaction system confirms that the action actually happened.", ["Staff check", "Scan or tap", "Digital completion state", "Reward gate remains separate"]);
-  add("dynamic-advance", "06 / 04", "Advance", "Verified actions accumulate into score, participation tier and leaderboard state.", ["Score updates", "Tier changes", "Reward eligibility", "Post-event record"]);
-  add("tier-observer", "06 / TIER 01", "Observer", "Entry state for a guest who has arrived but has not completed meaningful participation.", ["0–1 verified missions", "Can browse and discover", "No automatic reward", "Invitation to begin"]);
-  add("tier-participant", "06 / TIER 02", "Participant", "A guest who has moved from presence into active involvement.", ["2–3 verified missions", "Appears in live participation", "Eligible for an initial benefit", "Progress remains visible"]);
-  add("tier-contributor", "06 / TIER 03", "Contributor", "A guest whose repeated actions materially affect the room and program.", ["4–5 verified missions", "Higher score weight", "Expanded reward access", "Strong documentation signal"]);
-  add("tier-catalyst", "06 / TIER 04", "Catalyst", "The highest state, reserved for guests who complete the most demanding path.", ["6+ verified missions", "Top leaderboard visibility", "Final reward eligibility", "Gold-star completion state"]);
+  add("dynamic-register", "07 / 01", "Register", "A guest enters through an AXIS QR, NFC or staff-assisted check-in and receives a readable state.", ["Consent and identity state", "Role or access assignment", "Mission passport opens", "No score without an action"]);
+  add("dynamic-act", "07 / 02", "Act", "The guest completes a visible action connected to the program or sponsor function.", ["Attend", "Create", "Vote", "Use, taste, collect or share"]);
+  add("dynamic-verify", "07 / 03", "Verify", "AXIS staff or the interaction system confirms that the action actually happened.", ["Staff check", "Scan or tap", "Digital completion state", "Reward gate remains separate"]);
+  add("dynamic-advance", "07 / 04", "Advance", "Verified actions accumulate into score, participation tier and leaderboard state.", ["Score updates", "Tier changes", "Reward eligibility", "Post-event record"]);
+  add("tier-observer", "07 / TIER 01", "Observer", "Entry state for a guest who has arrived but has not completed meaningful participation.", ["0–1 verified missions", "Can browse and discover", "No automatic reward", "Invitation to begin"]);
+  add("tier-participant", "07 / TIER 02", "Participant", "A guest who has moved from presence into active involvement.", ["2–3 verified missions", "Appears in live participation", "Eligible for an initial benefit", "Progress remains visible"]);
+  add("tier-contributor", "07 / TIER 03", "Contributor", "A guest whose repeated actions materially affect the room and program.", ["4–5 verified missions", "Higher score weight", "Expanded reward access", "Strong documentation signal"]);
+  add("tier-catalyst", "07 / TIER 04", "Catalyst", "The highest state, reserved for guests who complete the most demanding path.", ["6+ verified missions", "Top leaderboard visibility", "Final reward eligibility", "Gold-star completion state"]);
 
   var missions = {
     connect: ["Begin the passport by making a verified connection.", "Tap AXIS NFC or scan QR", "Open the mission state", "Confirm the connection", "Receive the first progress signal"],
@@ -94,7 +94,7 @@
 
   Object.keys(missions).forEach(function (mission) {
     var copy = missions[mission];
-    add("mission-" + mission, "07 / " + mission.toUpperCase(), mission.toUpperCase(), copy[0], copy.slice(1));
+    add("mission-" + mission, "08 / " + mission.toUpperCase(), mission.toUpperCase(), copy[0], copy.slice(1));
   });
 
   var sponsorMissions = {
@@ -111,33 +111,33 @@
     var details = mission === "taste"
       ? ["Register or complete the agreed action", "Staff validates completion", "Drink or product reward unlocks", "Redemption is tracked separately"]
       : ["Define one useful guest behavior", "Choose a simple validation rule", "Separate action from reward", "Report the verified result"];
-    add("sponsor-" + mission, "08 / IDEA " + String(index + 1).padStart(2, "0"), copy[0], copy[1], details);
+    add("sponsor-" + mission, "09 / IDEA " + String(index + 1).padStart(2, "0"), copy[0], copy[1], details);
   });
 
-  add("measurement-proof", "10 / PROOF", "Verified event proof", "AXIS converts completed actions into a reportable record without presenting synthetic outcomes as forecasts.", ["Live validation log", "Mission completion record", "Reward redemption record", "Post-event cohort report"]);
-  add("metric-actions", "10 / ACTIONS", "Qualified actions", "Only actions that meet the agreed validation rule are counted.", ["Rule defined before doors", "Validation at the point of action", "Duplicates and incomplete states excluded", "Reported by mission and stage"]);
-  add("metric-coverage", "10 / COVERAGE", "Mission coverage", "Coverage confirms that the complete guest journey has been designed before launch.", ["Entry", "Action", "Validation", "Reward and reporting"]);
-  add("metric-report", "10 / REPORT", "Cohort report", "The sponsor receives a post-event view of how the activation performed as a system.", ["Attendance and participation", "Mission completion", "Qualified sponsor actions", "Reward redemption and media outputs"]);
-  add("metric-output", "10 / OUTPUTS", "Rewards and content", "Redemptions and documented content show what the activation produced beyond exposure.", ["Reward claims", "Photo and video moments", "Product-use evidence", "Approved reporting assets"]);
+  add("measurement-proof", "11 / PROOF", "Verified event proof", "AXIS converts completed actions into a reportable record without presenting synthetic outcomes as forecasts.", ["Live validation log", "Mission completion record", "Reward redemption record", "Post-event cohort report"]);
+  add("metric-actions", "11 / ACTIONS", "Qualified actions", "Only actions that meet the agreed validation rule are counted.", ["Rule defined before doors", "Validation at the point of action", "Duplicates and incomplete states excluded", "Reported by mission and stage"]);
+  add("metric-coverage", "11 / COVERAGE", "Mission coverage", "Coverage confirms that the complete guest journey has been designed before launch.", ["Entry", "Action", "Validation", "Reward and reporting"]);
+  add("metric-report", "11 / REPORT", "Cohort report", "The sponsor receives a post-event view of how the activation performed as a system.", ["Attendance and participation", "Mission completion", "Qualified sponsor actions", "Reward redemption and media outputs"]);
+  add("metric-output", "11 / OUTPUTS", "Rewards and content", "Redemptions and documented content show what the activation produced beyond exposure.", ["Reward claims", "Photo and video moments", "Product-use evidence", "Approved reporting assets"]);
 
-  add("partner-investment", "11 / INVESTMENT", "Where AXIS invests", "AXIS funds and operates the night. The amount is private; the categories are not.", [
+  add("partner-investment", "12 / INVESTMENT", "Where AXIS invests", "AXIS funds and operates the night. The amount is private; the categories are not.", [
     "Drinks and hospitality, production and audiovisual",
     "Programming, Claude activation and digital art",
     "Tech Week activations, media and operations",
     "The venue receives the event system, not an invoice",
   ]);
-  add("partner-cohort", "11 / SYSTEM 01", "Event-wide function", "One defined sponsor function is available across the complete Future Renaissance room.", ["Authored before the event", "Integrated where product use occurs", "Clear guest-facing instruction", "No logo wall"]);
-  add("partner-mission", "11 / SYSTEM 02", "Mission and reward design", "AXIS turns the selected sponsor behavior into a clear mission with a distinct reward gate.", ["Trigger", "Action", "Validation", "Reward"]);
-  add("partner-validation", "11 / SYSTEM 03", "Staff execution", "On-site staff guide the interaction and validate completion without confusing action with reward.", ["Guest guidance", "Point-of-use validation", "Exception handling", "Redemption control"]);
-  add("partner-systems", "11 / SYSTEM 04", "Event integration", "The sponsor function appears in screens and live systems exactly where it helps the guest journey.", ["Mission screen", "Reward state", "Livestream where relevant", "Product-use moment"]);
-  add("partner-media", "11 / SYSTEM 05", "Media capture", "Photography and video document the activation as an experience, not a collection of logo impressions.", ["Dedicated activation moments", "Product interaction", "Room context", "Delivery-ready documentation"]);
-  add("partner-report", "11 / SYSTEM 06", "Measurement and report", "Live tracking becomes a post-event performance report tied to the agreed activation mechanics.", ["Qualified actions", "Mission conversion", "Reward redemption", "Content outputs"]);
+  add("partner-cohort", "12 / SYSTEM 01", "Event-wide function", "One defined sponsor function is available across the complete Future Renaissance room.", ["Authored before the event", "Integrated where product use occurs", "Clear guest-facing instruction", "No logo wall"]);
+  add("partner-mission", "12 / SYSTEM 02", "Mission and reward design", "AXIS turns the selected sponsor behavior into a clear mission with a distinct reward gate.", ["Trigger", "Action", "Validation", "Reward"]);
+  add("partner-validation", "12 / SYSTEM 03", "Staff execution", "On-site staff guide the interaction and validate completion without confusing action with reward.", ["Guest guidance", "Point-of-use validation", "Exception handling", "Redemption control"]);
+  add("partner-systems", "12 / SYSTEM 04", "Event integration", "The sponsor function appears in screens and live systems exactly where it helps the guest journey.", ["Mission screen", "Reward state", "Livestream where relevant", "Product-use moment"]);
+  add("partner-media", "12 / SYSTEM 05", "Media capture", "Photography and video document the activation as an experience, not a collection of logo impressions.", ["Dedicated activation moments", "Product interaction", "Room context", "Delivery-ready documentation"]);
+  add("partner-report", "12 / SYSTEM 06", "Measurement and report", "Live tracking becomes a post-event performance report tied to the agreed activation mechanics.", ["Qualified actions", "Mission conversion", "Reward redemption", "Content outputs"]);
 
-  add("presenting-system", "12 / PRESENTING PRODUCT", "A signature role", "The presenting product is a qualitatively different cultural role—not simply more placement.", ["Category exclusivity", "Hero mission", "Signature Product Experience", "Priority integration and dedicated media"]);
-  add("presenting-exclusive", "12 / EXCLUSIVITY", "One position", "Only one product receives the presenting designation and category exclusivity.", ["Single presenting position", "Clear hierarchy beneath AXIS", "No competing category sponsor", "Priority visual and mission integration"]);
-  add("presenting-continuation", "12 / CONTINUATION", "Beyond the event", "The presenting relationship continues for 30 days and includes one additional smaller AXIS activation.", ["30-day continuation", "One smaller activation", "Dedicated product media", "Extended reporting"]);
+  add("presenting-system", "13 / PRESENTING PRODUCT", "A signature role", "The presenting product is a qualitatively different cultural role—not simply more placement.", ["Category exclusivity", "Hero mission", "Signature Product Experience", "Priority integration and dedicated media"]);
+  add("presenting-exclusive", "13 / EXCLUSIVITY", "One position", "Only one product receives the presenting designation and category exclusivity.", ["Single presenting position", "Clear hierarchy beneath AXIS", "No competing category sponsor", "Priority visual and mission integration"]);
+  add("presenting-continuation", "13 / CONTINUATION", "Beyond the event", "The presenting relationship continues for 30 days and includes one additional smaller AXIS activation.", ["30-day continuation", "One smaller activation", "Dedicated product media", "Extended reporting"]);
 
-  add("signature-system", "13 / SIGNATURE", "Signature Product Experience", "AXIS authors one event-specific expression guests use, consume, wear, collect, activate, unlock or create with.", ["Designed for the sponsor category", "Embedded in the Future Renaissance world", "Connected to a hero mission", "Documented as a dedicated moment"]);
+  add("signature-system", "14 / SIGNATURE", "Signature Product Experience", "AXIS authors one event-specific expression guests use, consume, wear, collect, activate, unlock or create with.", ["Designed for the sponsor category", "Embedded in the Future Renaissance world", "Connected to a hero mission", "Documented as a dedicated moment"]);
   var expressions = {
     serve: ["Signature serve", "A named drink, tasting or serving ritual becomes the product's authored expression.", ["Named serve", "Limited tasting", "Dedicated ritual", "Mission-unlocked option"]],
     object: ["Limited object", "A physical object carries the product into collecting, customization or wearable participation.", ["Limited edition", "Personalization", "Collector object", "Physical mission reward"]],
@@ -147,13 +147,13 @@
     reward: ["Named reward", "The reward becomes part of the narrative and unlocks only through a verified action.", ["Distinct eligibility rule", "Named benefit", "Controlled redemption", "Reportable outcome"]],
   };
   Object.keys(expressions).forEach(function (id) {
-    add("signature-" + id, "13 / EXPRESSION", expressions[id][0], expressions[id][1], expressions[id][2]);
+    add("signature-" + id, "14 / EXPRESSION", expressions[id][0], expressions[id][1], expressions[id][2]);
   });
 
-  add("time-before", "14 / BEFORE", "Build the world", "AXIS authors the function, mission, validation, reward and visual integration before doors open.", ["Activation design", "Mission UX", "Reward system", "Staff and production preparation"]);
-  add("time-live", "14 / LIVE", "Operate the experience", "Guests act, staff validate, rewards unlock and media captures the system in motion.", ["On-site operation", "Product use", "Live measurement", "Photo, video and livestream"]);
-  add("time-after", "14 / AFTER", "Turn activity into proof", "AXIS organizes verified participation and documentation into a sponsor-ready report.", ["Performance reporting", "Content delivery", "Cohort analysis", "No invented financial outcomes"]);
-  add("time-continuation", "14 / REQUIRED", "Venue screens required", "Venue-provided display infrastructure is a hard requirement, not an option. The screens carry the whole audiovisual system, not only Claude.", [
+  add("time-before", "15 / BEFORE", "Build the world", "AXIS authors the function, mission, validation, reward and visual integration before doors open.", ["Activation design", "Mission UX", "Reward system", "Staff and production preparation"]);
+  add("time-live", "15 / LIVE", "Operate the experience", "Guests act, staff validate, rewards unlock and media captures the system in motion.", ["On-site operation", "Product use", "Live measurement", "Photo, video and livestream"]);
+  add("time-after", "15 / AFTER", "Turn activity into proof", "AXIS organizes verified participation and documentation into a sponsor-ready report.", ["Performance reporting", "Content delivery", "Cohort analysis", "No invented financial outcomes"]);
+  add("time-continuation", "15 / REQUIRED", "Venue screens required", "Venue-provided display infrastructure is a hard requirement, not an option. The screens carry the whole audiovisual system, not only Claude.", [
     "Future Renaissance digital art and real-time graphics",
     "Live-coded visuals and selected code states",
     "Claude onboarding, instructions and Claude Code output",
@@ -161,22 +161,32 @@
     "AXIS controls routing; different displays can show different states",
   ]);
 
-  add("close-event-partner", "15 / THE NIGHT", "Future Renaissance", "One night, Bar Oriente, October 28, 2026, positioned as the first official Anthropic Claude AI community party.", [
-    "250 expected Future Renaissance guests",
+  add("workshop-session", "04 / WORKSHOP", "The seated workshop", "Three hours, 18:00 to 21:00, seated. 200 people from the music industry work hands-on with Claude, led from the screen at the front of the room.", ["200 attendees, each with a chair","Producers, artists, labels, managers and studios","The Claude team presents from the venue screen","Hands-on throughout: attendees work, they do not watch"]);
+  add("workshop-afterparty", "04 / AFTER PARTY", "The after party", "The workshop closes at 21:00, the room resets over the following hour, and the night opens at 22:00.", ["Doors open again at 22:00 for 250 further guests","Workshop attendees who stay on are on top of that number","Warm-up, live coding and closing DJ follow","The bar serves both populations throughout"]);
+  add("workshop-doors", "04 / RUN OF SHOW", "Check-in", "Registration is approval-based and runs on Luma through the organizers.", ["One list, held by the organizers","No parallel venue list to reconcile at the door","Event communications are issued by the organizers"]);
+  add("workshop-reset", "04 / RUN OF SHOW", "The room resets", "At 21:00 the seated workshop clears, and the floor is open for the night by 22:00.", ["Chairs come out, the floor opens","Handled by AXIS production with venue staff","The screen switches from workshop to the visual system"]);
+  add("ask-early", "04 / VENUE ASK", "Early opening", "We ask the venue to open a little earlier than usual so the room is ready before the 18:00 start.", ["Load-in, screen routing and seating set before doors","Exact time agreed with the venue technical contact"]);
+  add("ask-seating", "04 / VENUE ASK", "Seated for 200", "The workshop is seated, and chairs are provided for the attendees.", ["200 seats facing the presentation screen","Cleared at 21:00 when the room resets for the night"]);
+  add("ask-screen", "04 / VENUE ASK", "Screen access", "The Claude team needs access to the venue screen to run their presentation.", ["A clean input into the venue display system","Held for the full 18:00 to 21:00 session","AXIS operates routing around it"]);
+  add("ask-softdrinks", "04 / VENUE ASK", "Soft drinks", "We buy soft drinks from the venue bar for the workshop room.", ["Bought from the bar, not brought in","For the seated workshop hours"]);
+  add("ask-bar", "04 / VENUE ASK", "The bar stays open", "The bar keeps selling to guests through the workshop and the night.", ["Normal bar service continues alongside the workshop","Venue clientele are served as usual"]);
+  add("ask-registration", "04 / VENUE ASK", "One guest list", "Registration runs on Luma through the organizers, with approval.", ["A single approval-based list","The venue does not run a parallel registration list","Event communications are issued by the organizers"]);
+  add("close-event-partner", "11 / THE NIGHT", "Future Renaissance", "One night at Bar Oriente, October 28, 2026: a Claude community workshop for the music industry, and then the night.", [
+    "200 seated for the workshop, then 250 more for the night",
     "Warm-up DJ, Live Coding and Closing DJ",
     "Claude activity, digital art and Tech Week micro-activations",
     "Complimentary hospitality funded by AXIS",
   ]);
-  add("close-hospitality", "15 / HOSPITALITY", "Complimentary hospitality", "AXIS funds a complimentary drink allocation as part of the event.", [
+  add("close-hospitality", "11 / HOSPITALITY", "Complimentary hospitality", "AXIS funds a complimentary drink allocation as part of the event.", [
     "The allocation supports arrival, circulation and participation",
     "Venue clientele may access part of it while it is available",
     "Subject to venue service rules and final hospitality mechanics",
     "Not unlimited, and never required in order to participate",
   ]);
-  add("budget-rewards", "15 / 40%", "Rewards", "This portion funds the benefits guests unlock after completing the selected behavior.", ["Physical or digital rewards", "Product or hospitality redemption", "Controlled quantity", "Reward fulfillment"]);
-  add("budget-operations", "15 / 25%", "Operations", "This portion funds the people and systems that make the activation work on site.", ["Staff training and execution", "Guest guidance", "Validation", "Redemption management"]);
-  add("budget-media", "15 / 20%", "Media capture", "This portion funds documentation of the activation in its cultural context.", ["Photography", "Video", "Product-use moments", "Delivery and documentation"]);
-  add("budget-integration", "15 / 15%", "Integration", "This portion connects the sponsor function to the event's visual and technical systems.", ["Mission and reward interface", "Screen placement at point of use", "Livestream integration where relevant", "Reporting setup"]);
+  add("budget-rewards", "16 / 40%", "Rewards", "This portion funds the benefits guests unlock after completing the selected behavior.", ["Physical or digital rewards", "Product or hospitality redemption", "Controlled quantity", "Reward fulfillment"]);
+  add("budget-operations", "16 / 25%", "Operations", "This portion funds the people and systems that make the activation work on site.", ["Staff training and execution", "Guest guidance", "Validation", "Redemption management"]);
+  add("budget-media", "16 / 20%", "Media capture", "This portion funds documentation of the activation in its cultural context.", ["Photography", "Video", "Product-use moments", "Delivery and documentation"]);
+  add("budget-integration", "16 / 15%", "Integration", "This portion connects the sponsor function to the event's visual and technical systems.", ["Mission and reward interface", "Screen placement at point of use", "Livestream integration where relevant", "Reporting setup"]);
 
   var formatDefinitions = {
     "format-gallery": ["Art gallery", "Digital works are curated into the venue rather than treated as decoration.", ["Curated digital artists", "Screen and room placement", "Context inside the live program", "Post-event documentation"]],
@@ -200,7 +210,7 @@
   };
   Object.keys(formatDefinitions).forEach(function (id) {
     var item = formatDefinitions[id];
-    add(id, "05 / EVENT FORMAT", item[0], item[1], item[2]);
+    add(id, "06 / EVENT FORMAT", item[0], item[1], item[2]);
   });
 
   var systemDefinitions = {
@@ -219,16 +229,16 @@
   };
   Object.keys(systemDefinitions).forEach(function (id) {
     var item = systemDefinitions[id];
-    add(id, "06 / HOW IT WORKS", item[0], item[1], ["Designed before doors", "Operated on site", "Captured in context", "Included in the final record"]);
+    add(id, "07 / HOW IT WORKS", item[0], item[1], ["Designed before doors", "Operated on site", "Captured in context", "Included in the final record"]);
   });
-  add("phase-produce", "06 / PHASE A", "Fund + produce", "The first phase creates the operating system before the audience arrives.", ["Format design", "Sponsor function", "Mission and reward logic", "Production preparation"]);
-  add("phase-live", "06 / PHASE B", "On-site flow", "The second phase moves the guest through action, validation and reward.", ["Access", "Guidance", "Validation", "Redemption and advancement"]);
-  add("phase-report", "06 / PHASE C", "Capture + report", "The final phase converts the live activation into evidence and deliverables.", ["Photography and video", "Participation records", "Reward records", "Post-event report"]);
+  add("phase-produce", "07 / PHASE A", "Fund + produce", "The first phase creates the operating system before the audience arrives.", ["Format design", "Sponsor function", "Mission and reward logic", "Production preparation"]);
+  add("phase-live", "07 / PHASE B", "On-site flow", "The second phase moves the guest through action, validation and reward.", ["Access", "Guidance", "Validation", "Redemption and advancement"]);
+  add("phase-report", "07 / PHASE C", "Capture + report", "The final phase converts the live activation into evidence and deliverables.", ["Photography and video", "Participation records", "Reward records", "Post-event report"]);
 
-  add("component-rewards", "07 / COMPONENT 01", "Rewards", "Rewards give the verified guest action an immediate and memorable consequence.", ["Defined inventory", "Eligibility rule", "Controlled redemption", "Redemption reporting"]);
-  add("component-operations", "07 / COMPONENT 02", "Operations", "Operations make the sponsor system legible and reliable in the room.", ["Staff guidance", "Access support", "Validation", "Exception and redemption management"]);
-  add("component-capture", "07 / COMPONENT 03", "Capture", "Media capture documents what the activation looked like and how guests used it.", ["Photography", "Video", "Placement and product use", "Testimonials when available"]);
-  add("component-integration", "07 / COMPONENT 04", "Integration", "Integration connects the function to Future Renaissance screens, mapping and guest flow.", ["Venue screens", "Projection mapping", "Onboarding and mission UI", "Reward and livestream states"]);
+  add("component-rewards", "08 / COMPONENT 01", "Rewards", "Rewards give the verified guest action an immediate and memorable consequence.", ["Defined inventory", "Eligibility rule", "Controlled redemption", "Redemption reporting"]);
+  add("component-operations", "08 / COMPONENT 02", "Operations", "Operations make the sponsor system legible and reliable in the room.", ["Staff guidance", "Access support", "Validation", "Exception and redemption management"]);
+  add("component-capture", "08 / COMPONENT 03", "Capture", "Media capture documents what the activation looked like and how guests used it.", ["Photography", "Video", "Placement and product use", "Testimonials when available"]);
+  add("component-integration", "08 / COMPONENT 04", "Integration", "Integration connects the function to Future Renaissance screens, mapping and guest flow.", ["Venue screens", "Projection mapping", "Onboarding and mission UI", "Reward and livestream states"]);
 
   var deliveryTitles = {
     "deliverable-photography": "Photography", "deliverable-aftermovie": "Aftermovie", "deliverable-livestream": "Live recording", "deliverable-clips": "Short clips", "deliverable-environment": "Venue environment", "deliverable-screens": "Screen moments", "deliverable-mapping": "Projection mapping", "deliverable-guest-testimonials": "Guest testimonials", "deliverable-artist-testimonials": "Artist testimonials", "deliverable-social": "Social content",
@@ -236,14 +246,14 @@
   };
   Object.keys(deliveryTitles).forEach(function (id) {
     var isReport = id.indexOf("report-") === 0;
-    add(id, "10 / " + (isReport ? "POST-EVENT" : "MEDIA"), deliveryTitles[id], isReport ? "This item is organized in the post-event delivery package." : "This production item is included in the event capture scope.", isReport ? ["Collected after the event", "Organized for post-event review", "Reported only when available or verified", "Delivery format agreed with the venue"] : ["Captured in the Future Renaissance environment", "Focused on authored event moments", "Use follows agreed rights", "Final selection follows production review"]);
+    add(id, "11 / " + (isReport ? "POST-EVENT" : "MEDIA"), deliveryTitles[id], isReport ? "This item is organized in the post-event delivery package." : "This production item is included in the event capture scope.", isReport ? ["Collected after the event", "Organized for post-event review", "Reported only when available or verified", "Delivery format agreed with the venue"] : ["Captured in the Future Renaissance environment", "Focused on authored event moments", "Use follows agreed rights", "Final selection follows production review"]);
   });
 
   var offerTitles = {
     "offer-concept": "Future Renaissance concept + creative direction", "offer-programming": "Event and music programming", "offer-live-coding": "Live Coding programming", "offer-claude": "Claude activity integration", "offer-claude-onboarding": "Claude onboarding flow", "offer-claude-code": "Claude Code creative workflow", "offer-interactive": "Interactive systems", "offer-digital-art": "Digital art + visual content", "offer-render": "Rendering workstation + routing", "offer-operators": "Technical operators", "offer-activations": "Tech Week micro-activity coordination", "offer-media": "Media direction", "offer-artists": "Artist coordination", "offer-documentation": "Event documentation", "offer-hospitality": "Complimentary drink allocation funding", "offer-production": "Production coordination", "offer-guest-logic": "Guest-experience logic", "offer-activity-mechanics": "Activity mechanics",
   };
   Object.keys(offerTitles).forEach(function (id) {
-    add(id, "11 / AXIS OPERATES", offerTitles[id], "This capability is operated or funded by AXIS as part of the event system.", ["Authored before doors open", "Integrated into the live event where relevant", "Operated or captured by AXIS", "Reflected in post-event documentation"]);
+    add(id, "10 / AXIS OPERATES", offerTitles[id], "This capability is operated or funded by AXIS as part of the event system.", ["Authored before doors open", "Integrated into the live event where relevant", "Operated or captured by AXIS", "Reflected in post-event documentation"]);
   });
 
 
@@ -266,35 +276,36 @@
     "Guests actively shape what is created, turning the room into a live generative music space.",
     "The activity runs throughout the night alongside the main room.",
   ]);
-  add("official-status", "12 / STATUS", "First official Anthropic Claude AI community party", "Future Renaissance hosts the first official Anthropic Claude AI community party, as a flagship powered by AXIS.", [
+  add("community-status", "09 / STATUS", "Mexico City | Claude for Music", "A Claude community event: a seated, hands-on workshop for the music industry, organized by Claude community ambassadors and produced by AXIS.", [
     "Mexico Tech Week 2026, Mexico City",
-    "250 expected Future Renaissance guests",
-    "Claude is a major activity layer, not a backdrop",
-    "Other technology partners participate at a smaller scale",
+    "200 seated workshop attendees, 18:00 to 21:00",
+    "Host venue: Bar Oriente",
+    "Registration on Luma, approval-based, run by the organizers",
   ]);
-  add("claude-access", "12 / CLAUDE", "Complimentary Claude access", "Participating guests receive complimentary Claude access as part of the official activity.", [
+  add("claude-access", "10 / CLAUDE", "Claude access for attendees", "Workshop attendees are set up with Claude access as part of the session.", [
     "Granted through the on-site onboarding flow",
-    "Exact entitlement confirmed with Anthropic before the event",
+    "Exact entitlement confirmed by the organizers before the event",
   ]);
-  add("claude-credits", "12 / CLAUDE", "Claude credits", "Participating guests receive Claude credits as part of the official activity.", [
+  add("claude-credits", "10 / CLAUDE", "Claude credits", "Workshop attendees receive Claude credits as part of the session.", [
     "Issued alongside Claude access",
-    "Exact credit amount confirmed with Anthropic before the event",
+    "Exact credit amount confirmed by the organizers before the event",
   ]);
-  add("claude-ai", "12 / CLAUDE", "Claude AI", "Guests interact with Claude live inside the event environment.", [
-    "Discovery, activation and interaction happen on the floor",
-    "Interaction is an actual activity, not a sponsor booth",
+  add("claude-ai", "10 / CLAUDE", "Hands-on session", "Three seated hours in which attendees work with Claude themselves, rather than watching a demo.", [
+    "Led from the venue screen at the front of the room",
+    "Built for people who work in music",
+    "A working session, not a booth",
   ]);
-  add("claude-code", "12 / CLAUDE", "Claude Code", "Guests explore Claude Code and contribute to coded creative output during the night.", [
+  add("claude-code", "10 / CLAUDE", "Claude Code", "Guests explore Claude Code and contribute to coded creative output during the night.", [
     "Guests submit creative ideas and intent",
     "Claude assists the coding and creative process",
     "Selected results appear in the event environment",
   ]);
-  add("claude-live-creation", "12 / CLAUDE", "Live creation", "Guest intent becomes code, and code becomes sound and image in the room.", [
+  add("claude-live-creation", "10 / CLAUDE", "Live creation", "Guest intent becomes code, and code becomes sound and image in the room.", [
     "Claude interprets intent and assists code generation",
     "The visual runtime renders the final output",
     "Output is constrained by Future Renaissance visual rules",
   ]);
-  add("claude-community", "12 / CLAUDE", "Community interaction", "The Claude layer is designed around the community in the room.", [
+  add("claude-community", "10 / CLAUDE", "Community interaction", "The Claude layer is designed around the community in the room.", [
     "Shared creation rather than individual demos",
     "Results are visible on the venue screens",
   ]);
@@ -306,37 +317,37 @@
   add("flow-render", "08 / FLOW 06", "Render", "Controlled visual software renders the final graphic output.", ["The runtime renders, not the model", "Operator override available at all times"]);
   add("flow-screens", "08 / FLOW 07", "Venue screens", "The rendered output is routed to the venue display network.", ["AXIS controls routing", "Different displays can show different states"]);
   add("flow-fallback", "08 / FLOW 08", "Safe fallback", "A failed request or bad code state must never black out the venue displays.", ["Last-known-good scene", "Manual operator override and reset", "Fallback visual scene always available"]);
-  add("budget-hospitality", "11 / INVESTS", "Drinks + hospitality", "Complimentary drink allocation and guest hospitality, funded by AXIS.", ["The amount is private", "The allocation is real and funded"]);
-  add("budget-production", "11 / INVESTS", "Production", "Technical systems, staffing and event operation.", ["Operated by AXIS"]);
-  add("budget-audiovisual", "11 / INVESTS", "Audiovisual", "Visual rendering, routing, display integration and event output.", ["Connects to venue-provided screens"]);
-  add("budget-programming", "11 / INVESTS", "Programming", "Warm-up DJ, Live Coding and Closing DJ.", ["Artists confirmed closer to the event"]);
-  add("budget-claude", "11 / INVESTS", "Claude activation", "Claude onboarding, Claude interaction and Claude Code activities.", ["The flagship activity layer"]);
-  add("budget-digital-art", "11 / INVESTS", "Digital art", "Future Renaissance artworks, visual content and interactive states.", ["Authored for the venue"]);
-  add("budget-activations", "11 / INVESTS", "Tech Week activations", "Small partner experiences integrated throughout the night.", ["Small, distributed and digital-first"]);
-  add("zone-entry", "13 / ZONE", "Entry", "Arrival into the Future Renaissance environment.", ["Conceptual until venue layout is confirmed"]);
-  add("zone-checkin", "13 / ZONE", "Check-in / discovery", "Guests establish their role and access state.", ["NFC / QR entry into the activity system"]);
-  add("zone-social", "13 / ZONE", "Social / hospitality", "Bar, circulation and the complimentary drink allocation.", ["Shared with venue clientele where agreed"]);
-  add("zone-digital-art", "13 / ZONE", "Digital art", "Future Renaissance works presented in the environment.", ["Shown on venue screens and surfaces"]);
-  add("zone-warmup", "13 / ZONE", "Warm-up DJ", "Opening music programming.", ["Arrival energy"]);
-  add("zone-claude", "13 / ZONE", "Claude activity", "The Claude interaction point on the floor.", ["Discovery, activation and interaction"]);
-  add("zone-claude-access", "13 / ZONE", "Claude access + credits", "Onboarding into complimentary Claude access and credits.", ["Entitlement confirmed with Anthropic"]);
-  add("zone-activations", "13 / ZONE", "Tech Week micro-activities", "Small partner experiences distributed across the room.", ["Never a booth farm"]);
-  add("zone-visuals", "13 / ZONE", "Live visuals", "Real-time graphics across the venue display network.", ["Routed and operated by AXIS"]);
-  add("zone-live-coding", "13 / ZONE", "Live coding", "The central live-coded performance moment.", ["Code visible as part of the performance"]);
-  add("zone-closing", "13 / ZONE", "Closing DJ", "The final club state of the night.", ["Completes the arc"]);
-  add("zone-media", "13 / ZONE", "Media", "Photography, video and documentation.", ["Directed by AXIS"]);
-  add("zone-venue-clients", "13 / ZONE", "Venue client flow", "Existing venue clientele can remain and participate where agreed.", ["Not treated as outsiders", "Subject to capacity, security and venue operations"]);
-  add("req-screens", "14 / VENUE PROVIDES", "Screens / displays", "Venue-provided display infrastructure is required.", ["Number, size, orientation and resolution to be confirmed", "Projectors, LED or projection surfaces all count"]);
-  add("req-inputs", "14 / VENUE PROVIDES", "Screen inputs", "AXIS needs to connect an external workstation to the display system.", ["HDMI, DisplayPort or SDI where applicable", "Independent feeds preferred over mirrored output"]);
-  add("req-internet", "14 / VENUE PROVIDES", "Internet", "Reliable internet is required because Claude interactions operate live.", ["Wired production connection preferred", "Fallback connection strategy agreed in advance"]);
-  add("req-audio", "14 / VENUE PROVIDES", "Audio + DJ", "Audio and DJ infrastructure where available.", ["Confirmed during technical review"]);
-  add("req-power", "14 / VENUE PROVIDES", "Power + access", "Technical access, load-in time and a venue technical contact.", ["Access before doors for setup and soundcheck"]);
-  add("req-bar", "14 / VENUE PROVIDES", "Bar + security", "Bar operation, staffing, security and capacity management.", ["Venue continues operating its own service"]);
-  add("format-screens", "05 / FORMAT", "Venue screens", "Venue-provided display infrastructure carries the visual system.", ["Required, not optional", "Used by the whole event, not only Claude"]);
-  add("format-hospitality", "05 / FORMAT", "Complimentary hospitality", "AXIS funds a complimentary drink allocation for the night.", ["Amount set according to brand budget", "Subject to venue service rules"]);
-  add("format-claude", "05 / FORMAT", "Claude activity", "Guests discover Claude, activate access and interact live.", ["Every attendee gets to connect with like-minded individuals", "The Claude community has a place to connect with old and new members"]);
-  add("format-live-coding", "05 / FORMAT", "Live coding", "Code becomes sound and image in real time.", ["Guest participation through a controlled interface", "Every participation in the interaction generates points for the guest"]);
-  add("format-activations", "05 / FORMAT", "Tech Week micro-activations", "Small partner experiences distributed through the night.", ["Small, distributed, interactive and integrated"]);
+  add("budget-hospitality", "09 / INVESTS", "Drinks + hospitality", "Complimentary drink allocation and guest hospitality, funded by AXIS.", ["The amount is private", "The allocation is real and funded"]);
+  add("budget-production", "09 / INVESTS", "Production", "Technical systems, staffing and event operation.", ["Operated by AXIS"]);
+  add("budget-audiovisual", "09 / INVESTS", "Audiovisual", "Visual rendering, routing, display integration and event output.", ["Connects to venue-provided screens"]);
+  add("budget-programming", "09 / INVESTS", "Programming", "Warm-up DJ, Live Coding and Closing DJ.", ["Artists confirmed closer to the event"]);
+  add("budget-claude", "09 / INVESTS", "Claude workshop", "Seated workshop production, onboarding and Claude Code activities.", ["The opening half of the night"]);
+  add("budget-digital-art", "09 / INVESTS", "Digital art", "Future Renaissance artworks, visual content and interactive states.", ["Authored for the venue"]);
+  add("budget-activations", "09 / INVESTS", "Tech Week activations", "Small partner experiences integrated throughout the night.", ["Small, distributed and digital-first"]);
+  add("zone-entry", "14 / ZONE", "Entry", "Arrival into the Future Renaissance environment.", ["Conceptual until venue layout is confirmed"]);
+  add("zone-checkin", "14 / ZONE", "Check-in / discovery", "Guests establish their role and access state.", ["NFC / QR entry into the activity system"]);
+  add("zone-social", "14 / ZONE", "Social / hospitality", "Bar, circulation and the complimentary drink allocation.", ["Shared with venue clientele where agreed"]);
+  add("zone-digital-art", "14 / ZONE", "Digital art", "Future Renaissance works presented in the environment.", ["Shown on venue screens and surfaces"]);
+  add("zone-warmup", "14 / ZONE", "Warm-up DJ", "Opening music programming.", ["Arrival energy"]);
+  add("zone-claude", "14 / ZONE", "Claude activity", "The Claude interaction point on the floor.", ["Discovery, activation and interaction"]);
+  add("zone-claude-access", "14 / ZONE", "Claude access + credits", "Onboarding into Claude access and credits.", ["Entitlement confirmed by the organizers"]);
+  add("zone-activations", "14 / ZONE", "Tech Week micro-activities", "Small partner experiences distributed across the room.", ["Never a booth farm"]);
+  add("zone-visuals", "14 / ZONE", "Live visuals", "Real-time graphics across the venue display network.", ["Routed and operated by AXIS"]);
+  add("zone-live-coding", "14 / ZONE", "Live coding", "The central live-coded performance moment.", ["Code visible as part of the performance"]);
+  add("zone-closing", "14 / ZONE", "Closing DJ", "The final club state of the night.", ["Completes the arc"]);
+  add("zone-media", "14 / ZONE", "Media", "Photography, video and documentation.", ["Directed by AXIS"]);
+  add("zone-venue-clients", "14 / ZONE", "Venue client flow", "Existing venue clientele can remain and participate where agreed.", ["Not treated as outsiders", "Subject to capacity, security and venue operations"]);
+  add("req-screens", "15 / VENUE PROVIDES", "Screens / displays", "Venue-provided display infrastructure is required.", ["The Claude team needs screen access to run its workshop presentation", "Number, size, orientation and resolution to be confirmed", "Projectors, LED or projection surfaces all count"]);
+  add("req-inputs", "15 / VENUE PROVIDES", "Screen inputs", "AXIS needs to connect an external workstation to the display system.", ["HDMI, DisplayPort or SDI where applicable", "Independent feeds preferred over mirrored output"]);
+  add("req-internet", "15 / VENUE PROVIDES", "Internet", "Reliable internet is required because Claude interactions operate live.", ["Wired production connection preferred", "Fallback connection strategy agreed in advance"]);
+  add("req-audio", "15 / VENUE PROVIDES", "Audio + DJ", "Audio and DJ infrastructure where available.", ["Confirmed during technical review"]);
+  add("req-power", "15 / VENUE PROVIDES", "Power + access", "Technical access, load-in time and a venue technical contact.", ["The venue opens early so the room is ready before 18:00", "Access before doors for setup and soundcheck"]);
+  add("req-bar", "15 / VENUE PROVIDES", "Bar + security", "Bar operation, staffing, security and capacity management.", ["The bar stays open and sells to guests throughout", "We buy soft drinks from the bar for the workshop room", "Venue continues operating its own service"]);
+  add("format-screens", "06 / FORMAT", "Venue screens", "Venue-provided display infrastructure carries the visual system.", ["Required, not optional", "Used by the whole event, not only Claude"]);
+  add("format-hospitality", "06 / FORMAT", "Complimentary hospitality", "AXIS funds a complimentary drink allocation for the night.", ["Amount set according to brand budget", "Subject to venue service rules"]);
+  add("format-claude", "06 / FORMAT", "Claude activity", "Guests discover Claude, activate access and interact live.", ["Every attendee gets to connect with like-minded individuals", "The Claude community has a place to connect with old and new members"]);
+  add("format-live-coding", "06 / FORMAT", "Live coding", "Code becomes sound and image in real time.", ["Guest participation through a controlled interface", "Every participation in the interaction generates points for the guest"]);
+  add("format-activations", "06 / FORMAT", "Tech Week micro-activations", "Small partner experiences distributed through the night.", ["Small, distributed, interactive and integrated"]);
 
   (function () {
     addI18n("venue", "es", "Bar Oriente", "El venue es la capa operativa física donde convergen la cultura, la hospitalidad, las actividades, los medios y la interacción con IA.", [
@@ -688,8 +699,8 @@
       "Actividades de Tech Week, información del evento y momentos para medios",
       "AXIS controla el ruteo; diferentes pantallas pueden mostrar diferentes estados",
     ]);
-    addI18n("close-event-partner", "es", "Future Renaissance", "Una noche, Bar Oriente, 28 de octubre de 2026, posicionada como la primera fiesta oficial de la comunidad Anthropic Claude AI.", [
-      "250 invitados esperados de Future Renaissance",
+    addI18n("close-event-partner", "es", "Future Renaissance", "Una noche en Bar Oriente, 28 de octubre de 2026: un workshop de la comunidad de Claude para la industria musical, y después la noche.", [
+      "200 sentados en el workshop, y después 250 más para la noche",
       "DJ de apertura, Live Coding y DJ de cierre",
       "Actividad de Claude, arte digital y micro-activaciones de Tech Week",
       "Hospitalidad de cortesía financiada por AXIS",
@@ -722,7 +733,7 @@
       "科技周相关活动、活动信息与媒体时刻",
       "AXIS 负责信号路由；不同屏幕可以呈现不同状态",
     ]);
-    addI18n("close-event-partner", "zh", "Future Renaissance", "2026 年 10 月 28 日，Bar Oriente 的这一夜，被定位为首个官方 Anthropic Claude AI 社区派对。", [
+    addI18n("close-event-partner", "zh", "Future Renaissance", "2026 年 10 月 28 日，Bar Oriente 的这一夜：一场为音乐行业举办的 Claude 社区工作坊，随后是当晚。", [
       "预计 250 名 Future Renaissance 宾客",
       "暖场 DJ、Live Coding 与收场 DJ",
       "Claude 互动活动、数字艺术与科技周微互动",
@@ -746,10 +757,20 @@
     addI18n("program-closing", "es", "DJ de Cierre", "Lleva la noche desde el segmento experimental de live coding hacia su estado final de club.", ["El set será grabado para el programa de AXIS Radio en Hong Kong Community Radio, para transmitirse en su próximo episodio", "Géneros: UK Garage, UK Bass, House"]);
     addI18n("program-cuarto-rosa", "es", "Cuarto Rosa", "Una segunda sala desarrolla su propia actividad en paralelo a la sala principal, presentada a través de Generative Music On Site.", ["La música se genera en tiempo real por las personas dentro de la sala.", "Los invitados dan forma activamente a lo que se crea, convirtiendo la sala en un espacio de música generativa en vivo.", "La actividad se desarrolla durante toda la noche junto a la sala principal."]);
 
-    addI18n("official-status", "es", "Primera fiesta oficial de la comunidad Anthropic Claude AI", "Future Renaissance presenta la primera fiesta oficial de la comunidad Anthropic Claude AI, como evento insignia impulsado por AXIS.", ["Mexico Tech Week 2026, Ciudad de México", "250 invitados esperados en Future Renaissance", "Claude es una capa de actividad principal, no un simple telón de fondo", "Otros socios tecnológicos participan a menor escala"]);
-    addI18n("claude-access", "es", "Acceso gratuito a Claude", "Los invitados participantes reciben acceso gratuito a Claude como parte de la actividad oficial.", ["Otorgado a través del flujo de onboarding en el sitio", "Beneficio exacto confirmado con Anthropic antes del evento"]);
-    addI18n("claude-credits", "es", "Créditos de Claude", "Los invitados participantes reciben créditos de Claude como parte de la actividad oficial.", ["Emitidos junto con el acceso a Claude", "Monto exacto de créditos confirmado con Anthropic antes del evento"]);
-    addI18n("claude-ai", "es", "Claude AI", "Los invitados interactúan con Claude en vivo dentro del entorno del evento.", ["El descubrimiento, la activación y la interacción ocurren en la pista", "La interacción es una actividad real, no un stand de patrocinador"]);
+    addI18n("workshop-session", "es", "El workshop sentado", "Tres horas, de 18:00 a 21:00, sentados. 200 personas de la industria musical trabajan de forma práctica con Claude, guiadas desde la pantalla al frente del salón.", ["200 asistentes, cada uno con silla","Productores, artistas, sellos, managers y estudios","El equipo de Claude presenta desde la pantalla del venue","Práctico de principio a fin: los asistentes trabajan, no miran"]);
+    addI18n("workshop-afterparty", "es", "El after party", "El workshop cierra a las 21:00, el salón se reacomoda durante la hora siguiente y la noche empieza a las 22:00.", ["Las puertas abren de nuevo a las 22:00 para 250 invitados más","Los asistentes del workshop que se quedan se suman a esa cifra","Siguen el warm-up, el live coding y el DJ de cierre","El bar atiende a ambos públicos durante toda la noche"]);
+    addI18n("workshop-doors", "es", "Check-in", "El registro es con aprobación previa y se maneja en Luma a través de los organizadores.", ["Una sola lista, en manos de los organizadores","Sin lista paralela del venue que conciliar en la puerta","Las comunicaciones del evento las emiten los organizadores"]);
+    addI18n("workshop-reset", "es", "El salón se reacomoda", "A las 21:00 el workshop sentado se desmonta y la pista se abre para la noche.", ["Salen las sillas, se abre la pista","Lo ejecuta producción de AXIS con el personal del venue","La pantalla pasa del workshop al sistema visual"]);
+    addI18n("ask-early", "es", "Apertura anticipada", "Pedimos al venue abrir un poco antes de lo habitual para que el salón esté listo antes de las 18:00.", ["Montaje, ruteo de pantallas y sillas listos antes de puertas","Hora exacta acordada con el contacto técnico del venue"]);
+    addI18n("ask-seating", "es", "Sentados para 200", "El workshop es sentado, y se proveen sillas para los asistentes.", ["200 lugares frente a la pantalla de presentación","Se retiran a las 21:00, cuando el salón se reacomoda"]);
+    addI18n("ask-screen", "es", "Acceso a la pantalla", "El equipo de Claude necesita acceso a la pantalla del venue para su presentación.", ["Una entrada limpia al sistema de pantallas del venue","Reservada durante toda la sesión de 18:00 a 21:00","AXIS opera el ruteo alrededor de eso"]);
+    addI18n("ask-softdrinks", "es", "Refrescos", "Compramos refrescos en el bar del venue para el salón del workshop.", ["Comprados en el bar, no traídos de fuera","Para las horas del workshop sentado"]);
+    addI18n("ask-bar", "es", "El bar sigue abierto", "El bar sigue vendiendo a los invitados durante el workshop y durante la noche.", ["El servicio normal del bar continúa junto al workshop","La clientela habitual del venue se atiende como siempre"]);
+    addI18n("ask-registration", "es", "Una sola lista", "El registro se maneja en Luma a través de los organizadores, con aprobación previa.", ["Una única lista con aprobación","El venue no maneja una lista de registro paralela","Las comunicaciones del evento las emiten los organizadores"]);
+    addI18n("community-status", "es", "Mexico City | Claude for Music", "Un evento de la comunidad de Claude: un workshop práctico y sentado para la industria musical, organizado por embajadores de la comunidad de Claude y producido por AXIS.", ["Mexico Tech Week 2026, Ciudad de México","200 asistentes sentados, de 18:00 a 21:00","Sede anfitriona: Bar Oriente","Registro en Luma, con aprobación previa, a cargo de los organizadores"]);
+    addI18n("claude-access", "es", "Acceso a Claude para asistentes", "Los asistentes al workshop quedan configurados con acceso a Claude como parte de la sesión.", ["Otorgado a través del flujo de onboarding en el sitio","Beneficio exacto confirmado por los organizadores antes del evento"]);
+    addI18n("claude-credits", "es", "Créditos de Claude", "Los asistentes al workshop reciben créditos de Claude como parte de la sesión.", ["Emitidos junto con el acceso a Claude","Monto exacto confirmado por los organizadores antes del evento"]);
+    addI18n("claude-ai", "es", "Sesión práctica", "Tres horas sentados en las que los asistentes trabajan con Claude ellos mismos, en lugar de ver una demo.", ["Guiada desde la pantalla del venue al frente del salón","Hecha para quienes trabajan en música","Una sesión de trabajo, no un stand"]);
     addI18n("claude-code", "es", "Claude Code", "Los invitados exploran Claude Code y contribuyen a la producción creativa codificada durante la noche.", ["Los invitados envían ideas e intenciones creativas", "Claude asiste en el proceso de codificación y creación", "Los resultados seleccionados aparecen en el entorno del evento"]);
     addI18n("claude-live-creation", "es", "Creación en vivo", "La intención del invitado se convierte en código, y el código se convierte en sonido e imagen en la sala.", ["Claude interpreta la intención y asiste en la generación de código", "El runtime visual renderiza el resultado final", "El resultado está limitado por las reglas visuales de Future Renaissance"]);
     addI18n("claude-community", "es", "Interacción comunitaria", "La capa de Claude está diseñada en torno a la comunidad presente en la sala.", ["Creación compartida en lugar de demostraciones individuales", "Los resultados son visibles en las pantallas del venue"]);
@@ -767,7 +788,7 @@
     addI18n("budget-production", "es", "Producción", "Sistemas técnicos, personal y operación del evento.", ["Operado por AXIS"]);
     addI18n("budget-audiovisual", "es", "Audiovisual", "Renderizado visual, ruteo, integración de pantallas y salida del evento.", ["Se conecta a las pantallas provistas por el venue"]);
     addI18n("budget-programming", "es", "Programación", "DJ de Apertura, Live Coding y DJ de Cierre.", ["Artistas confirmados más cerca del evento"]);
-    addI18n("budget-claude", "es", "Activación de Claude", "Onboarding de Claude, interacción con Claude y actividades de Claude Code.", ["La capa de actividad insignia"]);
+    addI18n("budget-claude", "es", "Workshop de Claude", "Producción del workshop sentado, onboarding y actividades de Claude Code.", ["La primera mitad de la noche"]);
     addI18n("budget-digital-art", "es", "Arte digital", "Obras de Future Renaissance, contenido visual y estados interactivos.", ["Creado específicamente para el venue"]);
     addI18n("budget-activations", "es", "Activaciones de Tech Week", "Pequeñas experiencias de socios integradas a lo largo de la noche.", ["Pequeñas, distribuidas y con enfoque digital"]);
 
@@ -777,7 +798,7 @@
     addI18n("zone-digital-art", "es", "Arte digital", "Obras de Future Renaissance presentadas en el entorno.", ["Mostradas en las pantallas y superficies del venue"]);
     addI18n("zone-warmup", "es", "DJ de Apertura", "Programación musical de apertura.", ["Energía de llegada"]);
     addI18n("zone-claude", "es", "Actividad Claude", "El punto de interacción con Claude en la pista.", ["Descubrimiento, activación e interacción"]);
-    addI18n("zone-claude-access", "es", "Acceso + créditos de Claude", "Onboarding hacia el acceso y los créditos gratuitos de Claude.", ["Beneficio confirmado con Anthropic"]);
+    addI18n("zone-claude-access", "es", "Acceso + créditos de Claude", "Onboarding hacia el acceso y los créditos de Claude.", ["Beneficio confirmado por los organizadores"]);
     addI18n("zone-activations", "es", "Micro-actividades de Tech Week", "Pequeñas experiencias de socios distribuidas por la sala.", ["Nunca una granja de stands"]);
     addI18n("zone-visuals", "es", "Visuales en vivo", "Gráficos en tiempo real a través de la red de pantallas del venue.", ["Ruteados y operados por AXIS"]);
     addI18n("zone-live-coding", "es", "Live coding", "El momento central de la performance de live coding.", ["Código visible como parte de la performance"]);
@@ -785,12 +806,12 @@
     addI18n("zone-media", "es", "Media", "Fotografía, video y documentación.", ["Dirigido por AXIS"]);
     addI18n("zone-venue-clients", "es", "Flujo de clientes del venue", "La clientela existente del venue puede permanecer y participar donde se acuerde.", ["No tratados como forasteros", "Sujeto a capacidad, seguridad y operaciones del venue"]);
 
-    addI18n("req-screens", "es", "Pantallas / displays", "Se requiere infraestructura de pantallas provista por el venue.", ["Número, tamaño, orientación y resolución por confirmar", "Proyectores, LED o superficies de proyección cuentan por igual"]);
+    addI18n("req-screens", "es", "Pantallas / displays", "Se requiere infraestructura de pantallas provista por el venue.", ["El equipo de Claude necesita acceso a la pantalla para su presentación","Número, tamaño, orientación y resolución por confirmar","Proyectores, LED o superficies de proyección cuentan por igual"]);
     addI18n("req-inputs", "es", "Entradas de pantalla", "AXIS necesita conectar una estación de trabajo externa al sistema de pantallas.", ["HDMI, DisplayPort o SDI según corresponda", "Se prefieren señales independientes sobre una salida espejada"]);
     addI18n("req-internet", "es", "Internet", "Se requiere internet confiable porque las interacciones con Claude operan en vivo.", ["Se prefiere una conexión de producción cableada", "Estrategia de conexión de respaldo acordada de antemano"]);
     addI18n("req-audio", "es", "Audio + DJ", "Infraestructura de audio y DJ donde esté disponible.", ["Confirmado durante la revisión técnica"]);
-    addI18n("req-power", "es", "Energía + acceso", "Acceso técnico, tiempo de montaje y un contacto técnico del venue.", ["Acceso antes de la apertura de puertas para montaje y prueba de sonido"]);
-    addI18n("req-bar", "es", "Bar + seguridad", "Operación del bar, personal, seguridad y gestión de aforo.", ["El venue continúa operando su propio servicio"]);
+    addI18n("req-power", "es", "Energía + acceso", "Acceso técnico, tiempo de montaje y un contacto técnico del venue.", ["El venue abre temprano para que el salón esté listo antes de las 18:00","Acceso antes de la apertura de puertas para montaje y prueba de sonido"]);
+    addI18n("req-bar", "es", "Bar + seguridad", "Operación del bar, personal, seguridad y gestión de aforo.", ["El bar sigue abierto y vendiendo a los invitados durante toda la noche","Compramos refrescos en el bar para el salón del workshop","El venue continúa operando su propio servicio"]);
 
     addI18n("format-screens", "es", "Pantallas del venue", "La infraestructura de pantallas provista por el venue sostiene el sistema visual.", ["Requerida, no opcional", "Utilizada por todo el evento, no solo por Claude"]);
     addI18n("format-hospitality", "es", "Hospitalidad de cortesía", "AXIS financia una asignación de bebidas de cortesía para la noche.", ["Monto definido según el presupuesto de la marca", "Sujeto a las normas de servicio del venue"]);
@@ -803,10 +824,20 @@
     addI18n("program-closing", "zh", "闭场 DJ", "将当晚从实验性的 Live Coding 环节带入最终的俱乐部状态。", ["该场次将为 AXIS Radio 节目录制，在香港社区电台（Hong Kong Community Radio）的下一期节目中播出", "曲风：UK Garage、UK Bass、House"]);
     addI18n("program-cuarto-rosa", "zh", "Cuarto Rosa", "第二个房间与主厅同步进行独立活动，通过 Generative Music On Site 呈现。", ["音乐由房间内的人们实时生成。", "宾客主动塑造创作内容，让这个房间成为一个实时生成音乐的空间。", "该活动将持续整晚，与主厅同步进行。"]);
 
-    addI18n("official-status", "zh", "首个官方 Anthropic Claude AI 社区派对", "Future Renaissance 举办首个官方 Anthropic Claude AI 社区派对，作为由 AXIS 打造的旗舰活动。", ["2026 年墨西哥科技周，墨西哥城", "预计 250 位 Future Renaissance 宾客", "Claude 是主要的活动层面，而非陪衬", "其他科技合作伙伴以较小规模参与"]);
-    addI18n("claude-access", "zh", "免费 Claude 访问权限", "参与的宾客将作为官方活动的一部分，获得免费的 Claude 访问权限。", ["通过现场引导流程发放", "具体权益将在活动前与 Anthropic 确认"]);
-    addI18n("claude-credits", "zh", "Claude 额度", "参与的宾客将作为官方活动的一部分，获得 Claude 额度。", ["与 Claude 访问权限一并发放", "具体额度数量将在活动前与 Anthropic 确认"]);
-    addI18n("claude-ai", "zh", "Claude AI", "宾客可在活动现场与 Claude 实时互动。", ["发现、开通与互动都在现场进行", "这是一项真实的互动活动，而非赞助商展位"]);
+    addI18n("workshop-session", "zh", "坐式工作坊", "三小时，18:00 至 21:00，全程坐式。200 位音乐行业从业者在厅前屏幕的引导下，与 Claude 实操协作。", ["200 位参与者，人人有座","制作人、艺术家、厂牌、经纪人与录音室","Claude 团队使用场地屏幕演示","全程实操：参与者动手，而不是旁观"]);
+    addI18n("workshop-afterparty", "zh", "派对环节", "工作坊 21:00 结束，空间在接下来的一小时内重新布置，当晚 22:00 开始。", ["22:00 再次开门，另有 250 位宾客到场","留下来的工作坊参与者在此之上","接着是暖场、实时编程与收场 DJ","酒吧全程服务两部分宾客"]);
+    addI18n("workshop-doors", "zh", "签到", "报名需审核，在 Luma 上由主办方管理。", ["一张名单，由主办方掌管","门口无需核对场地的平行名单","活动传达由主办方发布"]);
+    addI18n("workshop-reset", "zh", "空间重新布置", "21:00 坐式工作坊收场，开放舞池迎接当晚。", ["椅子撑出，场地开放","由 AXIS 制作团队与场地人员共同完成","屏幕从工作坊切换到视觉系统"]);
+    addI18n("ask-early", "zh", "提前开门", "我们希望场地比平时稍早开门，以便在 18:00 前完成布置。", ["进场、屏幕信号与座位在开门前就绪","具体时间与场地技术联络人确认"]);
+    addI18n("ask-seating", "zh", "200 个座位", "工作坊为坐式，为参与者提供椅子。", ["200 个座位面向演示屏幕","21:00 空间重新布置时撑出"]);
+    addI18n("ask-screen", "zh", "屏幕权限", "Claude 团队需要使用场地屏幕进行演示。", ["一路干净的信号接入场地显示系统","保留整个 18:00 至 21:00 时段","AXIS 负责周边的信号调度"]);
+    addI18n("ask-softdrinks", "zh", "软饮", "我们向场地酒吧采购软饮，供工作坊使用。", ["向酒吧采购，非外带","供坐式工作坊时段使用"]);
+    addI18n("ask-bar", "zh", "酒吧持续营业", "工作坊与当晚期间，酒吧持续向宾客销售。", ["酒吧照常营业，与工作坊并行","场地常客照常接待"]);
+    addI18n("ask-registration", "zh", "单一名单", "报名在 Luma 上由主办方管理，需审核。", ["单一的审核制名单","场地不另行管理平行报名名单","活动传达由主办方发布"]);
+    addI18n("community-status", "zh", "MEXICO CITY | CLAUDE FOR MUSIC", "一场 Claude 社区活动：为音乐行业举办的坐式实操工作坊，由 Claude 社区大使组织，由 AXIS 制作。", ["2026 年墨西哥科技周，墨西哥城","200 位坐式参与者，18:00 至 21:00","主办场地：Bar Oriente","在 Luma 报名，需审核，由主办方管理"]);
+    addI18n("claude-access", "zh", "为参与者开通 Claude", "工作坊参与者会在课程中完成 Claude 访问权限的配置。", ["通过现场引导流程发放","具体权益由主办方在活动前确认"]);
+    addI18n("claude-credits", "zh", "Claude 额度", "工作坊参与者会在课程中获得 Claude 额度。", ["与 Claude 访问权限一并发放","具体额度由主办方在活动前确认"]);
+    addI18n("claude-ai", "zh", "实操课程", "三小时的坐式课程，参与者亲自上手使用 Claude，而不是看演示。", ["由厅前的场地屏幕引导","为从事音乐工作的人而设","这是一场工作会议，而非展位"]);
     addI18n("claude-code", "zh", "Claude Code", "宾客将在当晚探索 Claude Code，并参与创作代码化的创意成果。", ["宾客提交创意想法与意图", "Claude 协助编码与创作过程", "精选成果将呈现在活动现场"]);
     addI18n("claude-live-creation", "zh", "实时创作", "宾客的意图转化为代码，代码再转化为现场的声音与影像。", ["Claude 解读意图并协助生成代码", "视觉运行系统渲染最终输出", "输出受 Future Renaissance 视觉规则的约束"]);
     addI18n("claude-community", "zh", "社区互动", "Claude 这一层体验围绕现场社区而设计。", ["共同创作，而非个人演示", "成果会呈现在场地屏幕上"]);
@@ -824,7 +855,7 @@
     addI18n("budget-production", "zh", "制作", "技术系统、人员配置与活动运营。", ["由 AXIS 负责运营"]);
     addI18n("budget-audiovisual", "zh", "视听", "视觉渲染、路由、屏幕整合与活动输出。", ["接入场地提供的屏幕"]);
     addI18n("budget-programming", "zh", "节目编排", "暖场 DJ、Live Coding 与闭场 DJ。", ["艺人将在活动临近时确认"]);
-    addI18n("budget-claude", "zh", "Claude 激活", "Claude 引导、Claude 互动与 Claude Code 相关活动。", ["旗舰级的活动层面"]);
+    addI18n("budget-claude", "zh", "Claude 工作坊", "坐式工作坊的制作、引导流程与 Claude Code 相关活动。", ["当晚的前半场"]);
     addI18n("budget-digital-art", "zh", "数字艺术", "Future Renaissance 的艺术作品、视觉内容与互动状态。", ["专为该场地创作"]);
     addI18n("budget-activations", "zh", "科技周激活活动", "贯穿整晚的小型合作伙伴体验。", ["小规模、分散且以数字为先"]);
 
@@ -834,7 +865,7 @@
     addI18n("zone-digital-art", "zh", "数字艺术", "在现场展示的 Future Renaissance 作品。", ["呈现在场地的屏幕与其他展示面上"]);
     addI18n("zone-warmup", "zh", "暖场 DJ", "开场音乐编排。", ["入场氛围能量"]);
     addI18n("zone-claude", "zh", "Claude 活动区", "现场的 Claude 互动点。", ["发现、开通与互动"]);
-    addI18n("zone-claude-access", "zh", "Claude 访问权限 + 额度", "引导宾客开通免费的 Claude 访问权限与额度。", ["权益已与 Anthropic 确认"]);
+    addI18n("zone-claude-access", "zh", "Claude 访问权限 + 额度", "引导宾客开通 Claude 访问权限与额度。", ["权益由主办方确认"]);
     addI18n("zone-activations", "zh", "科技周微互动", "分布在场地各处的小型合作伙伴体验。", ["绝非展位集市"]);
     addI18n("zone-visuals", "zh", "实时视觉", "遍布场地显示网络的实时图形。", ["由 AXIS 负责路由与运营"]);
     addI18n("zone-live-coding", "zh", "Live coding", "整晚的核心 Live Coding 表演时刻。", ["代码作为表演的一部分实时可见"]);
@@ -842,12 +873,12 @@
     addI18n("zone-media", "zh", "媒体", "摄影、视频与记录。", ["由 AXIS 统筹指导"]);
     addI18n("zone-venue-clients", "zh", "场地客群动线", "在双方同意的范围内，场地原有客群可以留下并参与其中。", ["不会被视为外人", "仍需遵守场地的容量、安保与运营安排"]);
 
-    addI18n("req-screens", "zh", "屏幕 / 显示设备", "需要由场地提供显示设备基础设施。", ["数量、尺寸、朝向与分辨率待确认", "投影仪、LED 或投影幕均可"]);
+    addI18n("req-screens", "zh", "屏幕 / 显示设备", "需要由场地提供显示设备基础设施。", ["Claude 团队需要屏幕权限以进行工作坊演示","数量、尺寸、朝向与分辨率待确认","投影仪、LED 或投影幕均可"]);
     addI18n("req-inputs", "zh", "屏幕输入接口", "AXIS 需要将外部工作站连接到显示系统。", ["视情况使用 HDMI、DisplayPort 或 SDI", "相较于镜像输出，更倾向使用独立信号源"]);
     addI18n("req-internet", "zh", "网络", "由于 Claude 互动为实时运行，需要稳定可靠的网络。", ["优先使用有线的制作专用网络", "提前商定备用连接方案"]);
     addI18n("req-audio", "zh", "音响 + DJ", "视情况提供音响与 DJ 相关基础设施。", ["将在技术勘察阶段确认"]);
-    addI18n("req-power", "zh", "电力 + 场地准入", "技术准入、进场搭建时间以及一位场地技术联络人。", ["开门迎宾前需可进场进行搭建与音响调试"]);
-    addI18n("req-bar", "zh", "酒吧 + 安保", "酒吧运营、人员配置、安保与容量管理。", ["场地将继续运营其自有服务"]);
+    addI18n("req-power", "zh", "电力 + 场地准入", "技术准入、进场搭建时间以及一位场地技术联络人。", ["场地提前开门，以便在 18:00 前完成布置","开门迎宾前需可进场进行搭建与音响调试"]);
+    addI18n("req-bar", "zh", "酒吧 + 安保", "酒吧运营、人员配置、安保与容量管理。", ["酒吧全程正常营业，向宾客销售","我们会向酒吧采购软饮供工作坊使用","场地将继续运营其自有服务"]);
 
     addI18n("format-screens", "zh", "场地屏幕", "由场地提供的显示设备基础设施承载整个视觉系统。", ["为必需项，而非可选项", "供整场活动使用，而不仅限于 Claude"]);
     addI18n("format-hospitality", "zh", "免费款待", "AXIS 为当晚提供免费饮品配额。", ["金额根据品牌预算确定", "须遵守场地的服务规定"]);
