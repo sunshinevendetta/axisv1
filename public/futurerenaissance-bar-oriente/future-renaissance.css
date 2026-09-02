@@ -1642,3 +1642,33 @@ body.fr-vertical .claude-slide .claude-marker::before { width: 3px; }
 .fr-caret { display: inline-block; width: .075em; height: .74em; margin-left: .12em; background: var(--claude-clay); font-style: normal; animation: fr-caret-blink 1.05s steps(1, end) infinite; }
 @keyframes fr-caret-blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .fr-caret { animation: none; } }
+
+/* ============================================================
+   06 / 07 on mobile - the type had drifted about twice the
+   optical size it holds on the wide stage. Content text comes
+   down ~40%, headings hold their weight, and the boxes tighten
+   to match so nothing floats in dead space.
+   ============================================================ */
+body.fr-vertical .format-titlebar h2 { font-size: 54px; }
+body.fr-vertical .format-titlebar p { margin-top: 18px; font-size: 17px; }
+body.fr-vertical .event-format-map { gap: 20px; }
+body.fr-vertical .format-group { padding: 20px 18px 16px; }
+body.fr-vertical .format-group h3 { margin-bottom: 8px; font-size: 18px; }
+body.fr-vertical .format-item { grid-template-columns: 44px 1fr; gap: 14px; padding: 10px 38px 10px 0; }
+body.fr-vertical .format-item > i { width: 40px; height: 40px; border-radius: 11px; }
+body.fr-vertical .format-item > i .fr-glyph { width: 22px; height: 22px; }
+body.fr-vertical .format-item b { font-size: 18px; line-height: 1.25; }
+body.fr-vertical .format-item::after { width: 22px; height: 22px; right: 8px; font-size: 13px; }
+body.fr-vertical .system-flow-heading h2 { font-size: 60px; }
+body.fr-vertical .system-cycle-node { width: 150px; height: 140px; margin-left: -75px; margin-top: -70px; }
+body.fr-vertical .system-cycle-node::after { right: 20px; width: 26px; height: 26px; font-size: 15px; }
+body.fr-vertical .system-cycle-node > b { font-size: 16px; line-height: 1.3; }
+body.fr-vertical .system-cycle-node .scn-disc { width: 72px; height: 72px; }
+body.fr-vertical .system-cycle-node .scn-disc .fr-glyph { width: 28px; height: 28px; }
+body.fr-vertical .system-cycle-node .scn-disc > i { padding: 2px 7px; font-size: 13px; }
+body.fr-vertical .system-cycle-hub b { font-size: 20px; }
+body.fr-vertical .system-cycle-hub p { font-size: 18px; }
+body.fr-vertical .phase-card { padding: 20px 46px 20px 20px; }
+body.fr-vertical .phase-card > i { font-size: 36px; }
+body.fr-vertical .phase-card > b { margin-top: 8px; font-size: 18px; }
+body.fr-vertical .phase-card > p { margin-top: 12px; font-size: 20px; line-height: 1.45; }
