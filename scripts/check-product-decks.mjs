@@ -69,7 +69,7 @@ for (const deck of decks) {
   }
 
   const slides = (html.match(/data-slide-id="/g) || []).length;
-  if (slides !== 14) fail(deck, "rendered " + slides + " slides, expected 14");
+  if (slides !== 15) fail(deck, "rendered " + slides + " slides, expected 15");
 
   // Every concept a slide links to must exist, or the popup opens empty.
   const linked = [...html.matchAll(/data-concept-id="([^"]+)"/g)].map((m) => m[1]);

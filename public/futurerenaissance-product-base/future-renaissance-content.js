@@ -30,7 +30,7 @@
     return '<header class="fr-frame-top" data-reveal>' +
       '<div class="fr-lockup">' + axisMark(tone || "ivory") +
       '<span>AXIS</span><i></i><span data-i18n="brand.claudeEvent">CLAUDE COMMUNITY EVENT</span></div>' +
-      '<div class="fr-coordinate"><span>' + number + ' / 14</span><span data-i18n="nav.' + key + '">' + label + '</span></div>' +
+      '<div class="fr-coordinate"><span>' + number + ' / 15</span><span data-i18n="nav.' + key + '">' + label + '</span></div>' +
     '</header>';
   }
 
@@ -210,29 +210,39 @@
     '</section>',
     /* @end */
 
+    '<section class="fr-slide fr-leaderboard" data-slide-id="leaderboard" data-scene="leaderboard" data-label="Live leaderboard">' +
+      frameTop("10", "leaderboard", "LIVE LEADERBOARD", "navy") +
+      '<div class="leaderboard-heading"><div><span class="eyebrow" data-reveal data-i18n="leaderboard.kicker">LIVE LEADERBOARD</span><h2 data-reveal data-i18n="leaderboard.title">PARTICIPATION BECOMES VISIBLE.</h2></div><span class="synthetic-label" data-reveal data-i18n="leaderboard.synthetic">INTERFACE PREVIEW · SAMPLE ROWS</span></div>' +
+      '<div class="leaderboard-shell" data-crystallize>' +
+        '<div class="leaderboard-head"><span data-i18n="leaderboard.rank">RANK</span><span data-i18n="leaderboard.participant">PARTICIPANT</span><span data-i18n="leaderboard.role">ROLE</span><span data-i18n="leaderboard.missions">ACTIVITIES</span><span>' + (focus ? focus.slot : "[BRAND]") + '</span><span data-i18n="leaderboard.score">SCORE</span><span data-i18n="leaderboard.reward">REWARD</span></div>' +
+        '<div id="leaderboard-rows" class="leaderboard-rows" aria-hidden="true"></div>' +
+        '<table id="leaderboard-semantic" class="sr-only"><caption>Live participation ranking interface</caption><thead><tr><th>Rank</th><th>Participant</th><th>Role</th><th>Activities</th><th>Action</th><th>Score</th><th>Reward</th></tr></thead><tbody></tbody></table>' +
+      '</div>' + star("leader-star") +
+    '</section>',
+
     '<section class="fr-slide frx-measurement" data-slide-id="measurement" data-scene="measurement" data-label="Measurement">' +
-      frameTop("10", "measurement", "MEASUREMENT", "navy") +
+      frameTop("11", "measurement", "MEASUREMENT", "navy") +
       '<div class="frx-heading frx-dark-copy"><span class="eyebrow" data-reveal data-i18n="measurement.kicker">MEASUREMENT</span><h2 data-reveal data-i18n="measurement.title">EVIDENCE FIRST. FINANCIAL MODELS ONLY WHEN THE DATA SUPPORTS THEM.</h2><p data-reveal data-i18n="measurement.copy">The night produces an operational record alongside its media. Observed actions and calculated business outcomes are reported separately.</p></div>' +
       '<div class="frx-measurement-grid" data-crystallize><section><h3 data-i18n="measurement.verified">VERIFIED BY THE AXIS SYSTEM</h3><div>' + circuit.measurement.verified.map(metricPill).join("") + '</div></section><section><h3 data-i18n="measurement.calculated">CALCULATED WITH PARTNER-SIDE DATA</h3><div>' + circuit.measurement.calculatedWhenSupported.map(metricPill).join("") + '</div></section></div>' +
       '<div class="frx-measurement-note" data-reveal data-i18n="measurement.note">NO FABRICATED CONVERSION PROMISES. THE REPORT SEPARATES OBSERVED ACTIONS FROM CALCULATED BUSINESS OUTCOMES.</div>' +
     '</section>',
 
     '<section class="fr-slide frx-system" data-slide-id="operates" data-scene="orbit-system" data-label="What AXIS operates">' +
-      frameTop("11", "operates", "WHAT AXIS OPERATES") +
+      frameTop("12", "operates", "WHAT AXIS OPERATES") +
       '<div class="frx-heading"><span class="eyebrow" data-reveal data-i18n="operates.kicker">WHAT AXIS BRINGS</span><h2 data-reveal data-i18n="operates.title">AXIS OPERATES.</h2><p data-reveal data-i18n="operates.copy">Everything below is authored, funded or run by AXIS. The venue provides the room, the bar and the screens.</p></div>' +
       '<div class="frx-system-orbit" data-crystallize>' + orbitalSvg("frx-system-rings") + '<div class="frx-system-core">' + axisMark("gold") + '<b>AXIS</b><small data-i18n="operates.core">FUNDS + RUNS THE NIGHT</small></div>' + circuit.operates.map(operatesTile).join("") + '</div>' +
       '<div class="frx-positioning" data-reveal><b data-i18n="operates.investLabel">WHERE AXIS INVESTS</b> ' + circuit.allocation.map(allocationChip).join(" · ") + '</div>' +
     '</section>',
 
     '<section class="fr-slide frx-measurement" data-slide-id="deliverables" data-scene="measurement" data-label="What the partner receives">' +
-      frameTop("12", "deliverables", "WHAT THE PARTNER RECEIVES", "navy") +
+      frameTop("13", "deliverables", "WHAT THE PARTNER RECEIVES", "navy") +
       '<div class="frx-heading frx-dark-copy"><span class="eyebrow" data-reveal data-i18n="deliverables.kicker">POST-EVENT DELIVERY</span><h2 data-reveal data-i18n="deliverables.title">THE NIGHT ARRIVES BACK AS MATERIAL AND AS EVIDENCE.</h2><p data-reveal data-i18n="deliverables.copy">Media production and the operational record are delivered separately, so the night reads as both cultural output and system performance.</p></div>' +
       '<div class="frx-measurement-grid" data-crystallize><section><h3 data-i18n="deliverables.media">MEDIA PRODUCTION INCLUDED</h3><div>' + circuit.deliverables.media.map(deliverablePill("media")).join("") + '</div></section><section><h3 data-i18n="deliverables.report">POST-EVENT REPORT</h3><div>' + circuit.deliverables.report.map(deliverablePill("report")).join("") + '</div></section></div>' +
       '<div class="frx-measurement-note" data-reveal data-i18n="deliverables.note">MEDIA IS PRODUCED FOR THE NIGHT. THE REPORT IS PRODUCED FROM WHAT ACTUALLY HAPPENED IN IT.</div>' +
     '</section>',
 
     '<section class="fr-slide frx-inventory frx-single-inventory" data-slide-id="inventory" data-scene="structured" data-label="Partner inventory">' +
-      frameTop("13", "inventory", "PARTNER INVENTORY") +
+      frameTop("14", "inventory", "PARTNER INVENTORY") +
       '<div class="frx-heading"><span class="eyebrow" data-reveal data-i18n="single.kicker">PARTNER INVENTORY</span><h2 data-reveal data-i18n="single.title">ONE NIGHT. ONE HIGHLY CUSTOMIZED PRODUCTION.</h2></div>' +
       '<div class="frx-offer-pair" data-crystallize>' +
         conceptNode("frx-offer-card", "tier-activity-partner", '<span data-i18n="tiers.activity.name">ACTIVITY PARTNER</span><strong>' + tierPrice(activityPartner) + '</strong><small data-i18n="tiers.activity.scope">' + night.displayDateShort + ' · ' + night.venue.toUpperCase() + '</small><p data-i18n="tiers.activity.copy">One product function with mission, staff-guided onboarding, validation, reward path, screen presence, media capture and a post-event report.</p>', activityPartner.name) +

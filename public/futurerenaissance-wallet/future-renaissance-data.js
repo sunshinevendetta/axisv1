@@ -173,9 +173,21 @@
 
   window.FUTURE_RENAISSANCE_ARTISTS = deepFreeze({});
 
+  // Illustrative rows for the live leaderboard interface on slide 10. These
+  // are not projections or past results — the slide labels them as a preview
+  // of the interface, and no deck should present them as attendance data.
   window.SYNTHETIC_DEMO = deepFreeze({
-    leaderboard: [],
-    missionCounts: [],
-    sampleRewards: [],
+    leaderboard: [
+      { id: "GUEST 014", role: "COLLECTOR", completed: 8, total: 8, score: 940, brandAction: true, reward: "UNLOCKED", rank: 1 },
+      { id: "GUEST 027", role: "CREATOR", completed: 8, total: 8, score: 910, brandAction: true, reward: "UNLOCKED", rank: 2 },
+      { id: "GUEST 041", role: "GUEST", completed: 7, total: 8, score: 845, brandAction: true, reward: "UNLOCKED", rank: 3 },
+      { id: "GUEST 058", role: "ARTIST", completed: 7, total: 8, score: 820, brandAction: true, reward: "READY", rank: 4 },
+      { id: "GUEST 063", role: "PRESS", completed: 6, total: 8, score: 760, brandAction: true, reward: "READY", rank: 5 },
+      { id: "GUEST 077", role: "OPERATOR", completed: 6, total: 8, score: 735, brandAction: true, reward: "READY", rank: 6 },
+      { id: "GUEST 091", role: "AGENT", completed: 5, total: 8, score: 680, brandAction: false, reward: "IN PROGRESS", rank: 7 },
+      { id: "GUEST 104", role: "PARTNER", completed: 5, total: 8, score: 650, brandAction: false, reward: "IN PROGRESS", rank: 8 },
+    ],
+    missionCounts: [8, 8, 7, 7, 6, 6, 5, 5],
+    sampleRewards: ["UNLOCKED", "READY", "IN PROGRESS"],
   });
 })();

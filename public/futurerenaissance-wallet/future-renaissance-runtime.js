@@ -174,7 +174,7 @@
   function selectSlides() {
     var view = parentUrl().searchParams.get("view") || "extended";
     var ids = null;
-    if (view === "short") ids = ["cover", "program", "brand-function", "reward-flow", "deliverables", "inventory", "close"];
+    if (view === "short") ids = ["cover", "program", "brand-function", "reward-flow", "leaderboard", "deliverables", "inventory", "close"];
     if (view === "sheet") ids = ["close"];
     allSlides.forEach(function (slide) {
       var visible = !ids || ids.indexOf(slide.dataset.slideId) !== -1;
