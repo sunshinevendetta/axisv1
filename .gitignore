@@ -96,6 +96,8 @@ scripts/*
 !scripts/build-product-base-i18n.mjs
 !scripts/check-product-decks.mjs
 !scripts/product-deck-specs/
+# *.md is ignored repo-wide above; this one documents the deck pipeline.
+!scripts/product-deck-specs/README.md
 rsv-pizza-disclosure/
 graphv1/
 COORDINATION.md
