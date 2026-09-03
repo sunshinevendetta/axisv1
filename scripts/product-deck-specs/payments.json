@@ -1,0 +1,302 @@
+{
+  "slug": "payments",
+  "name": "Payments",
+  "slot": "[PAYMENTS BRAND]",
+  "discipline": "Card, tap and stablecoin rails for real-world spend",
+  "pageTitle": "Future Renaissance · Payments Partner · Claude Community Event · AXIS",
+  "pageDescription": "Private AXIS partnership presentation for a payments, card or stablecoin-rail product: one night at Bar Oriente, Mexico City, on October 28, 2026, where the partner does not sponsor the bar but runs it as the payment rail for every drink sold and every drink AXIS funds.",
+
+  "slide08": {
+    "label": "Payments function",
+    "navLabel": "PAYMENTS FUNCTION",
+    "kicker": "PAYMENTS FUNCTION",
+    "title": "THE PARTNER DOES NOT SPONSOR THE BAR. IT IS THE BAR'S RAIL.",
+    "copy": "Every guest in the room buys or claims a drink that night, which makes paying for a drink the most repeated action of the whole event. A payments partner owns that action end to end, with a real venue on the other side of it.",
+    "ruleA": "NOT A LOGO ON THE DRINK MENU.",
+    "ruleB": "EVERY DRINK IS A REAL MERCHANT TRANSACTION, COUNTED ONE BY ONE."
+  },
+
+  "slide09": {
+    "navLabel": "THE REWARD FLOW",
+    "kicker": "THE REWARD FLOW",
+    "title": "A TAP BECOMES A DRINK BECOMES A SETTLED MERCHANT RECORD.",
+    "copy": "The chain is short and physical: tap at the bar, drink in hand, the venue paid over the partner's rail, the night's transaction count on the main LED wall, and every movement reconciled against Bar Oriente's own totals in the report.",
+    "note": "EXAMPLE FLOW · EXACT ACTIONS ARE DESIGNED AROUND THE PRODUCT."
+  },
+
+  "mechanics": [
+    {
+      "id": "issue",
+      "name": "Issue",
+      "role": "A card provisioned at a staffed point",
+      "summary": "Cards are issued or provisioned on the spot: during the 18:00 workshop for the seated 200, then at the door from 22:00 for everyone arriving for the party.",
+      "details": [
+        "Provisioned into the phone the guest is already holding, with support present",
+        "First-time users are walked through it rather than left with a QR code",
+        "Finished before the guest reaches the bar, not after they are queuing",
+        "Measured as cards provisioned and cards used at least once the same night"
+      ]
+    },
+    {
+      "id": "tap",
+      "name": "Tap",
+      "role": "One tap buys a drink at the bar",
+      "summary": "The product's core action is the room's core action. A guest taps at Bar Oriente's bar and is handed a drink, with no app-store detour and no code to read out.",
+      "details": [
+        "The transaction happens at the bar counter, in front of a bartender",
+        "It has to work at the speed of the card the guest already carries",
+        "A decline is visible immediately and staff are standing right there",
+        "Measured as taps completed and time from tap to drink served"
+      ]
+    },
+    {
+      "id": "repeat",
+      "name": "Repeat",
+      "role": "The most repeated action of the night",
+      "summary": "Nobody buys one drink between 22:00 and close. Repeat spend is what separates a payments partner from every other product on the floor: the same guest uses it again and again without being asked.",
+      "details": [
+        "Onboarding is paid for once and the action repeats for the rest of the night",
+        "After the first transaction, repeat use needs no staff at all",
+        "The rail is exercised under real load, at bar pace, not in a demo",
+        "Measured as transactions per guest across the night"
+      ]
+    },
+    {
+      "id": "tab",
+      "name": "Tab",
+      "role": "Opened at the door, closed before close",
+      "summary": "A guest tab is opened at check-in and closed before the guest leaves, so nothing is left hanging on a card behind the bar at four in the morning.",
+      "details": [
+        "Opened with the entry scan at the door, workshop guests carried through",
+        "The running total is visible to the guest all night, not a surprise at the end",
+        "Closed at a staffed point on the way out, with the guest looking at it",
+        "Measured as tabs opened, tabs closed, and tabs closed before departure"
+      ]
+    },
+    {
+      "id": "allocation",
+      "name": "Allocation",
+      "role": "The funded drink settles on the rail",
+      "summary": "AXIS funds a drink allocation for the night and buys soft drinks from the bar for the workshop. All of it is disbursed and settled over the partner's rail, so the hospitality budget itself becomes volume on the product.",
+      "details": [
+        "A funded drink and a purchased drink move through the same product",
+        "Guests see the partner cover the drink at the moment it is served",
+        "Workshop soft drinks and party drinks settle through one rail, one record",
+        "Measured as allocation value settled and drinks issued against it"
+      ]
+    },
+    {
+      "id": "split",
+      "name": "Split",
+      "role": "Rounds split, refunds done in the room",
+      "summary": "A round bought for a table is split instantly between the people standing at it, and anything charged wrong is reimbursed before that guest leaves the venue.",
+      "details": [
+        "Buying a round for the table is the natural behaviour of a bar at 01:00",
+        "The split lands on people's phones while they are still holding the drinks",
+        "Reimbursement is resolved in the room, not through a five-day dispute",
+        "Measured as splits completed and reimbursements resolved on site"
+      ]
+    },
+    {
+      "id": "merchant",
+      "name": "Merchant",
+      "role": "Bar Oriente is the real counterparty",
+      "summary": "The venue is a genuine merchant, not a simulation. Bar Oriente sells the drinks, accepts the rail, and gets settled for exactly what it sold.",
+      "details": [
+        "A working Mexico City bar with real inventory on the other side of the rail",
+        "Merchant-side acceptance tested across a full night of trading, not a pilot hour",
+        "Settlement to the venue reconciled against the venue's own totals",
+        "Measured as merchant volume settled and settlement time to the venue"
+      ]
+    }
+  ],
+
+  "flow": [
+    {
+      "id": "provision",
+      "stage": "Provision",
+      "context": "Doors",
+      "action": "Card provisioned at check-in",
+      "summary": "Provisioning is attached to entry: the seated 200 are set up during the workshop, and the 250 arriving at 22:00 are set up as they come through the door.",
+      "details": [
+        "Staffed points at both entries, so nobody onboards alone in a queue",
+        "The workshop block gives three unhurried hours for the first cohort",
+        "The guest is ready to pay before they have reached the bar",
+        "Measured as provisions completed against guests admitted"
+      ]
+    },
+    {
+      "id": "tap",
+      "stage": "Tap",
+      "context": "Bar",
+      "action": "First drink paid with a tap",
+      "summary": "The first real transaction is a drink at the venue bar. It is the action inside the partner's product and it happens in front of a bartender.",
+      "details": [
+        "A live payment for a real drink, not a test charge or a demo screen",
+        "Whatever the rail is, it is proven at the bar and not on a slide",
+        "Declines are handled by staff on the spot rather than lost",
+        "Measured as first successful transactions, separated from provisions"
+      ]
+    },
+    {
+      "id": "validate",
+      "stage": "Validate",
+      "context": "Bar",
+      "action": "Transaction verified at the bar",
+      "summary": "Staff validation and the transaction record have to agree before the funded drink is released. A hand stamp is not evidence; a settled payment is.",
+      "details": [
+        "The bar's own record and the partner's record are checked against each other",
+        "Guest state advances only on a verified transaction, never on a promoter's word",
+        "Attendance and qualified transactions stay separate numbers throughout",
+        "Measured as verified transactions, reported apart from headcount"
+      ]
+    },
+    {
+      "id": "redeem",
+      "stage": "Redeem",
+      "context": "Bar",
+      "action": "Funded drink settles on the rail",
+      "summary": "The drink AXIS funds is served and settled over the partner's rail, so the guest experiences the partner paying for the thing in their hand.",
+      "details": [
+        "People remember who paid for their drink and what they did to get it",
+        "The allocation is bought from the venue bar, so the venue is paid for it",
+        "The same rail carries the funded drink and the one the guest buys next",
+        "Measured as redemptions completed against verified transactions"
+      ]
+    },
+    {
+      "id": "screen",
+      "stage": "Screen",
+      "context": "LED wall",
+      "action": "The night's total on the wall",
+      "summary": "Between the live coding set and the closing DJ, the night's running transaction count goes up on the main LED wall in the Future Renaissance visual language.",
+      "details": [
+        "The partner's moment on the wall is a live number, not a static logo",
+        "It runs inside the same visual system the guests are feeding with Claude",
+        "Capture and social publication happen around that moment, with consent",
+        "Measured as screen moments delivered and social actions produced"
+      ]
+    },
+    {
+      "id": "report",
+      "stage": "Report",
+      "context": "Post-event",
+      "action": "Reconciled with the venue",
+      "summary": "The post-event report puts the partner's numbers next to the venue's, so the volume claimed is volume a real merchant agrees was received.",
+      "details": [
+        "Cards provisioned, first transactions, repeat transactions per guest",
+        "Tabs opened and closed, splits completed, reimbursements resolved",
+        "Allocation value settled and merchant settlement to Bar Oriente",
+        "Delivered as numbers and media, not as an impressions estimate"
+      ]
+    }
+  ],
+
+  "conceptLocales": {
+    "mechanics": {
+      "es": [
+        ["Emitir", "Las tarjetas se emiten o provisionan en el momento: durante el taller de las 18:00 para los 200 sentados y en la puerta desde las 22:00 para quienes llegan a la fiesta.", ["Se provisiona en el teléfono que el invitado ya trae en la mano, con soporte al lado", "A quien es primerizo se le acompaña, no se le deja con un código QR", "Queda listo antes de llegar a la barra, no mientras hace fila", "Se mide como tarjetas provisionadas y tarjetas usadas al menos una vez esa noche"]],
+        ["Tap", "La acción central del producto es la acción central de la sala. El invitado acerca el teléfono o la tarjeta en la barra de Bar Oriente y recibe su trago, sin descargar nada ni dictar un código.", ["La transacción ocurre en la barra, frente a un bartender", "Tiene que funcionar a la velocidad de la tarjeta que ya trae en la cartera", "Un rechazo se ve al instante y hay personal parado ahí mismo", "Se mide como taps completados y tiempo entre el tap y el trago servido"]],
+        ["Repetir", "Nadie compra un solo trago entre las 22:00 y el cierre. El gasto repetido es lo que separa a un socio de pagos de cualquier otro producto en el piso: el mismo invitado lo usa una y otra vez sin que se lo pidan.", ["El onboarding se paga una vez y la acción se repite el resto de la noche", "Después de la primera transacción, repetir ya no necesita personal", "El rail se prueba con carga real, a ritmo de barra, no en un demo", "Se mide como transacciones por invitado a lo largo de la noche"]],
+        ["Cuenta", "La cuenta del invitado se abre en el check-in y se cierra antes de que se vaya, para que nada quede colgado en una tarjeta detrás de la barra a las cuatro de la mañana.", ["Se abre con el escaneo de entrada, y los del taller la traen desde antes", "El total corriente es visible toda la noche, sin sorpresas al final", "Se cierra en un punto con personal, de salida y con el invitado viéndola", "Se mide como cuentas abiertas, cerradas y cerradas antes de la salida"]],
+        ["Asignación", "AXIS financia una asignación de tragos para la noche y compra los refrescos del taller en la barra. Todo se dispersa y se liquida por el rail del socio, así que el presupuesto de hospitalidad se vuelve volumen del producto.", ["Un trago financiado y uno comprado pasan por el mismo producto", "El invitado ve al socio cubrir el trago en el momento en que se lo sirven", "Refrescos del taller y tragos de la fiesta, un solo rail y un solo registro", "Se mide como valor de asignación liquidado y tragos entregados contra ella"]],
+        ["Dividir", "Una ronda para la mesa se divide al instante entre quienes están parados ahí, y cualquier cobro mal hecho se reembolsa antes de que ese invitado salga del venue.", ["Invitar la ronda es el comportamiento natural de una barra a la 01:00", "La división llega a sus teléfonos mientras todavía traen el trago en la mano", "El reembolso se resuelve en la sala, no en una disputa de cinco días", "Se mide como divisiones completadas y reembolsos resueltos en sitio"]],
+        ["Comercio", "El venue es un comercio real, no una simulación. Bar Oriente vende los tragos, acepta el rail y recibe la liquidación por exactamente lo que vendió.", ["Un bar en operación en la Ciudad de México, con inventario real del otro lado", "Aceptación del lado del comercio probada una noche completa, no una hora piloto", "La liquidación al venue se concilia contra los totales del propio venue", "Se mide como volumen de comercio liquidado y tiempo de liquidación al venue"]]
+      ],
+      "zh": [
+        ["发卡", "卡片在现场即时发放或开通：18:00 的工作坊为 200 位座席来宾办理，22:00 起在门口为到场派对的来宾办理。", ["直接开通在来宾手里已经拿着的手机上，全程有人协助", "第一次使用的人有人带着做，而不是丢给一个二维码", "在走到吧台之前就已办好，而不是排队时才开始", "以已开通的卡数与当晚至少使用过一次的卡数计量"]],
+        ["刷卡", "产品的核心动作，就是这个空间的核心动作。来宾在 Bar Oriente 吧台轻触一下就拿到酒，不用下载应用，也不用报出兑换码。", ["交易发生在吧台前，由调酒师当面完成", "速度必须与来宾钱包里那张卡一样快", "拒付会立刻显现，而工作人员就站在旁边", "以完成的支付笔数与从支付到出酒的时间计量"]],
+        ["复用", "从 22:00 到散场，没有人只喝一杯。重复消费正是支付类合作方与场内其他产品的分界：同一位来宾会主动一次又一次地使用它。", ["引导成本只付一次，动作却在整晚不断重复", "第一笔交易之后，后续使用完全不需要工作人员", "通道在真实负载与吧台节奏下被验证，而不是在演示里", "以每位来宾当晚的交易笔数计量"]],
+        ["账单", "来宾的账单在入场时开启，并在离场前结清，不会有任何一张卡被留在吧台后面到凌晨四点。", ["随入场扫码开启，工作坊来宾的账单一路延续下来", "累计金额整晚对来宾可见，不会在最后才是惊吓", "在离场路径上的值守点位结清，来宾当面确认", "以开启、结清，以及离场前结清的账单数计量"]],
+        ["额度", "AXIS 出资当晚的酒水额度，并从吧台采购工作坊的软饮。全部通过合作方的通道发放与结算，接待预算本身就变成了产品的交易量。", ["被资助的酒与自购的酒走的是同一个产品", "来宾在酒被端上来的那一刻，看到合作方替他们付了钱", "工作坊软饮与派对酒水，同一条通道、同一份记录", "以已结算的额度金额与凭额度发出的酒水杯数计量"]],
+        ["拆单", "为一桌买的一轮酒，可以立刻在站在那里的人之间拆分；任何算错的账，都在那位来宾离场之前退回。", ["凌晨一点请一整轮，是酒吧里最自然的行为", "拆单在大家还端着酒的时候就落到各自手机上", "退款在现场解决，而不是走五天的争议流程", "以完成的拆单数与现场解决的退款数计量"]],
+        ["商户", "场地是真实商户，不是模拟环境。Bar Oriente 卖出这些酒，接受这条通道，并按实际售出的金额收到结算。", ["墨西哥城一家正在营业的酒吧，通道另一端是真实库存", "商户侧受理经历了一整晚交易的检验，而不是一小时试点", "对场地的结算与场地自己的账目逐笔核对", "以已结算的商户交易额与到账时间计量"]]
+      ]
+    },
+    "flow": {
+      "es": [
+        ["Tarjeta provisionada en el check-in", "La provisión va pegada a la entrada: los 200 sentados quedan listos durante el taller y los 250 que llegan a las 22:00 quedan listos al cruzar la puerta.", ["Puntos con personal en ambas entradas, nadie se onboardea solo en la fila", "El bloque del taller da tres horas sin prisa para la primera cohorte", "El invitado ya puede pagar antes de llegar a la barra", "Se mide como provisiones completadas frente a invitados admitidos"]],
+        ["El primer trago se paga con un tap", "La primera transacción real es un trago en la barra del venue. Es la acción dentro del producto del socio y ocurre frente a un bartender.", ["Un pago real por un trago real, no un cargo de prueba ni una pantalla demo", "Sea cual sea el rail, se demuestra en la barra y no en una lámina", "Los rechazos los atiende el personal al momento en vez de perderse", "Se mide como primeras transacciones exitosas, aparte de las provisiones"]],
+        ["Transacción verificada en la barra", "La validación del personal y el registro de la transacción tienen que coincidir antes de liberar el trago financiado. Un sello en la mano no es evidencia; un pago liquidado sí.", ["El registro del venue y el del socio se contrastan entre sí", "El estado del invitado avanza solo con una transacción verificada", "Asistencia y transacciones calificadas se reportan por separado", "Se mide como transacciones verificadas, aparte del conteo de personas"]],
+        ["El trago financiado se liquida", "El trago que financia AXIS se sirve y se liquida por el rail del socio, así que el invitado vive al socio pagando lo que trae en la mano.", ["La gente recuerda quién le pagó el trago y qué hizo para conseguirlo", "La asignación se compra en la barra del venue, así que el venue cobra por ella", "El mismo rail lleva el trago financiado y el que el invitado compra después", "Se mide como redenciones completadas frente a transacciones verificadas"]],
+        ["El total de la noche en el muro", "Entre el set de live coding y el closing DJ, el conteo corriente de transacciones sube al muro LED principal, dentro del lenguaje visual de Future Renaissance.", ["El momento del socio en el muro es una cifra viva, no un logo estático", "Corre dentro del mismo sistema visual que los invitados alimentan con Claude", "La captura y la publicación social ocurren alrededor de ese momento, con consentimiento", "Se mide como momentos de pantalla entregados y acciones sociales producidas"]],
+        ["Conciliado con el venue", "El reporte posterior pone las cifras del socio junto a las del venue, para que el volumen que se declara sea volumen que un comercio real reconoce haber recibido.", ["Tarjetas provisionadas, primeras transacciones y transacciones repetidas por invitado", "Cuentas abiertas y cerradas, divisiones completadas, reembolsos resueltos", "Valor de asignación liquidado y liquidación de comercio a Bar Oriente", "Se entrega como números y material, no como estimación de impresiones"]]
+      ],
+      "zh": [
+        ["入场时完成开卡", "开通与入场绑定：200 位座席来宾在工作坊期间办好，22:00 到场的 250 人在进门时办好。", ["两个入口都有值守点位，没有人要在队伍里独自摸索", "工作坊时段为第一批人留出三个小时的从容时间", "来宾在走到吧台之前就已经具备支付能力", "以完成开通的人数与实际入场人数对照计量"]],
+        ["第一杯酒用一次刷卡完成", "第一笔真实交易是场地吧台的一杯酒。它是发生在合作方产品内部的行动，并且当着调酒师的面完成。", ["为一杯真实的酒完成的真实支付，不是测试扣款或演示界面", "无论底层是什么通道，它都在吧台被验证，而不是在幻灯片上", "被拒的交易由现场人员当场处理，而不是就此流失", "以首笔成功交易数计量，与开通数分开呈现"]],
+        ["在吧台验证这笔交易", "人工验证与交易记录必须一致，被资助的那杯酒才会发出。手背上的印章不是证据，一笔已结算的支付才是。", ["场地自己的记录与合作方的记录互相核对", "来宾状态只随已验证的交易推进，不凭任何人的口头认可", "到场人数与合格交易始终作为两个数字分别呈现", "以已验证交易数计量，与到场人数分开报告"]],
+        ["资助的酒水在通道内结算", "由 AXIS 出资的酒被端上来，并通过合作方的通道完成结算，来宾亲身体验到是合作方替他们付了手里这杯。", ["人们会记得是谁请的这杯酒，以及自己做了什么换来的", "额度是从场地吧台采购的，因此场地实际收到了这笔钱", "同一条通道既承载资助的酒，也承载来宾接着自己买的酒", "以完成的兑换数与已验证交易对照计量"]],
+        ["当晚总数出现在 LED 墙上", "在 live coding 与闭场 DJ 之间，当晚累计的交易笔数出现在主 LED 墙上，并遵循 Future Renaissance 的视觉语言。", ["合作方在墙上的时刻是一个实时数字，而不是一个静止标志", "它运行在来宾正用 Claude 共同喂养的同一套视觉系统里", "拍摄与社交发布围绕这个时刻进行，均经同意", "以交付的屏幕时刻数与产生的社交动作计量"]],
+        ["与场地账目逐笔对账", "会后报告把合作方的数字与场地的数字并排放置，让所宣称的交易量，是一个真实商户确认收到过的交易量。", ["已开通的卡、首笔交易、每位来宾的重复交易", "开启与结清的账单、完成的拆单、已解决的退款", "已结算的额度金额，以及对 Bar Oriente 的商户结算", "以数字与素材交付，而不是曝光量估算"]]
+      ]
+    }
+  },
+
+  "i18n": {
+    "es": {
+      "mechanics": [
+        ["EMITIR", "Tarjeta provisionada con personal en sitio"],
+        ["TAP", "Un tap compra un trago en la barra"],
+        ["REPETIR", "La acción más repetida de la noche"],
+        ["CUENTA", "Se abre en la puerta y se cierra al final"],
+        ["ASIGNACIÓN", "El trago financiado pasa por su rail"],
+        ["DIVIDIR", "Rondas divididas, reembolsos en sala"],
+        ["COMERCIO", "Bar Oriente es la contraparte real"]
+      ],
+      "flowStages": ["PROVISIÓN", "TAP", "VALIDACIÓN", "REDENCIÓN", "PANTALLA", "REPORTE"],
+      "flowActions": [
+        "TARJETA PROVISIONADA EN EL CHECK-IN",
+        "EL PRIMER TRAGO SE PAGA CON UN TAP",
+        "TRANSACCIÓN VERIFICADA EN LA BARRA",
+        "EL TRAGO FINANCIADO SE LIQUIDA",
+        "EL TOTAL DE LA NOCHE EN EL MURO",
+        "CONCILIADO CON EL VENUE"
+      ],
+      "keys": {
+        "nav.brandFunction": "FUNCIÓN DE PAGOS",
+        "brandFunction.kicker": "FUNCIÓN DE PAGOS",
+        "brandFunction.title": "EL SOCIO NO PATROCINA LA BARRA. ES EL RAIL DE LA BARRA.",
+        "brandFunction.copy": "Cada invitado en la sala compra o reclama un trago esa noche, lo que convierte a pagar un trago en la acción más repetida de todo el evento. Un socio de pagos es dueño de esa acción de punta a punta, con un venue real del otro lado.",
+        "brandFunction.noLogoWall": "NO ES UN LOGO EN LA CARTA DE TRAGOS.",
+        "brandFunction.distinctFunctions": "CADA TRAGO ES UNA TRANSACCIÓN DE COMERCIO REAL, CONTADA UNA POR UNA.",
+        "crossWeek.kicker": "EL FLUJO DE RECOMPENSA",
+        "crossWeek.title": "UN TAP SE VUELVE UN TRAGO Y LUEGO UN REGISTRO DE COMERCIO LIQUIDADO.",
+        "crossWeek.copy": "La cadena es corta y física: tap en la barra, trago en la mano, el venue cobrado por el rail del socio, el conteo de transacciones de la noche en el muro LED principal y cada movimiento conciliado contra los totales de Bar Oriente en el reporte.",
+        "crossWeek.note": "FLUJO DE EJEMPLO · LAS ACCIONES EXACTAS SE DISEÑAN SEGÚN EL PRODUCTO."
+      }
+    },
+    "zh": {
+      "mechanics": [
+        ["发卡", "在有工作人员的点位现场开通"],
+        ["刷卡", "一次轻触买到一杯酒"],
+        ["复用", "全场重复次数最多的动作"],
+        ["账单", "进门开启，离场前结清"],
+        ["额度", "被资助的酒水走同一条通道"],
+        ["拆单", "整轮拆分，退款当场解决"],
+        ["商户", "Bar Oriente 是真实的对手方"]
+      ],
+      "flowStages": ["开通", "支付", "验证", "兑换", "上墙", "报告"],
+      "flowActions": [
+        "入场时完成开卡",
+        "第一杯酒用一次刷卡完成",
+        "在吧台验证这笔交易",
+        "资助的酒水在通道内结算",
+        "当晚总数出现在 LED 墙上",
+        "与场地账目逐笔对账"
+      ],
+      "keys": {
+        "nav.brandFunction": "支付功能",
+        "brandFunction.kicker": "支付功能",
+        "brandFunction.title": "合作方不是赞助这个吧台，而是这个吧台的支付通道。",
+        "brandFunction.copy": "当晚在场的每一位来宾都会买下或领取一杯酒，这让“为一杯酒付款”成为整场活动中重复次数最多的动作。支付类合作方从头到尾拥有这个动作，而通道另一端是一个真实的场地。",
+        "brandFunction.noLogoWall": "不是酒单上的一个标志。",
+        "brandFunction.distinctFunctions": "每一杯酒都是一笔真实的商户交易，逐笔计数。",
+        "crossWeek.kicker": "奖励流程",
+        "crossWeek.title": "一次刷卡变成一杯酒，再变成一笔已结算的商户记录。",
+        "crossWeek.copy": "这条链路又短又实在：在吧台刷卡、酒到手上、场地通过合作方的通道收到钱、当晚交易笔数出现在主 LED 墙上，最后每一笔都与 Bar Oriente 自己的账目在报告中逐笔核对。",
+        "crossWeek.note": "仅为示例流程 · 具体行动将围绕该产品设计。"
+      }
+    }
+  }
+}

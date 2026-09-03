@@ -1,0 +1,536 @@
+{
+  "slug": "marketplace",
+  "name": "Marketplace",
+  "slot": "[MARKETPLACE BRAND]",
+  "discipline": "Primary and secondary market for digital art",
+  "pageTitle": "Future Renaissance · Marketplace Partner · Claude Community Event · AXIS",
+  "pageDescription": "Private AXIS partnership presentation built for a digital-art marketplace: one night at Bar Oriente, Mexico City, October 28 2026, where a 200-seat Claude workshop and a live-coding after party generate collectible work inside the room. The marketplace lists it, sells it, and reports it.",
+
+  "slide08": {
+    "label": "Marketplace function",
+    "navLabel": "MARKETPLACE FUNCTION",
+    "kicker": "MARKETPLACE FUNCTION",
+    "title": "THE ROOM GENERATES THE INVENTORY. THE MARKETPLACE RUNS IT.",
+    "copy": "This is a night that makes its own supply: Verse works that draw themselves from a hash the moment they are collected, Pixelord releases that ship sound and 3D together, and LED wall output the guests generated with Claude. A marketplace partner does not have to simulate scarcity here, it operates the market for work that did not exist before 18:00.",
+    "ruleA": "NOT A LOGO BEHIND THE DJ BOOTH.",
+    "ruleB": "SEVEN MARKET FUNCTIONS, EACH WITH LISTED WORK AND A COUNTED COLLECTOR."
+  },
+
+  "slide09": {
+    "navLabel": "THE REWARD FLOW",
+    "kicker": "THE REWARD FLOW",
+    "title": "COLLECT IN THE APP. REDEEM AT THE BAR. APPEAR IN THE REPORT.",
+    "copy": "A giveaway ends the moment the prize is handed over. Here the collect is staff-guided, validated by a human, redeemed for a drink at the bar, shown on the LED wall, and counted in the post-event report.",
+    "note": "EXAMPLE FLOW · EXACT ACTIONS ARE DESIGNED AROUND THE PRODUCT."
+  },
+
+  "mechanics": [
+    {
+      "id": "livemint",
+      "name": "Live Mint",
+      "role": "Work minted while the set is playing",
+      "summary": "The live-coding set writes music as code in front of the room. States of that set are minted on the marketplace while it is still running, so the first collectors are people who watched it happen.",
+      "details": [
+        "Minting opens during the live-coding set, not the morning after",
+        "The artist signs the piece from the stage position, in the room",
+        "Measured as pieces minted in-set and first-time collectors among them",
+        "A collector can point at the minute on stage that produced their piece"
+      ]
+    },
+    {
+      "id": "hashdraw",
+      "name": "Hash Draw",
+      "role": "The collect is what draws the work",
+      "summary": "A Verse generative work is not a fixed file. It reads a hash when it is collected and draws itself from that seed, so the guest's own collect is the act that creates their output.",
+      "details": [
+        "Verse Works is on the line-up, so the format is theirs, not a mock-up",
+        "No two guests receive the same output from the same drop",
+        "The drawn result appears on the LED wall seconds after the collect",
+        "Measured as unique outputs drawn and the collector behind each one"
+      ]
+    },
+    {
+      "id": "gallery",
+      "name": "Gallery Scene",
+      "role": "The marketplace UI becomes a wall scene",
+      "summary": "Between sets the main LED wall runs the marketplace's own gallery view, showing what the room is collecting in real time. It is the product's actual interface at venue scale, not a logo card.",
+      "details": [
+        "The wall scene carries live listings and the collector count as it moves",
+        "Slotted between the warm-up DJ and the live-coding set",
+        "Guests scan from the wall straight into the listing they just saw",
+        "Measured as wall minutes and scans that convert into a collect"
+      ]
+    },
+    {
+      "id": "guestedition",
+      "name": "Guest Edition",
+      "role": "Guest wall output listed as an edition",
+      "summary": "Guests change the LED wall through Claude with their own photos, videos and prompts. The output they made is listed on the marketplace with the guest credited as its creator.",
+      "details": [
+        "The visual a guest prompted becomes a listing that guest owns",
+        "For most of them it is the first thing they have ever listed anywhere",
+        "The Public is on the line-up as an artist, and this is what that means",
+        "Measured as editions listed and the share from first-time creators"
+      ]
+    },
+    {
+      "id": "bardrop",
+      "name": "Bar Drop",
+      "role": "A timed drop at the 22:00 doors",
+      "summary": "One drop opens on the clock when the after-party doors open and 250 further guests arrive. Collecting inside that window is the action that releases the drink at the bar.",
+      "details": [
+        "The window is announced from the wall and by staff working the door",
+        "Collect inside the window, redeem at the bar, no separate voucher",
+        "Measured as collects inside the window against arrivals in those minutes",
+        "Gives the second wave of the night a reason to open the app on arrival"
+      ]
+    },
+    {
+      "id": "royalty",
+      "name": "Royalty Ticker",
+      "role": "Artist payouts shown as they settle",
+      "summary": "When a piece sells in the room, the split going to the artist is displayed. Pixelord ships sound and 3D together onchain, and the room gets to see what that practice actually pays.",
+      "details": [
+        "Each sale shows the artist share on the wall as it settles",
+        "Aimed at the exact audience sitting in the workshop: artists and labels",
+        "Producers and managers see the payout rail instead of a pitch about it",
+        "Measured as value routed to artists across the night"
+      ]
+    },
+    {
+      "id": "nightshelf",
+      "name": "Night Shelf",
+      "role": "The collection is the proof of being there",
+      "summary": "Everything a guest collected across the night resolves into one set held at their own address. Months later it is still the record that they were in the room on October 28.",
+      "details": [
+        "Workshop piece, guest edition and drop collect resolve to one shelf",
+        "Held in the guest's own custody, not as a platform balance",
+        "Measured as guests still holding at least one piece thirty days later",
+        "The marketplace keeps a reachable collector, not an attendance list"
+      ]
+    }
+  ],
+
+  "flow": [
+    {
+      "id": "onboard",
+      "stage": "Onboard",
+      "context": "Workshop",
+      "action": "Seat scan opens the market",
+      "summary": "Doors at 18:00, 200 chairs, one scan per seat. The marketplace account is created while a host is standing in the row, not alone on a phone at home.",
+      "details": [
+        "Every one of the 200 seats is scanned on the way in",
+        "Account and first listing view happen with staff in the aisle",
+        "Measured as accounts opened at the seat, not as app installs",
+        "A failure at this step is visible immediately and fixed on the spot"
+      ]
+    },
+    {
+      "id": "act",
+      "stage": "Act",
+      "context": "Workshop",
+      "action": "First collect from the seat",
+      "summary": "The Claude workshop is hands-on, so the first collect is part of the session itself. Every attendee leaves the 18:00 to 21:00 block having used the product once.",
+      "details": [
+        "The session runs on the venue screen, so the step is done together",
+        "Producers, artists, labels, managers and studios all complete it",
+        "Measured as first collects completed inside the workshop block",
+        "Nobody is asked to go and try the product later at home"
+      ]
+    },
+    {
+      "id": "validate",
+      "stage": "Validate",
+      "context": "Doors",
+      "action": "Staff validates at 22:00",
+      "summary": "At 22:00 the after-party doors open to 250 further guests. Staff check the collect on the guest's own screen before anything is released.",
+      "details": [
+        "Staff validation and the onchain record have to agree",
+        "Workshop guests who stayed are recognised without repeating the flow",
+        "Measured as validated actions, kept separate from headcount",
+        "This is the number the report is built on, not attendance"
+      ]
+    },
+    {
+      "id": "redeem",
+      "stage": "Redeem",
+      "context": "Bar",
+      "action": "A verified collect pours a drink",
+      "summary": "The validated collect is redeemed at the bar for a drink. People remember who paid for the drink and what they did to earn it.",
+      "details": [
+        "Redemption happens at the bar, in person, in a single movement",
+        "One verified action, one drink, logged against the action that earned it",
+        "Measured as redemptions and the collects they resolve to",
+        "The reward is not the end of the flow, it sits in the middle of it"
+      ]
+    },
+    {
+      "id": "screen",
+      "stage": "Screen",
+      "context": "LED wall",
+      "action": "The piece goes on the wall",
+      "summary": "The collected work is shown on the main LED wall with the listing visible, and that is the moment guests photograph and post it themselves.",
+      "details": [
+        "A collector-facing moment on the largest surface in the venue",
+        "Social publication happens because the guest wants the picture",
+        "The AXIS media team captures the same moment for the partner",
+        "Measured as wall appearances and posts captured against them"
+      ]
+    },
+    {
+      "id": "report",
+      "stage": "Report",
+      "context": "Post-event",
+      "action": "The night resolves to a ledger",
+      "summary": "AXIS closes the night with one record: who collected, what they collected, what they redeemed, and what they are still holding weeks later.",
+      "details": [
+        "Accounts opened, collects, validations, redemptions and listings",
+        "Split between workshop attendees and after-party arrivals",
+        "Measured as retained collectors rather than impressions",
+        "Delivered as the partner's own record, not as a recap deck"
+      ]
+    }
+  ],
+
+  "conceptLocales": {
+    "mechanics": {
+      "es": [
+        [
+          "Minteo en Vivo",
+          "El set de live coding escribe música como código frente a la sala. Estados de ese set se mintean en el marketplace mientras todavía suena, así que los primeros coleccionistas son quienes lo vieron pasar.",
+          [
+            "El minteo abre durante el set, no a la mañana siguiente",
+            "El artista firma la pieza desde el escenario, en la sala",
+            "Se mide como piezas minteadas en set y cuántos son coleccionistas nuevos",
+            "Cada quien puede señalar el minuto exacto que produjo su pieza"
+          ]
+        ],
+        [
+          "Dibujo por Hash",
+          "Una obra generativa de Verse no es un archivo fijo. Lee un hash cuando se colecciona y se dibuja a partir de esa semilla, así que el propio acto de coleccionar es lo que crea el resultado.",
+          [
+            "Verse Works está en el line-up: el formato es suyo, no una simulación",
+            "No hay dos invitados con el mismo resultado del mismo drop",
+            "El resultado aparece en el muro LED segundos después de coleccionar",
+            "Se mide como resultados únicos dibujados y quién coleccionó cada uno"
+          ]
+        ],
+        [
+          "Escena Galería",
+          "Entre sets, el muro LED principal corre la vista de galería del propio marketplace, mostrando en tiempo real lo que la sala está coleccionando. Es la interfaz real del producto a escala de venue, no una placa con logo.",
+          [
+            "La escena muestra listados en vivo y el contador de coleccionistas",
+            "Se programa entre el DJ de calentamiento y el set de live coding",
+            "El invitado escanea desde el muro y cae directo en el listado",
+            "Se mide como minutos en muro y escaneos que terminan en colección"
+          ]
+        ],
+        [
+          "Edición del Público",
+          "Los invitados modifican el muro LED con Claude usando sus propias fotos, videos y prompts. Lo que generaron se lista en el marketplace con el invitado acreditado como autor.",
+          [
+            "El visual que un invitado promptea se vuelve un listado suyo",
+            "Para la mayoría es lo primero que listan en su vida",
+            "The Public está en el line-up como artista, y esto es lo que significa",
+            "Se mide como ediciones listadas y qué parte viene de autores nuevos"
+          ]
+        ],
+        [
+          "Drop de Barra",
+          "Un drop abre en punto cuando se abren las puertas del after y llegan 250 invitados más. Coleccionar dentro de esa ventana es la acción que libera el trago en la barra.",
+          [
+            "La ventana se anuncia desde el muro y por el staff en la puerta",
+            "Coleccionas dentro de la ventana y canjeas en barra, sin vale aparte",
+            "Se mide como colecciones dentro de la ventana contra llegadas del momento",
+            "Le da a la segunda oleada una razón para abrir la app al entrar"
+          ]
+        ],
+        [
+          "Regalías en Vivo",
+          "Cuando una pieza se vende en la sala, se muestra el reparto que va al artista. Pixelord publica sonido y 3D juntos onchain, y la sala ve lo que esa práctica realmente paga.",
+          [
+            "Cada venta muestra en el muro la parte del artista al liquidarse",
+            "Dirigido justo al público sentado en el taller: artistas y sellos",
+            "Productores y managers ven el riel de pago, no un discurso sobre él",
+            "Se mide como valor liquidado a artistas durante la noche"
+          ]
+        ],
+        [
+          "Colección de la Noche",
+          "Todo lo que un invitado coleccionó durante la noche se resuelve en un solo conjunto bajo su propia dirección. Meses después sigue siendo la prueba de que estuvo ahí el 28 de octubre.",
+          [
+            "Pieza del taller, edición del público y drop quedan en un mismo conjunto",
+            "Bajo custodia del propio invitado, no como saldo de plataforma",
+            "Se mide como invitados que conservan al menos una pieza a 30 días",
+            "El marketplace se queda con un coleccionista alcanzable, no con una lista"
+          ]
+        ]
+      ],
+      "zh": [
+        [
+          "现场铸造",
+          "Live Coding 环节在全场面前用代码写音乐。该演出的状态会在演出进行中直接在平台上铸造，因此最早的收藏者就是亲眼看着它发生的人。",
+          [
+            "铸造在演出进行时开启，而不是第二天早上",
+            "艺术家在舞台位置、在现场为作品签名",
+            "以演出中铸造的作品数、以及其中首次收藏者数量衡量",
+            "每位收藏者都能指出舞台上是哪一分钟生成了自己那件作品"
+          ]
+        ],
+        [
+          "哈希生成",
+          "Verse 的生成艺术作品不是一个固定文件。它在被收藏的那一刻读取一个哈希，并据此把自己画出来，所以收藏这个动作本身就是创作。",
+          [
+            "Verse Works 就在演出阵容中，这套机制是他们的，不是模拟",
+            "同一次发售中，没有两位来宾会得到相同的结果",
+            "生成结果在收藏后几秒内出现在 LED 主屏上",
+            "以生成的唯一作品数、以及每件背后的收藏者衡量"
+          ]
+        ],
+        [
+          "画廊场景",
+          "两场演出之间，LED 主屏运行平台自己的画廊视图，实时展示全场正在收藏什么。那是产品的真实界面被放大到场馆尺度，而不是一张 logo 卡。",
+          [
+            "屏幕场景呈现实时在售作品与不断跳动的收藏人数",
+            "排在暖场 DJ 与 Live Coding 之间的时段",
+            "来宾可以直接从屏幕扫码进入刚看到的那件作品",
+            "以上屏时长、以及由扫码转化的收藏数衡量"
+          ]
+        ],
+        [
+          "观众版次",
+          "来宾用自己的照片、视频和提示词，通过 Claude 改变 LED 主屏。他们生成的画面会在平台上架，并把该来宾标注为作者。",
+          [
+            "来宾提示词生成的画面，成为归他自己所有的一件在售作品",
+            "对大多数人来说，这是他们人生中第一次上架作品",
+            "The Public 作为艺术家列在阵容中，指的正是这件事",
+            "以上架版次数量、以及其中首次创作者的占比衡量"
+          ]
+        ],
+        [
+          "整点发售",
+          "当 22:00 后半场开门、另有 250 位来宾进场时，一场限时发售准时开启。在该窗口内完成收藏，就是换取吧台饮品的那个动作。",
+          [
+            "发售窗口由主屏和门口工作人员同时告知",
+            "窗口内收藏，吧台直接兑换，不需要另发券",
+            "以窗口内的收藏数、对照同一时段的进场人数衡量",
+            "让当晚第二波人群一进门就有理由打开这个应用"
+          ]
+        ],
+        [
+          "版税可见",
+          "当一件作品在现场售出时，分给艺术家的那部分会被展示出来。Pixelord 一贯把声音与 3D 一起上链发布，而现场可以看见这种做法究竟能带来多少收入。",
+          [
+            "每笔成交结算时，都在主屏显示艺术家分成",
+            "正对工作坊里坐着的那批人：艺术家与厂牌",
+            "制作人和经纪人看到的是真实的分账通道，而不是关于它的说辞",
+            "以当晚结算给艺术家的金额衡量"
+          ]
+        ],
+        [
+          "当晚收藏",
+          "来宾整晚收藏的一切，最终汇成他自己地址下的一组作品。数月之后，它依然是此人 10 月 28 日在场的凭证。",
+          [
+            "工作坊作品、观众版次与限时发售收藏，归入同一组",
+            "由来宾自己保管，而不是留在平台账户余额里",
+            "以 30 天后仍持有至少一件作品的来宾数量衡量",
+            "平台留下的是可触达的收藏者，而不是一份到场名单"
+          ]
+        ]
+      ]
+    },
+    "flow": {
+      "es": [
+        [
+          "El escaneo del asiento abre el marketplace",
+          "Puertas a las 18:00, 200 sillas, un escaneo por asiento. La cuenta del marketplace se crea con un anfitrión parado en la fila, no a solas con el celular en casa.",
+          [
+            "Los 200 asientos se escanean al entrar",
+            "La cuenta y la primera vista de listados ocurren con staff en el pasillo",
+            "Se mide como cuentas abiertas en el asiento, no como instalaciones",
+            "Un fallo aquí se ve al momento y se resuelve ahí mismo"
+          ]
+        ],
+        [
+          "Primera colección desde el asiento",
+          "El taller de Claude es práctico, así que la primera colección es parte de la sesión. Cada asistente sale del bloque de 18:00 a 21:00 habiendo usado el producto una vez.",
+          [
+            "La sesión corre en la pantalla del venue y el paso se hace en conjunto",
+            "Productores, artistas, sellos, managers y estudios lo completan",
+            "Se mide como primeras colecciones completadas dentro del taller",
+            "A nadie se le pide probar el producto después, en su casa"
+          ]
+        ],
+        [
+          "El staff valida a las 22:00",
+          "A las 22:00 abren las puertas del after para 250 invitados más. El staff revisa la colección en la pantalla del propio invitado antes de liberar nada.",
+          [
+            "La validación del staff y el registro onchain tienen que coincidir",
+            "Quien se quedó del taller es reconocido sin repetir el flujo",
+            "Se mide como acciones validadas, aparte del conteo de asistentes",
+            "Sobre este número se construye el reporte, no sobre la asistencia"
+          ]
+        ],
+        [
+          "Una colección verificada paga el trago",
+          "La colección validada se canjea en la barra por un trago. La gente recuerda quién pagó el trago y qué hizo para ganárselo.",
+          [
+            "El canje ocurre en la barra, en persona, en un solo movimiento",
+            "Una acción verificada, un trago, registrado contra la acción que lo generó",
+            "Se mide como canjes y las colecciones a las que corresponden",
+            "La recompensa no es el final del flujo, está a la mitad"
+          ]
+        ],
+        [
+          "La pieza sube al muro",
+          "La obra coleccionada se muestra en el muro LED principal con el listado visible, y ese es el momento que los invitados fotografían y publican por su cuenta.",
+          [
+            "Un momento para el coleccionista en la superficie más grande del venue",
+            "La publicación en redes ocurre porque el invitado quiere la foto",
+            "El equipo de media de AXIS captura ese mismo momento para el socio",
+            "Se mide como apariciones en muro y publicaciones registradas"
+          ]
+        ],
+        [
+          "La noche se resuelve en un registro",
+          "AXIS cierra la noche con un solo registro: quién coleccionó, qué coleccionó, qué canjeó y qué sigue conservando semanas después.",
+          [
+            "Cuentas abiertas, colecciones, validaciones, canjes y listados",
+            "Separado entre asistentes del taller y llegadas del after",
+            "Se mide como coleccionistas retenidos, no como impresiones",
+            "Se entrega como registro propio del socio, no como presentación de cierre"
+          ]
+        ]
+      ],
+      "zh": [
+        [
+          "扫码入座即开通账户",
+          "18:00 开门，200 把椅子，每个座位扫一次码。平台账户是在主持人就站在这一排时开通的，而不是回家一个人对着手机完成。",
+          [
+            "200 个座位在入场时全部完成扫码",
+            "开户与第一次浏览在售作品，都有工作人员在过道协助",
+            "以在座位上开通的账户数衡量，而不是应用安装量",
+            "这一步出问题当场就能看见，也当场解决"
+          ]
+        ],
+        [
+          "在座位上完成首次收藏",
+          "Claude 工作坊是动手环节，因此首次收藏就是课程的一部分。每位参与者离开 18:00 至 21:00 这一段时，都已经完整用过一次产品。",
+          [
+            "课程内容同步在场馆主屏上，这一步全场一起做",
+            "制作人、艺术家、厂牌、经纪人和录音棚都会完成",
+            "以工作坊时段内完成的首次收藏数量衡量",
+            "不需要任何人事后回家再自己试一次"
+          ]
+        ],
+        [
+          "22:00 由工作人员核验",
+          "22:00 后半场开门，另有 250 位来宾进场。工作人员在来宾自己的屏幕上核对收藏记录，之后才会放行任何奖励。",
+          [
+            "人工核验与链上记录必须一致",
+            "从工作坊留下来的来宾无需重走一遍流程",
+            "以核验通过的行动数衡量，与到场人数分开统计",
+            "报告建立在这个数字上，而不是到场人数"
+          ]
+        ],
+        [
+          "核验通过即可换一杯",
+          "核验通过的收藏，可在吧台兑换一杯饮品。人们记得住是谁请的这杯酒，以及自己做了什么才换到它。",
+          [
+            "兑换在吧台当面完成，一个动作走完",
+            "一次核验行动换一杯，并与产生它的那个动作绑定记录",
+            "以兑换次数、以及其对应的收藏记录衡量",
+            "奖励不是流程的终点，而是流程的中段"
+          ]
+        ],
+        [
+          "作品登上主屏",
+          "被收藏的作品会连同其在售信息一起出现在 LED 主屏上，而那正是来宾自己举起手机拍照并发布的时刻。",
+          [
+            "在场馆最大的一块屏上，给收藏者一个属于他的时刻",
+            "社交发布之所以发生，是因为来宾自己想要那张照片",
+            "AXIS 媒体团队同步为合作方记录同一个瞬间",
+            "以上屏次数、以及与之对应的社交发布量衡量"
+          ]
+        ],
+        [
+          "整晚收敛成一份账目",
+          "AXIS 以一份记录收尾：谁收藏了、收藏了什么、兑换了什么，以及数周之后还持有什么。",
+          [
+            "开户数、收藏数、核验数、兑换数与上架数",
+            "按工作坊参与者与后半场进场者分开呈现",
+            "以留存的收藏者衡量，而不是曝光量",
+            "作为合作方自己的记录交付，而不是一份总结演示"
+          ]
+        ]
+      ]
+    }
+  },
+
+  "i18n": {
+    "es": {
+      "mechanics": [
+        ["MINTEO EN VIVO", "Piezas minteadas mientras suena el set"],
+        ["DIBUJO POR HASH", "Coleccionar es lo que dibuja la obra"],
+        ["ESCENA GALERÍA", "La interfaz del marketplace en el muro"],
+        ["EDICIÓN DEL PÚBLICO", "Lo que hizo el público, listado como edición"],
+        ["DROP DE BARRA", "Un drop en punto al abrir a las 22:00"],
+        ["REGALÍAS EN VIVO", "El pago al artista, visible al liquidarse"],
+        ["COLECCIÓN DE LA NOCHE", "La colección es la prueba de haber estado"]
+      ],
+      "flowStages": ["Alta", "Acción", "Validación", "Canje", "Muro", "Reporte"],
+      "flowActions": [
+        "EL ESCANEO DEL ASIENTO ABRE EL MARKETPLACE",
+        "PRIMERA COLECCIÓN DESDE EL ASIENTO",
+        "EL STAFF VALIDA A LAS 22:00",
+        "UNA COLECCIÓN VERIFICADA PAGA EL TRAGO",
+        "LA PIEZA SUBE AL MURO",
+        "LA NOCHE SE RESUELVE EN UN REGISTRO"
+      ],
+      "keys": {
+        "nav.brandFunction": "FUNCIÓN DEL MARKETPLACE",
+        "brandFunction.kicker": "FUNCIÓN DEL MARKETPLACE",
+        "brandFunction.title": "LA SALA GENERA EL INVENTARIO. EL MARKETPLACE LO OPERA.",
+        "brandFunction.copy": "Es una noche que produce su propia oferta: obras de Verse que se dibujan a partir de un hash en el momento en que se coleccionan, lanzamientos de Pixelord que publican sonido y 3D juntos, y el material del muro LED que generó el propio público con Claude. Un socio marketplace no necesita simular escasez aquí, opera el mercado de obra que no existía antes de las 18:00.",
+        "brandFunction.noLogoWall": "NO ES UN LOGO DETRÁS DE LA CABINA DEL DJ.",
+        "brandFunction.distinctFunctions": "SIETE FUNCIONES DE MERCADO, CADA UNA CON OBRA LISTADA Y COLECCIONISTAS CONTADOS.",
+        "crossWeek.kicker": "EL FLUJO DE RECOMPENSA",
+        "crossWeek.title": "COLECCIONA EN LA APP. CANJEA EN LA BARRA. APARECE EN EL REPORTE.",
+        "crossWeek.copy": "Un giveaway termina en el momento en que se entrega el premio. Aquí la colección es guiada por staff, validada por una persona, canjeada por un trago en la barra, mostrada en el muro LED y contada en el reporte posterior.",
+        "crossWeek.note": "FLUJO DE EJEMPLO · LAS ACCIONES EXACTAS SE DISEÑAN SEGÚN EL PRODUCTO."
+      }
+    },
+    "zh": {
+      "mechanics": [
+        ["现场铸造", "演出进行中即完成铸造"],
+        ["哈希生成", "收藏这个动作本身就是创作"],
+        ["画廊场景", "平台界面直接成为主屏画面"],
+        ["观众版次", "观众生成的画面上架为版次"],
+        ["整点发售", "22:00 开门时准点开启的发售"],
+        ["版税可见", "艺术家分成结算时当场显示"],
+        ["当晚收藏", "这组收藏就是到场的凭证"]
+      ],
+      "flowStages": ["开通", "行动", "核验", "兑换", "上屏", "报告"],
+      "flowActions": [
+        "扫码入座即开通账户",
+        "在座位上完成首次收藏",
+        "22:00 由工作人员核验",
+        "核验通过即可换一杯",
+        "作品登上主屏",
+        "整晚收敛成一份账目"
+      ],
+      "keys": {
+        "nav.brandFunction": "平台功能",
+        "brandFunction.kicker": "平台功能",
+        "brandFunction.title": "内容由现场产生，市场由平台运营。",
+        "brandFunction.copy": "这是一个自己生产供给的夜晚：Verse 的作品在被收藏的那一刻依据哈希把自己画出来，Pixelord 的发布把声音与 3D 一起上链，而 LED 主屏上的画面由来宾用 Claude 亲手生成。交易平台在这里不必制造稀缺，它经营的是 18:00 之前根本不存在的作品。",
+        "brandFunction.noLogoWall": "不是 DJ 台背后的一个标志。",
+        "brandFunction.distinctFunctions": "七项市场功能，每一项都有上架的作品和可计数的收藏者。",
+        "crossWeek.kicker": "奖励流程",
+        "crossWeek.title": "在应用里收藏，在吧台兑换，在报告里留痕。",
+        "crossWeek.copy": "普通抽奖在奖品递出的那一刻就结束了。在这里，收藏由工作人员引导、由人工核验、在吧台兑换成一杯饮品、出现在 LED 主屏上，并被计入活动后的报告。",
+        "crossWeek.note": "示例流程 · 具体行动将围绕该产品设计。"
+      }
+    }
+  }
+}

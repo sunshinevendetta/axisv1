@@ -1,0 +1,346 @@
+#!/usr/bin/env node
+/**
+ * Derives the single-night base i18n from the extended (six-night) deck's.
+ *
+ * Keys describing the old six-night / five-house model are dropped, keys that
+ * still hold (guest flow, metrics, measurement, system) are kept with their
+ * existing translations, and the single-night keys are added. Run once; the
+ * output at public/futurerenaissance-product-base/i18n.js is checked in.
+ */
+import { readFileSync, writeFileSync } from "node:fs";
+
+const SRC = "public/futurerenaissanceextended/i18n.js";
+const OUT = "public/futurerenaissance-product-base/i18n.js";
+
+// Whole key families that describe the retired six-night model.
+const DROP_PREFIX = [
+  "events.", "houses.", "circuit.", "circuitInventory.", "exclusive.",
+  "presenting.", "functions.", "tiers.singleHouse.", "tiers.claude.",
+  "tiers.threeHouse.", "tiers.techTown.", "tiers.completeWeek.",
+];
+const DROP_EXACT = new Set([
+  "brand.afterHours", "nav.circuit", "nav.houses", "nav.singleInventory",
+  "nav.circuitInventory", "nav.categoryExclusive", "nav.techTownPresenting",
+  "cover.dates", "cover.nights", "cover.houses", "cover.program",
+  "proposition.dayLabel", "proposition.dayCopy", "proposition.nightLabel", "proposition.nightCopy",
+  "crossWeek.account", "crossWeek.productUse", "crossWeek.secondAction",
+  "crossWeek.technical", "crossWeek.advanced", "crossWeek.completion",
+  "claude.officialParty", "claude.presented", "claude.systemRole", "claude.bookingNote",
+  "single.title", "single.note",
+  "close.events", "close.houses", "close.claude", "close.dates",
+]);
+
+const ADD = {
+  es: {
+    "brand.claudeEvent": "EVENTO DE COMUNIDAD DE CLAUDE",
+    "nav.program": "RUN OF SHOW",
+    "nav.lineup": "EL LINE UP",
+    "nav.inventory": "INVENTARIO DE PARTNERS",
+    "cover.kicker": "EVENTO DE COMUNIDAD DE CLAUDE · MEXICO TECH WEEK 2026",
+    "cover.seated": "WORKSHOP SENTADO",
+    "cover.afterParty": "AFTER PARTY",
+    "cover.night": "NOCHE",
+    "proposition.title": "UN WORKSHOP PARA LA INDUSTRIA MUSICAL QUE SE CONVIERTE EN LA NOCHE.",
+    "proposition.copy": "Tres horas sentadas con Claude para productores, artistas, sellos, managers y estudios. A las 22:00 la sala cambia, las puertas se abren otra vez y el mismo espacio corre como Future Renaissance hasta el cierre.",
+    "proposition.earlyLabel": "18:00 – 21:00",
+    "proposition.earlyCopy": "200 ASISTENTES SENTADOS",
+    "proposition.axisRole": "HOSPEDA + OPERA TODA LA NOCHE",
+    "proposition.lateLabel": "22:00 – LATE",
+    "proposition.lateCopy": "+250 INVITADOS ADICIONALES",
+    "proposition.positioning": "UNA SALA. UNA NOCHE. DOS PÚBLICOS QUE SE CRUZAN.",
+    "program.kicker": "RUN OF SHOW",
+    "program.title": "UNA NOCHE QUE CAMBIA DE ESTADO TRES VECES.",
+    "program.seats": "LUGARES",
+    "program.guests": "INVITADOS AFTER PARTY",
+    "program.venue": "SEDE",
+    "program.workshop.arc": "SENTADO",
+    "program.workshop.label": "WORKSHOP DE CLAUDE",
+    "program.reset.arc": "CAMBIO",
+    "program.reset.label": "CAMBIO DE SALA",
+    "program.warmup.arc": "LLEGADA",
+    "program.warmup.label": "DJ DE APERTURA",
+    "program.live-coding.arc": "CREACIÓN",
+    "program.live-coding.label": "LIVE CODING",
+    "program.closing.arc": "CLUB",
+    "program.closing.label": "DJ DE CIERRE",
+    "lineup.kicker": "EL LINE UP",
+    "lineup.title": "LA SALA APARECE EN EL LINE UP JUNTO A LOS ARTISTAS.",
+    "lineup.copy": "El público aparece en el line up porque la sala hace la obra. Una foto, un video o un prompt de cualquier persona presente cambia los visuales que corren en el muro LED principal.",
+    "lineup.verse.kind": "PLATAFORMA",
+    "lineup.verse.discipline": "Arte generativo y digital · Londres",
+    "lineup.pixelord.kind": "ARTISTA",
+    "lineup.pixelord.discipline": "Sonido y visuales 3D · Hyperboloid Records",
+    "lineup.public.kind": "CADA INVITADO",
+    "lineup.public.discipline": "Visuales en tiempo real creados con Claude",
+    "claude.kicker": "MIÉRCOLES · 28 OCT, 2026 · BAR ORIENTE",
+    "claude.communityEvent": "EVENTO DE COMUNIDAD",
+    "claude.copy": "Un workshop práctico de Claude para la industria musical, conducido desde la pantalla al frente de la sala, y la noche en la que se convierte.",
+    "claude.status": "EVENTO DE COMUNIDAD DE CLAUDE",
+    "claude.axisRole": "HOSPEDA, PRODUCE + OPERA",
+    "claude.venueRole": "SEDE ANFITRIONA",
+    "claude.constraint": "LA NOCHE ES UN EVENTO DE COMUNIDAD DE CLAUDE. ESE ESTATUS NO ESTÁ EN VENTA.",
+    "claude.partnerStatus": "Los partners de producto participan mediante actividades autoradas dentro de la noche, en roles subordinados permitidos.",
+    "system.title": "UNA SALA. UN LENGUAJE OPERATIVO AUTORADO.",
+    "system.copy": "Cultura, captura de medios, acceso, hospitalidad, IA y código operan como un solo entorno y no como proveedores separados.",
+    "system.core": "OPERA LA NOCHE",
+    "measurement.copy": "La noche produce un registro operativo junto a sus medios. Las acciones observadas y los resultados de negocio calculados se reportan por separado.",
+    "measurement.calculated": "CALCULADO CON DATOS DEL PARTNER",
+    "metrics.check-ins": "CHECK-INS",
+    "metrics.activity-participation": "PARTICIPACIÓN EN ACTIVIDADES",
+    "single.kicker": "INVENTARIO DE PARTNERS",
+    "single.title": "UNA NOCHE. UNA PRODUCCIÓN ALTAMENTE PERSONALIZADA.",
+    "single.note": "PEQUEÑO · DISTRIBUIDO · INTERACTIVO · INTEGRADO. NO ES UN SALÓN DE CONFERENCIAS, UNA EXPO NI UNA FERIA DE STANDS.",
+    "tiers.activity.name": "PARTNER DE ACTIVIDAD",
+    "tiers.activity.scope": "28 OCT, 2026 · BAR ORIENTE",
+    "tiers.activity.copy": "Una función de producto con misión, onboarding guiado por staff, validación, ruta de recompensa, presencia en pantalla, captura de medios y reporte post-evento.",
+    "tiers.exclusive.name": "PARTNER EXCLUSIVO DE CATEGORÍA",
+    "tiers.exclusive.scope": "ÚNICO PRODUCTO DE SU CATEGORÍA EN LA NOCHE",
+    "tiers.exclusive.copy": "Una función hero con colocación prioritaria en onboarding, integración más profunda, medios dedicados de producto y reporte extendido.",
+    "tiers.exclusive.restriction": "NO PUEDE SOBREPASAR LOS DERECHOS DE CLAUDE NI DE LA SEDE.",
+    "nav.operates": "LO QUE OPERA AXIS",
+    "nav.deliverables": "LO QUE RECIBE EL PARTNER",
+    "operates.kicker": "LO QUE APORTA AXIS",
+    "operates.title": "AXIS OPERA.",
+    "operates.copy": "Todo lo siguiente es autorado, financiado u operado por AXIS. La sede aporta la sala, la barra y las pantallas.",
+    "operates.core": "FINANCIA + OPERA LA NOCHE",
+    "operates.investLabel": "DÓNDE INVIERTE AXIS",
+    "operates.concept": "CONCEPTO + DIRECCIÓN",
+    "operates.programming": "PROGRAMACIÓN MUSICAL",
+    "operates.live-coding": "LIVE CODING",
+    "operates.claude": "INTEGRACIÓN DE CLAUDE",
+    "operates.claude-onboarding": "ONBOARDING DE CLAUDE",
+    "operates.claude-code": "FLUJO CON CLAUDE CODE",
+    "operates.interactive": "SISTEMAS INTERACTIVOS",
+    "operates.digital-art": "ARTE DIGITAL",
+    "operates.render": "RENDER + RUTEO",
+    "operates.operators": "OPERADORES TÉCNICOS",
+    "operates.activations": "COORDINACIÓN DE ACTIVIDADES",
+    "operates.media": "DIRECCIÓN DE MEDIOS",
+    "operates.artists": "COORDINACIÓN DE ARTISTAS",
+    "operates.documentation": "DOCUMENTACIÓN",
+    "operates.hospitality": "FONDEO DE BEBIDAS",
+    "operates.production": "PRODUCCIÓN",
+    "operates.guest-logic": "LÓGICA DE EXPERIENCIA",
+    "operates.activity-mechanics": "MECÁNICAS DE ACTIVIDAD",
+    "allocation.hospitality": "BEBIDAS + HOSPITALIDAD",
+    "allocation.production": "PRODUCCIÓN",
+    "allocation.audiovisual": "AUDIOVISUAL",
+    "allocation.programming": "PROGRAMACIÓN",
+    "allocation.claude": "WORKSHOP DE CLAUDE",
+    "allocation.digital-art": "ARTE DIGITAL",
+    "allocation.activations": "ACTIVACIONES TECH WEEK",
+    "allocation.media": "MEDIOS",
+    "allocation.operations": "OPERACIONES",
+    "deliverables.kicker": "ENTREGA POST-EVENTO",
+    "deliverables.title": "LA NOCHE REGRESA COMO MATERIAL Y COMO EVIDENCIA.",
+    "deliverables.copy": "La producción de medios y el registro operativo se entregan por separado, para que la noche se lea como resultado cultural y como desempeño del sistema.",
+    "deliverables.media": "PRODUCCIÓN DE MEDIOS INCLUIDA",
+    "deliverables.report": "REPORTE POST-EVENTO",
+    "deliverables.note": "LOS MEDIOS SE PRODUCEN PARA LA NOCHE. EL REPORTE SE PRODUCE A PARTIR DE LO QUE REALMENTE PASÓ EN ELLA.",
+    "media.photography": "FOTOGRAFÍA",
+    "media.aftermovie": "AFTERMOVIE",
+    "media.live-recording": "GRABACIÓN EN VIVO",
+    "media.short-clips": "CLIPS CORTOS",
+    "media.environment": "AMBIENTE DE LA SEDE",
+    "media.screen-moments": "MOMENTOS EN PANTALLA",
+    "media.mapping": "VIDEO MAPPING",
+    "media.guest-testimonials": "TESTIMONIOS DE INVITADOS",
+    "media.artist-testimonials": "TESTIMONIOS DE ARTISTAS",
+    "media.social": "CONTENIDO SOCIAL",
+    "report.photo-folder": "CARPETA DE FOTOS",
+    "report.aftermovie-material": "MATERIAL DE AFTERMOVIE",
+    "report.clips": "CLIPS DE VIDEO",
+    "report.attendance": "ESTIMADO DE ASISTENCIA",
+    "report.participation": "PARTICIPACIÓN EN ACTIVIDADES",
+    "report.claude-activations": "ACTIVACIONES DE CLAUDE",
+    "report.live-coding": "INTERACCIÓN CON LIVE CODING",
+    "report.redemptions": "CANJES DE RECOMPENSA",
+    "report.hospitality": "USO DE HOSPITALIDAD",
+    "report.screens": "INTERACCIONES EN PANTALLA",
+    "report.social-actions": "ACCIONES SOCIALES",
+    "report.written-report": "REPORTE ESCRITO",
+    "close.title": "EVENTO DE COMUNIDAD DE CLAUDE",
+    "close.seated": "WORKSHOP SENTADO",
+    "close.afterParty": "AFTER PARTY",
+    "close.night": "NOCHE",
+    "close.statement": "UN WORKSHOP PARA LA INDUSTRIA MUSICAL.<br>LA NOCHE EN LA QUE SE CONVIERTE.",
+  },
+  zh: {
+    "brand.claudeEvent": "CLAUDE 社区活动",
+    "nav.program": "流程安排",
+    "nav.lineup": "阵容",
+    "nav.inventory": "合作伙伴权益",
+    "cover.kicker": "CLAUDE 社区活动 · 墨西哥科技周 2026",
+    "cover.seated": "落座工作坊",
+    "cover.afterParty": "AFTER PARTY",
+    "cover.night": "一夜",
+    "proposition.title": "一场为音乐行业举办的工作坊，最终成为当晚的派对。",
+    "proposition.copy": "与 Claude 共度三小时的落座实操，面向制作人、艺术家、厂牌、经纪与录音室。22:00 房间转换，门再次打开，同一空间以 Future Renaissance 的形式运行至结束。",
+    "proposition.earlyLabel": "18:00 – 21:00",
+    "proposition.earlyCopy": "200 位落座参与者",
+    "proposition.axisRole": "主办并运营整晚",
+    "proposition.lateLabel": "22:00 – 深夜",
+    "proposition.lateCopy": "另有 250 位来宾",
+    "proposition.positioning": "一个空间。一个夜晚。两类彼此交叠的人群。",
+    "program.kicker": "流程安排",
+    "program.title": "一个夜晚，三次状态切换。",
+    "program.seats": "座位",
+    "program.guests": "AFTER PARTY 来宾",
+    "program.venue": "场地",
+    "program.workshop.arc": "落座",
+    "program.workshop.label": "CLAUDE 工作坊",
+    "program.reset.arc": "转换",
+    "program.reset.label": "场地转换",
+    "program.warmup.arc": "到场",
+    "program.warmup.label": "暖场 DJ",
+    "program.live-coding.arc": "创作",
+    "program.live-coding.label": "实时编码",
+    "program.closing.arc": "俱乐部",
+    "program.closing.label": "压轴 DJ",
+    "lineup.kicker": "阵容",
+    "lineup.title": "整个空间与艺术家一同列入阵容。",
+    "lineup.copy": "公众之所以列入阵容，是因为作品由整个空间共同完成。在场任何人的一张照片、一段视频或一个提示，都会改变主 LED 墙上运行的视觉。",
+    "lineup.verse.kind": "平台",
+    "lineup.verse.discipline": "生成与数字艺术 · 伦敦",
+    "lineup.pixelord.kind": "艺术家",
+    "lineup.pixelord.discipline": "声音与 3D 视觉 · Hyperboloid Records",
+    "lineup.public.kind": "每一位来宾",
+    "lineup.public.discipline": "与 Claude 共同创作的实时视觉",
+    "claude.kicker": "星期三 · 2026年10月28日 · BAR ORIENTE",
+    "claude.communityEvent": "社区活动",
+    "claude.copy": "一场面向音乐行业的 Claude 实操工作坊，由房间前方的屏幕带领，以及它所转变成的那个夜晚。",
+    "claude.status": "CLAUDE 社区活动",
+    "claude.axisRole": "主办、制作并运营",
+    "claude.venueRole": "主办场地",
+    "claude.constraint": "当晚是 CLAUDE 社区活动，该身份不可转售。",
+    "claude.partnerStatus": "产品合作方通过夜晚中既定的活动参与，身份为获准的次级角色。",
+    "system.title": "一个空间。一套完整的运营语言。",
+    "system.copy": "文化、影像记录、通行、款待、AI 与代码作为同一个环境运作，而不是各自独立的供应商。",
+    "system.core": "运营整晚",
+    "measurement.copy": "当晚在产出影像的同时产生一份运营记录。实际观察到的行为与据此计算的商业结果分开呈现。",
+    "measurement.calculated": "结合合作方数据计算",
+    "metrics.check-ins": "签到数",
+    "metrics.activity-participation": "活动参与",
+    "single.kicker": "合作伙伴权益",
+    "single.title": "一个夜晚。一次高度定制的制作。",
+    "single.note": "小规模 · 分布式 · 可互动 · 深度整合。不是会议厅、展会或展位区。",
+    "tiers.activity.name": "活动合作伙伴",
+    "tiers.activity.scope": "2026年10月28日 · BAR ORIENTE",
+    "tiers.activity.copy": "一项产品功能，包含任务、人员引导的上手环节、验证、奖励路径、屏幕呈现、影像记录与活动后报告。",
+    "tiers.exclusive.name": "品类独家合作伙伴",
+    "tiers.exclusive.scope": "当晚该品类的唯一产品",
+    "tiers.exclusive.copy": "核心功能位，享有优先的上手位置、更深度的整合、专属产品影像与扩展报告。",
+    "tiers.exclusive.restriction": "不得覆盖 CLAUDE 或场地的既有权利。",
+    "nav.operates": "AXIS 负责什么",
+    "nav.deliverables": "合作方获得什么",
+    "operates.kicker": "AXIS 带来什么",
+    "operates.title": "AXIS 全程操盘。",
+    "operates.copy": "以下全部由 AXIS 策划、出资或执行。场地提供空间、吧台与屏幕。",
+    "operates.core": "出资并运营整晚",
+    "operates.investLabel": "AXIS 的投入方向",
+    "operates.concept": "概念与创意方向",
+    "operates.programming": "音乐编排",
+    "operates.live-coding": "实时编码",
+    "operates.claude": "CLAUDE 整合",
+    "operates.claude-onboarding": "CLAUDE 上手引导",
+    "operates.claude-code": "CLAUDE CODE 工作流",
+    "operates.interactive": "互动系统",
+    "operates.digital-art": "数字艺术",
+    "operates.render": "渲染与信号路由",
+    "operates.operators": "技术操作人员",
+    "operates.activations": "活动协调",
+    "operates.media": "影像总监",
+    "operates.artists": "艺术家统筹",
+    "operates.documentation": "活动记录",
+    "operates.hospitality": "饮品额度出资",
+    "operates.production": "制作统筹",
+    "operates.guest-logic": "来宾体验逻辑",
+    "operates.activity-mechanics": "活动机制",
+    "allocation.hospitality": "饮品与款待",
+    "allocation.production": "制作",
+    "allocation.audiovisual": "视听",
+    "allocation.programming": "节目编排",
+    "allocation.claude": "CLAUDE 工作坊",
+    "allocation.digital-art": "数字艺术",
+    "allocation.activations": "科技周活动",
+    "allocation.media": "影像",
+    "allocation.operations": "运营",
+    "deliverables.kicker": "活动后交付",
+    "deliverables.title": "这一夜以素材与证据两种形式回到合作方手中。",
+    "deliverables.copy": "影像制作与运营记录分开交付，让这一夜既可作为文化产出，也可作为系统表现来阅读。",
+    "deliverables.media": "已包含的影像制作",
+    "deliverables.report": "活动后报告",
+    "deliverables.note": "影像为这一夜而制作。报告则来自这一夜真实发生的事。",
+    "media.photography": "摄影",
+    "media.aftermovie": "活动纪录片",
+    "media.live-recording": "现场录制",
+    "media.short-clips": "短片段",
+    "media.environment": "场地氛围",
+    "media.screen-moments": "屏幕瞬间",
+    "media.mapping": "投影映射",
+    "media.guest-testimonials": "来宾采访",
+    "media.artist-testimonials": "艺术家采访",
+    "media.social": "社交内容",
+    "report.photo-folder": "照片文件夹",
+    "report.aftermovie-material": "纪录片素材",
+    "report.clips": "短视频片段",
+    "report.attendance": "到场人数估算",
+    "report.participation": "活动参与数",
+    "report.claude-activations": "CLAUDE 启用次数",
+    "report.live-coding": "实时编码互动",
+    "report.redemptions": "奖励兑换数",
+    "report.hospitality": "款待使用情况",
+    "report.screens": "屏幕互动次数",
+    "report.social-actions": "社交行为数",
+    "report.written-report": "书面报告",
+    "close.title": "CLAUDE 社区活动",
+    "close.seated": "落座工作坊",
+    "close.afterParty": "AFTER PARTY",
+    "close.night": "一夜",
+    "close.statement": "一场为音乐行业举办的工作坊。<br>以及它所成为的那个夜晚。",
+  },
+};
+
+let src = readFileSync(SRC, "utf8");
+
+for (const lang of ["es", "zh"]) {
+  const start = src.indexOf("\n    " + lang + ": {");
+  if (start === -1) throw new Error("cannot locate " + lang + " block");
+  // The last language block closes with "    }" and no trailing comma.
+  const close = /\n {4}\},?(?=\r?\n)/g;
+  close.lastIndex = start + 1;
+  const match = close.exec(src);
+  if (!match) throw new Error("cannot locate end of " + lang + " block");
+  const end = match.index;
+
+  const added = ADD[lang];
+  const kept = [];
+  for (const line of src.slice(start, end).split("\n")) {
+    const m = line.match(/^\s*"([^"]+)":/);
+    if (!m) { kept.push(line); continue; }
+    const key = m[1];
+    if (DROP_EXACT.has(key)) continue;
+    if (DROP_PREFIX.some((p) => key.startsWith(p))) continue;
+    if (key in added) continue; // re-added below with single-night wording
+    kept.push(line);
+  }
+  // The block's original last entry carries no trailing comma; appending to it
+  // needs one.
+  while (kept.length && !kept[kept.length - 1].trim()) kept.pop();
+  const lastIndex = kept.length - 1;
+  if (lastIndex >= 0) {
+    const bare = kept[lastIndex].replace(/\r$/, "");
+    if (/:\s*.+[^,]$/.test(bare)) kept[lastIndex] = bare + ",";
+  }
+
+  const fresh = Object.entries(added).map(([k, v]) => "      " + JSON.stringify(k) + ": " + JSON.stringify(v) + ",");
+
+  // The anchor goes LAST in the block. These are duplicate keys in one object
+  // literal, so whichever is written last wins — the per-deck generator's
+  // category wording has to come after the generic defaults, not before.
+  const anchor = "      /* @generated:" + lang + " */\n      /* @end */";
+  src = src.slice(0, start) + kept.join("\n") + "\n" + fresh.join("\n") + "\n" + anchor + src.slice(end);
+}
+
+writeFileSync(OUT, src);
+console.log("wrote " + OUT);

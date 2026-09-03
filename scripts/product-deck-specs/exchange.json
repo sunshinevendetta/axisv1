@@ -1,0 +1,302 @@
+{
+  "slug": "exchange",
+  "name": "Exchange",
+  "slot": "[EXCHANGE BRAND]",
+  "discipline": "Verified accounts, funding and trading in one app",
+  "pageTitle": "Future Renaissance · Exchange Partner · Claude Community Event · AXIS",
+  "pageDescription": "Private AXIS partnership presentation for a centralised exchange: one night at Bar Oriente, Mexico City, October 28 2026, where verification, funding, first orders and drink redemption all happen in the room. A Claude community event during Mexico Tech Week, powered by AXIS.",
+
+  "slide08": {
+    "label": "Exchange function",
+    "navLabel": "EXCHANGE FUNCTION",
+    "kicker": "EXCHANGE FUNCTION",
+    "title": "ONE NIGHT. SEVEN EXCHANGE ACTIONS COMPLETED IN THE ROOM.",
+    "copy": "An exchange partner does not buy a logo on the bar menu. For one night at Bar Oriente the product is where identity gets verified, where the first account gets funded, where the first order gets placed, and what releases the drink.",
+    "ruleA": "NOT A LOGO ON THE BAR MENU.",
+    "ruleB": "SEVEN APP ACTIONS, EACH WITH ITS OWN VERIFIED COUNT."
+  },
+
+  "slide09": {
+    "navLabel": "THE REWARD FLOW",
+    "kicker": "THE REWARD FLOW",
+    "title": "A VERIFIED ACTION BUYS THE DRINK. THE DRINK LEAVES A RECORD.",
+    "copy": "Staff-guided onboarding, an action completed inside your app, staff validation, drink redemption at the bar, your live state on the LED wall, then a report. A giveaway ends when the prize is handed over; this ends in a document.",
+    "note": "EXAMPLE FLOW · EXACT ACTIONS ARE DESIGNED AROUND THE PRODUCT."
+  },
+
+  "mechanics": [
+    {
+      "id": "verify",
+      "name": "Verify",
+      "role": "KYC completed at the onboarding desk",
+      "summary": "Account creation and identity verification happen at a staffed desk inside the venue, with a host who can fix a failed document scan while the guest is still standing there.",
+      "details": [
+        "The onboarding desk runs from the 18:00 workshop doors through the night",
+        "Staff resolve failed document scans on the spot instead of losing the guest",
+        "Measured as verifications completed and approval rate, not app installs",
+        "A completed verification is what releases the first drink at the bar"
+      ]
+    },
+    {
+      "id": "deposit",
+      "name": "Deposit",
+      "role": "First balance funded before the DJ starts",
+      "summary": "The step that leaks hardest in a remote funnel happens here in a lit room with support present: a first deposit by card or local transfer, completed on site.",
+      "details": [
+        "Deposit completed during the event, not deferred to a follow-up email",
+        "Support is physically present at the step where remote funnels lose people",
+        "Measured as first-time funded accounts and median first deposit",
+        "A funded account is the honest line between a download and a user"
+      ]
+    },
+    {
+      "id": "trade",
+      "name": "First Trade",
+      "role": "The first convert or spot order, in the room",
+      "summary": "A guest who has only ever read about the product places one real order, a convert or a first spot trade, with someone beside them who can explain the screen once.",
+      "details": [
+        "One convert or spot order, completed inside the venue",
+        "Staff walk the guest through the order screen once, then step back",
+        "Measured as first orders placed and first-order completion rate",
+        "The action most likely to be repeated at home the following week"
+      ]
+    },
+    {
+      "id": "outcomes",
+      "name": "Outcomes",
+      "role": "A live position taken on the night itself",
+      "summary": "The prediction-markets surface is the part of an exchange that genuinely works in a bar: guests take a position on something resolving that week and check it before they leave.",
+      "details": [
+        "Guests open a position on the in-app outcomes surface from the venue",
+        "Positions are small, social and readable on a phone in a dark room",
+        "Measured as positions opened and guests who return to check them",
+        "This is the second verified action that releases the second drink"
+      ]
+    },
+    {
+      "id": "invite",
+      "name": "Invite",
+      "role": "The referral sent to someone in the room",
+      "summary": "Referral works at Bar Oriente because the person being invited is standing two metres away and can finish the flow before the drink is poured.",
+      "details": [
+        "A guest sends a referral to someone physically in the venue",
+        "The invited guest can verify at the same desk within minutes",
+        "Measured as referrals sent and referrals completed the same night",
+        "Both sides of the referral are validated by staff, not self-reported"
+      ]
+    },
+    {
+      "id": "withdraw",
+      "name": "Withdraw",
+      "role": "Proof the money leaves when asked",
+      "summary": "A guest moves funds out to their own wallet on the night. It is the fastest way to answer the custody question, because it is answered in front of the person asking it.",
+      "details": [
+        "A withdrawal to the guest's own address, completed at the venue",
+        "The custody question is settled by demonstration, not by a disclaimer",
+        "Measured as withdrawals completed and time to settlement",
+        "The one action a competitor cannot demonstrate from a printed banner"
+      ]
+    },
+    {
+      "id": "retain",
+      "name": "Retain",
+      "role": "A verified account still open in November",
+      "summary": "Unlike a giveaway, a verified account persists. It is a real, reachable, funded relationship the partner still holds weeks after Bar Oriente empties.",
+      "details": [
+        "The account survives the night without asking the guest to register again",
+        "Post-event contact runs through the product, not a scraped guest list",
+        "Measured as accounts still funded and still trading 30 days later",
+        "The asset the partner keeps once the production is over"
+      ]
+    }
+  ],
+
+  "flow": [
+    {
+      "id": "onboard",
+      "stage": "Onboard",
+      "context": "Workshop",
+      "action": "Verify at the onboarding desk",
+      "summary": "From 18:00 to 21:00 the seated Claude workshop for the music industry holds 200 people, a chair for every attendee. It is the calmest verification window of the night, because nobody is standing in a queue.",
+      "details": [
+        "18:00-21:00 · Claude workshop for the music industry, 200 seats",
+        "Everyone is seated, so onboarding is accompanied rather than queued",
+        "Measured as verifications completed before the 22:00 doors",
+        "With staff present a failed scan gets fixed instead of abandoned"
+      ]
+    },
+    {
+      "id": "act",
+      "stage": "Act",
+      "context": "Doors",
+      "action": "First order placed in the app",
+      "summary": "At 22:00 the doors open to 250 further guests on top of the workshop room that stays. The mission is one completable thing, not a form.",
+      "details": [
+        "22:00 doors · 250 further guests on top of the workshop audience",
+        "One action, finishable in under two minutes on a phone",
+        "Measured as qualified actions, kept separate from attendance",
+        "The exact action is chosen with the partner before the night"
+      ]
+    },
+    {
+      "id": "validate",
+      "stage": "Validate",
+      "context": "After party",
+      "action": "Staff validation on the floor",
+      "summary": "Before anything is released, a staff member reads the completed state on the guest's own screen. Nothing in this flow runs on the honour system.",
+      "details": [
+        "A staff member reads the completed state on the guest's own screen",
+        "AXIS staff validate; the bar only pours against a released credit",
+        "Measured as validated actions against actions claimed",
+        "This is the number the post-event report is built on"
+      ]
+    },
+    {
+      "id": "redeem",
+      "stage": "Redeem",
+      "context": "Bar",
+      "action": "Drink released at the bar",
+      "summary": "The drink is released against a verified action rather than a wristband. People remember who paid for their drink and what they did to earn it.",
+      "details": [
+        "Redemption unlocks only after validation, never before",
+        "Verification releases the first drink; a second action releases the second",
+        "Measured as redemptions executed and reconciled with the bar's count",
+        "The benefit stays scarce so it reads as targeted, not as a handout"
+      ]
+    },
+    {
+      "id": "screen",
+      "stage": "Screen",
+      "context": "LED wall",
+      "action": "Partner state on the LED wall",
+      "summary": "The main LED wall already carries visuals guests change in real time through Claude. Between the live coding set and the closing DJ, it carries the live state of the activity.",
+      "details": [
+        "The main LED wall is the one surface the whole room looks at together",
+        "Partner state runs between the live coding set and the closing DJ",
+        "Measured as screen minutes and the moments captured on camera",
+        "Seen by the full room, including the 250 who arrive at 22:00"
+      ]
+    },
+    {
+      "id": "report",
+      "stage": "Report",
+      "context": "Post-event",
+      "action": "Report delivered after the night",
+      "summary": "One night, one document. Verifications, deposits, first orders, positions, referrals, withdrawals and redemptions, reconciled rather than estimated.",
+      "details": [
+        "Verifications, deposits, first orders, positions, referrals, withdrawals",
+        "Redemptions reconciled against the bar's own count",
+        "Media capture delivered with the numbers, not separately",
+        "Nothing is estimated after the fact"
+      ]
+    }
+  ],
+
+  "conceptLocales": {
+    "mechanics": {
+      "es": [
+        ["Verificar", "La creación de cuenta y la verificación de identidad ocurren en un módulo con personal dentro del venue, con alguien que puede resolver un escaneo fallido mientras el invitado sigue ahí parado.", ["El módulo de onboarding opera desde las 18:00 y durante toda la noche", "El personal resuelve escaneos fallidos en el momento, sin perder al invitado", "Se mide como verificaciones completadas y tasa de aprobación, no instalaciones", "Una verificación completada es lo que libera la primera bebida en la barra"]],
+        ["Depositar", "El paso donde más se cae un funnel remoto ocurre aquí, en una sala iluminada y con soporte al lado: un primer depósito con tarjeta o transferencia, completado en sitio.", ["Depósito completado durante el evento, no aplazado a un correo de seguimiento", "Hay soporte presente justo donde los funnels remotos pierden a la gente", "Se mide como cuentas fondeadas por primera vez y monto mediano del depósito", "Una cuenta fondeada es la línea honesta entre una descarga y un usuario"]],
+        ["Primera operación", "Un invitado que solo había leído del producto coloca una orden real, un convert o su primera operación spot, con alguien al lado que le explica la pantalla una sola vez.", ["Un convert o una orden spot, completada dentro del venue", "El personal acompaña la primera pantalla de orden y luego se hace a un lado", "Se mide como primeras órdenes colocadas y tasa de finalización", "Es la acción con más probabilidad de repetirse en casa la semana siguiente"]],
+        ["Outcomes", "La superficie de mercados de predicción es la parte del exchange que de verdad funciona en un bar: los invitados toman una posición sobre algo que se resuelve esa semana y la revisan antes de irse.", ["Los invitados abren una posición en la superficie de outcomes desde el venue", "Posiciones pequeñas, sociales y legibles en un teléfono en un cuarto oscuro", "Se mide como posiciones abiertas e invitados que regresan a revisarlas", "Es la segunda acción verificada que libera la segunda bebida"]],
+        ["Invitar", "El referido funciona en Bar Oriente porque la persona invitada está a dos metros y puede terminar el flujo antes de que sirvan la bebida.", ["El invitado manda un referido a alguien que está físicamente en el venue", "El referido puede verificarse en el mismo módulo en cuestión de minutos", "Se mide como referidos enviados y referidos completados esa misma noche", "Los dos lados del referido los valida el personal, no se autodeclaran"]],
+        ["Retirar", "Un invitado saca fondos a su propia wallet esa misma noche. Es la forma más rápida de responder la pregunta de custodia, porque se responde frente a quien la está haciendo.", ["Un retiro a la dirección del propio invitado, completado en el venue", "La custodia se resuelve con una demostración, no con un aviso legal", "Se mide como retiros completados y tiempo hasta la liquidación", "Es la única acción que un competidor no puede demostrar desde una lona"]],
+        ["Retener", "A diferencia de una dinámica de regalos, una cuenta verificada permanece: es una relación real, alcanzable y fondeada que el socio conserva semanas después de que Bar Oriente se vacía.", ["La cuenta sobrevive a la noche sin pedirle al invitado que se registre otra vez", "El contacto posterior corre por el producto, no por una lista de invitados", "Se mide como cuentas aún fondeadas y operando 30 días después", "Es el activo que el socio conserva cuando termina la producción"]]
+      ],
+      "zh": [
+        ["验证", "开户与身份验证在场地内的人工引导台完成，证件扫描失败时，工作人员就在旁边当场解决。", ["引导台从 18:00 工作坊开门起运作，贯穿整夜", "证件扫描失败当场处理，而不是就此丢失这位来宾", "以完成验证数与通过率计量，而非应用安装量", "完成验证，才会在吧台释放第一杯酒"]],
+        ["入金", "远程漏斗中流失最严重的一步，在这里于明亮的房间、有人协助的情况下完成：用银行卡或本地转账完成首次入金。", ["入金在活动现场完成，而不是推迟到后续邮件", "在远程漏斗最容易流失的环节安排现场支持", "以首次入金账户数与首次入金中位金额计量", "已入金账户才是下载量与真实用户之间的诚实分界"]],
+        ["首次交易", "此前只在文章里读到过这个产品的来宾，在有人把界面讲解一次之后，真正下了一笔单：一次兑换，或第一笔现货交易。", ["在场地内完成一次兑换或一笔现货订单", "工作人员讲解一次下单界面，随后退开", "以首次下单数与首单完成率计量", "这是最有可能在下一周于家中被重复的行为"]],
+        ["预测市场", "预测市场是交易所里唯一在酒吧场景中真正成立的部分：来宾对本周就会揭晓的事件建立一个仓位，离场之前还会再看一眼。", ["来宾在场地内于应用的预测市场界面开仓", "仓位小、有社交性，在昏暗环境的手机上也读得清", "以开仓数与回来查看结果的来宾数计量", "这是释放第二杯酒的第二个已验证行为"]],
+        ["邀请", "邀请机制在 Bar Oriente 之所以成立，是因为被邀请的人就站在两米之外，可以在酒倒好之前把流程走完。", ["来宾把邀请发给此刻就在场地内的人", "被邀请者可以在同一个引导台几分钟内完成验证", "以发出的邀请数与当晚完成的邀请数计量", "邀请双方都由工作人员核验，而非自行申报"]],
+        ["提现", "来宾当晚就把资金提到自己的钱包。这是回答托管疑问最快的方式，因为答案当着提问者的面给出。", ["在场地内完成一笔提现到来宾自己的地址", "托管问题用一次演示解决，而不是一段免责声明", "以完成的提现笔数与到账时间计量", "这是竞争对手无法用一块广告布证明的动作"]],
+        ["留存", "与送赠品不同，已验证账户会留下来：这是一段真实、可触达、已入金的关系，在 Bar Oriente 散场数周之后依然属于合作方。", ["账户跨过当晚继续存在，无需来宾重新注册", "后续联系通过产品本身进行，而不是一份导出的宾客名单", "以 30 天后仍有资金、仍在交易的账户数计量", "制作结束后合作方真正保留下来的资产"]]
+      ]
+    },
+    "flow": {
+      "es": [
+        ["Verificación en el módulo de onboarding", "De 18:00 a 21:00 el taller de Claude para la industria musical ocupa la sala sentada, con 200 lugares y una silla para cada quien. Es la ventana más tranquila de la noche para verificar, porque nadie está formado.", ["18:00-21:00 · taller de Claude para la industria musical, 200 lugares", "Todos sentados: el onboarding es acompañado, no una fila", "Se mide como verificaciones completadas antes de las 22:00", "Con personal presente, un escaneo fallido se arregla en vez de abandonarse"]],
+        ["Primera orden dentro de la app", "A las 22:00 abren las puertas para 250 invitados más, encima de la sala del taller que se queda. La misión es una sola cosa que se puede terminar, no un formulario.", ["22:00 · llegan 250 invitados además del público del taller", "Una sola acción, terminable en menos de dos minutos desde el teléfono", "Se mide como acciones calificadas, separadas de la simple asistencia", "La acción exacta se define con el socio antes de la noche"]],
+        ["Validación de staff en piso", "Antes de liberar nada, alguien del equipo lee el estado completado en la pantalla del propio invitado. Nada de este flujo corre por honor.", ["Un miembro del equipo lee el estado completado en la pantalla del invitado", "El staff de AXIS valida; la barra solo sirve contra un crédito liberado", "Se mide como acciones validadas contra acciones declaradas", "Es la cifra sobre la que se construye el reporte posterior"]],
+        ["Canje de bebida en la barra", "La bebida se libera contra una acción verificada y no contra una pulsera. La gente recuerda quién pagó su bebida y qué hizo para ganársela.", ["El canje se desbloquea solo después de la validación, nunca antes", "La verificación libera la primera bebida; una segunda acción libera la segunda", "Se mide como canjes ejecutados y conciliados con el conteo de la barra", "El beneficio se mantiene escaso para que se lea dirigido y no regalado"]],
+        ["Estado del socio en el muro LED", "El muro LED principal ya corre visuales que los invitados cambian en tiempo real con Claude. Entre el set de live coding y el DJ de cierre, lleva el estado en vivo de la actividad.", ["El muro LED principal es la superficie que toda la sala mira a la vez", "El estado del socio corre entre el live coding y el DJ de cierre", "Se mide como minutos en pantalla y momentos capturados en cámara", "Lo ve la sala completa, incluidos los 250 que llegan a las 22:00"]],
+        ["Reporte entregado después de la noche", "Una noche, un documento. Verificaciones, depósitos, primeras órdenes, posiciones, referidos, retiros y canjes, conciliados y no estimados.", ["Verificaciones, depósitos, primeras órdenes, posiciones, referidos y retiros", "Canjes conciliados contra el propio conteo de la barra", "El material de captura se entrega junto con las cifras, no por separado", "Nada se estima después del hecho"]]
+      ],
+      "zh": [
+        ["在引导台完成验证", "18:00 至 21:00，面向音乐行业的 Claude 工作坊占据整个坐席空间，200 个座位，人人有椅子。这是全场最从容的验证时段，因为没有人在排队。", ["18:00-21:00 · 面向音乐行业的 Claude 工作坊，200 个座位", "全员就座，引导是陪同式的，而不是排队", "以 22:00 开门前完成的验证数计量", "有人在场，扫描失败会被修好，而不是被放弃"]],
+        ["在应用内完成首笔下单", "22:00 开门，在留下来的工作坊人群之外，另有 250 位来宾到场。任务是一件能够被完成的具体事，而不是一张表单。", ["22:00 开门 · 在工作坊人群之外再来 250 位来宾", "一个动作，在手机上两分钟内即可完成", "以合格行为数计量，与单纯到场区分开", "具体动作在活动前与合作方共同确定"]],
+        ["工作人员现场核验", "在释放任何权益之前，工作人员会在来宾自己的屏幕上读取完成状态。这套流程里没有任何一步靠自觉。", ["工作人员在来宾自己的屏幕上读取完成状态", "由 AXIS 工作人员核验；吧台只对已释放的额度出品", "以已核验行为数与声称完成数的对比计量", "这是活动后报告赖以建立的数字"]],
+        ["在吧台兑换酒水", "酒水凭一次已验证的行为释放，而不是凭一条手环。人们记得是谁请了这杯酒，也记得自己做了什么才换到它。", ["只有通过核验之后才会释放兑换，绝不提前", "完成验证释放第一杯，第二个已验证行为释放第二杯", "以已执行并与吧台账目核对一致的兑换数计量", "权益保持稀缺，读起来才是专门给的，而不是随手发的"]],
+        ["合作方状态出现在 LED 墙上", "主 LED 墙本就运行着来宾通过 Claude 实时改变的视觉。在 live coding 与闭场 DJ 之间，它承载这场活动的实时状态。", ["主 LED 墙是全场同时注视的唯一界面", "合作方状态在 live coding 与闭场 DJ 之间运行", "以上屏时长与被镜头记录的瞬间计量", "全场都看得到，包括 22:00 到场的那 250 人"]],
+        ["活动结束后交付报告", "一个夜晚，一份文件。验证、入金、首笔下单、仓位、邀请、提现与兑换，全部经过核对，而不是估算。", ["验证、入金、首笔下单、仓位、邀请与提现", "兑换数与吧台自己的账目逐条核对", "拍摄素材与数据一并交付，而不是分开给出", "没有任何数字是事后估算出来的"]]
+      ]
+    }
+  },
+
+  "i18n": {
+    "es": {
+      "mechanics": [
+        ["VERIFICAR", "KYC completado en el módulo de onboarding"],
+        ["DEPOSITAR", "Primer saldo fondeado antes del DJ"],
+        ["PRIMERA OPERACIÓN", "El primer convert o spot, en la sala"],
+        ["OUTCOMES", "Una posición en vivo tomada esa noche"],
+        ["INVITAR", "El referido enviado a alguien en la sala"],
+        ["RETIRAR", "Prueba de que el dinero sale cuando se pide"],
+        ["RETENER", "Una cuenta verificada abierta en noviembre"]
+      ],
+      "flowStages": ["Onboarding", "Acción", "Validación", "Canje", "Pantalla", "Reporte"],
+      "flowActions": [
+        "VERIFICACIÓN EN EL MÓDULO",
+        "PRIMERA ORDEN EN LA APP",
+        "VALIDACIÓN DE STAFF EN PISO",
+        "CANJE DE BEBIDA EN LA BARRA",
+        "ESTADO EN EL MURO LED",
+        "REPORTE DESPUÉS DE LA NOCHE"
+      ],
+      "keys": {
+        "nav.brandFunction": "FUNCIÓN DEL EXCHANGE",
+        "brandFunction.kicker": "FUNCIÓN DEL EXCHANGE",
+        "brandFunction.title": "UNA NOCHE. SIETE ACCIONES DE EXCHANGE COMPLETADAS EN LA SALA.",
+        "brandFunction.copy": "Un socio exchange no compra un logo en la carta de la barra. Durante una sola noche en Bar Oriente el producto es donde se verifica la identidad, donde se fondea la primera cuenta, donde se coloca la primera orden y lo que libera la bebida.",
+        "brandFunction.noLogoWall": "NO ES UN LOGO EN LA CARTA DE LA BARRA.",
+        "brandFunction.distinctFunctions": "SIETE ACCIONES EN LA APP, CADA UNA CON SU PROPIO CONTEO VERIFICADO.",
+        "crossWeek.kicker": "EL FLUJO DE RECOMPENSA",
+        "crossWeek.title": "UNA ACCIÓN VERIFICADA PAGA LA BEBIDA. LA BEBIDA DEJA REGISTRO.",
+        "crossWeek.copy": "Onboarding guiado por staff, una acción completada dentro de tu app, validación de staff, canje de bebida en la barra, tu estado en vivo en el muro LED y después un reporte. Una dinámica de regalos termina cuando se entrega el premio; esto termina en un documento.",
+        "crossWeek.note": "FLUJO DE EJEMPLO · LAS ACCIONES EXACTAS SE DISEÑAN SEGÚN EL PRODUCTO."
+      }
+    },
+    "zh": {
+      "mechanics": [
+        ["验证", "在引导台完成 KYC"],
+        ["入金", "开场 DJ 之前完成首次入金"],
+        ["首次交易", "在现场完成第一笔兑换或现货订单"],
+        ["预测市场", "当晚建立的一个真实仓位"],
+        ["邀请", "把邀请发给同一个房间里的人"],
+        ["提现", "证明资金随时都能取出"],
+        ["留存", "十一月仍然存在的已验证账户"]
+      ],
+      "flowStages": ["引导", "行动", "核验", "兑换", "上屏", "报告"],
+      "flowActions": [
+        "在引导台完成验证",
+        "在应用内完成首笔下单",
+        "工作人员现场核验",
+        "在吧台兑换酒水",
+        "状态出现在 LED 墙上",
+        "活动结束后交付报告"
+      ],
+      "keys": {
+        "nav.brandFunction": "交易所的职能",
+        "brandFunction.kicker": "交易所的职能",
+        "brandFunction.title": "一个夜晚。七个在现场完成的交易所动作。",
+        "brandFunction.copy": "交易所合作方买到的不是酒水单上的一个标志。在 Bar Oriente 的这一夜里，产品是身份被验证的地方、第一个账户被注资的地方、第一笔订单被下达的地方，也是释放那杯酒的东西。",
+        "brandFunction.noLogoWall": "不是酒水单上的一个标志。",
+        "brandFunction.distinctFunctions": "七个应用内动作，每一个都有各自可核验的计数。",
+        "crossWeek.kicker": "奖励流程",
+        "crossWeek.title": "一次已验证的行为换来一杯酒，这杯酒留下记录。",
+        "crossWeek.copy": "工作人员引导的入场引导、在你的应用内完成的一个动作、工作人员核验、吧台兑换酒水、LED 墙上的实时状态，随后是一份报告。送赠品在礼物递出的那一刻就结束了；这套流程最后交付的是一份文件。",
+        "crossWeek.note": "示例流程 · 具体动作将围绕该产品设计。"
+      }
+    }
+  }
+}

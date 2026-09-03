@@ -89,7 +89,13 @@ src/abi/
 app/owner/
 components/admin/
 tools/article-enricher/
-scripts/
+scripts/*
+# The product-deck pipeline is the source of truth for the per-category sales
+# copy, so it is versioned. Everything else in scripts/ stays ignored.
+!scripts/build-product-decks.mjs
+!scripts/build-product-base-i18n.mjs
+!scripts/check-product-decks.mjs
+!scripts/product-deck-specs/
 rsv-pizza-disclosure/
 graphv1/
 COORDINATION.md
