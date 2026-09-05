@@ -24,10 +24,10 @@ warm-up DJ → live coding → closing DJ, Verse Works / Pixelord / The Public o
 the line-up), the live leaderboard, what AXIS operates and funds, the media
 and report deliverables the partner receives, and the two commercial tiers.
 
-Pricing lives in `future-renaissance-data.js` in the base: 2,500 USD for an
-Activity Partner (the figure scoped to this night in the original ladder) and
-4,000 USD for Category Exclusive (derived from that ladder's 1.625x
-exclusivity premium — the file records the working). Both are one-line edits.
+Pricing lives in `future-renaissance-data.js` in the base: two agreed
+packages for the single night — 2,500 USD Activity Partner and 3,500 USD
+Category Exclusive. There is no multi-night ladder and no per-event maths
+behind them; do not derive new tiers from ratios.
 
 Slides **08** (the product's function on the floor) and **09** (the reward flow
 from product action → staff validation → drink → screen → report) are generated

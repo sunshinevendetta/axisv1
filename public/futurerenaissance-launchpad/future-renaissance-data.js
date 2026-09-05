@@ -104,8 +104,9 @@
     ],
   };
 
-  // What a partner is buying into. Only the tier actually scoped to this
-  // night carries a number; category exclusivity is quoted per conversation.
+  // The two agreed packages. Both are for the single night of October 28 —
+  // there is no multi-night ladder here and no per-event maths behind these
+  // figures.
   var commercialTiers = [
     {
       id: "activity-partner",
@@ -117,15 +118,9 @@
       restriction: "Claude retains community-event status for the night. Partner integration is subordinate to it.",
     },
     {
-      // Derived from the existing AXIS ladder rather than set from scratch:
-      // in the six-night pricing, category exclusivity cost 6,500 against
-      // 4,000 for the same six-event scope without it — a 1.625x premium for
-      // exclusivity alone. Applied to this night's 2,500 activity tier that
-      // is 4,062.50, rounded to 4,000. Change this one line if the real
-      // number differs.
       id: "category-exclusive",
       name: "Category Exclusive Partner",
-      price: 4000,
+      price: 3500,
       scope: "Sole product in its category inside AXIS-controlled inventory for the night.",
       deployment: "A hero function with priority placement, deeper integration and dedicated product media.",
       rights: ["Category exclusivity", "Priority onboarding placement", "Dedicated product media", "Extended reporting"],
