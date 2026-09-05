@@ -17,12 +17,17 @@ product.
 
 ## Where the content lives
 
-Slides 01–07 and 10–14 are shared and come from
+Slides 01–07 and 10–15 are shared and come from
 `public/futurerenaissance-product-base/`. They carry the real event facts
 (200-seat workshop 18:00–21:00, doors again at 22:00 for 250 more guests,
 warm-up DJ → live coding → closing DJ, Verse Works / Pixelord / The Public on
-the line-up), plus what AXIS operates and funds, and the media and report
-deliverables the partner receives afterwards.
+the line-up), the live leaderboard, what AXIS operates and funds, the media
+and report deliverables the partner receives, and the two commercial tiers.
+
+Pricing lives in `future-renaissance-data.js` in the base: 2,500 USD for an
+Activity Partner (the figure scoped to this night in the original ladder) and
+4,000 USD for Category Exclusive (derived from that ladder's 1.625x
+exclusivity premium — the file records the working). Both are one-line edits.
 
 Slides **08** (the product's function on the floor) and **09** (the reward flow
 from product action → staff validation → drink → screen → report) are generated
