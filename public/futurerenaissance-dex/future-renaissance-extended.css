@@ -65,3 +65,27 @@ body.fr-vertical .frx-presenting-copy{left:52px;right:52px;top:150px;width:auto}
 body.fr-vertical .frx-close{display:flex;flex-direction:column}body.fr-vertical .frx-close-art{height:1180px;margin:25px 25px 0}body.fr-vertical .frx-close-panel{flex:1;padding:50px 55px 70px;border-left:0;border-top:1px solid var(--line-strong)}body.fr-vertical .frx-close-panel>.axis-mark{width:62px;height:48px;margin:0 0 18px}body.fr-vertical .frx-close-panel h2{margin-top:14px;font-size:66px}body.fr-vertical .frx-close-panel h3{font-size:15px}body.fr-vertical .frx-close-scale{margin-top:22px}body.fr-vertical .frx-close-scale>span{min-height:110px}body.fr-vertical .frx-close-scale b{font-size:42px}body.fr-vertical .frx-close-panel>p{font-size:13px}body.fr-vertical .frx-close-statement{margin-top:20px;font-size:26px}body.fr-vertical .frx-close-panel>a{margin-top:20px;font-size:11px}
 
 @media(prefers-reduced-motion:reduce){.frx-timeline-event,.frx-house-card,.frx-flow-step,.frx-function-card,.frx-week-step,.frx-offer-card,.frx-tier-card{transition:none}}
+
+/* Layout repair, horizontal deck.
+   Each slide heading is absolutely positioned at a fixed top and grows
+   downward, while the block beneath it is pinned to its own fixed top. The
+   product copy runs longer than the circuit copy these offsets were set for,
+   so the headings were landing on top of the grids. Each block below moves
+   clear of the longest heading in the set; the two densest slides take the
+   room out of card height rather than out of the display type. */
+body:not(.fr-vertical) .frx-timeline { top: 435px; }
+body:not(.fr-vertical) .frx-house-grid { top: 470px; }
+body:not(.fr-vertical) .frx-flow-track { top: 530px; }
+body:not(.fr-vertical) .frx-function-grid { top: 620px; }
+body:not(.fr-vertical) .frx-function-card { min-height: 300px; }
+body:not(.fr-vertical) .frx-week-sequence { top: 620px; }
+body:not(.fr-vertical) .frx-measurement-grid { top: 530px; }
+body:not(.fr-vertical) .frx-measurement-grid section { min-height: 300px; }
+body:not(.fr-vertical) .frx-metric-pill { min-height: 84px; }
+/* The deliverables slide carries twice the rows of the measurement slide it
+   shares a class with, so its rows tighten further to clear the closing note. */
+body:not(.fr-vertical) [data-slide-id="deliverables"] .frx-metric-pill { min-height: 64px; padding: 12px 22px; }
+/* The run-of-show marker dot is drawn at top:82px and ends at 107px, but the
+   step label began at 98px, so the dot sat on its first characters
+   ("SEATED" read as "ATED"). The label now clears the dot. */
+body:not(.fr-vertical) .frx-timeline-event > span { margin-top: 62px; }
