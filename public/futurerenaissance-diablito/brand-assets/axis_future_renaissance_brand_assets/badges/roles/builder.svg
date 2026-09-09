@@ -1,0 +1,17 @@
+
+  <svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="bg" cx="50%" cy="36%" r="78%">
+        <stop offset="0%" stop-color="#123F70"/>
+        <stop offset="100%" stop-color="#041B33"/>
+      </radialGradient>
+      <filter id="soft"><feGaussianBlur stdDeviation="1.2"/></filter>
+    </defs>
+    <circle cx="512" cy="512" r="476" fill="url(#bg)" stroke="#8D6845" stroke-width="22"/>
+    <circle cx="512" cy="512" r="420" fill="none" stroke="#8D6845" stroke-opacity="0.45" stroke-width="3" stroke-dasharray="4 18"/>
+    <circle cx="512" cy="375" r="176" fill="#8D6845" fill-opacity="0.10" stroke="#8D6845" stroke-width="5"/>
+    <path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm-172 118.1c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L68.9 320l137.6-137.6c12.5-12.5 12.5-32.8 0-45.3zm256 0c-12.5 12.5-12.5 32.8 0 45.3L604.9 320l-137.6 137.6c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0z" fill="#8D6845" transform="translate(370 261) scale(0.445)"/>
+    <polygon points="512,615 514.3334523779156,627.6665476220844 527,630 514.3334523779156,632.3334523779156 512,645 509.6665476220844,632.3334523779156 497,630 509.6665476220844,627.6665476220844" fill="#D4AA67"/>
+    <text x="512" y="742" text-anchor="middle" fill="#F1E2C8" font-family="Noto Sans Mono" font-size="62" font-weight="600" letter-spacing="7">BUILDER</text>
+    <text x="512" y="820" text-anchor="middle" fill="#8D6845" font-family="Inter" font-size="28" letter-spacing="5">AXIS</text>
+  </svg>
