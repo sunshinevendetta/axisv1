@@ -15,7 +15,7 @@
   add("venue", "03 / VENUE", "Casa Luma", "The host venue: the physical operating layer where culture, hospitality, activities, media and AI interaction meet.", [
     "Thursday, October 29, 2026 · Mexico City",
     "Tinala 145, Roma Norte, CDMX",
-    "200 seated for the workshop, then 250 more for the night",
+    "100 seated for the workshop, then 120 more for the night",
     "Venue screens, live program and hospitality operate together",
     "Existing venue clientele can remain and participate where agreed",
     "AXIS staff connect participation, validation and documentation on site",
@@ -162,18 +162,18 @@
     "AXIS controls routing; different displays can show different states",
   ]);
 
-  add("workshop-session", "04 / WORKSHOP", "The seated workshop", "Four hours, 17:00 to 21:00, seated. 200 people from the music industry work hands-on with Claude, led from the screen at the front of the room.", ["200 attendees, each with a chair","Producers, artists, labels, managers and studios","The Claude team presents from the venue screen","Hands-on throughout: attendees work, they do not watch"]);
-  add("workshop-afterparty", "04 / AFTER PARTY", "The after party", "The workshop closes at 21:00 and the night opens at 21:00, with no gap between them, running to 02:00.", ["The floor opens at 21:00 for 250 further guests","Workshop attendees who stay on are on top of that number","Warm-up, live coding and closing DJ follow","The bar serves both populations throughout"]);
+  add("workshop-session", "04 / WORKSHOP", "The seated workshop", "Four hours, 17:00 to 21:00, seated. 100 people from the music industry work hands-on with Claude, led from the screen at the front of the room.", ["100 attendees, each with a chair","Producers, artists, labels, managers and studios","The Claude team presents from the venue screen","Hands-on throughout: attendees work, they do not watch"]);
+  add("workshop-afterparty", "04 / AFTER PARTY", "The after party", "The workshop closes at 21:00 and the night opens at 21:00, with no gap between them, running to 02:00.", ["The floor opens at 21:00 for 120 further guests","Workshop attendees who stay on are on top of that number","Warm-up, live coding and closing DJ follow","The bar serves both populations throughout"]);
   add("workshop-doors", "04 / RUN OF SHOW", "Check-in", "Registration is approval-based and runs on Luma through the organizers.", ["One list, held by the organizers","No parallel venue list to reconcile at the door","Event communications are issued by the organizers"]);
   add("workshop-reset", "04 / RUN OF SHOW", "The room turns over", "At 21:00 the seated workshop clears and the floor opens straight into the night.", ["Chairs come out, the floor opens","Handled by AXIS production with venue staff","The screen switches from workshop to the visual system"]);
   add("ask-early", "04 / VENUE ASK", "Early opening", "The event window opens at 16:00, so the room is ready before the 17:00 workshop start.", ["Load-in, screen routing and seating set before doors","Exact time agreed with the venue technical contact"]);
-  add("ask-seating", "04 / VENUE ASK", "Seated for 200", "The workshop is seated, and chairs are provided for the attendees.", ["200 seats facing the presentation screen","Cleared at 21:00 when the room turns over for the night"]);
+  add("ask-seating", "04 / VENUE ASK", "Seated for 100", "The workshop is seated, and chairs are provided for the attendees.", ["100 seats facing the presentation screen","Cleared at 21:00 when the room turns over for the night"]);
   add("ask-screen", "04 / VENUE ASK", "Screen access", "The Claude team needs access to the venue screen to run their presentation.", ["A clean input into the venue display system","Held for the full 17:00 to 21:00 session","AXIS operates routing around it"]);
   add("ask-softdrinks", "04 / VENUE ASK", "Soft drinks", "We buy soft drinks from the venue bar for the workshop room.", ["Bought from the bar, not brought in","For the seated workshop hours"]);
   add("ask-bar", "04 / VENUE ASK", "The bar stays open", "The bar keeps selling to guests through the workshop and the night.", ["Normal bar service continues alongside the workshop","Venue clientele are served as usual"]);
   add("ask-registration", "04 / VENUE ASK", "One guest list", "Registration runs on Luma through the organizers, with approval.", ["A single approval-based list","The venue does not run a parallel registration list","Event communications are issued by the organizers"]);
   add("close-event-partner", "11 / THE NIGHT", "Future Renaissance", "One night at Casa Luma, Thursday, October 29, 2026: a Claude community workshop for the music industry, and then the night.", [
-    "200 seated for the workshop, then 250 more for the night",
+    "100 seated for the workshop, then 120 more for the night",
     "Warm-up DJ, Live Coding and Closing DJ",
     "Claude activity, digital art and Tech Week micro-activations",
     "Complimentary hospitality funded by AXIS",
@@ -279,7 +279,7 @@
   ]);
   add("community-status", "09 / STATUS", "Mexico City | Claude for Music", "A Claude community event: a seated, hands-on workshop for the music industry, organized by Claude community ambassadors and produced by AXIS.", [
     "Mexico Tech Week 2026, Mexico City",
-    "200 seated workshop attendees, 17:00 to 21:00",
+    "100 seated workshop attendees, 17:00 to 21:00",
     "Host venue: Casa Luma, Tinala 145, Roma Norte, CDMX",
     "Registration on Luma, approval-based, run by the organizers",
   ]);
@@ -354,7 +354,7 @@
     addI18n("venue", "es", "Casa Luma", "El venue es la capa operativa física donde convergen la cultura, la hospitalidad, las actividades, los medios y la interacción con IA.", [
       "Jueves 29 de octubre de 2026 · Ciudad de México",
       "Tinala 145, Roma Norte, CDMX",
-      "250 invitados esperados para Future Renaissance",
+      "120 invitados esperados para Future Renaissance",
       "Las pantallas del venue, el programa en vivo y la hospitalidad operan en conjunto",
       "La clientela habitual del venue puede permanecer y participar donde se acuerde",
       "El personal de AXIS conecta la participación, la validación y la documentación en el sitio",
@@ -489,7 +489,7 @@
     addI18n("venue", "zh", "Casa Luma", "场地是文化、款待、活动、媒体和 AI 互动交汇的物理运营层。", [
       "2026年10月29日（星期四）· 墨西哥城",
       "Tinala 145, Roma Norte, CDMX",
-      "预计250位 Future Renaissance 宾客",
+      "预计120位 Future Renaissance 宾客",
       "场地屏幕、现场节目和款待协同运作",
       "在约定范围内，场地现有客群可以留下并参与",
       "AXIS 工作人员在现场连接参与、验证和记录工作",
@@ -703,7 +703,7 @@
       "AXIS controla el ruteo; diferentes pantallas pueden mostrar diferentes estados",
     ]);
     addI18n("close-event-partner", "es", "Future Renaissance", "Una noche en Casa Luma, el jueves 29 de octubre de 2026: un workshop de la comunidad de Claude para la industria musical, y después la noche.", [
-      "200 sentados en el workshop, y después 250 más para la noche",
+      "100 sentados en el workshop, y después 120 más para la noche",
       "DJ de apertura, Live Coding y DJ de cierre",
       "Actividad de Claude, arte digital y micro-activaciones de Tech Week",
       "Hospitalidad de cortesía financiada por AXIS",
@@ -737,7 +737,7 @@
       "AXIS 负责信号路由；不同屏幕可以呈现不同状态",
     ]);
     addI18n("close-event-partner", "zh", "Future Renaissance", "2026 年 10 月 29 日（星期四），Casa Luma 的这一夜：一场为音乐行业举办的 Claude 社区工作坊，随后是当晚。", [
-      "预计 250 名 Future Renaissance 宾客",
+      "预计 120 名 Future Renaissance 宾客",
       "暖场 DJ、Live Coding 与收场 DJ",
       "Claude 互动活动、数字艺术与科技周微互动",
       "由 AXIS 提供的免费款待",
@@ -760,17 +760,17 @@
     addI18n("program-closing", "es", "DJ de Cierre", "Lleva la noche desde el segmento experimental de live coding hacia su estado final de club.", ["El set será grabado para el programa de AXIS Radio en Hong Kong Community Radio, para transmitirse en su próximo episodio", "Géneros: UK Garage, UK Bass, House"]);
     addI18n("program-gallery", "es", "La Galería", "Un espacio propio dentro del evento donde se presenta el arte digital de Future Renaissance.", ["Las obras digitales se curan e integran al espacio, en lugar de tratarse como decoración.", "La Galería es parte de la experiencia Future Renaissance junto a la sala principal.", "El espacio permanece abierto durante toda la noche."]);
 
-    addI18n("workshop-session", "es", "El workshop sentado", "Cuatro horas, de 17:00 a 21:00, sentados. 200 personas de la industria musical trabajan de forma práctica con Claude, guiadas desde la pantalla al frente del salón.", ["200 asistentes, cada uno con silla","Productores, artistas, sellos, managers y estudios","El equipo de Claude presenta desde la pantalla del venue","Práctico de principio a fin: los asistentes trabajan, no miran"]);
-    addI18n("workshop-afterparty", "es", "El after party", "El workshop cierra a las 21:00 y la noche empieza a las 21:00, sin intervalo entre ambos, y corre hasta las 02:00.", ["La pista abre a las 21:00 para 250 invitados más","Los asistentes del workshop que se quedan se suman a esa cifra","Siguen el warm-up, el live coding y el DJ de cierre","El bar atiende a ambos públicos durante toda la noche"]);
+    addI18n("workshop-session", "es", "El workshop sentado", "Cuatro horas, de 17:00 a 21:00, sentados. 100 personas de la industria musical trabajan de forma práctica con Claude, guiadas desde la pantalla al frente del salón.", ["100 asistentes, cada uno con silla","Productores, artistas, sellos, managers y estudios","El equipo de Claude presenta desde la pantalla del venue","Práctico de principio a fin: los asistentes trabajan, no miran"]);
+    addI18n("workshop-afterparty", "es", "El after party", "El workshop cierra a las 21:00 y la noche empieza a las 21:00, sin intervalo entre ambos, y corre hasta las 02:00.", ["La pista abre a las 21:00 para 120 invitados más","Los asistentes del workshop que se quedan se suman a esa cifra","Siguen el warm-up, el live coding y el DJ de cierre","El bar atiende a ambos públicos durante toda la noche"]);
     addI18n("workshop-doors", "es", "Check-in", "El registro es con aprobación previa y se maneja en Luma a través de los organizadores.", ["Una sola lista, en manos de los organizadores","Sin lista paralela del venue que conciliar en la puerta","Las comunicaciones del evento las emiten los organizadores"]);
     addI18n("workshop-reset", "es", "El salón cambia de modo", "A las 21:00 el workshop sentado se desmonta y la pista abre directo hacia la noche.", ["Salen las sillas, se abre la pista","Lo ejecuta producción de AXIS con el personal del venue","La pantalla pasa del workshop al sistema visual"]);
     addI18n("ask-early", "es", "Apertura anticipada", "La ventana del evento abre a las 16:00, para que el salón esté listo antes del inicio del workshop a las 17:00.", ["Montaje, ruteo de pantallas y sillas listos antes de puertas","Hora exacta acordada con el contacto técnico del venue"]);
-    addI18n("ask-seating", "es", "Sentados para 200", "El workshop es sentado, y se proveen sillas para los asistentes.", ["200 lugares frente a la pantalla de presentación","Se retiran a las 21:00, cuando el salón cambia de modo"]);
+    addI18n("ask-seating", "es", "Sentados para 100", "El workshop es sentado, y se proveen sillas para los asistentes.", ["100 lugares frente a la pantalla de presentación","Se retiran a las 21:00, cuando el salón cambia de modo"]);
     addI18n("ask-screen", "es", "Acceso a la pantalla", "El equipo de Claude necesita acceso a la pantalla del venue para su presentación.", ["Una entrada limpia al sistema de pantallas del venue","Reservada durante toda la sesión de 17:00 a 21:00","AXIS opera el ruteo alrededor de eso"]);
     addI18n("ask-softdrinks", "es", "Refrescos", "Compramos refrescos en el bar del venue para el salón del workshop.", ["Comprados en el bar, no traídos de fuera","Para las horas del workshop sentado"]);
     addI18n("ask-bar", "es", "El bar sigue abierto", "El bar sigue vendiendo a los invitados durante el workshop y durante la noche.", ["El servicio normal del bar continúa junto al workshop","La clientela habitual del venue se atiende como siempre"]);
     addI18n("ask-registration", "es", "Una sola lista", "El registro se maneja en Luma a través de los organizadores, con aprobación previa.", ["Una única lista con aprobación","El venue no maneja una lista de registro paralela","Las comunicaciones del evento las emiten los organizadores"]);
-    addI18n("community-status", "es", "Mexico City | Claude for Music", "Un evento de la comunidad de Claude: un workshop práctico y sentado para la industria musical, organizado por embajadores de la comunidad de Claude y producido por AXIS.", ["Mexico Tech Week 2026, Ciudad de México","200 asistentes sentados, de 17:00 a 21:00","Sede anfitriona: Casa Luma, Tinala 145, Roma Norte, CDMX","Registro en Luma, con aprobación previa, a cargo de los organizadores"]);
+    addI18n("community-status", "es", "Mexico City | Claude for Music", "Un evento de la comunidad de Claude: un workshop práctico y sentado para la industria musical, organizado por embajadores de la comunidad de Claude y producido por AXIS.", ["Mexico Tech Week 2026, Ciudad de México","100 asistentes sentados, de 17:00 a 21:00","Sede anfitriona: Casa Luma, Tinala 145, Roma Norte, CDMX","Registro en Luma, con aprobación previa, a cargo de los organizadores"]);
     addI18n("claude-access", "es", "Acceso a Claude para asistentes", "Los asistentes al workshop quedan configurados con acceso a Claude como parte de la sesión.", ["Otorgado a través del flujo de onboarding en el sitio","Beneficio exacto confirmado por los organizadores antes del evento"]);
     addI18n("claude-credits", "es", "Créditos de Claude", "Los asistentes al workshop reciben créditos de Claude como parte de la sesión.", ["Emitidos junto con el acceso a Claude","Monto exacto confirmado por los organizadores antes del evento"]);
     addI18n("claude-ai", "es", "Sesión práctica", "Cuatro horas sentados en las que los asistentes trabajan con Claude ellos mismos, en lugar de ver una demo.", ["Guiada desde la pantalla del venue al frente del salón","Hecha para quienes trabajan en música","Una sesión de trabajo, no un stand"]);
@@ -827,17 +827,17 @@
     addI18n("program-closing", "zh", "闭场 DJ", "将当晚从实验性的 Live Coding 环节带入最终的俱乐部状态。", ["该场次将为 AXIS Radio 节目录制，在香港社区电台（Hong Kong Community Radio）的下一期节目中播出", "曲风：UK Garage、UK Bass、House"]);
     addI18n("program-gallery", "zh", "画廊", "活动内一个独立的空间，呈现 Future Renaissance 的数字艺术。", ["数字作品经过策划融入该空间，而非仅作装饰。", "画廊与主厅一同构成 Future Renaissance 的体验。", "该空间整晚开放。"]);
 
-    addI18n("workshop-session", "zh", "坐式工作坊", "四小时，17:00 至 21:00，全程坐式。200 位音乐行业从业者在厅前屏幕的引导下，与 Claude 实操协作。", ["200 位参与者，人人有座","制作人、艺术家、厂牌、经纪人与录音室","Claude 团队使用场地屏幕演示","全程实操：参与者动手，而不是旁观"]);
-    addI18n("workshop-afterparty", "zh", "派对环节", "工作坊 21:00 结束，当晚也在 21:00 开始，两者之间没有间隔，一直到 02:00。", ["21:00 开放舞池，另有 250 位宾客到场","留下来的工作坊参与者在此之上","接着是暖场、实时编程与收场 DJ","酒吧全程服务两部分宾客"]);
+    addI18n("workshop-session", "zh", "坐式工作坊", "四小时，17:00 至 21:00，全程坐式。100 位音乐行业从业者在厅前屏幕的引导下，与 Claude 实操协作。", ["100 位参与者，人人有座","制作人、艺术家、厂牌、经纪人与录音室","Claude 团队使用场地屏幕演示","全程实操：参与者动手，而不是旁观"]);
+    addI18n("workshop-afterparty", "zh", "派对环节", "工作坊 21:00 结束，当晚也在 21:00 开始，两者之间没有间隔，一直到 02:00。", ["21:00 开放舞池，另有 120 位宾客到场","留下来的工作坊参与者在此之上","接着是暖场、实时编程与收场 DJ","酒吧全程服务两部分宾客"]);
     addI18n("workshop-doors", "zh", "签到", "报名需审核，在 Luma 上由主办方管理。", ["一张名单，由主办方掌管","门口无需核对场地的平行名单","活动传达由主办方发布"]);
     addI18n("workshop-reset", "zh", "空间切换", "21:00 坐式工作坊收场，舞池直接开放进入当晚。", ["椅子撑出，场地开放","由 AXIS 制作团队与场地人员共同完成","屏幕从工作坊切换到视觉系统"]);
     addI18n("ask-early", "zh", "提前开门", "活动时段从 16:00 开始，以便在 17:00 工作坊开始前完成布置。", ["进场、屏幕信号与座位在开门前就绪","具体时间与场地技术联络人确认"]);
-    addI18n("ask-seating", "zh", "200 个座位", "工作坊为坐式，为参与者提供椅子。", ["200 个座位面向演示屏幕","21:00 空间切换时撑出"]);
+    addI18n("ask-seating", "zh", "100 个座位", "工作坊为坐式，为参与者提供椅子。", ["100 个座位面向演示屏幕","21:00 空间切换时撑出"]);
     addI18n("ask-screen", "zh", "屏幕权限", "Claude 团队需要使用场地屏幕进行演示。", ["一路干净的信号接入场地显示系统","保留整个 17:00 至 21:00 时段","AXIS 负责周边的信号调度"]);
     addI18n("ask-softdrinks", "zh", "软饮", "我们向场地酒吧采购软饮，供工作坊使用。", ["向酒吧采购，非外带","供坐式工作坊时段使用"]);
     addI18n("ask-bar", "zh", "酒吧持续营业", "工作坊与当晚期间，酒吧持续向宾客销售。", ["酒吧照常营业，与工作坊并行","场地常客照常接待"]);
     addI18n("ask-registration", "zh", "单一名单", "报名在 Luma 上由主办方管理，需审核。", ["单一的审核制名单","场地不另行管理平行报名名单","活动传达由主办方发布"]);
-    addI18n("community-status", "zh", "MEXICO CITY | CLAUDE FOR MUSIC", "一场 Claude 社区活动：为音乐行业举办的坐式实操工作坊，由 Claude 社区大使组织，由 AXIS 制作。", ["2026 年墨西哥科技周，墨西哥城","200 位坐式参与者，17:00 至 21:00","主办场地：Casa Luma，Tinala 145, Roma Norte, CDMX","在 Luma 报名，需审核，由主办方管理"]);
+    addI18n("community-status", "zh", "MEXICO CITY | CLAUDE FOR MUSIC", "一场 Claude 社区活动：为音乐行业举办的坐式实操工作坊，由 Claude 社区大使组织，由 AXIS 制作。", ["2026 年墨西哥科技周，墨西哥城","100 位坐式参与者，17:00 至 21:00","主办场地：Casa Luma，Tinala 145, Roma Norte, CDMX","在 Luma 报名，需审核，由主办方管理"]);
     addI18n("claude-access", "zh", "为参与者开通 Claude", "工作坊参与者会在课程中完成 Claude 访问权限的配置。", ["通过现场引导流程发放","具体权益由主办方在活动前确认"]);
     addI18n("claude-credits", "zh", "Claude 额度", "工作坊参与者会在课程中获得 Claude 额度。", ["与 Claude 访问权限一并发放","具体额度由主办方在活动前确认"]);
     addI18n("claude-ai", "zh", "实操课程", "四小时的坐式课程，参与者亲自上手使用 Claude，而不是看演示。", ["由厅前的场地屏幕引导","为从事音乐工作的人而设","这是一场工作会议，而非展位"]);

@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 
 const title = "Future Renaissance · Claude Community Workshop · Casa Luma";
 const description =
-  "A Claude community event at Casa Luma, Mexico City, during Mexico Tech Week on Thursday, October 29, 2026: the event window runs 16:00 to 02:00, with a seated, hands-on Claude workshop for the music industry from 17:00 to 21:00 for 200 attendees, followed from 21:00 to 02:00 by the Future Renaissance party for 250 more guests. The Gallery forms part of the experience. Host venue: Casa Luma, Tinala 145, Roma Norte, CDMX. Produced by AXIS.";
+  "A Claude community event at Casa Luma, Mexico City, during Mexico Tech Week on Thursday, October 29, 2026: the event window runs 16:00 to 02:00, with a seated, hands-on Claude workshop for the music industry from 17:00 to 21:00 for 100 attendees, followed from 21:00 to 02:00 by the Future Renaissance party for 120 more guests. The Gallery forms part of the experience. Host venue: Casa Luma, Tinala 145, Roma Norte, CDMX. Produced by AXIS.";
 
 export const metadata: Metadata = {
   title,

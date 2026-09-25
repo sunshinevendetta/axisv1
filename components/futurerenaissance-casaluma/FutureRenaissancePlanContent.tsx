@@ -7,7 +7,7 @@ const EVENT_JSON_LD = {
   eventStatus: "https://schema.org/EventScheduled",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   description:
-    "A Claude community event at Casa Luma, Mexico City: the event window runs from 16:00 to 02:00, with a seated, hands-on Claude workshop for the music industry from 17:00 to 21:00 with 200 attendees, followed from 21:00 to 02:00 by the Future Renaissance party, an AXIS Tech Week Mexico Edition event combining art, music, technology, culture, AI, code, community, hospitality, interactive activities and live media, for 250 further guests. The Gallery forms part of the Future Renaissance experience.",
+    "A Claude community event at Casa Luma, Mexico City: the event window runs from 16:00 to 02:00, with a seated, hands-on Claude workshop for the music industry from 17:00 to 21:00 with 100 attendees, followed from 21:00 to 02:00 by the Future Renaissance party, an AXIS Tech Week Mexico Edition event combining art, music, technology, culture, AI, code, community, hospitality, interactive activities and live media, for 120 further guests. The Gallery forms part of the Future Renaissance experience.",
   location: {
     "@type": "Place",
     name: "Casa Luma",
@@ -71,9 +71,9 @@ export default function FutureRenaissancePlanContent() {
             The night runs in two halves at Casa Luma, the host venue, on
             Tinala 145 in Roma Norte, Mexico City, on Thursday, October 29, 2026. The event window
             opens at 16:00 and closes at 02:00. From 17:00 to 21:00 it is a seated Claude
-            community workshop for 200 attendees from the music industry. At
+            community workshop for 100 attendees from the music industry. At
             21:00, with no gap, it becomes the Future Renaissance party, an AXIS Tech Week
-            Mexico Edition event running to 02:00, with 250 further guests arriving on top of
+            Mexico Edition event running to 02:00, with 120 further guests arriving on top of
             the workshop attendees who stay on.
           </p>
           <p>

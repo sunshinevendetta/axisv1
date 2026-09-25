@@ -330,12 +330,12 @@
     ["ask-early", "16:00", "EVENT WINDOW OPENS", "Doors to us before the doors to the room.", "door"],
     ["workshop-doors", "17:00", "CHECK-IN", "One approval-based list, run by the organizers.", "passport"],
     ["workshop-reset", "21:00", "WORKSHOP ENDS", "Seated workshop out, open floor in.", "arrive"],
-    ["workshop-afterparty", "21:00", "THE NIGHT OPENS", "Straight on for 250 more, no gap.", "disc"],
+    ["workshop-afterparty", "21:00", "THE NIGHT OPENS", "Straight on for 120 more, no gap.", "disc"],
   ];
 
   var workshopAsks = [
     ["ask-early", "EARLY OPENING", "Open a little earlier than usual.", "door"],
-    ["ask-seating", "SEATED FOR 200", "A chair for every attendee.", "guests"],
+    ["ask-seating", "SEATED FOR 100", "A chair for every attendee.", "guests"],
     ["ask-screen", "SCREEN ACCESS", "The Claude team runs its presentation from the venue screen.", "screen"],
     ["ask-softdrinks", "SOFT DRINKS", "We buy them from the bar for the room.", "drink"],
     ["ask-bar", "BAR STAYS OPEN", "It keeps selling to guests all night.", "shield"],
@@ -400,7 +400,7 @@
     '</section>',
 
     // 04. The workshop is the half of the night the venue has to plan around:
-    // four seated hours for 200, and at 21:00 the room becomes the night.
+    // four seated hours for 100, and at 21:00 the room becomes the night.
     '<section class="fr-slide fr-workshop" data-slide-id="workshop" data-scene="structured" data-label="The workshop">' +
       frameTop("04", "workshop") +
       '<div class="workshop-heading" data-decode>' +
@@ -417,7 +417,7 @@
         conceptNode("workshop-phase", "workshop-afterparty",
           '<span>' + event.afterPartyStart + ' → ' + event.afterPartyEnd + '</span><strong>+' + event.afterPartyGuests + '</strong>' +
           '<b data-i18n="workshop.phaseNight">AFTER PARTY</b>' +
-          '<small data-i18n="workshop.phaseNightNote">The floor opens at 21:00 for 250 further guests, on top of the attendees who stay on.</small>',
+          '<small data-i18n="workshop.phaseNightNote">The floor opens at 21:00 for 120 further guests, on top of the attendees who stay on.</small>',
           "the after party") +
       '</div>' +
       '<div class="workshop-clock" data-decode>' +
