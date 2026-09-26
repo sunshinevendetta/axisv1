@@ -22,16 +22,16 @@
 
   var programLocales = {
     workshop: {
-      es: ["Workshop de Claude", "Tres horas sentadas y prácticas para quienes trabajan en música, conducidas desde la pantalla al frente de la sala.", ["18:00 – 21:00", "200 lugares, una silla por asistente", "Productores, artistas, sellos, managers y estudios", "La pantalla de la sede lleva la sesión"]],
-      zh: ["Claude 工作坊", "为音乐从业者准备的三小时实操课程，由房间前方的屏幕带领进行。", ["18:00 – 21:00", "200 个座位，每位参与者都有座", "制作人、艺术家、厂牌、经纪与录音室", "场地屏幕承载整场课程"]],
+      es: ["Workshop de Claude", "Cuatro horas sentadas y prácticas para quienes trabajan en música, conducidas desde la pantalla al frente de la sala.", ["17:00 – 21:00", "100 lugares, una silla por asistente", "Productores, artistas, sellos, managers y estudios", "La pantalla de la sede lleva la sesión"]],
+      zh: ["Claude 工作坊", "为音乐从业者准备的四小时实操课程，由房间前方的屏幕带领进行。", ["17:00 – 21:00", "100 个座位，每位参与者都有座", "制作人、艺术家、厂牌、经纪与录音室", "场地屏幕承载整场课程"]],
     },
     reset: {
-      es: ["Cambio de sala", "La sala sentada se convierte en la noche. Producción, sonido e iluminación cambian de estado.", ["21:00 – 22:00", "Reconfiguración técnica completa", "El mismo espacio, otra función", "Los asistentes del workshop pueden quedarse"]],
-      zh: ["场地转换", "落座的课堂变成夜晚。制作、声音与灯光切换状态。", ["21:00 – 22:00", "完整的技术重新配置", "同一空间，不同用途", "工作坊参与者可以留下"]],
+      es: ["Cambio de sala", "La sala sentada se convierte en la noche. Producción, sonido e iluminación cambian de estado.", ["21:00", "Sin pausa entre el taller y la noche", "El mismo espacio, otra función", "Los asistentes del workshop pueden quedarse"]],
+      zh: ["场地转换", "落座的课堂变成夜晚。制作、声音与灯光切换状态。", ["21:00", "工作坊与夜场之间没有空档", "同一空间，不同用途", "工作坊参与者可以留下"]],
     },
     warmup: {
-      es: ["DJ de apertura", "Las puertas se abren de nuevo para el after party. Llegada, energía inicial y activación de la sala.", ["22:00", "+250 invitados adicionales", "Llegada y activación", "Entra gradualmente al programa central"]],
-      zh: ["暖场 DJ", "为 after party 再次开门。到场、初始能量与空间激活。", ["22:00", "另外 250 位来宾", "到场与激活", "逐步进入核心环节"]],
+      es: ["DJ de apertura", "La pista se abre para el after party. Llegada, energía inicial y activación de la sala.", ["21:00", "+120 invitados adicionales", "Llegada y activación", "Entra gradualmente al programa central"]],
+      zh: ["暖场 DJ", "after party 开场。到场、初始能量与空间激活。", ["21:00", "另外 120 位来宾", "到场与激活", "逐步进入核心环节"]],
     },
     "live-coding": {
       es: ["Live coding", "Música escrita, secuenciada y modificada con código en tiempo real, visible para toda la sala.", ["El centro creativo de la noche", "El código es visible mientras suena", "Alimenta el muro LED principal", "Momento de mayor captura de contenido"]],

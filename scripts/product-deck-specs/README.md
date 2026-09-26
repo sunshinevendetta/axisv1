@@ -1,6 +1,6 @@
 # Product deck specs
 
-Seven sales decks for the **same night** — October 28, 2026, Bar Oriente,
+Seven sales decks for the **same night** — Thursday October 29, 2026, Casa Luma,
 Mexico City, a Claude community event operated by AXIS — each written for one
 product category, so a pitch never opens with content aimed at somebody else's
 product.
@@ -11,15 +11,15 @@ product.
 | `exchange.json` | `/futurerenaissance-exchange` | KYC at the desk, first funded balance, first order, and the drink it releases |
 | `dex.json` | `/futurerenaissance-dex` | No account, no KYC: deposit and two swaps on event grounds, provable by tx hash |
 | `marketplace.json` | `/futurerenaissance-marketplace` | The room generates one-of-one inventory for three hours; the marketplace runs it |
-| `launchpad.json` | `/futurerenaissance-launchpad` | A live launch in front of 200 seated music-industry professionals |
-| `defi.json` | `/futurerenaissance-defi` | A position opened at 18:00 and closed before the room empties |
+| `launchpad.json` | `/futurerenaissance-launchpad` | A live launch in front of 100 seated music-industry professionals |
+| `defi.json` | `/futurerenaissance-defi` | A position opened at 17:00 and closed before the room empties |
 | `payments.json` | `/futurerenaissance-payments` | The partner is not sponsoring the bar, it is the bar's payment rail |
 
 ## Where the content lives
 
 Slides 01–07 and 10–15 are shared and come from
 `public/futurerenaissance-product-base/`. They carry the real event facts
-(200-seat workshop 18:00–21:00, doors again at 22:00 for 250 more guests,
+(100-seat workshop 17:00–21:00, then with no gap at 21:00 the party for 120 more guests to 02:00,
 warm-up DJ → live coding → closing DJ, Verse Works / Pixelord / The Public on
 the line-up), the live leaderboard, what AXIS operates and funds, the media
 and report deliverables the partner receives, and the two commercial tiers.
@@ -67,7 +67,7 @@ The category deck stays intact as the placeholder for the next conversation.
 
 - One night only. No "circuit", no "five houses", no "six nights" — the smoke
   test fails the build on that wording.
-- Every mechanic is something a guest physically does at Bar Oriente, tied to a
+- Every mechanic is something a guest physically does at Casa Luma, tied to a
   reward and a number AXIS can report. No abstract positioning language.
 - No invented statistics, partner names or case studies. For DeFi, never state
   or imply a rate of return.

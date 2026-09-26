@@ -146,11 +146,11 @@
 
     '<section class="fr-slide frx-proposition" data-slide-id="proposition" data-scene="orbit-system" data-label="The proposition">' +
       frameTop("02", "proposition", "THE PROPOSITION") +
-      '<div class="frx-heading frx-heading-wide"><span class="eyebrow" data-reveal data-i18n="proposition.kicker">THE PROPOSITION</span><h2 data-reveal data-i18n="proposition.title">A WORKSHOP FOR THE MUSIC INDUSTRY THAT BECOMES THE NIGHT.</h2><p data-reveal data-i18n="proposition.copy">Three seated hours with Claude for producers, artists, labels, managers and studios. At 22:00 the room resets, the doors open again, and the same space runs as Future Renaissance until close.</p></div>' +
+      '<div class="frx-heading frx-heading-wide"><span class="eyebrow" data-reveal data-i18n="proposition.kicker">THE PROPOSITION</span><h2 data-reveal data-i18n="proposition.title">A WORKSHOP FOR THE MUSIC INDUSTRY THAT BECOMES THE NIGHT.</h2><p data-reveal data-i18n="proposition.copy">Four seated hours with Claude for producers, artists, labels, managers and studios. At 21:00 the room turns over with no gap, and the same space runs as Future Renaissance until 02:00.</p></div>' +
       '<div class="frx-proposition-map" data-crystallize>' + orbitalSvg("frx-proposition-orbit") +
-        '<div class="frx-proposition-node is-day"><span data-i18n="proposition.earlyLabel">18:00 – 21:00</span><b>CLAUDE<br>WORKSHOP</b><small data-i18n="proposition.earlyCopy">' + night.workshopCapacity + ' SEATED ATTENDEES</small></div>' +
+        '<div class="frx-proposition-node is-day"><span data-i18n="proposition.earlyLabel">17:00 – 21:00</span><b>CLAUDE<br>WORKSHOP</b><small data-i18n="proposition.earlyCopy">' + night.workshopCapacity + ' SEATED ATTENDEES</small></div>' +
         '<div class="frx-proposition-bridge"><i>→</i><b>AXIS</b><small data-i18n="proposition.axisRole">HOSTS + OPERATES THE WHOLE NIGHT</small></div>' +
-        '<div class="frx-proposition-node is-night"><span data-i18n="proposition.lateLabel">22:00 – LATE</span><b>AFTER<br>PARTY</b><small data-i18n="proposition.lateCopy">+' + night.afterPartyGuests + ' FURTHER GUESTS</small></div>' +
+        '<div class="frx-proposition-node is-night"><span data-i18n="proposition.lateLabel">21:00 – 02:00</span><b>AFTER<br>PARTY</b><small data-i18n="proposition.lateCopy">+' + night.afterPartyGuests + ' FURTHER GUESTS</small></div>' +
       '</div>' +
       '<div class="frx-positioning" data-reveal data-i18n="proposition.positioning">ONE ROOM. ONE NIGHT. TWO AUDIENCES THAT OVERLAP.</div>' +
     '</section>',

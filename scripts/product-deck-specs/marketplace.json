@@ -4,14 +4,14 @@
   "slot": "[MARKETPLACE BRAND]",
   "discipline": "Primary and secondary market for digital art",
   "pageTitle": "Future Renaissance · Marketplace Partner · Claude Community Event · AXIS",
-  "pageDescription": "Private AXIS partnership presentation built for a digital-art marketplace: one night at Bar Oriente, Mexico City, October 28 2026, where a 200-seat Claude workshop and a live-coding after party generate collectible work inside the room. The marketplace lists it, sells it, and reports it.",
+  "pageDescription": "Private AXIS partnership presentation built for a digital-art marketplace: one night at Casa Luma, Mexico City, October 29 2026, where a 100-seat Claude workshop and a live-coding after party generate collectible work inside the room. The marketplace lists it, sells it, and reports it.",
 
   "slide08": {
     "label": "Marketplace function",
     "navLabel": "MARKETPLACE FUNCTION",
     "kicker": "MARKETPLACE FUNCTION",
     "title": "THE ROOM GENERATES THE INVENTORY. THE MARKETPLACE RUNS IT.",
-    "copy": "This is a night that makes its own supply: Verse works that draw themselves from a hash the moment they are collected, Pixelord releases that ship sound and 3D together, and LED wall output the guests generated with Claude. A marketplace partner does not have to simulate scarcity here, it operates the market for work that did not exist before 18:00.",
+    "copy": "This is a night that makes its own supply: Verse works that draw themselves from a hash the moment they are collected, Pixelord releases that ship sound and 3D together, and LED wall output the guests generated with Claude. A marketplace partner does not have to simulate scarcity here, it operates the market for work that did not exist before 17:00.",
     "ruleA": "NOT A LOGO BEHIND THE DJ BOOTH.",
     "ruleB": "SEVEN MARKET FUNCTIONS, EACH WITH LISTED WORK AND A COUNTED COLLECTOR."
   },
@@ -76,8 +76,8 @@
     {
       "id": "bardrop",
       "name": "Bar Drop",
-      "role": "A timed drop at the 22:00 doors",
-      "summary": "One drop opens on the clock when the after-party doors open and 250 further guests arrive. Collecting inside that window is the action that releases the drink at the bar.",
+      "role": "A timed drop at the 21:00 doors",
+      "summary": "One drop opens on the clock when the after-party doors open and 120 further guests arrive. Collecting inside that window is the action that releases the drink at the bar.",
       "details": [
         "The window is announced from the wall and by staff working the door",
         "Collect inside the window, redeem at the bar, no separate voucher",
@@ -101,7 +101,7 @@
       "id": "nightshelf",
       "name": "Night Shelf",
       "role": "The collection is the proof of being there",
-      "summary": "Everything a guest collected across the night resolves into one set held at their own address. Months later it is still the record that they were in the room on October 28.",
+      "summary": "Everything a guest collected across the night resolves into one set held at their own address. Months later it is still the record that they were in the room on October 29.",
       "details": [
         "Workshop piece, guest edition and drop collect resolve to one shelf",
         "Held in the guest's own custody, not as a platform balance",
@@ -117,9 +117,9 @@
       "stage": "Onboard",
       "context": "Workshop",
       "action": "Seat scan opens the market",
-      "summary": "Doors at 18:00, 200 chairs, one scan per seat. The marketplace account is created while a host is standing in the row, not alone on a phone at home.",
+      "summary": "Doors at 17:00, 100 chairs, one scan per seat. The marketplace account is created while a host is standing in the row, not alone on a phone at home.",
       "details": [
-        "Every one of the 200 seats is scanned on the way in",
+        "Every one of the 100 seats is scanned on the way in",
         "Account and first listing view happen with staff in the aisle",
         "Measured as accounts opened at the seat, not as app installs",
         "A failure at this step is visible immediately and fixed on the spot"
@@ -130,7 +130,7 @@
       "stage": "Act",
       "context": "Workshop",
       "action": "First collect from the seat",
-      "summary": "The Claude workshop is hands-on, so the first collect is part of the session itself. Every attendee leaves the 18:00 to 21:00 block having used the product once.",
+      "summary": "The Claude workshop is hands-on, so the first collect is part of the session itself. Every attendee leaves the 17:00 to 21:00 block having used the product once.",
       "details": [
         "The session runs on the venue screen, so the step is done together",
         "Producers, artists, labels, managers and studios all complete it",
@@ -142,8 +142,8 @@
       "id": "validate",
       "stage": "Validate",
       "context": "Doors",
-      "action": "Staff validates at 22:00",
-      "summary": "At 22:00 the after-party doors open to 250 further guests. Staff check the collect on the guest's own screen before anything is released.",
+      "action": "Staff validates at 21:00",
+      "summary": "At 21:00 the after-party doors open to 120 further guests. Staff check the collect on the guest's own screen before anything is released.",
       "details": [
         "Staff validation and the onchain record have to agree",
         "Workshop guests who stayed are recognised without repeating the flow",
@@ -237,7 +237,7 @@
         ],
         [
           "Drop de Barra",
-          "Un drop abre en punto cuando se abren las puertas del after y llegan 250 invitados más. Coleccionar dentro de esa ventana es la acción que libera el trago en la barra.",
+          "Un drop abre en punto cuando se abren las puertas del after y llegan 120 invitados más. Coleccionar dentro de esa ventana es la acción que libera el trago en la barra.",
           [
             "La ventana se anuncia desde el muro y por el staff en la puerta",
             "Coleccionas dentro de la ventana y canjeas en barra, sin vale aparte",
@@ -257,7 +257,7 @@
         ],
         [
           "Colección de la Noche",
-          "Todo lo que un invitado coleccionó durante la noche se resuelve en un solo conjunto bajo su propia dirección. Meses después sigue siendo la prueba de que estuvo ahí el 28 de octubre.",
+          "Todo lo que un invitado coleccionó durante la noche se resuelve en un solo conjunto bajo su propia dirección. Meses después sigue siendo la prueba de que estuvo ahí el 29 de octubre.",
           [
             "Pieza del taller, edición del público y drop quedan en un mismo conjunto",
             "Bajo custodia del propio invitado, no como saldo de plataforma",
@@ -309,7 +309,7 @@
         ],
         [
           "整点发售",
-          "当 22:00 后半场开门、另有 250 位来宾进场时，一场限时发售准时开启。在该窗口内完成收藏，就是换取吧台饮品的那个动作。",
+          "当 21:00 后半场开门、另有 120 位来宾进场时，一场限时发售准时开启。在该窗口内完成收藏，就是换取吧台饮品的那个动作。",
           [
             "发售窗口由主屏和门口工作人员同时告知",
             "窗口内收藏，吧台直接兑换，不需要另发券",
@@ -329,7 +329,7 @@
         ],
         [
           "当晚收藏",
-          "来宾整晚收藏的一切，最终汇成他自己地址下的一组作品。数月之后，它依然是此人 10 月 28 日在场的凭证。",
+          "来宾整晚收藏的一切，最终汇成他自己地址下的一组作品。数月之后，它依然是此人 10 月 29 日在场的凭证。",
           [
             "工作坊作品、观众版次与限时发售收藏，归入同一组",
             "由来宾自己保管，而不是留在平台账户余额里",
@@ -343,9 +343,9 @@
       "es": [
         [
           "El escaneo del asiento abre el marketplace",
-          "Puertas a las 18:00, 200 sillas, un escaneo por asiento. La cuenta del marketplace se crea con un anfitrión parado en la fila, no a solas con el celular en casa.",
+          "Puertas a las 17:00, 100 sillas, un escaneo por asiento. La cuenta del marketplace se crea con un anfitrión parado en la fila, no a solas con el celular en casa.",
           [
-            "Los 200 asientos se escanean al entrar",
+            "Los 100 asientos se escanean al entrar",
             "La cuenta y la primera vista de listados ocurren con staff en el pasillo",
             "Se mide como cuentas abiertas en el asiento, no como instalaciones",
             "Un fallo aquí se ve al momento y se resuelve ahí mismo"
@@ -353,7 +353,7 @@
         ],
         [
           "Primera colección desde el asiento",
-          "El taller de Claude es práctico, así que la primera colección es parte de la sesión. Cada asistente sale del bloque de 18:00 a 21:00 habiendo usado el producto una vez.",
+          "El taller de Claude es práctico, así que la primera colección es parte de la sesión. Cada asistente sale del bloque de 17:00 a 21:00 habiendo usado el producto una vez.",
           [
             "La sesión corre en la pantalla del venue y el paso se hace en conjunto",
             "Productores, artistas, sellos, managers y estudios lo completan",
@@ -362,8 +362,8 @@
           ]
         ],
         [
-          "El staff valida a las 22:00",
-          "A las 22:00 abren las puertas del after para 250 invitados más. El staff revisa la colección en la pantalla del propio invitado antes de liberar nada.",
+          "El staff valida a las 21:00",
+          "A las 21:00 abren las puertas del after para 120 invitados más. El staff revisa la colección en la pantalla del propio invitado antes de liberar nada.",
           [
             "La validación del staff y el registro onchain tienen que coincidir",
             "Quien se quedó del taller es reconocido sin repetir el flujo",
@@ -405,9 +405,9 @@
       "zh": [
         [
           "扫码入座即开通账户",
-          "18:00 开门，200 把椅子，每个座位扫一次码。平台账户是在主持人就站在这一排时开通的，而不是回家一个人对着手机完成。",
+          "17:00 开门，100 把椅子，每个座位扫一次码。平台账户是在主持人就站在这一排时开通的，而不是回家一个人对着手机完成。",
           [
-            "200 个座位在入场时全部完成扫码",
+            "100 个座位在入场时全部完成扫码",
             "开户与第一次浏览在售作品，都有工作人员在过道协助",
             "以在座位上开通的账户数衡量，而不是应用安装量",
             "这一步出问题当场就能看见，也当场解决"
@@ -415,7 +415,7 @@
         ],
         [
           "在座位上完成首次收藏",
-          "Claude 工作坊是动手环节，因此首次收藏就是课程的一部分。每位参与者离开 18:00 至 21:00 这一段时，都已经完整用过一次产品。",
+          "Claude 工作坊是动手环节，因此首次收藏就是课程的一部分。每位参与者离开 17:00 至 21:00 这一段时，都已经完整用过一次产品。",
           [
             "课程内容同步在场馆主屏上，这一步全场一起做",
             "制作人、艺术家、厂牌、经纪人和录音棚都会完成",
@@ -424,8 +424,8 @@
           ]
         ],
         [
-          "22:00 由工作人员核验",
-          "22:00 后半场开门，另有 250 位来宾进场。工作人员在来宾自己的屏幕上核对收藏记录，之后才会放行任何奖励。",
+          "21:00 由工作人员核验",
+          "21:00 后半场开门，另有 120 位来宾进场。工作人员在来宾自己的屏幕上核对收藏记录，之后才会放行任何奖励。",
           [
             "人工核验与链上记录必须一致",
             "从工作坊留下来的来宾无需重走一遍流程",
@@ -474,7 +474,7 @@
         ["DIBUJO POR HASH", "Coleccionar es lo que dibuja la obra"],
         ["ESCENA GALERÍA", "La interfaz del marketplace en el muro"],
         ["EDICIÓN DEL PÚBLICO", "Lo que hizo el público, listado como edición"],
-        ["DROP DE BARRA", "Un drop en punto al abrir a las 22:00"],
+        ["DROP DE BARRA", "Un drop en punto al abrir a las 21:00"],
         ["REGALÍAS EN VIVO", "El pago al artista, visible al liquidarse"],
         ["COLECCIÓN DE LA NOCHE", "La colección es la prueba de haber estado"]
       ],
@@ -482,7 +482,7 @@
       "flowActions": [
         "EL ESCANEO DEL ASIENTO ABRE EL MARKETPLACE",
         "PRIMERA COLECCIÓN DESDE EL ASIENTO",
-        "EL STAFF VALIDA A LAS 22:00",
+        "EL STAFF VALIDA A LAS 21:00",
         "UNA COLECCIÓN VERIFICADA PAGA EL TRAGO",
         "LA PIEZA SUBE AL MURO",
         "LA NOCHE SE RESUELVE EN UN REGISTRO"
@@ -491,7 +491,7 @@
         "nav.brandFunction": "FUNCIÓN DEL MARKETPLACE",
         "brandFunction.kicker": "FUNCIÓN DEL MARKETPLACE",
         "brandFunction.title": "LA SALA GENERA EL INVENTARIO. EL MARKETPLACE LO OPERA.",
-        "brandFunction.copy": "Es una noche que produce su propia oferta: obras de Verse que se dibujan a partir de un hash en el momento en que se coleccionan, lanzamientos de Pixelord que publican sonido y 3D juntos, y el material del muro LED que generó el propio público con Claude. Un socio marketplace no necesita simular escasez aquí, opera el mercado de obra que no existía antes de las 18:00.",
+        "brandFunction.copy": "Es una noche que produce su propia oferta: obras de Verse que se dibujan a partir de un hash en el momento en que se coleccionan, lanzamientos de Pixelord que publican sonido y 3D juntos, y el material del muro LED que generó el propio público con Claude. Un socio marketplace no necesita simular escasez aquí, opera el mercado de obra que no existía antes de las 17:00.",
         "brandFunction.noLogoWall": "NO ES UN LOGO DETRÁS DE LA CABINA DEL DJ.",
         "brandFunction.distinctFunctions": "SIETE FUNCIONES DE MERCADO, CADA UNA CON OBRA LISTADA Y COLECCIONISTAS CONTADOS.",
         "crossWeek.kicker": "EL FLUJO DE RECOMPENSA",
@@ -506,7 +506,7 @@
         ["哈希生成", "收藏这个动作本身就是创作"],
         ["画廊场景", "平台界面直接成为主屏画面"],
         ["观众版次", "观众生成的画面上架为版次"],
-        ["整点发售", "22:00 开门时准点开启的发售"],
+        ["整点发售", "21:00 开门时准点开启的发售"],
         ["版税可见", "艺术家分成结算时当场显示"],
         ["当晚收藏", "这组收藏就是到场的凭证"]
       ],
@@ -514,7 +514,7 @@
       "flowActions": [
         "扫码入座即开通账户",
         "在座位上完成首次收藏",
-        "22:00 由工作人员核验",
+        "21:00 由工作人员核验",
         "核验通过即可换一杯",
         "作品登上主屏",
         "整晚收敛成一份账目"
@@ -523,7 +523,7 @@
         "nav.brandFunction": "平台功能",
         "brandFunction.kicker": "平台功能",
         "brandFunction.title": "内容由现场产生，市场由平台运营。",
-        "brandFunction.copy": "这是一个自己生产供给的夜晚：Verse 的作品在被收藏的那一刻依据哈希把自己画出来，Pixelord 的发布把声音与 3D 一起上链，而 LED 主屏上的画面由来宾用 Claude 亲手生成。交易平台在这里不必制造稀缺，它经营的是 18:00 之前根本不存在的作品。",
+        "brandFunction.copy": "这是一个自己生产供给的夜晚：Verse 的作品在被收藏的那一刻依据哈希把自己画出来，Pixelord 的发布把声音与 3D 一起上链，而 LED 主屏上的画面由来宾用 Claude 亲手生成。交易平台在这里不必制造稀缺，它经营的是 17:00 之前根本不存在的作品。",
         "brandFunction.noLogoWall": "不是 DJ 台背后的一个标志。",
         "brandFunction.distinctFunctions": "七项市场功能，每一项都有上架的作品和可计数的收藏者。",
         "crossWeek.kicker": "奖励流程",

@@ -4,14 +4,14 @@
   "slot": "[LAUNCHPAD BRAND]",
   "discipline": "Launch platform for creator and artist tokens",
   "pageTitle": "Future Renaissance · Launchpad Partner · Claude Community Event · AXIS",
-  "pageDescription": "Private AXIS partnership presentation built for a creator launchpad: one night at Bar Oriente, Mexico City, October 28 2026, where a 200-seat Claude workshop seats the music industry and the after party hosts a live launch in the room. Allocation is earned by participation and delivered as a named holder cohort.",
+  "pageDescription": "Private AXIS partnership presentation built for a creator launchpad: one night at Casa Luma, Mexico City, October 29 2026, where a 100-seat Claude workshop seats the music industry and the after party hosts a live launch in the room. Allocation is earned by participation and delivered as a named holder cohort.",
 
   "slide08": {
     "label": "Launchpad function",
     "navLabel": "LAUNCHPAD FUNCTION",
     "kicker": "LAUNCHPAD FUNCTION",
-    "title": "A LIVE LAUNCH IN FRONT OF 200 PEOPLE WHO WORK IN MUSIC.",
-    "copy": "The 18:00 workshop seats producers, artists, labels, managers and studios, which is the exact population a creator-launch product is built for. The launchpad does not sponsor this night, it runs one real launch inside it, opened in the room and filled by the people sitting in it.",
+    "title": "A LIVE LAUNCH IN FRONT OF 100 PEOPLE WHO WORK IN MUSIC.",
+    "copy": "The 17:00 workshop seats producers, artists, labels, managers and studios, which is the exact population a creator-launch product is built for. The launchpad does not sponsor this night, it runs one real launch inside it, opened in the room and filled by the people sitting in it.",
     "ruleA": "NOT A LOGO ON THE STAGE BACKDROP.",
     "ruleB": "SEVEN LAUNCH FUNCTIONS, EACH WITH ITS OWN COUNTED PARTICIPATION."
   },
@@ -32,7 +32,7 @@
       "summary": "A creator from the line-up launches through the platform during the after party, at an announced minute, with the room present. The launch is the event itself, not a link posted the next day.",
       "details": [
         "One launch, one window, announced from the stage and from the wall",
-        "The first participants are people physically inside Bar Oriente",
+        "The first participants are people physically inside Casa Luma",
         "Measured as participants inside the window and what filled in it",
         "The platform is demonstrated by being used, not by being described"
       ]
@@ -40,10 +40,10 @@
     {
       "id": "creatordesk",
       "name": "Creator Desk",
-      "role": "200 professionals draft a launch",
-      "summary": "The 18:00 workshop is hands-on with a chair for every attendee. The exercise is building a launch draft with Claude on the platform, so the room learns the product by shipping something inside it.",
+      "role": "100 professionals draft a launch",
+      "summary": "The 17:00 workshop is hands-on with a chair for every attendee. The exercise is building a launch draft with Claude on the platform, so the room learns the product by shipping something inside it.",
       "details": [
-        "All 200 seats work through the same flow at the same time",
+        "All 100 seats work through the same flow at the same time",
         "The session runs on the venue screen so nobody is lost mid-step",
         "Support is in the aisle for the step that normally loses people",
         "Measured as drafts created and how many are still live after the night"
@@ -89,10 +89,10 @@
       "id": "roomgate",
       "name": "Room Gate",
       "role": "First window is people in the room",
-      "summary": "The opening window is restricted to guests validated by staff at Bar Oriente. It widens later, but the founding holders are the people who were actually there.",
+      "summary": "The opening window is restricted to guests validated by staff at Casa Luma. It widens later, but the founding holders are the people who were actually there.",
       "details": [
         "Presence is validated by staff, not by a self-reported address",
-        "Workshop attendees who stayed past 22:00 are recognised automatically",
+        "Workshop attendees who stayed past 21:00 are recognised automatically",
         "Gives the launch a founding cohort that can be described honestly",
         "Measured as in-room participants against the later public window"
       ]
@@ -117,9 +117,9 @@
       "stage": "Onboard",
       "context": "Workshop",
       "action": "Seat scan opens an allocation",
-      "summary": "Doors at 18:00, 200 chairs, one scan per seat. The scan that seats the guest is the scan that opens their allocation on the launchpad.",
+      "summary": "Doors at 17:00, 100 chairs, one scan per seat. The scan that seats the guest is the scan that opens their allocation on the launchpad.",
       "details": [
-        "All 200 seats onboarded in the same block, with staff in the aisle",
+        "All 100 seats onboarded in the same block, with staff in the aisle",
         "Role captured at the seat: producer, artist, label, manager, studio",
         "Measured as allocations opened at the seat, not as app installs",
         "Nobody is asked to go and sign up alone later"
@@ -130,7 +130,7 @@
       "stage": "Act",
       "context": "Workshop",
       "action": "Launch page built in the seat",
-      "summary": "The hands-on exercise is building a launch on the platform with Claude. Every attendee finishes the 18:00 to 21:00 block having used the product for its actual purpose.",
+      "summary": "The hands-on exercise is building a launch on the platform with Claude. Every attendee finishes the 17:00 to 21:00 block having used the product for its actual purpose.",
       "details": [
         "The step is done together, mirrored on the venue screen",
         "Artists build for themselves, labels and managers build for a roster",
@@ -142,8 +142,8 @@
       "id": "validate",
       "stage": "Validate",
       "context": "Doors",
-      "action": "Presence verified at 22:00",
-      "summary": "At 22:00 the doors open to 250 further guests. Staff verify each guest before allocation is confirmed, so the founding cohort is people who were in the building.",
+      "action": "Presence verified at 21:00",
+      "summary": "At 21:00 the doors open to 120 further guests. Staff verify each guest before allocation is confirmed, so the founding cohort is people who were in the building.",
       "details": [
         "Staff validation and the platform record have to agree",
         "Workshop guests who stayed carry their earned tier straight through",
@@ -200,16 +200,16 @@
           "Un creador del line-up lanza a través de la plataforma durante el after, a una hora anunciada y con la sala presente. El lanzamiento es el evento, no un link publicado al día siguiente.",
           [
             "Un lanzamiento, una ventana, anunciada desde el escenario y el muro",
-            "Los primeros participantes son gente físicamente dentro de Bar Oriente",
+            "Los primeros participantes son gente físicamente dentro de Casa Luma",
             "Se mide como participantes dentro de la ventana y cuánto se llenó",
             "La plataforma se demuestra usándola, no describiéndola"
           ]
         ],
         [
           "Mesa de Creador",
-          "El taller de las 18:00 es práctico y hay una silla para cada asistente. El ejercicio es construir un lanzamiento con Claude en la plataforma, así que la sala aprende el producto publicando algo dentro de él.",
+          "El taller de las 17:00 es práctico y hay una silla para cada asistente. El ejercicio es construir un lanzamiento con Claude en la plataforma, así que la sala aprende el producto publicando algo dentro de él.",
           [
-            "Los 200 asientos recorren el mismo flujo al mismo tiempo",
+            "Los 100 asientos recorren el mismo flujo al mismo tiempo",
             "La sesión corre en la pantalla del venue, nadie se pierde a media ruta",
             "Hay soporte en el pasillo justo en el paso donde la gente se cae",
             "Se mide como borradores creados y cuántos siguen vivos tras la noche"
@@ -247,10 +247,10 @@
         ],
         [
           "Puerta de Sala",
-          "La ventana de apertura queda restringida a invitados validados por el staff en Bar Oriente. Después se abre más, pero los primeros holders son quienes estuvieron ahí.",
+          "La ventana de apertura queda restringida a invitados validados por el staff en Casa Luma. Después se abre más, pero los primeros holders son quienes estuvieron ahí.",
           [
             "La presencia la valida el staff, no una dirección declarada por el usuario",
-            "Quien se quedó del taller después de las 22:00 se reconoce automáticamente",
+            "Quien se quedó del taller después de las 21:00 se reconoce automáticamente",
             "Le da al lanzamiento una cohorte fundadora que se puede describir con honestidad",
             "Se mide como participantes en sala frente a la ventana pública posterior"
           ]
@@ -272,16 +272,16 @@
           "阵容中的一位创作者在后半场通过该平台完成发行，时间提前公布，全场在座。发行本身就是这场活动，而不是第二天贴出来的一个链接。",
           [
             "一次发行、一个窗口，由舞台和主屏同时公布",
-            "最早的参与者是人就在 Bar Oriente 现场的那批人",
+            "最早的参与者是人就在 Casa Luma 现场的那批人",
             "以窗口内的参与人数、以及窗口内的完成情况衡量",
             "平台靠被真正使用来证明自己，而不是靠介绍"
           ]
         ],
         [
           "创作者工位",
-          "18:00 的工作坊是动手环节，每位参与者都有一把椅子。练习内容就是用 Claude 在平台上做出一个发行草案，全场通过在产品里真正做出东西来学会这个产品。",
+          "17:00 的工作坊是动手环节，每位参与者都有一把椅子。练习内容就是用 Claude 在平台上做出一个发行草案，全场通过在产品里真正做出东西来学会这个产品。",
           [
-            "200 个座位在同一时间走完同一套流程",
+            "100 个座位在同一时间走完同一套流程",
             "课程同步在场馆主屏上，没有人会卡在中间某一步",
             "在最容易劝退的那一步，过道里有人现场协助",
             "以创建的草案数量、以及当晚之后仍然存续的数量衡量"
@@ -319,10 +319,10 @@
         ],
         [
           "在场优先",
-          "开盘窗口仅对在 Bar Oriente 由工作人员核验通过的来宾开放。之后会逐步放开，但最初的持有者是真正到过现场的人。",
+          "开盘窗口仅对在 Casa Luma 由工作人员核验通过的来宾开放。之后会逐步放开，但最初的持有者是真正到过现场的人。",
           [
             "在场由工作人员核验，而不是用户自己填一个地址",
-            "22:00 之后仍留在现场的工作坊参与者自动获得识别",
+            "21:00 之后仍留在现场的工作坊参与者自动获得识别",
             "让这次发行拥有一批可以如实描述的初始持有人",
             "以现场参与人数、对照之后的公开窗口衡量"
           ]
@@ -343,9 +343,9 @@
       "es": [
         [
           "El escaneo del asiento abre la asignación",
-          "Puertas a las 18:00, 200 sillas, un escaneo por asiento. El escaneo que sienta al invitado es el que abre su asignación en la plataforma.",
+          "Puertas a las 17:00, 100 sillas, un escaneo por asiento. El escaneo que sienta al invitado es el que abre su asignación en la plataforma.",
           [
-            "Los 200 asientos se dan de alta en el mismo bloque, con staff en el pasillo",
+            "Los 100 asientos se dan de alta en el mismo bloque, con staff en el pasillo",
             "El rol se captura en el asiento: productor, artista, sello, manager, estudio",
             "Se mide como asignaciones abiertas en el asiento, no como instalaciones",
             "A nadie se le pide registrarse solo, más tarde"
@@ -353,7 +353,7 @@
         ],
         [
           "Página de lanzamiento desde el asiento",
-          "El ejercicio práctico es construir un lanzamiento en la plataforma con Claude. Cada asistente termina el bloque de 18:00 a 21:00 habiendo usado el producto para lo que sirve.",
+          "El ejercicio práctico es construir un lanzamiento en la plataforma con Claude. Cada asistente termina el bloque de 17:00 a 21:00 habiendo usado el producto para lo que sirve.",
           [
             "El paso se hace en conjunto, replicado en la pantalla del venue",
             "Los artistas construyen para sí mismos, sellos y managers para su roster",
@@ -362,8 +362,8 @@
           ]
         ],
         [
-          "Presencia verificada a las 22:00",
-          "A las 22:00 las puertas abren para 250 invitados más. El staff verifica a cada invitado antes de confirmar la asignación, así que la cohorte fundadora es gente que estuvo en el lugar.",
+          "Presencia verificada a las 21:00",
+          "A las 21:00 las puertas abren para 120 invitados más. El staff verifica a cada invitado antes de confirmar la asignación, así que la cohorte fundadora es gente que estuvo en el lugar.",
           [
             "La validación del staff y el registro de la plataforma tienen que coincidir",
             "Quien se quedó del taller conserva directo el nivel que ganó",
@@ -405,9 +405,9 @@
       "zh": [
         [
           "扫码入座即开通额度",
-          "18:00 开门，200 把椅子，每个座位扫一次码。让来宾入座的那次扫码，同时也在平台上为他开通了额度。",
+          "17:00 开门，100 把椅子，每个座位扫一次码。让来宾入座的那次扫码，同时也在平台上为他开通了额度。",
           [
-            "200 个座位在同一时段完成开通，过道里有工作人员",
+            "100 个座位在同一时段完成开通，过道里有工作人员",
             "身份在座位上登记：制作人、艺术家、厂牌、经纪人、录音棚",
             "以在座位上开通的额度数衡量，而不是应用安装量",
             "不需要任何人事后独自去注册"
@@ -415,7 +415,7 @@
         ],
         [
           "在座位上做出发行页",
-          "动手环节就是用 Claude 在平台上做出一个发行。每位参与者结束 18:00 至 21:00 这一段时，都已经把产品用在了它真正的用途上。",
+          "动手环节就是用 Claude 在平台上做出一个发行。每位参与者结束 17:00 至 21:00 这一段时，都已经把产品用在了它真正的用途上。",
           [
             "这一步全场一起做，并同步在场馆主屏上",
             "艺术家为自己做，厂牌和经纪人为旗下艺人做",
@@ -424,8 +424,8 @@
           ]
         ],
         [
-          "22:00 核验是否在场",
-          "22:00 开门，另有 250 位来宾进场。工作人员逐一核验后才确认额度，因此初始人群都是真正到过现场的人。",
+          "21:00 核验是否在场",
+          "21:00 开门，另有 120 位来宾进场。工作人员逐一核验后才确认额度，因此初始人群都是真正到过现场的人。",
           [
             "人工核验与平台记录必须一致",
             "从工作坊留下来的来宾，直接带着已获得的层级继续",
@@ -471,7 +471,7 @@
     "es": {
       "mechanics": [
         ["LANZAMIENTO EN VIVO", "Un lanzamiento que abre en punto"],
-        ["MESA DE CREADOR", "200 profesionales arman un lanzamiento"],
+        ["MESA DE CREADOR", "100 profesionales arman un lanzamiento"],
         ["ASIGNACIÓN GANADA", "La asignación se gana, no se compra"],
         ["LA CURVA", "El llenado corre en vivo en el muro LED"],
         ["OBRA EN CÓDIGO", "El live coding crea lo que se lanza"],
@@ -482,7 +482,7 @@
       "flowActions": [
         "EL ESCANEO DEL ASIENTO ABRE LA ASIGNACIÓN",
         "PÁGINA DE LANZAMIENTO DESDE EL ASIENTO",
-        "PRESENCIA VERIFICADA A LAS 22:00",
+        "PRESENCIA VERIFICADA A LAS 21:00",
         "LA CURVA ABRE EN EL MURO",
         "LA PARTICIPACIÓN PAGA EL TRAGO",
         "COHORTE DE HOLDERS, CON NOMBRE Y ROL"
@@ -490,8 +490,8 @@
       "keys": {
         "nav.brandFunction": "FUNCIÓN DEL LAUNCHPAD",
         "brandFunction.kicker": "FUNCIÓN DEL LAUNCHPAD",
-        "brandFunction.title": "UN LANZAMIENTO EN VIVO FRENTE A 200 PERSONAS QUE TRABAJAN EN MÚSICA.",
-        "brandFunction.copy": "El taller de las 18:00 sienta a productores, artistas, sellos, managers y estudios, que es exactamente la población para la que se construye un producto de lanzamientos de creador. El launchpad no patrocina esta noche, corre un lanzamiento real dentro de ella, abierto en la sala y llenado por la gente que está sentada ahí.",
+        "brandFunction.title": "UN LANZAMIENTO EN VIVO FRENTE A 100 PERSONAS QUE TRABAJAN EN MÚSICA.",
+        "brandFunction.copy": "El taller de las 17:00 sienta a productores, artistas, sellos, managers y estudios, que es exactamente la población para la que se construye un producto de lanzamientos de creador. El launchpad no patrocina esta noche, corre un lanzamiento real dentro de ella, abierto en la sala y llenado por la gente que está sentada ahí.",
         "brandFunction.noLogoWall": "NO ES UN LOGO EN EL BACKDROP DEL ESCENARIO.",
         "brandFunction.distinctFunctions": "SIETE FUNCIONES DE LANZAMIENTO, CADA UNA CON SU PROPIA PARTICIPACIÓN CONTADA.",
         "crossWeek.kicker": "EL FLUJO DE RECOMPENSA",
@@ -503,7 +503,7 @@
     "zh": {
       "mechanics": [
         ["现场发行", "一次准点开盘的发行"],
-        ["创作者工位", "200 位从业者各做一个发行"],
+        ["创作者工位", "100 位从业者各做一个发行"],
         ["额度靠参与", "额度靠挣，不靠买"],
         ["进度曲线", "完成进度实时跑在 LED 主屏"],
         ["代码作品", "Live Coding 做出被发行的东西"],
@@ -514,7 +514,7 @@
       "flowActions": [
         "扫码入座即开通额度",
         "在座位上做出发行页",
-        "22:00 核验是否在场",
+        "21:00 核验是否在场",
         "曲线在主屏上开盘",
         "参与即可换一杯",
         "带身份的持有者名单"
@@ -522,8 +522,8 @@
       "keys": {
         "nav.brandFunction": "发行平台功能",
         "brandFunction.kicker": "发行平台功能",
-        "brandFunction.title": "一场现场发行，面对 200 位以音乐为业的人。",
-        "brandFunction.copy": "18:00 的工作坊里坐着制作人、艺术家、厂牌、经纪人和录音棚，而这正是创作者发行类产品要找的那群人。发行平台不是这场活动的赞助方，它在活动内部完成一次真实发行：在现场开盘，由坐在现场的人把它填满。",
+        "brandFunction.title": "一场现场发行，面对 100 位以音乐为业的人。",
+        "brandFunction.copy": "17:00 的工作坊里坐着制作人、艺术家、厂牌、经纪人和录音棚，而这正是创作者发行类产品要找的那群人。发行平台不是这场活动的赞助方，它在活动内部完成一次真实发行：在现场开盘，由坐在现场的人把它填满。",
         "brandFunction.noLogoWall": "不是舞台背景板上的一个标志。",
         "brandFunction.distinctFunctions": "七项发行功能，每一项都有各自可计数的参与。",
         "crossWeek.kicker": "奖励流程",

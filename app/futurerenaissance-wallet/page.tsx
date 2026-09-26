@@ -4,7 +4,7 @@ import FutureRenaissanceExtendedPlanContent from "@/components/futurerenaissance
 
 const title = "Future Renaissance · Wallet Partner · Claude Community Event · AXIS";
 const description =
-  "Private AXIS partnership presentation built for a wallet product: one night at Bar Oriente, Mexico City, October 28 2026, where the wallet is the door, the signature, the bar tab and the address that is still reachable the next morning.";
+  "Private AXIS partnership presentation built for a wallet product: one night at Casa Luma, Mexico City, October 29 2026, where the wallet is the door, the signature, the bar tab and the address that is still reachable the next morning.";
 
 export const metadata: Metadata = {
   title,
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   keywords: [
     "Future Renaissance",
     "Claude community event",
-    "Bar Oriente",
+    "Casa Luma",
     "Mexico Tech Week 2026",
     "Mexico City",
     "AXIS",
@@ -39,10 +39,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://axis.show/futurerenaissanceextended/og-circuit.png",
-        width: 1672,
-        height: 941,
-        alt: "Future Renaissance Mexico Tech Week After Hours circuit",
+        url: "https://axis.show/futurerenaissanceextended/poster-horizontal.png",
+        width: 1396,
+        height: 1125,
+        alt: "Official Future Renaissance campaign poster",
       },
     ],
   },
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["https://axis.show/futurerenaissanceextended/og-circuit.png"],
+    images: ["https://axis.show/futurerenaissanceextended/poster-horizontal.png"],
   },
 };
 

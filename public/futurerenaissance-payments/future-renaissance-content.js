@@ -146,11 +146,11 @@
 
     '<section class="fr-slide frx-proposition" data-slide-id="proposition" data-scene="orbit-system" data-label="The proposition">' +
       frameTop("02", "proposition", "THE PROPOSITION") +
-      '<div class="frx-heading frx-heading-wide"><span class="eyebrow" data-reveal data-i18n="proposition.kicker">THE PROPOSITION</span><h2 data-reveal data-i18n="proposition.title">A WORKSHOP FOR THE MUSIC INDUSTRY THAT BECOMES THE NIGHT.</h2><p data-reveal data-i18n="proposition.copy">Three seated hours with Claude for producers, artists, labels, managers and studios. At 22:00 the room resets, the doors open again, and the same space runs as Future Renaissance until close.</p></div>' +
+      '<div class="frx-heading frx-heading-wide"><span class="eyebrow" data-reveal data-i18n="proposition.kicker">THE PROPOSITION</span><h2 data-reveal data-i18n="proposition.title">A WORKSHOP FOR THE MUSIC INDUSTRY THAT BECOMES THE NIGHT.</h2><p data-reveal data-i18n="proposition.copy">Four seated hours with Claude for producers, artists, labels, managers and studios. At 21:00 the room turns over with no gap, and the same space runs as Future Renaissance until 02:00.</p></div>' +
       '<div class="frx-proposition-map" data-crystallize>' + orbitalSvg("frx-proposition-orbit") +
-        '<div class="frx-proposition-node is-day"><span data-i18n="proposition.earlyLabel">18:00 – 21:00</span><b>CLAUDE<br>WORKSHOP</b><small data-i18n="proposition.earlyCopy">' + night.workshopCapacity + ' SEATED ATTENDEES</small></div>' +
+        '<div class="frx-proposition-node is-day"><span data-i18n="proposition.earlyLabel">17:00 – 21:00</span><b>CLAUDE<br>WORKSHOP</b><small data-i18n="proposition.earlyCopy">' + night.workshopCapacity + ' SEATED ATTENDEES</small></div>' +
         '<div class="frx-proposition-bridge"><i>→</i><b>AXIS</b><small data-i18n="proposition.axisRole">HOSTS + OPERATES THE WHOLE NIGHT</small></div>' +
-        '<div class="frx-proposition-node is-night"><span data-i18n="proposition.lateLabel">22:00 – LATE</span><b>AFTER<br>PARTY</b><small data-i18n="proposition.lateCopy">+' + night.afterPartyGuests + ' FURTHER GUESTS</small></div>' +
+        '<div class="frx-proposition-node is-night"><span data-i18n="proposition.lateLabel">21:00 – 02:00</span><b>AFTER<br>PARTY</b><small data-i18n="proposition.lateCopy">+' + night.afterPartyGuests + ' FURTHER GUESTS</small></div>' +
       '</div>' +
       '<div class="frx-positioning" data-reveal data-i18n="proposition.positioning">ONE ROOM. ONE NIGHT. TWO AUDIENCES THAT OVERLAP.</div>' +
     '</section>',
@@ -204,7 +204,7 @@
 
     '<section class="fr-slide frx-cross-week" data-slide-id="reward-flow" data-scene="structured" data-label="The reward flow">' +
       frameTop("09", "crossWeek", "THE REWARD FLOW") +
-      '<div class="frx-heading"><span class="eyebrow" data-reveal data-i18n="crossWeek.kicker">THE REWARD FLOW</span><h2 data-reveal data-i18n="crossWeek.title">A TAP BECOMES A DRINK BECOMES A SETTLED MERCHANT RECORD.</h2><p data-reveal data-i18n="crossWeek.copy">The chain is short and physical: tap at the bar, drink in hand, the venue paid over the partner\'s rail, the night\'s transaction count on the main LED wall, and every movement reconciled against Bar Oriente\'s own totals in the report.</p></div>' +
+      '<div class="frx-heading"><span class="eyebrow" data-reveal data-i18n="crossWeek.kicker">THE REWARD FLOW</span><h2 data-reveal data-i18n="crossWeek.title">A TAP BECOMES A DRINK BECOMES A SETTLED MERCHANT RECORD.</h2><p data-reveal data-i18n="crossWeek.copy">The chain is short and physical: tap at the bar, drink in hand, the venue paid over the partner\'s rail, the night\'s transaction count on the main LED wall, and every movement reconciled against Casa Luma\'s own totals in the report.</p></div>' +
       '<div class="frx-week-sequence" data-crystallize>' + focus.flow.map(flowCard).join("") + '</div>' +
       '<div class="frx-example-note" data-reveal data-i18n="crossWeek.note">EXAMPLE FLOW · EXACT ACTIONS ARE DESIGNED AROUND THE PRODUCT.</div>' +
     '</section>',

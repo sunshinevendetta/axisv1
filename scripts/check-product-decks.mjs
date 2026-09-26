@@ -47,9 +47,11 @@ function render(dir) {
   return { html: stage.innerHTML, sandbox };
 }
 
-const decks = readdirSync("public")
-  .filter((d) => d.startsWith("futurerenaissance-"))
-  .filter((d) => d !== "futurerenaissance-bar-oriente" && d !== "futurerenaissance-product-base")
+// Only the decks generated from a spec. The venue briefs share the prefix but
+// are a different deck with a different slide set.
+const decks = readdirSync("scripts/product-deck-specs")
+  .filter((f) => f.endsWith(".json"))
+  .map((f) => "futurerenaissance-" + JSON.parse(readFileSync(join("scripts/product-deck-specs", f), "utf8")).slug)
   .filter((d) => existsSync(join("public", d, "future-renaissance-content.js")));
 
 if (!decks.length) {
@@ -86,8 +88,10 @@ for (const deck of decks) {
     fail(deck, "still contains retired six-night wording: " + (html.match(RETIRED) || [])[0]);
   }
   if (html.includes("[BRAND]")) fail(deck, "unreplaced [BRAND] placeholder");
-  if (!/bar oriente/i.test(html)) fail(deck, "does not name the venue");
-  if (!/october 28, 2026/i.test(html)) fail(deck, "does not carry the event date");
+  if (!/casa luma/i.test(html)) fail(deck, "does not name the venue");
+  if (/bar oriente/i.test(html)) fail(deck, "still names Bar Oriente");
+  if (!/october 29, 2026/i.test(html)) fail(deck, "does not carry the event date");
+  if (/october 28|(200|250) (seated|further|chairs|seats|people|attendees)|22:00|18:00/i.test(html)) fail(deck, "still carries a pre-Casa Luma time or capacity");
 
   // The ?view=short filter names slide ids explicitly; a renamed slide would
   // silently drop out of the short deck rather than error.

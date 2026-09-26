@@ -1,78 +1,37 @@
-const CIRCUIT_EVENTS = [
-  {
-    "@type": "MusicEvent",
-    name: "Investors House After Hours",
-    startDate: "2026-10-27",
-    location: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "Mexico City", addressCountry: "MX" } },
-  },
-  {
-    "@type": "MusicEvent",
-    name: "Claude Official Party",
-    startDate: "2026-10-28",
-    location: { "@type": "Place", name: "Bar Oriente", address: { "@type": "PostalAddress", addressLocality: "Mexico City", addressCountry: "MX" } },
-    sponsor: { "@type": "Organization", name: "Claude" },
-  },
-  {
-    "@type": "MusicEvent",
-    name: "Founders House After Hours",
-    startDate: "2026-10-29",
-    location: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "Mexico City", addressCountry: "MX" } },
-  },
-  {
-    "@type": "MusicEvent",
-    name: "Developers House After Hours",
-    startDate: "2026-10-30",
-    location: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "Mexico City", addressCountry: "MX" } },
-  },
-  {
-    "@type": "MusicEvent",
-    name: "AI House After Hours",
-    startDate: "2026-10-31",
-    location: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "Mexico City", addressCountry: "MX" } },
-  },
-  {
-    "@type": "MusicEvent",
-    name: "Wellness House After Hours / Closing",
-    startDate: "2026-11-01",
-    location: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "Mexico City", addressCountry: "MX" } },
-  },
-];
-
-const EVENT_SERIES_JSON_LD = {
+const EVENT_JSON_LD = {
   "@context": "https://schema.org",
-  "@type": "EventSeries",
-  name: "Future Renaissance · Mexico Tech Week After Hours",
-  startDate: "2026-10-27",
-  endDate: "2026-11-01",
-  eventStatus: "https://schema.org/EventScheduled",
-  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-  description:
-    "A six-night AXIS-operated after-hours cultural circuit connecting the five Mexico Tech Town Houses and the official Claude party during Mexico Tech Week.",
-  organizer: {
-    "@type": "Organization",
-    name: "AXIS",
-    url: "https://axis.show",
+  "@type": "MusicEvent",
+  "name": "Future Renaissance · Casa Luma · Mexico City | Claude for Music",
+  "startDate": "2026-10-29T16:00:00-06:00",
+  "endDate": "2026-10-30T02:00:00-06:00",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "description": "Private AXIS partnership presentation built for a digital-art marketplace: one night at Casa Luma, Mexico City, October 29 2026, where a 100-seat Claude workshop and a live-coding after party generate collectible work inside the room. The marketplace lists it, sells it, and reports it.",
+  "location": {
+    "@type": "Place",
+    "name": "Casa Luma",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Tinala 145, Roma Norte",
+      "addressLocality": "Mexico City",
+      "addressRegion": "CDMX",
+      "addressCountry": "MX"
+    }
   },
-  image: "https://axis.show/futurerenaissanceextended/og-circuit.png",
-  subEvent: CIRCUIT_EVENTS,
+  "organizer": {
+    "@type": "Organization",
+    "name": "AXIS",
+    "url": "https://axis.show"
+  },
+  "image": "https://axis.show/futurerenaissanceextended/poster-horizontal.png"
 };
 
-const SPONSOR_TIERS = [
-  ["Single House Partner", "$2,000 USD", "One of the five Tech Town House events."],
-  ["Claude Official Party Partner", "$2,500 USD", "Wednesday partner status beneath Claude; Claude retains presenting status."],
-  ["Three-House Circuit", "$3,000 USD", "One central activation architecture adapted across any three Houses."],
-  ["Tech Town Circuit", "$3,500 USD", "One sponsor system across all five Tech Town Houses."],
-  ["Complete Week Partner", "$4,000 USD", "All five Houses plus permitted partner integration at the Claude Official Party."],
-  ["Category Exclusive Circuit Partner", "$6,500 USD", "Complete circuit access with exclusivity limited to AXIS-controlled inventory and contractual rights."],
-  ["Tech Town Presenting Partner", "$10,000 USD", "One position presenting the five House events only; never the Claude Official Party."],
-];
-
-export default function FutureRenaissanceExtendedPlanContent() {
+export default function FutureRenaissancePlanContent() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(EVENT_SERIES_JSON_LD) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(EVENT_JSON_LD) }}
       />
 
       <style>{`
@@ -91,71 +50,46 @@ export default function FutureRenaissanceExtendedPlanContent() {
 
       <article
         className="future-extended-a11y-content"
-        aria-label="Future Renaissance Mexico Tech Week After Hours partnership presentation"
+        aria-label="Future Renaissance Marketplace partnership presentation"
       >
         <header>
-          <p>AXIS · Mexico Tech Week After Hours</p>
-          <h1>Future Renaissance</h1>
-          <p>October 27–November 1, 2026 · Mexico City · Six consecutive nights</p>
+          <p>AXIS · Mexico Tech Week 2026 · Claude community event</p>
+          <h1>Future Renaissance · Marketplace partner</h1>
+          <p>Thursday, October 29, 2026 · Casa Luma, Tinala 145, Roma Norte, CDMX · Mexico City</p>
+          <p>Event window: 16:00 to 02:00</p>
         </header>
 
-        <section aria-labelledby="future-extended-proposition">
-          <h2 id="future-extended-proposition">The proposition</h2>
+        <section aria-labelledby="future-product-night">
+          <h2 id="future-product-night">The night</h2>
           <p>
-            Mexico Tech Town creates five concentrated daytime House communities.
-            Future Renaissance extends those communities through a coordinated
-            nighttime program of culture, music, technology, hospitality, missions,
-            media, and measurable participation. AXIS hosts and operates this
-            after-hours layer; it does not claim ownership of Mexico Tech Week or
-            the Tech Town Houses.
+            One night. From 17:00 to 21:00, a seated, hands-on Claude community
+            workshop for 100 attendees from the music industry. At 21:00, with no
+            gap, the same room becomes the Future Renaissance party, running to 02:00
+            for 120 further guests. AXIS hosts and operates the night.
           </p>
         </section>
 
-        <section aria-labelledby="future-extended-circuit">
-          <h2 id="future-extended-circuit">The complete circuit</h2>
-          <ol>
-            {CIRCUIT_EVENTS.map((event) => (
-              <li key={event.name}>
-                <strong>{event.name}</strong> — {event.startDate}
-                {"sponsor" in event ? " · Bar Oriente · Presented by Claude" : ""}
-              </li>
-            ))}
-          </ol>
-          <p>Five Tech Town Houses, one official Claude party, and one continuous AXIS / Future Renaissance operating layer.</p>
-        </section>
-
-        <section aria-labelledby="future-extended-rights">
-          <h2 id="future-extended-rights">Claude rights</h2>
-          <p>
-            Claude retains presenting status for Wednesday’s official party at Bar
-            Oriente. AXIS hosts and produces the event. Other brands can participate
-            only in permitted subordinate partner or activation roles. Presenting
-            rights sold by AXIS apply exclusively to the five Tech Town House events.
-          </p>
-        </section>
-
-        <section aria-labelledby="future-extended-system">
-          <h2 id="future-extended-system">Mission and measurement system</h2>
-          <p>
-            Guests register, check in, act, validate, unlock, progress, collect, and
-            complete. One product receives one clear function and one measurable
-            behavior. AXIS reports attendance, mission completion, qualified actions,
-            stage conversion, reward redemption, and content outputs. CPQA, CPA, CAC,
-            ROI, LTV:CAC, and NPV are calculated only when sponsor-side data supports them.
-          </p>
-        </section>
-
-        <section aria-labelledby="future-extended-commercial">
-          <h2 id="future-extended-commercial">Partnership inventory</h2>
+        <section aria-labelledby="future-product-function">
+          <h2 id="future-product-function">THE ROOM GENERATES THE INVENTORY. THE MARKETPLACE RUNS IT.</h2>
+          <p>This is a night that makes its own supply: Verse works that draw themselves from a hash the moment they are collected, Pixelord releases that ship sound and 3D together, and LED wall output the guests generated with Claude. A marketplace partner does not have to simulate scarcity here, it operates the market for work that did not exist before 17:00.</p>
           <ul>
-            {SPONSOR_TIERS.map(([name, price, scope]) => (
-              <li key={name}><strong>{name} — {price}</strong>: {scope}</li>
-            ))}
+            <li><strong>Live Mint</strong>: The live-coding set writes music as code in front of the room. States of that set are minted on the marketplace while it is still running, so the first collectors are people who watched it happen.</li>
+            <li><strong>Hash Draw</strong>: A Verse generative work is not a fixed file. It reads a hash when it is collected and draws itself from that seed, so the guest's own collect is the act that creates their output.</li>
+            <li><strong>Gallery Scene</strong>: Between sets the main LED wall runs the marketplace's own gallery view, showing what the room is collecting in real time. It is the product's actual interface at venue scale, not a logo card.</li>
+            <li><strong>Guest Edition</strong>: Guests change the LED wall through Claude with their own photos, videos and prompts. The output they made is listed on the marketplace with the guest credited as its creator.</li>
+            <li><strong>Bar Drop</strong>: One drop opens on the clock when the after-party doors open and 120 further guests arrive. Collecting inside that window is the action that releases the drink at the bar.</li>
+            <li><strong>Royalty Ticker</strong>: When a piece sells in the room, the split going to the artist is displayed. Pixelord ships sound and 3D together onchain, and the room gets to see what that practice actually pays.</li>
+            <li><strong>Night Shelf</strong>: Everything a guest collected across the night resolves into one set held at their own address. Months later it is still the record that they were in the room on October 29.</li>
           </ul>
-          <p>
-            Circuit packages repeat one primary sponsor system with contextual House
-            adaptations; they are not bundles of fully independent custom campaigns.
-          </p>
+        </section>
+
+        <section aria-labelledby="future-product-packages">
+          <h2 id="future-product-packages">Partnership packages</h2>
+          <ul>
+            <li><strong>Activity Partner — $2,500 USD</strong>: One product function inside the October 29 Claude community event. One authored activity with mission, staff validation, reward path, screen presence and reporting. Claude retains community-event status for the night. Partner integration is subordinate to it.</li>
+            <li><strong>Category Exclusive Partner — $3,500 USD</strong>: Sole product in its category inside AXIS-controlled inventory for the night. A hero function with priority placement, deeper integration and dedicated product media. Exclusivity applies only to AXIS-controlled inventory and cannot override Claude or venue rights.</li>
+          </ul>
+          <p>Both packages are for this single night. Claude retains community-event status.</p>
         </section>
       </article>
     </>

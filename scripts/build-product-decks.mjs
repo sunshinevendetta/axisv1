@@ -2,8 +2,10 @@
 /**
  * Builds the per-product Future Renaissance sales decks.
  *
- * Every deck sells the SAME night — October 28, 2026 at Bar Oriente, a Claude
- * community event operated by AXIS — but is written for one product category.
+ * Every deck sells the SAME night — Thursday October 29, 2026 at Casa Luma, a
+ * Claude community event operated by AXIS — but is written for one product
+ * category. Dates, times and capacities live in the base data file and are the
+ * Casa Luma brief's: 100 seated 17:00-21:00, then 120 further guests to 02:00.
  * Slides 01-07 and 10-12 come verbatim from the shared base deck. Slide 08
  * (the product's function on the floor) and slide 09 (the reward flow that
  * turns a product action into a drink and then into a reported number) are
@@ -16,6 +18,7 @@
  */
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, copyFileSync } from "node:fs";
 import { join } from "node:path";
+import vm from "node:vm";
 
 const SPEC_DIR = "scripts/product-deck-specs";
 const BASE = "public/futurerenaissance-product-base";
@@ -178,20 +181,139 @@ function buildPage(src, spec) {
   const keywords = [
     "Future Renaissance",
     "Claude community event",
-    "Bar Oriente",
+    "Casa Luma",
     "Mexico Tech Week 2026",
     "Mexico City",
     "AXIS",
     spec.name + " partnership",
     spec.name + " activation",
   ];
+  // The extended deck's share card advertises the retired six-night circuit;
+  // the product decks use the undated campaign poster instead.
   return src
+    .replace(/url: "https:\/\/axis\.show\/futurerenaissanceextended\/og-circuit\.png",\s*width: \d+,\s*height: \d+,\s*alt: "[^"]*",/,
+      'url: "https://axis.show/futurerenaissanceextended/poster-horizontal.png",\n        width: 1396,\n        height: 1125,\n        alt: "Official Future Renaissance campaign poster",')
+    .replace('images: ["https://axis.show/futurerenaissanceextended/og-circuit.png"]',
+      'images: ["https://axis.show/futurerenaissanceextended/poster-horizontal.png"]')
     .replace(/^const title =[\s\S]*?;$/m, "const title = " + q(spec.pageTitle) + ";")
     .replace(/^const description =[\s\S]*?;$/m, "const description =\n  " + q(spec.pageDescription) + ";")
     .replace(
       /^ {2}keywords: \[[\s\S]*?^ {2}\],$/m,
       "  keywords: [\n" + keywords.map((k) => "    " + q(k) + ",").join("\n") + "\n  ],"
     );
+}
+
+/* -------------------------------------------------------- PlanContent.tsx */
+// The hidden, crawlable version of each deck: one MusicEvent in JSON-LD and a
+// plain-text article. It is built from the base data, so the date, venue,
+// times, capacities and the two agreed packages cannot drift from the slides.
+function loadBase(dataSrc) {
+  const sandbox = { window: {} };
+  vm.runInNewContext(dataSrc, sandbox);
+  return sandbox.window.FUTURE_RENAISSANCE;
+}
+
+function buildPlanContent(base, spec) {
+  const n = base.night;
+  const usd = (v) => "$" + Number(v).toLocaleString("en-US") + " USD";
+  const jsx = (s) => String(s).replace(/[{}<>]/g, (c) => "{" + JSON.stringify(c) + "}");
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "MusicEvent",
+    name: "Future Renaissance · " + n.venue + " · Mexico City | Claude for Music",
+    startDate: n.date + "T" + n.eventStart + ":00-06:00",
+    endDate: n.endDate + "T" + n.eventEnd + ":00-06:00",
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    description: spec.pageDescription,
+    location: {
+      "@type": "Place",
+      name: n.venue,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: n.address.replace(/, CDMX$/, ""),
+        addressLocality: n.city,
+        addressRegion: "CDMX",
+        addressCountry: "MX",
+      },
+    },
+    organizer: { "@type": "Organization", name: "AXIS", url: "https://axis.show" },
+    image: "https://axis.show/futurerenaissanceextended/poster-horizontal.png",
+  };
+  const mechanics = spec.mechanics
+    .map((m) => "            <li><strong>" + jsx(m.name) + "</strong>: " + jsx(m.summary) + "</li>")
+    .join("\n");
+  const tiers = base.commercialTiers
+    .map((t) => "            <li><strong>" + jsx(t.name) + " — " + usd(t.price) + "</strong>: " + jsx(t.scope + " " + t.deployment + " " + t.restriction) + "</li>")
+    .join("\n");
+
+  return [
+    "const EVENT_JSON_LD = " + JSON.stringify(jsonLd, null, 2) + ";",
+    "",
+    "export default function FutureRenaissancePlanContent() {",
+    "  return (",
+    "    <>",
+    "      <script",
+    '        type="application/ld+json"',
+    "        dangerouslySetInnerHTML={{ __html: JSON.stringify(EVENT_JSON_LD) }}",
+    "      />",
+    "",
+    "      <style>{`",
+    "        .future-extended-a11y-content {",
+    "          position: absolute;",
+    "          width: 1px;",
+    "          height: 1px;",
+    "          padding: 0;",
+    "          margin: -1px;",
+    "          overflow: hidden;",
+    "          clip: rect(0, 0, 0, 0);",
+    "          white-space: normal;",
+    "          border: 0;",
+    "        }",
+    "      `}</style>",
+    "",
+    "      <article",
+    '        className="future-extended-a11y-content"',
+    '        aria-label="Future Renaissance ' + spec.name + ' partnership presentation"',
+    "      >",
+    "        <header>",
+    "          <p>AXIS · " + n.context + " · " + n.status + "</p>",
+    "          <h1>Future Renaissance · " + jsx(spec.name) + " partner</h1>",
+    "          <p>" + n.day + ", " + n.displayDate + " · " + n.venue + ", " + n.address + " · " + n.city + "</p>",
+    "          <p>Event window: " + n.eventStart + " to " + n.eventEnd + "</p>",
+    "        </header>",
+    "",
+    '        <section aria-labelledby="future-product-night">',
+    '          <h2 id="future-product-night">The night</h2>',
+    "          <p>",
+    "            One night. From " + n.workshopStart + " to " + n.workshopEnd + ", a seated, hands-on Claude community",
+    "            workshop for " + n.workshopCapacity + " attendees from the music industry. At " + n.afterPartyStart + ", with no",
+    "            gap, the same room becomes the Future Renaissance party, running to " + n.afterPartyEnd,
+    "            for " + n.afterPartyGuests + " further guests. AXIS hosts and operates the night.",
+    "          </p>",
+    "        </section>",
+    "",
+    '        <section aria-labelledby="future-product-function">',
+    '          <h2 id="future-product-function">' + jsx(spec.slide08.title) + "</h2>",
+    "          <p>" + jsx(spec.slide08.copy) + "</p>",
+    "          <ul>",
+    mechanics,
+    "          </ul>",
+    "        </section>",
+    "",
+    '        <section aria-labelledby="future-product-packages">',
+    '          <h2 id="future-product-packages">Partnership packages</h2>',
+    "          <ul>",
+    tiers,
+    "          </ul>",
+    "          <p>Both packages are for this single night. Claude retains community-event status.</p>",
+    "        </section>",
+    "      </article>",
+    "    </>",
+    "  );",
+    "}",
+    "",
+  ].join("\n");
 }
 
 /* ------------------------------------------------------------------- main */
@@ -213,6 +335,8 @@ const raw = {
   i18n: readFileSync(join(BASE, "i18n.js"), "utf8"),
   page: readFileSync(APP_SRC, "utf8"),
 };
+
+const base = loadBase(raw.data);
 
 for (const spec of specs) {
   const dirName = "futurerenaissance-" + spec.slug;
@@ -244,7 +368,9 @@ for (const spec of specs) {
   writeFileSync(join(pub, "future-renaissance-concepts.js"), retarget(buildConcepts(raw.concepts, spec, "concepts.js")));
   writeFileSync(join(pub, "i18n.js"), retarget(buildI18n(raw.i18n, spec, "i18n.js")));
 
-  for (const f of ["FutureRenaissanceDeck.tsx", "FutureRenaissancePlanContent.tsx"]) {
+  writeFileSync(join("components/" + dirName, "FutureRenaissancePlanContent.tsx"), buildPlanContent(base, spec));
+
+  for (const f of ["FutureRenaissanceDeck.tsx"]) {
     let text = readFileSync(join(CMP_SRC, f), "utf8")
       .split("/futurerenaissanceextended/axis-").join("/" + dirName + "/axis-")
       .split("data-future-renaissance-extended-deck").join("data-future-renaissance-" + spec.slug + "-deck");
@@ -253,7 +379,7 @@ for (const spec of specs) {
 
   const page = buildPage(raw.page, spec)
     .split("futurerenaissanceextended").join(dirName)
-    .split("axis.show/" + dirName + "/og-circuit.png").join("axis.show/futurerenaissanceextended/og-circuit.png");
+    .split("axis.show/" + dirName + "/poster-horizontal.png").join("axis.show/futurerenaissanceextended/poster-horizontal.png");
   writeFileSync("app/" + dirName + "/page.tsx", page);
 
   console.log("built  /" + dirName + "  (" + spec.name + ")");

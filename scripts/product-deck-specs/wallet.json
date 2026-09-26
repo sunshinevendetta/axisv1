@@ -4,7 +4,7 @@
   "slot": "[WALLET BRAND]",
   "discipline": "Self-custody wallet, identity and claim flow",
   "pageTitle": "Future Renaissance · Wallet Partner · Claude Community Event · AXIS",
-  "pageDescription": "Private AXIS partnership presentation built for a wallet product: one night at Bar Oriente, Mexico City, October 28 2026, where the wallet is the door, the signature, the bar tab and the address that is still reachable the next morning.",
+  "pageDescription": "Private AXIS partnership presentation built for a wallet product: one night at Casa Luma, Mexico City, October 29 2026, where the wallet is the door, the signature, the bar tab and the address that is still reachable the next morning.",
 
   "slide08": {
     "label": "Wallet function",
@@ -65,9 +65,9 @@
       "id": "fund",
       "name": "Fund",
       "role": "First balance during the seated workshop",
-      "summary": "The hardest step in any wallet funnel is the first funded balance. The three seated hours are the rare window where someone will actually finish it.",
+      "summary": "The hardest step in any wallet funnel is the first funded balance. The four seated hours are the rare window where someone will actually finish it.",
       "details": [
-        "A staffed onboarding point runs through the 18:00–21:00 workshop",
+        "A staffed onboarding point runs through the 17:00–21:00 workshop",
         "Support is physically present for the step that usually drops off",
         "Measured as first-time funded wallets and median first balance",
         "A funded wallet is the honest boundary between install and user"
@@ -132,7 +132,7 @@
       "action": "First signed action",
       "summary": "During the seated workshop the guest completes the partner's defined action and signs for it.",
       "details": [
-        "18:00–21:00, seated, 200 attendees, staffed support",
+        "17:00–21:00, seated, 100 attendees, staffed support",
         "The window where a first-time user will actually finish",
         "Signed from the guest's own key",
         "Measured as qualified signed actions"
@@ -198,7 +198,7 @@
         ["Conectar", "La entrada y la conexión de la wallet son el mismo movimiento, así que la wallet se abre con un anfitrión al lado.", ["El escaneo que da acceso es el que abre la sesión", "Sin formulario, sin correo, sin contraseña en la puerta", "Se mide como conexiones completadas en la entrada", "Una falla aquí se ve y se resuelve al momento"]],
         ["Pasaporte", "El pasaporte de misiones de la noche se emite dentro de la wallet, lo que la convierte en lo que hace falta para moverse por la noche.", ["El estado de actividad vive en la wallet, no en otra app", "El avance de la noche se lee del mismo objeto", "Se mide como pasaportes reclamados y actividades abiertas", "La wallet gana motivos para volver a abrirse toda la noche"]],
         ["Firmar", "La validación de misiones es una firma con la llave del invitado: la acción se prueba, no la afirma el staff.", ["Cada acción completada es un mensaje firmado", "La validación del staff y la firma deben coincidir", "Se mide como acciones firmadas calificadas", "Es la cifra sobre la que se construye el reporte"]],
-        ["Fondear", "El primer saldo es el paso más difícil de cualquier funnel de wallets. Las tres horas sentadas son la ventana rara en la que alguien sí lo termina.", ["Punto de onboarding con staff durante el workshop de 18:00 a 21:00", "Hay soporte presente en el paso donde se cae la gente", "Se mide como wallets fondeadas por primera vez", "Una wallet fondeada separa la instalación del uso real"]],
+        ["Fondear", "El primer saldo es el paso más difícil de cualquier funnel de wallets. Las cuatro horas sentadas son la ventana rara en la que alguien sí lo termina.", ["Punto de onboarding con staff durante el workshop de 17:00 a 21:00", "Hay soporte presente en el paso donde se cae la gente", "Se mide como wallets fondeadas por primera vez", "Una wallet fondeada separa la instalación del uso real"]],
         ["Coleccionar", "La sala genera obra única toda la noche. La wallet es donde el invitado se queda con la pieza frente a la que estuvo parado.", ["La obra del muro LED se colecciona en la wallet del invitado", "La autocustodia hace que la pieza sobreviva a la sede y a la app", "Se mide como piezas coleccionadas y aún conservadas", "Convierte una salida en un objeto con fecha"]],
         ["Canjear", "Una acción completada autoriza una bebida en la barra. El invitado aprende que la wallet fue lo que la pagó.", ["El canje en la barra se autoriza desde la wallet", "Guiado por staff: nadie se traba frente a la fila", "Se mide como canjes completados contra acciones verificadas", "La gente recuerda quién pagó su bebida"]],
         ["Conservar", "Cuando termina el DJ de cierre, la wallet es el único canal que sigue resolviendo. Todo el reporte se ancla a ella.", ["Alcance posterior sin lista de correo ni exportación", "El canje puede continuar después de que cierra la sede", "Se mide como direcciones activas en las semanas siguientes", "Es el activo que la marca conserva al terminar la producción"]]
@@ -207,7 +207,7 @@
         ["连接", "入场与钱包连接是同一个动作，钱包在有人协助时被打开。", ["刷码入场的同时开启会话", "门口无需表单、邮箱或密码", "以入口完成的连接数计量", "此处的失败可当场发现并解决"]],
         ["任务护照", "当晚的任务护照直接发放到钱包中，钱包因此成为穿行整晚所需之物。", ["活动状态存在钱包内，而非另一个活动应用", "整晚的进度读取自同一对象", "以已领取的护照与开启的活动计量", "钱包获得整晚被反复打开的理由"]],
         ["签名", "任务验证使用参与者自己的密钥签名，完成的行为可被证明，而非由工作人员口头认定。", ["每次完成都是一次签名消息", "工作人员验证与签名必须一致", "以合格的签名行为计量", "这是活动后报告赖以建立的数字"]],
-        ["注资", "首次入金是所有钱包漏斗中最难的一步。三小时的落座时段是少有的、真的会有人完成它的窗口。", ["18:00–21:00 工作坊期间设有人员值守的引导点", "在最容易流失的环节提供现场支持", "以首次注资钱包数与首次余额中位数计量", "已注资钱包是安装量与真实用户的分界"]],
+        ["注资", "首次入金是所有钱包漏斗中最难的一步。四小时的落座时段是少有的、真的会有人完成它的窗口。", ["17:00–21:00 工作坊期间设有人员值守的引导点", "在最容易流失的环节提供现场支持", "以首次注资钱包数与首次余额中位数计量", "已注资钱包是安装量与真实用户的分界"]],
         ["收藏", "整晚这个空间都在生成独一无二的作品。钱包是参与者真正留下那件作品的地方。", ["LED 墙上生成的作品被收藏进参与者的钱包", "自持意味着作品不依赖场地或活动应用而存续", "以已收藏及事后仍持有的作品计量", "把一次外出变成一件带日期的物件"]],
         ["兑换", "完成的行为可在吧台兑换一杯饮品，参与者由此明白是钱包付的账。", ["吧台兑换由钱包授权", "有工作人员引导，新用户不会卡在队伍前", "以完成的兑换数对照已验证行为计量", "人们会记得是谁请了这杯酒"]],
         ["留存", "压轴 DJ 结束后，钱包是唯一仍然可达的渠道，全部回报都锚定于此。", ["无需邮件列表即可持续触达", "场地打烊后兑换仍可继续", "以其后数周仍活跃的地址计量", "制作结束后品牌真正保留的资产"]]
@@ -216,7 +216,7 @@
     "flow": {
       "es": [
         ["Wallet conectada en la entrada", "El invitado entra y la sesión de la wallet se abre en el mismo movimiento, con un anfitrión presente.", ["En la puerta, antes de que la sala se lo trague", "Sin formulario, sin correo, sin contraseña", "Cohorte base para todas las cifras siguientes", "Se mide como conexiones completadas en la entrada"]],
-        ["Primera acción firmada", "Durante el workshop sentado el invitado completa la acción definida por el partner y la firma.", ["18:00–21:00, sentados, 200 asistentes, con soporte", "La ventana donde un usuario nuevo sí termina", "Firmada con la llave del propio invitado", "Se mide como acciones firmadas calificadas"]],
+        ["Primera acción firmada", "Durante el workshop sentado el invitado completa la acción definida por el partner y la firma.", ["17:00–21:00, sentados, 100 asistentes, con soporte", "La ventana donde un usuario nuevo sí termina", "Firmada con la llave del propio invitado", "Se mide como acciones firmadas calificadas"]],
         ["Staff y firma coinciden", "El staff de AXIS valida contra el registro firmado antes de liberar cualquier valor.", ["Dos confirmaciones independientes, no un sistema de confianza", "Si no coinciden, no se desbloquea nada", "Protege al partner de cifras infladas", "Se mide como completaciones validadas"]],
         ["Bebida desbloqueada desde la wallet", "La acción validada abre una bebida en la barra, autorizada desde la propia wallet.", ["Hospitalidad real en una barra real, no un cupón posterior", "Guiado por staff para que nadie se trabe", "El momento en que el producto se vuelve memorable", "Se mide como canjes contra acciones verificadas"]],
         ["Obra coleccionada en el muro", "La obra que generaron los invitados corre en el muro LED, y lo que coleccionan queda en la wallet.", ["El output de la propia sala, generado con Claude", "La colección ocurre mientras la pieza está en el muro", "Presencia de producto ganada por función, no por logo", "Se mide como piezas coleccionadas durante la noche"]],
@@ -224,7 +224,7 @@
       ],
       "zh": [
         ["入口完成钱包连接", "参与者入场的同时开启钱包会话，且有工作人员在场。", ["在门口完成，趁人还没被场内吸走", "无需表单、邮箱或密码", "后续所有数据的基准群体", "以入口完成的连接数计量"]],
-        ["首次签名行动", "在落座工作坊期间，参与者完成合作方设定的行为并为其签名。", ["18:00–21:00，落座，200 人，有支持人员", "新用户真正会完成动作的时间窗", "由参与者自己的密钥签名", "以合格的签名行为计量"]],
+        ["首次签名行动", "在落座工作坊期间，参与者完成合作方设定的行为并为其签名。", ["17:00–21:00，落座，100 人，有支持人员", "新用户真正会完成动作的时间窗", "由参与者自己的密钥签名", "以合格的签名行为计量"]],
         ["人工与签名一致", "AXIS 工作人员对照签名记录进行验证，之后才释放任何价值。", ["两次独立确认，而非凭信任", "两者不一致则不予解锁", "避免合作方拿到被夸大的完成数据", "以通过验证的完成数计量"]],
         ["用钱包解锁一杯酒", "通过验证的行为可在场地吧台兑换饮品，由钱包直接授权。", ["真实吧台的真实款待，不是事后发放的券", "有人员引导，不会卡在吧台", "产品变得令人记住的时刻", "以兑换数对照已验证行为计量"]],
         ["收藏的作品出现在墙上", "参与者生成的作品在主 LED 墙上运行，他们收藏的部分留在钱包里。", ["由这个空间自己产生、与 Claude 共同创作", "作品还在墙上时即可完成收藏", "靠功能而非标志赢得的产品存在感", "以当晚收藏的作品数计量"]],

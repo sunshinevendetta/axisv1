@@ -7,33 +7,38 @@
     return Object.freeze(value);
   }
 
-  // One night. October 28, 2026, Bar Oriente, Mexico City. A Claude community
-  // event powered by AXIS. The seated workshop runs first, then the room
-  // resets and the same space opens as the after party.
+  // One night. Thursday October 29, 2026, Casa Luma, Mexico City. A Claude
+  // community event powered by AXIS. The seated workshop runs 17:00 to 21:00,
+  // then the room turns over with no gap and runs as the after party to 02:00.
   var night = {
-    date: "2026-10-28",
-    displayDate: "October 28, 2026",
-    displayDateShort: "OCT 28, 2026",
-    day: "Wednesday",
-    venue: "Bar Oriente",
+    date: "2026-10-29",
+    endDate: "2026-10-30",
+    displayDate: "October 29, 2026",
+    displayDateShort: "OCT 29, 2026",
+    day: "Thursday",
+    venue: "Casa Luma",
+    address: "Tinala 145, Roma Norte, CDMX",
     city: "Mexico City",
     context: "Mexico Tech Week 2026",
     status: "Claude community event",
     poweredBy: "AXIS",
-    workshopStart: "18:00",
+    eventStart: "16:00",
+    eventEnd: "02:00",
+    workshopStart: "17:00",
     workshopEnd: "21:00",
-    workshopCapacity: 200,
-    afterPartyStart: "22:00",
-    afterPartyGuests: 250,
+    workshopCapacity: 100,
+    afterPartyStart: "21:00",
+    afterPartyEnd: "02:00",
+    afterPartyGuests: 120,
   };
 
   // The run of show is the spine of every operational claim in this deck.
   var program = [
-    { id: "workshop", slot: "01", time: "18:00 – 21:00", label: "Claude workshop", arc: "SEATED", note: "Three hands-on hours for the music industry, led from the screen at the front of the room." },
-    { id: "reset", slot: "02", time: "21:00 – 22:00", label: "Room reset", arc: "CHANGEOVER", note: "The seated room becomes the night. Production, sound and lighting change state." },
-    { id: "warmup", slot: "03", time: "22:00", label: "Warm-up DJ", arc: "ARRIVAL", note: "Doors open again for the after party. Arrival, initial energy, room activation." },
+    { id: "workshop", slot: "01", time: "17:00 – 21:00", label: "Claude workshop", arc: "SEATED", note: "Four hands-on hours for the music industry, led from the screen at the front of the room." },
+    { id: "reset", slot: "02", time: "21:00", label: "Room turnover", arc: "NO GAP", note: "The seated room becomes the night with no gap. Production, sound and lighting change state." },
+    { id: "warmup", slot: "03", time: "21:00", label: "Warm-up DJ", arc: "ARRIVAL", note: "The floor opens for the after party. Arrival, initial energy, room activation." },
     { id: "live-coding", slot: "04", time: "LATE", label: "Live coding", arc: "CREATION", note: "Music written, sequenced and modified through code in real time, visible to the room." },
-    { id: "closing", slot: "05", time: "CLOSE", label: "Closing DJ", arc: "CLUB", note: "Takes the night from the experimental portion into its final club state." },
+    { id: "closing", slot: "05", time: "→ 02:00", label: "Closing DJ", arc: "CLUB", note: "Takes the night from the experimental portion into its final club state." },
   ];
 
   // Billed on the line-up. The public is listed deliberately: the room makes
@@ -104,7 +109,7 @@
     ],
   };
 
-  // The two agreed packages. Both are for the single night of October 28 —
+  // The two agreed packages. Both are for the single night of October 29 —
   // there is no multi-night ladder here and no per-event maths behind these
   // figures.
   var commercialTiers = [
@@ -112,7 +117,7 @@
       id: "activity-partner",
       name: "Activity Partner",
       price: 2500,
-      scope: "One product function inside the October 28 Claude community event.",
+      scope: "One product function inside the October 29 Claude community event.",
       deployment: "One authored activity with mission, staff validation, reward path, screen presence and reporting.",
       rights: ["Product function on the floor", "Staff-guided onboarding point", "Reward redemption at the bar", "Venue screen presence", "Media capture", "Post-event report"],
       restriction: "Claude retains community-event status for the night. Partner integration is subordinate to it.",
