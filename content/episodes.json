@@ -19,9 +19,28 @@
     "meta": {
       "es": "El venue se transforma en un entorno mapeado con realidad aumentada. Cada visitante recorre checkpoints, nodos de reliquias y activadores que desbloquean piezas digitales mediante la Base App. Glitch Jam toma el salón principal con distorsión analógica, monitores CRT y loops reactivos que responden al sonido, al movimiento y a los triggers AR.",
       "en": "The venue becomes an AR-mapped environment guiding guests through checkpoints, relic nodes, and triggers that unlock digital pieces via Base App. Glitch Jam occupies the main hall with analog distortion, CRT monitors, and reactive feedback loops responding to sound, movement, and AR triggers.",
-      "music": ["Cyberreality", "Machin Sound", "Omarov", "Sunshine Vendetta"],
-      "allies": ["Las Flores Web3", "NOUNS AMIGOS", "color.fun", "ZORA", "Base App"],
-      "tags": ["AR", "Base App", "onchain", "digital art", "music", "CRT", "CDMX"]
+      "music": [
+        "Cyberreality",
+        "Machin Sound",
+        "Omarov",
+        "Sunshine Vendetta"
+      ],
+      "allies": [
+        "Las Flores Web3",
+        "NOUNS AMIGOS",
+        "color.fun",
+        "ZORA",
+        "Base App"
+      ],
+      "tags": [
+        "AR",
+        "Base App",
+        "onchain",
+        "digital art",
+        "music",
+        "CRT",
+        "CDMX"
+      ]
     },
     "assets": {
       "sourceUri": "/ep1.jpg",
@@ -58,9 +77,25 @@
     "meta": {
       "es": "La versión más íntima e intensa de AXIS. Aforo limitado, mayor densidad, sesiones largas. El venue se convierte en un entorno mapeado con realidad aumentada, activado a través de recorridos, checkpoints y nodos que desbloquean piezas digitales usando la Base App.",
       "en": "The more intimate and intense side of AXIS. Limited capacity, higher density, longer sessions. The venue becomes an AR-mapped environment with paths, checkpoints, and nodes that unlock digital works using Base App. Everything happens through spatial mapping and direct interaction.",
-      "music": ["Coco Wolff", "Dabeat", "Max Headroom", "Sunshine Vendetta"],
-      "allies": ["Base App", "ZORA"],
-      "tags": ["AR", "Base App", "onchain", "digital art", "music", "intimate", "CDMX"]
+      "music": [
+        "Coco Wolff",
+        "Dabeat",
+        "Max Headroom",
+        "Sunshine Vendetta"
+      ],
+      "allies": [
+        "Base App",
+        "ZORA"
+      ],
+      "tags": [
+        "AR",
+        "Base App",
+        "onchain",
+        "digital art",
+        "music",
+        "intimate",
+        "CDMX"
+      ]
     },
     "assets": {
       "sourceUri": "/ep1-5.jpg",
@@ -93,10 +128,28 @@
     "meta": {
       "es": "IRL ENERGY TOUR llega a Mexico para su edición CDMX vía AXIS, transformando el espacio en una experiencia en vivo totalmente onchain impulsada por $IRL. Instalaciones digitales inmersivas, obras exclusivas de artistas onchain y mecánicas de participación en tiempo real convergen en un mismo entorno. Los asistentes ganan tokens al participar, escanear nodos y conectar con protocolos onchain.",
       "en": "IRL ENERGY TOUR arrives in Mexico for its CDMX edition via AXIS, transforming the space into a fully onchain live experience powered by $IRL. Immersive digital installations, exclusive works by onchain artists, and real-time participation mechanics converge in a single integrated environment. Attendees earn tokens by participating, scanning nodes, and interacting with onchain protocols.",
-      "music": ["Ambroz", "Sunshine Vendetta", "Paco Reyes"],
-      "allies": ["$IRL", "irl.energy", "Absinth", "Mezcal Amarás", "Second Solar of Life"],
+      "music": [
+        "Ambroz",
+        "Sunshine Vendetta",
+        "Paco Reyes"
+      ],
+      "allies": [
+        "$IRL",
+        "irl.energy",
+        "Absinth",
+        "Mezcal Amarás",
+        "Second Solar of Life"
+      ],
       "venue": "@axis.show",
-      "tags": ["$IRL", "onchain", "tokens", "digital art", "music", "immersive", "CDMX"]
+      "tags": [
+        "$IRL",
+        "onchain",
+        "tokens",
+        "digital art",
+        "music",
+        "immersive",
+        "CDMX"
+      ]
     },
     "assets": {
       "sourceUri": "/ep3.png",
@@ -129,10 +182,29 @@
     "meta": {
       "es": "AXIS regresa a Studio Berlin para la edición 04. PSYOP Anime llega como una mini sala de cine dentro del venue. El proyecto convierte noticias actuales y cultura de internet en episodios cortos de anime. Hasta ahora solo se ha publicado en redes. En AXIS se presentará por primera vez en una proyección física. AXIS LABS también presentará una muestra curada de 200 obras dentro del espacio, con varios artistas por revelar próximamente. El venue incluirá interacciones de realidad aumentada en vivo, instalaciones físicas y puntos NFC donde los asistentes podrán tocar con su teléfono para activar coleccionables de arte digital dentro del lugar gracias a @refraction_irl.",
       "en": "AXIS returns to Studio Berlin for edition 04. PSYOP Anime arrives as a mini cinema inside the venue. The project turns real world news and internet culture into short anime episodes. Until now it has only been released online. At AXIS the episodes will be shown in a physical space. AXIS LABS will also present a curated display of 200 artworks across the venue, with multiple artists to be revealed soon. The space includes live AR interactions, physical installations, and NFC touchpoints that let visitors tap their phones to unlock digital art collectibles inside the venue powered by @refraction_irl.",
-      "music": ["@ambrozmusic", "@coronela____", "@dansmacias", "@reyespaco", "@sunshinevendetta"],
-      "allies": ["@11oncepizza", "@refraction_irl", "tortoise music", "@base_app", "@studioberlin__"],
+      "music": [
+        "@ambrozmusic",
+        "@coronela____",
+        "@dansmacias",
+        "@reyespaco",
+        "@sunshinevendetta"
+      ],
+      "allies": [
+        "@11oncepizza",
+        "@refraction_irl",
+        "tortoise music",
+        "@base_app",
+        "@studioberlin__"
+      ],
       "venue": "@studioberlin__",
-      "tags": ["anime", "AR", "NFC", "art", "music", "CDMX"]
+      "tags": [
+        "anime",
+        "AR",
+        "NFC",
+        "art",
+        "music",
+        "CDMX"
+      ]
     },
     "assets": {
       "sourceUri": "/soon.jpg",
@@ -173,7 +245,15 @@
         "Digital Spenders Club"
       ],
       "venue": "@studioberlin__",
-      "tags": ["PizzaDAO", "Bitcoin Pizza Day", "onchain", "AI", "music", "art", "CDMX"],
+      "tags": [
+        "PizzaDAO",
+        "Bitcoin Pizza Day",
+        "onchain",
+        "AI",
+        "music",
+        "art",
+        "CDMX"
+      ],
       "alliesDetails": {
         "en": {
           "PizzaDAO": "PizzaDAO is an international pizza co-op bringing the pizza industry onchain. They throw a global pizza party every year, arrange conference events every month, and support other organizers' meetups with pizza.",
@@ -223,10 +303,27 @@
     "meta": {
       "es": "AXIS x Ritmos de la Noche presenta Takeover en Cuarto Rosa. Una sesion intima de musica electronica, sombra y estetica cinematografica, construida alrededor del dub techno, deep, organic house y downtempo. AXIS estara a cargo del arte visual de la noche en tiempo real.",
       "en": "AXIS x Ritmos de la Noche presents a Cuarto Rosa takeover at Bar Oriente. An intimate electronic music session built around shadow, cinematic atmosphere, dub techno, deep, organic house, and downtempo, with AXIS leading the visual art in real time.",
-      "music": ["V3SNA", "MALU GO", "WESTWICK", "WOLFF"],
-      "allies": ["Ritmos de la Noche", "OKX", "Casa Blanca", "Bar Oriente"],
+      "music": [
+        "V3SNA",
+        "MALU GO",
+        "WESTWICK",
+        "WOLFF"
+      ],
+      "allies": [
+        "Ritmos de la Noche",
+        "OKX",
+        "Casa Blanca",
+        "Bar Oriente"
+      ],
       "venue": "Bar Oriente",
-      "tags": ["music", "visual art", "dub techno", "deep house", "downtempo", "CDMX"]
+      "tags": [
+        "music",
+        "visual art",
+        "dub techno",
+        "deep house",
+        "downtempo",
+        "CDMX"
+      ]
     },
     "assets": {
       "sourceUri": "/ep6.webp",
@@ -238,27 +335,41 @@
   {
     "id": 7,
     "slug": "episode-7",
-    "title": "AXIS 7",
+    "title": "AXIS x CLAUDE FOR MUSIC",
     "shortTitle": "episode 7",
     "status": "open",
     "season": 1,
     "year": 2026,
-    "startsAt": "2026-10-28T18:00:00-06:00",
+    "startsAt": "2026-10-29T17:30:00-06:00",
     "timezone": "America/Mexico_City",
-    "venueName": "To be announced",
+    "venueName": "Casa Luma CDMX",
     "city": "Mexico City",
-    "summary": "AXIS Episode 7: Future Renaissance arrives October 28—a one-night convergence of art, technology, music, and culture for AXIS Tech Week Mexico Edition.",
-    "description": "Future Renaissance is a one-night AXIS Tech Week Mexico Edition experience where art, technology, music, and culture converge inside a pop-up digital gallery that transforms in real time. The evening features interactive installations, AI image and video systems, Web3 activations, agentic-world experiences, projected artworks, digital collectibles, cocktails, exclusive access moments, international music artists, and a global livestream. The venue will be announced soon.",
-    "lumaEventId": "evt-RQ1VQMBVkj3To3i",
-    "lumaUrl": "https://luma.com/u71d455i",
+    "summary": "The first Claude for Music workshop in the Americas: a free, hands-on session at Casa Luma where everyone builds a track with Claude, opening the AXIS Tech Week Mexico takeover on October 29.",
+    "description": "Claude for Music is a free, jam-style workshop at Casa Luma CDMX during Mexico Tech Week. Bring a laptop with Claude Desktop installed, headphones, and an idea (a melody, a mood, anything) and take it from idea to finished track with Claude in one session. Open to musicians, producers, developers, and beginners. The session closes by playing everyone's tracks on the venue speakers, then rolls straight into Future Renaissance, the AXIS after party in the same room.",
+    "lumaEventId": "evt-tu8cNyxJvWJtOrf",
+    "lumaUrl": "https://luma.com/claudeformusic",
     "meta": {
-      "venue": "To be announced",
-      "tags": ["music", "digital art", "AI", "Web3", "AXIS Tech Week", "CDMX"]
+      "es": "El primer taller de Claude for Music en las Americas, durante Mexico Tech Week. Trae tu laptop con Claude Desktop instalado, audifonos y una idea, y construye musica con Claude en una sola sesion, de la idea al track terminado. Al cierre, los tracks de todos suenan en las bocinas de Casa Luma y la noche sigue con Future Renaissance.",
+      "en": "The first Claude for Music workshop in the Americas, during Mexico Tech Week. Bring your laptop with Claude Desktop installed, headphones, and an idea, and build music with Claude in one session, from idea to finished track. At the close, everyone's tracks play on the Casa Luma speakers and the night carries on into Future Renaissance.",
+      "allies": [
+        "Claude Community Events",
+        "Casa Luma CDMX"
+      ],
+      "venue": "Casa Luma CDMX, Tonala 145, Roma Nte., Ciudad de Mexico",
+      "tags": [
+        "Claude",
+        "AI",
+        "music production",
+        "workshop",
+        "Mexico Tech Week",
+        "AXIS Tech Week",
+        "CDMX"
+      ]
     },
     "assets": {
-      "sourceUri": "/soon.jpg",
-      "posterUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/lo/3fd9faae-033b-4770-b68f-0537c4fbcd45.png",
-      "imageUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/lo/3fd9faae-033b-4770-b68f-0537c4fbcd45.png",
+      "sourceUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/rd/2c19cfc3-e341-4e8b-baa9-91056161bfb1.png",
+      "posterUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/rd/2c19cfc3-e341-4e8b-baa9-91056161bfb1.png",
+      "imageUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/rd/2c19cfc3-e341-4e8b-baa9-91056161bfb1.png",
       "glbUri": "/models/logo.glb"
     }
   },
@@ -267,19 +378,32 @@
     "slug": "episode-8",
     "title": "AXIS 8",
     "shortTitle": "episode 8",
-    "status": "paused",
+    "status": "open",
     "season": 1,
     "year": 2026,
-    "startsAt": "",
+    "startsAt": "2026-10-29T21:00:00-06:00",
     "timezone": "America/Mexico_City",
-    "venueName": "TBD",
+    "venueName": "Casa Luma CDMX",
     "city": "Mexico City",
-    "summary": "AXIS Episode 8 is paused while its date is being confirmed.",
-    "description": "AXIS Episode 8 does not have a confirmed date yet. Venue, lineup, programming, and access details will be announced after the schedule is confirmed.",
+    "summary": "AXIS Episode 8: Future Renaissance is the after party of the Claude for Music workshop, October 29 at Casa Luma, a one-night convergence of art, technology, music, and culture for AXIS Tech Week Mexico Edition.",
+    "description": "Future Renaissance is the AXIS Tech Week Mexico Edition after party at Casa Luma CDMX, picking up at 21:00 straight from the Claude for Music workshop in the same room. Art, technology, music, and culture converge inside a pop-up digital gallery that transforms in real time, with interactive installations, AI image and video systems, Web3 activations, agentic-world experiences, projected artworks, digital collectibles, cocktails, exclusive access moments, international music artists, and a global livestream.",
+    "lumaEventId": "evt-RQ1VQMBVkj3To3i",
+    "lumaUrl": "https://luma.com/u71d455i",
+    "meta": {
+      "venue": "Casa Luma CDMX, Tonala 145, Roma Nte., Ciudad de Mexico",
+      "tags": [
+        "music",
+        "digital art",
+        "AI",
+        "Web3",
+        "AXIS Tech Week",
+        "CDMX"
+      ]
+    },
     "assets": {
       "sourceUri": "/soon.jpg",
-      "posterUri": "/soon.jpg",
-      "imageUri": "/soon.jpg",
+      "posterUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/lo/3fd9faae-033b-4770-b68f-0537c4fbcd45.png",
+      "imageUri": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/lo/3fd9faae-033b-4770-b68f-0537c4fbcd45.png",
       "glbUri": "/models/logo.glb"
     }
   },
@@ -313,15 +437,11 @@
     "season": 1,
     "year": 2026,
     "startsAt": "",
-    "timezone": "America/New_York",
-    "venueName": "Art Basel Miami Beach",
-    "city": "Miami Beach",
+    "timezone": "America/Mexico_City",
+    "venueName": "TBD",
+    "city": "Mexico City",
     "summary": "AXIS Episode 10 is paused while its date is being confirmed.",
-    "description": "AXIS Episode 10 does not have a confirmed date yet. Final date, venue, lineup, programming, and access details are pending confirmation.",
-    "meta": {
-      "venue": "Art Basel Miami Beach",
-      "tags": ["Art Basel", "Miami", "Miami Beach", "art", "music"]
-    },
+    "description": "AXIS Episode 10 does not have a confirmed date yet. Venue, lineup, programming, and access details will be announced after the schedule is confirmed.",
     "assets": {
       "sourceUri": "/soon.jpg",
       "posterUri": "/soon.jpg",
@@ -345,7 +465,13 @@
     "description": "AXIS Episode 11 does not have a confirmed date yet. Final date, venue, lineup, programming, and access details are pending confirmation.",
     "meta": {
       "venue": "Art Basel Miami Beach",
-      "tags": ["Art Basel", "Miami", "Miami Beach", "art", "music"]
+      "tags": [
+        "Art Basel",
+        "Miami",
+        "Miami Beach",
+        "art",
+        "music"
+      ]
     },
     "assets": {
       "sourceUri": "/soon.jpg",
@@ -370,7 +496,44 @@
     "description": "AXIS Episode 12 does not have a confirmed date yet. Final date, venue, lineup, programming, and access details are pending confirmation.",
     "meta": {
       "venue": "Art Basel Miami Beach",
-      "tags": ["Art Basel", "Miami", "Miami Beach", "art", "music"]
+      "tags": [
+        "Art Basel",
+        "Miami",
+        "Miami Beach",
+        "art",
+        "music"
+      ]
+    },
+    "assets": {
+      "sourceUri": "/soon.jpg",
+      "posterUri": "/soon.jpg",
+      "imageUri": "/soon.jpg",
+      "glbUri": "/models/logo.glb"
+    }
+  },
+  {
+    "id": 13,
+    "slug": "episode-13",
+    "title": "AXIS 13",
+    "shortTitle": "episode 13",
+    "status": "paused",
+    "season": 1,
+    "year": 2026,
+    "startsAt": "",
+    "timezone": "America/New_York",
+    "venueName": "Art Basel Miami Beach",
+    "city": "Miami Beach",
+    "summary": "AXIS Episode 13 is paused while its date is being confirmed.",
+    "description": "AXIS Episode 13 does not have a confirmed date yet. Final date, venue, lineup, programming, and access details are pending confirmation.",
+    "meta": {
+      "venue": "Art Basel Miami Beach",
+      "tags": [
+        "Art Basel",
+        "Miami",
+        "Miami Beach",
+        "art",
+        "music"
+      ]
     },
     "assets": {
       "sourceUri": "/soon.jpg",
