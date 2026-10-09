@@ -344,13 +344,13 @@
     "timezone": "America/Mexico_City",
     "venueName": "Casa Luma CDMX",
     "city": "Mexico City",
-    "summary": "The first Claude for Music workshop in the Americas: a free, hands-on session at Casa Luma where everyone builds a track with Claude, opening the AXIS Tech Week Mexico takeover on October 29.",
-    "description": "Claude for Music is a free, jam-style workshop at Casa Luma CDMX during Mexico Tech Week. Bring a laptop with Claude Desktop installed, headphones, and an idea (a melody, a mood, anything) and take it from idea to finished track with Claude in one session. Open to musicians, producers, developers, and beginners. The session closes by playing everyone's tracks on the venue speakers, then rolls straight into Future Renaissance, the AXIS after party in the same room.",
+    "summary": "The first Claude for Music workshop in the Americas: a free, hands-on session at Casa Luma where everyone builds a track with Claude, opening the AXIS Tech Week Mexico takeover on October 29. The workshop is full; join the Luma waitlist to be notified if a spot opens.",
+    "description": "Claude for Music is a free, jam-style workshop at Casa Luma CDMX during Mexico Tech Week. Bring a laptop with Claude Desktop installed, headphones, and an idea (a melody, a mood, anything) and take it from idea to finished track with Claude in one session. Open to musicians, producers, developers, and beginners. The session closes by playing everyone's tracks on the venue speakers, then rolls straight into Future Renaissance, the AXIS after party in the same room. The workshop is full, so registration is now through the Luma waitlist, with spots approved as they open.",
     "lumaEventId": "evt-tu8cNyxJvWJtOrf",
     "lumaUrl": "https://luma.com/claudeformusic",
     "meta": {
-      "es": "El primer taller de Claude for Music en las Americas, durante Mexico Tech Week. Trae tu laptop con Claude Desktop instalado, audifonos y una idea, y construye musica con Claude en una sola sesion, de la idea al track terminado. Al cierre, los tracks de todos suenan en las bocinas de Casa Luma y la noche sigue con Future Renaissance.",
-      "en": "The first Claude for Music workshop in the Americas, during Mexico Tech Week. Bring your laptop with Claude Desktop installed, headphones, and an idea, and build music with Claude in one session, from idea to finished track. At the close, everyone's tracks play on the Casa Luma speakers and the night carries on into Future Renaissance.",
+      "es": "El primer taller de Claude for Music en las Americas, durante Mexico Tech Week. Trae tu laptop con Claude Desktop instalado, audifonos y una idea, y construye musica con Claude en una sola sesion, de la idea al track terminado. Al cierre, los tracks de todos suenan en las bocinas de Casa Luma y la noche sigue con Future Renaissance. El taller esta lleno: unete a la lista de espera en Luma y te avisamos si se libera un lugar.",
+      "en": "The first Claude for Music workshop in the Americas, during Mexico Tech Week. Bring your laptop with Claude Desktop installed, headphones, and an idea, and build music with Claude in one session, from idea to finished track. At the close, everyone's tracks play on the Casa Luma speakers and the night carries on into Future Renaissance. The workshop is full: join the Luma waitlist and you will be notified if a spot opens.",
       "allies": [
         "Claude Community Events",
         "Casa Luma CDMX"
@@ -363,7 +363,8 @@
         "workshop",
         "Mexico Tech Week",
         "AXIS Tech Week",
-        "CDMX"
+        "CDMX",
+        "waitlist"
       ]
     },
     "assets": {
