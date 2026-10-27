@@ -232,7 +232,7 @@ export default function VelviqueExperience() {
     setPhase("name");
   };
 
-  /* Name, email and phone join the Brevo guest list for the draw; Brevo sends the confirmation. */
+  /* Name, email and phone join the Brevo guest list for the draw; the card email comes at the end. */
   const signUp = async () => {
     const name = guestName.trim().slice(0, 24);
     const email = guestEmail.trim().toLowerCase();

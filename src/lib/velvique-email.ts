@@ -3,14 +3,13 @@ import { getGarnish, getIngredient } from "./velvique-catalog";
 import { sendEmail } from "./velvique-brevo";
 import type { CodeComponent } from "./velvique-recipe-code";
 
-/* Guest emails sent through Brevo: the sign-up confirmation, the finished
-   card, and the draw winner's contact sent to the AXIS team. They carry the
+/* Emails sent through Brevo: each guest gets one, with their finished card,
+   recipe and the draw; the draw winner's contact goes to the AXIS team. They carry the
    event page's look: black, AXIS × Velvique lockup, Agura uppercase
    headlines over Bingo, hairlines, white pill buttons. Images are PNG and
    absolute so every mail client shows them. */
 
 const SITE = "https://axis.show";
-const PAGE_URL = `${SITE}/velvique`;
 const AXIS_LOGO = `${SITE}/logow.png`;
 const VELVIQUE_LOGO = `${SITE}/velvique/email/velvique-logo.png`;
 const BOTTLE = `${SITE}/velvique/email/velvique-bottle.png`;
@@ -20,85 +19,62 @@ const DISPLAY_FONT = "'Agura', 'Bingo', Arial, Helvetica, sans-serif";
 type Lang = "en" | "es" | "zh" | "zh-Hant";
 
 const COPY: Record<Lang, {
-  confirmSubject: string;
-  confirmTitle: (name: string) => string;
-  confirmBody: string;
-  confirmDraw: string;
+  drawText: string;
   cardSubject: (cardName: string) => string;
   cardTitle: (cardName: string) => string;
   cardBody: (number: number) => string;
   cardLink: string;
   signature: (hash: string) => string;
   kicker: string;
-  openPage: string;
   drawLabel: string;
   footer: string;
 }> = {
   en: {
-    confirmSubject: "You're in: Velvique at AXIS",
-    confirmTitle: (name) => `You're in, ${name}`,
-    confirmBody: "Your spot is confirmed. Go back to the page, answer the five questions and get your one-of-a-kind Velvique card.",
-    confirmDraw: "Tonight at 10:30 pm we draw one guest for a free bottle of Velvique. If it's you, we'll reach you at this email or your phone.",
+    drawText: "Tonight at 10:30 pm we draw one guest for a free bottle of Velvique. If it's you, we'll reach you at this email or your phone.",
     cardSubject: (cardName) => `Your Velvique card: ${cardName}`,
     cardTitle: (cardName) => cardName,
     cardBody: (number) => `Card ${number}, made only for you. Show it at the bar to get your shot.`,
     cardLink: "Open your card",
     signature: (hash) => `Recipe signature ${hash}`,
     kicker: "AI Mixology · Añejo Cristalino",
-    openPage: "Back to Velvique",
     drawLabel: "Tonight · 10:30 pm",
     footer: "Produced by AXIS",
   },
   es: {
-    confirmSubject: "Ya estás dentro: Velvique en AXIS",
-    confirmTitle: (name) => `Ya estás dentro, ${name}`,
-    confirmBody: "Tu lugar está confirmado. Regresa a la página, responde las cinco preguntas y recibe tu carta única de Velvique.",
-    confirmDraw: "Hoy a las 10:30 pm sorteamos una botella de Velvique entre los invitados. Si ganas, te buscamos en este correo o en tu teléfono.",
+    drawText: "Hoy a las 10:30 pm sorteamos una botella de Velvique entre los invitados. Si ganas, te buscamos en este correo o en tu teléfono.",
     cardSubject: (cardName) => `Tu carta Velvique: ${cardName}`,
     cardTitle: (cardName) => cardName,
     cardBody: (number) => `Carta ${number}, hecha solo para ti. Muéstrala en la barra para recibir tu shot.`,
     cardLink: "Abrir tu carta",
     signature: (hash) => `Firma de la receta ${hash}`,
     kicker: "Mixología con IA · Añejo Cristalino",
-    openPage: "Volver a Velvique",
     drawLabel: "Hoy · 10:30 pm",
     footer: "Producido por AXIS",
   },
   zh: {
-    confirmSubject: "报名成功：AXIS × Velvique",
-    confirmTitle: (name) => `${name}，报名成功`,
-    confirmBody: "你的名额已确认。回到页面，回答五个问题，领取你独一无二的 Velvique 卡片。",
-    confirmDraw: "今晚 10:30 我们将抽出一位来宾赠送一瓶 Velvique。如果是你，我们会通过这个邮箱或你的电话联系你。",
+    drawText: "今晚 10:30 我们将抽出一位来宾赠送一瓶 Velvique。如果是你，我们会通过这个邮箱或你的电话联系你。",
     cardSubject: (cardName) => `你的 Velvique 卡片：${cardName}`,
     cardTitle: (cardName) => cardName,
     cardBody: (number) => `第 ${number} 张，只为你调制。在吧台出示即可领取你的 shot。`,
     cardLink: "打开你的卡片",
     signature: (hash) => `配方签名 ${hash}`,
     kicker: "AI 调酒 · Añejo Cristalino",
-    openPage: "返回 Velvique",
     drawLabel: "今晚 · 10:30",
     footer: "AXIS 出品",
   },
   "zh-Hant": {
-    confirmSubject: "報名成功：AXIS × Velvique",
-    confirmTitle: (name) => `${name}，報名成功`,
-    confirmBody: "你的名額已確認。回到頁面，回答五個問題，領取你獨一無二的 Velvique 卡片。",
-    confirmDraw: "今晚 10:30 我們將抽出一位來賓贈送一瓶 Velvique。如果是你，我們會透過這個信箱或你的電話聯絡你。",
+    drawText: "今晚 10:30 我們將抽出一位來賓贈送一瓶 Velvique。如果是你，我們會透過這個信箱或你的電話聯絡你。",
     cardSubject: (cardName) => `你的 Velvique 卡片：${cardName}`,
     cardTitle: (cardName) => cardName,
     cardBody: (number) => `第 ${number} 張，只為你調製。在吧台出示即可領取你的 shot。`,
     cardLink: "打開你的卡片",
     signature: (hash) => `配方簽名 ${hash}`,
     kicker: "AI 調酒 · Añejo Cristalino",
-    openPage: "返回 Velvique",
     drawLabel: "今晚 · 10:30",
     footer: "AXIS 出品",
   },
 };
 
-function copyFor(lang: string) {
-  return COPY[(lang in COPY ? lang : "en") as Lang];
-}
 
 function escapeHtml(value: string) {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
@@ -212,25 +188,6 @@ function render(layout: Layout) {
 
 const bottleHero = `<img src="${BOTTLE}" alt="Velvique Añejo Cristalino" width="150" style="display:block; width:150px; height:auto; margin:0 auto; border:0;"/>`;
 
-export function confirmationEmail(guest: { name: string; lang: string }) {
-  const t = copyFor(guest.lang);
-  return {
-    subject: t.confirmSubject,
-    html: render({
-      lang: guest.lang,
-      preheader: t.confirmBody,
-      hero: bottleHero,
-      kicker: t.kicker,
-      title: t.confirmTitle(guest.name),
-      lines: [t.confirmBody],
-      draw: { label: t.drawLabel, text: t.confirmDraw },
-      button: { label: t.openPage, href: PAGE_URL },
-      footer: t.footer,
-    }),
-    text: [t.confirmTitle(guest.name), "", t.confirmBody, "", `${t.drawLabel}: ${t.confirmDraw}`, "", PAGE_URL].join("\n"),
-  };
-}
-
 type EmailCard = { name: string; description: string; number: number; imageUrl: string; signatureHash: string; components: CodeComponent[]; garnishId: string | null };
 
 /* The full pour, named exactly as the page and the card name it, in the guest's language. */
@@ -244,7 +201,7 @@ function recipeOf(lang: Lang, card: EmailCard) {
   return { title: page.yourRecipe, rows, garnish: garnish ? page.finishWith(garnish) : null };
 }
 
-export function cardEmail(guest: { lang: string }, card: EmailCard) {
+export function cardEmail(guest: { name: string; lang: string }, card: EmailCard) {
   const lang = (guest.lang in COPY ? guest.lang : "en") as Lang;
   const t = COPY[lang];
   const recipe = recipeOf(lang, card);
@@ -255,11 +212,11 @@ export function cardEmail(guest: { lang: string }, card: EmailCard) {
       lang: guest.lang,
       preheader: t.cardBody(card.number),
       hero,
-      kicker: VELVIQUE_COPY[lang].cardOf(card.number),
+      kicker: [VELVIQUE_COPY[lang].cardOf(card.number), guest.name ? VELVIQUE_COPY[lang].madeFor(guest.name) : ""].filter(Boolean).join(" · "),
       title: t.cardTitle(card.name),
       lines: [t.cardBody(card.number), card.description],
       recipe,
-      draw: { label: t.drawLabel, text: t.confirmDraw },
+      draw: { label: t.drawLabel, text: t.drawText },
       button: { label: t.cardLink, href: card.imageUrl },
       note: t.signature(card.signatureHash.slice(0, 8)),
       footer: t.footer,
@@ -274,16 +231,12 @@ export function cardEmail(guest: { lang: string }, card: EmailCard) {
       ...recipe.rows.map(([name, amount]) => `  ${name}  ${amount}`),
       ...(recipe.garnish ? [recipe.garnish] : []),
       "",
-      `${t.drawLabel}: ${t.confirmDraw}`,
+      `${t.drawLabel}: ${t.drawText}`,
       "",
       `${t.cardLink}: ${card.imageUrl}`,
       t.signature(card.signatureHash.slice(0, 8)),
     ].join("\n"),
   };
-}
-
-export async function sendConfirmation(guest: { email: string; name: string; lang: string }) {
-  await sendEmail({ to: guest.email, name: guest.name, ...confirmationEmail(guest) });
 }
 
 export async function sendCard(guest: { email: string; name: string; lang: string }, card: EmailCard) {
