@@ -38,7 +38,7 @@ export async function POST(request: Request) {
   const guest = guests.find((item) => item.email === quote.email);
   await sendCard(
     { email: quote.email, name: guest?.name ?? quote.guestName ?? "", lang: quote.lang },
-    { name: quote.narrative.name, description: quote.narrative.description, number, imageUrl, metadataUrl, signatureHash: quote.signatureHash },
+    { name: quote.narrative.name, description: quote.narrative.description, number, imageUrl, signatureHash: quote.signatureHash, components: quote.components, garnishId: quote.garnishId },
   ).catch((error) => console.error("Velvique card email failed", error instanceof Error ? error.message : error));
 
   return NextResponse.json({ ok: true, number, imageUrl, metadataUrl });
