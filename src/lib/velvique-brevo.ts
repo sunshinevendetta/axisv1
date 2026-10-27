@@ -26,6 +26,8 @@ export function brevoConfigured() {
 async function brevo<T>(path: string, init?: RequestInit & { allow?: number[] }): Promise<T | null> {
   const apiKey = process.env.BREVO_API_KEY?.trim();
   if (!apiKey) throw new Error("BREVO_API_KEY is not set");
+  /* SMTP keys (xsmtpsib-) only work on the SMTP relay; the contacts API needs a v3 API key (xkeysib-). */
+  if (apiKey.startsWith("xsmtpsib-")) throw new Error("BREVO_API_KEY holds an SMTP key. Create an API key (xkeysib-...) in Brevo under SMTP & API > API Keys.");
   const response = await fetch(`${API}${path}`, {
     ...init,
     headers: { "api-key": apiKey, accept: "application/json", "content-type": "application/json", ...init?.headers },
