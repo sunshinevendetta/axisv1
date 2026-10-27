@@ -795,7 +795,19 @@ export default function VelviqueExperience() {
                 {mint === "saved" && (
                   <>
                     <h2 className="vq-h3">{t.savedTitle}</h2>
-                    {card.email && <p className="vq-copy is-small">{t.savedBody(card.email)}</p>}
+                    {card.email && (
+                      <p className="vq-copy is-small">
+                        {t.savedBody(card.email)}
+                        {card.pageUrl && (
+                          <>
+                            {" "}
+                            <a href={card.pageUrl} target="_blank" rel="noopener noreferrer">
+                              {card.pageUrl.replace(/^https?:\/\//, "").replace(/^(api\.grove\.storage\/)([0-9a-f]{10})[0-9a-f]+([0-9a-f]{4})$/, "$1$2…$3")}
+                            </a>
+                          </>
+                        )}
+                      </p>
+                    )}
                     {card.pageUrl && (
                       <>
                         <div className="vq-actions">

@@ -227,6 +227,14 @@ body:has(.vq-page:not(.is-scroll)) {
 }
 
 .vq-page button:focus-visible,
+/* Inline links in copy, such as the guest's card page. */
+.vq-copy a {
+  color: var(--vq-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
 .vq-page a:focus-visible,
 .vq-bar-page button:focus-visible,
 .vq-bar-page input:focus-visible {
