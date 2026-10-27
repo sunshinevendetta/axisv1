@@ -83,10 +83,10 @@ type Phase = "intro" | "follow" | "name" | "worlds" | "exclusions" | "mixing" | 
 /* Bumped when cards are reset, so browsers drop cards cached before the reset. */
 const CARD_KEY = "velvique-card-v2";
 const ANSWERS_KEY = "velvique-answers";
-const FOLLOW_KEY = "velvique-follow-ok";
 const NAME_KEY = "velvique-name";
 const GUEST_KEY = "velvique-guest";
 const INSTAGRAM_URL = "https://www.instagram.com/velviquetequila/";
+const INSTAGRAM_APP_URL = "instagram://user?username=velviquetequila";
 const FOLLOW_WAIT_S = 5;
 
 function readStored(key: string) {
@@ -231,11 +231,23 @@ export default function VelviqueExperience() {
   const allAnswered = questions.length > 0 && answeredCount === questions.length;
   const focusQuestion = shown[focus] ?? null;
 
-  const start = () => setPhase(readStored(FOLLOW_KEY) === "1" ? "name" : "follow");
+  /* Every guest passes the Instagram step first, before signing up. */
+  const start = () => setPhase("follow");
 
-  const passFollow = () => {
-    store(FOLLOW_KEY, "1");
-    setPhase("name");
+  const passFollow = () => setPhase("name");
+
+  /* Phones open the Instagram app on the profile; if it isn't installed the page falls back to the web profile. */
+  const openInstagram = () => {
+    setFollowClock(FOLLOW_WAIT_S);
+    if (!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      window.open(INSTAGRAM_URL, "_blank", "noopener");
+      return;
+    }
+    const fallback = window.setTimeout(() => {
+      if (!document.hidden) window.location.href = INSTAGRAM_URL;
+    }, 1500);
+    document.addEventListener("visibilitychange", () => window.clearTimeout(fallback), { once: true });
+    window.location.href = INSTAGRAM_APP_URL;
   };
 
   /* Name, email and phone join the Brevo guest list for the draw; the card email comes at the end. */
@@ -494,11 +506,7 @@ export default function VelviqueExperience() {
               <button
                 type="button"
                 className="vq-button"
-                onClick={() => {
-                  /* A user-initiated open hands the profile to the Instagram app on iOS and Android. */
-                  window.open(INSTAGRAM_URL, "_blank", "noopener");
-                  setFollowClock(FOLLOW_WAIT_S);
-                }}
+                onClick={openInstagram}
               >
                 {t.openInstagram}
               </button>
