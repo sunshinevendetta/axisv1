@@ -11,9 +11,9 @@
   --vq-line: rgba(255, 255, 255, 0.14);
   --vq-glass: rgba(255, 255, 255, 0.045);
   --vq-gutter: 16px;
-  --vq-h1: clamp(28px, 4.2vw, 52px);
-  --vq-h2: clamp(20px, 2.6vw, 32px);
-  --vq-h3: clamp(16px, 1.8vw, 21px);
+  --vq-h1: clamp(22px, 3.36vw, 42px);
+  --vq-h2: clamp(16px, 2.08vw, 26px);
+  --vq-h3: clamp(13px, 1.44vw, 17px);
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -637,9 +637,9 @@ body:has(.vq-card-full) {
 @media (max-width: 719px) {
   .vq-page,
   .vq-bar-page {
-    --vq-h1: 20px;
-    --vq-h2: 15px;
-    --vq-h3: 13px;
+    --vq-h1: 16px;
+    --vq-h2: 12px;
+    --vq-h3: 10.4px;
   }
 
   /* Leave room for the site's floating language button in the corner. */

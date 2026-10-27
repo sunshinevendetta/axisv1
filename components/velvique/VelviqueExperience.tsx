@@ -80,7 +80,8 @@ type Existing = { number: number; metadata: NonNullable<CardMetadata> };
 
 type Phase = "intro" | "follow" | "name" | "worlds" | "exclusions" | "mixing" | "result" | "error";
 
-const CARD_KEY = "velvique-card";
+/* Bumped when cards are reset, so browsers drop cards cached before the reset. */
+const CARD_KEY = "velvique-card-v2";
 const ANSWERS_KEY = "velvique-answers";
 const FOLLOW_KEY = "velvique-follow-ok";
 const NAME_KEY = "velvique-name";

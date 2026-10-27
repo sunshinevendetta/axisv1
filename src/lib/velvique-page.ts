@@ -101,7 +101,7 @@ export function buildCardPage(card: CardPage) {
   .hint { margin: 4px 16px 0; text-align: center; color: var(--ink-3); font-size: 12px; }
   main { width: 100%; max-width: 560px; margin: 0 auto; padding: 28px 16px calc(48px + env(safe-area-inset-bottom)); }
   .meta { margin: 0; color: var(--ink-3); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
-  h1 { margin: 14px 0 18px; font-family: "Agura", "Bingo", Arial, sans-serif; font-weight: 400; font-size: clamp(26px, 7vw, 44px); line-height: 1.04; text-transform: uppercase; overflow-wrap: anywhere; }
+  h1 { margin: 14px 0 18px; font-family: "Agura", "Bingo", Arial, sans-serif; font-weight: 400; font-size: clamp(21px, 5.6vw, 35px); line-height: 1.04; text-transform: uppercase; overflow-wrap: anywhere; }
   p { margin: 0 0 14px; color: var(--ink-2); font-size: 15px; line-height: 1.55; }
   .panel { margin: 20px 0 0; padding: 18px 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--glass); }
   .panel .meta { color: var(--ink); }

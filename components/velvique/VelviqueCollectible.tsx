@@ -129,9 +129,9 @@ async function paintFront(card: CollectibleCard, labels: CardLabels) {
   ctx.fillStyle = "#ffffff";
   ctx.textAlign = "left";
   const name = (card.narrative?.name ?? card.recipeId).toUpperCase();
-  let size = 68;
+  let size = 54;
   let lines: string[] = [];
-  for (; size >= 36; size -= 4) {
+  for (; size >= 29; size -= 3) {
     ctx.font = `${size}px ${display}`;
     lines = wrap(ctx, name, W - 168).slice(0, 3);
     if (lines.every((line) => ctx.measureText(line).width <= W - 168)) break;
@@ -162,7 +162,7 @@ async function paintBack(card: CollectibleCard, labels: CardLabels) {
 
   ctx.fillStyle = "#ffffff";
   ctx.textAlign = "left";
-  ctx.font = `56px ${display}`;
+  ctx.font = `45px ${display}`;
   ctx.fillText(labels.recipe, 84, 180);
 
   let y = 290;

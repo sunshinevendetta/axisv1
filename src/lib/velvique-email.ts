@@ -121,7 +121,7 @@ function render(layout: Layout) {
   @font-face { font-family: "Bingo"; src: url("${GROVE_ASSETS.bingo}") format("woff2"); font-weight: 400; font-style: normal; }
   body { margin: 0; padding: 0; background: #000000; }
   a { color: #ffffff; }
-  @media (max-width: 620px) { .vq-pad { padding-left: 18px !important; padding-right: 18px !important; } .vq-h1 { font-size: 22px !important; } }
+  @media (max-width: 620px) { .vq-pad { padding-left: 18px !important; padding-right: 18px !important; } .vq-h1 { font-size: 18px !important; } }
 </style>
 </head>
 <body style="margin:0; padding:0; background:#000000; color:#ffffff;">
@@ -139,7 +139,7 @@ function render(layout: Layout) {
         <tr><td align="center" style="padding:34px 0 8px;">${layout.hero}</td></tr>
         <tr><td class="vq-pad" align="center" style="padding:18px 36px 0;">
           ${meta(layout.kicker)}
-          <h1 class="vq-h1" style="margin:14px 0 20px; font-family:${DISPLAY_FONT}; font-size:30px; font-weight:400; line-height:1.08; text-transform:uppercase; overflow-wrap:anywhere; word-break:break-word; color:#ffffff;">${escapeHtml(layout.title)}</h1>
+          <h1 class="vq-h1" style="margin:14px 0 20px; font-family:${DISPLAY_FONT}; font-size:24px; font-weight:400; line-height:1.08; text-transform:uppercase; overflow-wrap:anywhere; word-break:break-word; color:#ffffff;">${escapeHtml(layout.title)}</h1>
           ${layout.lines.map(para).join("")}
           ${
             layout.recipe
