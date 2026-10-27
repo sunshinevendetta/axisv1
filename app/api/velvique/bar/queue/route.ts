@@ -1,31 +1,24 @@
 import { NextResponse } from "next/server";
 import { getGarnish, getIngredient } from "@/src/lib/velvique-catalog";
 import { fetchMetadata, readRegistry, registryConfigured } from "@/src/lib/velvique-registry";
-import { createPublicClient, http } from "viem";
-import { base, baseSepolia } from "viem/chains";
-import { VELVIQUE_CARDS_ABI, VELVIQUE_CHAIN_ID, getCardsAddress } from "@/src/lib/velvique-chain";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-/* Build cards in mint order, straight from Base (recipe) and Grove (name, garnish). */
+/* Cards in the order they were made: the recipe from the guest list, the
+   name and garnish from the card's Grove metadata. No contact details. */
 export async function GET() {
-  if (!registryConfigured()) return NextResponse.json({ ok: false, error: "Cards are not configured yet." }, { status: 503 });
+  if (!registryConfigured()) return NextResponse.json({ ok: false, error: "Velvique is not configured yet." }, { status: 503 });
 
   const { cards } = await readRegistry();
-  const address = getCardsAddress()!;
-  const rpc = process.env.VELVIQUE_RPC_URL?.trim() || process.env.NEXT_PUBLIC_BASE_RPC_URL?.trim();
-  const client = createPublicClient({ chain: VELVIQUE_CHAIN_ID === 84532 ? baseSepolia : base, transport: http(rpc || undefined) });
-
   const queue = await Promise.all(
     cards.map(async (card) => {
-      const uri = await client.readContract({ address, abi: VELVIQUE_CARDS_ABI, functionName: "tokenURI", args: [BigInt(card.tokenId)] }).catch(() => "");
-      const metadata = uri ? await fetchMetadata(uri) : null;
+      const metadata = card.cardUrl ? await fetchMetadata(card.cardUrl) : null;
       const garnish = metadata?.properties.garnish_id ? getGarnish(metadata.properties.garnish_id) : null;
       return {
-        tokenId: card.tokenId,
+        tokenId: card.number,
         name: metadata?.name ?? null,
-        guestName: metadata?.properties.guest_name ?? null,
+        guestName: metadata?.properties.guest_name ?? (card.guestName || null),
         signatureHash: metadata?.properties.recipe_signature ?? card.recipeCode,
         build: card.components.map((c) => ({ ...c, name: getIngredient(c.ingredientId)?.name ?? c.ingredientId })),
         garnish: garnish ? { name: garnish.name, instruction: garnish.preparationInstruction } : null,

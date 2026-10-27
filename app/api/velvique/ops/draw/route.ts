@@ -1,39 +1,45 @@
 import { randomInt } from "node:crypto";
 import { NextResponse } from "next/server";
-import { createPublicClient, http } from "viem";
-import { base, baseSepolia } from "viem/chains";
-import { VELVIQUE_CARDS_ABI, VELVIQUE_CHAIN_ID, getCardsAddress } from "@/src/lib/velvique-chain";
-import { fetchMetadata, readRegistry, registryConfigured } from "@/src/lib/velvique-registry";
+import { sendWinnerToTeam } from "@/src/lib/velvique-email";
+import { readRegistry, registryConfigured } from "@/src/lib/velvique-registry";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-/* Free-bottle draw. Every card minted on Base is an entry; there is no stored
-   result, so the bar announces the winner shown and only redraws on purpose. */
+/* Free-bottle draw at 10:30 pm. Every guest with a card is an entry. The
+   screen shows the card number and first name; the winner's email and phone
+   go only to the team inbox (ADMIN_EMAIL) so they can be contacted. */
 export async function GET() {
-  if (!registryConfigured()) return NextResponse.json({ ok: false, error: "Cards are not configured yet." }, { status: 503 });
+  if (!registryConfigured()) return NextResponse.json({ ok: false, error: "Velvique is not configured yet." }, { status: 503 });
   const { cards } = await readRegistry();
   return NextResponse.json({ ok: true, entrants: cards.length });
 }
 
+function maskEmail(email: string) {
+  const [user, domain] = email.split("@");
+  return `${user.slice(0, 2)}${"*".repeat(Math.max(1, user.length - 2))}@${domain}`;
+}
+
 export async function POST(request: Request) {
-  if (!registryConfigured()) return NextResponse.json({ ok: false, error: "Cards are not configured yet." }, { status: 503 });
+  if (!registryConfigured()) return NextResponse.json({ ok: false, error: "Velvique is not configured yet." }, { status: 503 });
   const body = (await request.json().catch(() => ({}))) as { exclude?: unknown };
   const exclude = new Set(Array.isArray(body.exclude) ? body.exclude.filter((id): id is number => typeof id === "number") : []);
 
-  const { cards } = await readRegistry();
-  const pool = cards.filter((card) => !exclude.has(card.tokenId));
+  const { guests, cards } = await readRegistry();
+  const pool = cards.filter((card) => !exclude.has(card.number));
   if (pool.length === 0) return NextResponse.json({ ok: true, entrants: cards.length, winner: null });
   const winner = pool[randomInt(pool.length)];
+  const guest = guests.find((item) => item.email === winner.email);
 
-  const rpc = process.env.VELVIQUE_RPC_URL?.trim() || process.env.NEXT_PUBLIC_BASE_RPC_URL?.trim();
-  const client = createPublicClient({ chain: VELVIQUE_CHAIN_ID === 84532 ? baseSepolia : base, transport: http(rpc || undefined) });
-  const uri = await client.readContract({ address: getCardsAddress()!, abi: VELVIQUE_CARDS_ABI, functionName: "tokenURI", args: [BigInt(winner.tokenId)] }).catch(() => "");
-  const metadata = uri ? await fetchMetadata(uri) : null;
+  let notified = true;
+  await sendWinnerToTeam({ number: winner.number, name: winner.guestName, email: winner.email, phone: guest?.phone ?? "", entrants: cards.length }).catch((error) => {
+    notified = false;
+    console.error("Velvique winner email failed", error instanceof Error ? error.message : error);
+  });
 
   return NextResponse.json({
     ok: true,
     entrants: cards.length,
-    winner: { tokenId: winner.tokenId, guestName: metadata?.properties.guest_name ?? null, passEnding: winner.owner.slice(-4) },
+    winner: { tokenId: winner.number, guestName: winner.guestName || null, contactHint: maskEmail(winner.email), notified },
   });
 }

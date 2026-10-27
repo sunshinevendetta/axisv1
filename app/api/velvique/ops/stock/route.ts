@@ -5,8 +5,8 @@ import { readRegistry, registryConfigured, usedMl } from "@/src/lib/velvique-reg
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-/* Stock and procurement derived from the recipes minted on Base:
-   use_ml = sum of minted recipes, order_ml = 1.15 * use_ml, packages rounded up. */
+/* Stock and procurement derived from the recipes given out:
+   use_ml = sum of given recipes, order_ml = 1.15 * use_ml, packages rounded up. */
 export async function GET() {
   if (!registryConfigured()) return NextResponse.json({ ok: false, error: "Cards are not configured yet." }, { status: 503 });
 

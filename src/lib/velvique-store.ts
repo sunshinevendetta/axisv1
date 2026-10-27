@@ -12,8 +12,8 @@ import { conflictsWith, denseOf, excludesCandidate, rankCandidates, rankGarnishe
 import type { AnswerSet } from "./velvique-questions";
 
 /* Types shared by the engine, the narrative agent and the release checks.
-   There is no database: live assignments are the cards minted on Base
-   (see velvique-registry). The in-memory state below exists only to
+   There is no database: live assignments are the cards in the Brevo
+   guest list (see velvique-registry). The in-memory state below exists only to
    simulate a full night for the release checks. */
 
 export type Narrative = {

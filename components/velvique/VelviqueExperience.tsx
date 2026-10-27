@@ -4,10 +4,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { Component, useCallback, useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
-import { numberToHex, type Address, type Hex } from "viem";
-import { useAccount, useConnect } from "wagmi";
 import { useSiteLanguage } from "@/components/site-language";
-import { encodeCardMint } from "@/src/lib/velvique-chain";
 import { EN_NAMES, VELVIQUE_COPY, localName, localizeQuestions } from "./velvique-i18n";
 import type { PortalOption } from "./VelviquePortals";
 import type { CollectibleCard } from "./VelviqueCollectible";
@@ -52,8 +49,8 @@ type Pour = { ingredientId: string; ml: number };
 
 /* What /api/velvique/quote returns; sealed server-side, shown here as-is. */
 type Quote = {
-  wallet: string;
-  recipeCode: Hex;
+  email: string;
+  recipeCode: string;
   components: Pour[];
   signatureHash: string;
   garnishId: string | null;
@@ -72,11 +69,11 @@ type CardMetadata = {
 
 type DisplayCard = CollectibleCard & {
   narrative: { name: string; description: string; reading: string } | null;
-  wallet: string | null;
+  email: string | null;
 };
 
-type Eip1193 = { request: (args: { method: string; params?: unknown[] }) => Promise<unknown> };
 type MintState = "idle" | "saving" | "saved" | "error";
+type Existing = { number: number; metadata: NonNullable<CardMetadata> };
 
 type Phase = "intro" | "follow" | "name" | "worlds" | "exclusions" | "mixing" | "result" | "error";
 
@@ -84,6 +81,7 @@ const CARD_KEY = "velvique-card";
 const ANSWERS_KEY = "velvique-answers";
 const FOLLOW_KEY = "velvique-follow-ok";
 const NAME_KEY = "velvique-name";
+const GUEST_KEY = "velvique-guest";
 const INSTAGRAM_URL = "https://www.instagram.com/velviquetequila/";
 const FOLLOW_WAIT_S = 5;
 
@@ -107,9 +105,9 @@ function buildOf(components: Pour[]) {
   return components.map((c) => ({ ...c, name: EN_NAMES[c.ingredientId] ?? c.ingredientId }));
 }
 
-function cardFromQuote(quote: Quote, tokenId: number, wallet: string | null): DisplayCard {
+function cardFromQuote(quote: Quote, number: number): DisplayCard {
   return {
-    queueNumber: tokenId,
+    queueNumber: number,
     guestName: quote.guestName,
     recipeId: `VLQ-${quote.signatureHash.slice(0, 8).toUpperCase()}`,
     signatureHash: quote.signatureHash,
@@ -117,14 +115,14 @@ function cardFromQuote(quote: Quote, tokenId: number, wallet: string | null): Di
     build: buildOf(quote.components),
     garnish: quote.garnishId ? { id: quote.garnishId, name: EN_NAMES[quote.garnishId] ?? quote.garnishId } : null,
     narrative: quote.narrative,
-    wallet,
+    email: quote.email,
   };
 }
 
-function cardFromMetadata(tokenId: number, metadata: NonNullable<CardMetadata>, wallet: string): DisplayCard {
+function cardFromMetadata({ number, metadata }: Existing, email: string): DisplayCard {
   const p = metadata.properties;
   return {
-    queueNumber: tokenId,
+    queueNumber: number,
     guestName: p.guest_name,
     recipeId: `VLQ-${p.recipe_signature.slice(0, 8).toUpperCase()}`,
     signatureHash: p.recipe_signature,
@@ -132,23 +130,8 @@ function cardFromMetadata(tokenId: number, metadata: NonNullable<CardMetadata>, 
     build: buildOf(p.recipe),
     garnish: p.garnish_id ? { id: p.garnish_id, name: EN_NAMES[p.garnish_id] ?? p.garnish_id } : null,
     narrative: { name: metadata.name, description: metadata.description, reading: p.sensory_reading },
-    wallet,
+    email,
   };
-}
-
-/* wallet_getCallsStatus until the batch settles (EIP-5792 v1 strings or v2 codes). */
-async function waitForCalls(provider: Eip1193, batchId: string) {
-  const started = Date.now();
-  while (Date.now() - started < 120_000) {
-    const status = (await provider.request({ method: "wallet_getCallsStatus", params: [batchId] }).catch(() => null)) as {
-      status?: string | number;
-      receipts?: Array<{ status?: string }>;
-    } | null;
-    const value = status?.status;
-    if (value !== undefined && value !== "PENDING" && value !== 100) return status;
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-  }
-  return null;
 }
 
 export default function VelviqueExperience() {
@@ -169,13 +152,15 @@ export default function VelviqueExperience() {
   const [followClock, setFollowClock] = useState<number | null>(null);
   const [flipped, setFlipped] = useState(false);
   const [guestName, setGuestName] = useState("");
+  const [guestEmail, setGuestEmail] = useState("");
+  const [guestPhone, setGuestPhone] = useState("");
+  const [signupError, setSignupError] = useState("");
+  const [signingUp, setSigningUp] = useState(false);
   const [zoomed, setZoomed] = useState(false);
   const [mint, setMint] = useState<MintState>("idle");
   const [mintError, setMintError] = useState("");
   const markSceneReady = useCallback(() => setSceneReady(true), []);
   const flip = useCallback(() => setFlipped((value) => !value), []);
-  const { address, connector: activeConnector } = useAccount();
-  const { connectAsync, connectors } = useConnect();
   const { language } = useSiteLanguage();
   const t = VELVIQUE_COPY[language];
   /* The catalog arrives in English; every guest-facing label is localized here. */
@@ -185,8 +170,13 @@ export default function VelviqueExperience() {
   useEffect(() => {
     setWebgl(hasWebGL());
     setGuestName(readStored(NAME_KEY) ?? "");
-    /* Reopen the last card this browser showed; the chain confirms it below. */
+    /* Reopen the last card this browser showed. */
     try {
+      const guest = JSON.parse(readStored(GUEST_KEY) ?? "null") as { email?: string; phone?: string } | null;
+      if (guest) {
+        setGuestEmail(guest.email ?? "");
+        setGuestPhone(guest.phone ?? "");
+      }
       const cached = JSON.parse(readStored(CARD_KEY) ?? "null") as DisplayCard | null;
       const savedAnswers = JSON.parse(readStored(ANSWERS_KEY) ?? "null") as { answers: Record<string, string>; restrictions: string[] } | null;
       if (savedAnswers) {
@@ -213,25 +203,6 @@ export default function VelviqueExperience() {
         setPhase("error");
       });
   }, []);
-
-  /* A connected pass that already holds a card always shows it, read from Base. */
-  useEffect(() => {
-    if (!address || mint === "saving") return;
-    void fetch(`/api/velvique/card?wallet=${address}`)
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data: { tokenId?: number; metadata?: CardMetadata } | null) => {
-        if (data?.tokenId && data.metadata) {
-          const next = cardFromMetadata(data.tokenId, data.metadata, address);
-          setDisplay(next);
-          store(CARD_KEY, JSON.stringify(next));
-          setMint("saved");
-          setPhase("result");
-        }
-      })
-      .catch(() => undefined);
-    // Only when the connected account changes.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [address]);
 
   useEffect(() => {
     if (!zoomed) return;
@@ -261,11 +232,40 @@ export default function VelviqueExperience() {
     setPhase("name");
   };
 
-  const passName = (keep: boolean) => {
-    const name = keep ? guestName.trim().slice(0, 24) : "";
-    setGuestName(name);
-    store(NAME_KEY, name);
-    setPhase("worlds");
+  /* Name, email and phone join the Brevo guest list for the draw; Brevo sends the confirmation. */
+  const signUp = async () => {
+    const name = guestName.trim().slice(0, 24);
+    const email = guestEmail.trim().toLowerCase();
+    const phone = guestPhone.trim();
+    setSignupError("");
+    setSigningUp(true);
+    try {
+      const res = await fetch("/api/velvique/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, lang: language }),
+      });
+      const data = (await res.json().catch(() => ({ ok: false }))) as { ok: boolean; field?: string; name?: string; existing?: Existing };
+      if (!data.ok) {
+        setSignupError(data.field === "name" ? t.errorName : data.field === "email" ? t.errorEmail : data.field === "phone" ? t.errorPhone : t.errorSignup);
+        return;
+      }
+      setGuestName(data.name ?? name);
+      store(NAME_KEY, data.name ?? name);
+      store(GUEST_KEY, JSON.stringify({ email, phone }));
+      setGuestEmail(email);
+      if (data.existing) {
+        showCard(cardFromMetadata(data.existing, email));
+        setMint("saved");
+        setPhase("result");
+        return;
+      }
+      setPhase("worlds");
+    } catch {
+      setSignupError(t.errorSignup);
+    } finally {
+      setSigningUp(false);
+    }
   };
 
   const enter = useCallback(
@@ -354,75 +354,51 @@ export default function VelviqueExperience() {
     store(CARD_KEY, JSON.stringify(next));
   }, []);
 
-  /* "Create my card" opens a Base Account (passkey, no seed phrase) first: the card is minted into it. */
-  const ensurePass = async () => {
-    let account = address;
-    let connector = activeConnector;
-    if (!account || !connector) {
-      connector = connectors.find((item) => item.id === "baseAccount") ?? connectors.find((item) => item.id === "coinbaseWalletSDK");
-      if (!connector) throw new Error("pass-browser");
-      const result = await connectAsync({ connector });
-      account = result.accounts[0];
-    }
-    const provider = (await connector.getProvider()) as Eip1193;
-    return { account: account as Address, provider };
-  };
-
-  /* Render the card, publish it to Grove, then mint from the guest's pass with gas sponsored. */
-  const mintCard = async (quote: Quote, token: string, account: Address, provider: Eip1193): Promise<number | "taken"> => {
+  /* Render the card and publish it: Grove keeps the image, Brevo records the recipe and emails it. */
+  const saveCard = async (quote: Quote, token: string, number: number): Promise<{ number: number } | Existing | "taken"> => {
     const { renderCardImage } = await import("./VelviqueCollectible");
-    const image = await renderCardImage(cardFromQuote(quote, 0, account), t.card);
+    const image = await renderCardImage(cardFromQuote(quote, number), t.card);
     const res = await fetch("/api/velvique/publish", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token, image }),
     });
-    const voucher = (await res.json()) as { ok: boolean; taken?: boolean; contract?: Address; chainId?: number; recipe?: Hex; uri?: string; deadline?: string; signature?: Hex };
-    if (voucher.taken) return "taken";
-    if (!voucher.ok || !voucher.contract || !voucher.recipe || !voucher.uri || !voucher.deadline || !voucher.signature) throw new Error("save");
-
-    const batch = (await provider.request({
-      method: "wallet_sendCalls",
-      params: [
-        {
-          version: "1.0",
-          chainId: numberToHex(voucher.chainId ?? 8453),
-          from: account,
-          calls: [{ to: voucher.contract, value: "0x0", data: encodeCardMint(voucher.recipe, voucher.uri, BigInt(voucher.deadline), voucher.signature) }],
-          capabilities: { paymasterService: { url: `${window.location.origin}/api/velvique/paymaster` } },
-        },
-      ],
-    })) as string | { id?: string };
-    const batchId = typeof batch === "string" ? batch : batch?.id ?? "";
-    if (!batchId) throw new Error("save");
-    await waitForCalls(provider, batchId);
-
-    /* The chain decides: a card means it minted, none means the recipe went to someone else. */
-    const card = (await fetch(`/api/velvique/card?wallet=${account}`).then((r) => (r.ok ? r.json() : null))) as { tokenId?: number } | null;
-    return card?.tokenId ? card.tokenId : "taken";
+    const data = (await res.json().catch(() => ({ ok: false }))) as { ok: boolean; taken?: boolean; number?: number; existing?: Existing };
+    if (data.taken) return "taken";
+    if (data.existing) return data.existing;
+    if (!data.ok || !data.number) throw new Error("save");
+    return { number: data.number };
   };
 
   const createCard = useCallback(async () => {
+    const email = guestEmail.trim().toLowerCase();
+    if (!email) {
+      setPhase("name");
+      return;
+    }
     setPhase("mixing");
     setError("");
     setMintError("");
     store(ANSWERS_KEY, JSON.stringify({ answers, restrictions }));
     let revealed = false;
     try {
-      const { account, provider } = await ensurePass();
       const ordered = questions.map((question) => answers[question.id]);
       const avoid: string[] = [];
       for (let attempt = 0; attempt < 3; attempt += 1) {
         const res = await fetch("/api/velvique/quote", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ answers: ordered, restrictions, displayName: guestName, wallet: account, lang: language, avoid }),
+          body: JSON.stringify({ answers: ordered, restrictions, email, lang: language, avoid }),
         });
-        const data = (await res.json()) as { ok: boolean; quote?: Quote; token?: string; existing?: { tokenId: number; metadata: CardMetadata } };
-        if (data.existing?.metadata) {
-          showCard(cardFromMetadata(data.existing.tokenId, data.existing.metadata, account));
+        const data = (await res.json().catch(() => ({ ok: false }))) as { ok: boolean; quote?: Quote; token?: string; number?: number; existing?: Existing };
+        if (data.existing) {
+          showCard(cardFromMetadata(data.existing, email));
           setMint("saved");
           setPhase("result");
+          return;
+        }
+        if (res.status === 403) {
+          setPhase("name");
           return;
         }
         if (!data.ok || !data.quote || !data.token) {
@@ -430,33 +406,32 @@ export default function VelviqueExperience() {
           setPhase("error");
           return;
         }
-        showCard(cardFromQuote(data.quote, 0, account));
+        showCard(cardFromQuote(data.quote, data.number ?? 0));
         setPhase("result");
         setMint("saving");
         revealed = true;
-        const outcome = await mintCard(data.quote, data.token, account, provider);
-        if (outcome !== "taken") {
-          showCard(cardFromQuote(data.quote, outcome, account));
-          setMint("saved");
-          return;
+        const outcome = await saveCard(data.quote, data.token, data.number ?? 0);
+        if (outcome === "taken") {
+          avoid.push(data.quote.recipeCode);
+          continue;
         }
-        avoid.push(data.quote.recipeCode);
+        showCard("metadata" in outcome ? cardFromMetadata(outcome, email) : cardFromQuote(data.quote, outcome.number));
+        setMint("saved");
+        return;
       }
       setMint("error");
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "";
-      const kind = /reject|denied|cancel|closed/i.test(message) ? "pass-closed" : message === "pass-browser" ? "pass-browser" : "save";
+    } catch {
       if (revealed) {
-        setMintError(kind === "pass-closed" ? t.errorPassClosed : t.errorPassSave);
+        setMintError(t.errorSave);
         setMint("error");
       } else {
-        setError(kind === "save" ? "recipe" : kind);
+        setError("recipe");
         setPhase("error");
       }
     }
-    // ensurePass/mintCard read the latest wagmi state on each call.
+    // saveCard reads the latest copy on each call.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [answers, questions, restrictions, guestName, language, t, showCard]);
+  }, [answers, questions, restrictions, guestEmail, language, t, showCard]);
 
   const visibleExclusions = useMemo(() => (showAllExclusions ? exclusionOptions : exclusionOptions.slice(0, 3)), [exclusionOptions, showAllExclusions]);
   const card = useMemo(
@@ -540,7 +515,7 @@ export default function VelviqueExperience() {
               className="vq-name"
               onSubmit={(event) => {
                 event.preventDefault();
-                passName(true);
+                void signUp();
               }}
             >
               <input
@@ -550,20 +525,51 @@ export default function VelviqueExperience() {
                 autoComplete="given-name"
                 enterKeyHint="next"
                 maxLength={24}
+                required
                 placeholder={t.namePlaceholder}
                 aria-label={t.namePlaceholder}
                 value={guestName}
                 onChange={(event) => setGuestName(event.target.value)}
               />
+              <input
+                className="vq-input"
+                type="email"
+                name="email"
+                autoComplete="email"
+                inputMode="email"
+                enterKeyHint="next"
+                maxLength={254}
+                required
+                placeholder={t.emailPlaceholder}
+                aria-label={t.emailPlaceholder}
+                value={guestEmail}
+                onChange={(event) => setGuestEmail(event.target.value)}
+              />
+              <input
+                className="vq-input"
+                type="tel"
+                name="phone"
+                autoComplete="tel"
+                inputMode="tel"
+                enterKeyHint="done"
+                maxLength={24}
+                required
+                placeholder={t.phonePlaceholder}
+                aria-label={t.phonePlaceholder}
+                value={guestPhone}
+                onChange={(event) => setGuestPhone(event.target.value)}
+              />
+              {signupError && (
+                <p className="vq-copy is-small is-alert" role="alert">
+                  {signupError}
+                </p>
+              )}
               <div className="vq-actions">
-                <button type="submit" className="vq-button" disabled={!guestName.trim()}>
-                  {t.continue}
+                <button type="submit" className="vq-button" disabled={signingUp || !guestName.trim() || !guestEmail.trim() || !guestPhone.trim()}>
+                  {signingUp ? t.signingUp : t.continue}
                 </button>
               </div>
             </form>
-            <button type="button" className="vq-link" onClick={() => passName(false)}>
-              {t.skipName}
-            </button>
           </section>
         )}
 
@@ -783,7 +789,7 @@ export default function VelviqueExperience() {
                 {mint === "saved" && (
                   <>
                     <h2 className="vq-h3">{t.savedTitle}</h2>
-                    {card.wallet && <p className="vq-copy is-small">{t.savedBody(card.wallet.slice(-4))}</p>}
+                    {card.email && <p className="vq-copy is-small">{t.savedBody(card.email)}</p>}
                     <p className="vq-copy is-small is-alert">{t.savedDraw}</p>
                   </>
                 )}
@@ -816,11 +822,7 @@ export default function VelviqueExperience() {
                 ? t.errorQuestions
                 : error === "soldout"
                   ? t.errorSoldOut
-                  : error === "pass-closed"
-                    ? t.errorPassClosed
-                    : error === "pass-browser"
-                      ? t.errorPassBrowser
-                      : t.errorRecipe}
+                  : t.errorRecipe}
             </h2>
             <div className="vq-actions">
               <button type="button" className="vq-button" onClick={() => (allAnswered ? void createCard() : setPhase("worlds"))}>

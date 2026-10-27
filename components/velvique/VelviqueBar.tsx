@@ -26,7 +26,7 @@ type Stock = {
   rows: Array<{ id: string; name: string; stockMl: number; usedMl: number; availableMl: number; orderMl: number; packages: number | null }>;
 };
 
-type Winner = { tokenId: number; guestName: string | null; passEnding: string };
+type Winner = { tokenId: number; guestName: string | null; contactHint: string; notified: boolean };
 type Checks = { pass: boolean; candidates: number; checks: Array<{ name: string; pass: boolean; detail: string }> };
 
 const SERVED_STORE = "velvique-bar-served";
@@ -222,7 +222,9 @@ export default function VelviqueBar() {
                   <p className="vq-card-num">
                     #{String(winner.tokenId).padStart(3, "0")} {winner.guestName ?? ""}
                   </p>
-                  <p className="vq-copy is-dim">Pass ending in {winner.passEnding}. Ask the winner to show card #{winner.tokenId} on their phone.</p>
+                  <p className="vq-copy is-dim">
+                    {winner.contactHint}. {winner.notified ? "Their email and phone were sent to the team inbox." : "The team email didn't send; check the Velvique list in Brevo."} Ask the winner to show card #{winner.tokenId} on their phone.
+                  </p>
                   <div className="vq-actions">
                     <button type="button" className="vq-button is-ghost" onClick={() => draw(true)}>
                       Draw again
