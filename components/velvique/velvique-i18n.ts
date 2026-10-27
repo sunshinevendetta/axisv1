@@ -29,6 +29,12 @@ type Copy = {
   madeFor: (name: string) => string;
   savedDraw: string;
   viewFull: string;
+  passNote: string;
+  savingCard: string;
+  savingBody: string;
+  saveFailed: string;
+  retrySave: string;
+  errorSoldOut: string;
   back: string;
   changeAnswer: string;
   choose: string;
@@ -94,6 +100,12 @@ const en: Copy = {
   madeFor: (name) => `Made for ${name}`,
   savedDraw: "You're in tonight's draw for a free bottle of Velvique.",
   viewFull: "View full screen",
+  passNote: "Creating your card opens a free Velvique pass on your phone with Face ID or your fingerprint. The card is saved there and enters you in tonight's draw for a free bottle.",
+  savingCard: "Saving your card to your pass",
+  savingBody: "Approve once in the window that opens. It's free.",
+  saveFailed: "Your card isn't saved yet.",
+  retrySave: "Save my card",
+  errorSoldOut: "All 100 cards have been given out.",
   back: "Back",
   changeAnswer: "Change answer",
   choose: "Choose",
@@ -160,6 +172,12 @@ const es: Copy = {
   madeFor: (name) => `Hecha para ${name}`,
   savedDraw: "Ya participas en el sorteo de una botella de Velvique esta noche.",
   viewFull: "Ver en pantalla completa",
+  passNote: "Al crear tu carta se abre un pase Velvique gratis en tu teléfono con Face ID o tu huella. La carta se guarda ahí y te inscribe en el sorteo de una botella esta noche.",
+  savingCard: "Guardando tu carta en tu pase",
+  savingBody: "Aprueba una vez en la ventana que se abre. Es gratis.",
+  saveFailed: "Tu carta aún no se guarda.",
+  retrySave: "Guardar mi carta",
+  errorSoldOut: "Ya se entregaron las 100 cartas.",
   back: "Volver",
   changeAnswer: "Cambiar respuesta",
   choose: "Elegir",
@@ -226,6 +244,12 @@ const zh: Copy = {
   madeFor: (name) => `为${name}定制`,
   savedDraw: "你已参加今晚的 Velvique 整瓶抽奖。",
   viewFull: "全屏查看",
+  passNote: "生成卡片时会用面容 ID 或指纹在手机上开启一个免费的 Velvique 通行证。卡片会保存在其中，并自动参加今晚的整瓶抽奖。",
+  savingCard: "正在把卡片保存到你的通行证",
+  savingBody: "在弹出的窗口中确认一次即可，完全免费。",
+  saveFailed: "卡片还没有保存。",
+  retrySave: "保存我的卡片",
+  errorSoldOut: "100 张卡片已全部发完。",
   back: "返回",
   changeAnswer: "修改答案",
   choose: "选择",
@@ -291,6 +315,12 @@ const zhHant: Copy = {
   madeFor: (name) => `為${name}訂製`,
   savedDraw: "你已參加今晚的 Velvique 整瓶抽獎。",
   viewFull: "全螢幕查看",
+  passNote: "生成卡片時會用 Face ID 或指紋在手機上開啟一個免費的 Velvique 通行證。卡片會保存在其中，並自動參加今晚的整瓶抽獎。",
+  savingCard: "正在把卡片保存到你的通行證",
+  savingBody: "在彈出的視窗中確認一次即可，完全免費。",
+  saveFailed: "卡片還沒有保存。",
+  retrySave: "保存我的卡片",
+  errorSoldOut: "100 張卡片已全部發完。",
   back: "返回",
   changeAnswer: "修改答案",
   choose: "選擇",
@@ -567,6 +597,29 @@ const NAMES: Record<Exclude<SiteLanguage, "en">, Record<string, string>> = {
     cacao: "可可",
     ginger: "薑",
   },
+};
+
+export const EN_NAMES: Record<string, string> = {
+  T01: "Velvique Añejo Cristalino",
+  F01: "Clarified pink guava cordial",
+  F02: "Roasted pineapple cordial",
+  F03: "Tamarind cordial",
+  F04: "Hibiscus cordial",
+  B01: "Cucumber-shiso cordial",
+  B02: "Hoja santa infusion",
+  B03: "Lemongrass-ginger cordial",
+  E01: "Roasted blue corn infusion",
+  E02: "Cacao husk infusion",
+  M01: "Diluted agave syrup",
+  M02: "Standardized acid-saline mixer",
+  G01: "Dehydrated guava",
+  G02: "Blue corn crisp",
+  G03: "Hibiscus crystal",
+  G04: "Cacao shard",
+  G05: "Dehydrated pineapple",
+  G06: "Food-grade hoja santa leaf",
+  G07: "Tamarind gel",
+  G08: "Candied ginger fragment",
 };
 
 export function localName(language: SiteLanguage, id: string, fallback: string) {

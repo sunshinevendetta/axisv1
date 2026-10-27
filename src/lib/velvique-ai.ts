@@ -2,6 +2,10 @@ import { INGREDIENTS, getGarnish, getIngredient } from "./velvique-catalog";
 import { dominantNotes, intensityLabel } from "./velvique-engine";
 import { describeAnswers } from "./velvique-questions";
 import type { Assignment, Guest, Narrative } from "./velvique-store";
+
+/* The narrative only needs the answers and the committed liquid recipe. */
+type NarrativeGuest = Pick<Guest, "answerIds">;
+type NarrativeRecipe = Pick<Assignment, "components" | "recipeSignature" | "garnishId">;
 import { getCandidates } from "./velvique-engine";
 
 /* Narrative agent: names and explains an already committed recipe. It never
@@ -44,7 +48,7 @@ const SYSTEM_PROMPT = [
   'Reply with JSON only: {"name": string (2-4 words, evocative, no quotes), "reading": string (one sentence about the guest\'s sensory direction), "description": string (max 40 words about how the shot tastes)}.',
 ].join(" ");
 
-function userPrompt(guest: Guest, assignment: Assignment) {
+function userPrompt(guest: NarrativeGuest, assignment: NarrativeRecipe) {
   const answers = describeAnswers(guest.answerIds);
   const candidate = getCandidates().find((item) => item.signature === assignment.recipeSignature);
   const garnish = assignment.garnishId ? getGarnish(assignment.garnishId) : null;
@@ -117,7 +121,7 @@ function parseNarrative(text: string) {
   }
 }
 
-function mentionsForeignIngredient(text: string, assignment: Assignment) {
+function mentionsForeignIngredient(text: string, assignment: NarrativeRecipe) {
   const inRecipe = new Set(assignment.components.map((c) => c.ingredientId));
   /* The assigned garnish may be named (e.g. dehydrated pineapple) even when its fruit is not poured. */
   const garnish = assignment.garnishId ? getGarnish(assignment.garnishId)?.name.toLowerCase() ?? "" : "";
@@ -129,7 +133,7 @@ function mentionsForeignIngredient(text: string, assignment: Assignment) {
   });
 }
 
-export function fallbackNarrative(guest: Guest, assignment: Assignment): Narrative {
+export function fallbackNarrative(guest: NarrativeGuest, assignment: NarrativeRecipe): Narrative {
   const candidate = getCandidates().find((item) => item.signature === assignment.recipeSignature);
   const notes = candidate ? dominantNotes(candidate.profile) : [];
   const answers = describeAnswers(guest.answerIds);
@@ -143,7 +147,7 @@ export function fallbackNarrative(guest: Guest, assignment: Assignment): Narrati
   };
 }
 
-export async function generateNarrative(guest: Guest, assignment: Assignment, language: NarrativeLanguage = "en"): Promise<Narrative> {
+export async function generateNarrative(guest: NarrativeGuest, assignment: NarrativeRecipe, language: NarrativeLanguage = "en"): Promise<Narrative> {
   const provider = getAiProvider();
   const user = `${userPrompt(guest, assignment)}\nWrite name, reading and description in ${LANGUAGE_NAMES[language]}. Keep "Velvique Añejo Cristalino" as is.`;
   try {

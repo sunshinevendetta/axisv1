@@ -99,8 +99,11 @@ async function paintFront(card: CollectibleCard, labels: CardLabels) {
   ctx.drawImage(logo, 84, 96, logoW, (logo.height / logo.width) * logoW);
   ctx.fillStyle = "rgba(255,255,255,0.7)";
   ctx.textAlign = "right";
-  fitText(ctx, labels.number(card.queueNumber), body, 30, 360);
-  ctx.fillText(labels.number(card.queueNumber), W - 84, 136);
+  /* The token number is only known once minted; until then the corner stays empty. */
+  if (card.queueNumber > 0) {
+    fitText(ctx, labels.number(card.queueNumber), body, 30, 360);
+    ctx.fillText(labels.number(card.queueNumber), W - 84, 136);
+  }
 
   const bottleH = 860;
   const bottleW = (bottle.width / bottle.height) * bottleH;
@@ -198,6 +201,12 @@ async function paintBack(card: CollectibleCard, labels: CardLabels) {
   ctx.fillText(`${card.recipeId}, ${new Date(card.assignedAt).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}`, 84, H - 122);
   ctx.fillText("Velvique × AXIS", 84, H - 84);
   return canvas;
+}
+
+/* Front face as a JPEG data URL: the image uploaded to Grove for the collectible. */
+export async function renderCardImage(card: CollectibleCard, labels: CardLabels) {
+  const canvas = await paintFront(card, labels);
+  return canvas.toDataURL("image/jpeg", 0.9);
 }
 
 function toTexture(canvas: HTMLCanvasElement, maxAnisotropy: number) {
