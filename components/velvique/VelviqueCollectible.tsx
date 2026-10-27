@@ -203,9 +203,14 @@ async function paintBack(card: CollectibleCard, labels: CardLabels) {
   return canvas;
 }
 
-/* Front face as a JPEG data URL: the image uploaded to Grove for the collectible. */
+/* Both faces as JPEG data URLs: uploaded to Grove, where the card's own page rebuilds the 3D card from them. */
 export async function renderCardImage(card: CollectibleCard, labels: CardLabels) {
   const canvas = await paintFront(card, labels);
+  return canvas.toDataURL("image/jpeg", 0.9);
+}
+
+export async function renderCardBackImage(card: CollectibleCard, labels: CardLabels) {
+  const canvas = await paintBack(card, labels);
   return canvas.toDataURL("image/jpeg", 0.9);
 }
 

@@ -2,6 +2,7 @@ import { createHmac, createHash, timingSafeEqual } from "node:crypto";
 import { GARNISHES, INGREDIENTS, VELVIQUE_CATALOG_VERSION, getGarnish, getIngredient } from "./velvique-catalog";
 import { conflictsWith, denseOf, excludesCandidate, rankCandidates, rankGarnishes, type Candidate } from "./velvique-engine";
 import { uploadToGrove } from "./grove";
+import { buildCardPage } from "./velvique-page";
 import { brevoConfigured, listGuests, type VelviqueGuest } from "./velvique-brevo";
 import { decodeRecipe, encodeRecipe, type CodeComponent, type RecipeCode } from "./velvique-recipe-code";
 import type { SensoryVector } from "./velvique-catalog";
@@ -125,11 +126,12 @@ async function groveUpload(bytes: Uint8Array, fileName: string, contentType: str
 
 const json = (value: unknown) => new TextEncoder().encode(JSON.stringify(value));
 
-/* Three immutable Grove files per card, no key: the card image, the recipe
-   (what the bar pours) and the card data (OpenSea-style metadata linking
-   both, with recipe id and signature, names, sensory summary, garnish and
-   event id). Grove is public and permanent, so no email or phone goes there. */
-export async function publishCard(quote: Quote, image: Uint8Array, number: number) {
+/* Immutable Grove files per card, no key: both card faces, the recipe (what
+   the bar pours), the guest's own 3D card page, and the card data
+   (OpenSea-style metadata linking all of them, with recipe id and signature,
+   names, sensory summary, garnish and event id). Grove is public and
+   permanent, so no email or phone goes there. */
+export async function publishCard(quote: Quote, image: Uint8Array, back: Uint8Array | null, number: number) {
   const garnish = quote.garnishId ? getGarnish(quote.garnishId) : null;
   const recipe = {
     event_id: "velvique-axis-2026",
@@ -142,16 +144,36 @@ export async function publishCard(quote: Quote, image: Uint8Array, number: numbe
     garnish: garnish ? { id: garnish.id, name: garnish.name, instruction: garnish.preparationInstruction } : null,
     catalog_version: VELVIQUE_CATALOG_VERSION,
   };
-  const [imageUrl, recipeUrl] = await Promise.all([
+  const [imageUrl, backUrl, recipeUrl] = await Promise.all([
     groveUpload(image, `velvique-${quote.signatureHash}.jpg`, "image/jpeg"),
+    back ? groveUpload(back, `velvique-${quote.signatureHash}-back.jpg`, "image/jpeg") : Promise.resolve(null),
     groveUpload(json(recipe), `velvique-${quote.signatureHash}-recipe.json`, "application/json"),
   ]);
+  /* The guest's own page: the 3D card from both faces, the recipe and the draw. */
+  const page = buildCardPage({
+    lang: quote.lang,
+    number,
+    guestName: quote.guestName,
+    name: quote.narrative.name,
+    description: quote.narrative.description,
+    reading: quote.narrative.reading,
+    components: quote.components,
+    garnishId: quote.garnishId,
+    signatureHash: quote.signatureHash,
+    frontUrl: imageUrl,
+    backUrl,
+    recipeUrl,
+  });
+  const pageUrl = await groveUpload(new TextEncoder().encode(page), `velvique-${quote.signatureHash}.html`, "text/html; charset=utf-8");
   const metadata = {
     name: quote.narrative.name,
     description: quote.narrative.description,
     image: imageUrl,
+    back_image: backUrl,
     recipe_url: recipeUrl,
-    external_url: "https://axis.show/velvique",
+    page_url: pageUrl,
+    animation_url: pageUrl,
+    external_url: pageUrl,
     attributes: [
       ...quote.components.map((c) => ({ trait_type: getIngredient(c.ingredientId)?.name ?? c.ingredientId, value: c.ml, display_type: "number" })),
       ...(garnish ? [{ trait_type: "Garnish", value: garnish.name }] : []),
@@ -174,7 +196,7 @@ export async function publishCard(quote: Quote, image: Uint8Array, number: numbe
     },
   };
   const metadataUrl = await groveUpload(json(metadata), `velvique-${quote.signatureHash}.json`, "application/json");
-  return { imageUrl, recipeUrl, metadataUrl };
+  return { imageUrl, backUrl, recipeUrl, pageUrl, metadataUrl };
 }
 
 export type CardMetadata = {
@@ -182,6 +204,7 @@ export type CardMetadata = {
   description: string;
   image: string;
   recipe_url?: string;
+  page_url?: string;
   properties: {
     card_number?: number;
     recipe_code: RecipeCode;

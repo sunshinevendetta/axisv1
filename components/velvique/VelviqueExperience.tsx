@@ -64,12 +64,15 @@ type Quote = {
 type CardMetadata = {
   name: string;
   description: string;
+  page_url?: string;
   properties: { recipe: Pour[]; recipe_signature: string; garnish_id: string | null; sensory_reading: string; guest_name: string | null; created_at: string };
 } | null;
 
 type DisplayCard = CollectibleCard & {
   narrative: { name: string; description: string; reading: string } | null;
   email: string | null;
+  /* The guest's own immutable 3D card page on Grove, once saved. */
+  pageUrl?: string | null;
 };
 
 type MintState = "idle" | "saving" | "saved" | "error";
@@ -105,7 +108,7 @@ function buildOf(components: Pour[]) {
   return components.map((c) => ({ ...c, name: EN_NAMES[c.ingredientId] ?? c.ingredientId }));
 }
 
-function cardFromQuote(quote: Quote, number: number): DisplayCard {
+function cardFromQuote(quote: Quote, number: number, pageUrl: string | null = null): DisplayCard {
   return {
     queueNumber: number,
     guestName: quote.guestName,
@@ -116,6 +119,7 @@ function cardFromQuote(quote: Quote, number: number): DisplayCard {
     garnish: quote.garnishId ? { id: quote.garnishId, name: EN_NAMES[quote.garnishId] ?? quote.garnishId } : null,
     narrative: quote.narrative,
     email: quote.email,
+    pageUrl,
   };
 }
 
@@ -131,6 +135,7 @@ function cardFromMetadata({ number, metadata }: Existing, email: string): Displa
     garnish: p.garnish_id ? { id: p.garnish_id, name: EN_NAMES[p.garnish_id] ?? p.garnish_id } : null,
     narrative: { name: metadata.name, description: metadata.description, reading: p.sensory_reading },
     email,
+    pageUrl: metadata.page_url ?? null,
   };
 }
 
@@ -354,20 +359,21 @@ export default function VelviqueExperience() {
     store(CARD_KEY, JSON.stringify(next));
   }, []);
 
-  /* Render the card and publish it: Grove keeps the image, Brevo records the recipe and emails it. */
-  const saveCard = async (quote: Quote, token: string, number: number): Promise<{ number: number } | Existing | "taken"> => {
-    const { renderCardImage } = await import("./VelviqueCollectible");
-    const image = await renderCardImage(cardFromQuote(quote, number), t.card);
+  /* Render both faces and publish: Grove keeps the card and its own 3D page, Brevo records the recipe and emails it. */
+  const saveCard = async (quote: Quote, token: string, number: number): Promise<{ number: number; pageUrl: string | null } | Existing | "taken"> => {
+    const { renderCardImage, renderCardBackImage } = await import("./VelviqueCollectible");
+    const face = cardFromQuote(quote, number);
+    const [image, back] = await Promise.all([renderCardImage(face, t.card), renderCardBackImage(face, t.card)]);
     const res = await fetch("/api/velvique/publish", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token, image }),
+      body: JSON.stringify({ token, image, back }),
     });
-    const data = (await res.json().catch(() => ({ ok: false }))) as { ok: boolean; taken?: boolean; number?: number; existing?: Existing };
+    const data = (await res.json().catch(() => ({ ok: false }))) as { ok: boolean; taken?: boolean; number?: number; pageUrl?: string; existing?: Existing };
     if (data.taken) return "taken";
     if (data.existing) return data.existing;
     if (!data.ok || !data.number) throw new Error("save");
-    return { number: data.number };
+    return { number: data.number, pageUrl: data.pageUrl ?? null };
   };
 
   const createCard = useCallback(async () => {
@@ -415,7 +421,7 @@ export default function VelviqueExperience() {
           avoid.push(data.quote.recipeCode);
           continue;
         }
-        showCard("metadata" in outcome ? cardFromMetadata(outcome, email) : cardFromQuote(data.quote, outcome.number));
+        showCard("metadata" in outcome ? cardFromMetadata(outcome, email) : cardFromQuote(data.quote, outcome.number, outcome.pageUrl));
         setMint("saved");
         return;
       }
@@ -790,6 +796,16 @@ export default function VelviqueExperience() {
                   <>
                     <h2 className="vq-h3">{t.savedTitle}</h2>
                     {card.email && <p className="vq-copy is-small">{t.savedBody(card.email)}</p>}
+                    {card.pageUrl && (
+                      <>
+                        <div className="vq-actions">
+                          <a className="vq-button" href={card.pageUrl} target="_blank" rel="noopener noreferrer">
+                            {t.openCardPage}
+                          </a>
+                        </div>
+                        <p className="vq-meta">{t.cardPageHash(card.pageUrl.split("/").pop()?.slice(0, 12) ?? "")}</p>
+                      </>
+                    )}
                   </>
                 )}
                 {mint === "saving" && (

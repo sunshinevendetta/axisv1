@@ -1,6 +1,6 @@
-import { EN_NAMES, VELVIQUE_COPY, localName } from "@/components/velvique/velvique-i18n";
-import { getGarnish, getIngredient } from "./velvique-catalog";
+import { VELVIQUE_COPY } from "@/components/velvique/velvique-i18n";
 import { sendEmail } from "./velvique-brevo";
+import { GROVE_ASSETS, recipeRows } from "./velvique-page";
 import type { CodeComponent } from "./velvique-recipe-code";
 
 /* Emails sent through Brevo: each guest gets one, with their finished card,
@@ -10,9 +10,10 @@ import type { CodeComponent } from "./velvique-recipe-code";
    absolute so every mail client shows them. */
 
 const SITE = "https://axis.show";
-const AXIS_LOGO = `${SITE}/logow.png`;
-const VELVIQUE_LOGO = `${SITE}/velvique/email/velvique-logo.png`;
-const BOTTLE = `${SITE}/velvique/email/velvique-bottle.png`;
+/* Images and fonts live on Grove, so emails never depend on a site deploy. */
+const AXIS_LOGO = GROVE_ASSETS.axisLogo;
+const VELVIQUE_LOGO = GROVE_ASSETS.velviqueLogo;
+const BOTTLE = GROVE_ASSETS.bottle;
 const BODY_FONT = "'Bingo', Arial, Helvetica, sans-serif";
 const DISPLAY_FONT = "'Agura', 'Bingo', Arial, Helvetica, sans-serif";
 
@@ -116,8 +117,8 @@ function render(layout: Layout) {
 <meta name="color-scheme" content="dark"/>
 <meta name="supported-color-schemes" content="dark"/>
 <style>
-  @font-face { font-family: "Agura"; src: url("${SITE}/fonts/AGURA.woff2") format("woff2"); font-weight: 400; font-style: normal; }
-  @font-face { font-family: "Bingo"; src: url("${SITE}/fonts/BINGO.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "Agura"; src: url("${GROVE_ASSETS.agura}") format("woff2"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "Bingo"; src: url("${GROVE_ASSETS.bingo}") format("woff2"); font-weight: 400; font-style: normal; }
   body { margin: 0; padding: 0; background: #000000; }
   a { color: #ffffff; }
   @media (max-width: 620px) { .vq-pad { padding-left: 18px !important; padding-right: 18px !important; } .vq-h1 { font-size: 22px !important; } }
@@ -188,23 +189,12 @@ function render(layout: Layout) {
 
 const bottleHero = `<img src="${BOTTLE}" alt="Velvique Añejo Cristalino" width="150" style="display:block; width:150px; height:auto; margin:0 auto; border:0;"/>`;
 
-type EmailCard = { name: string; description: string; number: number; imageUrl: string; signatureHash: string; components: CodeComponent[]; garnishId: string | null };
-
-/* The full pour, named exactly as the page and the card name it, in the guest's language. */
-function recipeOf(lang: Lang, card: EmailCard) {
-  const page = VELVIQUE_COPY[lang];
-  const rows = card.components.map((c): [string, string] => [
-    localName(lang, c.ingredientId, EN_NAMES[c.ingredientId] ?? getIngredient(c.ingredientId)?.name ?? c.ingredientId),
-    `${c.ml.toFixed(1)} ml`,
-  ]);
-  const garnish = card.garnishId ? localName(lang, card.garnishId, EN_NAMES[card.garnishId] ?? getGarnish(card.garnishId)?.name ?? card.garnishId) : null;
-  return { title: page.yourRecipe, rows, garnish: garnish ? page.finishWith(garnish) : null };
-}
+type EmailCard = { name: string; description: string; number: number; imageUrl: string; pageUrl: string; signatureHash: string; components: CodeComponent[]; garnishId: string | null };
 
 export function cardEmail(guest: { name: string; lang: string }, card: EmailCard) {
   const lang = (guest.lang in COPY ? guest.lang : "en") as Lang;
   const t = COPY[lang];
-  const recipe = recipeOf(lang, card);
+  const recipe = recipeRows(lang, card.components, card.garnishId);
   const hero = `<img src="${escapeHtml(card.imageUrl)}" alt="${escapeHtml(card.name)}" width="300" style="display:block; width:100%; max-width:300px; height:auto; margin:0 auto; border:1px solid #262626; border-radius:18px;"/>`;
   return {
     subject: t.cardSubject(card.name),
@@ -217,7 +207,7 @@ export function cardEmail(guest: { name: string; lang: string }, card: EmailCard
       lines: [t.cardBody(card.number), card.description],
       recipe,
       draw: { label: t.drawLabel, text: t.drawText },
-      button: { label: t.cardLink, href: card.imageUrl },
+      button: { label: t.cardLink, href: card.pageUrl },
       note: t.signature(card.signatureHash.slice(0, 8)),
       footer: t.footer,
     }),
@@ -233,7 +223,7 @@ export function cardEmail(guest: { name: string; lang: string }, card: EmailCard
       "",
       `${t.drawLabel}: ${t.drawText}`,
       "",
-      `${t.cardLink}: ${card.imageUrl}`,
+      `${t.cardLink}: ${card.pageUrl}`,
       t.signature(card.signatureHash.slice(0, 8)),
     ].join("\n"),
   };

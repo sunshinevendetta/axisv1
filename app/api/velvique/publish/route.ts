@@ -9,16 +9,20 @@ export const maxDuration = 60;
 
 const MAX_IMAGE_BYTES = 3 * 1024 * 1024;
 
-/* Step 3 of a card: save the card image, recipe and card data to Grove,
-   write the recipe onto the guest's Brevo contact and email them the card. */
+/* Step 3 of a card: save both card faces, the recipe, the guest's 3D card
+   page and the card data to Grove, write the recipe onto the guest's Brevo
+   contact and email them the card with its page link. */
 export async function POST(request: Request) {
-  const body = (await request.json().catch(() => ({}))) as { token?: unknown; image?: unknown };
+  const body = (await request.json().catch(() => ({}))) as { token?: unknown; image?: unknown; back?: unknown };
   const quote = typeof body.token === "string" ? openQuote(body.token) : null;
   if (!quote) return NextResponse.json({ ok: false, error: "This card request expired. Create it again." }, { status: 400 });
   if (typeof body.image !== "string") return NextResponse.json({ ok: false, error: "The card image is missing." }, { status: 400 });
 
-  const image = Buffer.from(body.image.replace(/^data:image\/\w+;base64,/, ""), "base64");
+  const decode = (value: string) => Buffer.from(value.replace(/^data:image\/\w+;base64,/, ""), "base64");
+  const image = decode(body.image);
   if (image.length === 0 || image.length > MAX_IMAGE_BYTES) return NextResponse.json({ ok: false, error: "The card image is too large." }, { status: 400 });
+  const back = typeof body.back === "string" ? decode(body.back) : null;
+  if (back && back.length > MAX_IMAGE_BYTES) return NextResponse.json({ ok: false, error: "The card image is too large." }, { status: 400 });
 
   const { guests, cards } = await readRegistry();
   const existing = cards.find((card) => card.email === quote.email);
@@ -32,14 +36,14 @@ export async function POST(request: Request) {
   }
 
   const number = cards.length + 1;
-  const { imageUrl, recipeUrl, metadataUrl } = await publishCard(quote, new Uint8Array(image), number);
+  const { imageUrl, recipeUrl, pageUrl, metadataUrl } = await publishCard(quote, new Uint8Array(image), back && back.length > 0 ? new Uint8Array(back) : null, number);
   await saveGuestCard(quote.email, { recipe: quote.recipeCode, cardUrl: metadataUrl, at: new Date().toISOString() });
 
   const guest = guests.find((item) => item.email === quote.email);
   await sendCard(
     { email: quote.email, name: guest?.name ?? quote.guestName ?? "", lang: quote.lang },
-    { name: quote.narrative.name, description: quote.narrative.description, number, imageUrl, signatureHash: quote.signatureHash, components: quote.components, garnishId: quote.garnishId },
+    { name: quote.narrative.name, description: quote.narrative.description, number, imageUrl, pageUrl, signatureHash: quote.signatureHash, components: quote.components, garnishId: quote.garnishId },
   ).catch((error) => console.error("Velvique card email failed", error instanceof Error ? error.message : error));
 
-  return NextResponse.json({ ok: true, number, imageUrl, recipeUrl, metadataUrl });
+  return NextResponse.json({ ok: true, number, imageUrl, recipeUrl, pageUrl, metadataUrl });
 }

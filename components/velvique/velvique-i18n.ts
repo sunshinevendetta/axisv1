@@ -63,6 +63,8 @@ type Copy = {
   startingJourney: string;
   savedTitle: string;
   savedBody: (email: string) => string;
+  openCardPage: string;
+  cardPageHash: (hash: string) => string;
   signature: (hash: string) => string;
   tryAgain: string;
   errorQuestions: string;
@@ -138,7 +140,9 @@ const en: Copy = {
   startJourney: "Start the journey",
   startingJourney: "Starting your journey",
   savedTitle: "Your card is saved",
-  savedBody: (email) => `We sent it to ${email}. You can open it again from this page any time.`,
+  savedBody: (email) => `We sent it to ${email}. Your card also lives on its own permanent page, yours to open any time.`,
+  openCardPage: "Open my 3D card",
+  cardPageHash: (hash) => `Saved on Grove · ${hash}`,
   signature: (hash) => `Recipe signature ${hash}. No other card carries it.`,
   tryAgain: "Try again",
   errorQuestions: "The questions didn't load. Check your connection, then try again.",
@@ -214,7 +218,9 @@ const es: Copy = {
   startJourney: "Empezar el viaje",
   startingJourney: "Empezando tu viaje",
   savedTitle: "Tu carta está guardada",
-  savedBody: (email) => `Te la enviamos a ${email}. Puedes volver a abrirla desde esta página cuando quieras.`,
+  savedBody: (email) => `Te la enviamos a ${email}. Tu carta también vive en su propia página permanente, para abrirla cuando quieras.`,
+  openCardPage: "Abrir mi carta 3D",
+  cardPageHash: (hash) => `Guardada en Grove · ${hash}`,
   signature: (hash) => `Firma de receta ${hash}. Ninguna otra carta la tiene.`,
   tryAgain: "Intentar de nuevo",
   errorQuestions: "Las preguntas no cargaron. Revisa tu conexión e intenta de nuevo.",
@@ -289,7 +295,9 @@ const zh: Copy = {
   startJourney: "开启旅程",
   startingJourney: "正在开启旅程",
   savedTitle: "卡片已保存",
-  savedBody: (email) => `已发送到 ${email}，你可以随时从这个页面再次打开。`,
+  savedBody: (email) => `已发送到 ${email}。你的卡片也有自己的永久页面，随时可以打开。`,
+  openCardPage: "打开我的 3D 卡片",
+  cardPageHash: (hash) => `已保存在 Grove · ${hash}`,
   signature: (hash) => `配方签名 ${hash}。没有其他卡片拥有它。`,
   tryAgain: "重试",
   errorQuestions: "问题没有加载出来。请检查网络后重试。",
@@ -364,7 +372,9 @@ const zhHant: Copy = {
   startJourney: "開啟旅程",
   startingJourney: "正在開啟旅程",
   savedTitle: "卡片已保存",
-  savedBody: (email) => `已寄到 ${email}，你可以隨時從這個頁面再次開啟。`,
+  savedBody: (email) => `已寄到 ${email}。你的卡片也有自己的永久頁面，隨時可以開啟。`,
+  openCardPage: "打開我的 3D 卡片",
+  cardPageHash: (hash) => `已保存在 Grove · ${hash}`,
   signature: (hash) => `配方簽名 ${hash}。沒有其他卡片擁有它。`,
   tryAgain: "重試",
   errorQuestions: "問題沒有載入。請檢查網路後重試。",
