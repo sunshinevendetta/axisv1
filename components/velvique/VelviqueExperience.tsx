@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import { Component, useCallback, useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
+import { Component, useCallback, useEffect, useMemo, useRef, useState, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
 import { useSiteLanguage } from "@/components/site-language";
 import { EN_NAMES, VELVIQUE_COPY, localName, localizeQuestions } from "./velvique-i18n";
 import type { PortalOption } from "./VelviquePortals";
@@ -86,7 +86,7 @@ const ANSWERS_KEY = "velvique-answers";
 const NAME_KEY = "velvique-name";
 const GUEST_KEY = "velvique-guest";
 const INSTAGRAM_URL = "https://www.instagram.com/velviquetequila/";
-const INSTAGRAM_APP_URL = "instagram://user?username=velviquetequila";
+const INSTAGRAM_ANDROID_INTENT = `intent://www.instagram.com/_u/velviquetequila/#Intent;package=com.instagram.android;scheme=https;S.browser_fallback_url=${encodeURIComponent(INSTAGRAM_URL)};end`;
 const FOLLOW_WAIT_S = 5;
 
 function readStored(key: string) {
@@ -236,18 +236,18 @@ export default function VelviqueExperience() {
 
   const passFollow = () => setPhase("name");
 
-  /* Phones open the Instagram app on the profile; if it isn't installed the page falls back to the web profile. */
-  const openInstagram = () => {
+  /* The button is a real link to the profile: iOS hands it to the Instagram app as a
+     universal link (web profile when the app is missing), in-app browsers and
+     desktops just open it. Android Chrome gets an intent that opens the app and
+     falls back to the web profile by itself. */
+  const openInstagram = (event: ReactMouseEvent<HTMLAnchorElement>) => {
     setFollowClock(FOLLOW_WAIT_S);
-    if (!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-      window.open(INSTAGRAM_URL, "_blank", "noopener");
-      return;
+    const ua = navigator.userAgent;
+    const inAppBrowser = /Instagram|FBAN|FBAV|; wv\)/i.test(ua);
+    if (/Android/i.test(ua) && !inAppBrowser) {
+      event.preventDefault();
+      window.location.href = INSTAGRAM_ANDROID_INTENT;
     }
-    const fallback = window.setTimeout(() => {
-      if (!document.hidden) window.location.href = INSTAGRAM_URL;
-    }, 1500);
-    document.addEventListener("visibilitychange", () => window.clearTimeout(fallback), { once: true });
-    window.location.href = INSTAGRAM_APP_URL;
   };
 
   /* Name, email and phone join the Brevo guest list for the draw; the card email comes at the end. */
@@ -503,13 +503,9 @@ export default function VelviqueExperience() {
             <h2 className="vq-h2">{t.followTitle}</h2>
             <p className="vq-copy">{t.followBody}</p>
             <div className="vq-actions is-stacked">
-              <button
-                type="button"
-                className="vq-button"
-                onClick={openInstagram}
-              >
+              <a className="vq-button" href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" onClick={openInstagram}>
                 {t.openInstagram}
-              </button>
+              </a>
               {followClock !== null && (
                 <button type="button" className="vq-button is-ghost" disabled={followClock > 0} onClick={passFollow}>
                   {followClock > 0 ? t.continueIn(followClock) : t.continue}
