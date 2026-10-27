@@ -790,7 +790,6 @@ export default function VelviqueExperience() {
                   <>
                     <h2 className="vq-h3">{t.savedTitle}</h2>
                     {card.email && <p className="vq-copy is-small">{t.savedBody(card.email)}</p>}
-                    <p className="vq-copy is-small is-alert">{t.savedDraw}</p>
                   </>
                 )}
                 {mint === "saving" && (
@@ -808,6 +807,8 @@ export default function VelviqueExperience() {
                     </button>
                   </>
                 )}
+                {/* The 10:30 pm bottle draw stays on screen: entered once the card is saved. */}
+                <p className="vq-copy is-small is-alert">{mint === "saved" ? t.savedDraw : t.giveaway}</p>
               </div>
 
               <p className="vq-meta">{t.signature(card.signatureHash.slice(0, 8))}</p>

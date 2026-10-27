@@ -123,16 +123,34 @@ async function groveUpload(bytes: Uint8Array, fileName: string, contentType: str
   return url;
 }
 
-/* Card image plus OpenSea-style metadata carrying the full recipe identity
-   (guide addendum: recipe id and signature, names, sensory summary,
-   ingredients, garnish, event id). No email or phone ever goes to Grove. */
+const json = (value: unknown) => new TextEncoder().encode(JSON.stringify(value));
+
+/* Three immutable Grove files per card, no key: the card image, the recipe
+   (what the bar pours) and the card data (OpenSea-style metadata linking
+   both, with recipe id and signature, names, sensory summary, garnish and
+   event id). Grove is public and permanent, so no email or phone goes there. */
 export async function publishCard(quote: Quote, image: Uint8Array, number: number) {
-  const imageUrl = await groveUpload(image, `velvique-${quote.signatureHash}.jpg`, "image/jpeg");
   const garnish = quote.garnishId ? getGarnish(quote.garnishId) : null;
+  const recipe = {
+    event_id: "velvique-axis-2026",
+    card_number: number,
+    name: quote.narrative.name,
+    recipe_code: quote.recipeCode,
+    recipe_signature: quote.signatureHash,
+    shot_ml: quote.components.reduce((sum, c) => sum + c.ml, 0),
+    pour: quote.components.map((c) => ({ ingredient_id: c.ingredientId, ingredient: getIngredient(c.ingredientId)?.name ?? c.ingredientId, ml: c.ml })),
+    garnish: garnish ? { id: garnish.id, name: garnish.name, instruction: garnish.preparationInstruction } : null,
+    catalog_version: VELVIQUE_CATALOG_VERSION,
+  };
+  const [imageUrl, recipeUrl] = await Promise.all([
+    groveUpload(image, `velvique-${quote.signatureHash}.jpg`, "image/jpeg"),
+    groveUpload(json(recipe), `velvique-${quote.signatureHash}-recipe.json`, "application/json"),
+  ]);
   const metadata = {
     name: quote.narrative.name,
     description: quote.narrative.description,
     image: imageUrl,
+    recipe_url: recipeUrl,
     external_url: "https://axis.show/velvique",
     attributes: [
       ...quote.components.map((c) => ({ trait_type: getIngredient(c.ingredientId)?.name ?? c.ingredientId, value: c.ml, display_type: "number" })),
@@ -155,14 +173,15 @@ export async function publishCard(quote: Quote, image: Uint8Array, number: numbe
       created_at: new Date().toISOString(),
     },
   };
-  const metadataUrl = await groveUpload(new TextEncoder().encode(JSON.stringify(metadata)), `velvique-${quote.signatureHash}.json`, "application/json");
-  return { imageUrl, metadataUrl };
+  const metadataUrl = await groveUpload(json(metadata), `velvique-${quote.signatureHash}.json`, "application/json");
+  return { imageUrl, recipeUrl, metadataUrl };
 }
 
 export type CardMetadata = {
   name: string;
   description: string;
   image: string;
+  recipe_url?: string;
   properties: {
     card_number?: number;
     recipe_code: RecipeCode;

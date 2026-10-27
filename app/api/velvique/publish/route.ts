@@ -9,7 +9,7 @@ export const maxDuration = 60;
 
 const MAX_IMAGE_BYTES = 3 * 1024 * 1024;
 
-/* Step 3 of a card: upload the rendered card and its metadata to Grove,
+/* Step 3 of a card: save the card image, recipe and card data to Grove,
    write the recipe onto the guest's Brevo contact and email them the card. */
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => ({}))) as { token?: unknown; image?: unknown };
@@ -32,7 +32,7 @@ export async function POST(request: Request) {
   }
 
   const number = cards.length + 1;
-  const { imageUrl, metadataUrl } = await publishCard(quote, new Uint8Array(image), number);
+  const { imageUrl, recipeUrl, metadataUrl } = await publishCard(quote, new Uint8Array(image), number);
   await saveGuestCard(quote.email, { recipe: quote.recipeCode, cardUrl: metadataUrl, at: new Date().toISOString() });
 
   const guest = guests.find((item) => item.email === quote.email);
@@ -41,5 +41,5 @@ export async function POST(request: Request) {
     { name: quote.narrative.name, description: quote.narrative.description, number, imageUrl, signatureHash: quote.signatureHash, components: quote.components, garnishId: quote.garnishId },
   ).catch((error) => console.error("Velvique card email failed", error instanceof Error ? error.message : error));
 
-  return NextResponse.json({ ok: true, number, imageUrl, metadataUrl });
+  return NextResponse.json({ ok: true, number, imageUrl, recipeUrl, metadataUrl });
 }

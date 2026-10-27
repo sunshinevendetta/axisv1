@@ -129,13 +129,16 @@ export function normalizeGroveResponse(data: unknown): NormalizedGroveResponse {
     };
   }
 
+  /* A single-file upload answers with a one-item array: [{ storage_key, gateway_url, uri, status_url }]. */
   if (Array.isArray(data)) {
+    const items = data.filter((item): item is Record<string, unknown> => typeof item === "object" && item !== null && !Array.isArray(item));
+    const first = items[0] ?? {};
     return {
-      storage_key: null,
-      gateway_url: null,
-      uri: null,
-      status_url: null,
-      items: data,
+      storage_key: readValue(first, "storage_key"),
+      gateway_url: readValue(first, "gateway_url"),
+      uri: readValue(first, "uri"),
+      status_url: readValue(first, "status_url"),
+      items,
     };
   }
 
