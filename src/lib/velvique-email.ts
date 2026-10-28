@@ -236,6 +236,24 @@ export async function sendCard(guest: { email: string; name: string; lang: strin
   await sendEmail({ to: guest.email, name: guest.name, bcc: TEAM_COPY.filter((email) => email !== guest.email), ...cardEmail(guest, card) });
 }
 
+/* Every registration's full data goes to the team the moment the guest signs
+   up, card or not; the CSV line pastes straight into the guest database. */
+export async function sendRegistrationToTeam(guest: { name: string; email: string; phone: string; lang: string }) {
+  const at = new Date();
+  const local = at.toLocaleString("es-MX", { timeZone: "America/Mexico_City", dateStyle: "medium", timeStyle: "short" });
+  const csv = [guest.name, guest.email, guest.phone, guest.lang, at.toISOString()].map((value) => `"${value.replace(/"/g, '""')}"`).join(",");
+  const lines = [`Name: ${guest.name}`, `Email: ${guest.email}`, `Phone: ${guest.phone}`, `Language: ${guest.lang}`, `Registered: ${local} (Mexico City)`];
+  const [to, ...bcc] = TEAM_COPY;
+  await sendEmail({
+    to,
+    bcc,
+    subject: `Velvique registration: ${guest.name} <${guest.email}>`,
+    replyTo: guest.email,
+    html: render({ lang: "en", preheader: lines.join(" · "), hero: bottleHero, kicker: "New registration", title: guest.name, lines: [...lines, `CSV: ${csv}`], footer: "Produced by AXIS" }),
+    text: ["Velvique registration", "", ...lines, "", "name,email,phone,lang,registered_at", csv].join("\n"),
+  });
+}
+
 /* The winner's full contact goes only to the team inbox, never to the open bar screen. */
 export async function sendWinnerToTeam(winner: { number: number; name: string; email: string; phone: string; entrants: number }) {
   const to = process.env.ADMIN_EMAIL?.trim() || "hello@axis.show";
