@@ -128,12 +128,13 @@ export async function listGuests(): Promise<VelviqueGuest[]> {
   return guests;
 }
 
-export async function sendEmail(message: { to: string; name?: string; subject: string; html: string; text: string; replyTo?: string }) {
+export async function sendEmail(message: { to: string; name?: string; subject: string; html: string; text: string; replyTo?: string; bcc?: string[] }) {
   await brevo("/smtp/email", {
     method: "POST",
     body: JSON.stringify({
       sender: { name: "AXIS × Velvique", email: process.env.CUSTOM_FROM?.trim() || "rsvp@axis.show" },
       to: [{ email: message.to, ...(message.name ? { name: message.name } : {}) }],
+      ...(message.bcc?.length ? { bcc: message.bcc.map((email) => ({ email })) } : {}),
       ...(message.replyTo ? { replyTo: { email: message.replyTo } } : {}),
       subject: message.subject,
       htmlContent: message.html,

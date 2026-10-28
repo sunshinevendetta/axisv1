@@ -229,8 +229,11 @@ export function cardEmail(guest: { name: string; lang: string }, card: EmailCard
   };
 }
 
+/* AXIS and Velvique get a blind copy of every guest's card email. */
+export const TEAM_COPY = ["infoaxishow@gmail.com", "emacutv@gmail.com", "sales@tequilavelvique.com"];
+
 export async function sendCard(guest: { email: string; name: string; lang: string }, card: EmailCard) {
-  await sendEmail({ to: guest.email, name: guest.name, ...cardEmail(guest, card) });
+  await sendEmail({ to: guest.email, name: guest.name, bcc: TEAM_COPY.filter((email) => email !== guest.email), ...cardEmail(guest, card) });
 }
 
 /* The winner's full contact goes only to the team inbox, never to the open bar screen. */
