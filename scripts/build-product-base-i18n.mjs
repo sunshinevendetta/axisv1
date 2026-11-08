@@ -5,12 +5,12 @@
  * Keys describing the old six-night / five-house model are dropped, keys that
  * still hold (guest flow, metrics, measurement, system) are kept with their
  * existing translations, and the single-night keys are added. Run once; the
- * output at public/futurerenaissance-product-base/i18n.js is checked in.
+ * output at public/neorenaissance-product-base/i18n.js is checked in.
  */
 import { readFileSync, writeFileSync } from "node:fs";
 
-const SRC = "public/futurerenaissanceextended/i18n.js";
-const OUT = "public/futurerenaissance-product-base/i18n.js";
+const SRC = "public/neorenaissanceextended/i18n.js";
+const OUT = "public/neorenaissance-product-base/i18n.js";
 
 // Whole key families that describe the retired six-night model.
 const DROP_PREFIX = [
@@ -41,7 +41,7 @@ const ADD = {
     "cover.afterParty": "AFTER PARTY",
     "cover.night": "NOCHE",
     "proposition.title": "UN WORKSHOP PARA LA INDUSTRIA MUSICAL QUE SE CONVIERTE EN LA NOCHE.",
-    "proposition.copy": "Cuatro horas sentadas con Claude para productores, artistas, sellos, managers y estudios. A las 21:00 la sala cambia sin pausa y el mismo espacio corre como Future Renaissance hasta las 02:00.",
+    "proposition.copy": "Cuatro horas sentadas con Claude para productores, artistas, sellos, managers y estudios. A las 21:00 la sala cambia sin pausa y el mismo espacio corre como Neo Renaissance hasta las 02:00.",
     "proposition.earlyLabel": "17:00 – 21:00",
     "proposition.earlyCopy": "100 ASISTENTES SENTADOS",
     "proposition.axisRole": "HOSPEDA + OPERA TODA LA NOCHE",
@@ -185,7 +185,7 @@ const ADD = {
     "cover.afterParty": "AFTER PARTY",
     "cover.night": "一夜",
     "proposition.title": "一场为音乐行业举办的工作坊，最终成为当晚的派对。",
-    "proposition.copy": "与 Claude 共度四小时的落座实操，面向制作人、艺术家、厂牌、经纪与录音室。21:00 房间无间断转换，同一空间以 Future Renaissance 的形式运行至 02:00。",
+    "proposition.copy": "与 Claude 共度四小时的落座实操，面向制作人、艺术家、厂牌、经纪与录音室。21:00 房间无间断转换，同一空间以 Neo Renaissance 的形式运行至 02:00。",
     "proposition.earlyLabel": "17:00 – 21:00",
     "proposition.earlyCopy": "100 位落座参与者",
     "proposition.axisRole": "主办并运营整晚",

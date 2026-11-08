@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Builds the per-product Future Renaissance sales decks.
+ * Builds the per-product Neo Renaissance sales decks.
  *
  * Every deck sells the SAME night — Thursday October 29, 2026 at Casa Luma, a
  * Claude community event operated by AXIS — but is written for one product
@@ -21,15 +21,15 @@ import { join } from "node:path";
 import vm from "node:vm";
 
 const SPEC_DIR = "scripts/product-deck-specs";
-const BASE = "public/futurerenaissance-product-base";
-const APP_SRC = "app/futurerenaissanceextended/page.tsx";
-const CMP_SRC = "components/futurerenaissanceextended";
+const BASE = "public/neorenaissance-product-base";
+const APP_SRC = "app/neorenaissanceextended/page.tsx";
+const CMP_SRC = "components/neorenaissanceextended";
 
 // Big identical binaries (posters, brand assets, vendor bundle) are not copied
 // per deck; every deck points at the extended deck's single stored copy.
 const CODE = [
-  "axis-horizontal.html", "axis-vertical.html", "future-renaissance-runtime.js",
-  "future-renaissance.css", "future-renaissance-extended.css",
+  "axis-horizontal.html", "axis-vertical.html", "neo-renaissance-runtime.js",
+  "neo-renaissance.css", "neo-renaissance-extended.css",
 ];
 const SHARED_BINARIES = [
   "poster-horizontal.png", "poster-vertical.png", "event-crowd.jpg",
@@ -179,7 +179,7 @@ function buildI18n(src, spec, file) {
 /* --------------------------------------------------------------- page.tsx */
 function buildPage(src, spec) {
   const keywords = [
-    "Future Renaissance",
+    "Neo Renaissance",
     "Claude community event",
     "Casa Luma",
     "Mexico Tech Week 2026",
@@ -191,10 +191,10 @@ function buildPage(src, spec) {
   // The extended deck's share card advertises the retired six-night circuit;
   // the product decks use the undated campaign poster instead.
   return src
-    .replace(/url: "https:\/\/axis\.show\/futurerenaissanceextended\/og-circuit\.png",\s*width: \d+,\s*height: \d+,\s*alt: "[^"]*",/,
-      'url: "https://axis.show/futurerenaissanceextended/poster-horizontal.png",\n        width: 1396,\n        height: 1125,\n        alt: "Official Future Renaissance campaign poster",')
-    .replace('images: ["https://axis.show/futurerenaissanceextended/og-circuit.png"]',
-      'images: ["https://axis.show/futurerenaissanceextended/poster-horizontal.png"]')
+    .replace(/url: "https:\/\/axis\.show\/neorenaissanceextended\/og-circuit\.png",\s*width: \d+,\s*height: \d+,\s*alt: "[^"]*",/,
+      'url: "https://axis.show/neorenaissanceextended/poster-horizontal.png",\n        width: 1396,\n        height: 1125,\n        alt: "Official Neo Renaissance campaign poster",')
+    .replace('images: ["https://axis.show/neorenaissanceextended/og-circuit.png"]',
+      'images: ["https://axis.show/neorenaissanceextended/poster-horizontal.png"]')
     .replace(/^const title =[\s\S]*?;$/m, "const title = " + q(spec.pageTitle) + ";")
     .replace(/^const description =[\s\S]*?;$/m, "const description =\n  " + q(spec.pageDescription) + ";")
     .replace(
@@ -210,7 +210,7 @@ function buildPage(src, spec) {
 function loadBase(dataSrc) {
   const sandbox = { window: {} };
   vm.runInNewContext(dataSrc, sandbox);
-  return sandbox.window.FUTURE_RENAISSANCE;
+  return sandbox.window.NEO_RENAISSANCE;
 }
 
 function buildPlanContent(base, spec) {
@@ -220,7 +220,7 @@ function buildPlanContent(base, spec) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "MusicEvent",
-    name: "Future Renaissance · " + n.venue + " · Mexico City | Claude for Music",
+    name: "Neo Renaissance · " + n.venue + " · Mexico City | Claude for Music",
     startDate: n.date + "T" + n.eventStart + ":00-06:00",
     endDate: n.endDate + "T" + n.eventEnd + ":00-06:00",
     eventStatus: "https://schema.org/EventScheduled",
@@ -238,7 +238,7 @@ function buildPlanContent(base, spec) {
       },
     },
     organizer: { "@type": "Organization", name: "AXIS", url: "https://axis.show" },
-    image: "https://axis.show/futurerenaissanceextended/poster-horizontal.png",
+    image: "https://axis.show/neorenaissanceextended/poster-horizontal.png",
   };
   const mechanics = spec.mechanics
     .map((m) => "            <li><strong>" + jsx(m.name) + "</strong>: " + jsx(m.summary) + "</li>")
@@ -250,7 +250,7 @@ function buildPlanContent(base, spec) {
   return [
     "const EVENT_JSON_LD = " + JSON.stringify(jsonLd, null, 2) + ";",
     "",
-    "export default function FutureRenaissancePlanContent() {",
+    "export default function NeoRenaissancePlanContent() {",
     "  return (",
     "    <>",
     "      <script",
@@ -274,11 +274,11 @@ function buildPlanContent(base, spec) {
     "",
     "      <article",
     '        className="future-extended-a11y-content"',
-    '        aria-label="Future Renaissance ' + spec.name + ' partnership presentation"',
+    '        aria-label="Neo Renaissance ' + spec.name + ' partnership presentation"',
     "      >",
     "        <header>",
     "          <p>AXIS · " + n.context + " · " + n.status + "</p>",
-    "          <h1>Future Renaissance · " + jsx(spec.name) + " partner</h1>",
+    "          <h1>Neo Renaissance · " + jsx(spec.name) + " partner</h1>",
     "          <p>" + n.day + ", " + n.displayDate + " · " + n.venue + ", " + n.address + " · " + n.city + "</p>",
     "          <p>Event window: " + n.eventStart + " to " + n.eventEnd + "</p>",
     "        </header>",
@@ -288,7 +288,7 @@ function buildPlanContent(base, spec) {
     "          <p>",
     "            One night. From " + n.workshopStart + " to " + n.workshopEnd + ", a seated, hands-on Claude community",
     "            workshop for " + n.workshopCapacity + " attendees from the music industry. At " + n.afterPartyStart + ", with no",
-    "            gap, the same room becomes the Future Renaissance party, running to " + n.afterPartyEnd,
+    "            gap, the same room becomes the Neo Renaissance party, running to " + n.afterPartyEnd,
     "            for " + n.afterPartyGuests + " further guests. AXIS hosts and operates the night.",
     "          </p>",
     "        </section>",
@@ -329,9 +329,9 @@ if (!specs.length) {
 }
 
 const raw = {
-  data: readFileSync(join(BASE, "future-renaissance-data.js"), "utf8"),
-  content: readFileSync(join(BASE, "future-renaissance-content.js"), "utf8"),
-  concepts: readFileSync(join(BASE, "future-renaissance-concepts.js"), "utf8"),
+  data: readFileSync(join(BASE, "neo-renaissance-data.js"), "utf8"),
+  content: readFileSync(join(BASE, "neo-renaissance-content.js"), "utf8"),
+  concepts: readFileSync(join(BASE, "neo-renaissance-concepts.js"), "utf8"),
   i18n: readFileSync(join(BASE, "i18n.js"), "utf8"),
   page: readFileSync(APP_SRC, "utf8"),
 };
@@ -339,7 +339,7 @@ const raw = {
 const base = loadBase(raw.data);
 
 for (const spec of specs) {
-  const dirName = "futurerenaissance-" + spec.slug;
+  const dirName = "neorenaissance-" + spec.slug;
   const pub = "public/" + dirName;
   mkdirSync(pub, { recursive: true });
   mkdirSync("app/" + dirName, { recursive: true });
@@ -348,38 +348,38 @@ for (const spec of specs) {
   // Code files that need no per-category change, with their asset paths
   // pointed back at this deck for code and at the shared copy for binaries.
   for (const f of CODE) {
-    let text = readFileSync(join(BASE, f), "utf8").split("/futurerenaissanceextended/").join("/" + dirName + "/");
+    let text = readFileSync(join(BASE, f), "utf8").split("/neorenaissanceextended/").join("/" + dirName + "/");
     for (const b of SHARED_BINARIES) {
-      text = text.split("/" + dirName + "/" + b).join("/futurerenaissanceextended/" + b);
+      text = text.split("/" + dirName + "/" + b).join("/neorenaissanceextended/" + b);
     }
     writeFileSync(join(pub, f), text);
   }
 
   const retarget = (s) => {
-    let text = s.split("/futurerenaissanceextended/").join("/" + dirName + "/");
+    let text = s.split("/neorenaissanceextended/").join("/" + dirName + "/");
     for (const b of SHARED_BINARIES) {
-      text = text.split("/" + dirName + "/" + b).join("/futurerenaissanceextended/" + b);
+      text = text.split("/" + dirName + "/" + b).join("/neorenaissanceextended/" + b);
     }
     return text;
   };
 
-  writeFileSync(join(pub, "future-renaissance-data.js"), retarget(buildData(raw.data, spec, "data.js")));
-  writeFileSync(join(pub, "future-renaissance-content.js"), retarget(buildContent(raw.content, spec, "content.js")));
-  writeFileSync(join(pub, "future-renaissance-concepts.js"), retarget(buildConcepts(raw.concepts, spec, "concepts.js")));
+  writeFileSync(join(pub, "neo-renaissance-data.js"), retarget(buildData(raw.data, spec, "data.js")));
+  writeFileSync(join(pub, "neo-renaissance-content.js"), retarget(buildContent(raw.content, spec, "content.js")));
+  writeFileSync(join(pub, "neo-renaissance-concepts.js"), retarget(buildConcepts(raw.concepts, spec, "concepts.js")));
   writeFileSync(join(pub, "i18n.js"), retarget(buildI18n(raw.i18n, spec, "i18n.js")));
 
-  writeFileSync(join("components/" + dirName, "FutureRenaissancePlanContent.tsx"), buildPlanContent(base, spec));
+  writeFileSync(join("components/" + dirName, "NeoRenaissancePlanContent.tsx"), buildPlanContent(base, spec));
 
-  for (const f of ["FutureRenaissanceDeck.tsx"]) {
+  for (const f of ["NeoRenaissanceDeck.tsx"]) {
     let text = readFileSync(join(CMP_SRC, f), "utf8")
-      .split("/futurerenaissanceextended/axis-").join("/" + dirName + "/axis-")
-      .split("data-future-renaissance-extended-deck").join("data-future-renaissance-" + spec.slug + "-deck");
+      .split("/neorenaissanceextended/axis-").join("/" + dirName + "/axis-")
+      .split("data-neo-renaissance-extended-deck").join("data-neo-renaissance-" + spec.slug + "-deck");
     writeFileSync(join("components/" + dirName, f), text);
   }
 
   const page = buildPage(raw.page, spec)
-    .split("futurerenaissanceextended").join(dirName)
-    .split("axis.show/" + dirName + "/poster-horizontal.png").join("axis.show/futurerenaissanceextended/poster-horizontal.png");
+    .split("neorenaissanceextended").join(dirName)
+    .split("axis.show/" + dirName + "/poster-horizontal.png").join("axis.show/neorenaissanceextended/poster-horizontal.png");
   writeFileSync("app/" + dirName + "/page.tsx", page);
 
   console.log("built  /" + dirName + "  (" + spec.name + ")");

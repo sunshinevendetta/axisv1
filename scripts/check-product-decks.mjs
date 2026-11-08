@@ -38,9 +38,9 @@ function render(dir) {
   sandbox.globalThis = sandbox;
   const context = vm.createContext(sandbox);
   for (const file of [
-    "future-renaissance-data.js",
-    "future-renaissance-concepts.js",
-    "future-renaissance-content.js",
+    "neo-renaissance-data.js",
+    "neo-renaissance-concepts.js",
+    "neo-renaissance-content.js",
   ]) {
     vm.runInContext(readFileSync(join(dir, file), "utf8"), context, { filename: file });
   }
@@ -51,8 +51,8 @@ function render(dir) {
 // are a different deck with a different slide set.
 const decks = readdirSync("scripts/product-deck-specs")
   .filter((f) => f.endsWith(".json"))
-  .map((f) => "futurerenaissance-" + JSON.parse(readFileSync(join("scripts/product-deck-specs", f), "utf8")).slug)
-  .filter((d) => existsSync(join("public", d, "future-renaissance-content.js")));
+  .map((f) => "neorenaissance-" + JSON.parse(readFileSync(join("scripts/product-deck-specs", f), "utf8")).slug)
+  .filter((d) => existsSync(join("public", d, "neo-renaissance-content.js")));
 
 if (!decks.length) {
   console.error("No generated decks found.");
@@ -75,7 +75,7 @@ for (const deck of decks) {
 
   // Every concept a slide links to must exist, or the popup opens empty.
   const linked = [...html.matchAll(/data-concept-id="([^"]+)"/g)].map((m) => m[1]);
-  const defined = new Set(Object.keys(sandbox.FUTURE_RENAISSANCE_CONCEPTS || {}));
+  const defined = new Set(Object.keys(sandbox.NEO_RENAISSANCE_CONCEPTS || {}));
   const missing = [...new Set(linked)].filter((id) => !defined.has(id));
   if (missing.length) fail(deck, "slides link concepts that do not exist: " + missing.join(", "));
 
@@ -95,7 +95,7 @@ for (const deck of decks) {
 
   // The ?view=short filter names slide ids explicitly; a renamed slide would
   // silently drop out of the short deck rather than error.
-  const runtime = readFileSync(join(dir, "future-renaissance-runtime.js"), "utf8");
+  const runtime = readFileSync(join(dir, "neo-renaissance-runtime.js"), "utf8");
   const shortView = runtime.match(/view === "short"\) ids = \[([^\]]+)\]/);
   if (!shortView) {
     fail(deck, "runtime has no short-view slide list");

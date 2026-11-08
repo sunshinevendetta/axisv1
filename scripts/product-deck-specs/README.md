@@ -7,24 +7,24 @@ product.
 
 | Deck | Route | The argument it makes |
 |---|---|---|
-| `wallet.json` | `/futurerenaissance-wallet` | The wallet is the door, the signature, the bar tab, and the only address still live tomorrow |
-| `exchange.json` | `/futurerenaissance-exchange` | KYC at the desk, first funded balance, first order, and the drink it releases |
-| `dex.json` | `/futurerenaissance-dex` | No account, no KYC: deposit and two swaps on event grounds, provable by tx hash |
-| `marketplace.json` | `/futurerenaissance-marketplace` | The room generates one-of-one inventory for three hours; the marketplace runs it |
-| `launchpad.json` | `/futurerenaissance-launchpad` | A live launch in front of 100 seated music-industry professionals |
-| `defi.json` | `/futurerenaissance-defi` | A position opened at 17:00 and closed before the room empties |
-| `payments.json` | `/futurerenaissance-payments` | The partner is not sponsoring the bar, it is the bar's payment rail |
+| `wallet.json` | `/neorenaissance-wallet` | The wallet is the door, the signature, the bar tab, and the only address still live tomorrow |
+| `exchange.json` | `/neorenaissance-exchange` | KYC at the desk, first funded balance, first order, and the drink it releases |
+| `dex.json` | `/neorenaissance-dex` | No account, no KYC: deposit and two swaps on event grounds, provable by tx hash |
+| `marketplace.json` | `/neorenaissance-marketplace` | The room generates one-of-one inventory for three hours; the marketplace runs it |
+| `launchpad.json` | `/neorenaissance-launchpad` | A live launch in front of 100 seated music-industry professionals |
+| `defi.json` | `/neorenaissance-defi` | A position opened at 17:00 and closed before the room empties |
+| `payments.json` | `/neorenaissance-payments` | The partner is not sponsoring the bar, it is the bar's payment rail |
 
 ## Where the content lives
 
 Slides 01–07 and 10–15 are shared and come from
-`public/futurerenaissance-product-base/`. They carry the real event facts
+`public/neorenaissance-product-base/`. They carry the real event facts
 (100-seat workshop 17:00–21:00, then with no gap at 21:00 the party for 120 more guests to 02:00,
 warm-up DJ → live coding → closing DJ, Verse Works / Pixelord / The Public on
 the line-up), the live leaderboard, what AXIS operates and funds, the media
 and report deliverables the partner receives, and the two commercial tiers.
 
-Pricing lives in `future-renaissance-data.js` in the base: two agreed
+Pricing lives in `neo-renaissance-data.js` in the base: two agreed
 packages for the single night — 2,500 USD Activity Partner and 3,500 USD
 Category Exclusive. There is no multi-night ladder and no per-event maths
 behind them; do not derive new tiers from ratios.
@@ -45,7 +45,7 @@ The generator writes checked-in files. Editing a generated deck by hand is
 fine — just know a rerun overwrites it, so put anything you want to keep back
 into the spec.
 
-If the shared slides change, edit `public/futurerenaissance-product-base/`
+If the shared slides change, edit `public/neorenaissance-product-base/`
 and rerun. `build-product-base-i18n.mjs` only needs rerunning if the base
 translations themselves change.
 
@@ -58,7 +58,7 @@ and `slot`, and rerun the generator:
 ```bash
 cp scripts/product-deck-specs/wallet.json scripts/product-deck-specs/acme.json
 # edit slug -> "acme", slot -> "ACME", tighten the copy to the real product
-node scripts/build-product-decks.mjs acme     # -> /futurerenaissance-acme
+node scripts/build-product-decks.mjs acme     # -> /neorenaissance-acme
 ```
 
 The category deck stays intact as the placeholder for the next conversation.
