@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Atelier";
+  src: url("/aicreativeclub/fonts/Atelier.woff2") format("woff2"), url("/aicreativeclub/fonts/Atelier.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Afterglow Regular";
+  src: url("/aicreativeclub/fonts/AfterglowRegular.woff2") format("woff2"), url("/aicreativeclub/fonts/AfterglowRegular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Numerals use Atelier even inside mixed body text, dates and live counters.
+   No content wrapping or DOM changes are needed. */
+@font-face {
+  font-family: "Club Numerals";
+  src: url("/aicreativeclub/fonts/Atelier.woff2") format("woff2"), url("/aicreativeclub/fonts/Atelier.woff") format("woff");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0030-0039;
+}
