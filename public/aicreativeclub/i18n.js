@@ -8,7 +8,7 @@
     es: {
       "close.details": "DETALLES",
       "nav.tournament": "TORNEO DE TRADING",
-      "tournament.kicker": "TORNEO DE TRADING EN VIVO / LA PIEZA CENTRAL",
+      "tournament.kicker": "TORNEO DE TRADING",
       "tournament.title": "MISMO CAPITAL. GANA LA MAYOR GANANCIA.",
       "tournament.live": "EN VIVO TODA LA NOCHE, MIENTRAS SUCEDE EL EVENTO",
       "tournament.start": "MISMO CAPITAL INICIAL",
@@ -163,7 +163,7 @@
     zh: {
       "close.details": "详情",
       "nav.tournament": "交易比赛",
-      "tournament.kicker": "现场交易锦标赛 / 核心环节",
+      "tournament.kicker": "交易锦标赛",
       "tournament.title": "相同资金。盈利最高者胜。",
       "tournament.live": "整晚直播，与活动同步进行",
       "tournament.start": "相同起始资金",

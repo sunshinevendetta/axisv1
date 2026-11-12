@@ -449,7 +449,7 @@
 
     '<section class="fr-slide club-tournament-explainer" data-slide-id="tournament-explainer" data-scene="tournament-race" data-label="Trading tournament explained">' +
       frameTop("08", "tournament") +
-      '<div class="tournament-heading" data-reveal><span class="eyebrow" data-i18n="tournament.kicker">LIVE TRADING TOURNAMENT / THE CENTRAL PIECE</span><h2 data-i18n="tournament.title">SAME CAPITAL. HIGHEST PROFIT WINS.</h2><span class="race-live"><i aria-hidden="true"></i><b data-i18n="tournament.live">LIVE ALL NIGHT, WHILE THE EVENT RUNS</b></span></div>' +
+      '<div class="tournament-heading" data-reveal><span class="eyebrow" data-i18n="tournament.kicker">TRADING TOURNAMENT</span><h2 data-i18n="tournament.title">SAME CAPITAL. HIGHEST PROFIT WINS.</h2><span class="race-live"><i aria-hidden="true"></i><b data-i18n="tournament.live">LIVE ALL NIGHT, WHILE THE EVENT RUNS</b></span></div>' +
       tournamentRace() +
       '<div class="race-rules">' +
         '<div class="race-rule"><i>01</i><b data-i18n="tournament.r1t">SAME START</b><p data-i18n="tournament.r1">All four traders begin with the same capital.</p></div>' +
