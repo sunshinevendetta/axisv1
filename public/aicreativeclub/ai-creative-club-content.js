@@ -354,7 +354,7 @@
         '<span class="eyebrow" data-reveal data-i18n="idea.kicker">THE IDEA</span>' +
         '<h2 data-reveal data-i18n="idea.title">CREATE. AUTOMATE. INVEST.</h2>' +
         '<div class="idea-triptych" data-reveal><span data-i18n="idea.human">Create content for your business.</span><span data-i18n="idea.machine">Build agents. Automate workflows.</span><span data-i18n="idea.public">Invest business profits onchain.</span></div>' +
-        '<p data-reveal data-i18n="idea.copy">You have a business. Create AI content for it, build agents to automate its workflows, then explore investing its profits onchain. Practical creation, automation and investing connect in one business journey.</p>' +
+        '<p data-reveal data-i18n="idea.copy">Create business content. Automate workflows with AI agents. Invest profits onchain.</p>' +
       '</div>' +
       '<div class="idea-visual">' +
         '<div class="idea-plate">' +
