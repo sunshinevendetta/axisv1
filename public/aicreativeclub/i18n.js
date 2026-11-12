@@ -319,7 +319,7 @@
   }
 
   var style = document.createElement("style");
-  style.textContent = "#fr-language{position:fixed;z-index:110;top:12px;right:12px;display:flex;padding:3px;border:1px solid rgba(245,239,228,.25);background:rgba(0,0,0,.78);backdrop-filter:blur(10px)}#fr-language button{height:28px;min-width:35px;padding:0 8px;border:0;background:transparent;color:#C5B69C;font:600 10px/1 'Club Numerals','Afterglow Regular',serif;cursor:pointer}#fr-language button[aria-pressed=true]{background:#C9A05B;color:#000000}";
+  style.textContent = "#fr-language{position:fixed;z-index:110;top:12px;right:12px;display:flex;padding:3px;border:1px solid rgba(245,239,228,.25);background:rgba(0,0,0,.78);backdrop-filter:blur(10px)}#fr-language button{height:28px;min-width:35px;padding:0 8px;border:0;background:transparent;color:#C5B69C;font:600 10px/1 Bingo,sans-serif;cursor:pointer}#fr-language button[aria-pressed=true]{background:#C9A05B;color:#000000}";
   document.head.appendChild(style);
   injectControl();
   translate(parentLanguage() || normalize(document.documentElement.lang) || "en");

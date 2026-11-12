@@ -395,7 +395,7 @@
   var ASCII_CIPHER = "0123456789ABCDEF/\|<>*+=-:.";
 
   function asciiFont(cellHeight) {
-    return Math.round(cellHeight * .82) + 'px "Afterglow Regular", serif';
+    return Math.round(cellHeight * .82) + 'px "Bingo", sans-serif';
   }
 
   function asciiGrid(w, h, cellHint) {
@@ -885,24 +885,7 @@
 
   buildLeaderboard();
 
-  // Read the final cascade before writing any sizes so nested copy grows once.
-  // A stylesheet keeps the increase intact when scene animations clear styles.
-  if (orientation === "vertical") {
-    var mobileCopySizes = [];
-    stage.querySelectorAll("p, span, b, strong, small, em, dt, dd, li, figcaption, a, button").forEach(function (element) {
-      if (element instanceof SVGElement || element.closest("h1, h2, h3, h4, h5, h6")) return;
-      var computed = window.getComputedStyle(element);
-      if (computed.fontFamily.indexOf("Afterglow") === -1) return;
-      if (/^[\s+\u00d7\u2192\u2197\u2726]*$/.test(element.textContent) && !element.id && !element.matches("p, dt, dd, small")) return;
-      mobileCopySizes.push({ element: element, size: Number.parseFloat(computed.fontSize) * 1.3 });
-    });
-    var mobileCopyStyle = document.createElement("style");
-    mobileCopyStyle.textContent = mobileCopySizes.map(function (entry, index) {
-      entry.element.setAttribute("data-mobile-copy", String(index));
-      return 'body.fr-vertical [data-mobile-copy="' + index + '"] { font-size: ' + entry.size.toFixed(2) + 'px !important; }';
-    }).join("\n");
-    document.head.appendChild(mobileCopyStyle);
-  }
+
   buildDots();
   document.querySelectorAll("[data-artist-id]").forEach(function (button) {
     button.addEventListener("click", function () { openArtistModal(button.dataset.artistId, button); });

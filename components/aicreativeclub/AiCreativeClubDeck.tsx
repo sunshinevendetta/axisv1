@@ -262,7 +262,7 @@ export default function AiCreativeClubDeck() {
           inset: 0;
           z-index: 10000;
           pointer-events: none;
-          font-family: "Club Numerals", "Afterglow Regular", Georgia, serif;
+          font-family: "Bingo", sans-serif;
         }
 
         .future-language-trigger {
@@ -431,7 +431,7 @@ export default function AiCreativeClubDeck() {
           color: #C9A05B;
           display: grid;
           place-items: center;
-          font: 400 21px/1 "Club Numerals", "Afterglow Regular", Georgia, serif;
+          font: 400 21px/1 "Bingo", sans-serif;
           cursor: pointer;
           transition: background 180ms ease, color 180ms ease, transform 180ms ease;
         }

@@ -10,8 +10,8 @@
   --line: rgba(245,239,228, 0.22);
   --line-strong: rgba(201,160,91, 0.62);
   --display: "Atelier", Georgia, serif;
-  --mono: "Club Numerals", "Afterglow Regular", Georgia, serif;
-  --sans: "Club Numerals", "Afterglow Regular", Georgia, serif;
+  --mono: "Bingo", sans-serif;
+  --sans: "Bingo", sans-serif;
   --stage-w: 1920px;
   --stage-h: 1080px;
 }

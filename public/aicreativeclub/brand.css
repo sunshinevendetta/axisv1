@@ -129,7 +129,7 @@ body.fr-vertical .cover-data::before {
 
 /* The standalone language control is injected by i18n.js after stylesheet load. */
 #fr-language button {
-  font-family: "Club Numerals", "Afterglow Regular", Georgia, serif;
+  font-family: "Bingo", sans-serif;
 }
 
 /* A single archive slide; the existing slides retain their own geometry. */
