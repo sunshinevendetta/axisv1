@@ -134,6 +134,8 @@ body.fr-vertical .cover-data::before {
 
 /* A single archive slide; the existing slides retain their own geometry. */
 .speakers-heading { position: absolute; top: 160px; left: 92px; right: 92px; }
+.leaderboard-heading p { max-width: 1250px; margin-top: 18px; font-size: 24px; line-height: 1.4; }
+body.fr-vertical .leaderboard-heading p { font-size: 28px; max-width: 920px; }
 .speakers-heading h2 { max-width: 1500px; font-size: 68px; }
 .speakers-grid { position: absolute; inset: 390px 92px 100px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; }
 .speaker-card { min-width: 0; padding: 44px; border: 1px solid rgba(201,160,91,.35); background: #080808; }

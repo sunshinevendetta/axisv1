@@ -7,7 +7,7 @@ const EVENT_JSON_LD = {
   startDate: "2026-12-04T16:00:00-06:00",
   endDate: "2026-12-05T02:00:00-06:00",
   description:
-    "AI Creative Club Level 01 at Casa Luma on December 4, 2026: art and business content creation with Anana, AI workflows and agent integrations with Sunshine Vendetta, and complementary blockchain investment literacy. The workshop runs from 17:00 to 21:00 within the existing 16:00 to 02:00 event window, with cultural programming, gallery and social participation.",
+    "AI Creative Club Level 01 at Casa Luma on December 4, 2026: art and business content creation with Anana, AI workflows and agent integrations with Sunshine Vendetta, and investing business profits onchain. A four-trader onsite tournament awards a prize to the first trader to reach the goal. Onchain art combines national, international and onsite creators. The workshop runs from 17:00 to 21:00 within the existing 16:00 to 02:00 event window, with cultural programming, gallery and social participation.",
   location: {
     "@type": "Place",
     name: "Casa Luma",
@@ -77,7 +77,7 @@ export default function AiCreativeClubPlanContent() {
           </p>
           <p>
             The program brings together art and business content creation, AI agents,
-            reusable workflows and blockchain investment literacy, alongside music,
+            workflow automation and investing business profits onchain, alongside the tournament,
             community, hospitality and media documentation.
           </p>
           <p>
@@ -94,13 +94,10 @@ export default function AiCreativeClubPlanContent() {
         </section>
 
         <section aria-labelledby="future-music">
-          <h2 id="future-music">Music programming</h2>
-          <p>
-            Main room line up: Algorithmic Live Coding Music Creation, with three
-            artists creating music with code in real time, curated by artists and
-            AXIS, followed by a closing DJ and support DJ playing UK techno and
-            techno.
-          </p>
+          <h2 id="future-music">Trading tournament and after-party</h2>
+          <p>Four traders compete onsite. The first to reach the goal wins a prize.
+            Trader names, the goal and prize will be announced. The after-party
+            remains a secondary social continuation after the core program.</p>
         </section>
 
         <section aria-labelledby="future-gallery">
@@ -113,30 +110,10 @@ export default function AiCreativeClubPlanContent() {
         </section>
 
         <section aria-labelledby="future-digital-artists">
-          <h2 id="future-digital-artists">Digital art line up</h2>
-          <p>Verse Works, Pixelord and The Public.</p>
-          <p>
-            Verse is a London platform for generative and digital art, founded in
-            2022 to give work made with code the curatorial treatment a gallery
-            gives a painting. Its programme has presented artists including Zancan
-            and Mark Titchner, and it has run live minting at Frieze. A Verse
-            generative work reads a hash when it is collected and draws itself from
-            that seed, so no two outputs are the same.
-          </p>
-          <p>
-            Pixelord is Alexey Devyanin, a producer and co-founder of Hyperboloid
-            Records. Across records such as Places, Human.exe and Hypnorave he moves
-            between IDM, breakbeat, bass and glitch, and his recent work releases
-            sound and 3D visuals together onchain. He has also written music for
-            audiovisual installations, including one at the Polytechnic Museum in
-            Moscow.
-          </p>
-          <p>
-            The public is billed as part of the line up because the room makes the
-            work. Any guest who brings photos or video, or simply interacts with
-            the application, alters the visual experience running in real time on
-            the main LED wall.
-          </p>
+          <h2 id="future-digital-artists">Onchain art selection</h2>
+          <p>A curated selection of national and international onchain artists,
+            alongside people creating onsite. Individual artists and works will
+            be announced.</p>
         </section>
 
         <section aria-labelledby="future-creative-ai">
@@ -147,8 +124,8 @@ export default function AiCreativeClubPlanContent() {
             a video extension for art, product imagery and business content.
             Sunshine Vendetta guides a real task, AI workflow, review and
             reuse, plus an agent integration demonstration. Participants keep an image
-            or edit and reusable task instructions. Blockchain investment literacy
-            complements the two practical tracks. No prior technical knowledge is required.
+            or edit and reusable task instructions. The core journey is to create content for a business, automate its workflows
+            with AI agents, then explore investing its profits onchain. No prior technical knowledge is required.
           </p>
           <p>
             Facilitators guide tool setup and provide creative resources. Tool
@@ -177,7 +154,7 @@ export default function AiCreativeClubPlanContent() {
           <p>
             Venue-provided display infrastructure is required. The screens carry the
             entire AI Creative Club audiovisual system, including digital art,
-            real-time graphics, live-coded visuals, Creative AI onboarding and activity
+            real-time graphics, tournament participation, Creative AI onboarding and activity
             information, not only the Creative AI layer.
           </p>
           <p>
@@ -192,7 +169,7 @@ export default function AiCreativeClubPlanContent() {
           <h2 id="future-axis">What AXIS operates</h2>
           <p>
             AXIS provides the AI Creative Club concept and creative direction,
-            event and music programming, live coding programming, Creative AI activity
+            workshop and tournament programming, tournament participation, Creative AI activity
             integration and onboarding, interactive systems, digital art, visual
             software, the rendering workstation and routing, technical operators,
             Club micro-activity coordination, media direction, artist

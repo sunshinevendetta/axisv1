@@ -301,24 +301,18 @@
     visible.innerHTML = "";
     semantic.innerHTML = "";
     window.SYNTHETIC_DEMO.leaderboard.forEach(function (entry) {
-      var dotsMarkup = Array.from({ length: entry.total }, function (_, index) {
-        return '<i class="' + (index < entry.completed ? "is-complete" : "") + '"></i>';
-      }).join("");
       var row = document.createElement("div");
-      row.className = "leaderboard-row" + (entry.rank < 4 ? " is-podium" : "");
-      row.dataset.rank = String(entry.rank);
-      row.innerHTML =
-        '<span class="rank-cell"><i>' + (entry.rank === 1 ? "✦" : String(entry.rank).padStart(2, "0")) + '</i></span>' +
+      row.className = "leaderboard-row";
+      row.innerHTML = '<span class="rank-cell"><i>' + String(entry.rank).padStart(2, "0") + '</i></span>' +
         '<strong>' + entry.id + '</strong>' +
-        '<span class="leader-role"><img src="' + roleAsset(entry.role) + '" alt=""><i>' + entry.role + '</i></span>' +
-        '<span class="mission-dots" aria-label="' + entry.completed + ' of ' + entry.total + ' missions">' + dotsMarkup + '</span>' +
-        '<span class="brand-state ' + (entry.brandAction ? "is-verified" : "") + '">' + (entry.brandAction ? "VERIFIED" : "PENDING") + '</span>' +
-        '<span class="score-cell" data-score="' + entry.score + '">0</span>' +
-        '<span class="reward-state ' + (entry.reward === "UNLOCKED" ? "is-unlocked" : "") + '">' + entry.reward + '</span>';
+        '<span class="leader-role"><i>ONSITE</i></span>' +
+        '<span class="mission-dots">TBA</span>' +
+        '<span class="brand-state">TO BE ANNOUNCED</span>' +
+        '<span class="score-cell">' + String.fromCharCode(8212) + '</span>' +
+        '<span class="reward-state">TBA</span>';
       visible.appendChild(row);
-
       var tr = document.createElement("tr");
-      [entry.rank, entry.id, entry.role, entry.completed + "/" + entry.total, entry.brandAction ? "Verified" : "Pending", entry.score, entry.reward].forEach(function (value) {
+      [entry.rank, entry.id, "Onsite", "Goal to be announced", "Trader to be announced", "Not started", "Prize to be announced"].forEach(function (value) {
         var td = document.createElement("td");
         td.textContent = String(value);
         tr.appendChild(td);

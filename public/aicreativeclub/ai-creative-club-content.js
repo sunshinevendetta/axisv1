@@ -177,27 +177,27 @@
   }
 
   function roomHuds() {
-    return hudPanel("main", "event.mainRoom", "MAIN ROOM", "event.mainRoomCount", "2 SETS", [
+    return hudPanel("main", "event.mainRoom", "MAIN ROOM", "event.mainRoomCount", "CORE + SOCIAL", [
       lineupCell("slot", "program-liveCoding",
-        "event.arcCreation", "CREATION",
-        "event.liveCodingName", "ALGORITHMIC LIVE CODING",
-        "event.liveCodingNote", "3 artists"),
+        "event.arcCreation", "COMPETITION",
+        "event.liveCodingName", "TRADING TOURNAMENT",
+        "event.liveCodingNote", "4 traders; first to the goal wins a prize"),
       lineupCell("slot", "program-closing",
         "event.arcClub", "CLUB",
-        "event.closingName", "CLOSING DJ + SUPPORT DJ",
-        "event.closingNote", "UK techno into techno"),
+        "event.closingName", "AFTER PARTY",
+        "event.closingNote", "Social continuation after the core program"),
     ]) +
     hudPanel("gallery", "event.gallery", "THE GALLERY", "event.galleryCount", "1 SPACE", [
       lineupCell("slot", "program-gallery",
         "event.arcAllNight", "ALL NIGHT",
-        "event.galleryName", "DIGITAL ART",
-        "event.galleryNote", "Digital works curated into the space"),
+        "event.galleryName", "ONCHAIN ART",
+        "event.galleryNote", "National, international and onsite creators"),
     ]);
   }
 
   function lineupTable() {
     return '<div class="lineup-table" data-reveal>' +
-      lineupRow("event.digitalLineup", "DIGITAL ART", "event.digitalCount", "3 NAMES",
+      lineupRow("event.digitalLineup", "ONCHAIN ART", "event.digitalCount", "3 SOURCES",
         digitalArtists.map(artistCell)) +
     '</div>';
   }
@@ -220,12 +220,12 @@
 
   var roles = ["ARTIST", "CREATOR", "AGENT", "PARTNER", "BUILDER", "GUEST", "COLLECTOR"];
   var missions = ["CONNECT", "CHECK-IN", "CREATE", "INTERVENE", "VOTE", "COLLECT", "STREAM", "COMPLETE"];
-  var digitalArtists = ["verse-works", "pixelord", "the-public"];
+  var digitalArtists = ["national-artists", "international-artists", "onsite-creators"];
 
   var formatGroups = [
     { key: "a", letter: "A", title: "CULTURE", items: [
-      [null, "ART GALLERY", "Digital works presented inside the event environment.", "gallery"],
-      [null, "DJ SETS", "Warm-up and closing music programming.", "disc"],
+      [null, "ONCHAIN ART", "Curated national and international artists alongside people creating onsite.", "gallery"],
+      [null, "AFTER PARTY", "A secondary social continuation after the business, AI and onchain program.", "disc"],
       [null, "VIDEO MAPPING", "Projected visuals authored for " + event.venue + ".", "projector"],
     ] },
     { key: "b", letter: "B", title: "ON-SITE MEDIA", items: [
@@ -248,10 +248,10 @@
       ["format-hospitality", "COMPLIMENTARY HOSPITALITY", "AXIS funds the drink allocation for the night.", "drink"],
       [null, "EXPECTED AUDIENCE", event.workshopCapacity + " seated for the workshop, then " + event.afterPartyGuests + " more for the night.", "guests"],
     ] },
-    { key: "f", letter: "F", title: "AI + CODE", items: [
+    { key: "f", letter: "F", title: "AI + ONCHAIN", items: [
       ["format-creative-ai", "CREATIVE AI ACTIVITY", "Anana leads visual content; Sunshine Vendetta leads agents and workflows.", "spark"],
-      ["format-live-coding", "LIVE CODING", "Code becomes sound and image in real time.", "code"],
-      [null, "BLOCKCHAIN INVESTMENT", "Explore blockchain investment concepts, risks and research alongside the hands-on AI tracks.", "grid"],
+      ["format-live-coding", "TRADING TOURNAMENT", "Four traders onsite; the first to reach the goal wins a prize.", "chart"],
+      [null, "INVESTING PROFITS ONCHAIN", "Explore how business profits can be invested onchain, connecting creation and automation to the next step.", "grid"],
     ] },
   ];
 
@@ -282,15 +282,15 @@
     ["report-photo-folder", "PHOTO FOLDER"], ["report-aftermovie", "AFTERMOVIE MATERIAL"],
     ["report-short-clips", "SHORT VIDEO CLIPS"], ["report-attendance", "ATTENDANCE ESTIMATE"],
     ["report-participation", "ACTIVITY PARTICIPATION COUNT"], ["report-creative-ai", "CREATE + DELEGATE COMPLETIONS"],
-    ["report-live-coding", "LIVE CODING INTERACTION"], ["report-redemptions", "REWARD REDEMPTION COUNT"],
+    ["report-live-coding", "TOURNAMENT PARTICIPATION"], ["report-redemptions", "REWARD REDEMPTION COUNT"],
     ["report-hospitality", "HOSPITALITY USAGE"], ["report-screens", "SCREEN INTERACTIONS"],
     ["report-social", "SOCIAL ACTIONS"], ["report-written", "BRIEF WRITTEN REPORT"],
   ];
 
   var offerItems = [
-    ["offer-concept", "AI Creative Club concept + creative direction"], ["offer-programming", "Event and music programming"],
-    ["offer-live-coding", "Live Coding programming"], ["offer-creative-ai", "Creative AI activity integration"],
-    ["offer-creative-ai-onboarding", "Creative AI onboarding flow"], ["offer-creative-ai-code", "Creative coding workflow"],
+    ["offer-concept", "AI Creative Club concept + creative direction"], ["offer-programming", "Workshop and tournament programming"],
+    ["offer-live-coding", "Four-trader tournament coordination"], ["offer-creative-ai", "Creative AI activity integration"],
+    ["offer-creative-ai-onboarding", "Creative AI onboarding flow"], ["offer-creative-ai-code", "Business workflow automation"],
     ["offer-interactive", "Interactive systems"], ["offer-digital-art", "Digital art + visual content"],
     ["offer-render", "Rendering workstation + routing"], ["offer-operators", "Technical operators"],
     ["offer-activations", "Club micro-activity coordination"], ["offer-media", "Media direction"],
@@ -302,10 +302,10 @@
   var venueZones = [
     ["zone-entry", "ENTRY", "door"], ["zone-checkin", "CHECK-IN / DISCOVERY", "passport"],
     ["zone-social", "SOCIAL / HOSPITALITY", "drink"], ["zone-digital-art", "DIGITAL ART", "gallery"],
-    ["zone-warmup", "WARM-UP DJ", "disc"], ["zone-creative-ai", "CREATIVE AI ACTIVITY", "spark"],
+    ["zone-warmup", "BUSINESS CONTENT", "disc"], ["zone-creative-ai", "CREATIVE AI ACTIVITY", "spark"],
     ["zone-creative-ai-access", "TOOLS + RESOURCES", "lock"], ["zone-activations", "CLUB MICRO-ACTIVITIES", "grid"],
-    ["zone-visuals", "LIVE VISUALS", "projector"], ["zone-live-coding", "LIVE CODING", "code"],
-    ["zone-closing", "CLOSING DJ", "disc"], ["zone-media", "MEDIA", "camera"],
+    ["zone-visuals", "LIVE VISUALS", "projector"], ["zone-live-coding", "TRADING TOURNAMENT", "chart"],
+    ["zone-closing", "AFTER PARTY", "disc"], ["zone-media", "MEDIA", "camera"],
     ["zone-venue-clients", "VENUE CLIENT FLOW", "guests"],
   ];
 
@@ -354,9 +354,9 @@
       frameTop("02", "idea") +
       '<div class="fr-reading fr-reading-left">' +
         '<span class="eyebrow" data-reveal data-i18n="idea.kicker">THE IDEA</span>' +
-        '<h2 data-reveal data-i18n="idea.title">CREATE. DELEGATE. TAKE IT HOME.</h2>' +
-        '<div class="idea-triptych" data-reveal><span data-i18n="idea.human">Art + business content.</span><span data-i18n="idea.machine">Agents + useful workflows.</span><span data-i18n="idea.public">Blockchain investment literacy.</span></div>' +
-        '<p data-reveal data-i18n="idea.copy">AI Creative Club brings artists, creators and businesses together to make useful content, integrate AI agents and explore blockchain investment. Learn by doing, improve a result and keep something you can use.</p>' +
+        '<h2 data-reveal data-i18n="idea.title">CREATE. AUTOMATE. INVEST.</h2>' +
+        '<div class="idea-triptych" data-reveal><span data-i18n="idea.human">Create content for your business.</span><span data-i18n="idea.machine">Build agents. Automate workflows.</span><span data-i18n="idea.public">Invest business profits onchain.</span></div>' +
+        '<p data-reveal data-i18n="idea.copy">You have a business. Create AI content for it, build agents to automate its workflows, then explore investing its profits onchain. Practical creation, automation and investing connect in one business journey.</p>' +
       '</div>' +
       '<div class="idea-visual">' +
         '<div class="idea-plate">' +
@@ -365,7 +365,7 @@
           '<i class="idea-frost" aria-hidden="true"></i>' +
           '<canvas class="idea-decode" aria-hidden="true"></canvas>' +
         '</div>' +
-        '<blockquote class="idea-engraved"><p data-i18n="idea.code">Make an asset. Delegate a real task. Explore agent integrations. Leave with a result you can use again.</p></blockquote>' +
+        '<blockquote class="idea-engraved"><p data-i18n="idea.code">Create content for your business. Automate work with AI agents. Explore investing profits onchain.</p></blockquote>' +
       '</div>' + star("idea-star") +
     '</section>',
 
@@ -392,7 +392,7 @@
       '<div class="workshop-heading" data-decode>' +
         '<span class="eyebrow" data-reveal data-i18n="workshop.kicker">CREATIVE AI COMMUNITY EVENT</span>' +
         '<h2 data-reveal data-i18n="workshop.title">CREATE CONTENT. MAKE AI WORK.</h2>' +
-        '<p data-reveal data-i18n="workshop.copy">Anana guides art and business content: base image, image editing and video extension. Sunshine Vendetta guides AI workflows and agent integrations. Make an asset, complete a task and keep reusable instructions. Blockchain investment literacy joins the discussion; the social program follows at 21:00.</p>' +
+        '<p data-reveal data-i18n="workshop.copy">Anana guides art and business content: base image, image editing and video extension. Sunshine Vendetta guides AI workflows and agent integrations. Create assets for your business, build AI agents and automate workflows. Connect these business skills to investing profits onchain. Four traders compete onsite; the after-party follows at 21:00.</p>' +
       '</div>' +
       '<div class="workshop-phases" data-decode>' +
         conceptNode("workshop-phase", "workshop-session",
@@ -441,7 +441,7 @@
 
     '<section class="fr-slide fr-format" data-slide-id="program" data-scene="structured" data-label="Event format">' +
       frameTop("06", "event-format") +
-      '<div class="format-titlebar"><div><span class="eyebrow" data-reveal>EVENT FORMAT</span><h2 data-reveal>ONE CLUB. SIX OPERATING LAYERS.</h2></div><p data-reveal>AI Creative Club connects practical learning, creative production, agents, blockchain literacy and cultural participation in one shared environment.</p></div>' +
+      '<div class="format-titlebar"><div><span class="eyebrow" data-reveal>EVENT FORMAT</span><h2 data-reveal>ONE CLUB. SIX OPERATING LAYERS.</h2></div><p data-reveal>Create business content, automate workflows with agents, and explore investing profits onchain. A four-trader tournament and curated onchain art share the venue; the after-party follows.</p></div>' +
       '<div class="event-format-map">' +
         '<div class="format-hub" aria-hidden="true">' + axisMark("gold") + '</div>' +
         formatGroups.map(formatGroup).join("") +
@@ -499,13 +499,13 @@
       '<div class="reward-memory" data-decode><span>PROOF OF LEARNING</span><p>Attendance and completion are separate. Show an image or edit, or run and check a workflow. Keep the asset or instructions and repeat one meaningful action.</p><div><i>ATTENDANCE</i><b>WATCH A DEMO</b><strong>VS</strong><i>COMPLETION</i><b>SHOW A RESULT</b></div></div>' +
     '</section>',
 
-    '<section class="fr-slide fr-leaderboard" data-slide-id="leaderboard" data-scene="leaderboard" data-label="Live leaderboard">' +
+    '<section class="fr-slide fr-leaderboard" data-slide-id="leaderboard" data-scene="structured" data-label="Trading tournament">' +
       frameTop("10", "leaderboard") +
-      '<div class="leaderboard-heading"><div><span class="eyebrow" data-reveal data-i18n="leaderboard.kicker">PARTICIPATION DEMO</span><h2 data-reveal data-i18n="leaderboard.title">PARTICIPATION BECOMES VISIBLE.</h2></div></div>' +
+      '<div class="leaderboard-heading"><div><span class="eyebrow" data-reveal data-i18n="leaderboard.kicker">TRADING TOURNAMENT</span><h2 data-reveal data-i18n="leaderboard.title">4 TRADERS. ONE GOAL.</h2><p>First to reach the goal wins the prize. Goal, prize and trader names to be announced.</p></div></div>' +
       '<div class="leaderboard-shell" data-crystallize>' +
-        '<div class="leaderboard-head"><span data-i18n="leaderboard.rank">RANK</span><span data-i18n="leaderboard.participant">PARTICIPANT</span><span data-i18n="leaderboard.role">ROLE</span><span data-i18n="leaderboard.missions">ACTIVITIES</span><span data-i18n="leaderboard.action">ACTION</span><span data-i18n="leaderboard.score">SCORE</span><span data-i18n="leaderboard.reward">REWARD</span></div>' +
+        '<div class="leaderboard-head"><span data-i18n="leaderboard.rank">SLOT</span><span data-i18n="leaderboard.participant">TRADER</span><span data-i18n="leaderboard.role">FORMAT</span><span data-i18n="leaderboard.missions">GOAL</span><span data-i18n="leaderboard.action">STATUS</span><span data-i18n="leaderboard.score">PROGRESS</span><span data-i18n="leaderboard.reward">PRIZE</span></div>' +
         '<div id="leaderboard-rows" class="leaderboard-rows" aria-hidden="true"></div>' +
-        '<table id="leaderboard-semantic" class="sr-only"><caption>Illustrative participation interface; sample data, not event results</caption><thead><tr><th>Rank</th><th>Participant</th><th>Role</th><th>Activities</th><th>Action</th><th>Score</th><th>Reward</th></tr></thead><tbody></tbody></table>' +
+        '<table id="leaderboard-semantic" class="sr-only"><caption>Four-trader onsite tournament slots; goal, prize and trader names to be announced</caption><thead><tr><th>Slot</th><th>Trader</th><th>Format</th><th>Goal</th><th>Status</th><th>Progress</th><th>Prize</th></tr></thead><tbody></tbody></table>' +
       '</div>' + star("leader-star") +
     '</section>',
 
@@ -514,7 +514,7 @@
       '<div class="deliverables-heading"><span class="eyebrow" data-reveal>MEASUREMENT + MEDIA</span><h2 data-reveal>AXIS OPERATES A MEASURED EVENT.</h2><p data-reveal>Record attendance separately from hands-on completion. Track images or edits made, workflows run and checked, reusable outputs saved, and cultural documentation.</p></div>' +
       '<div class="media-included" data-reveal><h3>MEDIA PRODUCTION INCLUDED</h3><div>' + mediaDeliverables.map(deliverableButton).join("") + '</div></div>' +
       '<div class="report-included" data-crystallize><h3>POST-EVENT DELIVERY</h3><div>' + reportDeliverables.map(deliverableButton).join("") + '</div></div>' +
-      '<div class="deliverables-note" data-reveal><b>MEASURED</b><span>Attendance · check-ins · activity participation · Creative AI activations · live coding interaction · reward redemption · hospitality usage · screen interactions · content produced</span></div>' +
+      '<div class="deliverables-note" data-reveal><b>MEASURED</b><span>Attendance · check-ins · activity participation · Creative AI activations · tournament participation · reward redemption · hospitality usage · screen interactions · content produced</span></div>' +
     '</section>',
 
     '<section class="fr-slide fr-offer" data-slide-id="event-partner" data-scene="structured" data-label="Club activity layer">' +
@@ -522,7 +522,7 @@
       '<div class="offer-heading"><span class="eyebrow" data-reveal>WHAT AXIS BRINGS</span><h2 data-reveal>CLUB ACTIVITY LAYER.</h2></div>' +
       '<div class="offer-card" data-decode>' +
         '<div class="offer-card-head"><div><span>AI CREATIVE CLUB</span><b>1 NIGHT</b><small>' + event.displayDate.toUpperCase() + ' · ' + event.venue.toUpperCase() + '</small></div>' + conceptNode("offer-status", "community-status", '<span>CREATIVE AI COMMUNITY EVENT</span><b>MEXICO CITY | CREATE + DELEGATE</b>', "Creative AI community event status") + '</div>' +
-        '<p>Level 01 opens with Anana on art and business content, and Sunshine Vendetta on agents and workflows. Blockchain investment literacy complements the workshop. Creative and technology partners can support small, integrated activities across the event.</p>' +
+        '<p>Level 01 opens with Anana on art and business content, and Sunshine Vendetta on agents and workflows. The business journey continues into onchain investing, with a four-trader tournament onsite. Creative and technology partners can support small, integrated activities across the event.</p>' +
         '<div class="offer-enforce">SMALL · DISTRIBUTED · INTERACTIVE · INTEGRATED. NOT A CONFERENCE HALL, AN EXPO OR A BOOTH FARM.</div>' +
         '<div class="offer-budget"><span>WHERE AXIS INVESTS</span>' +
           event.allocation.map(allocationCell).join("") +
