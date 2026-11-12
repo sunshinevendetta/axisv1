@@ -27,7 +27,9 @@ export function Providers({
   const pathname = usePathname();
   const isNeoRenaissance = pathname?.startsWith("/neorenaissance") ?? false;
   const showLanguageSwitch =
-    !pathname?.startsWith("/okx") && !isNeoRenaissance;
+    !pathname?.startsWith("/okx") &&
+    !pathname?.startsWith("/aicreativeclub") &&
+    !isNeoRenaissance;
 
   useEffect(() => {
     let mounted = true;

@@ -21,6 +21,11 @@
     "AXIS staff connect participation, validation and documentation on site",
   ]);
 
+
+  add("role-trader", "05 / TRADER", "TRADER", "Traders interested in onchain markets and the live on-site tournament.", ["Four tournament slots", "First to reach the goal wins a prize; goal and prize unspecified"]);
+  addI18n("role-trader", "es", "TRADER", "Traders interesados en mercados onchain y el torneo presencial en vivo.", ["Cuatro plazas en el torneo", "El primero en alcanzar la meta gana un premio; meta y premio por definir"]);
+  addI18n("role-trader", "zh", "交易者", "关注链上市场与现场交易锦标赛的参与者。", ["四个参赛席位", "最先达到目标者获奖；目标与奖品待定"]);
+
   var roles = {
     artist: [
       "Artists, musicians and performers from the cultural and creative scene.",
@@ -134,7 +139,7 @@
   add("partner-media", "12 / SYSTEM 05", "Media capture", "Photography and video document the activation as an experience, not a collection of logo impressions.", ["Dedicated activation moments", "Product interaction", "Room context", "Delivery-ready documentation"]);
   add("partner-report", "12 / SYSTEM 06", "Measurement and report", "Live tracking becomes a post-event performance report tied to the agreed activation mechanics.", ["Qualified actions", "Mission conversion", "Reward redemption", "Content outputs"]);
 
-  add("presenting-system", "13 / PRESENTING PRODUCT", "A signature role", "The presenting product is a qualitatively different cultural role—not simply more placement.", ["Category exclusivity", "Hero mission", "Signature Product Experience", "Priority integration and dedicated media"]);
+  add("presenting-system", "13 / PRESENTING PRODUCT", "A signature role", "The presenting product is a qualitatively different cultural role—not simply more placement. US$2,500 per sponsorship brand.", ["Category exclusivity", "Hero mission", "Signature Product Experience", "Priority integration and dedicated media"]);
   add("presenting-exclusive", "13 / EXCLUSIVITY", "One position", "Only one product receives the presenting designation and category exclusivity.", ["Single presenting position", "Clear hierarchy beneath AXIS", "No competing category sponsor", "Priority visual and mission integration"]);
   add("presenting-continuation", "13 / CONTINUATION", "Beyond the event", "The presenting relationship continues for 30 days and includes one additional smaller AXIS activation.", ["30-day continuation", "One smaller activation", "Dedicated product media", "Extended reporting"]);
 
@@ -162,13 +167,13 @@
     "AXIS controls routing; different displays can show different states",
   ]);
 
-  add("workshop-session", "04 / WORKSHOP", "Create. Automate. Invest.", "17:00 to 21:00, 100 seated attendees. Two 70-minute beginner modules begin with your own business, then create content and automate workflows before exploring how to invest profits onchain.", ["100 attendees, each with a chair", "Anana: AI content creation for your own business", "Sunshine Vendetta: workflow automation, AI agents and integrations", "Action, iteration, proof and take-home outputs; attendance alone is not completion"]);
-  add("workshop-afterparty", "04 / AFTER PARTY", "After party", "After the 17:00 to 21:00 workshop, the secondary social program runs from 21:00 to 02:00.", ["120 additional guests from 21:00", "Workshop attendees may stay", "Social time follows the practical program", "The bar serves guests throughout"]);
+  add("workshop-session", "04 / WORKSHOP", "Create. Automate. Invest.", "17:30 to 21:00, 100 seated attendees. Two 70-minute beginner modules begin with your own business, then create content and automate workflows before exploring how to invest profits onchain.", ["100 attendees, each with a chair", "Anana: AI content creation for your own business", "Sunshine Vendetta: workflow automation, AI agents and integrations", "Action, iteration, proof and take-home outputs; attendance alone is not completion"]);
+  add("workshop-afterparty", "04 / AFTER PARTY", "After party", "After the 17:30 to 21:00 workshop, the secondary social program runs from 21:30 to 02:00.", ["120 additional guests from 21:30", "Workshop attendees may stay", "Social time follows the practical program", "The bar serves guests throughout"]);
   add("workshop-doors", "04 / RUN OF SHOW", "Check-in", "Registration is approval-based and runs on Luma through the organizers.", ["One list, held by the organizers","No parallel venue list to reconcile at the door","Event communications are issued by the organizers"]);
-  add("workshop-reset", "04 / RUN OF SHOW", "The room turns over", "At 21:00 the seated workshop clears and the floor opens straight into the night.", ["Chairs come out, the floor opens","Handled by AXIS production with venue staff","The screen switches from workshop to the visual system"]);
-  add("ask-early", "04 / VENUE ASK", "Early opening", "The event window opens at 16:00, so the room is ready before the 17:00 workshop start.", ["Load-in, screen routing and seating set before doors","Exact time agreed with the venue technical contact"]);
+  add("workshop-reset", "04 / RUN OF SHOW", "The room turns over", "At 21:00 the seated workshop clears and the room resets before the 21:30 after party.", ["Chairs come out, the floor opens","Handled by AXIS production with venue staff","The screen switches from workshop to the visual system"]);
+  add("ask-early", "04 / VENUE ASK", "Early opening", "The event window opens at 17:00, so the room is ready before the 17:30 workshop start.", ["Load-in, screen routing and seating set before doors","Exact time agreed with the venue technical contact"]);
   add("ask-seating", "04 / VENUE ASK", "Seated for 100", "The workshop is seated, and chairs are provided for the attendees.", ["100 seats facing the presentation screen","Cleared at 21:00 when the room turns over for the night"]);
-  add("ask-screen", "04 / VENUE ASK", "Screen access", "The workshop facilitators needs access to the venue screen to run their presentation.", ["A clean input into the venue display system","Held for the full 17:00 to 21:00 session","AXIS operates routing around it"]);
+  add("ask-screen", "04 / VENUE ASK", "Screen access", "The workshop facilitators needs access to the venue screen to run their presentation.", ["A clean input into the venue display system","Held for the full 17:30 to 21:00 session","AXIS operates routing around it"]);
   add("ask-softdrinks", "04 / VENUE ASK", "Soft drinks", "We buy soft drinks from the venue bar for the workshop room.", ["Bought from the bar, not brought in","For the seated workshop hours"]);
   add("ask-bar", "04 / VENUE ASK", "The bar stays open", "The bar keeps selling to guests through the workshop and the night.", ["Normal bar service continues alongside the workshop","Venue clientele are served as usual"]);
   add("ask-registration", "04 / VENUE ASK", "One guest list", "Registration runs on Luma through the organizers, with approval.", ["A single approval-based list","The venue does not run a parallel registration list","Event communications are issued by the organizers"]);
@@ -264,7 +269,7 @@
   add("program-gallery", "03 / PROGRAM 04", "Onchain art gallery", "Curated national and international onchain artists exhibit alongside creators working on site.", ["National and international onchain artists", "Creators making work on site", "Artist selection and individual names remain to be confirmed"]);
   add("community-status", "09 / STATUS", "Mexico City | Art and Creative AI", "Independent AI Creative Club programming at Casa Luma, organized by AXIS and the creative community and produced by AXIS.", [
     "December 4, 2026, Mexico City",
-    "100 seated workshop attendees, 17:00 to 21:00",
+    "100 seated workshop attendees, 17:30 to 21:00",
     "Host venue: Casa Luma, Tinala 145, Roma Norte, CDMX",
     "Registration on Luma, approval-based, run by the organizers",
   ]);
@@ -306,7 +311,7 @@
   add("req-inputs", "15 / VENUE PROVIDES", "Screen inputs", "AXIS needs to connect an external workstation to the display system.", ["HDMI, DisplayPort or SDI where applicable", "Independent feeds preferred over mirrored output"]);
   add("req-internet", "15 / VENUE PROVIDES", "Internet", "Reliable internet is required because Creative AI interactions operate live.", ["Wired production connection preferred", "Fallback connection strategy agreed in advance"]);
   add("req-audio", "15 / VENUE PROVIDES", "Audio + DJ", "Audio and DJ infrastructure where available.", ["Confirmed during technical review"]);
-  add("req-power", "15 / VENUE PROVIDES", "Power + access", "Technical access, load-in time and a venue technical contact.", ["The venue opens at 16:00 so the room is ready before 17:00", "Access before doors for setup and soundcheck"]);
+  add("req-power", "15 / VENUE PROVIDES", "Power + access", "Technical access, load-in time and a venue technical contact.", ["The venue opens at 17:00 so the room is ready before 17:30", "Access before doors for setup and soundcheck"]);
   add("req-bar", "15 / VENUE PROVIDES", "Bar + security", "Bar operation, staffing, security and capacity management.", ["The bar stays open and sells to guests throughout", "We buy soft drinks from the bar for the workshop room", "Venue continues operating its own service"]);
   add("format-screens", "06 / FORMAT", "Venue screens", "Venue-provided display infrastructure carries the visual system.", ["Required, not optional", "Used by the whole event, not only Creative AI"]);
   add("format-hospitality", "06 / FORMAT", "Complimentary hospitality", "AXIS funds a complimentary drink allocation for the night.", ["Amount set according to brand budget", "Subject to venue service rules"]);
@@ -587,7 +592,7 @@
     addI18n("partner-systems", "es", "Integración con el evento", "La función del patrocinador aparece en pantallas y sistemas en vivo exactamente donde ayuda al recorrido del invitado.", ["Pantalla de actividad", "Estado de la recompensa", "Livestream cuando sea relevante", "Momento de uso del producto"]);
     addI18n("partner-media", "es", "Captura de medios", "La fotografía y el video documentan la activación como una experiencia, no como una colección de impresiones de logo.", ["Momentos dedicados de activación", "Interacción con el producto", "Contexto de la sala", "Documentación lista para entrega"]);
     addI18n("partner-report", "es", "Medición y reporte", "El seguimiento en vivo se convierte en un reporte de desempeño posterior al evento, vinculado a la mecánica de activación acordada.", ["Acciones calificadas", "Conversión de actividades", "Canje de recompensas", "Resultados de contenido"]);
-    addI18n("presenting-system", "es", "Un rol distintivo", "El producto presentador es un rol cultural cualitativamente distinto, no simplemente más posicionamiento.", ["Exclusividad de categoría", "Actividad insignia", "Experiencia de Producto Distintiva", "Integración prioritaria y medios dedicados"]);
+    addI18n("presenting-system", "es", "Un rol distintivo", "El producto presentador es un rol cultural cualitativamente distinto, no simplemente más posicionamiento. US$2,500 por marca patrocinadora.", ["Exclusividad de categoría", "Actividad insignia", "Experiencia de Producto Distintiva", "Integración prioritaria y medios dedicados"]);
     addI18n("presenting-exclusive", "es", "Una sola posición", "Solo un producto recibe la designación de presentador y la exclusividad de categoría.", ["Posición única de presentador", "Jerarquía clara debajo de AXIS", "Sin patrocinador de categoría competidor", "Integración visual y de actividades prioritaria"]);
     addI18n("presenting-continuation", "es", "Más allá del evento", "La relación de presentador continúa durante 30 días e incluye una activación adicional más pequeña de AXIS.", ["Continuación de 30 días", "Una activación más pequeña", "Medios dedicados del producto", "Reporte extendido"]);
 
@@ -617,7 +622,7 @@
     addI18n("partner-systems", "zh", "活动整合", "赞助商功能会准确出现在屏幕和实时系统中，恰好是能帮助宾客旅程的地方。", ["活动屏幕", "奖励状态", "相关时段的直播", "产品使用时刻"]);
     addI18n("partner-media", "zh", "媒体拍摄", "摄影与视频记录的是这次激活作为一场体验，而不是一堆品牌曝光的集合。", ["专属激活时刻", "产品互动", "现场氛围", "可直接交付的素材"]);
     addI18n("partner-report", "zh", "测量与报告", "实时追踪数据会转化为一份与约定激活机制相对应的活动后表现报告。", ["合格行动", "活动转化率", "奖励兑换", "内容产出"]);
-    addI18n("presenting-system", "zh", "标志性角色", "呈现赞助产品是一种在性质上截然不同的文化角色，而不仅仅是更多的曝光位置。", ["品类独家权", "核心活动", "标志性产品体验", "优先整合与专属媒体"]);
+    addI18n("presenting-system", "zh", "标志性角色", "呈现赞助产品是一种在性质上截然不同的文化角色，而不仅仅是更多的曝光位置。 每个赞助品牌 US$2,500.", ["品类独家权", "核心活动", "标志性产品体验", "优先整合与专属媒体"]);
     addI18n("presenting-exclusive", "zh", "唯一席位", "只有一个产品能获得呈现赞助资格和品类独家权。", ["唯一的呈现赞助席位", "在 AXIS 之下的清晰层级", "没有同品类竞争赞助商", "优先的视觉与活动整合"]);
     addI18n("presenting-continuation", "zh", "活动之后", "呈现赞助关系将持续 30 天，并包含一次额外的小型 AXIS 激活。", ["30 天延续期", "一次小型激活", "专属产品媒体", "延伸报告"]);
   })();
@@ -698,17 +703,17 @@
     addI18n("program-closing", "es", "After party", "La convivencia sigue al workshop como parte secundaria del evento.", ["Continuar conversaciones del workshop", "Compartir resultados y conocer a la comunidad"]);
     addI18n("program-gallery", "es", "Galería de arte onchain", "Artistas onchain nacionales e internacionales curados junto a creadores que trabajan en el sitio.", ["Artistas onchain nacionales e internacionales", "Creadores produciendo en el sitio", "Selección y nombres individuales por confirmar"]);
 
-    addI18n("workshop-session", "es", "Crea. Automatiza. Invierte.", "De 17:00 a 21:00, 100 asistentes sentados. Dos módulos de 70 minutos parten de tu negocio: crear contenido y automatizar flujos, antes de explorar cómo invertir ganancias onchain.", ["100 asistentes, cada uno con silla", "Anana: contenido con IA para tu propio negocio", "Sunshine Vendetta: automatización, agentes IA e integraciones", "Acción, iteración, evidencia y resultados para llevar; asistir no equivale a completar"]);
-    addI18n("workshop-afterparty", "es", "After party", "Después del workshop de 17:00 a 21:00, el programa social secundario corre de 21:00 a 02:00.", ["120 invitados adicionales desde las 21:00", "Los asistentes al workshop pueden quedarse", "Convivencia después del programa práctico", "El bar atiende durante todo el evento"]);
+    addI18n("workshop-session", "es", "Crea. Automatiza. Invierte.", "De 17:30 a 21:00, 100 asistentes sentados. Dos módulos de 70 minutos parten de tu negocio: crear contenido y automatizar flujos, antes de explorar cómo invertir ganancias onchain.", ["100 asistentes, cada uno con silla", "Anana: contenido con IA para tu propio negocio", "Sunshine Vendetta: automatización, agentes IA e integraciones", "Acción, iteración, evidencia y resultados para llevar; asistir no equivale a completar"]);
+    addI18n("workshop-afterparty", "es", "After party", "Después del workshop de 17:30 a 21:00, el programa social secundario corre de 21:30 a 02:00.", ["120 invitados adicionales desde las 21:30", "Los asistentes al workshop pueden quedarse", "Convivencia después del programa práctico", "El bar atiende durante todo el evento"]);
     addI18n("workshop-doors", "es", "Check-in", "El registro es con aprobación previa y se maneja en Luma a través de los organizadores.", ["Una sola lista, en manos de los organizadores","Sin lista paralela del venue que conciliar en la puerta","Las comunicaciones del evento las emiten los organizadores"]);
-    addI18n("workshop-reset", "es", "El salón cambia de modo", "A las 21:00 el workshop sentado se desmonta y la pista abre directo hacia la noche.", ["Salen las sillas, se abre la pista","Lo ejecuta producción de AXIS con el personal del venue","La pantalla pasa del workshop al sistema visual"]);
-    addI18n("ask-early", "es", "Apertura anticipada", "La ventana del evento abre a las 16:00, para que el salón esté listo antes del inicio del workshop a las 17:00.", ["Montaje, ruteo de pantallas y sillas listos antes de puertas","Hora exacta acordada con el contacto técnico del venue"]);
+    addI18n("workshop-reset", "es", "El salón cambia de modo", "A las 21:00 el workshop sentado se desmonta y se prepara para el after party de las 21:30.", ["Salen las sillas, se abre la pista","Lo ejecuta producción de AXIS con el personal del venue","La pantalla pasa del workshop al sistema visual"]);
+    addI18n("ask-early", "es", "Apertura anticipada", "La ventana del evento abre a las 17:00, para que el salón esté listo antes del inicio del workshop a las 17:30.", ["Montaje, ruteo de pantallas y sillas listos antes de puertas","Hora exacta acordada con el contacto técnico del venue"]);
     addI18n("ask-seating", "es", "Sentados para 100", "El workshop es sentado, y se proveen sillas para los asistentes.", ["100 lugares frente a la pantalla de presentación","Se retiran a las 21:00, cuando el salón cambia de modo"]);
-    addI18n("ask-screen", "es", "Acceso a la pantalla", "El equipo de Creative AI necesita acceso a la pantalla del venue para su presentación.", ["Una entrada limpia al sistema de pantallas del venue","Reservada durante toda la sesión de 17:00 a 21:00","AXIS opera el ruteo alrededor de eso"]);
+    addI18n("ask-screen", "es", "Acceso a la pantalla", "El equipo de Creative AI necesita acceso a la pantalla del venue para su presentación.", ["Una entrada limpia al sistema de pantallas del venue","Reservada durante toda la sesión de 17:30 a 21:00","AXIS opera el ruteo alrededor de eso"]);
     addI18n("ask-softdrinks", "es", "Refrescos", "Compramos refrescos en el bar del venue para el salón del workshop.", ["Comprados en el bar, no traídos de fuera","Para las horas del workshop sentado"]);
     addI18n("ask-bar", "es", "El bar sigue abierto", "El bar sigue vendiendo a los invitados durante el workshop y durante la noche.", ["El servicio normal del bar continúa junto al workshop","La clientela habitual del venue se atiende como siempre"]);
     addI18n("ask-registration", "es", "Una sola lista", "El registro se maneja en Luma a través de los organizadores, con aprobación previa.", ["Una única lista con aprobación","El venue no maneja una lista de registro paralela","Las comunicaciones del evento las emiten los organizadores"]);
-    addI18n("community-status", "es", "Mexico City | Art and Creative AI", "Programación independiente de AI Creative Club en Casa Luma, organizada por AXIS y la comunidad creativa y producida por AXIS.", ["December 4, 2026, Ciudad de México","100 asistentes sentados, de 17:00 a 21:00","Sede anfitriona: Casa Luma, Tinala 145, Roma Norte, CDMX","Registro en Luma, con aprobación previa, a cargo de los organizadores"]);
+    addI18n("community-status", "es", "Mexico City | Art and Creative AI", "Programación independiente de AI Creative Club en Casa Luma, organizada por AXIS y la comunidad creativa y producida por AXIS.", ["December 4, 2026, Ciudad de México","100 asistentes sentados, de 17:30 a 21:00","Sede anfitriona: Casa Luma, Tinala 145, Roma Norte, CDMX","Registro en Luma, con aprobación previa, a cargo de los organizadores"]);
     addI18n("creative-ai-access", "es", "Anana / contenido para tu negocio", "Tu propio negocio es el brief de un módulo práctico de creación de contenido.", ["Crear, editar y extender contenido visual a video para tu negocio", "Conservar un resultado y un flujo repetible"]);
     addI18n("creative-ai-resources", "es", "Recursos para arte y negocio", "Conservar resultados útiles y un flujo reutilizable.", ["Llevarse imagen base, versión editada y extensión a video", "Guardar prompts y evidencia de iteración"]);
     addI18n("creative-ai-ai", "es", "Sunshine Vendetta / agentes IA", "Automatizar trabajo útil de tu negocio mediante agentes e integraciones.", ["Elegir una tarea real del negocio", "Conectar herramientas mediante un agente", "Revisar, iterar y guardar un proceso reutilizable"]);
@@ -751,7 +756,7 @@
     addI18n("req-inputs", "es", "Entradas de pantalla", "AXIS necesita conectar una estación de trabajo externa al sistema de pantallas.", ["HDMI, DisplayPort o SDI según corresponda", "Se prefieren señales independientes sobre una salida espejada"]);
     addI18n("req-internet", "es", "Internet", "Se requiere internet confiable porque las interacciones con Creative AI operan en vivo.", ["Se prefiere una conexión de producción cableada", "Estrategia de conexión de respaldo acordada de antemano"]);
     addI18n("req-audio", "es", "Audio + DJ", "Infraestructura de audio y DJ donde esté disponible.", ["Confirmado durante la revisión técnica"]);
-    addI18n("req-power", "es", "Energía + acceso", "Acceso técnico, tiempo de montaje y un contacto técnico del venue.", ["El venue abre a las 16:00 para que el salón esté listo antes de las 17:00","Acceso antes de la apertura de puertas para montaje y prueba de sonido"]);
+    addI18n("req-power", "es", "Energía + acceso", "Acceso técnico, tiempo de montaje y un contacto técnico del venue.", ["El venue abre a las 17:00 para que el salón esté listo antes de las 17:30","Acceso antes de la apertura de puertas para montaje y prueba de sonido"]);
     addI18n("req-bar", "es", "Bar + seguridad", "Operación del bar, personal, seguridad y gestión de aforo.", ["El bar sigue abierto y vendiendo a los invitados durante toda la noche","Compramos refrescos en el bar para el salón del workshop","El venue continúa operando su propio servicio"]);
 
     addI18n("format-screens", "es", "Pantallas del venue", "La infraestructura de pantallas provista por el venue sostiene el sistema visual.", ["Requerida, no opcional", "Utilizada por todo el evento, no solo por Creative AI"]);
@@ -765,17 +770,17 @@
     addI18n("program-closing", "zh", "课后派对", "工作坊之后的社交是活动的次要部分。", ["继续课程讨论", "分享成果并认识社区成员"]);
     addI18n("program-gallery", "zh", "链上艺术画廊", "策展呈现国内外链上艺术家，以及现场创作者的作品。", ["国内与国际链上艺术家", "现场创作者及其作品", "具体艺术家名单与选择待确认"]);
 
-    addI18n("workshop-session", "zh", "创作。自动化。投资。", "17:00 至 21:00，100 个座位。两个各 70 分钟的入门模块从自己的业务出发：创作内容、自动化工作流，再探索如何将利润投入链上。", ["100 位参与者，人人有座", "Anana：为自己的业务用 AI 创作内容", "Sunshine Vendetta：工作流自动化、AI 智能体与集成", "行动、迭代、成果证明与课后成果；出席不等于完成"]);
-    addI18n("workshop-afterparty", "zh", "课后派对", "17:00 至 21:00 工作坊结束后，次要社交环节从 21:00 持续至 02:00。", ["21:00 起另有 120 位宾客", "工作坊参与者可以留下", "实操之后的社交交流", "酒吧全程服务宾客"]);
+    addI18n("workshop-session", "zh", "创作。自动化。投资。", "17:30 至 21:00，100 个座位。两个各 70 分钟的入门模块从自己的业务出发：创作内容、自动化工作流，再探索如何将利润投入链上。", ["100 位参与者，人人有座", "Anana：为自己的业务用 AI 创作内容", "Sunshine Vendetta：工作流自动化、AI 智能体与集成", "行动、迭代、成果证明与课后成果；出席不等于完成"]);
+    addI18n("workshop-afterparty", "zh", "课后派对", "17:30 至 21:00 工作坊结束后，次要社交环节从 21:30 持续至 02:00。", ["21:30 起另有 120 位宾客", "工作坊参与者可以留下", "实操之后的社交交流", "酒吧全程服务宾客"]);
     addI18n("workshop-doors", "zh", "签到", "报名需审核，在 Luma 上由主办方管理。", ["一张名单，由主办方掌管","门口无需核对场地的平行名单","活动传达由主办方发布"]);
-    addI18n("workshop-reset", "zh", "空间切换", "21:00 坐式工作坊收场，舞池直接开放进入当晚。", ["椅子撑出，场地开放","由 AXIS 制作团队与场地人员共同完成","屏幕从工作坊切换到视觉系统"]);
-    addI18n("ask-early", "zh", "提前开门", "活动时段从 16:00 开始，以便在 17:00 工作坊开始前完成布置。", ["进场、屏幕信号与座位在开门前就绪","具体时间与场地技术联络人确认"]);
+    addI18n("workshop-reset", "zh", "空间切换", "21:00 坐式工作坊收场，空间整理后于 21:30 开始课后派对。", ["椅子撑出，场地开放","由 AXIS 制作团队与场地人员共同完成","屏幕从工作坊切换到视觉系统"]);
+    addI18n("ask-early", "zh", "提前开门", "活动时段从 17:00 开始，以便在 17:30 工作坊开始前完成布置。", ["进场、屏幕信号与座位在开门前就绪","具体时间与场地技术联络人确认"]);
     addI18n("ask-seating", "zh", "100 个座位", "工作坊为坐式，为参与者提供椅子。", ["100 个座位面向演示屏幕","21:00 空间切换时撑出"]);
-    addI18n("ask-screen", "zh", "屏幕权限", "工作坊导师需要使用场地屏幕进行演示。", ["一路干净的信号接入场地显示系统","保留整个 17:00 至 21:00 时段","AXIS 负责周边的信号调度"]);
+    addI18n("ask-screen", "zh", "屏幕权限", "工作坊导师需要使用场地屏幕进行演示。", ["一路干净的信号接入场地显示系统","保留整个 17:30 至 21:00 时段","AXIS 负责周边的信号调度"]);
     addI18n("ask-softdrinks", "zh", "软饮", "我们向场地酒吧采购软饮，供工作坊使用。", ["向酒吧采购，非外带","供坐式工作坊时段使用"]);
     addI18n("ask-bar", "zh", "酒吧持续营业", "工作坊与当晚期间，酒吧持续向宾客销售。", ["酒吧照常营业，与工作坊并行","场地常客照常接待"]);
     addI18n("ask-registration", "zh", "单一名单", "报名在 Luma 上由主办方管理，需审核。", ["单一的审核制名单","场地不另行管理平行报名名单","活动传达由主办方发布"]);
-    addI18n("community-status", "zh", "MEXICO CITY | ART AND CREATIVE AI", "Casa Luma 的独立 AI Creative Club 活动，由 AXIS 与创意社区组织，由 AXIS 制作。", ["2026年12月4日，墨西哥城","100 位坐式参与者，17:00 至 21:00","主办场地：Casa Luma，Tinala 145, Roma Norte, CDMX","在 Luma 报名，需审核，由主办方管理"]);
+    addI18n("community-status", "zh", "MEXICO CITY | ART AND CREATIVE AI", "Casa Luma 的独立 AI Creative Club 活动，由 AXIS 与创意社区组织，由 AXIS 制作。", ["2026年12月4日，墨西哥城","100 位坐式参与者，17:30 至 21:00","主办场地：Casa Luma，Tinala 145, Roma Norte, CDMX","在 Luma 报名，需审核，由主办方管理"]);
     addI18n("creative-ai-access", "zh", "Anana / 业务内容", "以自己的业务为需求，进行实操内容创作。", ["为业务创作、编辑并将视觉内容延展为视频", "保留成果与可重复工作流"]);
     addI18n("creative-ai-resources", "zh", "艺术与商业素材", "保留实用成果和可复用工作流。", ["带走基础图像、编辑版本与视频延展", "保存提示词与迭代证据"]);
     addI18n("creative-ai-ai", "zh", "Sunshine Vendetta / AI 智能体", "用智能体与集成自动化业务中的实用工作。", ["选择真实业务任务", "通过智能体工作流连接工具", "检查、迭代并保存可复用流程"]);
@@ -818,7 +823,7 @@
     addI18n("req-inputs", "zh", "屏幕输入接口", "AXIS 需要将外部工作站连接到显示系统。", ["视情况使用 HDMI、DisplayPort 或 SDI", "相较于镜像输出，更倾向使用独立信号源"]);
     addI18n("req-internet", "zh", "网络", "由于 Creative AI 互动为实时运行，需要稳定可靠的网络。", ["优先使用有线的制作专用网络", "提前商定备用连接方案"]);
     addI18n("req-audio", "zh", "音响 + DJ", "视情况提供音响与 DJ 相关基础设施。", ["将在技术勘察阶段确认"]);
-    addI18n("req-power", "zh", "电力 + 场地准入", "技术准入、进场搭建时间以及一位场地技术联络人。", ["场地 16:00 开门，以便在 17:00 前完成布置","开门迎宾前需可进场进行搭建与音响调试"]);
+    addI18n("req-power", "zh", "电力 + 场地准入", "技术准入、进场搭建时间以及一位场地技术联络人。", ["场地 17:00 开门，以便在 17:30 前完成布置","开门迎宾前需可进场进行搭建与音响调试"]);
     addI18n("req-bar", "zh", "酒吧 + 安保", "酒吧运营、人员配置、安保与容量管理。", ["酒吧全程正常营业，向宾客销售","我们会向酒吧采购软饮供工作坊使用","场地将继续运营其自有服务"]);
 
     addI18n("format-screens", "zh", "场地屏幕", "由场地提供的显示设备基础设施承载整个视觉系统。", ["为必需项，而非可选项", "供整场活动使用，而不仅限于 Creative AI"]);

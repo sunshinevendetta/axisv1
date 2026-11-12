@@ -133,6 +133,29 @@ body.fr-vertical .cover-data::before {
 }
 
 /* A single archive slide; the existing slides retain their own geometry. */
+.fr-audience .audience-copy { left: 60px; right: 60px; top: 140px; width: auto; text-align: center; }
+.fr-audience .role-orbit { left: 50%; right: auto; top: 235px; transform: translateX(-50%); width: 1050px; height: 760px; }
+.fr-audience .role-orbit { display: grid; grid-template-columns: repeat(4, 170px); grid-template-rows: repeat(2, 190px); place-content: center; gap: 70px; }
+.fr-audience .role-orbit > .role-badge { position: relative; left: auto; top: auto; transform: none; }
+body.fr-vertical .fr-audience .audience-copy { top: 180px; }
+body.fr-vertical .fr-audience .role-orbit { left: 50%; right: auto; top: 500px; width: 1000px; height: 1500px; }
+body.fr-vertical .fr-audience .role-orbit { grid-template-columns: repeat(2, 180px); grid-template-rows: repeat(4, 200px); gap: 80px 180px; }
+.tournament-heading { position: absolute; top: 170px; left: 92px; right: 92px; }
+.tournament-heading h2 { font-size: 76px; }
+.tournament-explanation { position: absolute; inset: 420px 92px 240px; display: grid; grid-template-columns: 1.2fr 60px 1fr 60px 1fr; align-items: center; gap: 30px; }
+.tournament-explanation > div { min-height: 260px; padding: 34px; border: 1px solid rgba(201,160,91,.45); display: grid; place-content: center; text-align: center; }
+.tournament-explanation > i { font: 400 48px/1 var(--sans); font-style: normal; color: #C9A05B; }
+.tournament-four { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.tournament-four > span { padding: 16px 10px; border: 1px solid rgba(255,255,255,.25); font: 400 32px/1 var(--display); }
+.tournament-four > b { grid-column: 1/-1; margin-top: 22px; font: 400 22px/1.4 var(--sans); }
+.tournament-goal strong, .tournament-prize strong { font: 400 38px/1.2 var(--display); }
+.tournament-rule { position: absolute; left: 92px; right: 92px; bottom: 120px; font-size: 26px; }
+body.fr-vertical .tournament-heading { top: 190px; left: 60px; right: 60px; }
+body.fr-vertical .tournament-explanation { inset: 600px 100px 390px; grid-template-columns: 1fr; grid-template-rows: 1fr 50px 1fr 50px 1fr; gap: 12px; }
+body.fr-vertical .tournament-explanation > div { min-height: 0; }
+body.fr-vertical .tournament-explanation > i { transform: rotate(90deg); text-align: center; }
+body.fr-vertical .tournament-four > b { font-size: 32px; }
+body.fr-vertical .tournament-rule { left: 60px; right: 60px; bottom: 150px; font-size: 34px; }
 .speakers-heading { position: absolute; top: 160px; left: 92px; right: 92px; }
 .leaderboard-heading p { max-width: 1250px; margin-top: 18px; font-size: 24px; line-height: 1.4; }
 body.fr-vertical .leaderboard-heading p { font-size: 28px; max-width: 920px; }

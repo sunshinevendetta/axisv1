@@ -218,7 +218,7 @@
     return conceptNode("budget-cell", entry.id, '<b>' + entry.title + '</b><small>' + entry.note + '</small>', entry.title.toLowerCase() + " investment");
   }
 
-  var roles = ["ARTIST", "CREATOR", "AGENT", "PARTNER", "BUILDER", "GUEST", "COLLECTOR"];
+  var roles = ["ARTIST", "CREATOR", "AGENT", "PARTNER", "BUILDER", "GUEST", "COLLECTOR", "TRADER"];
   var missions = ["CONNECT", "CHECK-IN", "CREATE", "INTERVENE", "VOTE", "COLLECT", "STREAM", "COMPLETE"];
   var digitalArtists = ["national-artists", "international-artists", "onsite-creators"];
 
@@ -309,18 +309,16 @@
     ["zone-venue-clients", "VENUE CLIENT FLOW", "guests"],
   ];
 
-  // 17:00 to 21:00 seated, then the room turns over and the night opens at
-  // 21:00 with no gap. The clock is the spine of the ask: everything the venue
-  // has to do hangs off a time.
+  // Gates 17:00; workshop 17:30-21:00; after-party from 21:30.
   var workshopClock = [
-    ["ask-early", "16:00", "EVENT WINDOW OPENS", "Doors to us before the doors to the room.", "door"],
-    ["workshop-doors", "17:00", "CHECK-IN", "One approval-based list, run by the organizers.", "passport"],
-    ["workshop-reset", "21:00", "WORKSHOP ENDS", "Seated workshop out, open floor in.", "arrive"],
-    ["workshop-afterparty", "21:00", "THE NIGHT OPENS", "Straight on for 120 more, no gap.", "disc"],
+    ["ask-early", "17:00", "GATES OPEN", "Guest arrival and check-in.", "door"],
+    ["workshop-doors", "17:30", "WORKSHOP STARTS", "The hands-on session begins.", "passport"],
+    ["workshop-reset", "21:00", "WORKSHOP ENDS", "Workshop closes; room reset before 21:30.", "arrive"],
+    ["workshop-afterparty", "21:30", "AFTER PARTY", "Social continuation after the workshop.", "disc"],
   ];
 
   var workshopAsks = [
-    ["ask-early", "EARLY OPENING", "Open a little earlier than usual.", "door"],
+    ["ask-early", "GATES AT 17:00", "Guest arrival before the 17:30 start.", "door"],
     ["ask-seating", "SEATED FOR 100", "A chair for every attendee.", "guests"],
     ["ask-screen", "SCREEN ACCESS", "The facilitators share practical demonstrations through the venue screen.", "screen"],
     ["ask-softdrinks", "SOFT DRINKS", "We buy them from the bar for the room.", "drink"],
@@ -375,7 +373,6 @@
         '<span class="eyebrow" data-reveal data-i18n="event.kicker">THE EVENT</span>' +
         '<h2 data-reveal>' + event.displayDate.toUpperCase() + '</h2>' +
         '<p class="venue-lock" data-reveal>' + event.venue.toUpperCase() + '<br>' + event.city.toUpperCase() + '</p>' +
-        '<p class="event-status" data-reveal data-i18n="event.status">CREATIVE AI COMMUNITY EVENT · DECEMBER 4, 2026 · HOST VENUE: ' + event.venue.toUpperCase() + '</p>' +
       '</div>' +
       '<div class="event-operating-map" data-reveal>' +
         conceptNode("event-core", "venue", '<strong>' + event.workshopCapacity + '</strong><span data-i18n="event.seatedWorkshop">SEATED WORKSHOP</span><em>+' + event.afterPartyGuests + '</em><small data-i18n="event.afterParty">AFTER PARTY</small>', event.venue + " and the event format") +
@@ -392,7 +389,6 @@
       '<div class="workshop-heading" data-decode>' +
         '<span class="eyebrow" data-reveal data-i18n="workshop.kicker">CREATIVE AI COMMUNITY EVENT</span>' +
         '<h2 data-reveal data-i18n="workshop.title">CREATE CONTENT. MAKE AI WORK.</h2>' +
-        '<p data-reveal data-i18n="workshop.copy">Anana guides art and business content: base image, image editing and video extension. Sunshine Vendetta guides AI workflows and agent integrations. Create assets for your business, build AI agents and automate workflows. Connect these business skills to investing profits onchain. Four traders compete onsite; the after-party follows at 21:00.</p>' +
       '</div>' +
       '<div class="workshop-phases" data-decode>' +
         conceptNode("workshop-phase", "workshop-session",
@@ -403,7 +399,7 @@
         conceptNode("workshop-phase", "workshop-afterparty",
           '<span>' + event.afterPartyStart + ' → ' + event.afterPartyEnd + '</span><strong>+' + event.afterPartyGuests + '</strong>' +
           '<b data-i18n="workshop.phaseNight">AFTER PARTY</b>' +
-          '<small data-i18n="workshop.phaseNightNote">The floor opens at 21:00 for 120 further guests, on top of the attendees who stay on.</small>',
+          '<small data-i18n="workshop.phaseNightNote">The floor opens at 21:30 for 120 further guests, on top of the attendees who stay on.</small>',
           "the after party") +
       '</div>' +
       '<div class="workshop-clock" data-decode>' +
@@ -430,18 +426,15 @@
       '<div class="audience-copy">' +
         '<span class="eyebrow" data-reveal data-i18n="audience.kicker">THE AUDIENCE</span>' +
         '<h2 data-reveal data-i18n="audience.title">EXPECTED GUESTS.</h2>' +
-        '<p data-reveal data-i18n="audience.copy">Artists, content creators, business owners, founders, builders, collectors and curious newcomers exploring AI, practical workflows and blockchain.</p>' +
-        '<p data-reveal data-i18n="audience.openCopy">This is the expected AI Creative Club audience, not the absolute venue population. Where operationally agreed, the venue can continue receiving its regular clientele, and those guests can discover and participate in selected activities.</p>' +
       '</div>' +
-      '<div class="role-orbit" aria-label="AI Creative Club audience roles">' + orbitalSvg("role-orbit-lines") +
+      '<div class="role-orbit" aria-label="AI Creative Club audience roles">' +
         roles.map(function (role, index) { return roleBadge(role, "role-pos-" + (index + 1)); }).join("") +
-        '<div class="role-orbit-core" data-crystallize>' + axisMark("gold") + '<span data-i18n="audience.accessState">TARGET AUDIENCE</span></div>' +
       '</div>' + star("audience-star") +
     '</section>',
 
     '<section class="fr-slide fr-format" data-slide-id="program" data-scene="structured" data-label="Event format">' +
       frameTop("06", "event-format") +
-      '<div class="format-titlebar"><div><span class="eyebrow" data-reveal>EVENT FORMAT</span><h2 data-reveal>ONE CLUB. SIX OPERATING LAYERS.</h2></div><p data-reveal>Create business content, automate workflows with agents, and explore investing profits onchain. A four-trader tournament and curated onchain art share the venue; the after-party follows.</p></div>' +
+      '<div class="format-titlebar"><div><span class="eyebrow" data-reveal>EVENT FORMAT</span><h2 data-reveal>ONE CLUB. SIX OPERATING LAYERS.</h2></div></div>' +
       '<div class="event-format-map">' +
         '<div class="format-hub" aria-hidden="true">' + axisMark("gold") + '</div>' +
         formatGroups.map(formatGroup).join("") +
@@ -458,6 +451,13 @@
       '<div class="system-phase phase-a" data-decode>' + conceptNode("phase-card", "phase-produce", '<i>A</i><b>FUND + PRODUCE</b><p>AXIS authors the format, activities, validation and reward layer before doors open.</p>', "fund and produce") + '</div>' +
       '<div class="system-phase phase-b" data-decode>' + conceptNode("phase-card", "phase-live", '<i>B</i><b>ON-SITE FLOW</b><p>Guests enter, act, validate, unlock rewards and advance through the live participation system.</p>', "on-site flow") + '</div>' +
       '<div class="system-phase phase-c" data-decode>' + conceptNode("phase-card", "phase-report", '<i>C</i><b>CAPTURE + DOCUMENT</b><p>AXIS documents the night and delivers participation and media evidence.</p>', "capture and document") + '</div>' +
+    '</section>',
+
+    '<section class="fr-slide club-tournament-explainer" data-slide-id="tournament-explainer" data-scene="structured" data-label="Trading tournament explained">' +
+      frameTop("08", "tournament") +
+      '<div class="tournament-heading" data-reveal><span class="eyebrow" data-i18n="tournament.kicker">ONSITE TRADING TOURNAMENT</span><h2 data-i18n="tournament.title">4 TRADERS. ONE FINISH LINE.</h2></div>' +
+      '<div class="tournament-explanation" data-reveal><div class="tournament-four"><span>01</span><span>02</span><span>03</span><span>04</span><b data-i18n="tournament.traders">FOUR TRADERS ONSITE</b></div><i aria-hidden="true">&#8594;</i><div class="tournament-goal"><strong data-i18n="tournament.goal">REACH THE GOAL</strong></div><i aria-hidden="true">&#8594;</i><div class="tournament-prize"><strong data-i18n="tournament.prize">WIN THE PRIZE</strong></div></div>' +
+      '<p class="tournament-rule" data-reveal data-i18n="tournament.rule">The first trader to reach the goal wins. Goal, prize and trader names to be announced.</p>' +
     '</section>',
 
     '<section class="fr-slide fr-components" data-slide-id="missions" data-scene="structured" data-label="Experience components">' +
@@ -522,7 +522,6 @@
       '<div class="offer-heading"><span class="eyebrow" data-reveal>WHAT AXIS BRINGS</span><h2 data-reveal>CLUB ACTIVITY LAYER.</h2></div>' +
       '<div class="offer-card" data-decode>' +
         '<div class="offer-card-head"><div><span>AI CREATIVE CLUB</span><b>1 NIGHT</b><small>' + event.displayDate.toUpperCase() + ' · ' + event.venue.toUpperCase() + '</small></div>' + conceptNode("offer-status", "community-status", '<span>CREATIVE AI COMMUNITY EVENT</span><b>MEXICO CITY | CREATE + DELEGATE</b>', "Creative AI community event status") + '</div>' +
-        '<p>Level 01 opens with Anana on art and business content, and Sunshine Vendetta on agents and workflows. The business journey continues into onchain investing, with a four-trader tournament onsite. Creative and technology partners can support small, integrated activities across the event.</p>' +
         '<div class="offer-enforce">SMALL · DISTRIBUTED · INTERACTIVE · INTEGRATED. NOT A CONFERENCE HALL, AN EXPO OR A BOOTH FARM.</div>' +
         '<div class="offer-budget"><span>WHERE AXIS INVESTS</span>' +
           event.allocation.map(allocationCell).join("") +
@@ -624,11 +623,11 @@
         '<div class="close-lockup" data-reveal>' + axisMark("gold") + '<div><span>AXIS</span><small data-i18n="brand.artWeek">LEVEL 01 / MAIN WORKSHOPS</small></div></div>' +
         '<span class="eyebrow" data-reveal data-i18n="close.kicker">AI CREATIVE CLUB AT ' + event.venue.toUpperCase() + '</span>' +
         '<div class="close-offers" data-reveal>' +
-          conceptNode("close-offer is-presenting", "community-status", '<span data-i18n="close.official">CREATIVE AI COMMUNITY WORKSHOP, THEN THE NIGHT</span><strong>' + event.workshopCapacity + ' + ' + event.afterPartyGuests + '</strong>', "the Creative AI community event") +
-          conceptNode("close-offer", "close-hospitality", '<span data-i18n="close.hospitality">COMPLIMENTARY HOSPITALITY</span><strong data-i18n="close.hospitalityValue">FUNDED BY AXIS</strong>', "complimentary hospitality funded by AXIS") +
+          conceptNode("close-offer is-presenting", "presenting-system", '<span data-i18n="sponsorship.per-brand">PER SPONSORSHIP BRAND</span><strong>US$2,500</strong>', "sponsorship pricing and details") +
+          conceptNode("close-offer", "close-hospitality", '<span data-i18n="close.hospitality">COMPLIMENTARY HOSPITALITY</span><strong data-i18n="close.details">DETAILS</strong>', "hospitality details") +
         '</div>' +
         '<div class="allocation" data-reveal><span class="allocation-label">WHERE AXIS INVESTS</span>' + event.allocation.map(function (entry) {
-          return conceptNode("allocation-item", entry.id, '<b>' + entry.title + '</b><small>' + entry.note + '</small>', entry.title.toLowerCase());
+          return conceptNode("allocation-item", entry.id, '<b>' + entry.title + '</b>', entry.title.toLowerCase());
         }).join("") + '</div>' +
         '<div class="close-event" data-reveal><b>' + event.displayDate.toUpperCase() + '</b><span>' + event.venue.toUpperCase() + ' · ' + event.city.toUpperCase() + '</span><strong>AI CREATIVE CLUB</strong><a href="https://axis.show" target="_blank" rel="noopener noreferrer">AXIS.SHOW</a></div>' +
       '</div>' + star("close-star") +
