@@ -262,8 +262,8 @@
   // Authored but held out of the run. The slides stay in the deck source with
   // their markup, concepts and translations intact; removing an id from here
   // puts one back (its frame coordinate then needs a pass, since the numbers
-  // are authored for the twelve slides that actually run).
-  var HELD_BACK = ["missions", "leaderboard", "measurement", "event-partner-operates", "signature", "continuation"];
+  // are authored for the slides that actually run).
+  var HELD_BACK = ["missions", "leaderboard", "measurement", "event-partner", "event-partner-operates", "presenting", "roles", "signature", "continuation"];
 
   function selectSlides() {
     var view = parentUrl().searchParams.get("view") || "extended";
@@ -291,7 +291,7 @@
   }
 
   function roleAsset(role) {
-    return "/aicreativeclub/brand-assets/aicreativeclub-brand-assets/badges/roles/" + role.toLowerCase() + ".svg";
+    return "/aicreativeclub/brand-assets/aicreativeclub-brand-assets/badges/roles-noir/" + role.toLowerCase() + ".svg";
   }
 
   function buildLeaderboard() {
@@ -306,13 +306,13 @@
       row.innerHTML = '<span class="rank-cell"><i>' + String(entry.rank).padStart(2, "0") + '</i></span>' +
         '<strong>' + entry.id + '</strong>' +
         '<span class="leader-role"><i>ONSITE</i></span>' +
-        '<span class="mission-dots">TBA</span>' +
+        '<span class="mission-dots">SAME</span>' +
         '<span class="brand-state">TO BE ANNOUNCED</span>' +
         '<span class="score-cell">' + String.fromCharCode(8212) + '</span>' +
         '<span class="reward-state">TBA</span>';
       visible.appendChild(row);
       var tr = document.createElement("tr");
-      [entry.rank, entry.id, "Onsite", "Goal to be announced", "Trader to be announced", "Not started", "Prize to be announced"].forEach(function (value) {
+      [entry.rank, entry.id, "Onsite", "Same starting capital", "Trader to be announced", "Not started", "Prize to be announced"].forEach(function (value) {
         var td = document.createElement("td");
         td.textContent = String(value);
         tr.appendChild(td);
@@ -614,11 +614,37 @@
   function animateBadges(slide) {
     var tl = revealBase(slide);
     var badges = slide.querySelectorAll(".role-badge");
-    if (!reducedMotion.matches) {
-      gsap.set(badges, { opacity: 0, scale: .62, filter: "blur(9px)" });
-      tl.to(badges, { opacity: 1, scale: 1, filter: "blur(0px)", duration: .7, stagger: .08, ease: "power3.out" }, .28);
+    var orbit = slide.querySelector(".role-orbit");
+    var rings = slide.querySelectorAll(".role-orbit-ring, .role-orbit-ring-inner");
+    var hub = slide.querySelector(".role-orbit-hub");
+    var comet = slide.querySelector(".role-orbit-comet");
+    if (reducedMotion.matches) {
+      gsap.set([badges, rings, hub].filter(Boolean), { clearProps: "all" });
+      if (comet) gsap.set(comet, { autoAlpha: 0 });
+      return tl;
     }
-    addOrbitLoops(slide);
+    if (!orbit || !hub) {
+      gsap.set(badges, { opacity: 0, scale: .62 });
+      tl.to(badges, { opacity: 1, scale: 1, duration: .7, stagger: .08, ease: "power3.out" }, .28);
+      return tl;
+    }
+    // Badges fly out from the hub to their place on the ring, clockwise.
+    var r = orbit.offsetWidth / 2;
+    gsap.set(rings, { opacity: 0, scale: .8, transformOrigin: "50% 50%" });
+    gsap.set(hub, { opacity: 0, scale: .6 });
+    gsap.set(comet, { autoAlpha: 0, rotation: 0, transformOrigin: "50% 50%" });
+    tl.to(rings, { opacity: 1, scale: 1, duration: .6, stagger: .1, ease: "power3.out" }, .15)
+      .to(hub, { opacity: 1, scale: 1, duration: .5, ease: "back.out(1.6)" }, .25);
+    Array.prototype.forEach.call(badges, function (badge, index) {
+      var angle = index * Math.PI / 4;
+      tl.fromTo(badge,
+        { opacity: 0, scale: .4, x: -Math.sin(angle) * r, y: Math.cos(angle) * r },
+        { opacity: 1, scale: 1, x: 0, y: 0, duration: .55, ease: "power3.out" },
+        .45 + index * .07);
+    });
+    tl.to(comet, { autoAlpha: 1, duration: .3 }, 1.2);
+    activeLoops.push(gsap.to(comet, { rotation: 360, duration: 16, repeat: -1, ease: "none" }));
+    activeLoops.push(gsap.to(slide.querySelector(".role-orbit-ring-inner"), { rotation: -360, duration: 90, repeat: -1, ease: "none" }));
     return tl;
   }
 
@@ -721,7 +747,10 @@
 
   function animateClosing(slide) {
     var tl = revealBase(slide);
-    if (!reducedMotion.matches) tl.fromTo(slide.querySelector(".close-star"), { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: .6 }, 1);
+    if (!reducedMotion.matches) {
+      tl.fromTo(slide.querySelector(".close-star"), { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: .6 }, 1)
+        .fromTo(slide.querySelectorAll(".allocation-icon"), { opacity: 0, scale: .5, rotation: -12 }, { opacity: 1, scale: 1, rotation: 0, duration: .45, stagger: .06, ease: "back.out(1.8)" }, .6);
+    }
     return tl;
   }
 
@@ -780,6 +809,224 @@
     return tl;
   }
 
+  function animateBusinessJourney(slide) {
+    var tl = revealBase(slide);
+    var stages = Array.prototype.slice.call(slide.querySelectorAll(".journey-stage"));
+    var links = Array.prototype.slice.call(slide.querySelectorAll(".journey-link svg"));
+    var geometry = slide.querySelectorAll(".journey-stage svg path, .journey-stage svg rect, .journey-stage svg circle, .journey-stage svg ellipse");
+
+    links.forEach(function (svg) {
+      if (svg.querySelector(".journey-packet")) return;
+      var packet = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      packet.setAttribute("class", "journey-packet");
+      packet.setAttribute("cx", "8");
+      packet.setAttribute("cy", "15");
+      packet.setAttribute("r", "4");
+      packet.setAttribute("fill", "#FFFFFF");
+      svg.appendChild(packet);
+    });
+
+    if (reducedMotion.matches) {
+      gsap.set(geometry, { clearProps: "all" });
+      gsap.set(slide.querySelectorAll(".journey-stage > svg, .journey-stage > span"), { clearProps: "all" });
+      gsap.set(slide.querySelectorAll(".journey-packet"), { autoAlpha: 0 });
+      return tl;
+    }
+
+    // Plays once: each stage draws in, then its line of text follows.
+    var story = gsap.timeline({ defaults: { ease: "power2.out" } });
+    var icons = slide.querySelectorAll(".journey-stage > svg");
+    var texts = slide.querySelectorAll(".journey-stage > span");
+    var packets = slide.querySelectorAll(".journey-packet");
+    story.set(icons, { opacity: .3, scale: 1, transformOrigin: "50% 50%" }, 0);
+    story.set(texts, { autoAlpha: 0, y: 14 }, 0);
+    story.set(packets, { autoAlpha: 0, x: 0 }, 0);
+
+    stages.forEach(function (stage, index) {
+      var start = index * 1.05;
+      var icon = stage.querySelector("svg");
+      var text = stage.querySelector("span");
+      var shapes = icon.querySelectorAll("path, rect, circle, ellipse");
+      story.to(icon, { opacity: 1, duration: .25 }, start);
+      shapes.forEach(function (shape, shapeIndex) {
+        if (shape.getAttribute("stroke") === "none") return;
+        var length = shape.getTotalLength();
+        story.fromTo(shape,
+          { strokeDasharray: length, strokeDashoffset: length },
+          { strokeDashoffset: 0, duration: .5, ease: "power1.inOut" },
+          start + Math.min(shapeIndex * .03, .22));
+      });
+      story.fromTo(icon, { scale: .94 }, { scale: 1, duration: .5, ease: "back.out(1.3)" }, start);
+
+      if (index === 0) {
+        story.fromTo(icon.querySelectorAll("rect"), { y: 12, opacity: .2 }, { y: 0, opacity: 1, duration: .35, stagger: .07 }, start + .1);
+      } else if (index === 1) {
+        story.to(icon.querySelectorAll("circle[fill='#FFF']"), { fill: "#C9A05B", duration: .15, repeat: 1, yoyo: true }, start + .4);
+      } else {
+        story.fromTo(icon.querySelectorAll("ellipse"), { y: 12, opacity: .3 }, { y: 0, opacity: 1, duration: .35, stagger: .1 }, start + .12);
+      }
+
+      if (text) story.to(text, { autoAlpha: 1, y: 0, duration: .45 }, start + .35);
+
+      if (links[index]) {
+        var packet = links[index].querySelector(".journey-packet");
+        story.set(packet, { x: 0, autoAlpha: 1 }, start + .7);
+        story.to(packet, { x: 80, duration: .35, ease: "power1.inOut" }, start + .7);
+        story.to(packet, { autoAlpha: 0, duration: .1 }, start + 1.05);
+      }
+    });
+    tl.add(story, .3);
+    return tl;
+  }
+
+  function animateTournamentRace(slide) {
+    var tl = revealBase(slide);
+    var x0 = 40, x1 = 960, dsqX = 600;
+    var lines = Array.prototype.slice.call(slide.querySelectorAll(".race-line"));
+    var heads = slide.querySelectorAll(".race-head");
+    var rows = Array.prototype.slice.call(slide.querySelectorAll(".race-row"));
+    var phases = Array.prototype.slice.call(slide.querySelectorAll(".race-phases span"));
+    var clip = slide.querySelector(".race-clip-rect");
+    var cursor = slide.querySelector(".race-cursor");
+    var dsqMark = slide.querySelector(".race-dsq-mark");
+    var winMark = slide.querySelector(".race-win-mark");
+    var rules = slide.querySelectorAll(".race-rule");
+    var tracks = lines.map(function (line) { return JSON.parse(line.getAttribute("data-pts")); });
+
+    function yAt(pts, x) {
+      if (x >= pts[pts.length - 1][0]) return pts[pts.length - 1][1];
+      for (var i = 1; i < pts.length; i++) {
+        if (x <= pts[i][0]) {
+          var a = pts[i - 1], b = pts[i], k = (x - a[0]) / (b[0] - a[0]);
+          return a[1] + (b[1] - a[1]) * k;
+        }
+      }
+      return pts[0][1];
+    }
+    // 170 is the shared start; illustrative scale of 0.27% per plot unit.
+    function pnl(y) { var v = (170 - y) * .27; return (v >= 0 ? "+" : String.fromCharCode(8722)) + Math.abs(v).toFixed(1) + "%"; }
+
+    function render(p) {
+      var x = x0 + (x1 - x0) * p;
+      clip.setAttribute("width", String(x));
+      cursor.setAttribute("transform", "translate(" + x + " 0)");
+      cursor.style.opacity = p >= 1 ? "0" : ".8";
+      tracks.forEach(function (pts, i) {
+        var lastX = pts[pts.length - 1][0];
+        var hx = Math.min(x, lastX);
+        heads[i].setAttribute("cx", String(hx));
+        heads[i].setAttribute("cy", String(yAt(pts, hx)));
+        heads[i].style.opacity = lastX < x1 && x >= lastX ? "0" : "1";
+        var row = rows[i];
+        var dsq = lastX < x1 && x >= lastX;
+        row.classList.toggle("is-dsq", dsq);
+        row.querySelector(".race-pnl").textContent = dsq ? String.fromCharCode(8722) + "100%" : pnl(yAt(pts, hx));
+        var rank = row.querySelector(".race-rank");
+        rank.textContent = p >= 1 || dsq ? rank.getAttribute("data-final") : String.fromCharCode(8212);
+        row.classList.toggle("is-winner", p >= 1 && rank.getAttribute("data-final") === "1");
+      });
+      phases.forEach(function (ph) { ph.classList.toggle("is-on", x >= Number(ph.getAttribute("data-x")) - 1); });
+    }
+
+    var race = { p: 0 };
+    render(0);
+    gsap.set([dsqMark, winMark], { opacity: 0, scale: 0, transformOrigin: "50% 50%" });
+    if (reducedMotion.matches) {
+      render(1);
+      gsap.set([dsqMark, winMark], { opacity: 1, scale: 1 });
+      return tl;
+    }
+    tl.fromTo(slide.querySelectorAll(".race-row"), { autoAlpha: 0, x: 24 }, { autoAlpha: 1, x: 0, duration: .4, stagger: .07, ease: "power2.out" }, .35)
+      .fromTo(rules, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: .45, stagger: .1, ease: "power2.out" }, .5)
+      .to(race, { p: 1, duration: 4.2, ease: "none", onUpdate: function () { render(race.p); } }, .7)
+      .to(dsqMark, { opacity: 1, scale: 1, duration: .35, ease: "back.out(2.2)" }, .7 + 4.2 * (dsqX - x0) / (x1 - x0))
+      .fromTo(rows[3], { x: -6 }, { x: 0, duration: .3, keyframes: [{ x: 6 }, { x: -4 }, { x: 0 }] }, .7 + 4.2 * (dsqX - x0) / (x1 - x0))
+      .to(winMark, { opacity: 1, scale: 1, duration: .45, ease: "back.out(2.2)" }, 4.9)
+      .fromTo(rows[0], { scale: 1 }, { scale: 1.03, duration: .2, yoyo: true, repeat: 1, ease: "power1.inOut" }, 4.9);
+    return tl;
+  }
+
+  // Slide 10: a gold arc runs the workshop loop once, lighting each step and
+  // narrating it in the side panel. Hover or focus any step to read it again.
+  function animateWorkshopLoop(slide) {
+    var tl = revealBase(slide);
+    var steps = Array.prototype.slice.call(slide.querySelectorAll(".reward-step"));
+    // Every stop runs in sequence and the arc closes the full circle back to
+    // the first step, once. It never repeats.
+    var loop = steps;
+    var fill = slide.querySelector(".loop-arc-fill");
+    var comet = slide.querySelector(".loop-comet");
+    var hub = slide.querySelector(".reward-cycle-hub");
+    var inner = slide.querySelector(".loop-now-inner");
+    var stepEl = slide.querySelector(".loop-now-step");
+    var titleEl = slide.querySelector(".loop-now-title");
+    var copyEl = slide.querySelector(".loop-now-copy");
+    var listEl = slide.querySelector(".loop-now-list");
+    var per = .55;
+
+    function show(index, quiet) {
+      var step = steps[index];
+      if (!step) return;
+      var concept = localizedConcept(step.getAttribute("data-concept-id"));
+      if (!concept) return;
+      slide.setAttribute("data-loop-index", String(index));
+      steps.forEach(function (s, i) { s.classList.toggle("is-current", i === index); });
+      stepEl.textContent = String(index + 1).padStart(2, "0") + " / " + String(steps.length).padStart(2, "0");
+      titleEl.textContent = concept.title;
+      copyEl.textContent = concept.summary;
+      listEl.innerHTML = "";
+      (concept.details || []).forEach(function (line) {
+        var li = document.createElement("li");
+        li.textContent = line;
+        listEl.appendChild(li);
+      });
+      if (!quiet && !reducedMotion.matches) gsap.fromTo(inner, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: .3, ease: "power2.out", overwrite: true });
+    }
+
+    if (!slide.hasAttribute("data-loop-bound")) {
+      slide.setAttribute("data-loop-bound", "");
+      steps.forEach(function (step, index) {
+        step.addEventListener("mouseenter", function () { show(index); });
+        step.addEventListener("focus", function () { show(index); });
+      });
+      window.addEventListener("axis:languagechange", function () {
+        var index = Number(slide.getAttribute("data-loop-index"));
+        if (!isNaN(index)) show(index, true);
+      });
+    }
+
+    steps.forEach(function (s) { s.classList.remove("is-lit", "is-current"); });
+    show(0, true);
+
+    if (reducedMotion.matches) {
+      steps.forEach(function (s) { s.classList.add("is-lit"); });
+      gsap.set(fill, { strokeDashoffset: 0 });
+      gsap.set(comet, { autoAlpha: 0 });
+      return tl;
+    }
+
+    gsap.set(fill, { strokeDashoffset: 100 });
+    gsap.set(comet, { autoAlpha: 0, rotation: 0, transformOrigin: "50% 50%" });
+    tl.fromTo(steps, { autoAlpha: 0, scale: .6 }, { autoAlpha: 1, scale: 1, duration: .4, stagger: .05, ease: "back.out(1.7)" }, .2)
+      .fromTo(hub, { scale: .85, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: .5, ease: "back.out(1.6)" }, .2)
+      .fromTo(inner, { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: .45, ease: "power2.out" }, .45)
+      .set(comet, { autoAlpha: 1 }, .9)
+      .to(fill, { strokeDashoffset: 0, duration: loop.length * per, ease: "none" }, .9)
+      .to(comet, { rotation: 360, duration: loop.length * per, ease: "none" }, .9);
+    loop.forEach(function (step, index) {
+      var at = .9 + index * per;
+      tl.call(function () { step.classList.add("is-lit"); show(index); }, null, at)
+        .fromTo(step.querySelector(".scn-disc"), { scale: 1 }, { scale: 1.2, duration: .16, yoyo: true, repeat: 1, ease: "power2.out" }, at);
+    });
+    // The arc arrives back at the first step: it lights again and the loop is closed.
+    var end = .9 + loop.length * per;
+    tl.call(function () { show(0); }, null, end)
+      .fromTo(steps[0].querySelector(".scn-disc"), { scale: 1 }, { scale: 1.2, duration: .16, yoyo: true, repeat: 1, ease: "power2.out" }, end)
+      .to(comet, { autoAlpha: 0, duration: .4 }, end + .2)
+      .fromTo(hub, { boxShadow: "0 0 0 0 rgba(201,160,91,0)" }, { boxShadow: "0 0 70px 6px rgba(201,160,91,.35)", duration: .5, yoyo: true, repeat: 1, ease: "power2.out" }, end + .1);
+    return tl;
+  }
+
   function animateStructured(slide) {
     var tl = revealBase(slide);
     if (reducedMotion.matches) return tl;
@@ -807,6 +1054,9 @@
     continuation: animateContinuation,
     closing: animateClosing,
     structured: animateStructured,
+    "business-journey": animateBusinessJourney,
+    "tournament-race": animateTournamentRace,
+    "workshop-loop": animateWorkshopLoop,
   };
 
   function enterSlide(slide) {

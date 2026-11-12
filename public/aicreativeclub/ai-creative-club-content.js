@@ -15,8 +15,7 @@
   function frameTop(number, label, tone) {
     return '<header class="fr-frame-top" data-reveal>' +
       '<div class="fr-lockup">' + axisMark(tone || "ivory") +
-      '<span>AXIS</span><i></i><span data-i18n="brand.artWeek">LEVEL 01 / MAIN WORKSHOPS</span></div>' +
-      '<div class="fr-coordinate"><span>' + number + ' / 11</span><span data-i18n="nav.' + label + '">' + label.replace(/-/g, " ") + '</span></div>' +
+      '<span>AXIS</span></div>' +
     '</header>';
   }
 
@@ -92,7 +91,7 @@
   function roleBadge(role, extraClass) {
     var slug = role.toLowerCase();
     return '<button class="role-badge concept-trigger ' + (extraClass || "") + '" type="button" data-role="' + role + '" data-concept-id="role-' + slug + '" aria-label="Open ' + role.toLowerCase() + ' role details" data-reveal>' +
-      '<img loading="lazy" src="' + root + '/badges/roles/' + slug + '.svg" alt="' + role + ' role badge">' +
+      '<img loading="lazy" src="' + root + '/badges/roles-noir/' + slug + '.svg" alt="' + role + ' role badge">' +
       '<span class="role-caption">' + role + '</span>' +
     '</button>';
   }
@@ -102,10 +101,59 @@
   }
 
   function systemItem(className, item) {
-    var body = '<i>' + glyph(item[3]) + '</i><span><b>' + item[1] + '</b><small>' + item[2] + '</small></span>';
+    // Descriptions live in the detail panel; the card shows the title only.
+    var body = '<i>' + glyph(item[3]) + '</i><span><b>' + item[1] + '</b></span>';
     if (!item[0]) return '<div class="' + className + ' format-item-static">' + body + '</div>';
     return conceptNode(className, item[0], body, item[1]);
   }
+
+  // Illustrative race for the tournament slide. Points live in a 1000 x 340
+  // plot: y 170 is the shared starting capital, y 320 is liquidation.
+  var raceTraders = [
+    { id: "03", rank: "1", tone: "gold", pts: [[40,170],[110,179],[180,158],[250,165],[320,139],[390,148],[460,124],[530,131],[600,107],[670,116],[740,91],[810,80],[880,71],[960,60]] },
+    { id: "01", rank: "2", tone: "ivory", pts: [[40,170],[110,158],[180,147],[250,153],[320,131],[390,136],[460,144],[530,128],[600,133],[670,122],[740,130],[810,116],[880,111],[960,108]] },
+    { id: "04", rank: "3", tone: "dim", pts: [[40,170],[110,165],[180,178],[250,172],[320,186],[390,179],[460,193],[530,189],[600,202],[670,196],[740,206],[810,199],[880,193],[960,189]] },
+    { id: "02", rank: "DSQ", tone: "dsq", pts: [[40,170],[110,152],[180,136],[250,155],[320,182],[390,207],[460,232],[530,268],[600,320]] },
+  ];
+
+  function tournamentRace() {
+    var lines = raceTraders.map(function (t) {
+      var d = t.pts.map(function (pt, i) { return (i ? "L" : "M") + pt[0] + " " + pt[1]; }).join("");
+      return '<path class="race-line race-' + t.tone + '" d="' + d + '" data-pts=\'' + JSON.stringify(t.pts) + '\' clip-path="url(#race-clip)"></path>' +
+        '<circle class="race-head race-' + t.tone + '" r="6" cx="40" cy="170"></circle>';
+    }).join("");
+    var grid = [60, 115, 225, 280].map(function (y) { return '<path class="race-grid" d="M40 ' + y + 'H960"></path>'; }).join("") +
+      [290, 620].map(function (x) { return '<path class="race-grid race-phase-tick" d="M' + x + ' 20V330"></path>'; }).join("");
+    var rows = raceTraders.map(function (t) {
+      return '<div class="race-row race-row-' + t.tone + '" data-trader="' + t.id + '"><span class="race-rank" data-final="' + t.rank + '">&#8212;</span>' +
+        '<span class="race-name"><b><span data-i18n="tournament.trader">TRADER</span> ' + t.id + '</b><small class="race-state"><span class="st-win" data-i18n="tournament.winner">PRIZE</span><span class="st-dsq" data-i18n="tournament.dsq">LIQUIDATED / DSQ</span></small></span>' +
+        '<span class="race-pnl">+0.0%</span></div>';
+    }).join("");
+    return '<div class="race-board">' +
+      '<div class="race-chart" data-reveal><div class="race-plot">' +
+        '<svg viewBox="0 0 1000 340" aria-hidden="true"><defs><clipPath id="race-clip"><rect class="race-clip-rect" x="0" y="0" width="40" height="340"></rect></clipPath></defs>' +
+          grid +
+          '<path class="race-baseline" d="M40 170H960"></path><path class="race-floor" d="M40 320H960"></path>' +
+          lines +
+          '<g class="race-dsq-mark" transform="translate(600 320)"><circle r="15"></circle><path d="M-6 -6L6 6M6 -6L-6 6"></path></g>' +
+          '<g class="race-win-mark" transform="translate(960 60)"><circle r="17"></circle><path d="M0 -9L2.6 -2.8 9 -2.8 3.8 1.2 5.8 7.6 0 3.8 -5.8 7.6 -3.8 1.2 -9 -2.8 -2.6 -2.8Z"></path></g>' +
+          '<path class="race-cursor" d="M0 14V332" transform="translate(40 0)"></path>' +
+        '</svg>' +
+        '<span class="race-label race-label-start" data-i18n="tournament.start">SAME STARTING CAPITAL</span>' +
+        '<span class="race-label race-label-floor" data-i18n="tournament.floor">LIQUIDATION = DSQ</span>' +
+      '</div>' +
+      '<div class="race-phases"><span data-x="40" style="left:4.0%" data-i18n="tournament.doors">DOORS OPEN</span><span data-x="290" style="left:29.0%" data-i18n="tournament.workshop">WORKSHOP</span><span data-x="620" style="left:62.0%" data-i18n="tournament.afterParty">AFTER PARTY</span><span data-x="960" style="left:96.0%" data-i18n="tournament.finalBell">FINAL BELL</span></div>' +
+      '<small class="race-note" data-i18n="tournament.illustrative">ILLUSTRATIVE RACE</small></div>' +
+      '<div class="race-table" data-reveal><div class="race-table-head"><span data-i18n="tournament.standings">LIVE STANDINGS</span><span data-i18n="tournament.profit">PROFIT</span></div>' + rows +
+        '<p class="race-tba" data-i18n="tournament.tba">Prize and trader names to be announced.</p></div>' +
+    '</div>';
+  }
+
+  var allocationGlyphs = {
+    "budget-hospitality": "drink", "budget-production": "layers", "budget-audiovisual": "projector",
+    "budget-programming": "code", "budget-creative-ai": "spark", "budget-digital-art": "gallery",
+    "budget-activations": "target", "budget-media": "camera", "budget-operations": "staff",
+  };
 
   function formatGroup(group) {
     return '<section class="format-group fg-' + group.key + '" data-decode><h3>' + group.letter + '. ' + group.title + '</h3><div>' +
@@ -133,25 +181,24 @@
     return conceptNode("offer-item", item[0], '<i>✦</i><span>' + item[1] + '</span>', item[1]);
   }
 
-  // The line up reads as one table with one grammar: every cell is
-  // tag / name / one line of detail, and every cell opens a detail panel.
-  // Music slots resolve to concept detail, names resolve to artist profiles.
-  function lineupCell(kind, id, tagKey, tag, nameKey, name, noteKey, note) {
+  // Category and title stay visible; descriptions live in the detail panel.
+  function lineupCell(kind, id, nameKey, name, tagKey, tag, icon) {
     var attr = kind === "artist"
       ? 'data-artist-id="' + id + '" aria-haspopup="dialog"'
       : 'data-concept-id="' + id + '"';
-    var i18n = function (key) { return key ? ' data-i18n="' + key + '"' : ""; };
-    return '<button class="lineup-cell lineup-cell-' + kind + '" type="button" ' + attr +
+    return '<button class="lineup-cell lineup-cell-' + kind + (icon ? ' has-icon' : '') + '" type="button" ' + attr +
       ' aria-label="Open details about ' + name + '">' +
-      '<span class="lineup-cell-tag"' + i18n(tagKey) + '>' + tag + '</span>' +
-      '<b' + i18n(nameKey) + '>' + name + '</b>' +
-      '<small' + i18n(noteKey) + '>' + note + '</small>' +
+      (icon ? '<i class="lineup-cell-icon">' + icon + '</i>' : '') +
+      '<span class="lineup-cell-text"><span class="lineup-cell-tag"' + (tagKey ? ' data-i18n="' + tagKey + '"' : '') + '>' + tag + '</span>' +
+      '<b' + (nameKey ? ' data-i18n="' + nameKey + '"' : '') + '>' + name + '</b></span>' +
     '</button>';
   }
 
+  // Gallery rows carry the same icon as their detail panel.
   function artistCell(id) {
     var artist = window.AI_CREATIVE_CLUB_ARTISTS[id];
-    return lineupCell("artist", id, "", artist.tag, "", artist.name, "", artist.role);
+    var media = artist.monogramMedia;
+    return lineupCell("artist", id, "", artist.name, "", artist.tag, media && media.type === "svg" ? media.markup : "");
   }
 
   function lineupRow(labelKey, label, countKey, count, cells) {
@@ -164,40 +211,9 @@
     '</section>';
   }
 
-  // The two room line ups read on the orbit field itself, each latched to a
-  // gold node, so the programme sits where the night is drawn rather than in
-  // a caption underneath it.
-  function hudPanel(position, labelKey, label, countKey, count, cells) {
-    return '<div class="event-hud event-hud-' + position + '" data-reveal>' +
-      '<div class="event-hud-head">' +
-        '<b data-i18n="' + labelKey + '">' + label + '</b>' +
-        '<small data-i18n="' + countKey + '">' + count + '</small>' +
-      '</div>' + cells.join("") +
-    '</div>';
-  }
-
-  function roomHuds() {
-    return hudPanel("main", "event.mainRoom", "MAIN ROOM", "event.mainRoomCount", "CORE + SOCIAL", [
-      lineupCell("slot", "program-liveCoding",
-        "event.arcCreation", "COMPETITION",
-        "event.liveCodingName", "TRADING TOURNAMENT",
-        "event.liveCodingNote", "4 traders; first to the goal wins a prize"),
-      lineupCell("slot", "program-closing",
-        "event.arcClub", "CLUB",
-        "event.closingName", "AFTER PARTY",
-        "event.closingNote", "Social continuation after the core program"),
-    ]) +
-    hudPanel("gallery", "event.gallery", "THE GALLERY", "event.galleryCount", "1 SPACE", [
-      lineupCell("slot", "program-gallery",
-        "event.arcAllNight", "ALL NIGHT",
-        "event.galleryName", "ONCHAIN ART",
-        "event.galleryNote", "National, international and onsite creators"),
-    ]);
-  }
-
   function lineupTable() {
     return '<div class="lineup-table" data-reveal>' +
-      lineupRow("event.digitalLineup", "ONCHAIN ART", "event.digitalCount", "3 SOURCES",
+      lineupRow("event.gallery", "THE GALLERY", "event.galleryRow", "ONCHAIN ART · ALL NIGHT",
         digitalArtists.map(artistCell)) +
     '</div>';
   }
@@ -224,18 +240,18 @@
 
   var formatGroups = [
     { key: "a", letter: "A", title: "CULTURE", items: [
-      [null, "ONCHAIN ART", "Curated national and international artists alongside people creating onsite.", "gallery"],
-      [null, "AFTER PARTY", "A secondary social continuation after the business, AI and onchain program.", "disc"],
-      [null, "VIDEO MAPPING", "Projected visuals authored for " + event.venue + ".", "projector"],
+      ["format-gallery", "ONCHAIN ART", "Curated local and international artists alongside people creating onsite.", "gallery"],
+      ["format-djs", "AFTER PARTY", "A secondary social continuation after the business, AI and onchain program.", "disc"],
+      ["format-mapping", "VIDEO MAPPING", "Projected visuals authored for " + event.venue + ".", "projector"],
     ] },
     { key: "b", letter: "B", title: "ON-SITE MEDIA", items: [
-      [null, "VENUE SCREENS", "Venue display infrastructure carries the visual system.", "screen"],
-      [null, "LIVE RECORDING", "Live or recorded capture produced on site.", "broadcast"],
-      [null, "PHOTOGRAPHY", "Event archive, environment and post-event video.", "camera"],
+      ["format-screens", "VENUE SCREENS", "Venue display infrastructure carries the visual system.", "screen"],
+      ["format-stream", "LIVE RECORDING", "Live or recorded capture produced on site.", "broadcast"],
+      ["format-photo", "PHOTOGRAPHY", "Event archive, environment and post-event video.", "camera"],
     ] },
     { key: "c", letter: "C", title: "CONTENT PRODUCTION", items: [
-      [null, "AFTERMOVIE", "Edited recap material from the night.", "film"],
-      [null, "TESTIMONIAL CAPTURE", "Guest and artist quotes when available.", "quote"],
+      ["format-aftermovie", "AFTERMOVIE", "Edited recap material from the night.", "film"],
+      ["format-testimonials", "TESTIMONIAL CAPTURE", "Guest and artist quotes when available.", "quote"],
       ["format-collectibles", "POST-EVENT COLLECTIBLES", "Digital collectibles serve as proof of participation in the event.", "cube"],
     ] },
     { key: "d", letter: "D", title: "ACCESS SYSTEM", items: [
@@ -246,12 +262,12 @@
     { key: "e", letter: "E", title: "EVENT FLOW", items: [
       ["format-staff", "STAFF-GUIDED FLOW", "Staff supports actions, validation and exceptions.", "staff"],
       ["format-hospitality", "COMPLIMENTARY HOSPITALITY", "AXIS funds the drink allocation for the night.", "drink"],
-      [null, "EXPECTED AUDIENCE", event.workshopCapacity + " seated for the workshop, then " + event.afterPartyGuests + " more for the night.", "guests"],
+      ["format-audience", "EXPECTED AUDIENCE", event.workshopCapacity + " seated for the workshop, then " + event.afterPartyGuests + " more for the night.", "guests"],
     ] },
     { key: "f", letter: "F", title: "AI + ONCHAIN", items: [
       ["format-creative-ai", "CREATIVE AI ACTIVITY", "Anana leads visual content; Sunshine Vendetta leads agents and workflows.", "spark"],
-      ["format-live-coding", "TRADING TOURNAMENT", "Four traders onsite; the first to reach the goal wins a prize.", "chart"],
-      [null, "INVESTING PROFITS ONCHAIN", "Explore how business profits can be invested onchain, connecting creation and automation to the next step.", "grid"],
+      ["format-live-coding", "TRADING TOURNAMENT", "Four traders onsite; the highest profit at the end wins the prize.", "chart"],
+      ["format-invest", "INVESTING PROFITS ONCHAIN", "Explore how business profits can be invested onchain, connecting creation and automation to the next step.", "grid"],
     ] },
   ];
 
@@ -337,10 +353,8 @@
 
   var slides = [
     '<section class="fr-slide fr-cover is-active" data-slide-id="cover" data-scene="cover" data-label="Cover">' +
-      '<div class="cover-poster" data-crystallize><img src="' + poster + '" alt="Official AI Creative Club poster"></div>' +
+      '<div class="cover-poster" data-crystallize><img src="/aicreativeclub/brand/crest-gold.png" alt="The AI Creative Club gold crest"></div>' +
       '<div class="cover-data" data-reveal>' +
-        axisMark("ivory") +
-        '<span class="eyebrow" data-i18n="brand.artWeek">LEVEL 01 / MAIN WORKSHOPS</span>' +
         '<h1>AI <em>Creative Club</em></h1>' +
         '<p>' + event.displayDate.toUpperCase() + '<br>' + event.city.toUpperCase() + '</p>' +
         '<div class="cover-axis" data-i18n="cover.poweredBy">POWERED BY: AXIS</div>' +
@@ -348,12 +362,12 @@
       orbitalSvg("cover-orbit") + star("cover-star") +
     '</section>',
 
-    '<section class="fr-slide fr-idea" data-slide-id="idea" data-scene="structured" data-label="The idea">' +
+    '<section class="fr-slide fr-idea" data-slide-id="idea" data-scene="business-journey" data-label="The idea">' +
       frameTop("02", "idea") +
       '<div class="fr-reading fr-reading-left">' +
         '<span class="eyebrow" data-reveal data-i18n="idea.kicker">THE IDEA</span>' +
         '<h2 data-reveal data-i18n="idea.title">CREATE. AUTOMATE. INVEST.</h2>' +
-        '<div class="idea-triptych" data-reveal><span data-i18n="idea.human">Create content for your business or for you as content creator.</span><span data-i18n="idea.machine">Build agents to work for you. Automate their workflows so you get more money.</span><span data-i18n="idea.public">Invest business profits onchain.</span></div>' +
+        '<div class="idea-journey" data-reveal><div class="journey-stage"><svg viewBox="0 0 300 260" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="66" y="30" width="155" height="194" rx="12"/><path d="M100 30v-12h155v194h-18" opacity=".35"/><rect x="86" y="52" width="115" height="110" rx="3"/><circle cx="166" cy="78" r="12"/><path d="m88 145 38-40 29 27 21-19 25 30M88 185h81M88 202h52"/><circle cx="224" cy="177" r="36" fill="#000" stroke="#C9A05B"/><path d="m216 161 23 16-23 16Z" fill="#FFF" stroke="none"/></svg><span data-i18n="idea.human">Create content for your business or for you as content creator.</span></div><i class="journey-link" aria-hidden="true"><svg viewBox="0 0 100 30" fill="none"><path d="M2 15h90m-12-10 12 10-12 10" stroke="#C9A05B" stroke-width="2"/></svg></i><div class="journey-stage"><svg viewBox="0 0 300 260" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 68h80v62h100M60 198h80v-68M140 42v26M140 198v-68" stroke="#C9A05B"/><rect x="26" y="42" width="66" height="52" rx="10"/><rect x="26" y="172" width="66" height="52" rx="10"/><rect x="206" y="104" width="66" height="52" rx="10"/><circle cx="140" cy="130" r="45" fill="#000"/><rect x="118" y="112" width="44" height="36" rx="8"/><circle cx="130" cy="128" r="3" fill="#FFF"/><circle cx="150" cy="128" r="3" fill="#FFF"/><path d="M131 139h18M140 102v-8M132 94h16M48 68h22M48 198h22M226 129l9 9 17-18"/><circle cx="140" cy="42" r="8" fill="#000"/><circle cx="140" cy="206" r="8" fill="#000"/></svg><span data-i18n="idea.machine">Build agents to work for you. Automate their workflows so you get more money.</span></div><i class="journey-link" aria-hidden="true"><svg viewBox="0 0 100 30" fill="none"><path d="M2 15h90m-12-10 12 10-12 10" stroke="#C9A05B" stroke-width="2"/></svg></i><div class="journey-stage"><svg viewBox="0 0 300 260" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="102" cy="192" rx="51" ry="18"/><path d="M51 192v-27M153 192v-27"/><ellipse cx="102" cy="165" rx="51" ry="18"/><path d="M51 165v-27M153 165v-27"/><ellipse cx="102" cy="138" rx="51" ry="18"/><path d="m80 88 48-32 44 23 63-51m-23 0h23v23" stroke="#C9A05B"/><rect x="188" y="130" width="42" height="42" rx="9" transform="rotate(-20 209 151)"/><rect x="218" y="185" width="42" height="42" rx="9" transform="rotate(-20 239 206)"/><path d="m218 167 10 21M152 156l38-5" stroke="#C9A05B"/></svg><span data-i18n="idea.public">Invest business profits onchain.</span></div></div>' +
       '</div>' +
     '</section>',
 
@@ -368,7 +382,6 @@
         conceptNode("event-core", "venue", '<strong>' + event.workshopCapacity + '</strong><span data-i18n="event.seatedWorkshop">SEATED WORKSHOP</span><em>+' + event.afterPartyGuests + '</em><small data-i18n="event.afterParty">AFTER PARTY</small>', event.venue + " and the event format") +
         orbitalSvg("event-orbit") +
       '</div>' +
-      roomHuds() +
       lineupTable() +
     '</section>',
 
@@ -379,18 +392,6 @@
       '<div class="workshop-heading" data-decode>' +
         '<span class="eyebrow" data-reveal data-i18n="workshop.kicker">CREATIVE AI COMMUNITY EVENT</span>' +
         '<h2 data-reveal data-i18n="workshop.title">CREATE CONTENT. MAKE AI WORK.</h2>' +
-      '</div>' +
-      '<div class="workshop-phases" data-decode>' +
-        conceptNode("workshop-phase", "workshop-session",
-          '<span>' + event.workshopStart + ' → ' + event.workshopEnd + '</span><strong>' + event.workshopCapacity + '</strong>' +
-          '<b data-i18n="workshop.phaseSeated">SEATED WORKSHOP</b>' +
-          '<small data-i18n="workshop.phaseSeatedNote">A chair for every attendee, and the venue screen carrying the session.</small>',
-          "the seated workshop") +
-        conceptNode("workshop-phase", "workshop-afterparty",
-          '<span>' + event.afterPartyStart + ' → ' + event.afterPartyEnd + '</span><strong>+' + event.afterPartyGuests + '</strong>' +
-          '<b data-i18n="workshop.phaseNight">AFTER PARTY</b>' +
-          '<small data-i18n="workshop.phaseNightNote">The floor opens at 21:30 for 120 further guests, on top of the attendees who stay on.</small>',
-          "the after party") +
       '</div>' +
       '<div class="workshop-clock" data-decode>' +
         '<span class="workshop-clock-label" data-i18n="workshop.runOfShow">RUN OF SHOW</span>' +
@@ -406,8 +407,8 @@
       frameTop("05", "speakers") +
       '<div class="speakers-heading" data-reveal><span class="eyebrow" data-i18n="speakers.kicker">THE SPEAKERS</span><h2 data-i18n="speakers.title">TWO PRACTICES. SHARED POSSIBILITIES.</h2></div>' +
       '<div class="speakers-grid" data-reveal>' +
-        '<article class="speaker-card"><span class="speaker-index">01 / CREATE</span><h3>Anana</h3><span class="eyebrow" data-i18n="speakers.anana.role">ART + BUSINESS CONTENT</span><p data-i18n="speakers.anana.copy">Turn a visual brief into a base image, refine the result and explore video. Create assets for artistic practice, products and business communication.</p><div class="speaker-outcome" data-i18n="speakers.anana.result">TAKE HOME / A usable visual asset and the creative instructions behind it.</div></article>' +
-        '<article class="speaker-card"><span class="speaker-index">02 / DELEGATE</span><h3>Sunshine Vendetta</h3><span class="eyebrow" data-i18n="speakers.sunshine.role">AGENT INTEGRATIONS</span><p data-i18n="speakers.sunshine.copy">Define a real task, organize its inputs and steps, and connect agents to useful tools. Review what runs, improve the result and keep reusable instructions.</p><div class="speaker-outcome" data-i18n="speakers.sunshine.result">TAKE HOME / A completed task and a reusable workflow specification.</div></article>' +
+        '<article class="speaker-card"><div class="speaker-head"><img class="speaker-photo" src="/aicreativeclub/speakers/anana.webp" alt="Anana" width="480" height="480" loading="lazy"><div><span class="speaker-index">01 / CREATE</span><h3>Anana</h3><span class="eyebrow" data-i18n="speakers.anana.role">ART + BUSINESS CONTENT</span></div></div><p data-i18n="speakers.anana.copy">Turn a visual brief into a base image, refine the result and explore video. Create assets for artistic practice, products and business communication.</p><div class="speaker-outcome" data-i18n="speakers.anana.result">TAKE HOME / A usable visual asset and the creative instructions behind it.</div></article>' +
+        '<article class="speaker-card"><div class="speaker-head"><img class="speaker-photo" src="/aicreativeclub/speakers/sunshine-vendetta.webp" alt="Sunshine Vendetta" width="480" height="480" loading="lazy"><div><span class="speaker-index">02 / DELEGATE</span><h3>Sunshine Vendetta</h3><span class="eyebrow" data-i18n="speakers.sunshine.role">AGENT INTEGRATIONS</span></div></div><p data-i18n="speakers.sunshine.copy">Define a real task, organize its inputs and steps, and connect agents to useful tools. Review what runs, improve the result and keep reusable instructions.</p><div class="speaker-outcome" data-i18n="speakers.sunshine.result">TAKE HOME / A completed task and a reusable workflow specification.</div></article>' +
       '</div>' +
     '</section>',
 
@@ -418,6 +419,9 @@
         '<h2 data-reveal data-i18n="audience.title">EXPECTED GUESTS.</h2>' +
       '</div>' +
       '<div class="role-orbit" aria-label="AI Creative Club audience roles">' +
+        '<span class="role-orbit-ring" aria-hidden="true"></span><span class="role-orbit-ring-inner" aria-hidden="true"></span>' +
+        '<span class="role-orbit-comet" aria-hidden="true"><i></i></span>' +
+        '<div class="role-orbit-hub" aria-hidden="true">' + axisMark("gold") + '<b>AXIS</b></div>' +
         roles.map(function (role, index) { return roleBadge(role, "role-pos-" + (index + 1)); }).join("") +
       '</div>' + star("audience-star") +
     '</section>',
@@ -443,11 +447,15 @@
       '<div class="system-phase phase-c" data-decode>' + conceptNode("phase-card", "phase-report", '<i>C</i><b>CAPTURE + DOCUMENT</b><p>AXIS documents the night and delivers participation and media evidence.</p>', "capture and document") + '</div>' +
     '</section>',
 
-    '<section class="fr-slide club-tournament-explainer" data-slide-id="tournament-explainer" data-scene="structured" data-label="Trading tournament explained">' +
+    '<section class="fr-slide club-tournament-explainer" data-slide-id="tournament-explainer" data-scene="tournament-race" data-label="Trading tournament explained">' +
       frameTop("08", "tournament") +
-      '<div class="tournament-heading" data-reveal><span class="eyebrow" data-i18n="tournament.kicker">ONSITE TRADING TOURNAMENT</span><h2 data-i18n="tournament.title">4 TRADERS. ONE FINISH LINE.</h2></div>' +
-      '<div class="tournament-explanation" data-reveal><div class="tournament-four"><span>01</span><span>02</span><span>03</span><span>04</span><b data-i18n="tournament.traders">FOUR TRADERS ONSITE</b></div><i aria-hidden="true">&#8594;</i><div class="tournament-goal"><strong data-i18n="tournament.goal">REACH THE GOAL</strong></div><i aria-hidden="true">&#8594;</i><div class="tournament-prize"><strong data-i18n="tournament.prize">WIN THE PRIZE</strong></div></div>' +
-      '<p class="tournament-rule" data-reveal data-i18n="tournament.rule">The first trader to reach the goal wins. Goal, prize and trader names to be announced.</p>' +
+      '<div class="tournament-heading" data-reveal><span class="eyebrow" data-i18n="tournament.kicker">LIVE TRADING TOURNAMENT / THE CENTRAL PIECE</span><h2 data-i18n="tournament.title">SAME CAPITAL. HIGHEST PROFIT WINS.</h2><span class="race-live"><i aria-hidden="true"></i><b data-i18n="tournament.live">LIVE ALL NIGHT, WHILE THE EVENT RUNS</b></span></div>' +
+      tournamentRace() +
+      '<div class="race-rules">' +
+        '<div class="race-rule"><i>01</i><b data-i18n="tournament.r1t">SAME START</b><p data-i18n="tournament.r1">All four traders begin with the same capital.</p></div>' +
+        '<div class="race-rule"><i>02</i><b data-i18n="tournament.r2t">HIGHEST PROFIT WINS</b><p data-i18n="tournament.r2">When the tournament closes, the biggest profit takes the prize.</p></div>' +
+        '<div class="race-rule"><i>03</i><b data-i18n="tournament.r3t">LIQUIDATED = DSQ</b><p data-i18n="tournament.r3">A liquidated account is disqualified on the spot.</p></div>' +
+      '</div>' +
     '</section>',
 
     '<section class="fr-slide fr-components" data-slide-id="missions" data-scene="structured" data-label="Experience components">' +
@@ -468,34 +476,30 @@
       '<div class="components-takeaway" data-reveal>' + axisMark("ivory") + '<p>Guests experience the function.<br>The room produces the evidence.</p></div>' +
     '</section>',
 
-    '<section class="fr-slide fr-reward-flow" data-slide-id="brand-function" data-scene="structured" data-label="Creative AI to screen">' +
+    '<section class="fr-slide fr-reward-flow" data-slide-id="brand-function" data-scene="workshop-loop" data-label="How the workshop runs">' +
       frameTop("08", "creative-ai-to-screen") +
-      '<div class="reward-heading"><span class="eyebrow" data-reveal>SYSTEM DESIGN</span><h2 data-reveal>MAKE SOMETHING. DELEGATE SOMETHING.</h2></div>' +
-      '<div class="reward-compare">' +
-        '<div class="giveaway-card" data-decode><span>WHAT YOU CREATE</span><ul><li>Define a visual brief</li><li>Generate a base image</li><li>Refine the image</li><li>Explore image-to-video</li><li>Export a usable asset</li></ul></div>' +
-        '<div class="axis-system-card" data-decode><span>WHAT YOU DELEGATE</span><ul><li>Choose a real task</li><li>Work with an AI assistant</li><li>Run structured steps</li><li>Observe an agent tool action</li><li>Save a reusable workflow</li></ul></div>' +
-      '</div>' +
+      '<div class="reward-heading"><span class="eyebrow" data-reveal data-i18n="loop.kicker">HOW THE WORKSHOP RUNS</span><h2 data-reveal data-i18n="loop.title">FROM TASK TO RESULT.</h2></div>' +
+      '<div class="loop-now" aria-live="polite"><div class="loop-now-inner"><span class="loop-now-step"></span><b class="loop-now-title"></b><p class="loop-now-copy"></p><ul class="loop-now-list"></ul></div></div>' +
       '<div class="reward-cycle" data-crystallize>' +
-        '<div class="reward-cycle-hub">' + axisMark("gold") + '<b>LIVE</b><p>See a result, try it, adapt it, verify it and take it home.</p></div>' +
-        rewardStep("rs1", "flow-guest", "01", "guests", "TASK", "task brief") +
-        rewardStep("rs2", "flow-creative-ai", "02", "spark", "AI TOOLS", "AI tools") +
-        rewardStep("rs3", "flow-creative-ai-code", "03", "code", "WORKFLOW", "workflow") +
-        rewardStep("rs4", "flow-code", "04", "file", "RESULT", "useful result") +
-        rewardStep("rs5", "flow-rules", "05", "grid", "REVIEW", "review the result") +
-        rewardStep("rs6", "flow-render", "06", "projector", "SAVE", "save the output") +
-        rewardStep("rs7", "flow-screens", "07", "screen", "SHARE", "share the result") +
-        rewardStep("rs8", "flow-fallback", "08", "shield", "FALLBACK", "prepared fallback") +
+        '<svg class="loop-arc" viewBox="0 0 100 100" aria-hidden="true"><circle class="loop-arc-fill" cx="50" cy="50" r="50" pathLength="100"></circle></svg>' +
+        '<span class="loop-comet" aria-hidden="true"><i></i></span>' +
+        '<div class="reward-cycle-hub">' + axisMark("gold") + '<b data-i18n="loop.hub">HANDS-ON</b><p data-i18n="loop.hubCopy">Bring a real task. Leave with a result you can repeat.</p></div>' +
+        rewardStep("rs6-1", "flow-guest", "01", "guests", "TASK", "task brief") +
+        rewardStep("rs6-2", "flow-creative-ai", "02", "spark", "AI TOOLS", "AI tools") +
+        rewardStep("rs6-3", "flow-creative-ai-code", "03", "code", "WORKFLOW", "workflow") +
+        rewardStep("rs6-4", "flow-rules", "04", "grid", "REVIEW", "review the result") +
+        rewardStep("rs6-5", "flow-render", "05", "projector", "SAVE", "save the output") +
+        rewardStep("rs6-6", "flow-screens", "06", "screen", "SHARE", "share the result") +
       '</div>' +
-      '<div class="reward-memory" data-decode><span>PROOF OF LEARNING</span><p>Attendance and completion are separate. Show an image or edit, or run and check a workflow. Keep the asset or instructions and repeat one meaningful action.</p><div><i>ATTENDANCE</i><b>WATCH A DEMO</b><strong>VS</strong><i>COMPLETION</i><b>SHOW A RESULT</b></div></div>' +
     '</section>',
 
     '<section class="fr-slide fr-leaderboard" data-slide-id="leaderboard" data-scene="structured" data-label="Trading tournament">' +
       frameTop("10", "leaderboard") +
-      '<div class="leaderboard-heading"><div><span class="eyebrow" data-reveal data-i18n="leaderboard.kicker">TRADING TOURNAMENT</span><h2 data-reveal data-i18n="leaderboard.title">4 TRADERS. ONE GOAL.</h2><p>First to reach the goal wins the prize. Goal, prize and trader names to be announced.</p></div></div>' +
+      '<div class="leaderboard-heading"><div><span class="eyebrow" data-reveal data-i18n="leaderboard.kicker">TRADING TOURNAMENT</span><h2 data-reveal data-i18n="leaderboard.title">4 TRADERS. HIGHEST PROFIT WINS.</h2><p data-i18n="leaderboard.copy">Same starting capital. Highest profit at the end wins the prize; liquidated = DSQ. Prize and trader names to be announced.</p></div></div>' +
       '<div class="leaderboard-shell" data-crystallize>' +
-        '<div class="leaderboard-head"><span data-i18n="leaderboard.rank">SLOT</span><span data-i18n="leaderboard.participant">TRADER</span><span data-i18n="leaderboard.role">FORMAT</span><span data-i18n="leaderboard.missions">GOAL</span><span data-i18n="leaderboard.action">STATUS</span><span data-i18n="leaderboard.score">PROGRESS</span><span data-i18n="leaderboard.reward">PRIZE</span></div>' +
+        '<div class="leaderboard-head"><span data-i18n="leaderboard.rank">SLOT</span><span data-i18n="leaderboard.participant">TRADER</span><span data-i18n="leaderboard.role">FORMAT</span><span data-i18n="leaderboard.missions">CAPITAL</span><span data-i18n="leaderboard.action">STATUS</span><span data-i18n="leaderboard.score">PROGRESS</span><span data-i18n="leaderboard.reward">PRIZE</span></div>' +
         '<div id="leaderboard-rows" class="leaderboard-rows" aria-hidden="true"></div>' +
-        '<table id="leaderboard-semantic" class="sr-only"><caption>Four-trader onsite tournament slots; goal, prize and trader names to be announced</caption><thead><tr><th>Slot</th><th>Trader</th><th>Format</th><th>Goal</th><th>Status</th><th>Progress</th><th>Prize</th></tr></thead><tbody></tbody></table>' +
+        '<table id="leaderboard-semantic" class="sr-only"><caption>Four-trader onsite tournament slots; same starting capital, highest profit wins, prize and trader names to be announced</caption><thead><tr><th>Slot</th><th>Trader</th><th>Format</th><th>Capital</th><th>Status</th><th>Progress</th><th>Prize</th></tr></thead><tbody></tbody></table>' +
       '</div>' + star("leader-star") +
     '</section>',
 
@@ -536,7 +540,6 @@
     '<section class="fr-slide fr-presenting creative-ai-slide" data-slide-id="presenting" data-scene="creative-ai-stream" data-label="Creative AI community event">' +
       '<header class="fr-frame-top creative-ai-frame-top" data-reveal>' +
         '<div class="fr-lockup"><span class="creative-ai-community-label">CREATE + DELEGATE</span></div>' +
-        '<div class="fr-coordinate"><span>10 / 11</span><span data-i18n="nav.creative-ai">CREATIVE AI</span></div>' +
       '</header>' +
       '<div class="creative-ai-body">' +
         '<div class="creative-ai-copy">' +
@@ -610,14 +613,13 @@
     '<section class="fr-slide fr-close" data-slide-id="close" data-scene="closing" data-label="Close">' +
       '<div class="close-poster" data-decode><img loading="lazy" src="' + poster + '" alt="Official AI Creative Club poster"></div>' +
       '<div class="close-panel" data-decode>' +
-        '<div class="close-lockup" data-reveal>' + axisMark("gold") + '<div><span>AXIS</span><small data-i18n="brand.artWeek">LEVEL 01 / MAIN WORKSHOPS</small></div></div>' +
+        '<div class="close-lockup" data-reveal>' + axisMark("gold") + '<div><span>AXIS</span></div></div>' +
         '<span class="eyebrow" data-reveal data-i18n="close.kicker">AI CREATIVE CLUB AT ' + event.venue.toUpperCase() + '</span>' +
         '<div class="close-offers" data-reveal>' +
-          conceptNode("close-offer is-presenting", "presenting-system", '<span data-i18n="sponsorship.per-brand">PER SPONSORSHIP BRAND</span><strong>US$2,500</strong>', "sponsorship pricing and details") +
-          conceptNode("close-offer", "close-hospitality", '<span data-i18n="close.hospitality">COMPLIMENTARY HOSPITALITY</span><strong data-i18n="close.details">DETAILS</strong>', "hospitality details") +
+          conceptNode("close-offer is-presenting", "presenting-system", '<i class="allocation-icon">' + glyph("star") + '</i><span data-i18n="sponsorship.per-brand">PER SPONSORSHIP BRAND</span><strong>US$2,500</strong>', "sponsorship pricing and details") +
         '</div>' +
-        '<div class="allocation" data-reveal><span class="allocation-label">WHERE AXIS INVESTS</span>' + event.allocation.map(function (entry) {
-          return conceptNode("allocation-item", entry.id, '<b>' + entry.title + '</b>', entry.title.toLowerCase());
+        '<div class="allocation" data-reveal><span class="allocation-label" data-i18n="close.budget">WHAT THE BUDGET COVERS</span>' + event.allocation.map(function (entry) {
+          return conceptNode("allocation-item", entry.id, '<i class="allocation-icon">' + glyph(allocationGlyphs[entry.id]) + '</i><b>' + entry.title + '</b>', entry.title.toLowerCase());
         }).join("") + '</div>' +
         '<div class="close-event" data-reveal><b>' + event.displayDate.toUpperCase() + '</b><span>' + event.venue.toUpperCase() + ' · ' + event.city.toUpperCase() + '</span><strong>AI CREATIVE CLUB</strong><a href="https://axis.show" target="_blank" rel="noopener noreferrer">AXIS.SHOW</a></div>' +
       '</div>' + star("close-star") +

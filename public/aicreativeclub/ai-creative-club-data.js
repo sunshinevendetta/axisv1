@@ -32,7 +32,7 @@
       Object.freeze({ id: "budget-audiovisual", title: "AUDIOVISUAL", note: "Visual rendering, routing, display integration and event output." }),
       Object.freeze({ id: "budget-programming", title: "PROGRAMMING", note: "Business content creation, AI agent building, onchain investing and the four-trader tournament." }),
       Object.freeze({ id: "budget-creative-ai", title: "CREATIVE AI WORKSHOP", note: "Anana: art and business content, image creation, editing and video. Sunshine Vendetta: AI workflows and agent integrations." }),
-      Object.freeze({ id: "budget-digital-art", title: "DIGITAL ART", note: "Curated national and international onchain artists, plus people creating onsite." }),
+      Object.freeze({ id: "budget-digital-art", title: "DIGITAL ART", note: "Curated local and international onchain artists, plus people creating onsite." }),
       Object.freeze({ id: "budget-activations", title: "CLUB ACTIVATIONS", note: "Small partner experiences integrated throughout the night." }),
       Object.freeze({ id: "budget-media", title: "MEDIA", note: "Photography, video and event documentation." }),
       Object.freeze({ id: "budget-operations", title: "OPERATIONS", note: "Guest flow, technical crew and venue coordination." }),
@@ -55,7 +55,7 @@
       type: "Trading tournament",
       artist: null,
       arc: "CREATION",
-      note: "Four traders compete onsite. The first to reach the goal wins the prize. Goal, prize and participants to be announced.",
+      note: "Four traders start with the same capital and compete onsite while the event runs. Highest profit at the end wins the prize; liquidated = DSQ. Prize and participants to be announced.",
     }),
     closing: Object.freeze({
       slot: "03",
@@ -69,13 +69,14 @@
 
   window.AI_CREATIVE_CLUB_ARTISTS = Object.freeze({
   "national-artists": {
-    "name": "National artists",
+    "name": "Local artists",
     "monogram": "NA",
+    "monogramMedia": { "type": "svg", "markup": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z\"/><circle cx=\"12\" cy=\"10\" r=\"2.4\"/></svg>" },
     "kind": "ONCHAIN ART",
-    "tag": "NATIONAL",
-    "role": "National artists selection",
+    "tag": "LOCAL",
+    "role": "Local artists selection",
     "discipline": "ONCHAIN ART + ONSITE CREATION",
-    "bio": "A curated selection of national onchain artists. Individual artists and works will be announced.",
+    "bio": "A curated selection of local onchain artists. Individual artists and works will be announced.",
     "facts": [
       [
         "FORMAT",
@@ -96,6 +97,7 @@
   "international-artists": {
     "name": "International artists",
     "monogram": "IN",
+    "monogramMedia": { "type": "svg", "markup": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"8.6\"/><path d=\"M3.4 12h17.2M12 3.4a13 13 0 0 1 0 17.2 13 13 0 0 1 0-17.2\"/></svg>" },
     "kind": "ONCHAIN ART",
     "tag": "INTERNATIONAL",
     "role": "International artists selection",
@@ -121,11 +123,12 @@
   "onsite-creators": {
     "name": "Onsite creators",
     "monogram": "ON",
+    "monogramMedia": { "type": "svg", "markup": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 20.2 4.9 16 15.6 5.3a1.9 1.9 0 0 1 2.7 0l.4.4a1.9 1.9 0 0 1 0 2.7L8.2 19.3z\"/><path d=\"M14.2 6.8l3 3\"/></svg>" },
     "kind": "ONCHAIN ART",
     "tag": "ONSITE",
     "role": "People creating onsite",
     "discipline": "ONCHAIN ART + ONSITE CREATION",
-    "bio": "People creating onsite contribute works alongside the curated national and international selection.",
+    "bio": "People creating onsite contribute works alongside the curated local and international selection.",
     "facts": [
       [
         "FORMAT",

@@ -128,7 +128,7 @@ em { color: var(--patina); font-style: italic; font-weight: 400; }
 .event-hud-head small { color: var(--patina); font: 600 9px/1 var(--mono); letter-spacing: .2em; }
 .event-hud .lineup-cell { width: 100%; border-left: 0; border-bottom: 1px solid rgba(0,0,0,.16); padding: 10px 46px 10px 15px; }
 .event-hud .lineup-cell:last-child { border-bottom: 0; }
-.event-hud-main { left: 92px; top: 352px; width: 360px; }
+.event-hud-main { left: 92px; top: 420px; width: 360px; }
 .event-hud-main::after { left: 100%; top: 17px; width: 158px; height: 1px; }
 .event-hud-gallery { left: 1468px; top: 656px; width: 360px; }
 .event-hud-gallery::after { right: 100%; top: 17px; width: 158px; height: 1px; }
@@ -525,7 +525,7 @@ body.fr-vertical .event-operating-map { left: 90px; top: 520px; width: 900px; he
 body.fr-vertical .event-orbit { left: 75px; top: -20px; }
 body.fr-vertical .event-hud-main { left: 50px; top: 1248px; width: 680px; }
 body.fr-vertical .event-hud-main::after { left: 100%; top: 26px; width: 220px; }
-body.fr-vertical .event-hud-gallery { left: auto; right: 50px; top: 1556px; width: 640px; }
+body.fr-vertical .event-hud-gallery { left: auto; right: 50px; top: 1580px; width: 640px; }
 body.fr-vertical .event-hud-gallery::after { right: 100%; top: 26px; width: 220px; }
 body.fr-vertical .event-hud-head { padding: 14px 20px; }
 body.fr-vertical .event-hud-head b { font-size: 24px; }

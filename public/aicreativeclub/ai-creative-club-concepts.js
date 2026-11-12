@@ -22,9 +22,9 @@
   ]);
 
 
-  add("role-trader", "05 / TRADER", "TRADER", "Traders interested in onchain markets and the live on-site tournament.", ["Four tournament slots", "First to reach the goal wins a prize; goal and prize unspecified"]);
-  addI18n("role-trader", "es", "TRADER", "Traders interesados en mercados onchain y el torneo presencial en vivo.", ["Cuatro plazas en el torneo", "El primero en alcanzar la meta gana un premio; meta y premio por definir"]);
-  addI18n("role-trader", "zh", "交易者", "关注链上市场与现场交易锦标赛的参与者。", ["四个参赛席位", "最先达到目标者获奖；目标与奖品待定"]);
+  add("role-trader", "05 / TRADER", "TRADER", "Traders interested in onchain markets and the live on-site tournament.", ["Four tournament slots", "Same starting capital; highest profit at the end wins the prize; liquidation means DSQ"]);
+  addI18n("role-trader", "es", "TRADER", "Traders interesados en mercados onchain y el torneo presencial en vivo.", ["Cuatro plazas en el torneo", "Mismo capital inicial; la mayor ganancia al final gana el premio; liquidación significa DSQ"]);
+  addI18n("role-trader", "zh", "交易者", "关注链上市场与现场交易锦标赛的参与者。", ["四个参赛席位", "相同起始资金；结束时盈利最高者获奖；被清算即 DSQ"]);
 
   var roles = {
     artist: [
@@ -70,7 +70,7 @@
   });
 
   add("program-system", "06 / PROGRAM", "Create. Automate. Invest.", "Start with your own business: create AI content, automate workflows and build agents, then invest profits onchain.", ["Your business supplies the brief", "AI creates useful content", "Agents and integrations automate work", "Onchain investing, a live tournament, gallery and secondary social time"]);
-  add("program-art", "06 / ART", "Onchain art", "Curated onchain work connects national and international artists with on-site creators.", ["National and international onchain artists", "Works curated into the venue gallery", "On-site creators and their output"]);
+  add("program-art", "06 / ART", "Onchain art", "Curated onchain work connects local and international artists with on-site creators.", ["Local and international onchain artists", "Works curated into the venue gallery", "On-site creators and their output"]);
   add("program-music", "06 / SOCIAL", "After party", "Secondary social time after the workshop.", ["Meet the community", "Continue conversations", "Social time after practical learning"]);
   add("program-live", "06 / LIVE SYSTEMS", "Live systems", "Venue screens, mapping and live data states let the room respond to participation.", ["Venue-provided screens", "Video mapping", "Mission and reward states", "Livestream-ready visual moments"]);
   add("program-hospitality", "06 / HOSPITALITY", "Hospitality", "Beer and canapés support the pace of the night and can enter a validated reward flow.", ["Guest care", "Timed service moments", "Potential sponsor-linked serve", "Staff-assisted redemption"]);
@@ -179,7 +179,7 @@
   add("ask-registration", "04 / VENUE ASK", "One guest list", "Registration runs on Luma through the organizers, with approval.", ["A single approval-based list","The venue does not run a parallel registration list","Event communications are issued by the organizers"]);
   add("close-event-partner", "11 / THE NIGHT", "AI Creative Club", "One night at Casa Luma, December 4, 2026: a Creative AI community workshop for artists and creative practitioners, and then the night.", [
     "100 seated for the workshop, then 120 more for the night",
-    "Live trading tournament: four traders; first to reach the goal wins a prize. Goal and prize unspecified.",
+    "Live trading tournament: four traders start with the same capital; the highest profit at the end wins the prize; a liquidated trader is disqualified.",
     "Creative AI activity, digital art and AI Creative Club micro-activations",
     "Complimentary hospitality funded by AXIS",
   ]);
@@ -195,7 +195,7 @@
   add("budget-integration", "16 / 15%", "Integration", "This portion connects the sponsor function to the event's visual and technical systems.", ["Mission and reward interface", "Screen placement at point of use", "Livestream integration where relevant", "Reporting setup"]);
 
   var formatDefinitions = {
-    "format-gallery": ["Onchain gallery", "Curated national and international onchain artists alongside on-site creators.", ["National onchain artists", "International onchain artists", "On-site creators", "Post-event documentation"]],
+    "format-gallery": ["Onchain gallery", "Curated local and international onchain artists alongside on-site creators.", ["Local onchain artists", "International onchain artists", "On-site creators", "Post-event documentation"]],
     "format-djs": ["After party", "Secondary social time after the workshop.", ["Meet the community", "Share outputs", "Continue conversations"]],
     "format-mapping": ["Video mapping", "Projected imagery extends the AI Creative Club visual world through Casa Luma.", ["Venue-specific treatment", "Brand integration where useful", "Live visual moments", "Capture-ready output"]],
     "format-led": ["Venue screens", "Venue screens carry mapping, onboarding, missions and reward states.", ["Program visuals", "Guest instructions", "Participation states", "Sponsor function"]],
@@ -229,7 +229,7 @@
     "system-validate": ["Validate", "Staff or the interaction system confirms the action actually happened."],
     "system-reward": ["Unlock the drink or reward", "A distinct redemption state opens only after validation; the benefit can be hospitality or another category-appropriate reward."],
     "system-score": ["Update score and tier", "The verified action changes the guest's live participation state."],
-    "system-leaderboard": ["Track the live tournament", "Track four trader slots in the on-site competition; first to reach the goal wins a prize. Goal and prize are unspecified."],
+    "system-leaderboard": ["Track the live tournament", "Track four trader slots in the on-site competition; the highest profit at the end wins the prize and a liquidated trader is disqualified."],
     "system-capture": ["Capture the experience", "AXIS documents the activation, product use and room context."],
     "system-report": ["Deliver the report", "The brand receives verified participation, redemption and media outputs after the event."],
   };
@@ -264,9 +264,9 @@
 
 
   add("program-warmup", "03 / PROGRAM 01", "Arrival + introductions", "Guests meet before the practical program.", ["Meet other business owners and creators", "Prepare a real business task", "Facilitator-led orientation"]);
-  add("program-liveCoding", "03 / PROGRAM 02", "Live trading tournament", "Four traders compete live on site; the first to reach the goal wins a prize.", ["4 traders", "First to reach the goal wins the prize", "Goal, prize, platform and trader names are not specified"]);
+  add("program-liveCoding", "03 / PROGRAM 02", "Live trading tournament", "Four traders compete live on site, all night, from the same starting capital; the highest profit at the end wins the prize.", ["4 traders, same starting capital", "Highest profit at the end wins the prize", "Liquidated = DSQ", "Prize, platform and trader names to be announced"]);
   add("program-closing", "03 / PROGRAM 03", "After party", "Social time follows the workshop as a secondary part of the event.", ["Continue workshop conversations", "Share outputs and meet the community"]);
-  add("program-gallery", "03 / PROGRAM 04", "Onchain art gallery", "Curated national and international onchain artists exhibit alongside creators working on site.", ["National and international onchain artists", "Creators making work on site", "Artist selection and individual names remain to be confirmed"]);
+  add("program-gallery", "03 / PROGRAM 04", "Onchain art gallery", "Curated local and international onchain artists exhibit alongside creators working on site.", ["Local and international onchain artists", "Creators making work on site", "Artist selection and individual names remain to be confirmed"]);
   add("community-status", "09 / STATUS", "Mexico City | Art and Creative AI", "Independent AI Creative Club programming at Casa Luma, organized by AXIS and the creative community and produced by AXIS.", [
     "December 4, 2026, Mexico City",
     "100 seated workshop attendees, 17:30 to 21:00",
@@ -279,15 +279,15 @@
   add("creative-ai-code", "10 / CREATIVE AI", "Automate business workflows", "Turn a real business task into a structured AI workflow.", ["Define business inputs, steps and expected outputs", "Delegate repeatable work to AI", "Review the result and keep human control"]);
   add("creative-ai-live-creation", "10 / CREATIVE AI", "Agent integrations", "Connect a structured workflow to useful business tools.", ["Define a bounded task", "Demonstrate the action and review results", "Save workflow and integration notes"]);
   add("creative-ai-community", "10 / CREATIVE AI", "Invest profits onchain", "The journey runs from your own business to AI content, workflow automation and agents, then investing profits onchain.", ["Explore onchain investing, risk and evaluation of claims; no promised profits or returns", "The trading tournament is a separate live competition, not proof of investment results"]);
-  add("flow-guest", "08 / FLOW 01", "TASK", "Choose a real art or business task.", ["Write a clear brief"]);
-  add("flow-creative-ai", "08 / FLOW 02", "AI TOOLS", "Choose tools for the task.", ["Anana: image creation, editing and video", "Sunshine Vendetta: AI assistants and agent integrations"]);
-  add("flow-creative-ai-code", "08 / FLOW 03", "WORKFLOW", "Build a repeatable sequence.", ["Create, edit and extend content", "Structure a task and connect an agent action"]);
-  add("flow-code", "08 / FLOW 04", "RESULT", "Produce an observable result.", ["Export a visual or video", "Demonstrate the agent task"]);
-  add("flow-rules", "08 / FLOW 05", "REVIEW", "Check the result against the brief.", ["Inspect accuracy and creative intent", "Iterate before calling the task complete"]);
-  add("flow-render", "08 / FLOW 06", "SAVE", "Keep work for after the session.", ["Save outputs and prompts", "Keep workflow and integration notes"]);
-  add("flow-screens", "08 / FLOW 07", "SHARE", "Show evidence of work.", ["Share an output with consent", "Explain what changed through iteration"]);
+  add("flow-guest", "08 / FLOW 01", "TASK", "Choose a real art or business task.", ["Create: define a visual brief", "Automate: pick a real task to automate"]);
+  add("flow-creative-ai", "08 / FLOW 02", "AI TOOLS", "Choose tools for the task.", ["Create with Anana: generate a base image", "Automate with Sunshine Vendetta: work with an AI assistant"]);
+  add("flow-creative-ai-code", "08 / FLOW 03", "WORKFLOW", "Build a repeatable sequence.", ["Create: refine the image, explore image-to-video and export the asset", "Automate: run structured steps and watch the agent act"]);
+  add("flow-code", "08 / FLOW 04", "RESULT", "Produce an observable result.", ["Create: export a usable asset", "Automate: observe an agent tool action"]);
+  add("flow-rules", "08 / FLOW 05", "REVIEW", "Proof of learning: attendance and completion are separate.", ["Attendance: watch a demo", "Completion: show a result", "Show an image or edit, or run and check a workflow"]);
+  add("flow-render", "08 / FLOW 06", "SAVE", "Keep work for after the session.", ["Create: keep the asset and the instructions behind it", "Automate: save a reusable workflow"]);
+  add("flow-screens", "08 / FLOW 07", "SHARE", "Show evidence of work.", ["Share an output with consent", "Repeat one meaningful action on your own"]);
   add("flow-fallback", "08 / FLOW 08", "FALLBACK", "Keep progress if tools fail.", ["Use a prepared example", "Save partial results", "Continue with facilitator guidance"]);
-  add("budget-hospitality", "09 / INVESTS", "Drinks + hospitality", "Complimentary drink allocation and guest hospitality, funded by AXIS.", ["The amount is private", "The allocation is real and funded"]);
+  add("budget-hospitality", "09 / INVESTS", "Drinks + hospitality", "AXIS funds soft drinks for the workshop room and a complimentary drink allocation for guests.", ["Soft drinks bought from the venue bar for the workshop", "Complimentary guest drink allocation for the night", "Not unlimited, and never required in order to participate", "Subject to venue service rules"]);
   add("budget-production", "09 / INVESTS", "Production", "Technical systems, staffing and event operation.", ["Operated by AXIS"]);
   add("budget-audiovisual", "09 / INVESTS", "Audiovisual", "Visual rendering, routing, display integration and event output.", ["Connects to venue-provided screens"]);
   add("budget-programming", "09 / INVESTS", "Programming", "Workshop, live trading tournament and secondary after party.", ["Tournament goal, prize and participant details remain unspecified"]);
@@ -297,13 +297,13 @@
   add("zone-entry", "14 / ZONE", "Entry", "Arrival into the AI Creative Club environment.", ["Conceptual until venue layout is confirmed"]);
   add("zone-checkin", "14 / ZONE", "Check-in / discovery", "Guests establish their role and access state.", ["NFC / QR entry into the activity system"]);
   add("zone-social", "14 / ZONE", "Social / hospitality", "Bar, circulation and the complimentary drink allocation.", ["Shared with venue clientele where agreed"]);
-  add("zone-digital-art", "14 / ZONE", "Onchain art", "National and international artists alongside creators working on site.", ["Curated works within the space"]);
+  add("zone-digital-art", "14 / ZONE", "Onchain art", "Local and international artists alongside creators working on site.", ["Curated works within the space"]);
   add("zone-warmup", "14 / ZONE", "Arrival + introductions", "Community arrival and workshop preparation.", ["Meet the people in the room"]);
   add("zone-creative-ai", "14 / ZONE", "Creative AI activity", "The Creative AI interaction point on the floor.", ["Discovery, activation and interaction"]);
   add("zone-creative-ai-access", "14 / ZONE", "Creative tools + resources", "Onboarding into Creative tools and resources.", ["Entitlement confirmed by the organizers"]);
   add("zone-activations", "14 / ZONE", "AI Creative Club micro-activities", "Small partner experiences distributed across the room.", ["Never a booth farm"]);
   add("zone-visuals", "14 / ZONE", "Live visuals", "Real-time graphics across the venue display network.", ["Routed and operated by AXIS"]);
-  add("zone-live-coding", "14 / ZONE", "Trading tournament", "On-site live competition for four traders.", ["First to reach the goal wins the prize; goal and prize unspecified"]);
+  add("zone-live-coding", "14 / ZONE", "Trading tournament", "On-site live competition for four traders.", ["Same starting capital; highest profit at the end wins; liquidated = DSQ"]);
   add("zone-closing", "14 / ZONE", "After party", "Secondary social time after the workshop.", ["Continue conversations"]);
   add("zone-media", "14 / ZONE", "Media", "Photography, video and documentation.", ["Directed by AXIS"]);
   add("zone-venue-clients", "14 / ZONE", "Venue client flow", "Existing venue clientele can remain and participate where agreed.", ["Not treated as outsiders", "Subject to capacity, security and venue operations"]);
@@ -316,7 +316,9 @@
   add("format-screens", "06 / FORMAT", "Venue screens", "Venue-provided display infrastructure carries the visual system.", ["Required, not optional", "Used by the whole event, not only Creative AI"]);
   add("format-hospitality", "06 / FORMAT", "Complimentary hospitality", "AXIS funds a complimentary drink allocation for the night.", ["Amount set according to brand budget", "Subject to venue service rules"]);
   add("format-creative-ai", "06 / FORMAT", "Creative AI activity", "Guests explore a range of creative AI tools and make art together.", ["Every attendee gets to connect with like-minded individuals", "The Creative AI community has a place to connect with old and new members"]);
-  add("format-live-coding", "06 / FORMAT", "Trading tournament", "Four traders compete live on site; the first to reach the goal wins a prize.", ["4 traders competing on site", "Goal and prize details remain to be defined"]);
+  add("format-live-coding", "06 / FORMAT", "Trading tournament", "Four traders compete live on site while the event runs; the highest profit at the end wins the prize.", ["4 traders, same starting capital", "Liquidated = DSQ", "Prize details to be announced"]);
+  add("format-audience", "06 / FORMAT", "Expected audience", "100 seated for the workshop, then 120 more join for the night.", ["Artists, content creators, businesses, founders, builders, collectors and curious newcomers", "Seated workshop first, social night after", "Expected audience, not the venue's total capacity"]);
+  add("format-invest", "06 / FORMAT", "Investing profits onchain", "The last step of the journey: explore how profits from what you create and automate can be invested onchain.", ["Beginner-friendly introduction", "Connects create and automate to invest", "Educational overview, not financial advice"]);
   add("format-activations", "06 / FORMAT", "AI Creative Club micro-activations", "Small partner experiences distributed through the night.", ["Small, distributed, interactive and integrated"]);
 
   (function () {
@@ -359,7 +361,7 @@
     ]);
 
     addI18n("program-system", "es", "Crea. Automatiza. Invierte.", "Partir de tu negocio: crear contenido con IA, automatizar flujos y construir agentes, e invertir ganancias onchain.", ["Tu negocio aporta el brief", "La IA crea contenido útil", "Agentes e integraciones automatizan trabajo", "Inversión onchain, torneo en vivo, galería y convivencia secundaria"]);
-    addI18n("program-art", "es", "Arte onchain", "Obras onchain curadas conectan artistas nacionales e internacionales con creadores en el sitio.", ["Artistas onchain nacionales e internacionales", "Obras curadas en la galería", "Creadores en el sitio y sus resultados"]);
+    addI18n("program-art", "es", "Arte onchain", "Obras onchain curadas conectan artistas locales e internacionales con creadores en el sitio.", ["Artistas onchain locales e internacionales", "Obras curadas en la galería", "Creadores en el sitio y sus resultados"]);
     addI18n("program-music", "es", "After party", "Encuentro social secundario después del workshop.", ["Conocer a la comunidad", "Continuar conversaciones", "Convivencia después del aprendizaje práctico"]);
     addI18n("program-live", "es", "Sistemas en vivo", "Las pantallas del venue, el mapping y los estados de datos en vivo permiten que el espacio responda a la participación.", [
       "Pantallas proporcionadas por el venue",
@@ -481,7 +483,7 @@
     ]);
 
     addI18n("program-system", "zh", "创作。自动化。投资。", "从自己的业务出发：用 AI 创作内容、自动化工作流与智能体，再将利润投入链上。", ["自己的业务提供需求", "AI 创作实用内容", "智能体与集成自动化工作", "链上投资、现场比赛、画廊与次要社交"]);
-    addI18n("program-art", "zh", "链上艺术", "策展链上作品连接国内外艺术家与现场创作者。", ["国内外链上艺术家", "场地画廊中的策展作品", "现场创作者与成果"]);
+    addI18n("program-art", "zh", "链上艺术", "策展链上作品连接本地与国际艺术家与现场创作者。", ["本地与国际链上艺术家", "场地画廊中的策展作品", "现场创作者与成果"]);
     addI18n("program-music", "zh", "课后派对", "工作坊之后的次要社交环节。", ["认识社区成员", "继续交流", "实操学习之后的社交"]);
     addI18n("program-live", "zh", "现场系统", "场地屏幕、投影映射和实时数据状态让全场对参与作出响应。", [
       "场地提供的屏幕",
@@ -640,14 +642,14 @@
     addI18n("time-after", "es", "Convertir la actividad en evidencia", "AXIS organiza la participación verificada y la documentación en un informe listo para el patrocinador.", ["Reporte de desempeño", "Entrega de contenido", "Análisis de cohortes", "Sin resultados financieros inventados"]);
     addI18n("time-continuation", "es", "Se requieren pantallas del venue", "La infraestructura de pantallas provista por el venue es un requisito indispensable, no una opción. Las pantallas sostienen todo el sistema audiovisual, no solo a Creative AI.", [
       "Arte digital de AI Creative Club y gráficos en tiempo real",
-      "Torneo de trading en vivo: cuatro traders; el primero en alcanzar la meta gana el premio. Meta y premio por definir.",
+      "Torneo de trading en vivo: cuatro traders con el mismo capital inicial; la mayor ganancia al final gana el premio; quien sea liquidado queda descalificado.",
       "Onboarding de Creative AI, instrucciones y resultados de Workflow automation",
       "Actividades de AI Creative Club, información del evento y momentos para medios",
       "AXIS controla el ruteo; diferentes pantallas pueden mostrar diferentes estados",
     ]);
     addI18n("close-event-partner", "es", "AI Creative Club", "Una noche en Casa Luma, 4 de diciembre de 2026: un workshop de la comunidad de Creative AI para la comunidad artística, y después la noche.", [
       "100 sentados en el workshop, y después 120 más para la noche",
-      "Torneo de trading en vivo: cuatro traders; el primero en alcanzar la meta gana el premio. Meta y premio por definir.",
+      "Torneo de trading en vivo: cuatro traders con el mismo capital inicial; la mayor ganancia al final gana el premio; quien sea liquidado queda descalificado.",
       "Actividad de Creative AI, arte digital y micro-activaciones de AI Creative Club",
       "Hospitalidad de cortesía financiada por AXIS",
     ]);
@@ -674,14 +676,14 @@
     addI18n("time-after", "zh", "将参与转化为证明", "AXIS 将经过验证的参与数据与相关记录整理成可直接交付赞助方的报告。", ["效果报告", "内容交付", "群组分析", "不虚构财务成果"]);
     addI18n("time-continuation", "zh", "场地屏幕是硬性要求", "场地提供的显示设备基础设施是硬性要求，而非可选项。这些屏幕承载的是整套视听系统，而不仅仅是 Creative AI。", [
       "AI Creative Club 数字艺术与实时图形",
-      "四位交易者现场参赛，最先达到目标者获奖。目标与奖品待定。",
+      "四位交易者以相同起始资金现场参赛；结束时盈利最高者获奖；被清算者取消资格。",
       "Creative AI 引导流程、操作说明与 Workflow automation 的输出内容",
       "科技周相关活动、活动信息与媒体时刻",
       "AXIS 负责信号路由；不同屏幕可以呈现不同状态",
     ]);
     addI18n("close-event-partner", "zh", "AI Creative Club", "2026年12月4日，Casa Luma 的这一夜：一场为艺术领域举办的 Creative AI 社区工作坊，随后是当晚。", [
       "预计 120 名 AI Creative Club 宾客",
-      "四位交易者现场参赛，最先达到目标者获奖。目标与奖品待定。",
+      "四位交易者以相同起始资金现场参赛；结束时盈利最高者获奖；被清算者取消资格。",
       "Creative AI 互动活动、数字艺术与科技周微互动",
       "由 AXIS 提供的免费款待",
     ]);
@@ -699,9 +701,9 @@
 
   (function () {
     addI18n("program-warmup", "es", "Llegada + presentaciones", "Los invitados se conocen antes del programa práctico.", ["Conocer a dueños de negocio y creadores", "Preparar una tarea real del negocio", "Orientación con los facilitadores"]);
-    addI18n("program-liveCoding", "es", "Torneo de trading en vivo", "Cuatro traders compiten presencialmente; el primero en alcanzar la meta gana un premio.", ["4 traders", "El primero en alcanzar la meta gana el premio", "Meta, premio, plataforma y nombres de traders sin especificar"]);
+    addI18n("program-liveCoding", "es", "Torneo de trading en vivo", "Cuatro traders compiten presencialmente toda la noche con el mismo capital inicial; la mayor ganancia al final gana el premio.", ["4 traders, mismo capital inicial", "La mayor ganancia al final gana el premio", "Liquidado = DSQ", "Premio, plataforma y nombres de traders por anunciar"]);
     addI18n("program-closing", "es", "After party", "La convivencia sigue al workshop como parte secundaria del evento.", ["Continuar conversaciones del workshop", "Compartir resultados y conocer a la comunidad"]);
-    addI18n("program-gallery", "es", "Galería de arte onchain", "Artistas onchain nacionales e internacionales curados junto a creadores que trabajan en el sitio.", ["Artistas onchain nacionales e internacionales", "Creadores produciendo en el sitio", "Selección y nombres individuales por confirmar"]);
+    addI18n("program-gallery", "es", "Galería de arte onchain", "Artistas onchain locales e internacionales curados junto a creadores que trabajan en el sitio.", ["Artistas onchain locales e internacionales", "Creadores produciendo en el sitio", "Selección y nombres individuales por confirmar"]);
 
     addI18n("workshop-session", "es", "Crea. Automatiza. Invierte.", "De 17:30 a 21:00, 100 asistentes sentados. Dos módulos de 70 minutos parten de tu negocio: crear contenido y automatizar flujos, antes de explorar cómo invertir ganancias onchain.", ["100 asistentes, cada uno con silla", "Anana: contenido con IA para tu propio negocio", "Sunshine Vendetta: automatización, agentes IA e integraciones", "Acción, iteración, evidencia y resultados para llevar; asistir no equivale a completar"]);
     addI18n("workshop-afterparty", "es", "After party", "Después del workshop de 17:30 a 21:00, el programa social secundario corre de 21:30 a 02:00.", ["120 invitados adicionales desde las 21:30", "Los asistentes al workshop pueden quedarse", "Convivencia después del programa práctico", "El bar atiende durante todo el evento"]);
@@ -721,16 +723,16 @@
     addI18n("creative-ai-live-creation", "es", "Integraciones de agentes", "Conectar un flujo estructurado a herramientas útiles del negocio.", ["Definir una tarea acotada", "Demostrar la acción y revisar el resultado", "Guardar notas del flujo y la integración"]);
     addI18n("creative-ai-community", "es", "Invertir ganancias onchain", "El recorrido parte de tu negocio: crear contenido con IA, automatizar flujos y agentes, e invertir ganancias onchain.", ["Explorar inversión onchain, riesgos y evaluación de afirmaciones; sin promesas de ganancias o rendimiento", "El torneo de trading es una competencia independiente, no evidencia de resultados de inversión"]);
 
-    addI18n("flow-guest", "es", "TAREA", "Elegir una tarea real de arte o negocio.", ["Escribir un brief claro"]);
-    addI18n("flow-creative-ai", "es", "HERRAMIENTAS IA", "Elegir herramientas para tu negocio.", ["Anana: creación, edición y video", "Sunshine Vendetta: asistentes IA e integraciones de agentes"]);
-    addI18n("flow-creative-ai-code", "es", "FLUJO", "Construir una secuencia repetible.", ["Crear, editar y extender contenido", "Estructurar la tarea y conectar una acción del agente"]);
-    addI18n("flow-code", "es", "RESULTADO", "Producir un resultado observable.", ["Exportar una imagen o video", "Demostrar la tarea del agente"]);
-    addI18n("flow-rules", "es", "REVISAR", "Comparar el resultado con el brief.", ["Revisar precisión e intención creativa", "Iterar antes de dar la tarea por terminada"]);
-    addI18n("flow-render", "es", "GUARDAR", "Conservar el trabajo para después.", ["Guardar resultados y prompts", "Conservar notas del flujo y la integración"]);
-    addI18n("flow-screens", "es", "COMPARTIR", "Mostrar evidencia del trabajo.", ["Compartir un resultado con consentimiento", "Explicar qué cambió al iterar"]);
+    addI18n("flow-guest", "es", "TAREA", "Elegir una tarea real de arte o negocio.", ["Crear: definir un brief visual", "Automatizar: elegir una tarea real para automatizar"]);
+    addI18n("flow-creative-ai", "es", "HERRAMIENTAS IA", "Elegir herramientas para la tarea.", ["Crear con Anana: generar una imagen base", "Automatizar con Sunshine Vendetta: trabajar con un asistente IA"]);
+    addI18n("flow-creative-ai-code", "es", "FLUJO", "Construir una secuencia repetible.", ["Crear: refinar la imagen, explorar imagen a video y exportar el recurso", "Automatizar: ejecutar pasos estructurados y ver al agente actuar"]);
+    addI18n("flow-code", "es", "RESULTADO", "Producir un resultado observable.", ["Crear: exportar un recurso utilizable", "Automatizar: observar una acción de herramienta del agente"]);
+    addI18n("flow-rules", "es", "REVISAR", "Prueba de aprendizaje: asistir y completar son cosas distintas.", ["Asistencia: ver una demo", "Completar: mostrar un resultado", "Mostrar una imagen o edición, o ejecutar y revisar un flujo"]);
+    addI18n("flow-render", "es", "GUARDAR", "Conservar el trabajo para después.", ["Crear: conservar el recurso y las instrucciones detrás", "Automatizar: guardar un flujo reutilizable"]);
+    addI18n("flow-screens", "es", "COMPARTIR", "Mostrar evidencia del trabajo.", ["Compartir un resultado con consentimiento", "Repetir por tu cuenta una acción significativa"]);
     addI18n("flow-fallback", "es", "ALTERNATIVA", "Conservar el avance si fallan herramientas.", ["Usar un ejemplo preparado", "Guardar el resultado parcial", "Continuar con apoyo del facilitador"]);
 
-    addI18n("budget-hospitality", "es", "Bebidas + hospitalidad", "Asignación de bebidas de cortesía y hospitalidad para los invitados, financiada por AXIS.", ["El monto es privado", "La asignación es real y está financiada"]);
+    addI18n("budget-hospitality", "es", "Bebidas + hospitalidad", "AXIS financia refrescos para el workshop y una asignación de bebidas de cortesía para los invitados.", ["Refrescos comprados en la barra del venue para el workshop", "Asignación de bebidas de cortesía para la noche", "No es ilimitada, y nunca es requisito para participar", "Sujeta a las reglas de servicio del venue"]);
     addI18n("budget-production", "es", "Producción", "Sistemas técnicos, personal y operación del evento.", ["Operado por AXIS"]);
     addI18n("budget-audiovisual", "es", "Audiovisual", "Renderizado visual, ruteo, integración de pantallas y salida del evento.", ["Se conecta a las pantallas provistas por el venue"]);
     addI18n("budget-programming", "es", "Programación", "Workshop, torneo de trading en vivo y after party secundario.", ["Meta, premio y participantes del torneo sin especificar"]);
@@ -741,13 +743,13 @@
     addI18n("zone-entry", "es", "Entrada", "Llegada al entorno de AI Creative Club.", ["Conceptual hasta que se confirme el layout del venue"]);
     addI18n("zone-checkin", "es", "Check-in / descubrimiento", "Los invitados establecen su rol y su estado de acceso.", ["Entrada por NFC / QR al sistema de actividades"]);
     addI18n("zone-social", "es", "Social / hospitalidad", "Bar, circulación y la asignación de bebidas de cortesía.", ["Compartido con la clientela del venue donde se acuerde"]);
-    addI18n("zone-digital-art", "es", "Arte onchain", "Artistas nacionales e internacionales junto a creadores en el sitio.", ["Obras curadas dentro del espacio"]);
+    addI18n("zone-digital-art", "es", "Arte onchain", "Artistas locales e internacionales junto a creadores en el sitio.", ["Obras curadas dentro del espacio"]);
     addI18n("zone-warmup", "es", "Llegada + presentaciones", "Llegada de la comunidad y preparación del workshop.", ["Conocer a quienes están en la sala"]);
     addI18n("zone-creative-ai", "es", "Actividad Creative AI", "El punto de interacción con Creative AI en la pista.", ["Descubrimiento, activación e interacción"]);
     addI18n("zone-creative-ai-access", "es", "Acceso + recursos creativos", "Onboarding hacia el acceso y los recursos creativos.", ["Beneficio confirmado por los organizadores"]);
     addI18n("zone-activations", "es", "Micro-actividades de AI Creative Club", "Pequeñas experiencias de socios distribuidas por la sala.", ["Nunca una granja de stands"]);
     addI18n("zone-visuals", "es", "Visuales en vivo", "Gráficos en tiempo real a través de la red de pantallas del venue.", ["Ruteados y operados por AXIS"]);
-    addI18n("zone-live-coding", "es", "Torneo de trading", "Competencia presencial en vivo entre cuatro traders.", ["El primero en alcanzar la meta gana el premio; meta y premio sin especificar"]);
+    addI18n("zone-live-coding", "es", "Torneo de trading", "Competencia presencial en vivo entre cuatro traders.", ["Mismo capital inicial; gana la mayor ganancia al final; liquidado = DSQ"]);
     addI18n("zone-closing", "es", "After party", "Convivencia secundaria después del workshop.", ["Continuar conversaciones"]);
     addI18n("zone-media", "es", "Media", "Fotografía, video y documentación.", ["Dirigido por AXIS"]);
     addI18n("zone-venue-clients", "es", "Flujo de clientes del venue", "La clientela existente del venue puede permanecer y participar donde se acuerde.", ["No tratados como forasteros", "Sujeto a capacidad, seguridad y operaciones del venue"]);
@@ -762,13 +764,15 @@
     addI18n("format-screens", "es", "Pantallas del venue", "La infraestructura de pantallas provista por el venue sostiene el sistema visual.", ["Requerida, no opcional", "Utilizada por todo el evento, no solo por Creative AI"]);
     addI18n("format-hospitality", "es", "Hospitalidad de cortesía", "AXIS financia una asignación de bebidas de cortesía para la noche.", ["Monto definido según el presupuesto de la marca", "Sujeto a las normas de servicio del venue"]);
     addI18n("format-creative-ai", "es", "Actividad Creative AI", "Los invitados descubren Creative AI, activan su acceso e interactúan en vivo.", ["Cada asistente puede conectar con personas afines", "La comunidad de Creative AI tiene un espacio para conectar a miembros antiguos y nuevos"]);
-    addI18n("format-live-coding", "es", "Torneo de trading", "Cuatro traders compiten en vivo y presencialmente; el primero en alcanzar la meta gana un premio.", ["4 traders en el sitio", "Meta y premio por definir"]);
+    addI18n("format-live-coding", "es", "Torneo de trading", "Cuatro traders compiten en vivo mientras sucede el evento; la mayor ganancia al final gana el premio.", ["4 traders, mismo capital inicial", "Liquidado = DSQ", "Detalles del premio por anunciar"]);
+    addI18n("format-audience", "es", "Audiencia esperada", "100 personas sentadas en el workshop y 120 más se suman por la noche.", ["Artistas, creadores de contenido, negocios, fundadores, builders, coleccionistas y personas curiosas", "Primero el workshop con asiento, después la noche social", "Audiencia esperada, no el aforo total del venue"]);
+    addI18n("format-invest", "es", "Invertir ganancias onchain", "El último paso del recorrido: explorar cómo invertir onchain las ganancias de lo que creas y automatizas.", ["Introducción para principiantes", "Conecta crear y automatizar con invertir", "Panorama educativo, no asesoría financiera"]);
     addI18n("format-activations", "es", "Micro-activaciones de AI Creative Club", "Pequeñas experiencias de socios distribuidas a lo largo de la noche.", ["Pequeñas, distribuidas, interactivas e integradas"]);
 
     addI18n("program-warmup", "zh", "入场与介绍", "实操课程前认识其他参与者。", ["结识经营者与创作者", "准备真实业务任务", "导师引导入门"]);
-    addI18n("program-liveCoding", "zh", "现场交易锦标赛", "四位交易者现场参赛，最先达到目标者赢得奖品。", ["4 位交易者", "最先达到目标者获奖", "目标、奖品、平台与参赛者姓名尚未指定"]);
+    addI18n("program-liveCoding", "zh", "现场交易锦标赛", "四位交易者整晚现场参赛，起始资金相同；结束时盈利最高者赢得奖品。", ["4 位交易者，相同起始资金", "结束时盈利最高者获奖", "被清算 = DSQ", "奖品、平台与参赛者姓名待公布"]);
     addI18n("program-closing", "zh", "课后派对", "工作坊之后的社交是活动的次要部分。", ["继续课程讨论", "分享成果并认识社区成员"]);
-    addI18n("program-gallery", "zh", "链上艺术画廊", "策展呈现国内外链上艺术家，以及现场创作者的作品。", ["国内与国际链上艺术家", "现场创作者及其作品", "具体艺术家名单与选择待确认"]);
+    addI18n("program-gallery", "zh", "链上艺术画廊", "策展呈现本地与国际链上艺术家，以及现场创作者的作品。", ["本地与国际链上艺术家", "现场创作者及其作品", "具体艺术家名单与选择待确认"]);
 
     addI18n("workshop-session", "zh", "创作。自动化。投资。", "17:30 至 21:00，100 个座位。两个各 70 分钟的入门模块从自己的业务出发：创作内容、自动化工作流，再探索如何将利润投入链上。", ["100 位参与者，人人有座", "Anana：为自己的业务用 AI 创作内容", "Sunshine Vendetta：工作流自动化、AI 智能体与集成", "行动、迭代、成果证明与课后成果；出席不等于完成"]);
     addI18n("workshop-afterparty", "zh", "课后派对", "17:30 至 21:00 工作坊结束后，次要社交环节从 21:30 持续至 02:00。", ["21:30 起另有 120 位宾客", "工作坊参与者可以留下", "实操之后的社交交流", "酒吧全程服务宾客"]);
@@ -788,16 +792,16 @@
     addI18n("creative-ai-live-creation", "zh", "智能体集成", "将结构化工作流连接到业务实用工具。", ["定义范围明确的任务", "演示操作并检查结果", "保存工作流与集成笔记"]);
     addI18n("creative-ai-community", "zh", "将利润投入链上", "从自己的业务出发：用 AI 创作内容、自动化工作流与智能体，再将利润投入链上。", ["了解链上投资、风险与信息评估；不承诺利润或回报", "交易锦标赛是独立现场比赛，并非投资成果证明"]);
 
-    addI18n("flow-guest", "zh", "任务", "选择真实的艺术或商业任务。", ["写下清晰的需求"]);
-    addI18n("flow-creative-ai", "zh", "AI 工具", "按业务任务选择工具。", ["Anana：图像创作、编辑与视频", "Sunshine Vendetta：AI 助手与智能体集成"]);
-    addI18n("flow-creative-ai-code", "zh", "工作流", "建立可重复的步骤。", ["创作、编辑并延展内容", "结构化任务并连接智能体操作"]);
-    addI18n("flow-code", "zh", "成果", "产出可观察的结果。", ["导出图像或视频", "演示智能体任务"]);
-    addI18n("flow-rules", "zh", "检查", "对照需求检查成果。", ["检查准确性与创作意图", "迭代后再判定完成"]);
-    addI18n("flow-render", "zh", "保存", "保留课后使用的工作。", ["保存成果与提示词", "保留工作流及集成笔记"]);
-    addI18n("flow-screens", "zh", "分享", "展示实践证据。", ["经同意分享成果", "解释迭代带来的改变"]);
+    addI18n("flow-guest", "zh", "任务", "选择真实的艺术或商业任务。", ["创作：确定视觉需求", "自动化：选择一项要自动化的真实任务"]);
+    addI18n("flow-creative-ai", "zh", "AI 工具", "按任务选择工具。", ["与 Anana 创作：生成基础图像", "与 Sunshine Vendetta 自动化：使用 AI 助手"]);
+    addI18n("flow-creative-ai-code", "zh", "工作流", "建立可重复的步骤。", ["创作：优化图像、尝试图像转视频并导出素材", "自动化：执行结构化步骤，观察智能体执行"]);
+    addI18n("flow-code", "zh", "成果", "产出可观察的结果。", ["创作：导出可用的素材", "自动化：观察智能体执行工具操作"]);
+    addI18n("flow-rules", "zh", "检查", "学习证明：出席与完成是两回事。", ["出席：观看演示", "完成：展示成果", "展示一张图像或编辑，或运行并检查一个工作流"]);
+    addI18n("flow-render", "zh", "保存", "保留课后使用的工作。", ["创作：保留素材及其背后的指令", "自动化：保存可复用的工作流"]);
+    addI18n("flow-screens", "zh", "分享", "展示实践证据。", ["经同意分享成果", "独立重复一项有意义的操作"]);
     addI18n("flow-fallback", "zh", "备用方案", "工具失败时保留进度。", ["使用预备示例", "保存阶段成果", "在导师协助下继续"]);
 
-    addI18n("budget-hospitality", "zh", "饮品 + 款待", "由 AXIS 出资提供的免费饮品配额与宾客款待。", ["具体金额保密", "配额真实且资金已到位"]);
+    addI18n("budget-hospitality", "zh", "饮品 + 款待", "AXIS 为工作坊提供软饮，并为宾客提供免费饮品配额。", ["为工作坊从场地吧台购买软饮", "当晚宾客免费饮品配额", "配额并非无限，且从不作为参与的前提条件", "须遵循场地服务规则"]);
     addI18n("budget-production", "zh", "制作", "技术系统、人员配置与活动运营。", ["由 AXIS 负责运营"]);
     addI18n("budget-audiovisual", "zh", "视听", "视觉渲染、路由、屏幕整合与活动输出。", ["接入场地提供的屏幕"]);
     addI18n("budget-programming", "zh", "节目安排", "工作坊、现场交易锦标赛与次要课后派对。", ["比赛目标、奖品与参赛者信息尚未指定"]);
@@ -808,13 +812,13 @@
     addI18n("zone-entry", "zh", "入口", "进入 AI Creative Club 环境的入场区域。", ["在场地布局确认前仅为概念方案"]);
     addI18n("zone-checkin", "zh", "签到 / 发现", "宾客在此确立自己的角色与访问状态。", ["通过 NFC / QR 进入活动系统"]);
     addI18n("zone-social", "zh", "社交 / 款待", "酒吧、动线以及免费饮品配额。", ["在双方同意的范围内与场地原有客群共享"]);
-    addI18n("zone-digital-art", "zh", "链上艺术", "国内外艺术家与现场创作者。", ["空间中的策展作品"]);
+    addI18n("zone-digital-art", "zh", "链上艺术", "本地与国际艺术家与现场创作者。", ["空间中的策展作品"]);
     addI18n("zone-warmup", "zh", "入场与介绍", "社区入场与工作坊准备。", ["认识现场参与者"]);
     addI18n("zone-creative-ai", "zh", "Creative AI 活动区", "现场的 Creative AI 互动点。", ["发现、开通与互动"]);
     addI18n("zone-creative-ai-access", "zh", "创作工具 + 资源", "引导宾客开通 创作工具与资源。", ["权益由主办方确认"]);
     addI18n("zone-activations", "zh", "科技周微互动", "分布在场地各处的小型合作伙伴体验。", ["绝非展位集市"]);
     addI18n("zone-visuals", "zh", "实时视觉", "遍布场地显示网络的实时图形。", ["由 AXIS 负责路由与运营"]);
-    addI18n("zone-live-coding", "zh", "交易锦标赛", "四位交易者的现场比赛。", ["最先达到目标者获奖；目标与奖品尚未指定"]);
+    addI18n("zone-live-coding", "zh", "交易锦标赛", "四位交易者的现场比赛。", ["相同起始资金；结束时盈利最高者获奖；被清算 = DSQ"]);
     addI18n("zone-closing", "zh", "课后派对", "工作坊之后的次要社交。", ["继续交流"]);
     addI18n("zone-media", "zh", "媒体", "摄影、视频与记录。", ["由 AXIS 统筹指导"]);
     addI18n("zone-venue-clients", "zh", "场地客群动线", "在双方同意的范围内，场地原有客群可以留下并参与其中。", ["不会被视为外人", "仍需遵守场地的容量、安保与运营安排"]);
@@ -829,12 +833,14 @@
     addI18n("format-screens", "zh", "场地屏幕", "由场地提供的显示设备基础设施承载整个视觉系统。", ["为必需项，而非可选项", "供整场活动使用，而不仅限于 Creative AI"]);
     addI18n("format-hospitality", "zh", "免费款待", "AXIS 为当晚提供免费饮品配额。", ["金额根据品牌预算确定", "须遵守场地的服务规定"]);
     addI18n("format-creative-ai", "zh", "Creative AI 活动", "宾客发现 Creative AI、开通访问权限并进行实时互动。", ["每位参与者都能与志同道合的人建立联系", "Creative AI 社区在这里为新老成员提供交流的空间"]);
-    addI18n("format-live-coding", "zh", "交易锦标赛", "四位交易者现场竞赛，最先达到目标者获奖。", ["4 位交易者现场参赛", "目标与奖品待定"]);
+    addI18n("format-live-coding", "zh", "交易锦标赛", "四位交易者在活动进行期间现场竞赛；结束时盈利最高者获奖。", ["4 位交易者，相同起始资金", "被清算 = DSQ", "奖品详情待公布"]);
+    addI18n("format-audience", "zh", "预计观众", "工作坊 100 个座位，晚间另有 120 人加入。", ["艺术家、内容创作者、商家、创始人、开发者、收藏家与好奇的新参与者", "先是有座位的工作坊，之后是社交夜晚", "预计观众，而非场地总容量"]);
+    addI18n("format-invest", "zh", "将利润投入链上", "旅程的最后一步：探索如何将你创作与自动化所得的利润投入链上。", ["面向初学者的入门介绍", "将创作与自动化连接到投资", "教育性概览，不构成投资建议"]);
     addI18n("format-activations", "zh", "科技周微激活活动", "贯穿整晚、分布各处的小型合作伙伴体验。", ["小规模、分散、互动且融入整体"]);
   })();
 
   (function () {
-    addI18n("format-gallery", "es", "Galería onchain", "Artistas nacionales e internacionales curados junto a creadores en el sitio.", ["Artistas onchain nacionales", "Artistas onchain internacionales", "Creadores en el sitio", "Documentación post-evento"]);
+    addI18n("format-gallery", "es", "Galería onchain", "Artistas locales e internacionales curados junto a creadores en el sitio.", ["Artistas onchain locales", "Artistas onchain internacionales", "Creadores en el sitio", "Documentación post-evento"]);
     addI18n("format-djs", "es", "After party", "Convivencia secundaria después del workshop.", ["Conocer a la comunidad", "Compartir resultados", "Continuar conversaciones"]);
     addI18n("format-mapping", "es", "Video mapping", "Las imágenes proyectadas extienden el universo visual de AI Creative Club a través de Casa Luma.", ["Tratamiento específico para el venue", "Integración de marca cuando resulte útil", "Momentos visuales en vivo", "Resultado listo para captura"]);
     addI18n("format-led", "es", "Pantallas del venue", "Las pantallas del venue muestran el mapping, la incorporación de invitados, las actividades y los estados de recompensa.", ["Visuales del programa", "Instrucciones para invitados", "Estados de participación", "Función de patrocinio"]);
@@ -853,7 +859,7 @@
     addI18n("format-flow", "es", "Flujo de recompensa", "El sistema del patrocinador sigue una secuencia legible de registro, acción, validación, bebida o recompensa, y reporte.", ["Registro", "Acción", "Validación", "Desbloquear la bebida validada o la recompensa correspondiente a la categoría", "Reporte"]);
     addI18n("format-report", "es", "Reporte post-evento", "El reporte final integra los registros de participación, recompensas, medios y asistencia.", ["Acciones calificadas", "Cumplimiento de actividades", "Canje de recompensas", "Medios y asistencia"]);
 
-    addI18n("format-gallery", "zh", "链上画廊", "策展国内外艺术家与现场创作者的作品。", ["国内链上艺术家", "国际链上艺术家", "现场创作者", "活动后的记录归档"]);
+    addI18n("format-gallery", "zh", "链上画廊", "策展本地与国际艺术家与现场创作者的作品。", ["本地链上艺术家", "国际链上艺术家", "现场创作者", "活动后的记录归档"]);
     addI18n("format-djs", "zh", "课后派对", "工作坊之后的次要社交环节。", ["认识社区成员", "分享成果", "继续交流"]);
     addI18n("format-mapping", "zh", "光雕投影", "投影影像将 AI Creative Club 的视觉世界延伸至整个 Casa Luma。", ["针对场地定制的处理方式", "在适当时机融入品牌元素", "现场视觉时刻", "可直接用于拍摄记录的成片"]);
     addI18n("format-led", "zh", "场地屏幕", "场地屏幕承载投影内容、宾客引导、活动与奖励状态的展示。", ["节目视觉内容", "宾客指引", "参与状态", "赞助功能"]);
@@ -886,7 +892,7 @@
     addI18n("system-validate", "es", "Validar", "El personal o el sistema de interacción confirma que la acción realmente ocurrió.", systemDetailsEs);
     addI18n("system-reward", "es", "Desbloquea la bebida o recompensa", "Un estado de canje distinto se abre solo después de la validación; el beneficio puede ser hospitalidad u otra recompensa adecuada a la categoría.", systemDetailsEs);
     addI18n("system-score", "es", "Actualizar puntaje y nivel", "La acción verificada cambia el estado de participación en vivo del invitado.", systemDetailsEs);
-    addI18n("system-leaderboard", "es", "Seguir el torneo en vivo", "Seguir a cuatro traders en la competencia presencial: el primero en alcanzar la meta gana un premio. Meta y premio por definir.", systemDetailsEs);
+    addI18n("system-leaderboard", "es", "Seguir el torneo en vivo", "Seguir a cuatro traders en la competencia presencial: la mayor ganancia al final gana el premio y quien sea liquidado queda descalificado.", systemDetailsEs);
     addI18n("system-capture", "es", "Capturar la experiencia", "AXIS documenta la activación, el uso del producto y el contexto del espacio.", systemDetailsEs);
     addI18n("system-report", "es", "Entregar el informe", "La marca recibe la participación verificada, los canjes y los productos de medios después del evento.", systemDetailsEs);
 
@@ -899,7 +905,7 @@
     addI18n("system-validate", "zh", "验证", "工作人员或互动系统确认该操作确实发生。", systemDetailsZh);
     addI18n("system-reward", "zh", "解锁饮品或奖励", "只有验证通过后才会开启独立的兑换状态；奖励可以是餐饮款待，也可以是其他符合类别的奖励。", systemDetailsZh);
     addI18n("system-score", "zh", "更新积分和等级", "验证过的操作会改变宾客的实时参与状态。", systemDetailsZh);
-    addI18n("system-leaderboard", "zh", "跟踪现场交易比赛", "跟踪四个现场参赛席位，最先达到目标者获奖。目标与奖品尚未指定。", systemDetailsZh);
+    addI18n("system-leaderboard", "zh", "跟踪现场交易比赛", "跟踪四个现场参赛席位：结束时盈利最高者获奖，被清算者取消资格。", systemDetailsZh);
     addI18n("system-capture", "zh", "记录体验", "AXIS 记录激活环节、产品使用情况和现场氛围。", systemDetailsZh);
     addI18n("system-report", "zh", "提交报告", "活动结束后，品牌方会收到经过验证的参与、兑换和媒体成果数据。", systemDetailsZh);
 
@@ -1084,8 +1090,80 @@
     "req-screens": "screen", "req-inputs": "grid", "req-internet": "globe", "req-audio": "sound",
     "req-power": "power", "req-bar": "drink",
     "format-screens": "screen", "format-hospitality": "drink", "format-creative-ai": "spark", "format-live-coding": "code",
-    "format-activations": "grid",
+    "format-activations": "grid", "format-audience": "guests", "format-invest": "grid",
   };
+
+  // --- Current deck copy ---------------------------------------------------
+  // Popups reachable from the slides that run. These replace copy written for
+  // the earlier sponsor-activation format (missions, sponsor moments, scores).
+  function set(id, en, es, zh) {
+    var code = concepts[id] ? concepts[id].code : "";
+    add(id, code, en[0], en[1], en[2]);
+    addI18n(id, "es", es[0], es[1], es[2]);
+    addI18n(id, "zh", zh[0], zh[1], zh[2]);
+  }
+
+  set("role-agent",
+    ["AGENT", "People building or using AI agents to take real work off their plate.", ["Connect an agent to a real business task in the workshop", "Meet builders working on agent workflows"]],
+    ["AGENTE", "Personas que construyen o usan agentes de IA para quitarse trabajo real de encima.", ["Conectar un agente a una tarea real de negocio en el workshop", "Conocer a builders que trabajan en flujos con agentes"]],
+    ["AI 智能体", "构建或使用 AI 智能体来分担实际工作的人。", ["在工作坊中把智能体连接到真实的业务任务", "结识正在搭建智能体工作流的开发者"]]);
+  set("format-stream",
+    ["Live recording", "Selected live moments are recorded without replacing the in-room experience.", ["Live program capture", "Recording archive", "Post-event excerpts"]],
+    ["Grabación en vivo", "Momentos selectos en vivo se graban sin reemplazar la experiencia dentro del venue.", ["Captura del programa en vivo", "Archivo de grabación", "Extractos post-evento"]],
+    ["现场录制", "精选的现场时刻会被录制，但不会取代现场体验本身。", ["现场节目录制", "录制存档", "活动后精选片段"]]);
+  set("format-photo",
+    ["Photography", "Photography documents the room, artists and guests.", ["Event archive", "Workshop and tournament coverage", "Guest interaction", "Selects for post-event delivery"]],
+    ["Fotografía", "La fotografía documenta el espacio, los artistas y los invitados.", ["Archivo del evento", "Cobertura del workshop y del torneo", "Interacción con invitados", "Selección para la entrega post-evento"]],
+    ["摄影", "摄影记录现场空间、艺术家与宾客。", ["活动存档", "工作坊与比赛记录", "宾客互动", "活动后交付的精选图片"]]);
+  set("format-aftermovie",
+    ["Aftermovie", "Edited recap material turns the night into a concise post-event story.", ["Event atmosphere", "Program highlights", "Delivery-ready edit"]],
+    ["Aftermovie", "El material editado convierte la noche en una historia breve post-evento.", ["Atmósfera del evento", "Momentos destacados del programa", "Edición lista para entrega"]],
+    ["活动回顾片", "剪辑而成的回顾影片将当晚浓缩为一段简洁的活动后故事。", ["活动氛围", "节目精彩片段", "可直接交付的剪辑成片"]]);
+  set("format-passport",
+    ["Activity passport", "An optional digital record of what each guest does during the night.", ["Completed activities", "Verified participation", "Links to post-event collectibles", "No wallet or club account required"]],
+    ["Pasaporte de actividades", "Un registro digital opcional de lo que cada invitado hace durante la noche.", ["Actividades completadas", "Participación verificada", "Se vincula a los coleccionables post-evento", "No requiere wallet ni cuenta del club"]],
+    ["活动护照", "可选的数字记录，记下每位宾客当晚参与的内容。", ["已完成的活动", "经验证的参与", "关联活动后收藏品", "无需钱包或俱乐部账户"]]);
+  set("format-nfc",
+    ["Optional NFC / QR", "A tap or scan opens workshop resources; facilitators also offer direct or shared-screen access.", ["Tap or scan", "Opens resources on your phone", "Staff fallback"]],
+    ["NFC / QR opcional", "Un toque o escaneo abre los recursos del workshop; los facilitadores también ofrecen acceso directo o en pantalla compartida.", ["Toque o escaneo", "Abre los recursos en tu teléfono", "Respaldo del staff"]],
+    ["可选 NFC / QR", "轻触或扫描即可打开工作坊资源；导师也提供直接访问或共享屏幕。", ["轻触或扫描", "在手机上打开资源", "工作人员现场支持"]]);
+  set("presenting-system",
+    ["Sponsorship", "US$2,500 per sponsorship brand for the AI Creative Club night at Casa Luma.", ["One night: December 4, 2026, Mexico City", "Supports the program, production, hospitality and media listed below", "Full package details on request"]],
+    ["Patrocinio", "US$2,500 por marca patrocinadora para la noche de AI Creative Club en Casa Luma.", ["Una noche: 4 de diciembre de 2026, Ciudad de México", "Apoya el programa, la producción, la hospitalidad y los medios listados abajo", "Detalles completos del paquete a solicitud"]],
+    ["赞助", "AI Creative Club 在 Casa Luma 的当晚活动，每个赞助品牌 US$2,500。", ["一晚：2026 年 12 月 4 日，墨西哥城", "支持下方列出的节目、制作、款待与媒体", "完整方案详情可应要求提供"]]);
+  set("budget-media",
+    ["Media", "Photography, video and event documentation.", ["Photo folder and aftermovie material", "Short clips after the event"]],
+    ["Medios", "Fotografía, video y documentación del evento.", ["Carpeta de fotos y material para el aftermovie", "Clips cortos después del evento"]],
+    ["媒体", "摄影、视频与活动记录。", ["照片文件夹与回顾片素材", "活动后的短视频片段"]]);
+  set("budget-operations",
+    ["Operations", "Guest flow, technical crew and venue coordination.", ["Operated by AXIS on site"]],
+    ["Operaciones", "Flujo de invitados, equipo técnico y coordinación con el venue.", ["Operado por AXIS en sitio"]],
+    ["运营", "宾客动线、技术团队与场地协调。", ["由 AXIS 现场运营"]]);
+  set("budget-programming",
+    ["Programming", "Workshop, live trading tournament and after party.", ["Prize and trader names to be announced"]],
+    ["Programación", "Workshop, torneo de trading en vivo y after party.", ["Premio y nombres de traders por anunciar"]],
+    ["节目安排", "工作坊、现场交易锦标赛与课后派对。", ["奖品与交易者姓名待公布"]]);
+  set("budget-creative-ai",
+    ["Creative AI workshop", "The seated hands-on workshop: content creation with Anana, AI workflows with Sunshine Vendetta.", ["17:30 to 21:00, 100 seated"]],
+    ["Workshop de Creative AI", "El workshop práctico con asiento: creación de contenido con Anana y flujos de IA con Sunshine Vendetta.", ["De 17:30 a 21:00, 100 sentados"]],
+    ["Creative AI 工作坊", "有座位的实操工作坊：与 Anana 一起创作内容，与 Sunshine Vendetta 一起搭建 AI 工作流。", ["17:30 至 21:00，100 个座位"]]);
+  set("budget-activations",
+    ["Club activations", "Small partner experiences integrated throughout the night.", ["Small, distributed and digital-first"]],
+    ["Activaciones del club", "Pequeñas experiencias de socios integradas a lo largo de la noche.", ["Pequeñas, distribuidas y con enfoque digital"]],
+    ["俱乐部激活活动", "贯穿整晚的小型合作伙伴体验。", ["小规模、分散且以数字为先"]]);
+
+  // Labels follow the slide each popup opens from in the running deck.
+  var budgetIds = ["budget-hospitality", "budget-production", "budget-audiovisual", "budget-programming", "budget-creative-ai", "budget-digital-art", "budget-activations", "budget-media", "budget-operations"];
+  Object.keys(concepts).forEach(function (id) {
+    var c = concepts[id];
+    if (/^role-/.test(id)) c.code = "06 / " + c.title.toUpperCase();
+    else if (/^format-/.test(id)) c.code = "07 / EVENT FORMAT";
+    else if (budgetIds.indexOf(id) !== -1) c.code = "11 / BUDGET";
+  });
+  concepts["presenting-system"].code = "11 / SPONSORSHIP";
+  ["flow-guest", "flow-creative-ai", "flow-creative-ai-code", "flow-rules", "flow-render", "flow-screens"].forEach(function (id, i) {
+    concepts[id].code = "09 / STEP 0" + (i + 1);
+  });
 
   window.AI_CREATIVE_CLUB_CONCEPTS = concepts;
   window.AI_CREATIVE_CLUB_CONCEPT_I18N = CONCEPT_I18N;
