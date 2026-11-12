@@ -348,22 +348,13 @@
       orbitalSvg("cover-orbit") + star("cover-star") +
     '</section>',
 
-    '<section class="fr-slide fr-idea" data-slide-id="idea" data-scene="idea-frost" data-label="The idea">' +
+    '<section class="fr-slide fr-idea" data-slide-id="idea" data-scene="structured" data-label="The idea">' +
       frameTop("02", "idea") +
       '<div class="fr-reading fr-reading-left">' +
         '<span class="eyebrow" data-reveal data-i18n="idea.kicker">THE IDEA</span>' +
         '<h2 data-reveal data-i18n="idea.title">CREATE. AUTOMATE. INVEST.</h2>' +
-        '<div class="idea-triptych" data-reveal><span data-i18n="idea.human">Create content for your business.</span><span data-i18n="idea.machine">Build agents. Automate workflows.</span><span data-i18n="idea.public">Invest business profits onchain.</span></div>' +
+        '<div class="idea-triptych" data-reveal><span data-i18n="idea.human">Create content for your business or for you as content creator.</span><span data-i18n="idea.machine">Build agents to work for you. Automate their workflows so you get more money.</span><span data-i18n="idea.public">Invest business profits onchain.</span></div>' +
       '</div>' +
-      '<div class="idea-visual">' +
-        '<div class="idea-plate">' +
-          '<img src="/aicreativeclub/learning-outcomes.svg" alt="Create a useful asset, delegate a task, and explore agent integrations">' +
-          '<div class="dither-screen" aria-hidden="true"></div>' + orbitalSvg("idea-orbit") +
-          '<i class="idea-frost" aria-hidden="true"></i>' +
-          '<canvas class="idea-decode" aria-hidden="true"></canvas>' +
-        '</div>' +
-        '<blockquote class="idea-engraved"><p data-i18n="idea.code">Create content for your business. Automate work with AI agents. Explore investing profits onchain.</p></blockquote>' +
-      '</div>' + star("idea-star") +
     '</section>',
 
     '<section class="fr-slide fr-event" data-slide-id="event" data-scene="event-map" data-label="The event">' +

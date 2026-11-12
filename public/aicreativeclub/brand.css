@@ -1,4 +1,16 @@
 /* AI Creative Club visual layer. The source deck owns all layout geometry. */
+.fr-idea .fr-reading-left { left: 92px; right: 92px; top: 180px; width: auto; }
+.fr-idea h2 { max-width: none; }
+.fr-idea .idea-triptych { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 80px; border: 0; }
+.fr-idea .idea-triptych > span { padding: 34px; min-height: 370px; border: 1px solid rgba(201,160,91,.35); font: 400 32px/1.45 var(--sans); letter-spacing: 0; text-transform: none; }
+.fr-idea .idea-triptych > span::before { display: block; margin-bottom: 40px; color: #C9A05B; font: 400 36px/1 var(--display); }
+.fr-idea .idea-triptych > span:nth-child(1)::before { content: "01"; }
+.fr-idea .idea-triptych > span:nth-child(2)::before { content: "02"; }
+.fr-idea .idea-triptych > span:nth-child(3)::before { content: "03"; }
+body.fr-vertical .fr-idea .fr-reading-left { left: 60px; right: 60px; top: 190px; }
+body.fr-vertical .fr-idea .idea-triptych { grid-template-columns: 1fr; margin-top: 70px; gap: 28px; }
+body.fr-vertical .fr-idea .idea-triptych > span { min-height: 0; padding: 42px; font-size: 38px; line-height: 1.4; }
+body.fr-vertical .fr-idea .idea-triptych > span::before { margin-bottom: 24px; font-size: 42px; }
 :root {
   --heritage-navy: #000000;
   --heritage-midnight: #000000;
