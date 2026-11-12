@@ -360,12 +360,12 @@
       '</div>' +
       '<div class="idea-visual">' +
         '<div class="idea-plate">' +
-          '<img src="/bgfr.png" alt="Winged classical figure among clouds and streams of binary code">' +
+          '<img src="/aicreativeclub/learning-outcomes.svg" alt="Create a useful asset, delegate a task, and explore agent integrations">' +
           '<div class="dither-screen" aria-hidden="true"></div>' + orbitalSvg("idea-orbit") +
           '<i class="idea-frost" aria-hidden="true"></i>' +
           '<canvas class="idea-decode" aria-hidden="true"></canvas>' +
         '</div>' +
-        '<blockquote class="idea-engraved"><p data-i18n="idea.code">Anana leads content creation. Sunshine Vendetta leads agents and workflows. Make an asset, complete a task and explore new tools together.</p></blockquote>' +
+        '<blockquote class="idea-engraved"><p data-i18n="idea.code">Make an asset. Delegate a real task. Explore agent integrations. Leave with a result you can use again.</p></blockquote>' +
       '</div>' + star("idea-star") +
     '</section>',
 
@@ -392,7 +392,7 @@
       '<div class="workshop-heading" data-decode>' +
         '<span class="eyebrow" data-reveal data-i18n="workshop.kicker">CREATIVE AI COMMUNITY EVENT</span>' +
         '<h2 data-reveal data-i18n="workshop.title">CREATE CONTENT. MAKE AI WORK.</h2>' +
-        '<p data-reveal data-i18n="workshop.copy">Anana guides art and business content: base image, Midjourney edit and video extension. Sunshine Vendetta guides GPT/Claude workflows and ElizaOS agents. Make an asset, complete a task and keep reusable instructions. Blockchain investment literacy joins the discussion; the social program follows at 21:00.</p>' +
+        '<p data-reveal data-i18n="workshop.copy">Anana guides art and business content: base image, image editing and video extension. Sunshine Vendetta guides AI workflows and agent integrations. Make an asset, complete a task and keep reusable instructions. Blockchain investment literacy joins the discussion; the social program follows at 21:00.</p>' +
       '</div>' +
       '<div class="workshop-phases" data-decode>' +
         conceptNode("workshop-phase", "workshop-session",
@@ -413,6 +413,15 @@
       '<div class="workshop-asks" data-decode>' +
         '<span data-i18n="workshop.asksLabel">WHAT THE WORKSHOP NEEDS FROM THE VENUE</span>' +
         '<div>' + workshopAsks.map(askItem).join("") + '</div>' +
+      '</div>' +
+    '</section>',
+
+    '<section class="fr-slide club-speakers" data-slide-id="speakers" data-scene="structured" data-label="Speakers">' +
+      frameTop("05", "speakers") +
+      '<div class="speakers-heading" data-reveal><span class="eyebrow" data-i18n="speakers.kicker">THE SPEAKERS</span><h2 data-i18n="speakers.title">TWO PRACTICES. SHARED POSSIBILITIES.</h2></div>' +
+      '<div class="speakers-grid" data-reveal>' +
+        '<article class="speaker-card"><span class="speaker-index">01 / CREATE</span><h3>Anana</h3><span class="eyebrow" data-i18n="speakers.anana.role">ART + BUSINESS CONTENT</span><p data-i18n="speakers.anana.copy">Turn a visual brief into a base image, refine the result and explore video. Create assets for artistic practice, products and business communication.</p><div class="speaker-outcome" data-i18n="speakers.anana.result">TAKE HOME / A usable visual asset and the creative instructions behind it.</div></article>' +
+        '<article class="speaker-card"><span class="speaker-index">02 / DELEGATE</span><h3>Sunshine Vendetta</h3><span class="eyebrow" data-i18n="speakers.sunshine.role">AGENT INTEGRATIONS</span><p data-i18n="speakers.sunshine.copy">Define a real task, organize its inputs and steps, and connect agents to useful tools. Review what runs, improve the result and keep reusable instructions.</p><div class="speaker-outcome" data-i18n="speakers.sunshine.result">TAKE HOME / A completed task and a reusable workflow specification.</div></article>' +
       '</div>' +
     '</section>',
 
@@ -473,8 +482,8 @@
       frameTop("08", "creative-ai-to-screen") +
       '<div class="reward-heading"><span class="eyebrow" data-reveal>SYSTEM DESIGN</span><h2 data-reveal>MAKE SOMETHING. DELEGATE SOMETHING.</h2></div>' +
       '<div class="reward-compare">' +
-        '<div class="giveaway-card" data-decode><span>WHAT YOU CREATE</span><ul><li>Define a visual brief</li><li>Generate a base image</li><li>Refine in Midjourney</li><li>Explore image-to-video</li><li>Export a usable asset</li></ul></div>' +
-        '<div class="axis-system-card" data-decode><span>WHAT YOU DELEGATE</span><ul><li>Choose a real task</li><li>Work with GPT or Claude</li><li>Run structured steps</li><li>Observe an ElizaOS tool action</li><li>Save a reusable workflow</li></ul></div>' +
+        '<div class="giveaway-card" data-decode><span>WHAT YOU CREATE</span><ul><li>Define a visual brief</li><li>Generate a base image</li><li>Refine the image</li><li>Explore image-to-video</li><li>Export a usable asset</li></ul></div>' +
+        '<div class="axis-system-card" data-decode><span>WHAT YOU DELEGATE</span><ul><li>Choose a real task</li><li>Work with an AI assistant</li><li>Run structured steps</li><li>Observe an agent tool action</li><li>Save a reusable workflow</li></ul></div>' +
       '</div>' +
       '<div class="reward-cycle" data-crystallize>' +
         '<div class="reward-cycle-hub">' + axisMark("gold") + '<b>LIVE</b><p>See a result, try it, adapt it, verify it and take it home.</p></div>' +
@@ -553,8 +562,8 @@
           conceptNode("creative-ai-marker", "creative-ai-access", '<span>ANANA / CONTENT CREATION</span>', "Creative tools for attendees") +
           conceptNode("creative-ai-marker", "creative-ai-resources", '<span>ART + BUSINESS ASSETS</span>', "Workshop resources") +
           conceptNode("creative-ai-marker", "creative-ai-ai", '<span>SUNSHINE / AI AGENTS</span>', "the hands-on session") +
-          conceptNode("creative-ai-marker", "creative-ai-code", '<span>GPT + CLAUDE WORKFLOWS</span>', "Creative coding") +
-          conceptNode("creative-ai-marker", "creative-ai-live-creation", '<span>ELIZAOS INTEGRATION</span>', "live creation") +
+          conceptNode("creative-ai-marker", "creative-ai-code", '<span>WORKFLOW DESIGN</span>', "Creative coding") +
+          conceptNode("creative-ai-marker", "creative-ai-live-creation", '<span>AGENT INTEGRATIONS</span>', "live creation") +
           conceptNode("creative-ai-marker", "creative-ai-community", '<span>BLOCKCHAIN INVESTMENT</span>', "community interaction") +
         '</div>' +
       '</div>' +
@@ -595,7 +604,7 @@
       '<div class="past-events-grid" data-reveal>' + [
         ["01", "Audience gathered for a past AXIS event in a gallery lounge", "IN THE ROOM"],
         ["02", "A performer operating DJ equipment at a past event", "MUSIC"],
-        ["03", "Guests together in front of the Claude for Music presentation", "CONNECTIONS"],
+        ["03", "Guests together in front of the past AI and music presentation", "CONNECTIONS"],
         ["04", "Three guests meeting during a past gallery gathering", "COMMUNITY"],
         ["05", "A presenter demonstrating tools with a microphone and laptops", "LIVE DEMOS"],
         ["06", "A seated audience listening to a speaker beneath the projection screen", "DISCUSSIONS"],

@@ -7,7 +7,7 @@ const EVENT_JSON_LD = {
   startDate: "2026-12-04T16:00:00-06:00",
   endDate: "2026-12-05T02:00:00-06:00",
   description:
-    "AI Creative Club Level 01 at Casa Luma on December 4, 2026: art and business content creation with Anana, GPT/Claude workflows and ElizaOS agents with Sunshine Vendetta, and complementary blockchain investment literacy. The workshop runs from 17:00 to 21:00 within the existing 16:00 to 02:00 event window, with cultural programming, gallery and social participation.",
+    "AI Creative Club Level 01 at Casa Luma on December 4, 2026: art and business content creation with Anana, AI workflows and agent integrations with Sunshine Vendetta, and complementary blockchain investment literacy. The workshop runs from 17:00 to 21:00 within the existing 16:00 to 02:00 event window, with cultural programming, gallery and social participation.",
   location: {
     "@type": "Place",
     name: "Casa Luma",
@@ -143,10 +143,10 @@ export default function AiCreativeClubPlanContent() {
           <h2 id="future-creative-ai">Content creation, agents and workflows</h2>
           <p>
             Two beginner-friendly tracks share the seated workshop. Anana guides
-            a visual brief, GPT or another base-image tool, Midjourney editing and
+            a visual brief, a base-image tool, image editing and
             a video extension for art, product imagery and business content.
-            Sunshine Vendetta guides a real task, GPT/Claude workflow, review and
-            reuse, plus an ElizaOS agent demonstration. Participants keep an image
+            Sunshine Vendetta guides a real task, AI workflow, review and
+            reuse, plus an agent integration demonstration. Participants keep an image
             or edit and reusable task instructions. Blockchain investment literacy
             complements the two practical tracks. No prior technical knowledge is required.
           </p>

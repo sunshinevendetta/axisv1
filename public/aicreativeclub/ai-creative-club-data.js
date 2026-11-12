@@ -31,7 +31,7 @@
       Object.freeze({ id: "budget-production", title: "PRODUCTION", note: "Technical systems, staffing and event operation." }),
       Object.freeze({ id: "budget-audiovisual", title: "AUDIOVISUAL", note: "Visual rendering, routing, display integration and event output." }),
       Object.freeze({ id: "budget-programming", title: "PROGRAMMING", note: "Warm-up DJ, Live Coding and Closing DJ." }),
-      Object.freeze({ id: "budget-creative-ai", title: "CREATIVE AI WORKSHOP", note: "Anana: art and business content, GPT images, Midjourney and video. Sunshine Vendetta: GPT/Claude workflows and ElizaOS agents." }),
+      Object.freeze({ id: "budget-creative-ai", title: "CREATIVE AI WORKSHOP", note: "Anana: art and business content, image creation, editing and video. Sunshine Vendetta: AI workflows and agent integrations." }),
       Object.freeze({ id: "budget-digital-art", title: "DIGITAL ART", note: "AI Creative Club artworks, visual content and interactive states." }),
       Object.freeze({ id: "budget-activations", title: "CLUB ACTIVATIONS", note: "Small partner experiences integrated throughout the night." }),
       Object.freeze({ id: "budget-media", title: "MEDIA", note: "Photography, video and event documentation." }),

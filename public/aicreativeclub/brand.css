@@ -133,6 +133,20 @@ body.fr-vertical .cover-data::before {
 }
 
 /* A single archive slide; the existing slides retain their own geometry. */
+.speakers-heading { position: absolute; top: 160px; left: 92px; right: 92px; }
+.speakers-heading h2 { max-width: 1500px; font-size: 68px; }
+.speakers-grid { position: absolute; inset: 390px 92px 100px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; }
+.speaker-card { min-width: 0; padding: 44px; border: 1px solid rgba(201,160,91,.35); background: #080808; }
+.speaker-index { color: #BDBDBD; font: 400 16px/1.4 var(--sans); letter-spacing: .12em; }
+#stage .speaker-card h3 { margin: 34px 0 24px; font-size: 54px; line-height: 1.05; }
+.speaker-card p { margin-top: 26px; font-size: 26px; line-height: 1.5; }
+.speaker-outcome { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.18); font: 400 21px/1.5 var(--sans); color: #FFFFFF; }
+body.fr-vertical .speakers-heading { top: 190px; left: 60px; right: 60px; }
+body.fr-vertical .speakers-grid { inset: 540px 60px 110px; grid-template-columns: 1fr; grid-template-rows: repeat(2, minmax(0, 1fr)); }
+body.fr-vertical #stage .speaker-card h3 { font-size: 62px; }
+body.fr-vertical .speaker-card p { font-size: 34px; }
+body.fr-vertical .speaker-outcome { font-size: 29px; }
+
 .past-events-heading {
   position: absolute;
   left: 92px;

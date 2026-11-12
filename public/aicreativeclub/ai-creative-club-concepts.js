@@ -162,7 +162,7 @@
     "AXIS controls routing; different displays can show different states",
   ]);
 
-  add("workshop-session", "04 / WORKSHOP", "Two practical Level 01 modules", "17:00 to 21:00, 100 seated attendees: two beginner modules of 70 minutes each, plus preparation, iteration and sharing.", ["100 attendees, each with a chair", "Anana: GPT image base -> Midjourney editing -> video extension for art and business content", "Sunshine Vendetta: GPT/Claude structured workflow -> ElizaOS agent integration", "Action -> iterate -> proof -> take-home; attendance alone is not completion"]);
+  add("workshop-session", "04 / WORKSHOP", "Two practical Level 01 modules", "17:00 to 21:00, 100 seated attendees: two beginner modules of 70 minutes each, plus preparation, iteration and sharing.", ["100 attendees, each with a chair", "Anana: AI image tools base -> image editing -> video extension for art and business content", "Sunshine Vendetta: AI structured workflow -> agent integrations", "Action -> iterate -> proof -> take-home; attendance alone is not completion"]);
   add("workshop-afterparty", "04 / AFTER PARTY", "The after party", "The workshop closes at 21:00 and the night opens at 21:00, with no gap between them, running to 02:00.", ["The floor opens at 21:00 for 120 further guests","Workshop attendees who stay on are on top of that number","Warm-up, live coding and closing DJ follow","The bar serves both populations throughout"]);
   add("workshop-doors", "04 / RUN OF SHOW", "Check-in", "Registration is approval-based and runs on Luma through the organizers.", ["One list, held by the organizers","No parallel venue list to reconcile at the door","Event communications are issued by the organizers"]);
   add("workshop-reset", "04 / RUN OF SHOW", "The room turns over", "At 21:00 the seated workshop clears and the floor opens straight into the night.", ["Chairs come out, the floor opens","Handled by AXIS production with venue staff","The screen switches from workshop to the visual system"]);
@@ -283,14 +283,14 @@
     "Host venue: Casa Luma, Tinala 145, Roma Norte, CDMX",
     "Registration on Luma, approval-based, run by the organizers",
   ]);
-  add("creative-ai-access", "10 / CREATIVE AI", "Anana / content creation", "A 70-minute beginner module creates art and business content.", ["GPT image base -> Midjourney editing -> video extension", "Tool access, costs and proposed partner benefits remain subject to confirmation"]);
+  add("creative-ai-access", "10 / CREATIVE AI", "Anana / content creation", "A 70-minute beginner module creates art and business content.", ["AI image tools base -> image editing -> video extension", "Tool access, costs and proposed partner benefits remain subject to confirmation"]);
   add("creative-ai-resources", "10 / CREATIVE AI", "Art + business assets", "Keep useful outputs and a reusable workflow.", ["Take home the base image, edited version and video extension", "Save prompts and iteration evidence"]);
-  add("creative-ai-ai", "10 / CREATIVE AI", "Sunshine Vendetta / AI agents", "A 70-minute beginner module connects structured GPT/Claude workflows with ElizaOS.", ["Define inputs, tasks and expected outputs", "Connect an ElizaOS agent to a bounded task", "Iterate, demonstrate the result and save the workflow"]);
-  add("creative-ai-code", "10 / CREATIVE AI", "GPT + Claude workflows", "Delegate a real task through a structured workflow.", ["Define input, steps and expected output", "Use GPT/Claude to structure the work", "Review and save the result for reuse"]);
-  add("creative-ai-live-creation", "10 / CREATIVE AI", "ElizaOS integration", "Connect a structured workflow to an agent action.", ["Define one bounded task", "Demonstrate the action and review the result", "Save workflow and integration notes"]);
+  add("creative-ai-ai", "10 / CREATIVE AI", "Sunshine Vendetta / AI agents", "A 70-minute beginner module connects structured AI workflows with AI agent.", ["Define inputs, tasks and expected outputs", "Connect an AI agent to a bounded task", "Iterate, demonstrate the result and save the workflow"]);
+  add("creative-ai-code", "10 / CREATIVE AI", "AGENT INTEGRATIONS", "Delegate a real task through a structured workflow.", ["Define input, steps and expected output", "Use AI to structure the work", "Review and save the result for reuse"]);
+  add("creative-ai-live-creation", "10 / CREATIVE AI", "AGENT INTEGRATIONS", "Connect a structured workflow to an agent action.", ["Define one bounded task", "Demonstrate the action and review the result", "Save workflow and integration notes"]);
   add("creative-ai-community", "10 / CREATIVE AI", "Blockchain investment literacy", "Complementary discussion develops blockchain investment literacy.", ["Understand blockchain, risks and evaluation of claims; no investment recommendations or return promises", "No mandatory wallet; demonstrate learning with an output, not attendance"]);
   add("flow-guest", "08 / FLOW 01", "TASK", "Choose a real art or business task.", ["Write a clear brief"]);
-  add("flow-creative-ai", "08 / FLOW 02", "AI TOOLS", "Choose tools for the task.", ["Anana: GPT image, Midjourney and video", "Sunshine Vendetta: GPT/Claude and ElizaOS"]);
+  add("flow-creative-ai", "08 / FLOW 02", "AI TOOLS", "Choose tools for the task.", ["Anana: image creation, editing and video", "Sunshine Vendetta: AI assistants and agent integrations"]);
   add("flow-creative-ai-code", "08 / FLOW 03", "WORKFLOW", "Build a repeatable sequence.", ["Create, edit and extend content", "Structure a task and connect an agent action"]);
   add("flow-code", "08 / FLOW 04", "RESULT", "Produce an observable result.", ["Export a visual or video", "Demonstrate the agent task"]);
   add("flow-rules", "08 / FLOW 05", "REVIEW", "Check the result against the brief.", ["Inspect accuracy and creative intent", "Iterate before calling the task complete"]);
@@ -739,7 +739,7 @@
     addI18n("program-closing", "es", "DJ de Cierre", "Lleva la noche desde el segmento experimental de live coding hacia su estado final de club.", ["El set será grabado para el programa de AXIS Radio en Hong Kong Community Radio, para transmitirse en su próximo episodio", "Géneros: UK Garage, UK Bass, House"]);
     addI18n("program-gallery", "es", "La Galería", "Un espacio propio dentro del evento donde se presenta el arte digital de AI Creative Club.", ["Las obras digitales se curan e integran al espacio, en lugar de tratarse como decoración.", "La Galería es parte de la experiencia AI Creative Club junto a la sala principal.", "El espacio permanece abierto durante toda la noche."]);
 
-    addI18n("workshop-session", "es", "Dos módulos prácticos Level 01", "De 17:00 a 21:00, 100 asistentes sentados: dos módulos para principiantes de 70 minutos cada uno, más preparación, iteración y puesta en común.", ["100 asistentes, cada uno con silla", "Anana: imagen base con GPT image -> edición en Midjourney -> extensión a video para arte y negocio", "Sunshine Vendetta: flujo estructurado con GPT/Claude -> integración de agentes con ElizaOS", "Acción -> iteración -> evidencia -> recursos para llevar; asistir no equivale a completar"]);
+    addI18n("workshop-session", "es", "Dos módulos prácticos Level 01", "De 17:00 a 21:00, 100 asistentes sentados: dos módulos para principiantes de 70 minutos cada uno, más preparación, iteración y puesta en común.", ["100 asistentes, cada uno con silla", "Anana: imagen base con AI image tools -> edición en image tools -> extensión a video para arte y negocio", "Sunshine Vendetta: flujo estructurado con AI -> integración de agentes con AI agent", "Acción -> iteración -> evidencia -> recursos para llevar; asistir no equivale a completar"]);
     addI18n("workshop-afterparty", "es", "El after party", "El workshop cierra a las 21:00 y la noche empieza a las 21:00, sin intervalo entre ambos, y corre hasta las 02:00.", ["La pista abre a las 21:00 para 120 invitados más","Los asistentes del workshop que se quedan se suman a esa cifra","Siguen el warm-up, el live coding y el DJ de cierre","El bar atiende a ambos públicos durante toda la noche"]);
     addI18n("workshop-doors", "es", "Check-in", "El registro es con aprobación previa y se maneja en Luma a través de los organizadores.", ["Una sola lista, en manos de los organizadores","Sin lista paralela del venue que conciliar en la puerta","Las comunicaciones del evento las emiten los organizadores"]);
     addI18n("workshop-reset", "es", "El salón cambia de modo", "A las 21:00 el workshop sentado se desmonta y la pista abre directo hacia la noche.", ["Salen las sillas, se abre la pista","Lo ejecuta producción de AXIS con el personal del venue","La pantalla pasa del workshop al sistema visual"]);
@@ -750,15 +750,15 @@
     addI18n("ask-bar", "es", "El bar sigue abierto", "El bar sigue vendiendo a los invitados durante el workshop y durante la noche.", ["El servicio normal del bar continúa junto al workshop","La clientela habitual del venue se atiende como siempre"]);
     addI18n("ask-registration", "es", "Una sola lista", "El registro se maneja en Luma a través de los organizadores, con aprobación previa.", ["Una única lista con aprobación","El venue no maneja una lista de registro paralela","Las comunicaciones del evento las emiten los organizadores"]);
     addI18n("community-status", "es", "Mexico City | Art and Creative AI", "Programación independiente de AI Creative Club en Casa Luma, organizada por AXIS y la comunidad creativa y producida por AXIS.", ["December 4, 2026, Ciudad de México","100 asistentes sentados, de 17:00 a 21:00","Sede anfitriona: Casa Luma, Tinala 145, Roma Norte, CDMX","Registro en Luma, con aprobación previa, a cargo de los organizadores"]);
-    addI18n("creative-ai-access", "es", "Anana / creación de contenido", "Un módulo de 70 minutos para crear contenido artístico y de negocio.", ["Imagen base con GPT image -> edición en Midjourney -> extensión a video", "Accesos, costos y posibles beneficios de socios sujetos a confirmación"]);
+    addI18n("creative-ai-access", "es", "Anana / creación de contenido", "Un módulo de 70 minutos para crear contenido artístico y de negocio.", ["Imagen base con AI image tools -> edición en image tools -> extensión a video", "Accesos, costos y posibles beneficios de socios sujetos a confirmación"]);
     addI18n("creative-ai-resources", "es", "Recursos para arte y negocio", "Conservar resultados útiles y un flujo reutilizable.", ["Llevarse imagen base, versión editada y extensión a video", "Guardar prompts y evidencia de iteración"]);
-    addI18n("creative-ai-ai", "es", "Sunshine Vendetta / agentes IA", "Un módulo de 70 minutos conecta flujos estructurados de GPT/Claude con ElizaOS.", ["Definir entradas, tareas y resultados esperados", "Conectar un agente ElizaOS a una tarea acotada", "Iterar, demostrar el resultado y guardar el flujo"]);
-    addI18n("creative-ai-code", "es", "Flujos con GPT + Claude", "Delegar una tarea real mediante un flujo estructurado.", ["Definir entradas, pasos y resultados esperados", "Usar GPT/Claude para estructurar el trabajo", "Revisar y guardar el resultado para reutilizar"]);
-    addI18n("creative-ai-live-creation", "es", "Integración ElizaOS", "Conectar un flujo estructurado a una acción del agente.", ["Definir una tarea acotada", "Demostrar la acción y revisar el resultado", "Guardar notas del flujo y la integración"]);
+    addI18n("creative-ai-ai", "es", "Sunshine Vendetta / agentes IA", "Un módulo de 70 minutos conecta flujos estructurados de AI con AI agent.", ["Definir entradas, tareas y resultados esperados", "Conectar un agente AI agent a una tarea acotada", "Iterar, demostrar el resultado y guardar el flujo"]);
+    addI18n("creative-ai-code", "es", "Flujos con AI", "Delegar una tarea real mediante un flujo estructurado.", ["Definir entradas, pasos y resultados esperados", "Usar AI para estructurar el trabajo", "Revisar y guardar el resultado para reutilizar"]);
+    addI18n("creative-ai-live-creation", "es", "Integración AI agent", "Conectar un flujo estructurado a una acción del agente.", ["Definir una tarea acotada", "Demostrar la acción y revisar el resultado", "Guardar notas del flujo y la integración"]);
     addI18n("creative-ai-community", "es", "Alfabetización en inversión blockchain", "Conversación complementaria sobre alfabetización en inversión blockchain.", ["Comprender blockchain, riesgos y evaluación de afirmaciones; sin recomendaciones de inversión ni promesas de rendimiento", "No se requiere wallet; demostrar aprendizaje con resultados, no asistencia"]);
 
     addI18n("flow-guest", "es", "TAREA", "Elegir una tarea real de arte o negocio.", ["Escribir un brief claro"]);
-    addI18n("flow-creative-ai", "es", "HERRAMIENTAS IA", "Elegir herramientas según la tarea.", ["Anana: GPT image, Midjourney y video", "Sunshine Vendetta: GPT/Claude y ElizaOS"]);
+    addI18n("flow-creative-ai", "es", "HERRAMIENTAS IA", "Elegir herramientas según la tarea.", ["Anana: AI image tools, image tools y video", "Sunshine Vendetta: AI y AI agent"]);
     addI18n("flow-creative-ai-code", "es", "FLUJO", "Construir una secuencia repetible.", ["Crear, editar y extender contenido", "Estructurar la tarea y conectar una acción del agente"]);
     addI18n("flow-code", "es", "RESULTADO", "Producir un resultado observable.", ["Exportar una imagen o video", "Demostrar la tarea del agente"]);
     addI18n("flow-rules", "es", "REVISAR", "Comparar el resultado con el brief.", ["Revisar precisión e intención creativa", "Iterar antes de dar la tarea por terminada"]);
@@ -806,7 +806,7 @@
     addI18n("program-closing", "zh", "闭场 DJ", "将当晚从实验性的 Live Coding 环节带入最终的俱乐部状态。", ["该场次将为 AXIS Radio 节目录制，在香港社区电台（Hong Kong Community Radio）的下一期节目中播出", "曲风：UK Garage、UK Bass、House"]);
     addI18n("program-gallery", "zh", "画廊", "活动内一个独立的空间，呈现 AI Creative Club 的数字艺术。", ["数字作品经过策划融入该空间，而非仅作装饰。", "画廊与主厅一同构成 AI Creative Club 的体验。", "该空间整晚开放。"]);
 
-    addI18n("workshop-session", "zh", "两个 Level 01 实操模块", "17:00 至 21:00，100 个座位：两个各 70 分钟的入门模块，另有准备、迭代与分享。", ["100 位参与者，人人有座", "Anana：GPT image 基础图像 -> Midjourney 编辑 -> 视频延展，用于艺术与商业内容", "Sunshine Vendetta：GPT/Claude 结构化工作流 -> ElizaOS 智能体集成", "行动 -> 迭代 -> 成果证明 -> 带走资源；出席不等于完成"]);
+    addI18n("workshop-session", "zh", "两个 Level 01 实操模块", "17:00 至 21:00，100 个座位：两个各 70 分钟的入门模块，另有准备、迭代与分享。", ["100 位参与者，人人有座", "Anana：AI image tools 基础图像 -> image tools 编辑 -> 视频延展，用于艺术与商业内容", "Sunshine Vendetta：AI 结构化工作流 -> AI agent 智能体集成", "行动 -> 迭代 -> 成果证明 -> 带走资源；出席不等于完成"]);
     addI18n("workshop-afterparty", "zh", "派对环节", "工作坊 21:00 结束，当晚也在 21:00 开始，两者之间没有间隔，一直到 02:00。", ["21:00 开放舞池，另有 120 位宾客到场","留下来的工作坊参与者在此之上","接着是暖场、实时编程与收场 DJ","酒吧全程服务两部分宾客"]);
     addI18n("workshop-doors", "zh", "签到", "报名需审核，在 Luma 上由主办方管理。", ["一张名单，由主办方掌管","门口无需核对场地的平行名单","活动传达由主办方发布"]);
     addI18n("workshop-reset", "zh", "空间切换", "21:00 坐式工作坊收场，舞池直接开放进入当晚。", ["椅子撑出，场地开放","由 AXIS 制作团队与场地人员共同完成","屏幕从工作坊切换到视觉系统"]);
@@ -817,15 +817,15 @@
     addI18n("ask-bar", "zh", "酒吧持续营业", "工作坊与当晚期间，酒吧持续向宾客销售。", ["酒吧照常营业，与工作坊并行","场地常客照常接待"]);
     addI18n("ask-registration", "zh", "单一名单", "报名在 Luma 上由主办方管理，需审核。", ["单一的审核制名单","场地不另行管理平行报名名单","活动传达由主办方发布"]);
     addI18n("community-status", "zh", "MEXICO CITY | ART AND CREATIVE AI", "Casa Luma 的独立 AI Creative Club 活动，由 AXIS 与创意社区组织，由 AXIS 制作。", ["2026年12月4日，墨西哥城","100 位坐式参与者，17:00 至 21:00","主办场地：Casa Luma，Tinala 145, Roma Norte, CDMX","在 Luma 报名，需审核，由主办方管理"]);
-    addI18n("creative-ai-access", "zh", "Anana / 内容创作", "70 分钟的入门模块，创作艺术与商业内容。", ["GPT image 基础图像 -> Midjourney 编辑 -> 视频延展", "工具权限、费用与拟议合作权益均待确认"]);
+    addI18n("creative-ai-access", "zh", "Anana / 内容创作", "70 分钟的入门模块，创作艺术与商业内容。", ["AI image tools 基础图像 -> image tools 编辑 -> 视频延展", "工具权限、费用与拟议合作权益均待确认"]);
     addI18n("creative-ai-resources", "zh", "艺术与商业素材", "保留实用成果和可复用工作流。", ["带走基础图像、编辑版本与视频延展", "保存提示词与迭代证据"]);
-    addI18n("creative-ai-ai", "zh", "Sunshine Vendetta / AI 智能体", "70 分钟的入门模块，将 GPT/Claude 结构化工作流连接到 ElizaOS。", ["定义输入、任务与预期输出", "将 ElizaOS 智能体连接到范围明确的任务", "迭代、展示成果并保存工作流"]);
-    addI18n("creative-ai-code", "zh", "GPT + Claude 工作流", "通过结构化工作流委托真实任务。", ["定义输入、步骤与预期成果", "用 GPT/Claude 组织工作", "检查并保存成果以便复用"]);
-    addI18n("creative-ai-live-creation", "zh", "ElizaOS 集成", "将结构化工作流连接到智能体操作。", ["定义范围明确的任务", "演示操作并检查结果", "保存工作流与集成笔记"]);
+    addI18n("creative-ai-ai", "zh", "Sunshine Vendetta / AI 智能体", "70 分钟的入门模块，将 AI 结构化工作流连接到 AI agent。", ["定义输入、任务与预期输出", "将 AI agent 智能体连接到范围明确的任务", "迭代、展示成果并保存工作流"]);
+    addI18n("creative-ai-code", "zh", "AI 工作流", "通过结构化工作流委托真实任务。", ["定义输入、步骤与预期成果", "用 AI 组织工作", "检查并保存成果以便复用"]);
+    addI18n("creative-ai-live-creation", "zh", "AI agent 集成", "将结构化工作流连接到智能体操作。", ["定义范围明确的任务", "演示操作并检查结果", "保存工作流与集成笔记"]);
     addI18n("creative-ai-community", "zh", "区块链投资素养", "补充讨论区块链投资素养。", ["理解区块链、风险与信息评估；不提供投资建议或收益承诺", "无需钱包；用成果证明学习，而非仅凭出席"]);
 
     addI18n("flow-guest", "zh", "任务", "选择真实的艺术或商业任务。", ["写下清晰的需求"]);
-    addI18n("flow-creative-ai", "zh", "AI 工具", "按任务选择工具。", ["Anana：GPT image、Midjourney 与视频", "Sunshine Vendetta：GPT/Claude 与 ElizaOS"]);
+    addI18n("flow-creative-ai", "zh", "AI 工具", "按任务选择工具。", ["Anana：AI image tools、image tools 与视频", "Sunshine Vendetta：AI 与 AI agent"]);
     addI18n("flow-creative-ai-code", "zh", "工作流", "建立可重复的步骤。", ["创作、编辑并延展内容", "结构化任务并连接智能体操作"]);
     addI18n("flow-code", "zh", "成果", "产出可观察的结果。", ["导出图像或视频", "演示智能体任务"]);
     addI18n("flow-rules", "zh", "检查", "对照需求检查成果。", ["检查准确性与创作意图", "迭代后再判定完成"]);

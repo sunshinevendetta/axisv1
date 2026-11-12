@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 
 const title = "AI Creative Club";
 const description =
-  "AI Creative Club Level 01 at Casa Luma, Mexico City, on December 4, 2026. Anana leads art and business content creation with base images, Midjourney editing and video. Sunshine Vendetta leads GPT/Claude workflows and ElizaOS agent integration. Blockchain investment literacy complements the practical program. The existing workshop, cultural program, gallery and social experience are produced by AXIS.";
+  "AI Creative Club Level 01 at Casa Luma, Mexico City, on December 4, 2026. Anana leads art and business content creation with base images, image editing and video. Sunshine Vendetta leads AI workflows and agent integrations. Blockchain investment literacy complements the practical program. The existing workshop, cultural program, gallery and social experience are produced by AXIS.";
 
 export const metadata: Metadata = {
   title,
