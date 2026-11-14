@@ -13,7 +13,7 @@
   }
 
   add("venue", "03 / VENUE", "Casa Luma", "The host venue: the physical operating layer where culture, hospitality, activities, media and AI interaction meet.", [
-    "December 4, 2026 · Mexico City",
+    "December 3, 2026 · Mexico City",
     "Tinala 145, Roma Norte, CDMX",
     "100 seated for the workshop, then 120 more for the night",
     "Venue screens, live program and hospitality operate together",
@@ -177,7 +177,7 @@
   add("ask-softdrinks", "04 / VENUE ASK", "Soft drinks", "We buy soft drinks from the venue bar for the workshop room.", ["Bought from the bar, not brought in","For the seated workshop hours"]);
   add("ask-bar", "04 / VENUE ASK", "The bar stays open", "The bar keeps selling to guests through the workshop and the night.", ["Normal bar service continues alongside the workshop","Venue clientele are served as usual"]);
   add("ask-registration", "04 / VENUE ASK", "One guest list", "Registration runs on Luma through the organizers, with approval.", ["A single approval-based list","The venue does not run a parallel registration list","Event communications are issued by the organizers"]);
-  add("close-event-partner", "11 / THE NIGHT", "AI Creative Club", "One night at Casa Luma, December 4, 2026: a Creative AI community workshop for artists and creative practitioners, and then the night.", [
+  add("close-event-partner", "11 / THE NIGHT", "AI Creative Club", "One night at Casa Luma, December 3, 2026: a Creative AI community workshop for artists and creative practitioners, and then the night.", [
     "100 seated for the workshop, then 120 more for the night",
     "Live trading tournament: four traders start with the same capital; the highest profit at the end wins the prize; a liquidated trader is disqualified.",
     "Creative AI activity, digital art and AI Creative Club micro-activations",
@@ -268,7 +268,7 @@
   add("program-closing", "03 / PROGRAM 03", "After party", "Social time follows the workshop as a secondary part of the event.", ["Continue workshop conversations", "Share outputs and meet the community"]);
   add("program-gallery", "03 / PROGRAM 04", "Onchain art gallery", "Curated local and international onchain artists exhibit alongside creators working on site.", ["Local and international onchain artists", "Creators making work on site", "Artist selection and individual names remain to be confirmed"]);
   add("community-status", "09 / STATUS", "Mexico City | Art and Creative AI", "Independent AI Creative Club programming at Casa Luma, organized by AXIS and the creative community and produced by AXIS.", [
-    "December 4, 2026, Mexico City",
+    "December 3, 2026, Mexico City",
     "100 seated workshop attendees, 17:30 to 21:00",
     "Host venue: Casa Luma, Tinala 145, Roma Norte, CDMX",
     "Registration on Luma, approval-based, run by the organizers",
@@ -323,7 +323,7 @@
 
   (function () {
     addI18n("venue", "es", "Casa Luma", "El venue es la capa operativa física donde convergen la cultura, la hospitalidad, las actividades, los medios y la interacción con IA.", [
-      "4 de diciembre de 2026 · Ciudad de México",
+      "3 de diciembre de 2026 · Ciudad de México",
       "Tinala 145, Roma Norte, CDMX",
       "120 invitados esperados para AI Creative Club",
       "Las pantallas del venue, el programa en vivo y la hospitalidad operan en conjunto",
@@ -445,7 +445,7 @@
     ]);
 
     addI18n("venue", "zh", "Casa Luma", "场地是文化、款待、活动、媒体和 AI 互动交汇的物理运营层。", [
-      "2026年12月4日· 墨西哥城",
+      "2026年12月3日· 墨西哥城",
       "Tinala 145, Roma Norte, CDMX",
       "预计120位 AI Creative Club 宾客",
       "场地屏幕、现场节目和款待协同运作",
@@ -647,7 +647,7 @@
       "Actividades de AI Creative Club, información del evento y momentos para medios",
       "AXIS controla el ruteo; diferentes pantallas pueden mostrar diferentes estados",
     ]);
-    addI18n("close-event-partner", "es", "AI Creative Club", "Una noche en Casa Luma, 4 de diciembre de 2026: un workshop de la comunidad de Creative AI para la comunidad artística, y después la noche.", [
+    addI18n("close-event-partner", "es", "AI Creative Club", "Una noche en Casa Luma, 3 de diciembre de 2026: un workshop de la comunidad de Creative AI para la comunidad artística, y después la noche.", [
       "100 sentados en el workshop, y después 120 más para la noche",
       "Torneo de trading en vivo: cuatro traders con el mismo capital inicial; la mayor ganancia al final gana el premio; quien sea liquidado queda descalificado.",
       "Actividad de Creative AI, arte digital y micro-activaciones de AI Creative Club",
@@ -681,7 +681,7 @@
       "科技周相关活动、活动信息与媒体时刻",
       "AXIS 负责信号路由；不同屏幕可以呈现不同状态",
     ]);
-    addI18n("close-event-partner", "zh", "AI Creative Club", "2026年12月4日，Casa Luma 的这一夜：一场为艺术领域举办的 Creative AI 社区工作坊，随后是当晚。", [
+    addI18n("close-event-partner", "zh", "AI Creative Club", "2026年12月3日，Casa Luma 的这一夜：一场为艺术领域举办的 Creative AI 社区工作坊，随后是当晚。", [
       "预计 120 名 AI Creative Club 宾客",
       "四位交易者以相同起始资金现场参赛；结束时盈利最高者获奖；被清算者取消资格。",
       "Creative AI 互动活动、数字艺术与科技周微互动",
@@ -715,7 +715,7 @@
     addI18n("ask-softdrinks", "es", "Refrescos", "Compramos refrescos en el bar del venue para el salón del workshop.", ["Comprados en el bar, no traídos de fuera","Para las horas del workshop sentado"]);
     addI18n("ask-bar", "es", "El bar sigue abierto", "El bar sigue vendiendo a los invitados durante el workshop y durante la noche.", ["El servicio normal del bar continúa junto al workshop","La clientela habitual del venue se atiende como siempre"]);
     addI18n("ask-registration", "es", "Una sola lista", "El registro se maneja en Luma a través de los organizadores, con aprobación previa.", ["Una única lista con aprobación","El venue no maneja una lista de registro paralela","Las comunicaciones del evento las emiten los organizadores"]);
-    addI18n("community-status", "es", "Mexico City | Art and Creative AI", "Programación independiente de AI Creative Club en Casa Luma, organizada por AXIS y la comunidad creativa y producida por AXIS.", ["December 4, 2026, Ciudad de México","100 asistentes sentados, de 17:30 a 21:00","Sede anfitriona: Casa Luma, Tinala 145, Roma Norte, CDMX","Registro en Luma, con aprobación previa, a cargo de los organizadores"]);
+    addI18n("community-status", "es", "Mexico City | Art and Creative AI", "Programación independiente de AI Creative Club en Casa Luma, organizada por AXIS y la comunidad creativa y producida por AXIS.", ["December 3, 2026, Ciudad de México","100 asistentes sentados, de 17:30 a 21:00","Sede anfitriona: Casa Luma, Tinala 145, Roma Norte, CDMX","Registro en Luma, con aprobación previa, a cargo de los organizadores"]);
     addI18n("creative-ai-access", "es", "Anana / contenido para tu negocio", "Tu propio negocio es el brief de un módulo práctico de creación de contenido.", ["Crear, editar y extender contenido visual a video para tu negocio", "Conservar un resultado y un flujo repetible"]);
     addI18n("creative-ai-resources", "es", "Recursos para arte y negocio", "Conservar resultados útiles y un flujo reutilizable.", ["Llevarse imagen base, versión editada y extensión a video", "Guardar prompts y evidencia de iteración"]);
     addI18n("creative-ai-ai", "es", "Sunshine Vendetta / agentes IA", "Automatizar trabajo útil de tu negocio mediante agentes e integraciones.", ["Elegir una tarea real del negocio", "Conectar herramientas mediante un agente", "Revisar, iterar y guardar un proceso reutilizable"]);
@@ -784,7 +784,7 @@
     addI18n("ask-softdrinks", "zh", "软饮", "我们向场地酒吧采购软饮，供工作坊使用。", ["向酒吧采购，非外带","供坐式工作坊时段使用"]);
     addI18n("ask-bar", "zh", "酒吧持续营业", "工作坊与当晚期间，酒吧持续向宾客销售。", ["酒吧照常营业，与工作坊并行","场地常客照常接待"]);
     addI18n("ask-registration", "zh", "单一名单", "报名在 Luma 上由主办方管理，需审核。", ["单一的审核制名单","场地不另行管理平行报名名单","活动传达由主办方发布"]);
-    addI18n("community-status", "zh", "MEXICO CITY | ART AND CREATIVE AI", "Casa Luma 的独立 AI Creative Club 活动，由 AXIS 与创意社区组织，由 AXIS 制作。", ["2026年12月4日，墨西哥城","100 位坐式参与者，17:30 至 21:00","主办场地：Casa Luma，Tinala 145, Roma Norte, CDMX","在 Luma 报名，需审核，由主办方管理"]);
+    addI18n("community-status", "zh", "MEXICO CITY | ART AND CREATIVE AI", "Casa Luma 的独立 AI Creative Club 活动，由 AXIS 与创意社区组织，由 AXIS 制作。", ["2026年12月3日，墨西哥城","100 位坐式参与者，17:30 至 21:00","主办场地：Casa Luma，Tinala 145, Roma Norte, CDMX","在 Luma 报名，需审核，由主办方管理"]);
     addI18n("creative-ai-access", "zh", "Anana / 业务内容", "以自己的业务为需求，进行实操内容创作。", ["为业务创作、编辑并将视觉内容延展为视频", "保留成果与可重复工作流"]);
     addI18n("creative-ai-resources", "zh", "艺术与商业素材", "保留实用成果和可复用工作流。", ["带走基础图像、编辑版本与视频延展", "保存提示词与迭代证据"]);
     addI18n("creative-ai-ai", "zh", "Sunshine Vendetta / AI 智能体", "用智能体与集成自动化业务中的实用工作。", ["选择真实业务任务", "通过智能体工作流连接工具", "检查、迭代并保存可复用流程"]);
@@ -1128,8 +1128,8 @@
     ["NFC / QR opcional", "Un toque o escaneo abre los recursos del workshop; los facilitadores también ofrecen acceso directo o en pantalla compartida.", ["Toque o escaneo", "Abre los recursos en tu teléfono", "Respaldo del staff"]],
     ["可选 NFC / QR", "轻触或扫描即可打开工作坊资源；导师也提供直接访问或共享屏幕。", ["轻触或扫描", "在手机上打开资源", "工作人员现场支持"]]);
   set("presenting-system",
-    ["Sponsorship", "US$2,500 per sponsorship brand for the AI Creative Club night at Casa Luma.", ["One night: December 4, 2026, Mexico City", "Supports the program, production, hospitality and media listed below", "Full package details on request"]],
-    ["Patrocinio", "US$2,500 por marca patrocinadora para la noche de AI Creative Club en Casa Luma.", ["Una noche: 4 de diciembre de 2026, Ciudad de México", "Apoya el programa, la producción, la hospitalidad y los medios listados abajo", "Detalles completos del paquete a solicitud"]],
+    ["Sponsorship", "US$2,500 per sponsorship brand for the AI Creative Club night at Casa Luma.", ["One night: December 3, 2026, Mexico City", "Supports the program, production, hospitality and media listed below", "Full package details on request"]],
+    ["Patrocinio", "US$2,500 por marca patrocinadora para la noche de AI Creative Club en Casa Luma.", ["Una noche: 3 de diciembre de 2026, Ciudad de México", "Apoya el programa, la producción, la hospitalidad y los medios listados abajo", "Detalles completos del paquete a solicitud"]],
     ["赞助", "AI Creative Club 在 Casa Luma 的当晚活动，每个赞助品牌 US$2,500。", ["一晚：2026 年 12 月 4 日，墨西哥城", "支持下方列出的节目、制作、款待与媒体", "完整方案详情可应要求提供"]]);
   set("budget-media",
     ["Media", "Photography, video and event documentation.", ["Photo folder and aftermovie material", "Short clips after the event"]],

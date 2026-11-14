@@ -2,7 +2,7 @@ AXIS AI CREATIVE CLUB BRAND ASSETS
 
 Event: AXIS Level 01 / Main Workshops
 Theme: AI Creative Club
-Date: December 4, 2026
+Date: December 3, 2026
 Site: axis.show
 
 Contents:

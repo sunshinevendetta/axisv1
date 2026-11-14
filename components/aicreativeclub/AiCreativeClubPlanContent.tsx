@@ -4,10 +4,10 @@ const EVENT_JSON_LD = {
   name: "Mexico City | Create and Delegate · AI Creative Club",
   eventStatus: "https://schema.org/EventScheduled",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-  startDate: "2026-12-04T17:00:00-06:00",
-  endDate: "2026-12-05T02:00:00-06:00",
+  startDate: "2026-12-03T17:00:00-06:00",
+  endDate: "2026-12-04T02:00:00-06:00",
   description:
-    "AI Creative Club Level 01 at Casa Luma on December 4, 2026: art and business content creation with Anana, AI workflows and agent integrations with Sunshine Vendetta, and investing business profits onchain. A four-trader onsite tournament awards a prize to the first trader to reach the goal. Onchain art combines national, international and onsite creators. The workshop runs from 17:30 to 21:00 within the existing 17:00 to 02:00 event window, with cultural programming, gallery and social participation.",
+    "AI Creative Club Level 01 at Casa Luma on December 3, 2026: art and business content creation with Anana, AI workflows and agent integrations with Sunshine Vendetta, and investing business profits onchain. A four-trader onsite tournament awards a prize to the first trader to reach the goal. Onchain art combines national, international and onsite creators. The workshop runs from 17:30 to 21:00 within the existing 17:00 to 02:00 event window, with cultural programming, gallery and social participation.",
   location: {
     "@type": "Place",
     name: "Casa Luma",
@@ -60,7 +60,7 @@ export default function AiCreativeClubPlanContent() {
           <p>Organized by AXIS and the creative community · Produced by AXIS</p>
           <p>Host venue: Casa Luma</p>
           <p>Tinala 145, Roma Norte, CDMX</p>
-          <p>December 4, 2026 · Mexico City</p>
+          <p>December 3, 2026 · Mexico City</p>
           <p>Event window: 17:00 to 02:00</p>
           <p>Powered by: https://axis.show</p>
         </header>
@@ -69,7 +69,7 @@ export default function AiCreativeClubPlanContent() {
           <h2 id="future-event">The event</h2>
           <p>
             The night runs in two halves at Casa Luma, the host venue, on
-            Tinala 145 in Roma Norte, Mexico City, on December 4, 2026. The event window
+            Tinala 145 in Roma Norte, Mexico City, on December 3, 2026. The event window
             opens at 17:00 and closes at 02:00. From 17:30 to 21:00 it is a seated Creative AI
             community workshop for 100 artists, creators, business owners and curious newcomers. At
             21:30, after a short break, it becomes the AI Creative Club party, an AXIS club event running to 02:00, with 120 further guests arriving on top of

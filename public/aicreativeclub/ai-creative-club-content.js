@@ -545,7 +545,7 @@
         '<div class="creative-ai-copy">' +
           '<span class="eyebrow" data-reveal data-i18n="creative-ai.kicker">MEXICO CITY | CREATE + DELEGATE</span>' +
           '<h2 data-reveal data-i18n="creative-ai.title">ART. BUSINESS. AGENTS.</h2>' +
-          '<p class="creative-ai-meta" data-reveal>DECEMBER 4, 2026 · ' + event.city.toUpperCase() + '<br>' + event.workshopCapacity + ' SEATED ATTENDEES · ' + event.workshopStart + ' → ' + event.workshopEnd + '</p>' +
+          '<p class="creative-ai-meta" data-reveal>DECEMBER 3, 2026 · ' + event.city.toUpperCase() + '<br>' + event.workshopCapacity + ' SEATED ATTENDEES · ' + event.workshopStart + ' → ' + event.workshopEnd + '</p>' +
           '<p class="creative-ai-organizers" data-reveal data-i18n="creative-ai.organizers">CONTENT CREATION WITH ANANA / AI WORKFLOWS WITH SUNSHINE VENDETTA</p>' +
           '<p class="creative-ai-host" data-reveal data-i18n="creative-ai.host">HOST VENUE: ' + event.venue.toUpperCase() + '</p>' +
         '</div>' +

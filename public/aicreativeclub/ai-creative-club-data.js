@@ -2,10 +2,10 @@
   "use strict";
 
   window.AI_CREATIVE_CLUB = Object.freeze({
-    date: "2026-12-04",
-    endDate: "2026-12-05",
-    displayDate: "December 4, 2026",
-    dayName: "Friday",
+    date: "2026-12-03",
+    endDate: "2026-12-04",
+    displayDate: "December 3, 2026",
+    dayName: "Thursday",
     venue: "Casa Luma",
     venueSlug: "casa-luma",
     address: "Tinala 145, Roma Norte, CDMX",
