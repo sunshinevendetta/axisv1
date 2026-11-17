@@ -139,7 +139,7 @@
   add("partner-media", "12 / SYSTEM 05", "Media capture", "Photography and video document the activation as an experience, not a collection of logo impressions.", ["Dedicated activation moments", "Product interaction", "Room context", "Delivery-ready documentation"]);
   add("partner-report", "12 / SYSTEM 06", "Measurement and report", "Live tracking becomes a post-event performance report tied to the agreed activation mechanics.", ["Qualified actions", "Mission conversion", "Reward redemption", "Content outputs"]);
 
-  add("presenting-system", "13 / PRESENTING PRODUCT", "A signature role", "The presenting product is a qualitatively different cultural role—not simply more placement. US$2,500 per sponsorship brand.", ["Category exclusivity", "Hero mission", "Signature Product Experience", "Priority integration and dedicated media"]);
+  add("presenting-system", "13 / PRESENTING PRODUCT", "A signature role", "The presenting product is a qualitatively different cultural role—not simply more placement.", ["Category exclusivity", "Hero mission", "Signature Product Experience", "Priority integration and dedicated media"]);
   add("presenting-exclusive", "13 / EXCLUSIVITY", "One position", "Only one product receives the presenting designation and category exclusivity.", ["Single presenting position", "Clear hierarchy beneath AXIS", "No competing category sponsor", "Priority visual and mission integration"]);
   add("presenting-continuation", "13 / CONTINUATION", "Beyond the event", "The presenting relationship continues for 30 days and includes one additional smaller AXIS activation.", ["30-day continuation", "One smaller activation", "Dedicated product media", "Extended reporting"]);
 
@@ -594,7 +594,7 @@
     addI18n("partner-systems", "es", "Integración con el evento", "La función del patrocinador aparece en pantallas y sistemas en vivo exactamente donde ayuda al recorrido del invitado.", ["Pantalla de actividad", "Estado de la recompensa", "Livestream cuando sea relevante", "Momento de uso del producto"]);
     addI18n("partner-media", "es", "Captura de medios", "La fotografía y el video documentan la activación como una experiencia, no como una colección de impresiones de logo.", ["Momentos dedicados de activación", "Interacción con el producto", "Contexto de la sala", "Documentación lista para entrega"]);
     addI18n("partner-report", "es", "Medición y reporte", "El seguimiento en vivo se convierte en un reporte de desempeño posterior al evento, vinculado a la mecánica de activación acordada.", ["Acciones calificadas", "Conversión de actividades", "Canje de recompensas", "Resultados de contenido"]);
-    addI18n("presenting-system", "es", "Un rol distintivo", "El producto presentador es un rol cultural cualitativamente distinto, no simplemente más posicionamiento. US$2,500 por marca patrocinadora.", ["Exclusividad de categoría", "Actividad insignia", "Experiencia de Producto Distintiva", "Integración prioritaria y medios dedicados"]);
+    addI18n("presenting-system", "es", "Un rol distintivo", "El producto presentador es un rol cultural cualitativamente distinto, no simplemente más posicionamiento.", ["Exclusividad de categoría", "Actividad insignia", "Experiencia de Producto Distintiva", "Integración prioritaria y medios dedicados"]);
     addI18n("presenting-exclusive", "es", "Una sola posición", "Solo un producto recibe la designación de presentador y la exclusividad de categoría.", ["Posición única de presentador", "Jerarquía clara debajo de AXIS", "Sin patrocinador de categoría competidor", "Integración visual y de actividades prioritaria"]);
     addI18n("presenting-continuation", "es", "Más allá del evento", "La relación de presentador continúa durante 30 días e incluye una activación adicional más pequeña de AXIS.", ["Continuación de 30 días", "Una activación más pequeña", "Medios dedicados del producto", "Reporte extendido"]);
 
@@ -624,7 +624,7 @@
     addI18n("partner-systems", "zh", "活动整合", "赞助商功能会准确出现在屏幕和实时系统中，恰好是能帮助宾客旅程的地方。", ["活动屏幕", "奖励状态", "相关时段的直播", "产品使用时刻"]);
     addI18n("partner-media", "zh", "媒体拍摄", "摄影与视频记录的是这次激活作为一场体验，而不是一堆品牌曝光的集合。", ["专属激活时刻", "产品互动", "现场氛围", "可直接交付的素材"]);
     addI18n("partner-report", "zh", "测量与报告", "实时追踪数据会转化为一份与约定激活机制相对应的活动后表现报告。", ["合格行动", "活动转化率", "奖励兑换", "内容产出"]);
-    addI18n("presenting-system", "zh", "标志性角色", "呈现赞助产品是一种在性质上截然不同的文化角色，而不仅仅是更多的曝光位置。 每个赞助品牌 US$2,500.", ["品类独家权", "核心活动", "标志性产品体验", "优先整合与专属媒体"]);
+    addI18n("presenting-system", "zh", "标志性角色", "呈现赞助产品是一种在性质上截然不同的文化角色，而不仅仅是更多的曝光位置。", ["品类独家权", "核心活动", "标志性产品体验", "优先整合与专属媒体"]);
     addI18n("presenting-exclusive", "zh", "唯一席位", "只有一个产品能获得呈现赞助资格和品类独家权。", ["唯一的呈现赞助席位", "在 AXIS 之下的清晰层级", "没有同品类竞争赞助商", "优先的视觉与活动整合"]);
     addI18n("presenting-continuation", "zh", "活动之后", "呈现赞助关系将持续 30 天，并包含一次额外的小型 AXIS 激活。", ["30 天延续期", "一次小型激活", "专属产品媒体", "延伸报告"]);
   })();
@@ -1128,9 +1128,9 @@
     ["NFC / QR opcional", "Un toque o escaneo abre los recursos del workshop; los facilitadores también ofrecen acceso directo o en pantalla compartida.", ["Toque o escaneo", "Abre los recursos en tu teléfono", "Respaldo del staff"]],
     ["可选 NFC / QR", "轻触或扫描即可打开工作坊资源；导师也提供直接访问或共享屏幕。", ["轻触或扫描", "在手机上打开资源", "工作人员现场支持"]]);
   set("presenting-system",
-    ["Sponsorship", "US$2,500 per sponsorship brand for the AI Creative Club night at Casa Luma.", ["One night: December 3, 2026, Mexico City", "Supports the program, production, hospitality and media listed below", "Full package details on request"]],
-    ["Patrocinio", "US$2,500 por marca patrocinadora para la noche de AI Creative Club en Casa Luma.", ["Una noche: 3 de diciembre de 2026, Ciudad de México", "Apoya el programa, la producción, la hospitalidad y los medios listados abajo", "Detalles completos del paquete a solicitud"]],
-    ["赞助", "AI Creative Club 在 Casa Luma 的当晚活动，每个赞助品牌 US$2,500。", ["一晚：2026 年 12 月 4 日，墨西哥城", "支持下方列出的节目、制作、款待与媒体", "完整方案详情可应要求提供"]]);
+    ["Sponsorship", "Sponsorship for the AI Creative Club night at Casa Luma.", ["One night: December 3, 2026, Mexico City", "Supports the program, production, hospitality and media listed below", "Full package details on request"]],
+    ["Patrocinio", "Patrocinio para la noche de AI Creative Club en Casa Luma.", ["Una noche: 3 de diciembre de 2026, Ciudad de México", "Apoya el programa, la producción, la hospitalidad y los medios listados abajo", "Detalles completos del paquete a solicitud"]],
+    ["赞助", "AI Creative Club 在 Casa Luma 的当晚活动。", ["一晚：2026 年 12 月 4 日，墨西哥城", "支持下方列出的节目、制作、款待与媒体", "完整方案详情可应要求提供"]]);
   set("budget-media",
     ["Media", "Photography, video and event documentation.", ["Photo folder and aftermovie material", "Short clips after the event"]],
     ["Medios", "Fotografía, video y documentación del evento.", ["Carpeta de fotos y material para el aftermovie", "Clips cortos después del evento"]],
@@ -1165,6 +1165,9 @@
     concepts[id].code = "09 / STEP 0" + (i + 1);
   });
 
+  add("ask-client-passes", "04 / GUEST ACCESS", "Client guest passes", "The client can offer attendees passes on their behalf, coordinated with the organizers through the same guest list.", ["Client-invited attendees join the shared guest list", "Pass arrangements are coordinated with the organizers"]);
+  addI18n("ask-client-passes", "es", "Pases del cliente", "El cliente puede ofrecer pases a asistentes de su parte, coordinados con los organizadores mediante la misma lista.", ["Los invitados del cliente se integran a la lista compartida", "Los pases se coordinan con los organizadores"]);
+  addI18n("ask-client-passes", "zh", "客户宾客通行证", "客户可代表自己向宾客提供通行证，并通过同一份宾客名单与主办方协调。", ["客户邀请的宾客加入共用名单", "通行证安排与主办方协调"]);
   window.AI_CREATIVE_CLUB_CONCEPTS = concepts;
   window.AI_CREATIVE_CLUB_CONCEPT_I18N = CONCEPT_I18N;
 })();

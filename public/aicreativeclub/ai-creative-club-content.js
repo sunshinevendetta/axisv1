@@ -213,7 +213,7 @@
 
   function lineupTable() {
     return '<div class="lineup-table" data-reveal>' +
-      lineupRow("event.gallery", "THE GALLERY", "event.galleryRow", "ONCHAIN ART · ALL NIGHT",
+      lineupRow("event.creators", "THE CREATORS", "event.creatorGroups", "LOCAL + INTERNATIONAL + ONSITE",
         digitalArtists.map(artistCell)) +
     '</div>';
   }
@@ -226,7 +226,7 @@
 
   function askItem(item) {
     return conceptNode("workshop-ask", item[0],
-      '<i>' + glyph(item[3]) + '</i><span><b>' + item[1] + '</b><small>' + item[2] + '</small></span>',
+      '<i>' + glyph(item[3]) + '</i><span><b data-i18n="' + item[0] + '.title">' + item[1] + '</b><small data-i18n="' + item[0] + '.copy">' + item[2] + '</small></span>',
       item[1].toLowerCase());
   }
 
@@ -239,13 +239,13 @@
   var digitalArtists = ["national-artists", "international-artists", "onsite-creators"];
 
   var formatGroups = [
-    { key: "a", letter: "A", title: "CULTURE", items: [
-      ["format-gallery", "ONCHAIN ART", "Curated local and international artists alongside people creating onsite.", "gallery"],
-      ["format-djs", "AFTER PARTY", "A secondary social continuation after the business, AI and onchain program.", "disc"],
+    { key: "a", letter: "A", title: "VISUAL SYSTEM", items: [
+      ["format-screens", "VENUE SCREENS", "Venue display infrastructure carries the visual system.", "screen"],
+      ["req-inputs", "DISPLAY ROUTING", "Inputs and routing connect the AXIS workstation.", "grid"],
       ["format-mapping", "VIDEO MAPPING", "Projected visuals authored for " + event.venue + ".", "projector"],
     ] },
     { key: "b", letter: "B", title: "ON-SITE MEDIA", items: [
-      ["format-screens", "VENUE SCREENS", "Venue display infrastructure carries the visual system.", "screen"],
+      ["deliverable-clips", "SHORT VIDEO CLIPS", "Selected moments captured for sharing.", "film"],
       ["format-stream", "LIVE RECORDING", "Live or recorded capture produced on site.", "broadcast"],
       ["format-photo", "PHOTOGRAPHY", "Event archive, environment and post-event video.", "camera"],
     ] },
@@ -262,12 +262,12 @@
     { key: "e", letter: "E", title: "EVENT FLOW", items: [
       ["format-staff", "STAFF-GUIDED FLOW", "Staff supports actions, validation and exceptions.", "staff"],
       ["format-hospitality", "COMPLIMENTARY HOSPITALITY", "AXIS funds the drink allocation for the night.", "drink"],
-      ["format-audience", "EXPECTED AUDIENCE", event.workshopCapacity + " seated for the workshop, then " + event.afterPartyGuests + " more for the night.", "guests"],
+      ["ask-registration", "ONE GUEST LIST", "Organizer-managed registration and check-in.", "list"],
     ] },
-    { key: "f", letter: "F", title: "AI + ONCHAIN", items: [
-      ["format-creative-ai", "CREATIVE AI ACTIVITY", "Anana leads visual content; Sunshine Vendetta leads agents and workflows.", "spark"],
-      ["format-live-coding", "TRADING TOURNAMENT", "Four traders onsite; the highest profit at the end wins the prize.", "chart"],
-      ["format-invest", "INVESTING PROFITS ONCHAIN", "Explore how business profits can be invested onchain, connecting creation and automation to the next step.", "grid"],
+    { key: "f", letter: "F", title: "EVENT REPORT", items: [
+      ["report-attendance", "ATTENDANCE", "Attendance and check-ins recorded.", "guests"],
+      ["report-participation", "ACTIVITY PARTICIPATION", "Participation across the program.", "chart"],
+      ["report-written", "POST-EVENT REPORT", "A concise record of the event and its results.", "file"],
     ] },
   ];
 
@@ -334,12 +334,9 @@
   ];
 
   var workshopAsks = [
-    ["ask-early", "GATES AT 17:00", "Guest arrival before the 17:30 start.", "door"],
-    ["ask-seating", "SEATED FOR 100", "A chair for every attendee.", "guests"],
-    ["ask-screen", "SCREEN ACCESS", "The facilitators share practical demonstrations through the venue screen.", "screen"],
-    ["ask-softdrinks", "SOFT DRINKS", "We buy them from the bar for the room.", "drink"],
-    ["ask-bar", "BAR STAYS OPEN", "It keeps selling to guests all night.", "shield"],
-    ["ask-registration", "ONE GUEST LIST", "Approval-based, run by the organizers.", "list"],
+    ["ask-screen", "SCREEN ACCESS", "Venue screen for live demos.", "screen"],
+    ["ask-registration", "ONE GUEST LIST", "Organizer-managed. Client guests included.", "list"],
+    ["ask-client-passes", "CLIENT PASSES", "Invite guests on the client’s behalf.", "passport"],
   ];
 
   var venueRequirements = [
@@ -362,27 +359,31 @@
       orbitalSvg("cover-orbit") + star("cover-star") +
     '</section>',
 
-    '<section class="fr-slide fr-idea" data-slide-id="idea" data-scene="business-journey" data-label="The idea">' +
-      frameTop("02", "idea") +
-      '<div class="fr-reading fr-reading-left">' +
-        '<span class="eyebrow" data-reveal data-i18n="idea.kicker">THE IDEA</span>' +
-        '<h2 data-reveal data-i18n="idea.title">CREATE. AUTOMATE. INVEST.</h2>' +
-        '<div class="idea-journey" data-reveal><div class="journey-stage"><svg viewBox="0 0 300 260" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="66" y="30" width="155" height="194" rx="12"/><path d="M100 30v-12h155v194h-18" opacity=".35"/><rect x="86" y="52" width="115" height="110" rx="3"/><circle cx="166" cy="78" r="12"/><path d="m88 145 38-40 29 27 21-19 25 30M88 185h81M88 202h52"/><circle cx="224" cy="177" r="36" fill="#000" stroke="#C9A05B"/><path d="m216 161 23 16-23 16Z" fill="#FFF" stroke="none"/></svg><span data-i18n="idea.human">Create content for your business or for you as content creator.</span></div><i class="journey-link" aria-hidden="true"><svg viewBox="0 0 100 30" fill="none"><path d="M2 15h90m-12-10 12 10-12 10" stroke="#C9A05B" stroke-width="2"/></svg></i><div class="journey-stage"><svg viewBox="0 0 300 260" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 68h80v62h100M60 198h80v-68M140 42v26M140 198v-68" stroke="#C9A05B"/><rect x="26" y="42" width="66" height="52" rx="10"/><rect x="26" y="172" width="66" height="52" rx="10"/><rect x="206" y="104" width="66" height="52" rx="10"/><circle cx="140" cy="130" r="45" fill="#000"/><rect x="118" y="112" width="44" height="36" rx="8"/><circle cx="130" cy="128" r="3" fill="#FFF"/><circle cx="150" cy="128" r="3" fill="#FFF"/><path d="M131 139h18M140 102v-8M132 94h16M48 68h22M48 198h22M226 129l9 9 17-18"/><circle cx="140" cy="42" r="8" fill="#000"/><circle cx="140" cy="206" r="8" fill="#000"/></svg><span data-i18n="idea.machine">Build agents to work for you. Automate their workflows so you get more money.</span></div><i class="journey-link" aria-hidden="true"><svg viewBox="0 0 100 30" fill="none"><path d="M2 15h90m-12-10 12 10-12 10" stroke="#C9A05B" stroke-width="2"/></svg></i><div class="journey-stage"><svg viewBox="0 0 300 260" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="102" cy="192" rx="51" ry="18"/><path d="M51 192v-27M153 192v-27"/><ellipse cx="102" cy="165" rx="51" ry="18"/><path d="M51 165v-27M153 165v-27"/><ellipse cx="102" cy="138" rx="51" ry="18"/><path d="m80 88 48-32 44 23 63-51m-23 0h23v23" stroke="#C9A05B"/><rect x="188" y="130" width="42" height="42" rx="9" transform="rotate(-20 209 151)"/><rect x="218" y="185" width="42" height="42" rx="9" transform="rotate(-20 239 206)"/><path d="m218 167 10 21M152 156l38-5" stroke="#C9A05B"/></svg><span data-i18n="idea.public">Invest business profits onchain.</span></div></div>' +
-      '</div>' +
-    '</section>',
-
     '<section class="fr-slide fr-event" data-slide-id="event" data-scene="event-map" data-label="The event">' +
-      frameTop("03", "event") +
+      frameTop("02", "event") +
       '<div class="fr-reading event-heading">' +
         '<span class="eyebrow" data-reveal data-i18n="event.kicker">THE EVENT</span>' +
         '<h2 data-reveal>' + event.displayDate.toUpperCase() + '</h2>' +
         '<p class="venue-lock" data-reveal>' + event.venue.toUpperCase() + '<br>' + event.city.toUpperCase() + '</p>' +
       '</div>' +
       '<div class="event-operating-map" data-reveal>' +
-        conceptNode("event-core", "venue", '<strong>' + event.workshopCapacity + '</strong><span data-i18n="event.seatedWorkshop">SEATED WORKSHOP</span><em>+' + event.afterPartyGuests + '</em><small data-i18n="event.afterParty">AFTER PARTY</small>', event.venue + " and the event format") +
+        conceptNode("event-core", "venue", '<strong>' + event.workshopCapacity + '</strong><span data-i18n="event.seatedWorkshop">SEATED WORKSHOP</span><em>+' + event.afterPartyGuests + '</em><small data-i18n="event.afterParty">AFTER PARTY</small>', event.venue + " and attendance") +
         orbitalSvg("event-orbit") +
+        conceptNode("event-node event-stop-workshop", "workshop-session", '<i>' + glyph("spark") + '</i><b data-i18n="idea.humanTitle">AI WORKSHOP</b><small>17:30 &mdash; 21:00</small>', "the AI workshop and evening progression") +
+        conceptNode("event-node event-stop-tournament", "program-liveCoding", '<i>' + glyph("chart") + '</i><b data-i18n="event.liveCodingName">TRADING TOURNAMENT</b><small data-i18n="event.liveCodingNote">4 traders</small>', "the live trading tournament") +
+        conceptNode("event-node event-stop-gallery", "program-gallery", '<i>' + glyph("gallery") + '</i><b data-i18n="event.gallery">THE GALLERY</b><small data-i18n="event.galleryRow">ONCHAIN ART &middot; ALL NIGHT</small>', "the gallery, onchain art and onsite creators") +
+        conceptNode("event-node event-stop-after", "program-closing", '<i>' + glyph("disc") + '</i><b data-i18n="event.closingName">AFTER PARTY</b><small>21:30 &mdash; 02:00</small>', "the after party and community gathering") +
       '</div>' +
       lineupTable() +
+    '</section>',
+
+    '<section class="fr-slide fr-idea" data-slide-id="idea" data-scene="business-journey" data-label="The idea">' +
+      frameTop("03", "idea") +
+      '<div class="fr-reading fr-reading-left">' +
+        '<span class="eyebrow" data-reveal data-i18n="idea.kicker">THE IDEA</span>' +
+        '<h2 data-reveal data-i18n="idea.title">CREATE. COMPETE. CONNECT.</h2>' +
+        '<div class="idea-journey" data-reveal><div class="journey-stage"><svg viewBox="0 0 300 260" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="66" y="30" width="155" height="194" rx="12"/><path d="M100 30v-12h155v194h-18" opacity=".35"/><rect x="86" y="52" width="115" height="110" rx="3"/><circle cx="166" cy="78" r="12"/><path d="m88 145 38-40 29 27 21-19 25 30M88 185h81M88 202h52"/><circle cx="224" cy="177" r="36" fill="#000" stroke="#C9A05B"/><path d="m216 161 23 16-23 16Z" fill="#FFF" stroke="none"/></svg><span><b data-i18n="idea.humanTitle">AI WORKSHOP</b><span data-i18n="idea.human">Create images and video. Build agents. Automate real work.</span></span></div><i class="journey-link" aria-hidden="true"><svg viewBox="0 0 100 30" fill="none"><path d="M2 15h90m-12-10 12 10-12 10" stroke="#C9A05B" stroke-width="2"/></svg></i><div class="journey-stage"><svg viewBox="0 0 300 260" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M30 222H272M30 30V222" opacity=".35"/><path class="idea-race-track" d="M32 176 75 183 115 135 155 150 205 83 260 42" stroke="#C9A05B"/><path class="idea-race-track" d="M32 176 75 153 115 163 155 122 205 136 260 98"/><path class="idea-race-track" d="M32 176 75 189 115 174 155 194 205 154 260 166" opacity=".65"/><path class="idea-race-track" d="M32 176 75 160 115 185 155 201 205 217 260 218" opacity=".35"/><path d="M260 28V224" stroke="#C9A05B" stroke-dasharray="4 8"/><circle cx="260" cy="42" r="10" stroke="#C9A05B"/><path d="m255 42 4 4 7-9"/></svg><span><b data-i18n="idea.machineTitle">TRADING TOURNAMENT</b><span data-i18n="idea.machine">Four traders. Equal starting capital. Live standings. One prize.</span></span></div><i class="journey-link" aria-hidden="true"><svg viewBox="0 0 100 30" fill="none"><path d="M2 15h90m-12-10 12 10-12 10" stroke="#C9A05B" stroke-width="2"/></svg></i><div class="journey-stage"><svg viewBox="0 0 300 260" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="idea-chain-link" d="M166 50h46M235 78v38M211 133h-40" stroke="#C9A05B"/><rect x="142" y="28" width="24" height="38" rx="5"/><rect x="212" y="28" width="42" height="42" rx="5"/><path d="M222 42h22M222 55h22"/><ellipse cx="102" cy="192" rx="51" ry="18"/><path d="M51 192v-27M153 192v-27"/><ellipse cx="102" cy="165" rx="51" ry="18"/><path d="M51 165v-27M153 165v-27"/><ellipse cx="102" cy="138" rx="51" ry="18"/><path d="m80 88 48-32 44 23 63-51m-23 0h23v23" stroke="#C9A05B"/><rect x="188" y="130" width="42" height="42" rx="9" transform="rotate(-20 209 151)"/><rect x="218" y="185" width="42" height="42" rx="9" transform="rotate(-20 239 206)"/><path d="m218 167 10 21M152 156l38-5" stroke="#C9A05B"/></svg><span><b data-i18n="idea.publicTitle">ONCHAIN</b><span data-i18n="idea.public">Explore wallets, onchain apps and investing beyond your business.</span></span></div></div>' +
+      '</div>' +
     '</section>',
 
     // 04. The workshop is the half of the night the venue has to plan around:
@@ -426,9 +427,9 @@
       '</div>' + star("audience-star") +
     '</section>',
 
-    '<section class="fr-slide fr-format" data-slide-id="program" data-scene="structured" data-label="Event format">' +
+    '<section class="fr-slide fr-format" data-slide-id="program" data-scene="structured" data-label="Event operations">' +
       frameTop("06", "event-format") +
-      '<div class="format-titlebar"><div><span class="eyebrow" data-reveal>EVENT FORMAT</span><h2 data-reveal>ONE CLUB. SIX OPERATING LAYERS.</h2></div></div>' +
+      '<div class="format-titlebar"><div><span class="eyebrow" data-reveal>EVENT OPERATIONS</span><h2 data-reveal>HOW THE NIGHT RUNS.</h2></div></div>' +
       '<div class="event-format-map">' +
         '<div class="format-hub" aria-hidden="true">' + axisMark("gold") + '</div>' +
         formatGroups.map(formatGroup).join("") +
@@ -592,11 +593,11 @@
 
     '<section class="fr-slide club-past-events" data-slide-id="past-events" data-scene="structured" data-label="Past events">' +
       frameTop("17", "past-events") +
-      '<div class="past-events-heading" data-reveal><span class="eyebrow" data-i18n="past-events.kicker">PAST AXIS EVENTS</span><h2 data-i18n="past-events.title">WHAT WE BUILD TOGETHER.</h2><p data-i18n="past-events.copy">Shared tools, live demonstrations, music and community. A look inside our past gatherings.</p></div>' +
+      '<div class="past-events-heading" data-reveal><span class="eyebrow" data-i18n="past-events.kicker">PAST AXIS EVENTS</span><h2 data-i18n="past-events.title">WHAT WE BUILD TOGETHER.</h2><p data-i18n="past-events.copy">Workshops, live demonstrations, performances and community. A look inside past AXIS gatherings.</p></div>' +
       '<div class="past-events-grid" data-reveal>' + [
         ["01", "Audience gathered for a past AXIS event in a gallery lounge", "IN THE ROOM"],
         ["02", "A performer operating DJ equipment at a past event", "MUSIC"],
-        ["03", "Guests together in front of the past AI and music presentation", "CONNECTIONS"],
+        ["03", "Guests together during a presentation at a past AXIS event", "CONNECTIONS"],
         ["04", "Three guests meeting during a past gallery gathering", "COMMUNITY"],
         ["05", "A presenter demonstrating tools with a microphone and laptops", "LIVE DEMOS"],
         ["06", "A seated audience listening to a speaker beneath the projection screen", "DISCUSSIONS"],
@@ -615,9 +616,6 @@
       '<div class="close-panel" data-decode>' +
         '<div class="close-lockup" data-reveal>' + axisMark("gold") + '<div><span>AXIS</span></div></div>' +
         '<span class="eyebrow" data-reveal data-i18n="close.kicker">AI CREATIVE CLUB AT ' + event.venue.toUpperCase() + '</span>' +
-        '<div class="close-offers" data-reveal>' +
-          conceptNode("close-offer is-presenting", "presenting-system", '<i class="allocation-icon">' + glyph("star") + '</i><span data-i18n="sponsorship.per-brand">PER SPONSORSHIP BRAND</span><strong>US$2,500</strong>', "sponsorship pricing and details") +
-        '</div>' +
         '<div class="allocation" data-reveal><span class="allocation-label" data-i18n="close.budget">WHAT THE BUDGET COVERS</span>' + event.allocation.map(function (entry) {
           return conceptNode("allocation-item", entry.id, '<i class="allocation-icon">' + glyph(allocationGlyphs[entry.id]) + '</i><b>' + entry.title + '</b>', entry.title.toLowerCase());
         }).join("") + '</div>' +

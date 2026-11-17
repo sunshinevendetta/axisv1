@@ -8,6 +8,9 @@ body.fr-vertical .fr-event .event-hud .lineup-cell { min-height: 124px; padding-
 .journey-stage { min-width: 0; text-align: center; }
 .journey-stage > svg { display: block; width: 100%; height: 260px; margin: 0 auto 42px; color: #FFFFFF; }
 .journey-stage > span { display: block; max-width: 440px; margin: 0 auto; font: 400 32px/1.4 var(--sans); color: #FFFFFF; }
+.journey-stage > span > b { display: block; margin-bottom: 16px; color: var(--solar-gold); font: 600 17px/1.3 var(--mono); letter-spacing: .08em; }
+.journey-stage > span > span { display: block; font-size: inherit; line-height: 1.4; }
+body.fr-vertical .journey-stage > span > b { font-size: 24px; margin-bottom: 12px; }
 .journey-link { display: block; margin-top: 115px; }
 .journey-link svg { display: block; width: 100%; }
 body.fr-vertical .fr-idea .fr-reading-left { left: 60px; right: 60px; top: 190px; }
@@ -415,13 +418,41 @@ body.fr-vertical .fr-close .close-poster { flex: none; height: 1000px; }
 body.fr-vertical .fr-close .close-poster { height: 820px; }
 body.fr-vertical .fr-close .allocation { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
-/* Slide 4: the number cards are gone, so the run of show and venue needs
-   sit centred in the space under the heading. */
-.fr-workshop .workshop-clock { top: 470px; }
-.fr-workshop .workshop-asks { top: 470px; bottom: 178px; }
-body.fr-vertical .fr-workshop .workshop-clock { top: 620px; }
-body.fr-vertical .fr-workshop .workshop-asks { top: 1220px; bottom: 170px; }
-
+/* Slide 4: heading, timeline and a single bottom row of three cards. */
+.fr-workshop .workshop-heading { left: 60px; right: 60px; top: 150px; width: auto; }
+.fr-workshop .workshop-heading .eyebrow { font-size: 18px; }
+.fr-workshop .workshop-heading h2 { max-width: 1300px; font-size: 82px; }
+.fr-workshop .workshop-clock { left: 60px; right: 60px; top: 410px; width: auto; }
+.fr-workshop .workshop-clock-label,
+.fr-workshop .workshop-asks > span { font-size: 17px; line-height: 1.4; margin-bottom: 20px; }
+.fr-workshop .workshop-clock > div { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.fr-workshop .workshop-step { display: block; min-width: 0; padding: 24px 38px 24px 24px; border-left: 1px solid var(--line); }
+.fr-workshop .workshop-step:first-child { border-left: 0; }
+.fr-workshop .workshop-step > em { font-size: 54px; }
+.fr-workshop .workshop-step > b { margin-top: 16px; font-size: 20px; line-height: 1.35; }
+.fr-workshop .workshop-step > small { font-size: 19px; line-height: 1.5; }
+.fr-workshop .workshop-asks { top: auto; bottom: 65px; left: 60px; right: 60px; width: auto; text-align: center; }
+.fr-workshop .workshop-asks > div { height: auto; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: auto; gap: 18px; }
+.fr-workshop .workshop-ask { min-width: 0; width: auto; min-height: 200px; padding: 24px 40px 24px 24px; grid-template-columns: 34px minmax(0, 1fr); gap: 16px; }
+.fr-workshop .workshop-ask > i .fr-glyph { width: 30px; height: 30px; }
+.fr-workshop .workshop-ask > span > b { font-size: 21px; line-height: 1.3; }
+.fr-workshop .workshop-ask > span > small { font-size: 19px; line-height: 1.5; }
+body.fr-vertical .fr-workshop .workshop-heading { top: 200px; width: auto; }
+body.fr-vertical .fr-workshop .workshop-heading .eyebrow { font-size: 23px; }
+body.fr-vertical .fr-workshop .workshop-heading h2 { font-size: 84px; }
+body.fr-vertical .fr-workshop .workshop-clock { top: 610px; width: auto; }
+body.fr-vertical .fr-workshop .workshop-clock > div { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+body.fr-vertical .fr-workshop .workshop-step { display: block; min-height: 240px; padding: 26px 48px 26px 24px; }
+body.fr-vertical .fr-workshop .workshop-clock-label,
+body.fr-vertical .fr-workshop .workshop-asks > span { font-size: 23px; }
+body.fr-vertical .fr-workshop .workshop-step > em { font-size: 60px; }
+body.fr-vertical .fr-workshop .workshop-step > b { font-size: 25px; }
+body.fr-vertical .fr-workshop .workshop-step > small { font-size: 23px; }
+body.fr-vertical .fr-workshop .workshop-asks { top: auto; bottom: 120px; left: 60px; right: 60px; width: auto; }
+body.fr-vertical .fr-workshop .workshop-asks > div { height: auto; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+body.fr-vertical .fr-workshop .workshop-ask { display: flex; flex-direction: column; min-height: 400px; gap: 20px; padding: 30px 22px; }
+body.fr-vertical .fr-workshop .workshop-ask > span > b { font-size: 25px; letter-spacing: .03em; }
+body.fr-vertical .fr-workshop .workshop-ask > span > small { font-size: 23px; }
 
 /* Slide 3: two tight columns. Left reads the night (date, venue, gallery);
    right holds the venue map with the capacity at its centre. */
@@ -469,6 +500,26 @@ body.fr-vertical .fr-event .lineup-row-label small { font-size: 18px; }
 body.fr-vertical .fr-event .lineup-cell { padding: 20px 90px 20px 28px; }
 body.fr-vertical .fr-event .lineup-cell-tag { font-size: 16px; }
 body.fr-vertical .fr-event .lineup-cell b { font-size: 28px; }
+
+/* Program markers extend the attendance orbit and open existing detail panels. */
+.fr-event .event-node { position: absolute; z-index: 5; display: grid; justify-items: center; gap: 10px; width: 240px; padding: 18px 12px; border: 0; border-bottom: 1px solid var(--line); background: var(--midnight); color: var(--ivory); cursor: pointer; text-align: center; }
+.fr-event .event-node i { color: var(--solar-gold); }
+.fr-event .event-node .fr-glyph { width: 30px; height: 30px; }
+.fr-event .event-node b { font: 600 14px/1.3 var(--mono); letter-spacing: .06em; }
+.fr-event .event-node small { color: var(--patina); font: 500 11px/1.4 var(--mono); }
+.fr-event .event-node::after { content: "+"; color: var(--solar-gold); font: 500 20px/1 var(--mono); }
+.fr-event .event-node:hover, .fr-event .event-node:focus-visible { border-color: var(--solar-gold); background: #15120d; }
+.fr-event .event-node:focus-visible { outline: 2px solid var(--solar-gold); outline-offset: 5px; }
+.event-stop-workshop { left: calc(50% - 120px); top: 20px; }
+.event-stop-gallery { left: 0; top: 345px; }
+.event-stop-tournament { right: 0; top: 345px; }
+.event-stop-after { left: calc(50% - 120px); bottom: 20px; }
+.fr-event .lineup-row-label { flex-wrap: wrap; gap: 10px; }
+body.fr-vertical .fr-event .event-node { width: 240px; gap: 12px; padding: 20px 10px; }
+body.fr-vertical .fr-event .event-node b { font-size: 19px; }
+body.fr-vertical .fr-event .event-node small { font-size: 16px; }
+body.fr-vertical .fr-event .event-node .fr-glyph { width: 38px; height: 38px; }
+body.fr-vertical .event-stop-gallery, body.fr-vertical .event-stop-tournament { top: 390px; }
 
 /* Slide 9: six stops on the workshop ring. */
 .rs6-1 { left: 50.000%; top: 0.000%; }

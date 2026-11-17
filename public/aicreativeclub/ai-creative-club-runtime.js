@@ -850,6 +850,7 @@
       story.to(icon, { opacity: 1, duration: .25 }, start);
       shapes.forEach(function (shape, shapeIndex) {
         if (shape.getAttribute("stroke") === "none") return;
+        if (shape.classList.contains("idea-race-track")) return;
         var length = shape.getTotalLength();
         story.fromTo(shape,
           { strokeDasharray: length, strokeDashoffset: length },
@@ -861,9 +862,19 @@
       if (index === 0) {
         story.fromTo(icon.querySelectorAll("rect"), { y: 12, opacity: .2 }, { y: 0, opacity: 1, duration: .35, stagger: .07 }, start + .1);
       } else if (index === 1) {
-        story.to(icon.querySelectorAll("circle[fill='#FFF']"), { fill: "#C9A05B", duration: .15, repeat: 1, yoyo: true }, start + .4);
+        // Four competitors trace separate paths before the leader reaches the finish.
+        icon.querySelectorAll(".idea-race-track").forEach(function (track, traderIndex) {
+          var length = track.getTotalLength();
+          story.fromTo(track,
+            { strokeDasharray: length, strokeDashoffset: length },
+            { strokeDashoffset: 0, duration: .85 + traderIndex * .12, ease: "none" }, start + .1);
+        });
+        story.fromTo(icon.querySelector("circle"), { scale: 0, transformOrigin: "50% 50%" },
+          { scale: 1, duration: .35, ease: "back.out(1.6)" }, start + .95);
       } else {
         story.fromTo(icon.querySelectorAll("ellipse"), { y: 12, opacity: .3 }, { y: 0, opacity: 1, duration: .35, stagger: .1 }, start + .12);
+        story.fromTo(icon.querySelector(".idea-chain-link"), { opacity: .2 },
+          { opacity: 1, duration: .3, repeat: 2, yoyo: true }, start + .35);
       }
 
       if (text) story.to(text, { autoAlpha: 1, y: 0, duration: .45 }, start + .35);
